@@ -70,6 +70,8 @@ export const ordersTable = pgTable("orders", {
   productId: integer("product_id").notNull(),
   customerEmail: text("customer_email"),
   status: text("status").notNull().default("pending"),
+  downloadToken: text("download_token"),
+  downloadTokenExpiresAt: timestamp("download_token_expires_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
