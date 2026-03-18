@@ -84,6 +84,16 @@ function ensureGitInitialized() {
     run("git", ["init"]);
     run("git", ["checkout", "-b", "main"], { allowFailure: true });
   }
+
+  // Ensure git identity is configured (required for commits)
+  const { stdout: name } = run("git", ["config", "user.name"], { allowFailure: true });
+  const { stdout: email } = run("git", ["config", "user.email"], { allowFailure: true });
+  if (!name.trim()) {
+    run("git", ["config", "user.name", "Replit Agent"]);
+  }
+  if (!email.trim()) {
+    run("git", ["config", "user.email", "agent@replit.com"]);
+  }
 }
 
 function ensureAllFilesCommitted() {
@@ -139,6 +149,7 @@ async function ensureRepoExists(owner, repo) {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
+  if (!meRes.ok) throw new Error(`Failed to get authenticated user (${meRes.status})`);
   const me = await meRes.json();
   const isPersonalRepo = me.login.toLowerCase() === owner.toLowerCase();
   const createEndpoint = isPersonalRepo ? "/user/repos" : `/orgs/${owner}/repos`;
@@ -325,6 +336,9 @@ async function main() {
       `/repos/${owner}/${repo}/branches/${targetBranch}`,
       { method: "GET", headers: { "Content-Type": "application/json" } }
     );
+    if (!verifyRes.ok) {
+      throw new Error(`Push verification request failed (${verifyRes.status})`);
+    }
     const branchData = await verifyRes.json();
     const remoteSha = branchData.commit?.sha?.substring(0, 7) ?? "unknown";
     const { stdout: localSha } = run("git", ["rev-parse", "--short", "HEAD"]);
@@ -341,6 +355,10 @@ async function main() {
     console.log(`  Tree   : https://github.com/${owner}/${repo}/tree/${targetBranch}`);
   } finally {
     await removeDeployKey(owner, repo, keyId);
+    // Clean up local temp files
+    for (const f of [keyPath, `${keyPath}.pub`]) {
+      try { (await import("fs")).unlinkSync(f); } catch { /* already gone */ }
+    }
   }
 }
 
