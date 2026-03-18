@@ -2,14 +2,15 @@
  * Push this project to GitHub using a temporary SSH deploy key.
  *
  * Usage:
- *   node scripts/push-to-github.mjs owner/repo [branch]
+ *   node scripts/push-to-github.mjs owner/repo [branch] [--force]
  *
  * The Replit GitHub integration must be connected before running this script.
  * Requires: @replit/connectors-sdk (installed in workspace root).
  *
  * Arguments:
  *   owner/repo  GitHub repository slug — required (e.g. "myuser/my-repo")
- *   branch      Remote branch to push to — default: "main"
+ *   branch      Remote branch name — default: "main"
+ *   --force     Allow force-push when remote has diverged history
  */
 
 import { ReplitConnectors } from "@replit/connectors-sdk";
@@ -21,30 +22,31 @@ import os from "os";
 const WORKSPACE = "/home/runner/workspace";
 const connectors = new ReplitConnectors();
 
-// ── shell helpers ─────────────────────────────────────────────────────────
+// ── shell helpers ──────────────────────────────────────────────────────────
 
 /**
- * Run a command using an args array to prevent shell injection.
- * @param {string} cmd
- * @param {string[]} args
- * @param {{ cwd?: string, allowFailure?: boolean }} opts
+ * Run a command with an argument array (no shell interpolation).
  */
-function run(cmd, args, { cwd = WORKSPACE, allowFailure = false } = {}) {
+function run(cmd, args, { cwd = WORKSPACE, allowFailure = false, env } = {}) {
   const result = spawnSync(cmd, args, {
     encoding: "utf8",
     cwd,
-    env: { ...process.env, HOME: os.homedir() },
+    env: env ?? { ...process.env, HOME: os.homedir() },
   });
   if (!allowFailure && result.status !== 0) {
     throw new Error(
-      `Command failed (exit ${result.status}): ${cmd} ${args.join(" ")}\n` +
+      `Command failed (exit ${result.status}): ${[cmd, ...args].join(" ")}\n` +
         (result.stderr || result.stdout)
     );
   }
-  return { stdout: (result.stdout || "").trim(), stderr: (result.stderr || "").trim(), status: result.status };
+  return {
+    stdout: (result.stdout ?? "").trim(),
+    stderr: (result.stderr ?? "").trim(),
+    status: result.status ?? -1,
+  };
 }
 
-// ── GitHub API helper ─────────────────────────────────────────────────────
+// ── GitHub API ─────────────────────────────────────────────────────────────
 
 async function githubApi(endpoint, method = "GET", body) {
   const res = await connectors.proxy("github", endpoint, {
@@ -59,57 +61,61 @@ async function githubApi(endpoint, method = "GET", body) {
   return res;
 }
 
-// ── validate slug ─────────────────────────────────────────────────────────
+// ── input validation ───────────────────────────────────────────────────────
 
 function validateSlug(owner, repo) {
-  const nameRe = /^[a-zA-Z0-9_.-]+$/;
-  if (!nameRe.test(owner)) throw new Error(`Invalid owner name: ${owner}`);
-  if (!nameRe.test(repo)) throw new Error(`Invalid repo name: ${repo}`);
+  const re = /^[a-zA-Z0-9_.-]+$/;
+  if (!re.test(owner)) throw new Error(`Invalid GitHub owner name: "${owner}"`);
+  if (!re.test(repo)) throw new Error(`Invalid GitHub repo name: "${repo}"`);
 }
 
 function validateBranch(branch) {
-  if (!/^[a-zA-Z0-9_./\-]+$/.test(branch)) throw new Error(`Invalid branch name: ${branch}`);
+  if (!/^[a-zA-Z0-9_./\-]+$/.test(branch)) {
+    throw new Error(`Invalid branch name: "${branch}"`);
+  }
 }
 
-// ── git initialization ────────────────────────────────────────────────────
+// ── git setup ──────────────────────────────────────────────────────────────
 
 function ensureGitInitialized() {
   const { status } = run("git", ["rev-parse", "--is-inside-work-tree"], { allowFailure: true });
   if (status !== 0) {
     console.log("Initializing git repository...");
     run("git", ["init"]);
-    // Try to set default branch to main; ignore error on older git
     run("git", ["checkout", "-b", "main"], { allowFailure: true });
   }
 }
 
 function ensureAllFilesCommitted() {
+  // Check if HEAD exists at all
+  const { status: headStatus } = run("git", ["rev-parse", "HEAD"], { allowFailure: true });
   const { stdout: statusOut } = run("git", ["status", "--porcelain"]);
+
+  if (headStatus !== 0) {
+    // No commits yet
+    console.log("No commits yet — staging all files and creating initial commit...");
+    run("git", ["add", "-A"]);
+    run("git", ["commit", "-m", "Initial commit: Blade & Quill Art Academy full project"]);
+    return;
+  }
+
   if (statusOut.length > 0) {
-    console.log("Uncommitted changes detected — staging and committing all files...");
+    console.log("Uncommitted changes — staging and committing...");
     run("git", ["add", "-A"]);
     const { status: commitStatus, stderr } = run(
       "git",
-      ["commit", "-m", "Initial commit: Blade & Quill Art Academy full project"],
+      ["commit", "-m", "Sync: Blade & Quill Art Academy"],
       { allowFailure: true }
     );
     if (commitStatus !== 0 && !stderr.includes("nothing to commit")) {
       throw new Error(`git commit failed:\n${stderr}`);
     }
   } else {
-    // Check if there's at least one commit
-    const { status: logStatus } = run("git", ["rev-parse", "HEAD"], { allowFailure: true });
-    if (logStatus !== 0) {
-      console.log("No commits yet — creating initial commit...");
-      run("git", ["add", "-A"]);
-      run("git", ["commit", "-m", "Initial commit: Blade & Quill Art Academy full project"]);
-    } else {
-      console.log("Working tree clean.");
-    }
+    console.log("Working tree clean — nothing to commit.");
   }
 }
 
-// ── GitHub repository ─────────────────────────────────────────────────────
+// ── GitHub repo ────────────────────────────────────────────────────────────
 
 async function ensureRepoExists(owner, repo) {
   const checkRes = await connectors.proxy("github", `/repos/${owner}/${repo}`, {
@@ -128,16 +134,16 @@ async function ensureRepoExists(owner, repo) {
     throw new Error(`Failed to check repository (${checkRes.status}): ${text}`);
   }
 
-  // Determine whether owner is a user or an org
+  // Determine whether to create under user or org namespace
   const meRes = await connectors.proxy("github", "/user", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
   const me = await meRes.json();
   const isPersonalRepo = me.login.toLowerCase() === owner.toLowerCase();
-
   const createEndpoint = isPersonalRepo ? "/user/repos" : `/orgs/${owner}/repos`;
-  console.log(`Creating repository via ${createEndpoint}...`);
+
+  console.log(`Creating ${owner}/${repo} via ${createEndpoint}...`);
   const createRes = await githubApi(createEndpoint, "POST", {
     name: repo,
     description: "Blade & Quill Art Academy – Full-stack web application",
@@ -149,7 +155,7 @@ async function ensureRepoExists(owner, repo) {
   return created;
 }
 
-// ── SSH deploy key ────────────────────────────────────────────────────────
+// ── SSH deploy key ─────────────────────────────────────────────────────────
 
 async function setupDeployKey(owner, repo) {
   const keyPath = path.join(os.tmpdir(), `deploy-${repo}-${Date.now()}`);
@@ -164,7 +170,7 @@ async function setupDeployKey(owner, repo) {
   const pubKey = readFileSync(pubKeyPath, "utf8").trim();
   const title = `replit-deploy-${repo}`;
 
-  // Remove stale key with same title if present
+  // Remove stale key with same title
   const listRes = await connectors.proxy("github", `/repos/${owner}/${repo}/keys`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -181,7 +187,7 @@ async function setupDeployKey(owner, repo) {
     }
   }
 
-  console.log("Adding deploy key to repository...");
+  console.log("Adding deploy key with write access...");
   const addRes = await githubApi(`/repos/${owner}/${repo}/keys`, "POST", {
     title,
     key: pubKey,
@@ -200,28 +206,27 @@ async function removeDeployKey(owner, repo, keyId) {
     });
     console.log("Deploy key removed.");
   } catch {
-    console.warn("Could not remove deploy key — delete it manually in GitHub repository settings.");
+    console.warn(
+      "Warning: could not remove the deploy key automatically.\n" +
+        `Please remove key id ${keyId} manually in https://github.com/${owner}/${repo}/settings/keys`
+    );
   }
 }
 
-// ── SSH config ────────────────────────────────────────────────────────────
+// ── GIT_SSH_COMMAND builder ────────────────────────────────────────────────
 
-function configureSsh(keyPath) {
-  const sshDir = path.join(os.homedir(), ".ssh");
-  mkdirSync(sshDir, { recursive: true });
-  chmodSync(sshDir, 0o700);
+function buildGitSshCommand(keyPath) {
+  const knownHostsPath = path.join(os.tmpdir(), `github_known_hosts_${Date.now()}`);
 
-  const knownHostsPath = path.join(os.tmpdir(), "github_known_hosts");
-
-  // Fetch GitHub's host keys to verify identity (avoids MITM)
+  // Fetch GitHub's real host key (avoids MITM)
   const { stdout: scanned, status } = run("ssh-keyscan", ["-H", "github.com"], {
     cwd: os.tmpdir(),
     allowFailure: true,
   });
-  if (status === 0 && scanned) {
+  if (status === 0 && scanned.trim().length > 0) {
     writeFileSync(knownHostsPath, scanned + "\n", { mode: 0o600 });
   } else {
-    // GitHub's published ED25519 host key as fallback
+    // GitHub's published ED25519 host key as a safe fallback
     writeFileSync(
       knownHostsPath,
       "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n",
@@ -229,82 +234,92 @@ function configureSsh(keyPath) {
     );
   }
 
-  const sshConfigPath = path.join(sshDir, "config");
-  const sshConfig = [
-    "Host github.com",
-    `  IdentityFile ${keyPath}`,
-    `  UserKnownHostsFile ${knownHostsPath}`,
-    "  StrictHostKeyChecking yes",
-    "",
-  ].join("\n");
-  writeFileSync(sshConfigPath, sshConfig, { mode: 0o600 });
+  // Return the GIT_SSH_COMMAND value — does not modify ~/.ssh/config
+  return `ssh -i ${keyPath} -o StrictHostKeyChecking=yes -o UserKnownHostsFile=${knownHostsPath}`;
 }
 
-// ── main ──────────────────────────────────────────────────────────────────
+// ── push ───────────────────────────────────────────────────────────────────
+
+function gitPush(localBranch, targetBranch, sshUrl, gitSshCommand, force) {
+  const pushArgs = ["push", sshUrl, `${localBranch}:refs/heads/${targetBranch}`];
+  const env = { ...process.env, HOME: os.homedir(), GIT_SSH_COMMAND: gitSshCommand };
+
+  const result = run("git", pushArgs, { allowFailure: true, env });
+
+  if (result.status !== 0) {
+    const errText = result.stderr;
+    const isDivergent = errText.includes("fetch first") || errText.includes("non-fast-forward");
+
+    if (isDivergent && !force) {
+      throw new Error(
+        "Remote branch has diverged from local history.\n" +
+          "This happens when the repository was initialized via the GitHub API before git push.\n" +
+          "Re-run with --force to replace the remote history:\n" +
+          "  node scripts/push-to-github.mjs owner/repo [branch] --force"
+      );
+    }
+
+    if (isDivergent && force) {
+      console.log("--force specified: replacing remote history...");
+      run("git", [...pushArgs, "--force"], { env });
+    } else {
+      throw new Error(`git push failed:\n${errText}`);
+    }
+  }
+}
+
+// ── main ───────────────────────────────────────────────────────────────────
 
 async function main() {
-  const args = process.argv.slice(2);
+  const rawArgs = process.argv.slice(2);
 
-  if (!args[0] || !args[0].includes("/")) {
+  if (!rawArgs[0] || !rawArgs[0].includes("/")) {
     throw new Error(
       "GitHub repository slug required.\n" +
-        "Usage: node scripts/push-to-github.mjs owner/repo [branch]"
+        "Usage: node scripts/push-to-github.mjs owner/repo [branch] [--force]"
     );
   }
 
-  const [owner, repo] = args[0].split("/", 2);
-  const targetBranch = args[1] ?? "main";
+  const [owner, repo] = rawArgs[0].split("/", 2);
+  const targetBranch = rawArgs.find(a => !a.startsWith("-") && a !== rawArgs[0]) ?? "main";
+  const force = rawArgs.includes("--force");
 
   validateSlug(owner, repo);
   validateBranch(targetBranch);
 
-  console.log(`Target: ${owner}/${repo} → branch: ${targetBranch}`);
+  console.log(`Target: ${owner}/${repo} → branch: ${targetBranch}${force ? " (--force)" : ""}`);
 
-  // Step 1: Ensure git repo is initialized and all files are committed
+  // 1. Git init + commit
   ensureGitInitialized();
   ensureAllFilesCommitted();
 
-  // Step 2: Ensure remote repository exists
+  // 2. Ensure remote repo exists
   await ensureRepoExists(owner, repo);
 
-  // Step 3: Set up temporary SSH deploy key
+  // 3. Set up temporary SSH deploy key
   const { keyPath, keyId } = await setupDeployKey(owner, repo);
-  configureSsh(keyPath);
+
+  // 4. Build GIT_SSH_COMMAND (does not touch ~/.ssh/config)
+  const gitSshCommand = buildGitSshCommand(keyPath);
 
   const sshUrl = `git@github.com:${owner}/${repo}.git`;
 
   try {
-    // Step 4: Set 'origin' to the GitHub repository
+    // 5. Set origin to the GitHub SSH URL
     const { stdout: remoteList } = run("git", ["remote"], { allowFailure: true });
-    const remotes = remoteList.split("\n").filter(Boolean);
-    if (remotes.includes("origin")) {
+    if (remoteList.split("\n").includes("origin")) {
       run("git", ["remote", "set-url", "origin", sshUrl]);
     } else {
       run("git", ["remote", "add", "origin", sshUrl]);
     }
-    console.log("origin set to:", sshUrl);
+    console.log("origin →", sshUrl);
 
-    // Step 5: Determine local branch
+    // 6. Push
     const { stdout: localBranch } = run("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
     console.log(`Pushing ${localBranch} → origin/${targetBranch}...`);
+    gitPush(localBranch, targetBranch, sshUrl, gitSshCommand, force);
 
-    // Step 6: Push (force only when remote has diverged from API-created init)
-    const pushResult = run(
-      "git",
-      ["push", "origin", `${localBranch}:${targetBranch}`],
-      { allowFailure: true }
-    );
-    if (pushResult.status !== 0) {
-      const errText = pushResult.stderr;
-      if (errText.includes("fetch first") || errText.includes("non-fast-forward")) {
-        console.log("Remote has unrelated history. Force-pushing to replace API-init commit...");
-        run("git", ["push", "origin", `${localBranch}:${targetBranch}`, "--force"]);
-      } else {
-        throw new Error(`git push failed:\n${pushResult.stderr}`);
-      }
-    }
-
-    // Step 7: Verify the push succeeded
+    // 7. Verify push
     const verifyRes = await connectors.proxy(
       "github",
       `/repos/${owner}/${repo}/branches/${targetBranch}`,
@@ -321,10 +336,10 @@ async function main() {
     }
 
     console.log(`\nVerified: local=${localSha} remote=${remoteSha}`);
-    console.log(`Success! Full codebase pushed to: https://github.com/${owner}/${repo}`);
-    console.log(`Branch: ${targetBranch} | Files: see https://github.com/${owner}/${repo}/tree/${targetBranch}`);
+    console.log(`\nSuccess! Codebase pushed to: https://github.com/${owner}/${repo}`);
+    console.log(`  Branch : ${targetBranch}`);
+    console.log(`  Tree   : https://github.com/${owner}/${repo}/tree/${targetBranch}`);
   } finally {
-    // Always remove the deploy key
     await removeDeployKey(owner, repo, keyId);
   }
 }
