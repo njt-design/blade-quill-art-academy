@@ -39,9 +39,9 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <Feather className="w-8 h-8 text-primary group-hover:text-primary/80 transition-colors" />
-            <span className="font-display font-bold text-2xl tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+          <Link href="/" className="flex items-center gap-2 group min-w-0">
+            <Feather className="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-primary/80 transition-colors shrink-0" />
+            <span className="font-display font-bold text-lg sm:text-2xl tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 whitespace-nowrap">
               Blade & Quill
             </span>
           </Link>

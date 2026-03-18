@@ -135,7 +135,7 @@ export default function Home() {
                 <ShoppingBag className="w-8 h-8 text-primary" />
               </div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-display text-foreground">
+                <h2 className="text-xl md:text-3xl font-display text-foreground leading-snug">
                   <span className="text-primary">Lheeloo & Luna</span> — The Cartoon Book Is Live!
                 </h2>
                 <p className="text-muted-foreground mt-1">

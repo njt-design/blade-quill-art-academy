@@ -26,26 +26,26 @@ export default function Tutorials() {
     <div className="min-h-screen pt-24 pb-24">
       <div className="container mx-auto px-4 md:px-6">
         
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 mt-8 gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 mt-8 gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-5xl font-display mb-6">Video Tutorials</h1>
-            <p className="text-lg text-muted-foreground">
+            <h1 className="text-4xl sm:text-5xl font-display mb-4">Video Tutorials</h1>
+            <p className="text-base sm:text-lg text-muted-foreground">
               Learn digital painting techniques, Krita shortcuts, and professional workflows.
             </p>
           </div>
           <Button
             onClick={() => window.open("https://www.youtube.com/c/BladeQuillartacademy", "_blank")}
-            className="gap-2 bg-[#FF0000] text-white hover:bg-[#CC0000]"
+            className="gap-2 bg-[#FF0000] text-white hover:bg-[#CC0000] shrink-0 w-full md:w-auto"
           >
             <Youtube className="w-5 h-5" /> Subscribe on YouTube
           </Button>
         </div>
 
         {topics.length > 0 && (
-          <div className="flex flex-wrap gap-3 mb-10">
+          <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-3 mb-10 pb-1">
             <button
               onClick={() => setSelectedTopic(null)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
+              className={`shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all border whitespace-nowrap ${
                 selectedTopic === null
                   ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
                   : "border-white/10 text-muted-foreground hover:border-primary/40 hover:text-primary"
@@ -57,7 +57,7 @@ export default function Tutorials() {
               <button
                 key={topic}
                 onClick={() => setSelectedTopic(topic === selectedTopic ? null : topic)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
+                className={`shrink-0 px-5 py-2 rounded-full text-sm font-medium transition-all border whitespace-nowrap ${
                   selectedTopic === topic
                     ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
                     : "border-white/10 text-muted-foreground hover:border-primary/40 hover:text-primary"

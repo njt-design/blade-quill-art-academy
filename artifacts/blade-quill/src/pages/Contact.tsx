@@ -70,9 +70,9 @@ export default function Contact() {
                   <div className="p-3 bg-primary/10 rounded-lg text-primary">
                     <Mail className="w-6 h-6" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h4 className="font-semibold text-foreground">Email</h4>
-                    <p className="text-sm text-muted-foreground">Corinne@bladeandquillartacademy.com</p>
+                    <p className="text-sm text-muted-foreground break-all">Corinne@bladeandquillartacademy.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

@@ -61,11 +61,11 @@ export default function Shop() {
         </div>
 
         {/* Categories — data-driven */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-nowrap overflow-x-auto gap-3 mb-16 pb-2 scrollbar-hide justify-start md:justify-center">
           <Button
             variant={activeCategory === "all" ? "default" : "outline"}
             onClick={() => setActiveCategory("all")}
-            className="gap-2 rounded-full"
+            className="gap-2 rounded-full shrink-0"
           >
             <ShoppingBag className="w-4 h-4" />
             All Products
@@ -79,7 +79,7 @@ export default function Shop() {
                 key={cat.id}
                 variant={isActive ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat.id as ListProductsCategory)}
-                className="gap-2 rounded-full"
+                className="gap-2 rounded-full shrink-0"
               >
                 <Icon className="w-4 h-4" />
                 {cat.label}

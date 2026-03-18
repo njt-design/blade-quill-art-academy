@@ -43,52 +43,58 @@ export default function Cart() {
   return (
     <div className="min-h-screen pt-24 pb-24">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-        <h1 className="text-5xl font-display mb-12 mt-8">Your Cart</h1>
+        <h1 className="text-4xl md:text-5xl font-display mb-8 md:mb-12 mt-8">Your Cart</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-3">
             {items.map((item) => (
               <Card key={item.id} className="border-border/50">
-                <CardContent className="p-6 flex gap-6 items-center">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover rounded-lg shrink-0"
-                  />
-                  <div className="flex-grow min-w-0">
-                    <h3 className="font-display text-lg mb-1 truncate">{item.name}</h3>
-                    <span className="text-xs uppercase tracking-widest text-primary/60 font-medium">
-                      {item.category === "physical" ? "Physical Book" : item.category === "curriculum" ? "Curriculum" : "Digital Download"}
-                    </span>
-                  </div>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex gap-4">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.name}
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg shrink-0"
+                    />
+                    <div className="flex-grow min-w-0">
+                      <h3 className="font-display text-base sm:text-lg mb-0.5 line-clamp-2 leading-tight">{item.name}</h3>
+                      <span className="text-xs uppercase tracking-widest text-primary/60 font-medium">
+                        {item.category === "physical" ? "Physical" : item.category === "curriculum" ? "Curriculum" : "Digital"}
+                      </span>
 
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
-                    >
-                      <Minus className="w-3 h-3" />
-                    </button>
-                    <span className="w-6 text-center font-medium">{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
-                    >
-                      <Plus className="w-3 h-3" />
-                    </button>
-                  </div>
+                      <div className="flex items-center justify-between mt-3">
+                        {/* Qty controls */}
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="w-5 text-center font-medium text-sm">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
 
-                  <div className="text-right shrink-0 w-20">
-                    <span className="text-xl font-bold text-primary block">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </span>
-                    <button
-                      onClick={() => removeItem(item.id)}
-                      className="text-muted-foreground hover:text-destructive transition-colors mt-1"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                        {/* Price + remove */}
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg font-bold text-primary">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </span>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="text-muted-foreground hover:text-destructive transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -97,9 +103,9 @@ export default function Cart() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="border-primary/20 sticky top-28">
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-2xl font-display mb-4">Order Summary</h2>
+            <Card className="border-primary/20 lg:sticky lg:top-28">
+              <CardContent className="p-5 sm:p-6 space-y-4">
+                <h2 className="text-2xl font-display">Order Summary</h2>
 
                 {items.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm text-muted-foreground">
@@ -114,14 +120,14 @@ export default function Cart() {
                 </div>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  Each item is checked out separately via Stripe. Multiple items will open multiple checkout sessions.
+                  Each item checks out separately via Stripe.
                 </p>
 
                 <div className="space-y-2 pt-2">
                   {items.map((item) => (
                     <Button
                       key={item.id}
-                      className="w-full"
+                      className="w-full text-sm"
                       size="sm"
                       disabled={checkingOutId !== null}
                       onClick={() => handleCheckoutItem(item.id, item.quantity)}
@@ -129,7 +135,7 @@ export default function Cart() {
                       {checkingOutId === item.id ? (
                         <><div className="animate-spin rounded-full h-3 w-3 border-t-2 border-white mr-2" />Processing…</>
                       ) : (
-                        <>Checkout: {item.name.split(" ").slice(0, 2).join(" ")} · ${(item.price * item.quantity).toFixed(2)}</>
+                        <>Checkout · ${(item.price * item.quantity).toFixed(2)}</>
                       )}
                     </Button>
                   ))}
