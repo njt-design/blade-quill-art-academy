@@ -74,6 +74,7 @@ export const ListGalleryResponse = zod.array(ListGalleryResponseItem);
  */
 export const ListTutorialsQueryParams = zod.object({
   featured: zod.coerce.boolean().optional(),
+  topic: zod.coerce.string().optional(),
 });
 
 export const ListTutorialsResponseItem = zod.object({
@@ -81,6 +82,7 @@ export const ListTutorialsResponseItem = zod.object({
   title: zod.string(),
   youtubeId: zod.string(),
   description: zod.string().nullish(),
+  topic: zod.string().nullish(),
   featured: zod.boolean(),
   createdAt: zod.date(),
 });

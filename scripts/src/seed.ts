@@ -129,6 +129,7 @@ async function seed() {
       youtubeId: "63_gp_rFtOc",
       description:
         "Master background removal in Krita using multiple techniques — from the scissors tool to color selection and beyond.",
+      topic: "Krita Tools",
       featured: true,
       sortOrder: 1,
     },
@@ -137,6 +138,7 @@ async function seed() {
       youtubeId: "lgj0WPlwMGI",
       description:
         "A fun and easy technique to transform any photo into a beautiful pencil sketch using Krita's filters and tools.",
+      topic: "Digital Painting",
       featured: true,
       sortOrder: 2,
     },
@@ -145,6 +147,7 @@ async function seed() {
       youtubeId: "Oe2xkeU_mV0",
       description:
         "Struggling with pen pressure in Krita? This tutorial walks you through 5 reliable steps to fix it permanently.",
+      topic: "Krita Tips",
       featured: true,
       sortOrder: 3,
     },
@@ -153,6 +156,7 @@ async function seed() {
       youtubeId: "63_gp_rFtOc",
       description:
         "Learn how to create crisp, scalable vector images using Krita's vector tools — perfect for logos and illustrations.",
+      topic: "Krita Tools",
       featured: false,
       sortOrder: 4,
     },
@@ -161,6 +165,7 @@ async function seed() {
       youtubeId: "Oe2xkeU_mV0",
       description:
         "A comprehensive walkthrough of all Krita selection tools and when to use each one for precise, efficient editing.",
+      topic: "Krita Tools",
       featured: false,
       sortOrder: 5,
     },
@@ -169,6 +174,7 @@ async function seed() {
       youtubeId: "lgj0WPlwMGI",
       description:
         "Is Krita running slow? Learn how to identify and fix the 8 most common causes of lag and performance issues.",
+      topic: "Krita Tips",
       featured: false,
       sortOrder: 6,
     },

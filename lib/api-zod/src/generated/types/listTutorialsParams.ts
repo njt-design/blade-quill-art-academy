@@ -8,4 +8,5 @@
 
 export type ListTutorialsParams = {
   featured?: boolean;
+  topic?: string;
 };

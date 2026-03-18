@@ -40,6 +40,7 @@ export const tutorialsTable = pgTable("tutorials", {
   title: text("title").notNull(),
   youtubeId: text("youtube_id").notNull(),
   description: text("description"),
+  topic: text("topic"),
   featured: boolean("featured").default(false).notNull(),
   sortOrder: integer("sort_order").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),

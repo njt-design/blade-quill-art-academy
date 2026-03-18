@@ -1,27 +1,29 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { db } from "@workspace/db";
 import { tutorialsTable } from "@workspace/db";
-import { eq, asc } from "drizzle-orm";
+import { eq, and, asc } from "drizzle-orm";
 import { ListTutorialsQueryParams } from "@workspace/api-zod";
 
 const router: IRouter = Router();
 
-router.get("/tutorials", async (req, res) => {
+router.get("/tutorials", async (req: Request, res: Response): Promise<void> => {
   try {
     const query = ListTutorialsQueryParams.parse(req.query);
-    let rows;
+
+    const conditions = [];
     if (query.featured !== undefined) {
-      rows = await db
-        .select()
-        .from(tutorialsTable)
-        .where(eq(tutorialsTable.featured, query.featured))
-        .orderBy(asc(tutorialsTable.sortOrder));
-    } else {
-      rows = await db
-        .select()
-        .from(tutorialsTable)
-        .orderBy(asc(tutorialsTable.sortOrder));
+      conditions.push(eq(tutorialsTable.featured, query.featured));
     }
+    if (query.topic) {
+      conditions.push(eq(tutorialsTable.topic, query.topic));
+    }
+
+    const rows = await db
+      .select()
+      .from(tutorialsTable)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
+      .orderBy(asc(tutorialsTable.sortOrder));
+
     const tutorials = rows.map((t) => ({
       ...t,
       createdAt: t.createdAt.toISOString(),

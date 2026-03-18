@@ -108,6 +108,11 @@ paths:
           required: false
           schema:
             type: boolean
+        - name: topic
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: Tutorial list
@@ -276,6 +281,9 @@ components:
         youtubeId:
           type: string
         description:
+          type: string
+          nullable: true
+        topic:
           type: string
           nullable: true
         featured:

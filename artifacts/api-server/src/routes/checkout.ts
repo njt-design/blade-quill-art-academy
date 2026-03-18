@@ -1,7 +1,7 @@
 import { Router, type IRouter, type Request, type Response } from "express";
 import { db } from "@workspace/db";
 import { productsTable, ordersTable } from "@workspace/db";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import Stripe from "stripe";
 import crypto from "crypto";
 import {
@@ -11,12 +11,14 @@ import {
 
 const router: IRouter = Router();
 
+const NODE_ENV = process.env.NODE_ENV ?? "production";
+
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
     throw new Error("STRIPE_SECRET_KEY is not set");
   }
-  return new Stripe(key, { apiVersion: "2025-02-24.acacia" });
+  return new Stripe(key);
 }
 
 function getBaseUrl(req: Request): string {
@@ -52,9 +54,14 @@ async function fulfillOrder(sessionId: string, customerEmail: string | null): Pr
 
   const product = productRows[0];
 
-  const updates: Partial<typeof ordersTable.$inferInsert> = {
+  const updates: {
+    status: string;
+    customerEmail?: string;
+    downloadToken?: string;
+    downloadTokenExpiresAt?: Date;
+  } = {
     status: "paid",
-    customerEmail: customerEmail ?? undefined,
+    ...(customerEmail ? { customerEmail } : {}),
   };
 
   if (product && (product.category === "digital" || product.category === "curriculum") && product.downloadUrl) {
@@ -68,7 +75,7 @@ async function fulfillOrder(sessionId: string, customerEmail: string | null): Pr
     .where(eq(ordersTable.stripeSessionId, sessionId));
 }
 
-router.post("/checkout", async (req: Request, res: Response) => {
+router.post("/checkout", async (req: Request, res: Response): Promise<void> => {
   try {
     const body = CreateCheckoutSessionBody.parse(req.body);
 
@@ -78,16 +85,19 @@ router.post("/checkout", async (req: Request, res: Response) => {
       .where(eq(productsTable.id, body.productId));
 
     if (rows.length === 0) {
-      return res.status(400).json({ error: "Product not found" });
+      res.status(400).json({ error: "Product not found" });
+      return;
     }
 
     const product = rows[0];
     if (!product.inStock) {
-      return res.status(400).json({ error: "Product is out of stock" });
+      res.status(400).json({ error: "Product is out of stock" });
+      return;
     }
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      return res.status(500).json({ error: "Payment system not configured. Please add STRIPE_SECRET_KEY." });
+      res.status(500).json({ error: "Payment system not configured. Please add STRIPE_SECRET_KEY." });
+      return;
     }
 
     const stripe = getStripe();
@@ -121,21 +131,23 @@ router.post("/checkout", async (req: Request, res: Response) => {
     });
 
     res.json({ url: session.url!, sessionId: session.id });
-  } catch (err: any) {
-    if (err?.name === "ZodError") {
-      return res.status(400).json({ error: "Invalid request" });
+  } catch (err: unknown) {
+    if (err instanceof Error && err.name === "ZodError") {
+      res.status(400).json({ error: "Invalid request" });
+      return;
     }
     console.error("Checkout error:", err);
     res.status(500).json({ error: "Failed to create checkout session" });
   }
 });
 
-router.get("/checkout/success", async (req: Request, res: Response) => {
+router.get("/checkout/success", async (req: Request, res: Response): Promise<void> => {
   try {
     const { session_id } = GetOrderSuccessQueryParams.parse(req.query);
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      return res.status(503).json({ error: "Payment verification unavailable" });
+      res.status(503).json({ error: "Payment verification unavailable" });
+      return;
     }
 
     const stripe = getStripe();
@@ -145,11 +157,13 @@ router.get("/checkout/success", async (req: Request, res: Response) => {
       session = await stripe.checkout.sessions.retrieve(session_id);
     } catch (stripeErr) {
       console.error("Stripe session retrieval error:", stripeErr);
-      return res.status(400).json({ error: "Invalid session ID" });
+      res.status(400).json({ error: "Invalid session ID" });
+      return;
     }
 
     if (session.payment_status !== "paid") {
-      return res.status(402).json({ error: "Payment not confirmed" });
+      res.status(402).json({ error: "Payment not confirmed" });
+      return;
     }
 
     await fulfillOrder(session_id, session.customer_details?.email ?? null);
@@ -160,7 +174,8 @@ router.get("/checkout/success", async (req: Request, res: Response) => {
       .where(eq(ordersTable.stripeSessionId, session_id));
 
     if (orderRows.length === 0) {
-      return res.status(404).json({ error: "Order not found" });
+      res.status(404).json({ error: "Order not found" });
+      return;
     }
 
     const order = orderRows[0];
@@ -171,7 +186,8 @@ router.get("/checkout/success", async (req: Request, res: Response) => {
       .where(eq(productsTable.id, order.productId));
 
     if (productRows.length === 0) {
-      return res.status(404).json({ error: "Product not found" });
+      res.status(404).json({ error: "Product not found" });
+      return;
     }
 
     const product = productRows[0];
@@ -191,20 +207,22 @@ router.get("/checkout/success", async (req: Request, res: Response) => {
       downloadUrl,
       email: order.customerEmail ?? null,
     });
-  } catch (err: any) {
-    if (err?.name === "ZodError") {
-      return res.status(400).json({ error: "Invalid request" });
+  } catch (err: unknown) {
+    if (err instanceof Error && err.name === "ZodError") {
+      res.status(400).json({ error: "Invalid request" });
+      return;
     }
     console.error("Order success error:", err);
     res.status(500).json({ error: "Failed to retrieve order" });
   }
 });
 
-router.post("/stripe/webhook", async (req: Request, res: Response) => {
+router.post("/stripe/webhook", async (req: Request, res: Response): Promise<void> => {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
   if (!process.env.STRIPE_SECRET_KEY) {
-    return res.status(503).send("Payment system not configured");
+    res.status(503).send("Payment system not configured");
+    return;
   }
 
   const stripe = getStripe();
@@ -214,21 +232,29 @@ router.post("/stripe/webhook", async (req: Request, res: Response) => {
   if (webhookSecret) {
     const sig = req.headers["stripe-signature"];
     if (!sig) {
-      return res.status(400).send("Missing stripe-signature header");
+      res.status(400).send("Missing stripe-signature header");
+      return;
     }
     try {
-      event = stripe.webhooks.constructEvent(req.body as Buffer, sig, webhookSecret);
-    } catch (err: any) {
-      console.error("Webhook signature verification failed:", err.message);
-      return res.status(400).send(`Webhook error: ${err.message}`);
+      event = stripe.webhooks.constructEvent(req.body as Buffer, sig as string, webhookSecret);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      console.error("Webhook signature verification failed:", message);
+      res.status(400).send(`Webhook error: ${message}`);
+      return;
     }
-  } else {
+  } else if (NODE_ENV === "development") {
     try {
       event = JSON.parse(req.body.toString()) as Stripe.Event;
-      console.warn("STRIPE_WEBHOOK_SECRET not set — skipping signature verification (dev mode only)");
+      console.warn("STRIPE_WEBHOOK_SECRET not set — skipping signature verification (development only)");
     } catch {
-      return res.status(400).send("Invalid JSON payload");
+      res.status(400).send("Invalid JSON payload");
+      return;
     }
+  } else {
+    console.error("STRIPE_WEBHOOK_SECRET is required in production");
+    res.status(400).send("Webhook secret not configured");
+    return;
   }
 
   if (event.type === "checkout.session.completed") {
@@ -239,7 +265,8 @@ router.post("/stripe/webhook", async (req: Request, res: Response) => {
         console.log(`Order fulfilled for session ${session.id}`);
       } catch (err) {
         console.error("Fulfillment error:", err);
-        return res.status(500).send("Fulfillment error");
+        res.status(500).send("Fulfillment error");
+        return;
       }
     }
   }
@@ -250,34 +277,38 @@ router.post("/stripe/webhook", async (req: Request, res: Response) => {
       await fulfillOrder(session.id, session.customer_details?.email ?? null);
     } catch (err) {
       console.error("Async fulfillment error:", err);
-      return res.status(500).send("Fulfillment error");
+      res.status(500).send("Fulfillment error");
+      return;
     }
   }
 
   res.json({ received: true });
 });
 
-router.get("/download/:token", async (req: Request, res: Response) => {
+router.get("/download/:token", async (req: Request, res: Response): Promise<void> => {
   try {
     const { token } = req.params;
 
     const orderRows = await db
       .select()
       .from(ordersTable)
-      .where(eq(ordersTable.downloadToken, token));
+      .where(sql`${ordersTable.downloadToken} = ${token}`);
 
     if (orderRows.length === 0) {
-      return res.status(404).json({ error: "Invalid or expired download link" });
+      res.status(404).json({ error: "Invalid or expired download link" });
+      return;
     }
 
     const order = orderRows[0];
 
     if (order.status !== "paid") {
-      return res.status(402).json({ error: "Payment not confirmed for this download" });
+      res.status(402).json({ error: "Payment not confirmed for this download" });
+      return;
     }
 
     if (!order.downloadTokenExpiresAt || order.downloadTokenExpiresAt < new Date()) {
-      return res.status(410).json({ error: "Download link has expired" });
+      res.status(410).json({ error: "Download link has expired" });
+      return;
     }
 
     const productRows = await db
@@ -286,13 +317,15 @@ router.get("/download/:token", async (req: Request, res: Response) => {
       .where(eq(productsTable.id, order.productId));
 
     if (productRows.length === 0) {
-      return res.status(404).json({ error: "Product not found" });
+      res.status(404).json({ error: "Product not found" });
+      return;
     }
 
     const product = productRows[0];
 
     if (!product.downloadUrl) {
-      return res.status(404).json({ error: "No download file available for this product" });
+      res.status(404).json({ error: "No download file available for this product" });
+      return;
     }
 
     res.redirect(302, product.downloadUrl);

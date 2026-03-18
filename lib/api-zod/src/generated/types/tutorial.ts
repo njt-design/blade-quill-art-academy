@@ -11,6 +11,7 @@ export interface Tutorial {
   title: string;
   youtubeId: string;
   description?: string | null;
+  topic?: string | null;
   featured: boolean;
   createdAt: Date;
 }

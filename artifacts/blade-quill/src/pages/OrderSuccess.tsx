@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { CheckCircle, Download, ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useGetOrderSuccess } from "@workspace/api-client-react";
+import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
 
 export default function OrderSuccess() {
   const [, setLocation] = useLocation();
@@ -14,9 +14,16 @@ export default function OrderSuccess() {
     setSessionId(params.get("session_id"));
   }, []);
 
+  const params = sessionId ? { session_id: sessionId } : undefined;
+
   const { data: order, isLoading, error } = useGetOrderSuccess(
-    { session_id: sessionId || "" },
-    { query: { enabled: !!sessionId } }
+    params!,
+    {
+      query: {
+        queryKey: getGetOrderSuccessQueryKey(params),
+        enabled: !!sessionId,
+      },
+    }
   );
 
   if (!sessionId) {

@@ -1,4 +1,4 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request, type Response } from "express";
 import { db } from "@workspace/db";
 import { productsTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
@@ -9,7 +9,7 @@ import {
 
 const router: IRouter = Router();
 
-router.get("/products", async (req, res) => {
+router.get("/products", async (req: Request, res: Response): Promise<void> => {
   try {
     const query = ListProductsQueryParams.parse(req.query);
     let rows;
@@ -32,7 +32,7 @@ router.get("/products", async (req, res) => {
   }
 });
 
-router.get("/products/:id", async (req, res) => {
+router.get("/products/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = GetProductParams.parse(req.params);
     const rows = await db
@@ -40,7 +40,8 @@ router.get("/products/:id", async (req, res) => {
       .from(productsTable)
       .where(eq(productsTable.id, id));
     if (rows.length === 0) {
-      return res.status(404).json({ error: "Product not found" });
+      res.status(404).json({ error: "Product not found" });
+      return;
     }
     const p = rows[0];
     res.json({

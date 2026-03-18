@@ -45,6 +45,7 @@ export interface Tutorial {
   title: string;
   youtubeId: string;
   description?: string | null;
+  topic?: string | null;
   featured: boolean;
   createdAt: string;
 }
@@ -108,6 +109,7 @@ export const ListProductsCategory = {
 
 export type ListTutorialsParams = {
   featured?: boolean;
+  topic?: string;
 };
 
 export type GetOrderSuccessParams = {
