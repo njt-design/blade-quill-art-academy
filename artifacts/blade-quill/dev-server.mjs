@@ -2,7 +2,7 @@ import { createServer } from "http";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import express from "express";
 
-const PORT = Number(process.env.PORT);
+const PORT = Number(process.env.PORT) || 3000;
 const VITE_PORT = 3001;
 const TINA_PORT = 4001;
 const TINA_HOST = "[::1]";
