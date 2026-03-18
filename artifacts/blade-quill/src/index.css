@@ -24,30 +24,38 @@
 }
 
 :root {
-  /* Dark Illustrative Editorial Theme / Ink & Parchment */
-  --background: 30 10% 6%; /* Deep warm black/charcoal */
-  --foreground: 40 20% 90%; /* Parchment off-white */
-  
-  --primary: 43 74% 49%; /* Rich aged gold/amber */
-  --primary-foreground: 30 10% 6%; /* Dark text on gold */
-  
-  --secondary: 30 10% 12%; /* Lighter charcoal */
-  --secondary-foreground: 40 20% 90%;
-  
-  --muted: 30 8% 15%;
-  --muted-foreground: 30 15% 65%;
-  
-  --accent: 15 60% 45%; /* Deep terracotta/rust red */
-  --accent-foreground: 40 20% 90%;
-  
+  /*
+   * Style guide palette — 4 chosen colors:
+   *   #43434e  cool charcoal slate  → background / card family
+   *   #ede2aa  warm parchment gold  → foreground text
+   *   #ffbd59  vivid amber          → primary accent (hue 36°)
+   *   #97abc4  slate blue-grey      → secondary accent (hue 213°)
+   */
+
+  /* Background family — hue 240° (from #43434e), brightness scaled way down */
+  --background: 240 8% 6%;
+  --card: 240 8% 10%;
+  --secondary: 240 8% 14%;
+  --muted: 240 6% 17%;
+  --border: 240 8% 21%;
+
+  /* Foreground — #ede2aa → hsl(50, 65%, 80%) */
+  --foreground: 50 65% 80%;
+  --secondary-foreground: 50 65% 80%;
+  --card-foreground: 50 65% 80%;
+  --muted-foreground: 50 22% 60%;
+
+  /* Primary — #ffbd59 → hsl(36, 100%, 67%) */
+  --primary: 36 100% 67%;
+  --primary-foreground: 240 8% 8%;
+  --ring: 36 100% 67%;
+
+  /* Accent — #97abc4 → hsl(213, 28%, 68%) */
+  --accent: 213 28% 55%;
+  --accent-foreground: 240 8% 8%;
+
   --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  
-  --border: 30 10% 18%;
-  --ring: 43 74% 49%;
-  
-  --card: 30 10% 9%;
-  --card-foreground: 40 20% 90%;
+  --destructive-foreground: 50 65% 95%;
 }
 
 @layer base {
@@ -56,7 +64,8 @@
   }
   body {
     @apply bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-primary;
-    background-image: radial-gradient(circle at top center, rgba(40, 35, 30, 0.4) 0%, rgba(15, 14, 13, 1) 100%);
+    /* Gradient uses the charcoal hue (#43434e) → very dark at edges */
+    background-image: radial-gradient(circle at top center, hsl(240 8% 11% / 0.6) 0%, hsl(240 8% 4%) 100%);
     background-attachment: fixed;
   }
 
@@ -91,8 +100,9 @@
   .glass-panel {
     @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl;
   }
+  /* gold glow updated to match #ffbd59 */
   .gold-glow:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 20px rgba(255, 189, 89, 0.18);
   }
   .scrollbar-hide {
     -ms-overflow-style: none;
