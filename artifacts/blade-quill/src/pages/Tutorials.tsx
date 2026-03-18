@@ -2,10 +2,40 @@ import { useState, useMemo } from "react";
 import { Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useListTutorials } from "@workspace/api-client-react";
+import { useTina, tinaField } from "tinacms/react";
+import tutorialsData from "../../content/tutorials.json";
+const TINA_DATA_TUTORIALSDATA = { tutorials: tutorialsData };
+
+const tutorialsQuery = `
+  query tutorials($relativePath: String!) {
+    tutorials(relativePath: $relativePath) {
+      pageTitle
+      pageDescription
+      youtubeUrl
+      subscribeLabel
+      items {
+        id
+        title
+        description
+        youtubeId
+        topic
+        featured
+      }
+    }
+  }
+`;
 
 export default function Tutorials() {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const { data: tutorials, isLoading } = useListTutorials();
+
+  const { data } = useTina({
+    query: tutorialsQuery,
+    variables: { relativePath: "tutorials.json" },
+    data: TINA_DATA_TUTORIALSDATA,
+  });
+
+  const content = data.tutorials;
 
   const topics = useMemo(() => {
     if (!tutorials) return [];
@@ -28,16 +58,27 @@ export default function Tutorials() {
         
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 mt-8 gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl font-display mb-4">Video Tutorials</h1>
-            <p className="text-base sm:text-lg text-muted-foreground">
-              Learn digital painting techniques, Krita shortcuts, and professional workflows.
+            <h1
+              className="text-5xl font-display mb-6"
+              data-tina-field={tinaField(content, "pageTitle")}
+            >
+              {content?.pageTitle}
+            </h1>
+            <p
+              className="text-lg text-muted-foreground"
+              data-tina-field={tinaField(content, "pageDescription")}
+            >
+              {content?.pageDescription}
             </p>
           </div>
           <Button
-            onClick={() => window.open("https://www.youtube.com/c/BladeQuillartacademy", "_blank")}
+            onClick={() => window.open(content?.youtubeUrl || "https://www.youtube.com/c/BladeQuillartacademy", "_blank")}
             className="gap-2 bg-[#FF0000] text-white hover:bg-[#CC0000] shrink-0 w-full md:w-auto"
           >
-            <Youtube className="w-5 h-5" /> Subscribe on YouTube
+            <Youtube className="w-5 h-5" />
+            <span data-tina-field={tinaField(content, "subscribeLabel")}>
+              {content?.subscribeLabel || "Subscribe on YouTube"}
+            </span>
           </Button>
         </div>
 

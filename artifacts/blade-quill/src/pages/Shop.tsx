@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { ShoppingBag, BookOpen, MonitorPlay } from "lucide-react";
+import { ShoppingBag, BookOpen, MonitorPlay, ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useListProducts, useListCategories } from "@workspace/api-client-react";
@@ -9,6 +9,56 @@ import type { ListProductsCategory } from "@workspace/api-client-react";
 import { useCart } from "@/hooks/useCart";
 import { ShoppingCart, Check } from "lucide-react";
 import { useState as useLocalState } from "react";
+import { useTina, tinaField } from "tinacms/react";
+import shopData from "../../content/shop.json";
+const TINA_DATA_SHOPDATA = { shop: shopData };
+
+const CATEGORY_ICONS: Record<string, React.ElementType> = {
+  physical: BookOpen,
+  digital: MonitorPlay,
+  curriculum: BookOpen,
+};
+
+function AddToCartButton({ product }: { product: { id: number; name: string; price: number; imageUrl: string; category: string } }) {
+  const { addItem } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem({ id: product.id, name: product.name, price: product.price, imageUrl: product.imageUrl, category: product.category });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
+  };
+
+  return (
+    <Button
+      variant="secondary"
+      size="sm"
+      className="gap-1.5"
+      onClick={handleAdd}
+    >
+      {added ? <><Check className="w-3.5 h-3.5 text-green-400" /><span className="text-green-400">Added!</span></> : <><ShoppingCart className="w-3.5 h-3.5" />Add to Cart</>}
+    </Button>
+  );
+}
+
+const shopQuery = `
+  query shop($relativePath: String!) {
+    shop(relativePath: $relativePath) {
+      pageTitle
+      pageDescription
+      products {
+        id
+        name
+        description
+        price
+        category
+        imageUrl
+        checkoutUrl
+      }
+    }
+  }
+`;
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
   physical: BookOpen,
@@ -48,15 +98,31 @@ export default function Shop() {
     activeCategory === "all" ? {} : { category: activeCategory }
   );
 
+  const { data } = useTina({
+    query: shopQuery,
+    variables: { relativePath: "shop.json" },
+    data: TINA_DATA_SHOPDATA,
+  });
+
+  const content = data.shop;
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 md:px-6">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 mt-8">
-          <h1 className="text-5xl font-display mb-6">The Academy Shop</h1>
-          <p className="text-lg text-muted-foreground">
-            Get your hands on the Lheeloo & Luna book, level up with Krita guides, and access exclusive premium curriculums.
+          <h1
+            className="text-5xl font-display mb-6"
+            data-tina-field={tinaField(content, "pageTitle")}
+          >
+            {content?.pageTitle}
+          </h1>
+          <p
+            className="text-lg text-muted-foreground"
+            data-tina-field={tinaField(content, "pageDescription")}
+          >
+            {content?.pageDescription}
           </p>
         </div>
 

@@ -1,0 +1,78 @@
+fragment HomeParts on Home {
+  __typename
+  hero {
+    __typename
+    heading
+    subheading
+    ctaPrimary
+    ctaSecondary
+    backgroundImage
+  }
+  featuredSection {
+    __typename
+    heading
+    subheading
+    viewAllLabel
+  }
+  artistBanner {
+    __typename
+    badge
+    heading
+    bio
+    ctaLabel
+    portraitImage
+  }
+  tutorialsSection {
+    __typename
+    heading
+    subheading
+    browseAllLabel
+  }
+}
+
+fragment AboutParts on About {
+  __typename
+  pageTitle
+  leadText
+  paragraph1
+  paragraph2
+  skill1Label
+  skill2Label
+  skill3Label
+  ctaPrimary
+  ctaSecondary
+}
+
+fragment ContactParts on Contact {
+  __typename
+  pageTitle
+  pageDescription
+  email
+  location
+}
+
+fragment ShopParts on Shop {
+  __typename
+  pageTitle
+  pageDescription
+}
+
+fragment GalleryParts on Gallery {
+  __typename
+  pageTitle
+  pageDescription
+}
+
+fragment TutorialsParts on Tutorials {
+  __typename
+  pageTitle
+  pageDescription
+  subscribeLabel
+  youtubeUrl
+}
+
+fragment DownloadsParts on Downloads {
+  __typename
+  pageTitle
+  pageDescription
+}

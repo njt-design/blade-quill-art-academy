@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts",
+    "dev": "concurrently 'tinacms dev -p 4001 --noTelemetry' 'PORT=3001 BASE_PATH=/ vite --config vite.config.ts --host 0.0.0.0 --port 3001' 'node dev-server.mjs'",
+    "build": "tinacms build && vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
@@ -73,5 +73,14 @@
     "vite": "catalog:",
     "wouter": "^3.3.5",
     "zod": "catalog:"
+  },
+  "dependencies": {
+    "@tinacms/cli": "^2.1.10",
+    "concurrently": "^9.2.1",
+    "express": "^5.2.1",
+    "http-proxy-middleware": "^3.0.5",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "tinacms": "^3.6.2"
   }
 }

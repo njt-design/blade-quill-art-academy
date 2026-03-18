@@ -1,10 +1,120 @@
 import { useLocation } from "wouter";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play, BookOpen, Brush, ChevronLeft, ChevronRight, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useListProducts, useListTutorials, useListGallery } from "@workspace/api-client-react";
-import { useState, useEffect, useCallback } from "react";
+import { useTina, tinaField } from "tinacms/react";
+import homeData from "../../content/home.json";
+const TINA_DATA_HOMEDATA = { home: homeData };
+
+const TINA_DATA_HOMEDATA = { home: homeData };
+
+function ArtworkCarousel() {
+  const { data: gallery } = useListGallery();
+  const [current, setCurrent] = useState(0);
+  const items = gallery ?? [];
+
+  const prev = useCallback(() => setCurrent((c) => (c === 0 ? items.length - 1 : c - 1)), [items.length]);
+  const next = useCallback(() => setCurrent((c) => (c === items.length - 1 ? 0 : c + 1)), [items.length]);
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    const interval = setInterval(next, 4000);
+    return () => clearInterval(interval);
+  }, [next, items.length]);
+
+  if (items.length === 0) {
+    return (
+      <div className="aspect-[4/3] rounded-2xl bg-secondary/50 animate-pulse" />
+    );
+  }
+
+  return (
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-white/10 group">
+      <div className="aspect-[4/3] relative overflow-hidden bg-black">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={items[current].id}
+            src={items[current].imageUrl}
+            alt={items[current].title}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <p className="text-white font-display text-lg drop-shadow">{items[current].title}</p>
+          {items[current].description && (
+            <p className="text-white/70 text-sm mt-1">{items[current].description}</p>
+          )}
+        </div>
+      </div>
+
+      {items.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary/60 transition-all opacity-0 group-hover:opacity-100"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary/60 transition-all opacity-0 group-hover:opacity-100"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-2">
+            {items.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-primary w-5" : "bg-white/40"}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+const homeQuery = `
+  query home($relativePath: String!) {
+    home(relativePath: $relativePath) {
+      hero {
+        heading
+        subheading
+        ctaPrimary
+        ctaSecondary
+        backgroundImage
+      }
+      featuredSection {
+        heading
+        subheading
+        viewAllLabel
+      }
+      artistBanner {
+        badge
+        heading
+        bio
+        ctaLabel
+        portraitImage
+      }
+      tutorialsSection {
+        heading
+        subheading
+        browseAllLabel
+      }
+    }
+  }
+`;
 
 function ArtworkCarousel() {
   const { data: gallery } = useListGallery();
@@ -88,6 +198,14 @@ export default function Home() {
   const featuredProducts = products?.slice(0, 3) || [];
   const featuredTutorials = tutorials?.slice(0, 3) || [];
 
+  const { data } = useTina({
+    query: homeQuery,
+    variables: { relativePath: "home.json" },
+    data: TINA_DATA_HOMEDATA,
+  });
+
+  const content = data.home;
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -108,18 +226,26 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-primary mb-6 drop-shadow-2xl">
-              Unleash Your<br/>Digital Canvas
+            <h1
+              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-primary mb-6 drop-shadow-2xl"
+              data-tina-field={tinaField(content?.hero, "heading")}
+            >
+              {content?.hero?.heading?.split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h1>
-            <p className="text-xl md:text-2xl text-foreground/90 mb-10 font-light max-w-2xl mx-auto leading-relaxed">
-              Master Krita and digital painting with Corinne. Discover tutorials, exclusive guides, and original artwork.
+            <p
+              className="text-xl md:text-2xl text-foreground/90 mb-10 font-light max-w-2xl mx-auto leading-relaxed"
+              data-tina-field={tinaField(content?.hero, "subheading")}
+            >
+              {content?.hero?.subheading}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Button size="lg" onClick={() => setLocation("/shop")} className="w-full sm:w-auto text-lg px-10">
-                Explore the Shop
+                {content?.hero?.ctaPrimary || "Explore the Shop"}
               </Button>
               <Button size="lg" variant="outline" onClick={() => setLocation("/tutorials")} className="w-full sm:w-auto text-lg px-10">
-                <Play className="w-5 h-5 mr-2" /> Watch Tutorials
+                <Play className="w-5 h-5 mr-2" /> {content?.hero?.ctaSecondary || "Watch Tutorials"}
               </Button>
             </div>
           </motion.div>
@@ -180,11 +306,21 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-4xl font-display mb-4">Latest Releases</h2>
-              <p className="text-muted-foreground text-lg">Books, guides, and curriculum to elevate your art.</p>
+              <h2
+                className="text-4xl font-display mb-4"
+                data-tina-field={tinaField(content?.featuredSection, "heading")}
+              >
+                {content?.featuredSection?.heading}
+              </h2>
+              <p
+                className="text-muted-foreground text-lg"
+                data-tina-field={tinaField(content?.featuredSection, "subheading")}
+              >
+                {content?.featuredSection?.subheading}
+              </p>
             </div>
             <Button variant="ghost" onClick={() => setLocation("/shop")} className="hidden md:flex">
-              View All <ArrowRight className="w-4 h-4 ml-2" />
+              {content?.featuredSection?.viewAllLabel || "View All"} <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
 
@@ -234,19 +370,31 @@ export default function Home() {
                   src={`${import.meta.env.BASE_URL}images/about-portrait.png`}
                   alt="Corinne - Blade & Quill"
                   className="rounded-2xl shadow-2xl relative z-10 border border-white/10"
+                  data-tina-field={tinaField(content?.artistBanner, "portraitImage")}
                 />
               </div>
             </div>
             <div className="w-full md:w-1/2 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-medium mb-2">
-                <Brush className="w-4 h-4" /> Meet the Artist
+                <Brush className="w-4 h-4" />
+                <span data-tina-field={tinaField(content?.artistBanner, "badge")}>
+                  {content?.artistBanner?.badge}
+                </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-display">Hi, I'm Corinne.</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm an author, illustrator, and digital art educator. As the creator of Lheeloo & Luna, I love bringing whimsical cartoon characters to life. My passion is helping fellow artists master tools like Krita so they can focus on their creativity, not the technical hurdles.
+              <h2
+                className="text-4xl md:text-5xl font-display"
+                data-tina-field={tinaField(content?.artistBanner, "heading")}
+              >
+                {content?.artistBanner?.heading}
+              </h2>
+              <p
+                className="text-lg text-muted-foreground leading-relaxed"
+                data-tina-field={tinaField(content?.artistBanner, "bio")}
+              >
+                {content?.artistBanner?.bio}
               </p>
               <Button size="lg" variant="secondary" onClick={() => setLocation("/about")} className="mt-4">
-                Read My Story
+                {content?.artistBanner?.ctaLabel || "Read My Story"}
               </Button>
             </div>
           </div>
@@ -258,8 +406,18 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <BookOpen className="w-10 h-10 text-primary mx-auto mb-6" />
-            <h2 className="text-4xl font-display mb-4">Learn With Me</h2>
-            <p className="text-muted-foreground text-lg">Join over 12K subscribers learning digital art tips, Krita shortcuts, and painting techniques.</p>
+            <h2
+              className="text-4xl font-display mb-4"
+              data-tina-field={tinaField(content?.tutorialsSection, "heading")}
+            >
+              {content?.tutorialsSection?.heading}
+            </h2>
+            <p
+              className="text-muted-foreground text-lg"
+              data-tina-field={tinaField(content?.tutorialsSection, "subheading")}
+            >
+              {content?.tutorialsSection?.subheading}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -291,7 +449,7 @@ export default function Home() {
           
           <div className="mt-12 text-center">
             <Button onClick={() => setLocation("/tutorials")}>
-              Browse All Tutorials
+              {content?.tutorialsSection?.browseAllLabel || "Browse All Tutorials"}
             </Button>
           </div>
         </div>

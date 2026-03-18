@@ -8,6 +8,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useSubmitContact } from "@workspace/api-client-react";
+import { useTina, tinaField } from "tinacms/react";
+import contactData from "../../content/contact.json";
+const TINA_DATA_CONTACTDATA = { contact: contactData };
+
+const contactQuery = `
+  query contact($relativePath: String!) {
+    contact(relativePath: $relativePath) {
+      pageTitle
+      pageDescription
+      email
+      location
+    }
+  }
+`;
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -43,6 +57,14 @@ export default function Contact() {
     }
   });
 
+  const { data } = useTina({
+    query: contactQuery,
+    variables: { relativePath: "contact.json" },
+    data: TINA_DATA_CONTACTDATA,
+  });
+
+  const content = data.contact;
+
   const onSubmit = (data: FormValues) => {
     submitContact({ data });
   };
@@ -55,9 +77,17 @@ export default function Contact() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         
         <div className="max-w-3xl mx-auto text-center mb-16 mt-8">
-          <h1 className="text-5xl font-display mb-6">Let's Connect</h1>
-          <p className="text-lg text-muted-foreground">
-            Have a question about a tutorial, a business inquiry, or just want to say hi? Fill out the form below.
+          <h1
+            className="text-5xl font-display mb-6"
+            data-tina-field={tinaField(content, "pageTitle")}
+          >
+            {content?.pageTitle}
+          </h1>
+          <p
+            className="text-lg text-muted-foreground"
+            data-tina-field={tinaField(content, "pageDescription")}
+          >
+            {content?.pageDescription}
           </p>
         </div>
 
@@ -72,7 +102,12 @@ export default function Contact() {
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-semibold text-foreground">Email</h4>
-                    <p className="text-sm text-muted-foreground break-all">Corinne@bladeandquillartacademy.com</p>
+                    <p
+                      className="text-sm text-muted-foreground"
+                      data-tina-field={tinaField(content, "email")}
+                    >
+                      {content?.email}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -81,7 +116,12 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground">Location</h4>
-                    <p className="text-sm text-muted-foreground">Online / Worldwide</p>
+                    <p
+                      className="text-sm text-muted-foreground"
+                      data-tina-field={tinaField(content, "location")}
+                    >
+                      {content?.location}
+                    </p>
                   </div>
                 </div>
               </CardContent>

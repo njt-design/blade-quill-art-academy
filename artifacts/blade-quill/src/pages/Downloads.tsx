@@ -2,18 +2,54 @@ import { Download as DownloadIcon, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useListDownloads } from "@workspace/api-client-react";
+import { useTina, tinaField } from "tinacms/react";
+import downloadsData from "../../content/downloads.json";
+const TINA_DATA_DOWNLOADSDATA = { downloads: downloadsData };
+
+const downloadsQuery = `
+  query downloads($relativePath: String!) {
+    downloads(relativePath: $relativePath) {
+      pageTitle
+      pageDescription
+      items {
+        id
+        title
+        description
+        fileType
+        fileUrl
+        thumbnailUrl
+      }
+    }
+  }
+`;
 
 export default function Downloads() {
   const { data: downloads, isLoading } = useListDownloads();
+
+  const { data } = useTina({
+    query: downloadsQuery,
+    variables: { relativePath: "downloads.json" },
+    data: TINA_DATA_DOWNLOADSDATA,
+  });
+
+  const content = data.downloads;
 
   return (
     <div className="min-h-screen pt-24 pb-24">
       <div className="container mx-auto px-4 md:px-6">
         
         <div className="text-center max-w-3xl mx-auto mb-16 mt-8">
-          <h1 className="text-5xl font-display mb-6">Free Resources</h1>
-          <p className="text-lg text-muted-foreground">
-            Coloring pages, quick reference guides, and free assets for the creative community.
+          <h1
+            className="text-5xl font-display mb-6"
+            data-tina-field={tinaField(content, "pageTitle")}
+          >
+            {content?.pageTitle}
+          </h1>
+          <p
+            className="text-lg text-muted-foreground"
+            data-tina-field={tinaField(content, "pageDescription")}
+          >
+            {content?.pageDescription}
           </p>
         </div>
 

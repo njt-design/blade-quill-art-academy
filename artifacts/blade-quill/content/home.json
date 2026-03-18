@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "heading": "Unleash Your\nDigital Canvas",
+    "subheading": "Master Krita and digital painting with Corinne. Discover tutorials, exclusive guides, and original artwork.",
+    "ctaPrimary": "Explore the Shop",
+    "ctaSecondary": "Watch Tutorials",
+    "backgroundImage": "/images/hero-bg.png"
+  },
+  "featuredSection": {
+    "heading": "Featured Artworks",
+    "subheading": "Handcrafted digital works available for your collection",
+    "viewAllLabel": "View All"
+  },
+  "artistBanner": {
+    "badge": "Digital Artist & Educator",
+    "heading": "Meet Corinne",
+    "bio": "I'm a self-taught digital artist specializing in Krita, creating tutorial content and original artwork that bridges traditional techniques with digital tools.",
+    "ctaLabel": "Read My Story",
+    "portraitImage": "/images/about-portrait.png"
+  },
+  "tutorialsSection": {
+    "heading": "Learn Digital Painting",
+    "subheading": "Step-by-step tutorials for beginners and advanced artists alike",
+    "browseAllLabel": "Browse All Tutorials"
+  }
+}

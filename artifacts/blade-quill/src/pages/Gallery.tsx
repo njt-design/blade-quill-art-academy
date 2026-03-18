@@ -1,16 +1,50 @@
 import { useListGallery } from "@workspace/api-client-react";
+import { useTina, tinaField } from "tinacms/react";
+import galleryData from "../../content/gallery.json";
+const TINA_DATA_GALLERYDATA = { gallery: galleryData };
+
+const galleryQuery = `
+  query gallery($relativePath: String!) {
+    gallery(relativePath: $relativePath) {
+      pageTitle
+      pageDescription
+      items {
+        id
+        title
+        description
+        imageUrl
+      }
+    }
+  }
+`;
 
 export default function Gallery() {
   const { data: galleryItems, isLoading } = useListGallery();
+
+  const { data } = useTina({
+    query: galleryQuery,
+    variables: { relativePath: "gallery.json" },
+    data: TINA_DATA_GALLERYDATA,
+  });
+
+  const content = data.gallery;
 
   return (
     <div className="min-h-screen pt-24 pb-24">
       <div className="container mx-auto px-4 md:px-6">
         
         <div className="text-center max-w-3xl mx-auto mb-16 mt-8">
-          <h1 className="text-5xl font-display mb-6">Artwork Gallery</h1>
-          <p className="text-lg text-muted-foreground">
-            A collection of digital paintings, character designs, and illustrations created using Krita.
+          <h1
+            className="text-5xl font-display mb-6"
+            data-tina-field={tinaField(content, "pageTitle")}
+          >
+            {content?.pageTitle}
+          </h1>
+          <p
+            className="text-lg text-muted-foreground"
+            data-tina-field={tinaField(content, "pageDescription")}
+          >
+            {content?.pageDescription}
           </p>
         </div>
 
