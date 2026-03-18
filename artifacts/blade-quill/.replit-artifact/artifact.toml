@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Blade & Quill Art Academy"
+version = "1.0.0"
+id = "artifacts/blade-quill"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 23977
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/blade-quill run dev"
+
+[services.env]
+PORT = "23977"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/blade-quill", "run", "build"]
+publicDir = "artifacts/blade-quill/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"

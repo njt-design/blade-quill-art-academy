@@ -1,0 +1,20 @@
+packages:
+  "framer-motion": "For page transitions, scroll animations, and fluid interactive feedback"
+  "react-hook-form": "For robust contact form state management"
+  "@hookform/resolvers": "For Zod schema validation with react-hook-form"
+  "clsx": "For merging tailwind classes safely"
+  "tailwind-merge": "For merging tailwind classes safely"
+  "lucide-react": "For crisp, modern SVG icons throughout the UI"
+
+images:
+  - path: "artifacts/blade-quill/public/images/hero-bg.png"
+    description: "Deep dark ink wash with subtle glowing golden parchment textures, cinematic depth, dark fantasy academia vibe, dramatic lighting, empty center for text"
+    aspect_ratio: "16:9"
+  - path: "artifacts/blade-quill/public/images/about-portrait.png"
+    description: "Artistic portrait of a female digital artist painting on a tablet, surrounded by floating glowing sketches and magical sparks, warm cinematic lighting, rich dark background"
+    aspect_ratio: "3:4"
+
+notes:
+  - "Using provided @workspace/api-client-react hooks for all API interactions."
+  - "Assuming dark illustrative editorial theme with gold/parchment accents to match brand."
+  - "All components built directly into project to ensure maximum customizability and theme adherence."
