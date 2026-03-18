@@ -156,6 +156,10 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      '@replit/connectors-sdk':
+        specifier: ^0.3.0
+        version: 0.3.0
     devDependencies:
       prettier:
         specifier: ^3.8.1
@@ -1991,6 +1995,9 @@ packages:
     resolution: {integrity: sha512-oJHtjvLG43VjwemQDadlR5g/8VepK56B/xKO2XORPHt9zlW6IZs3tZrYlvH29BMvoqC7RtE7E5UjgbnbFtDGag==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+
+  '@replit/connectors-sdk@0.3.0':
+    resolution: {integrity: sha512-JBHKPL69UsegdqXXxgUsz+mCps1YwbJELx7SxxsazR9+J3/TWPcuK/tNVO6mGP9Hd+AqeV2pF7BeODoOSyzfDg==}
 
   '@replit/vite-plugin-cartographer@0.5.0':
     resolution: {integrity: sha512-U1LKR78LU0F/nQFRVzaFSH2tX189oFUNsut25KQh24bFN0N9OJEkrCMiJfMBtLXGabjUX4aw2OWJ0u8TjBlxkg==}
@@ -7752,6 +7759,8 @@ snapshots:
   '@react-types/shared@3.33.1(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@replit/connectors-sdk@0.3.0': {}
 
   '@replit/vite-plugin-cartographer@0.5.0':
     dependencies:
