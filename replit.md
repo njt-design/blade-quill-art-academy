@@ -104,3 +104,15 @@ pnpm --filter @workspace/db run push
 - `lib/*` packages are composite and emit declarations via `tsc --build`
 - `artifacts/*` are leaf packages checked with `tsc --noEmit`
 - Run `pnpm run typecheck` from root to check everything
+
+## GitHub Repository
+
+The project is mirrored on GitHub at:
+
+**https://github.com/njt-design/blade-quill-art-academy**
+
+- Connected via Replit's GitHub OAuth integration
+- `origin` remote is configured to: `git@github.com:njt-design/blade-quill-art-academy.git`
+- All 301 files including all artifacts, images, and lock files are pushed
+- To push future changes: `node scripts/push-to-github.mjs njt-design/blade-quill-art-academy`
+- For a fresh push (diverged history): add the `--force` flag
