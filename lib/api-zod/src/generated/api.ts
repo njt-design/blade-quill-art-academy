@@ -58,6 +58,16 @@ export const GetProductResponse = zod.object({
 });
 
 /**
+ * @summary List product categories
+ */
+export const ListCategoriesResponseItem = zod.object({
+  id: zod.string(),
+  label: zod.string(),
+  productCount: zod.number(),
+});
+export const ListCategoriesResponse = zod.array(ListCategoriesResponseItem);
+
+/**
  * @summary List gallery artworks
  */
 export const ListGalleryResponseItem = zod.object({

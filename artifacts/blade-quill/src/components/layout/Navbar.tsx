@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ShoppingCart, Feather } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/useCart";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -18,6 +18,7 @@ export function Navbar() {
   const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,21 +62,43 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Actions */}
+          {/* Cart Icon */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" size="sm" onClick={() => setLocation("/shop")} className="gap-2">
-              <ShoppingCart className="w-4 h-4" />
-              <span>Shop</span>
-            </Button>
+            <button
+              onClick={() => setLocation("/cart")}
+              className="relative p-2 text-foreground/80 hover:text-primary transition-colors"
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                  {totalItems > 9 ? "9+" : totalItems}
+                </span>
+              )}
+            </button>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-          >
-            {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Toggle + Cart */}
+          <div className="lg:hidden flex items-center gap-3">
+            <button
+              onClick={() => setLocation("/cart")}
+              className="relative p-2 text-foreground/80 hover:text-primary transition-colors"
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+            <button
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+            >
+              {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 

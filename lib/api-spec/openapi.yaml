@@ -82,6 +82,21 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [products]
+      summary: List product categories
+      responses:
+        "200":
+          description: Category list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+
   /gallery:
     get:
       operationId: listGallery
@@ -215,6 +230,17 @@ paths:
 
 components:
   schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        productCount:
+          type: integer
+      required: [id, label, productCount]
+
     HealthStatus:
       type: object
       properties:

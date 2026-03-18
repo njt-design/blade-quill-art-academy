@@ -5,6 +5,12 @@
  * Blade & Quill Art Academy API
  * OpenAPI spec version: 0.1.0
  */
+export interface Category {
+  id: string;
+  label: string;
+  productCount: number;
+}
+
 export interface HealthStatus {
   status: string;
 }

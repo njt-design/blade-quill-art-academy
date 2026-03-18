@@ -1,12 +1,16 @@
 import { useRoute, useLocation } from "wouter";
-import { ArrowLeft, CheckCircle2, ShieldCheck, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ShieldCheck, Download, ExternalLink, ShoppingCart, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetProduct, getGetProductQueryKey, useCreateCheckoutSession } from "@workspace/api-client-react";
+import { useCart } from "@/hooks/useCart";
+import { useState } from "react";
 
 export default function ProductDetail() {
   const [, params] = useRoute("/shop/:id");
   const [, setLocation] = useLocation();
   const productId = Number(params?.id);
+  const { addItem } = useCart();
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const { data: product, isLoading, error } = useGetProduct(productId, {
     query: { queryKey: getGetProductQueryKey(productId), enabled: !isNaN(productId) }
@@ -20,9 +24,23 @@ export default function ProductDetail() {
     }
   });
 
-  const handleBuy = () => {
+  const handleBuyNow = () => {
     if (product) {
       checkout({ data: { productId: product.id, quantity: 1 } });
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        category: product.category,
+      });
+      setAddedToCart(true);
+      setTimeout(() => setAddedToCart(false), 2000);
     }
   };
 
@@ -77,10 +95,10 @@ export default function ProductDetail() {
                   </Button>
                 </a>
               )}
-              
-              <Button 
+
+              <Button
                 className="w-full text-lg h-14 gap-2"
-                onClick={handleBuy}
+                onClick={handleBuyNow}
                 disabled={isCheckingOut || !product.inStock}
               >
                 {isCheckingOut ? (
@@ -97,6 +115,26 @@ export default function ProductDetail() {
                   </>
                 )}
               </Button>
+
+              {product.inStock && (
+                <Button
+                  variant="outline"
+                  className="w-full h-12 gap-2"
+                  onClick={handleAddToCart}
+                >
+                  {addedToCart ? (
+                    <>
+                      <Check className="w-4 h-4 text-green-400" />
+                      <span className="text-green-400">Added to Cart!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingCart className="w-4 h-4" />
+                      Add to Cart
+                    </>
+                  )}
+                </Button>
+              )}
             </div>
 
             <div className="space-y-3 pt-4 border-t border-white/5">
