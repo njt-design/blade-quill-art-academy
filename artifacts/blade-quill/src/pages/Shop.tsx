@@ -4,23 +4,49 @@ import { motion } from "framer-motion";
 import { ShoppingBag, BookOpen, MonitorPlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useListProducts } from "@workspace/api-client-react";
+import { useListProducts, useListCategories } from "@workspace/api-client-react";
 import type { ListProductsCategory } from "@workspace/api-client-react";
+import { useCart } from "@/hooks/useCart";
+import { ShoppingCart, Check } from "lucide-react";
+import { useState as useLocalState } from "react";
+
+const CATEGORY_ICONS: Record<string, React.ElementType> = {
+  physical: BookOpen,
+  digital: MonitorPlay,
+  curriculum: BookOpen,
+};
+
+function AddToCartButton({ product }: { product: { id: number; name: string; price: number; imageUrl: string; category: string } }) {
+  const { addItem } = useCart();
+  const [added, setAdded] = useLocalState(false);
+
+  const handleAdd = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem({ id: product.id, name: product.name, price: product.price, imageUrl: product.imageUrl, category: product.category });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
+  };
+
+  return (
+    <Button
+      variant="secondary"
+      size="sm"
+      className="gap-1.5"
+      onClick={handleAdd}
+    >
+      {added ? <><Check className="w-3.5 h-3.5 text-green-400" /><span className="text-green-400">Added!</span></> : <><ShoppingCart className="w-3.5 h-3.5" />Add to Cart</>}
+    </Button>
+  );
+}
 
 export default function Shop() {
   const [, setLocation] = useLocation();
   const [activeCategory, setActiveCategory] = useState<ListProductsCategory | "all">("all");
-  
+
+  const { data: categories } = useListCategories();
   const { data: products, isLoading } = useListProducts(
     activeCategory === "all" ? {} : { category: activeCategory }
   );
-
-  const categories = [
-    { id: "all", label: "All Products", icon: ShoppingBag },
-    { id: "physical", label: "Books & Prints", icon: BookOpen },
-    { id: "digital", label: "Digital Guides", icon: MonitorPlay },
-    { id: "curriculum", label: "Curriculum", icon: BookOpen },
-  ];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -34,20 +60,30 @@ export default function Shop() {
           </p>
         </div>
 
-        {/* Categories */}
+        {/* Categories — data-driven */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
+          <Button
+            variant={activeCategory === "all" ? "default" : "outline"}
+            onClick={() => setActiveCategory("all")}
+            className="gap-2 rounded-full"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            All Products
+            {categories && <span className="ml-1 text-xs opacity-60">({categories.reduce((s, c) => s + c.productCount, 0)})</span>}
+          </Button>
+          {categories?.map((cat) => {
+            const Icon = CATEGORY_ICONS[cat.id] ?? ShoppingBag;
             const isActive = activeCategory === cat.id;
             return (
               <Button
                 key={cat.id}
                 variant={isActive ? "default" : "outline"}
-                onClick={() => setActiveCategory(cat.id as ListProductsCategory | "all")}
+                onClick={() => setActiveCategory(cat.id as ListProductsCategory)}
                 className="gap-2 rounded-full"
               >
                 <Icon className="w-4 h-4" />
                 {cat.label}
+                <span className="ml-1 text-xs opacity-60">({cat.productCount})</span>
               </Button>
             );
           })}
@@ -98,7 +134,7 @@ export default function Shop() {
                     </p>
                     <div className="flex items-center justify-between mt-auto">
                       <span className="text-2xl font-bold text-primary">${product.price.toFixed(2)}</span>
-                      <Button variant="secondary" size="sm">View Details</Button>
+                      <AddToCartButton product={product} />
                     </div>
                   </CardContent>
                 </Card>
