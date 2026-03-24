@@ -1,9 +1,6 @@
 import { useLocation } from "wouter";
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Play, BookOpen, Brush, ChevronLeft, ChevronRight, ShoppingBag } from "lucide-react";
+import { ArrowRight, Play, BookOpen, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { useListProducts, useListTutorials, useListGallery } from "@workspace/api-client-react";
 import { useTina, tinaField } from "tinacms/react";
 import homeData from "../../content/home.json";
@@ -40,87 +37,15 @@ const homeQuery = `
   }
 `;
 
-function ArtworkCarousel() {
-  const { data: gallery } = useListGallery();
-  const [current, setCurrent] = useState(0);
-  const items = gallery ?? [];
-
-  const prev = useCallback(() => setCurrent((c) => (c === 0 ? items.length - 1 : c - 1)), [items.length]);
-  const next = useCallback(() => setCurrent((c) => (c === items.length - 1 ? 0 : c + 1)), [items.length]);
-
-  useEffect(() => {
-    if (items.length <= 1) return;
-    const interval = setInterval(next, 4000);
-    return () => clearInterval(interval);
-  }, [next, items.length]);
-
-  if (items.length === 0) {
-    return (
-      <div className="aspect-[4/3] rounded-2xl bg-secondary/50 animate-pulse" />
-    );
-  }
-
-  return (
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-white/10 group">
-      <div className="aspect-[4/3] relative overflow-hidden bg-black">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={items[current].id}
-            src={items[current].imageUrl}
-            alt={items[current].title}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <p className="text-white font-display text-lg drop-shadow">{items[current].title}</p>
-          {items[current].description && (
-            <p className="text-white/70 text-sm mt-1">{items[current].description}</p>
-          )}
-        </div>
-      </div>
-
-      {items.length > 1 && (
-        <>
-          <button
-            onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary/60 transition-all opacity-0 group-hover:opacity-100"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary/60 transition-all opacity-0 group-hover:opacity-100"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-2">
-            {items.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-primary w-5" : "bg-white/40"}`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
 export default function Home() {
   const [, setLocation] = useLocation();
   const { data: products } = useListProducts();
   const { data: tutorials } = useListTutorials({ featured: true });
+  const { data: gallery } = useListGallery();
 
-  const featuredProducts = products?.slice(0, 3) || [];
-  const featuredTutorials = tutorials?.slice(0, 3) || [];
+  const featuredProducts = Array.isArray(products) ? products.slice(0, 3) : [];
+  const featuredTutorials = Array.isArray(tutorials) ? tutorials.slice(0, 3) : [];
+  const galleryItems = Array.isArray(gallery) ? gallery.slice(0, 6) : [];
 
   const { data } = useTina({
     query: homeQuery,
@@ -132,250 +57,229 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
-            alt="Hero Background" 
-            className="w-full h-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-          <div className="absolute inset-0 bg-radial-gradient from-transparent to-background/90" />
-        </div>
 
-        <div className="container relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+      {/* Intro strip */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6"
+            data-tina-field={tinaField(content?.hero, "heading")}
           >
-            <h1
-              className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-primary mb-6 drop-shadow-2xl"
-              data-tina-field={tinaField(content?.hero, "heading")}
-            >
-              {content?.hero?.heading?.split("\n").map((line, i) => (
-                <span key={i}>{line}{i === 0 && <br />}</span>
-              ))}
-            </h1>
-            <p
-              className="text-xl md:text-2xl text-foreground/90 mb-10 font-light max-w-2xl mx-auto leading-relaxed"
-              data-tina-field={tinaField(content?.hero, "subheading")}
-            >
-              {content?.hero?.subheading}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button size="lg" onClick={() => setLocation("/shop")} className="w-full sm:w-auto text-lg px-10">
-                {content?.hero?.ctaPrimary || "Explore the Shop"}
-              </Button>
-              <Button size="lg" variant="outline" onClick={() => setLocation("/tutorials")} className="w-full sm:w-auto text-lg px-10">
-                <Play className="w-5 h-5 mr-2" /> {content?.hero?.ctaSecondary || "Watch Tutorials"}
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Book Order CTA Banner */}
-      <section className="py-12 bg-primary/10 border-y border-primary/20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
-                <ShoppingBag className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-xl md:text-3xl font-display text-foreground leading-snug">
-                  <span className="text-primary">Lheeloo & Luna</span> — The Cartoon Book Is Live!
-                </h2>
-                <p className="text-muted-foreground mt-1">
-                  Corinne's debut illustrated book. Order your copy today and bring the magic home.
-                </p>
-              </div>
-            </div>
+            {content?.hero?.heading?.split("\n").map((line: string, i: number) => (
+              <span key={i}>{line}{i === 0 && <br />}</span>
+            ))}
+          </h1>
+          <p
+            className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+            data-tina-field={tinaField(content?.hero, "subheading")}
+          >
+            {content?.hero?.subheading}
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="shrink-0 text-lg px-8"
-              onClick={() => setLocation("/shop/1")}
+              onClick={() => setLocation("/shop")}
+              className="bg-orange hover:bg-amber text-white px-8"
             >
-              Order Your Book <ArrowRight className="w-5 h-5 ml-2" />
+              {content?.hero?.ctaPrimary || "Explore the Shop"}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setLocation("/tutorials")}
+              className="px-8"
+            >
+              <Play className="w-4 h-4 mr-2" />
+              {content?.hero?.ctaSecondary || "Watch Tutorials"}
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Featured Gallery Carousel */}
-      <section className="py-24 bg-background">
+      {/* Latest work — thumbnail grid (Oatmeal pattern) */}
+      <section className="pb-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-medium">
-                <Brush className="w-4 h-4" /> Original Artwork
-              </div>
-              <h2 className="text-4xl md:text-5xl font-display">Art from Corinne's Studio</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Browse a curated selection of original digital artworks — from fantastical characters to whimsical scenes. Each piece crafted with Krita.
-              </p>
-              <Button variant="outline" size="lg" onClick={() => setLocation("/gallery")}>
-                View Full Gallery <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-            <ArtworkCarousel />
+          <div className="flex items-baseline justify-between mb-8">
+            <h2 className="text-2xl font-display">Latest</h2>
+            <button
+              onClick={() => setLocation("/gallery")}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            >
+              View all <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {galleryItems.length > 0
+              ? galleryItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="thumb-card cursor-pointer group"
+                    onClick={() => setLocation("/gallery")}
+                  >
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-2 py-2">
+                      <p className="text-xs font-medium truncate">{item.title}</p>
+                    </div>
+                  </div>
+                ))
+              : Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="aspect-square bg-muted rounded-lg animate-pulse" />
+                ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-24 bg-secondary/20">
+      {/* Featured products (3-up) */}
+      <section className="py-16 bg-secondary/40">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex justify-between items-end mb-12">
+          <div className="flex items-baseline justify-between mb-8">
             <div>
               <h2
-                className="text-4xl font-display mb-4"
+                className="text-2xl font-display mb-1"
                 data-tina-field={tinaField(content?.featuredSection, "heading")}
               >
                 {content?.featuredSection?.heading}
               </h2>
               <p
-                className="text-muted-foreground text-lg"
+                className="text-sm text-muted-foreground"
                 data-tina-field={tinaField(content?.featuredSection, "subheading")}
               >
                 {content?.featuredSection?.subheading}
               </p>
             </div>
-            <Button variant="ghost" onClick={() => setLocation("/shop")} className="hidden md:flex">
-              {content?.featuredSection?.viewAllLabel || "View All"} <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+            <button
+              onClick={() => setLocation("/shop")}
+              className="hidden md:flex text-sm text-muted-foreground hover:text-foreground transition-colors items-center gap-1"
+            >
+              {content?.featuredSection?.viewAllLabel || "View All"} <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProducts.length > 0 ? (
-              featuredProducts.map((product) => (
-                <Card key={product.id} className="group cursor-pointer hover:-translate-y-2 transition-all duration-300 gold-glow border-border/50" onClick={() => setLocation(`/shop/${product.id}`)}>
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={product.imageUrl} 
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-display text-foreground group-hover:text-primary transition-colors">{product.name}</h3>
-                      <span className="text-primary font-bold">${product.price.toFixed(2)}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredProducts.length > 0
+              ? featuredProducts.map((product) => (
+                  <div
+                    key={product.id}
+                    className="thumb-card cursor-pointer group"
+                    onClick={() => setLocation(`/shop/${product.id}`)}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <p className="text-muted-foreground line-clamp-2 text-sm">{product.description}</p>
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              [1, 2, 3].map((i) => (
-                <Card key={i} className="animate-pulse bg-secondary/50 border-border/20">
-                  <div className="aspect-[4/3] bg-muted" />
-                  <CardContent className="p-6 space-y-4">
-                    <div className="h-6 bg-muted rounded w-2/3" />
-                    <div className="h-4 bg-muted rounded w-full" />
-                  </CardContent>
-                </Card>
-              ))
-            )}
+                    <div className="p-4">
+                      <div className="flex justify-between items-start gap-2 mb-1">
+                        <h3 className="font-semibold text-foreground group-hover:text-violet transition-colors line-clamp-1">
+                          {product.name}
+                        </h3>
+                        <span className="text-orange font-bold whitespace-nowrap">
+                          ${product.price.toFixed(2)}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
+                    </div>
+                  </div>
+                ))
+              : Array.from({ length: 3 }).map((_, i) => (
+                  <div key={i} className="bg-muted rounded-lg animate-pulse aspect-[4/3]" />
+                ))}
           </div>
         </div>
       </section>
 
-      {/* About Corinne Banner */}
-      <section className="py-24 relative overflow-hidden bg-secondary/30 border-y border-border/30">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-3xl" />
-                <img 
-                  src={`${import.meta.env.BASE_URL}images/about-portrait.png`}
-                  alt="Corinne - Blade & Quill"
-                  className="rounded-2xl shadow-2xl relative z-10 border border-white/10"
-                  data-tina-field={tinaField(content?.artistBanner, "portraitImage")}
-                />
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-medium mb-2">
-                <Brush className="w-4 h-4" />
-                <span data-tina-field={tinaField(content?.artistBanner, "badge")}>
-                  {content?.artistBanner?.badge}
-                </span>
-              </div>
+      {/* Tutorials teaser (Proko-style 3-up cards) */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <BookOpen className="w-5 h-5 text-muted-foreground mb-2" />
               <h2
-                className="text-4xl md:text-5xl font-display"
-                data-tina-field={tinaField(content?.artistBanner, "heading")}
+                className="text-2xl font-display mb-1"
+                data-tina-field={tinaField(content?.tutorialsSection, "heading")}
               >
-                {content?.artistBanner?.heading}
+                {content?.tutorialsSection?.heading}
               </h2>
               <p
-                className="text-lg text-muted-foreground leading-relaxed"
-                data-tina-field={tinaField(content?.artistBanner, "bio")}
+                className="text-sm text-muted-foreground"
+                data-tina-field={tinaField(content?.tutorialsSection, "subheading")}
               >
-                {content?.artistBanner?.bio}
+                {content?.tutorialsSection?.subheading}
               </p>
-              <Button size="lg" variant="secondary" onClick={() => setLocation("/about")} className="mt-4">
-                {content?.artistBanner?.ctaLabel || "Read My Story"}
-              </Button>
             </div>
+            <button
+              onClick={() => setLocation("/tutorials")}
+              className="hidden md:flex text-sm text-muted-foreground hover:text-foreground transition-colors items-center gap-1"
+            >
+              {content?.tutorialsSection?.browseAllLabel || "Browse All"} <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredTutorials.length > 0
+              ? featuredTutorials.map((tutorial) => (
+                  <div key={tutorial.id} className="thumb-card group">
+                    <div className="aspect-video bg-muted">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${tutorial.youtubeId}`}
+                        title={tutorial.title}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="p-4">
+                      {tutorial.topic && (
+                        <span className="text-xs uppercase tracking-wider text-muted-foreground mb-1 block">
+                          {tutorial.topic}
+                        </span>
+                      )}
+                      <h3 className="font-medium leading-snug line-clamp-2 group-hover:text-violet transition-colors">
+                        {tutorial.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))
+              : (
+                <p className="col-span-3 text-center py-12 text-muted-foreground">
+                  No featured tutorials available yet.
+                </p>
+              )}
           </div>
         </div>
       </section>
 
-      {/* Popular Tutorials */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <BookOpen className="w-10 h-10 text-primary mx-auto mb-6" />
-            <h2
-              className="text-4xl font-display mb-4"
-              data-tina-field={tinaField(content?.tutorialsSection, "heading")}
-            >
-              {content?.tutorialsSection?.heading}
-            </h2>
-            <p
-              className="text-muted-foreground text-lg"
-              data-tina-field={tinaField(content?.tutorialsSection, "subheading")}
-            >
-              {content?.tutorialsSection?.subheading}
-            </p>
+      {/* Book promo CTA band */}
+      <section className="py-12 bg-foreground text-background">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <ShoppingBag className="w-8 h-8 shrink-0 opacity-60" />
+            <div>
+              <h2 className="text-xl md:text-2xl font-display">
+                Lheeloo &amp; Luna — The Book Is Live
+              </h2>
+              <p className="text-sm opacity-70">
+                Corinne's debut illustrated book. Order your copy today.
+              </p>
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredTutorials.length > 0 ? (
-              featuredTutorials.map((tutorial) => (
-                <div key={tutorial.id} className="group rounded-xl overflow-hidden glass-panel">
-                  <div className="aspect-video relative">
-                    <iframe 
-                      src={`https://www.youtube.com/embed/${tutorial.youtubeId}`}
-                      title={tutorial.title}
-                      className="w-full h-full border-0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-medium text-lg leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                      {tutorial.title}
-                    </h3>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-3 text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
-                No featured tutorials available at the moment.
-              </div>
-            )}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <Button onClick={() => setLocation("/tutorials")}>
-              {content?.tutorialsSection?.browseAllLabel || "Browse All Tutorials"}
-            </Button>
-          </div>
+          <Button
+            size="lg"
+            onClick={() => setLocation("/shop/1")}
+            className="bg-orange hover:bg-amber text-white shrink-0"
+          >
+            Order Now <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
       </section>
     </div>

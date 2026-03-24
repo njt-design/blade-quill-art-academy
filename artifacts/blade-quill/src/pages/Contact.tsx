@@ -5,7 +5,6 @@ import { Send, MapPin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useSubmitContact } from "@workspace/api-client-react";
 import { useTina, tinaField } from "tinacms/react";
@@ -33,7 +32,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
-  
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
@@ -41,18 +40,11 @@ export default function Contact() {
   const { mutate: submitContact, isPending } = useSubmitContact({
     mutation: {
       onSuccess: () => {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-        });
+        toast({ title: "Message Sent!", description: "Thank you for reaching out. I'll get back to you soon." });
         reset();
       },
       onError: () => {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: "Something went wrong. Please try again later.",
-        });
+        toast({ variant: "destructive", title: "Error", description: "Something went wrong. Please try again later." });
       }
     }
   });
@@ -70,111 +62,74 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-24 relative">
-      {/* Background element */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+    <div className="min-h-screen py-10">
+      <div className="container mx-auto px-4 md:px-6 max-w-2xl">
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        
-        <div className="max-w-3xl mx-auto text-center mb-16 mt-8">
+        <div className="mb-10">
           <h1
-            className="text-5xl font-display mb-6"
+            className="text-3xl md:text-4xl font-display mb-3"
             data-tina-field={tinaField(content, "pageTitle")}
           >
             {content?.pageTitle}
           </h1>
           <p
-            className="text-lg text-muted-foreground"
+            className="text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
-          
-          <div className="lg:col-span-1 space-y-6">
-            <Card className="border-border/50 bg-secondary/30">
-              <CardContent className="p-6 flex flex-col gap-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg text-primary">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="font-semibold text-foreground">Email</h4>
-                    <p
-                      className="text-sm text-muted-foreground"
-                      data-tina-field={tinaField(content, "email")}
-                    >
-                      {content?.email}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg text-primary">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Location</h4>
-                    <p
-                      className="text-sm text-muted-foreground"
-                      data-tina-field={tinaField(content, "location")}
-                    >
-                      {content?.location}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="flex gap-6 mb-8 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4" />
+            <span data-tina-field={tinaField(content, "email")}>{content?.email}</span>
           </div>
-
-          <div className="lg:col-span-2">
-            <Card className="border-white/10 glass-panel">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Name</label>
-                      <Input 
-                        {...register("name")} 
-                        placeholder="Your name" 
-                        className={errors.name ? "border-destructive" : ""}
-                      />
-                      {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Email</label>
-                      <Input 
-                        {...register("email")} 
-                        type="email" 
-                        placeholder="your@email.com" 
-                        className={errors.email ? "border-destructive" : ""}
-                      />
-                      {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Message</label>
-                    <Textarea 
-                      {...register("message")} 
-                      placeholder="How can I help you?" 
-                      className={errors.message ? "border-destructive" : "min-h-[160px]"}
-                    />
-                    {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full" disabled={isPending}>
-                    {isPending ? "Sending..." : "Send Message"} <Send className="w-4 h-4 ml-2" />
-                  </Button>
-
-                </form>
-              </CardContent>
-            </Card>
+          <div className="flex items-center gap-2">
+            <MapPin className="w-4 h-4" />
+            <span data-tina-field={tinaField(content, "location")}>{content?.location}</span>
           </div>
+        </div>
 
+        <div className="border border-border rounded-lg bg-card p-6 md:p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium">Name</label>
+                <Input
+                  {...register("name")}
+                  placeholder="Your name"
+                  className={errors.name ? "border-destructive" : ""}
+                />
+                {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium">Email</label>
+                <Input
+                  {...register("email")}
+                  type="email"
+                  placeholder="your@email.com"
+                  className={errors.email ? "border-destructive" : ""}
+                />
+                {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium">Message</label>
+              <Textarea
+                {...register("message")}
+                placeholder="How can I help you?"
+                className={`min-h-[140px] ${errors.message ? "border-destructive" : ""}`}
+              />
+              {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
+            </div>
+
+            <Button type="submit" className="w-full bg-orange hover:bg-amber text-white" disabled={isPending}>
+              {isPending ? "Sending..." : "Send Message"} <Send className="w-4 h-4 ml-2" />
+            </Button>
+          </form>
         </div>
       </div>
     </div>

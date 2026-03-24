@@ -1,7 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db } from "@workspace/db";
-import { tutorialsTable } from "@workspace/db";
-import { eq, and, asc } from "drizzle-orm";
+import { supabase } from "@workspace/db";
 import { ListTutorialsQueryParams } from "@workspace/api-zod";
 
 const router: IRouter = Router();
@@ -10,23 +8,21 @@ router.get("/tutorials", async (req: Request, res: Response): Promise<void> => {
   try {
     const query = ListTutorialsQueryParams.parse(req.query);
 
-    const conditions = [];
+    let q = supabase.from("tutorials").select("*").order("sort_order", { ascending: true });
+
     if (query.featured !== undefined) {
-      conditions.push(eq(tutorialsTable.featured, query.featured));
+      q = q.eq("featured", query.featured);
     }
     if (query.topic) {
-      conditions.push(eq(tutorialsTable.topic, query.topic));
+      q = q.eq("topic", query.topic);
     }
 
-    const rows = await db
-      .select()
-      .from(tutorialsTable)
-      .where(conditions.length > 0 ? and(...conditions) : undefined)
-      .orderBy(asc(tutorialsTable.sortOrder));
+    const { data, error } = await q;
+    if (error) throw error;
 
-    const tutorials = rows.map((t) => ({
+    const tutorials = (data ?? []).map((t) => ({
       ...t,
-      createdAt: t.createdAt.toISOString(),
+      createdAt: t.created_at,
     }));
     res.json(tutorials);
   } catch (err) {

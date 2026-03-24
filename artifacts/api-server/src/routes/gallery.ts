@@ -1,19 +1,20 @@
 import { Router, type IRouter } from "express";
-import { db } from "@workspace/db";
-import { galleryTable } from "@workspace/db";
-import { asc } from "drizzle-orm";
+import { supabase } from "@workspace/db";
 
 const router: IRouter = Router();
 
 router.get("/gallery", async (_req, res) => {
   try {
-    const rows = await db
-      .select()
-      .from(galleryTable)
-      .orderBy(asc(galleryTable.sortOrder));
-    const items = rows.map((g) => ({
+    const { data, error } = await supabase
+      .from("gallery")
+      .select("*")
+      .order("sort_order", { ascending: true });
+
+    if (error) throw error;
+
+    const items = (data ?? []).map((g) => ({
       ...g,
-      createdAt: g.createdAt.toISOString(),
+      createdAt: g.created_at,
     }));
     res.json(items);
   } catch (err) {

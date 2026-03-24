@@ -1,7 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db } from "@workspace/db";
-import { productsTable, ordersTable } from "@workspace/db";
-import { eq, sql } from "drizzle-orm";
+import { supabase } from "@workspace/db";
 import Stripe from "stripe";
 import crypto from "crypto";
 import {
@@ -31,66 +29,60 @@ function generateDownloadToken(): string {
   return crypto.randomBytes(32).toString("hex");
 }
 
-function getTokenExpiry(): Date {
+function getTokenExpiry(): string {
   const expiry = new Date();
   expiry.setHours(expiry.getHours() + 48);
-  return expiry;
+  return expiry.toISOString();
 }
 
 async function fulfillOrder(sessionId: string, customerEmail: string | null): Promise<void> {
-  const orderRows = await db
-    .select()
-    .from(ordersTable)
-    .where(eq(ordersTable.stripeSessionId, sessionId));
+  const { data: order } = await supabase
+    .from("orders")
+    .select("*")
+    .eq("stripe_session_id", sessionId)
+    .single();
 
-  if (orderRows.length === 0) return;
-  const order = orderRows[0];
+  if (!order) return;
   if (order.status === "paid") return;
 
-  const productRows = await db
-    .select()
-    .from(productsTable)
-    .where(eq(productsTable.id, order.productId));
+  const { data: product } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", order.product_id)
+    .single();
 
-  const product = productRows[0];
-
-  const updates: {
-    status: string;
-    customerEmail?: string;
-    downloadToken?: string;
-    downloadTokenExpiresAt?: Date;
-  } = {
+  const updates: Record<string, unknown> = {
     status: "paid",
-    ...(customerEmail ? { customerEmail } : {}),
+    ...(customerEmail ? { customer_email: customerEmail } : {}),
   };
 
-  if (product && (product.category === "digital" || product.category === "curriculum") && product.downloadUrl) {
-    updates.downloadToken = generateDownloadToken();
-    updates.downloadTokenExpiresAt = getTokenExpiry();
+  if (product && (product.category === "digital" || product.category === "curriculum") && product.download_url) {
+    updates.download_token = generateDownloadToken();
+    updates.download_token_expires_at = getTokenExpiry();
   }
 
-  await db
-    .update(ordersTable)
-    .set(updates)
-    .where(eq(ordersTable.stripeSessionId, sessionId));
+  await supabase
+    .from("orders")
+    .update(updates)
+    .eq("stripe_session_id", sessionId);
 }
 
 router.post("/checkout", async (req: Request, res: Response): Promise<void> => {
   try {
     const body = CreateCheckoutSessionBody.parse(req.body);
 
-    const rows = await db
-      .select()
-      .from(productsTable)
-      .where(eq(productsTable.id, body.productId));
+    const { data: product, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", body.productId)
+      .single();
 
-    if (rows.length === 0) {
+    if (error || !product) {
       res.status(400).json({ error: "Product not found" });
       return;
     }
 
-    const product = rows[0];
-    if (!product.inStock) {
+    if (!product.in_stock) {
       res.status(400).json({ error: "Product is out of stock" });
       return;
     }
@@ -112,7 +104,7 @@ router.post("/checkout", async (req: Request, res: Response): Promise<void> => {
             product_data: {
               name: product.name,
               description: product.description,
-              images: product.imageUrl ? [product.imageUrl] : [],
+              images: product.image_url ? [product.image_url] : [],
             },
             unit_amount: Math.round(parseFloat(product.price) * 100),
           },
@@ -124,9 +116,9 @@ router.post("/checkout", async (req: Request, res: Response): Promise<void> => {
       cancel_url: `${baseUrl}/shop/${product.id}`,
     });
 
-    await db.insert(ordersTable).values({
-      stripeSessionId: session.id,
-      productId: product.id,
+    await supabase.from("orders").insert({
+      stripe_session_id: session.id,
+      product_id: product.id,
       status: "pending",
     });
 
@@ -168,44 +160,42 @@ router.get("/checkout/success", async (req: Request, res: Response): Promise<voi
 
     await fulfillOrder(session_id, session.customer_details?.email ?? null);
 
-    const orderRows = await db
-      .select()
-      .from(ordersTable)
-      .where(eq(ordersTable.stripeSessionId, session_id));
+    const { data: order } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("stripe_session_id", session_id)
+      .single();
 
-    if (orderRows.length === 0) {
+    if (!order) {
       res.status(404).json({ error: "Order not found" });
       return;
     }
 
-    const order = orderRows[0];
+    const { data: product } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", order.product_id)
+      .single();
 
-    const productRows = await db
-      .select()
-      .from(productsTable)
-      .where(eq(productsTable.id, order.productId));
-
-    if (productRows.length === 0) {
+    if (!product) {
       res.status(404).json({ error: "Product not found" });
       return;
     }
 
-    const product = productRows[0];
-
     let downloadUrl: string | null = null;
-    if (order.downloadToken && order.downloadTokenExpiresAt) {
+    if (order.download_token && order.download_token_expires_at) {
       const now = new Date();
-      if (order.downloadTokenExpiresAt > now) {
-        downloadUrl = `/api/download/${order.downloadToken}`;
+      if (new Date(order.download_token_expires_at) > now) {
+        downloadUrl = `/api/download/${order.download_token}`;
       }
     }
 
     res.json({
       productName: product.name,
       productCategory: product.category,
-      gumroadUrl: product.gumroadUrl ?? null,
+      gumroadUrl: product.gumroad_url ?? null,
       downloadUrl,
-      email: order.customerEmail ?? null,
+      email: order.customer_email ?? null,
     });
   } catch (err: unknown) {
     if (err instanceof Error && err.name === "ZodError") {
@@ -289,46 +279,44 @@ router.get("/download/:token", async (req: Request, res: Response): Promise<void
   try {
     const { token } = req.params;
 
-    const orderRows = await db
-      .select()
-      .from(ordersTable)
-      .where(sql`${ordersTable.downloadToken} = ${token}`);
+    const { data: order } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("download_token", token)
+      .single();
 
-    if (orderRows.length === 0) {
+    if (!order) {
       res.status(404).json({ error: "Invalid or expired download link" });
       return;
     }
-
-    const order = orderRows[0];
 
     if (order.status !== "paid") {
       res.status(402).json({ error: "Payment not confirmed for this download" });
       return;
     }
 
-    if (!order.downloadTokenExpiresAt || order.downloadTokenExpiresAt < new Date()) {
+    if (!order.download_token_expires_at || new Date(order.download_token_expires_at) < new Date()) {
       res.status(410).json({ error: "Download link has expired" });
       return;
     }
 
-    const productRows = await db
-      .select()
-      .from(productsTable)
-      .where(eq(productsTable.id, order.productId));
+    const { data: product } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", order.product_id)
+      .single();
 
-    if (productRows.length === 0) {
+    if (!product) {
       res.status(404).json({ error: "Product not found" });
       return;
     }
 
-    const product = productRows[0];
-
-    if (!product.downloadUrl) {
+    if (!product.download_url) {
       res.status(404).json({ error: "No download file available for this product" });
       return;
     }
 
-    res.redirect(302, product.downloadUrl);
+    res.redirect(302, product.download_url);
   } catch (err) {
     console.error("Download error:", err);
     res.status(500).json({ error: "Download failed" });

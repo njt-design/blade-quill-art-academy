@@ -1,19 +1,20 @@
 import { Router, type IRouter } from "express";
-import { db } from "@workspace/db";
-import { downloadsTable } from "@workspace/db";
-import { asc } from "drizzle-orm";
+import { supabase } from "@workspace/db";
 
 const router: IRouter = Router();
 
 router.get("/downloads", async (_req, res) => {
   try {
-    const rows = await db
-      .select()
-      .from(downloadsTable)
-      .orderBy(asc(downloadsTable.sortOrder));
-    const downloads = rows.map((d) => ({
+    const { data, error } = await supabase
+      .from("downloads")
+      .select("*")
+      .order("sort_order", { ascending: true });
+
+    if (error) throw error;
+
+    const downloads = (data ?? []).map((d) => ({
       ...d,
-      createdAt: d.createdAt.toISOString(),
+      createdAt: d.created_at,
     }));
     res.json(downloads);
   } catch (err) {

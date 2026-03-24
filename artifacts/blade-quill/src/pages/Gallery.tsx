@@ -30,18 +30,18 @@ export default function Gallery() {
   const content = data.gallery;
 
   return (
-    <div className="min-h-screen pt-24 pb-24">
+    <div className="min-h-screen py-10">
       <div className="container mx-auto px-4 md:px-6">
-        
-        <div className="text-center max-w-3xl mx-auto mb-16 mt-8">
+
+        <div className="max-w-2xl mb-10">
           <h1
-            className="text-5xl font-display mb-6"
+            className="text-3xl md:text-4xl font-display mb-3"
             data-tina-field={tinaField(content, "pageTitle")}
           >
             {content?.pageTitle}
           </h1>
           <p
-            className="text-lg text-muted-foreground"
+            className="text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}
@@ -49,36 +49,35 @@ export default function Gallery() {
         </div>
 
         {isLoading ? (
-          <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="animate-pulse bg-secondary/50 rounded-xl aspect-[3/4] break-inside-avoid" />
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="animate-pulse bg-muted rounded-lg aspect-[3/4] break-inside-avoid" />
             ))}
           </div>
         ) : galleryItems && galleryItems.length > 0 ? (
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {galleryItems.map((item) => (
-              <div key={item.id} className="break-inside-avoid relative group rounded-xl overflow-hidden glass-panel">
-                <img 
-                  src={item.imageUrl} 
-                  alt={item.title} 
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              <div key={item.id} className="break-inside-avoid group rounded-lg overflow-hidden border border-border/50 relative">
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className="w-full h-auto"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <h3 className="text-xl font-display text-white mb-1">{item.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <h3 className="text-white font-medium text-sm">{item.title}</h3>
                   {item.description && (
-                    <p className="text-white/80 text-sm">{item.description}</p>
+                    <p className="text-white/70 text-xs mt-0.5">{item.description}</p>
                   )}
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-24 glass-panel rounded-2xl">
-            <h3 className="text-2xl font-display text-muted-foreground">Gallery is empty</h3>
+          <div className="text-center py-20 border border-dashed border-border rounded-lg">
+            <h3 className="text-xl font-display text-muted-foreground">Gallery is empty</h3>
           </div>
         )}
-
       </div>
     </div>
   );

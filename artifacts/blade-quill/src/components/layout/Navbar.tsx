@@ -1,60 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ShoppingCart, Feather } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/hooks/useCart";
+import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
   { href: "/gallery", label: "Gallery" },
   { href: "/tutorials", label: "Tutorials" },
-  { href: "/downloads", label: "Free Downloads" },
+  { href: "/downloads", label: "Downloads" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { totalItems } = useCart();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent",
-        isScrolled ? "bg-background/90 backdrop-blur-md border-border/50 shadow-lg py-3" : "bg-transparent py-5"
-      )}
-    >
+    <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group min-w-0">
-            <Feather className="w-7 h-7 sm:w-8 sm:h-8 text-primary group-hover:text-primary/80 transition-colors shrink-0" />
-            <span className="font-display font-bold text-lg sm:text-2xl tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 whitespace-nowrap">
-              Blade & Quill
+        <div className="flex items-center justify-between h-14">
+
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <Feather className="w-5 h-5 text-foreground group-hover:text-amber transition-colors" />
+            <span className="font-display font-bold text-base tracking-widest uppercase text-foreground">
+              Blade &amp; Quill
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm uppercase tracking-wider font-medium transition-colors hover:text-primary",
-                  location === link.href ? "text-primary" : "text-foreground/80"
+                  "text-sm font-medium transition-colors hover:text-foreground",
+                  location === link.href ? "text-foreground" : "text-muted-foreground"
                 )}
               >
                 {link.label}
@@ -62,62 +45,76 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Cart Icon */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <Button
+              size="sm"
+              onClick={() => setLocation("/shop")}
+              className="bg-orange hover:bg-amber text-white text-sm h-8 px-4"
+            >
+              Shop
+            </Button>
             <button
               onClick={() => setLocation("/cart")}
-              className="relative p-2 text-foreground/80 hover:text-primary transition-colors"
-              aria-label="Shopping cart"
+              className="relative p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Cart"
             >
-              <ShoppingCart className="w-6 h-6" />
+              <ShoppingCart className="w-5 h-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                   {totalItems > 9 ? "9+" : totalItems}
                 </span>
               )}
             </button>
           </div>
 
-          {/* Mobile Toggle + Cart */}
-          <div className="lg:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => setLocation("/cart")}
-              className="relative p-2 text-foreground/80 hover:text-primary transition-colors"
-              aria-label="Shopping cart"
+              className="relative p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Cart"
             >
               <ShoppingCart className="w-5 h-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-orange text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
             </button>
             <button
-              className="p-2 text-foreground hover:text-primary transition-colors"
+              className="p-1.5 text-foreground"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
-              {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav */}
       <div
         className={cn(
-          "lg:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border/50 transition-all duration-300 overflow-hidden",
-          isMobileOpen ? "max-h-[500px] py-4" : "max-h-0 py-0 border-transparent"
+          "lg:hidden border-t border-border bg-card transition-all duration-200 overflow-hidden",
+          isMobileOpen ? "max-h-[400px] py-3" : "max-h-0 py-0 border-transparent"
         )}
       >
-        <div className="flex flex-col gap-4 px-6">
+        <div className="flex flex-col px-4 gap-1">
+          <Link
+            href="/shop"
+            onClick={() => setIsMobileOpen(false)}
+            className={cn(
+              "py-2 text-sm font-medium transition-colors",
+              location === "/shop" ? "text-foreground" : "text-muted-foreground"
+            )}
+          >
+            Shop
+          </Link>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setIsMobileOpen(false)}
               className={cn(
-                "text-lg font-display transition-colors hover:text-primary block py-2 border-b border-border/30",
-                location === link.href ? "text-primary" : "text-foreground/80"
+                "py-2 text-sm font-medium transition-colors",
+                location === link.href ? "text-foreground" : "text-muted-foreground"
               )}
             >
               {link.label}

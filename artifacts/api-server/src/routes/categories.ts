@@ -1,7 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db } from "@workspace/db";
-import { productsTable } from "@workspace/db";
-import { sql } from "drizzle-orm";
+import { supabase } from "@workspace/db";
 
 const router: IRouter = Router();
 
@@ -13,18 +11,21 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 router.get("/categories", async (_req: Request, res: Response): Promise<void> => {
   try {
-    const counts = await db
-      .select({
-        category: productsTable.category,
-        count: sql<number>`count(*)::int`,
-      })
-      .from(productsTable)
-      .groupBy(productsTable.category);
+    const { data, error } = await supabase
+      .from("products")
+      .select("category");
 
-    const categories = counts.map((row) => ({
-      id: row.category,
-      label: CATEGORY_LABELS[row.category] ?? row.category,
-      productCount: row.count,
+    if (error) throw error;
+
+    const countMap: Record<string, number> = {};
+    for (const row of data ?? []) {
+      countMap[row.category] = (countMap[row.category] || 0) + 1;
+    }
+
+    const categories = Object.entries(countMap).map(([cat, count]) => ({
+      id: cat,
+      label: CATEGORY_LABELS[cat] ?? cat,
+      productCount: count,
     }));
 
     res.json(categories);

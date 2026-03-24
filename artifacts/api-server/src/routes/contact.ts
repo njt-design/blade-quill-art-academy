@@ -1,6 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { db } from "@workspace/db";
-import { contactsTable } from "@workspace/db";
+import { supabase } from "@workspace/db";
 import { SubmitContactBody } from "@workspace/api-zod";
 
 const router: IRouter = Router();
@@ -8,11 +7,12 @@ const router: IRouter = Router();
 router.post("/contact", async (req: Request, res: Response): Promise<void> => {
   try {
     const body = SubmitContactBody.parse(req.body);
-    await db.insert(contactsTable).values({
+    const { error } = await supabase.from("contacts").insert({
       name: body.name,
       email: body.email,
       message: body.message,
     });
+    if (error) throw error;
     res.json({ success: true, message: "Thanks for reaching out! Corinne will get back to you soon." });
   } catch (err: unknown) {
     if (err instanceof Error && err.name === "ZodError") {

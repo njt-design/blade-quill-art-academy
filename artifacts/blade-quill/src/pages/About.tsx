@@ -34,74 +34,61 @@ export default function About() {
   const content = data.about;
 
   return (
-    <div className="min-h-screen pt-24 pb-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
-          <div className="w-full lg:w-1/2 relative">
-            <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full opacity-50"></div>
-            <img 
+    <div className="min-h-screen py-10">
+      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+
+          <div className="w-full lg:w-2/5 shrink-0">
+            <img
               src={`${import.meta.env.BASE_URL}images/about-portrait.png`}
               alt="Corinne working"
-              className="w-full max-w-md mx-auto rounded-3xl shadow-2xl border-2 border-white/5 relative z-10"
+              className="w-full rounded-lg border border-border"
               data-tina-field={tinaField(content, "portraitImage")}
             />
           </div>
 
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-3/5">
             <h1
-              className="text-5xl font-display text-primary mb-8"
+              className="text-3xl md:text-4xl font-display mb-6"
               data-tina-field={tinaField(content, "pageTitle")}
             >
               {content?.pageTitle}
             </h1>
-            
-            <div className="prose prose-invert prose-lg max-w-none text-muted-foreground">
+
+            <div className="reading-width space-y-4 text-muted-foreground">
               <p
-                className="lead text-xl text-foreground font-light mb-6"
+                className="text-lg text-foreground leading-relaxed"
                 data-tina-field={tinaField(content, "leadText")}
               >
                 {content?.leadText}
               </p>
-              
-              <p
-                className="mb-6"
-                data-tina-field={tinaField(content, "paragraph1")}
-              >
-                {content?.paragraph1}
-              </p>
-
-              <p
-                className="mb-8"
-                data-tina-field={tinaField(content, "paragraph2")}
-              >
-                {content?.paragraph2}
-              </p>
+              <p data-tina-field={tinaField(content, "paragraph1")}>{content?.paragraph1}</p>
+              <p data-tina-field={tinaField(content, "paragraph2")}>{content?.paragraph2}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 border-y border-border/50 py-8">
+            <div className="grid grid-cols-3 gap-4 my-8 py-6 border-y border-border">
               <div className="text-center">
-                <Brush className="w-8 h-8 text-primary mx-auto mb-3" />
+                <Brush className="w-6 h-6 text-orange mx-auto mb-2" />
                 <h4
-                  className="font-display font-semibold text-foreground"
+                  className="text-sm font-semibold"
                   data-tina-field={tinaField(content, "skill1Label")}
                 >
                   {content?.skill1Label}
                 </h4>
               </div>
-              <div className="text-center border-l sm:border-x border-border/50 border-t sm:border-t-0 pt-6 sm:pt-0 mt-6 sm:mt-0">
-                <Monitor className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-center border-x border-border">
+                <Monitor className="w-6 h-6 text-violet mx-auto mb-2" />
                 <h4
-                  className="font-display font-semibold text-foreground"
+                  className="text-sm font-semibold"
                   data-tina-field={tinaField(content, "skill2Label")}
                 >
                   {content?.skill2Label}
                 </h4>
               </div>
-              <div className="text-center border-t sm:border-t-0 pt-6 sm:pt-0 mt-6 sm:mt-0">
-                <Palette className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-center">
+                <Palette className="w-6 h-6 text-muted-foreground mx-auto mb-2" />
                 <h4
-                  className="font-display font-semibold text-foreground"
+                  className="text-sm font-semibold"
                   data-tina-field={tinaField(content, "skill3Label")}
                 >
                   {content?.skill3Label}
@@ -109,8 +96,8 @@ export default function About() {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <Button onClick={() => setLocation("/contact")}>
+            <div className="flex gap-3">
+              <Button onClick={() => setLocation("/contact")} className="bg-orange hover:bg-amber text-white">
                 {content?.ctaPrimary || "Get in Touch"}
               </Button>
               <Button variant="outline" onClick={() => setLocation("/gallery")}>
@@ -118,7 +105,6 @@ export default function About() {
               </Button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
