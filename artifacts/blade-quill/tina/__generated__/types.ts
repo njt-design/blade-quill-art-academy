@@ -96,6 +96,10 @@ export type Query = {
   tutorialsConnection: TutorialsConnection;
   downloads: Downloads;
   downloadsConnection: DownloadsConnection;
+  post: Post;
+  postConnection: PostConnection;
+  landingPage: LandingPage;
+  landingPageConnection: LandingPageConnection;
 };
 
 
@@ -224,6 +228,36 @@ export type QueryDownloadsConnectionArgs = {
   filter?: InputMaybe<DownloadsFilter>;
 };
 
+
+export type QueryPostArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPostConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PostFilter>;
+};
+
+
+export type QueryLandingPageArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryLandingPageConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LandingPageFilter>;
+};
+
 export type DocumentFilter = {
   home?: InputMaybe<HomeFilter>;
   about?: InputMaybe<AboutFilter>;
@@ -232,6 +266,8 @@ export type DocumentFilter = {
   gallery?: InputMaybe<GalleryFilter>;
   tutorials?: InputMaybe<TutorialsFilter>;
   downloads?: InputMaybe<DownloadsFilter>;
+  post?: InputMaybe<PostFilter>;
+  landingPage?: InputMaybe<LandingPageFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -271,7 +307,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Home | About | Contact | Shop | Gallery | Tutorials | Downloads | Folder;
+export type DocumentNode = Home | About | Contact | Shop | Gallery | Tutorials | Downloads | Post | LandingPage | Folder;
 
 export type HomeHero = {
   __typename?: 'HomeHero';
@@ -280,6 +316,12 @@ export type HomeHero = {
   ctaPrimary?: Maybe<Scalars['String']['output']>;
   ctaSecondary?: Maybe<Scalars['String']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+};
+
+export type HomeLatestSection = {
+  __typename?: 'HomeLatestSection';
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
 };
 
 export type HomeFeaturedSection = {
@@ -305,12 +347,22 @@ export type HomeTutorialsSection = {
   browseAllLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type HomeBookPromo = {
+  __typename?: 'HomeBookPromo';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
 export type Home = Node & Document & {
   __typename?: 'Home';
   hero?: Maybe<HomeHero>;
+  latestSection?: Maybe<HomeLatestSection>;
   featuredSection?: Maybe<HomeFeaturedSection>;
   artistBanner?: Maybe<HomeArtistBanner>;
   tutorialsSection?: Maybe<HomeTutorialsSection>;
+  bookPromo?: Maybe<HomeBookPromo>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -338,6 +390,11 @@ export type HomeHeroFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
 };
 
+export type HomeLatestSectionFilter = {
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+};
+
 export type HomeFeaturedSectionFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<StringFilter>;
@@ -358,11 +415,20 @@ export type HomeTutorialsSectionFilter = {
   browseAllLabel?: InputMaybe<StringFilter>;
 };
 
+export type HomeBookPromoFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
 export type HomeFilter = {
   hero?: InputMaybe<HomeHeroFilter>;
+  latestSection?: InputMaybe<HomeLatestSectionFilter>;
   featuredSection?: InputMaybe<HomeFeaturedSectionFilter>;
   artistBanner?: InputMaybe<HomeArtistBannerFilter>;
   tutorialsSection?: InputMaybe<HomeTutorialsSectionFilter>;
+  bookPromo?: InputMaybe<HomeBookPromoFilter>;
 };
 
 export type HomeConnectionEdges = {
@@ -381,6 +447,7 @@ export type HomeConnection = Connection & {
 export type About = Node & Document & {
   __typename?: 'About';
   pageTitle?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
   leadText?: Maybe<Scalars['String']['output']>;
   paragraph1?: Maybe<Scalars['String']['output']>;
   paragraph2?: Maybe<Scalars['String']['output']>;
@@ -388,7 +455,9 @@ export type About = Node & Document & {
   skill2Label?: Maybe<Scalars['String']['output']>;
   skill3Label?: Maybe<Scalars['String']['output']>;
   ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
   ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -396,6 +465,7 @@ export type About = Node & Document & {
 
 export type AboutFilter = {
   pageTitle?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
   leadText?: InputMaybe<StringFilter>;
   paragraph1?: InputMaybe<StringFilter>;
   paragraph2?: InputMaybe<StringFilter>;
@@ -403,7 +473,9 @@ export type AboutFilter = {
   skill2Label?: InputMaybe<StringFilter>;
   skill3Label?: InputMaybe<StringFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
 };
 
 export type AboutConnectionEdges = {
@@ -454,6 +526,8 @@ export type Shop = Node & Document & {
   __typename?: 'Shop';
   pageTitle?: Maybe<Scalars['String']['output']>;
   pageDescription?: Maybe<Scalars['String']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -462,6 +536,8 @@ export type Shop = Node & Document & {
 export type ShopFilter = {
   pageTitle?: InputMaybe<StringFilter>;
   pageDescription?: InputMaybe<StringFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
 };
 
 export type ShopConnectionEdges = {
@@ -481,6 +557,8 @@ export type Gallery = Node & Document & {
   __typename?: 'Gallery';
   pageTitle?: Maybe<Scalars['String']['output']>;
   pageDescription?: Maybe<Scalars['String']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -489,6 +567,8 @@ export type Gallery = Node & Document & {
 export type GalleryFilter = {
   pageTitle?: InputMaybe<StringFilter>;
   pageDescription?: InputMaybe<StringFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
 };
 
 export type GalleryConnectionEdges = {
@@ -510,6 +590,8 @@ export type Tutorials = Node & Document & {
   pageDescription?: Maybe<Scalars['String']['output']>;
   subscribeLabel?: Maybe<Scalars['String']['output']>;
   youtubeUrl?: Maybe<Scalars['String']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -520,6 +602,8 @@ export type TutorialsFilter = {
   pageDescription?: InputMaybe<StringFilter>;
   subscribeLabel?: InputMaybe<StringFilter>;
   youtubeUrl?: InputMaybe<StringFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
 };
 
 export type TutorialsConnectionEdges = {
@@ -539,6 +623,8 @@ export type Downloads = Node & Document & {
   __typename?: 'Downloads';
   pageTitle?: Maybe<Scalars['String']['output']>;
   pageDescription?: Maybe<Scalars['String']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -547,6 +633,8 @@ export type Downloads = Node & Document & {
 export type DownloadsFilter = {
   pageTitle?: InputMaybe<StringFilter>;
   pageDescription?: InputMaybe<StringFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
 };
 
 export type DownloadsConnectionEdges = {
@@ -560,6 +648,197 @@ export type DownloadsConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<DownloadsConnectionEdges>>>;
+};
+
+export type Post = Node & Document & {
+  __typename?: 'Post';
+  title: Scalars['String']['output'];
+  excerpt?: Maybe<Scalars['String']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['String']['output']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type DatetimeFilter = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type RichTextFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PostFilter = {
+  title?: InputMaybe<StringFilter>;
+  excerpt?: InputMaybe<StringFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  publishedAt?: InputMaybe<DatetimeFilter>;
+  tags?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type PostConnectionEdges = {
+  __typename?: 'PostConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Post>;
+};
+
+export type PostConnection = Connection & {
+  __typename?: 'PostConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PostConnectionEdges>>>;
+};
+
+export type LandingPageBlocksHero = {
+  __typename?: 'LandingPageBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['String']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlocksText = {
+  __typename?: 'LandingPageBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageBlocksImageGalleryImages = {
+  __typename?: 'LandingPageBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlocksImageGallery = {
+  __typename?: 'LandingPageBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageBlocksCtaBand = {
+  __typename?: 'LandingPageBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlocksVideoEmbed = {
+  __typename?: 'LandingPageBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlocksFeatureGridItems = {
+  __typename?: 'LandingPageBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlocksFeatureGrid = {
+  __typename?: 'LandingPageBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageBlocksFeatureGridItems>>>;
+};
+
+export type LandingPageBlocks = LandingPageBlocksHero | LandingPageBlocksText | LandingPageBlocksImageGallery | LandingPageBlocksCtaBand | LandingPageBlocksVideoEmbed | LandingPageBlocksFeatureGrid;
+
+export type LandingPage = Node & Document & {
+  __typename?: 'LandingPage';
+  title: Scalars['String']['output'];
+  blocks?: Maybe<Array<Maybe<LandingPageBlocks>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LandingPageBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPageBlocksFilter = {
+  hero?: InputMaybe<LandingPageBlocksHeroFilter>;
+  text?: InputMaybe<LandingPageBlocksTextFilter>;
+  imageGallery?: InputMaybe<LandingPageBlocksImageGalleryFilter>;
+  ctaBand?: InputMaybe<LandingPageBlocksCtaBandFilter>;
+  videoEmbed?: InputMaybe<LandingPageBlocksVideoEmbedFilter>;
+  featureGrid?: InputMaybe<LandingPageBlocksFeatureGridFilter>;
+};
+
+export type LandingPageFilter = {
+  title?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPageBlocksFilter>;
+};
+
+export type LandingPageConnectionEdges = {
+  __typename?: 'LandingPageConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<LandingPage>;
+};
+
+export type LandingPageConnection = Connection & {
+  __typename?: 'LandingPageConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<LandingPageConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -583,6 +862,10 @@ export type Mutation = {
   createTutorials: Tutorials;
   updateDownloads: Downloads;
   createDownloads: Downloads;
+  updatePost: Post;
+  createPost: Post;
+  updateLandingPage: LandingPage;
+  createLandingPage: LandingPage;
 };
 
 
@@ -702,6 +985,30 @@ export type MutationCreateDownloadsArgs = {
   params: DownloadsMutation;
 };
 
+
+export type MutationUpdatePostArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PostMutation;
+};
+
+
+export type MutationCreatePostArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PostMutation;
+};
+
+
+export type MutationUpdateLandingPageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LandingPageMutation;
+};
+
+
+export type MutationCreateLandingPageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LandingPageMutation;
+};
+
 export type DocumentUpdateMutation = {
   home?: InputMaybe<HomeMutation>;
   about?: InputMaybe<AboutMutation>;
@@ -710,6 +1017,8 @@ export type DocumentUpdateMutation = {
   gallery?: InputMaybe<GalleryMutation>;
   tutorials?: InputMaybe<TutorialsMutation>;
   downloads?: InputMaybe<DownloadsMutation>;
+  post?: InputMaybe<PostMutation>;
+  landingPage?: InputMaybe<LandingPageMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -721,6 +1030,8 @@ export type DocumentMutation = {
   gallery?: InputMaybe<GalleryMutation>;
   tutorials?: InputMaybe<TutorialsMutation>;
   downloads?: InputMaybe<DownloadsMutation>;
+  post?: InputMaybe<PostMutation>;
+  landingPage?: InputMaybe<LandingPageMutation>;
 };
 
 export type HomeHeroMutation = {
@@ -729,6 +1040,11 @@ export type HomeHeroMutation = {
   ctaPrimary?: InputMaybe<Scalars['String']['input']>;
   ctaSecondary?: InputMaybe<Scalars['String']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HomeLatestSectionMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HomeFeaturedSectionMutation = {
@@ -751,15 +1067,25 @@ export type HomeTutorialsSectionMutation = {
   browseAllLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type HomeBookPromoMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type HomeMutation = {
   hero?: InputMaybe<HomeHeroMutation>;
+  latestSection?: InputMaybe<HomeLatestSectionMutation>;
   featuredSection?: InputMaybe<HomeFeaturedSectionMutation>;
   artistBanner?: InputMaybe<HomeArtistBannerMutation>;
   tutorialsSection?: InputMaybe<HomeTutorialsSectionMutation>;
+  bookPromo?: InputMaybe<HomeBookPromoMutation>;
 };
 
 export type AboutMutation = {
   pageTitle?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
   leadText?: InputMaybe<Scalars['String']['input']>;
   paragraph1?: InputMaybe<Scalars['String']['input']>;
   paragraph2?: InputMaybe<Scalars['String']['input']>;
@@ -767,7 +1093,9 @@ export type AboutMutation = {
   skill2Label?: InputMaybe<Scalars['String']['input']>;
   skill3Label?: InputMaybe<Scalars['String']['input']>;
   ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
   ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContactMutation = {
@@ -780,11 +1108,15 @@ export type ContactMutation = {
 export type ShopMutation = {
   pageTitle?: InputMaybe<Scalars['String']['input']>;
   pageDescription?: InputMaybe<Scalars['String']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type GalleryMutation = {
   pageTitle?: InputMaybe<Scalars['String']['input']>;
   pageDescription?: InputMaybe<Scalars['String']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type TutorialsMutation = {
@@ -792,33 +1124,112 @@ export type TutorialsMutation = {
   pageDescription?: InputMaybe<Scalars['String']['input']>;
   subscribeLabel?: InputMaybe<Scalars['String']['input']>;
   youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DownloadsMutation = {
   pageTitle?: InputMaybe<Scalars['String']['input']>;
   pageDescription?: InputMaybe<Scalars['String']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type HomePartsFragment = { __typename: 'Home', hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null };
+export type PostMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  excerpt?: InputMaybe<Scalars['String']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
 
-export type AboutPartsFragment = { __typename: 'About', pageTitle?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null };
+export type LandingPageBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['String']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPageBlocksMutation = {
+  hero?: InputMaybe<LandingPageBlocksHeroMutation>;
+  text?: InputMaybe<LandingPageBlocksTextMutation>;
+  imageGallery?: InputMaybe<LandingPageBlocksImageGalleryMutation>;
+  ctaBand?: InputMaybe<LandingPageBlocksCtaBandMutation>;
+  videoEmbed?: InputMaybe<LandingPageBlocksVideoEmbedMutation>;
+  featureGrid?: InputMaybe<LandingPageBlocksFeatureGridMutation>;
+};
+
+export type LandingPageMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPageBlocksMutation>>>;
+};
+
+export type HomePartsFragment = { __typename: 'Home', hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | null };
+
+export type AboutPartsFragment = { __typename: 'About', pageTitle?: string | null, portraitImage?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null };
 
 export type ContactPartsFragment = { __typename: 'Contact', pageTitle?: string | null, pageDescription?: string | null, email?: string | null, location?: string | null };
 
-export type ShopPartsFragment = { __typename: 'Shop', pageTitle?: string | null, pageDescription?: string | null };
+export type ShopPartsFragment = { __typename: 'Shop', pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null };
 
-export type GalleryPartsFragment = { __typename: 'Gallery', pageTitle?: string | null, pageDescription?: string | null };
+export type GalleryPartsFragment = { __typename: 'Gallery', pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null };
 
-export type TutorialsPartsFragment = { __typename: 'Tutorials', pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null };
+export type TutorialsPartsFragment = { __typename: 'Tutorials', pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null };
 
-export type DownloadsPartsFragment = { __typename: 'Downloads', pageTitle?: string | null, pageDescription?: string | null };
+export type DownloadsPartsFragment = { __typename: 'Downloads', pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null };
+
+export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: string | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null };
+
+export type LandingPagePartsFragment = { __typename: 'LandingPage', title: string, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: string | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: string | null } | null> | null } | null> | null };
 
 export type HomeQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type HomeQuery = { __typename?: 'Query', home: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null } };
+export type HomeQuery = { __typename?: 'Query', home: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | null } };
 
 export type HomeConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -830,14 +1241,14 @@ export type HomeConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeConnectionEdges', cursor: string, node?: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null } | null } | null> | null } };
+export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeConnectionEdges', cursor: string, node?: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: string | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | null } | null } | null> | null } };
 
 export type AboutQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, pageTitle?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, pageTitle?: string | null, portraitImage?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type AboutConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -849,7 +1260,7 @@ export type AboutConnectionQueryVariables = Exact<{
 }>;
 
 
-export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, pageTitle?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaSecondary?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, pageTitle?: string | null, portraitImage?: string | null, leadText?: string | null, paragraph1?: string | null, paragraph2?: string | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type ContactQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -875,7 +1286,7 @@ export type ShopQueryVariables = Exact<{
 }>;
 
 
-export type ShopQuery = { __typename?: 'Query', shop: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ShopQuery = { __typename?: 'Query', shop: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type ShopConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -887,14 +1298,14 @@ export type ShopConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ShopConnectionQuery = { __typename?: 'Query', shopConnection: { __typename?: 'ShopConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ShopConnectionEdges', cursor: string, node?: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ShopConnectionQuery = { __typename?: 'Query', shopConnection: { __typename?: 'ShopConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ShopConnectionEdges', cursor: string, node?: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type GalleryQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type GalleryQuery = { __typename?: 'Query', gallery: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type GalleryQuery = { __typename?: 'Query', gallery: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type GalleryConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -906,14 +1317,14 @@ export type GalleryConnectionQueryVariables = Exact<{
 }>;
 
 
-export type GalleryConnectionQuery = { __typename?: 'Query', galleryConnection: { __typename?: 'GalleryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GalleryConnectionEdges', cursor: string, node?: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type GalleryConnectionQuery = { __typename?: 'Query', galleryConnection: { __typename?: 'GalleryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GalleryConnectionEdges', cursor: string, node?: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type TutorialsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type TutorialsQuery = { __typename?: 'Query', tutorials: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type TutorialsQuery = { __typename?: 'Query', tutorials: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type TutorialsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -925,14 +1336,14 @@ export type TutorialsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type TutorialsConnectionQuery = { __typename?: 'Query', tutorialsConnection: { __typename?: 'TutorialsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TutorialsConnectionEdges', cursor: string, node?: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type TutorialsConnectionQuery = { __typename?: 'Query', tutorialsConnection: { __typename?: 'TutorialsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TutorialsConnectionEdges', cursor: string, node?: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: string | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type DownloadsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type DownloadsQuery = { __typename?: 'Query', downloads: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type DownloadsQuery = { __typename?: 'Query', downloads: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type DownloadsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -944,7 +1355,45 @@ export type DownloadsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type DownloadsConnectionQuery = { __typename?: 'Query', downloadsConnection: { __typename?: 'DownloadsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DownloadsConnectionEdges', cursor: string, node?: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type DownloadsConnectionQuery = { __typename?: 'Query', downloadsConnection: { __typename?: 'DownloadsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DownloadsConnectionEdges', cursor: string, node?: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type PostQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PostQuery = { __typename?: 'Query', post: { __typename: 'Post', id: string, title: string, excerpt?: string | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PostConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PostFilter>;
+}>;
+
+
+export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', cursor: string, node?: { __typename: 'Post', id: string, title: string, excerpt?: string | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type LandingPageQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type LandingPageQuery = { __typename?: 'Query', landingPage: { __typename: 'LandingPage', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: string | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: string | null } | null> | null } | null> | null } };
+
+export type LandingPageConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LandingPageFilter>;
+}>;
+
+
+export type LandingPageConnectionQuery = { __typename?: 'Query', landingPageConnection: { __typename?: 'LandingPageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingPageConnectionEdges', cursor: string, node?: { __typename: 'LandingPage', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: string | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: string | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export const HomePartsFragmentDoc = gql`
     fragment HomeParts on Home {
@@ -956,6 +1405,11 @@ export const HomePartsFragmentDoc = gql`
     ctaPrimary
     ctaSecondary
     backgroundImage
+  }
+  latestSection {
+    __typename
+    heading
+    viewAllLabel
   }
   featuredSection {
     __typename
@@ -977,12 +1431,20 @@ export const HomePartsFragmentDoc = gql`
     subheading
     browseAllLabel
   }
+  bookPromo {
+    __typename
+    heading
+    description
+    ctaLabel
+    ctaLink
+  }
 }
     `;
 export const AboutPartsFragmentDoc = gql`
     fragment AboutParts on About {
   __typename
   pageTitle
+  portraitImage
   leadText
   paragraph1
   paragraph2
@@ -990,7 +1452,9 @@ export const AboutPartsFragmentDoc = gql`
   skill2Label
   skill3Label
   ctaPrimary
+  ctaPrimaryLink
   ctaSecondary
+  ctaSecondaryLink
 }
     `;
 export const ContactPartsFragmentDoc = gql`
@@ -1007,6 +1471,8 @@ export const ShopPartsFragmentDoc = gql`
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
 }
     `;
 export const GalleryPartsFragmentDoc = gql`
@@ -1014,6 +1480,8 @@ export const GalleryPartsFragmentDoc = gql`
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
 }
     `;
 export const TutorialsPartsFragmentDoc = gql`
@@ -1023,6 +1491,8 @@ export const TutorialsPartsFragmentDoc = gql`
   pageDescription
   subscribeLabel
   youtubeUrl
+  emptyHeading
+  emptyDescription
 }
     `;
 export const DownloadsPartsFragmentDoc = gql`
@@ -1030,6 +1500,68 @@ export const DownloadsPartsFragmentDoc = gql`
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
+}
+    `;
+export const PostPartsFragmentDoc = gql`
+    fragment PostParts on Post {
+  __typename
+  title
+  excerpt
+  coverImage
+  publishedAt
+  tags
+  body
+}
+    `;
+export const LandingPagePartsFragmentDoc = gql`
+    fragment LandingPageParts on LandingPage {
+  __typename
+  title
+  blocks {
+    __typename
+    ... on LandingPageBlocksHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+    }
+    ... on LandingPageBlocksText {
+      heading
+      body
+    }
+    ... on LandingPageBlocksImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+    }
+    ... on LandingPageBlocksCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+    }
+    ... on LandingPageBlocksVideoEmbed {
+      heading
+      youtubeUrl
+    }
+    ... on LandingPageBlocksFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+    }
+  }
 }
     `;
 export const HomeDocument = gql`
@@ -1431,6 +1963,120 @@ export const DownloadsConnectionDocument = gql`
   }
 }
     ${DownloadsPartsFragmentDoc}`;
+export const PostDocument = gql`
+    query post($relativePath: String!) {
+  post(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PostParts
+  }
+}
+    ${PostPartsFragmentDoc}`;
+export const PostConnectionDocument = gql`
+    query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostFilter) {
+  postConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PostParts
+      }
+    }
+  }
+}
+    ${PostPartsFragmentDoc}`;
+export const LandingPageDocument = gql`
+    query landingPage($relativePath: String!) {
+  landingPage(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...LandingPageParts
+  }
+}
+    ${LandingPagePartsFragmentDoc}`;
+export const LandingPageConnectionDocument = gql`
+    query landingPageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LandingPageFilter) {
+  landingPageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...LandingPageParts
+      }
+    }
+  }
+}
+    ${LandingPagePartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -1475,6 +2121,18 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     downloadsConnection(variables?: DownloadsConnectionQueryVariables, options?: C): Promise<{data: DownloadsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsConnectionQueryVariables, query: string}> {
         return requester<{data: DownloadsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsConnectionQueryVariables, query: string}, DownloadsConnectionQueryVariables>(DownloadsConnectionDocument, variables, options);
+      },
+    post(variables: PostQueryVariables, options?: C): Promise<{data: PostQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostQueryVariables, query: string}> {
+        return requester<{data: PostQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostQueryVariables, query: string}, PostQueryVariables>(PostDocument, variables, options);
+      },
+    postConnection(variables?: PostConnectionQueryVariables, options?: C): Promise<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}> {
+        return requester<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}, PostConnectionQueryVariables>(PostConnectionDocument, variables, options);
+      },
+    landingPage(variables: LandingPageQueryVariables, options?: C): Promise<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}> {
+        return requester<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}, LandingPageQueryVariables>(LandingPageDocument, variables, options);
+      },
+    landingPageConnection(variables?: LandingPageConnectionQueryVariables, options?: C): Promise<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}> {
+        return requester<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}, LandingPageConnectionQueryVariables>(LandingPageConnectionDocument, variables, options);
       }
     };
   }

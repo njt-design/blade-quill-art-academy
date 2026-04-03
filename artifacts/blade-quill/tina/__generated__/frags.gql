@@ -8,6 +8,11 @@ fragment HomeParts on Home {
     ctaSecondary
     backgroundImage
   }
+  latestSection {
+    __typename
+    heading
+    viewAllLabel
+  }
   featuredSection {
     __typename
     heading
@@ -28,11 +33,19 @@ fragment HomeParts on Home {
     subheading
     browseAllLabel
   }
+  bookPromo {
+    __typename
+    heading
+    description
+    ctaLabel
+    ctaLink
+  }
 }
 
 fragment AboutParts on About {
   __typename
   pageTitle
+  portraitImage
   leadText
   paragraph1
   paragraph2
@@ -40,7 +53,9 @@ fragment AboutParts on About {
   skill2Label
   skill3Label
   ctaPrimary
+  ctaPrimaryLink
   ctaSecondary
+  ctaSecondaryLink
 }
 
 fragment ContactParts on Contact {
@@ -55,12 +70,16 @@ fragment ShopParts on Shop {
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
 }
 
 fragment GalleryParts on Gallery {
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
 }
 
 fragment TutorialsParts on Tutorials {
@@ -69,10 +88,72 @@ fragment TutorialsParts on Tutorials {
   pageDescription
   subscribeLabel
   youtubeUrl
+  emptyHeading
+  emptyDescription
 }
 
 fragment DownloadsParts on Downloads {
   __typename
   pageTitle
   pageDescription
+  emptyHeading
+  emptyDescription
+}
+
+fragment PostParts on Post {
+  __typename
+  title
+  excerpt
+  coverImage
+  publishedAt
+  tags
+  body
+}
+
+fragment LandingPageParts on LandingPage {
+  __typename
+  title
+  blocks {
+    __typename
+    ... on LandingPageBlocksHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+    }
+    ... on LandingPageBlocksText {
+      heading
+      body
+    }
+    ... on LandingPageBlocksImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+    }
+    ... on LandingPageBlocksCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+    }
+    ... on LandingPageBlocksVideoEmbed {
+      heading
+      youtubeUrl
+    }
+    ... on LandingPageBlocksFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+    }
+  }
 }

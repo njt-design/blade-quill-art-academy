@@ -68,6 +68,10 @@ type Query {
   tutorialsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialsFilter): TutorialsConnection!
   downloads(relativePath: String): Downloads!
   downloadsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DownloadsFilter): DownloadsConnection!
+  post(relativePath: String): Post!
+  postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
+  landingPage(relativePath: String): LandingPage!
+  landingPageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingPageFilter): LandingPageConnection!
 }
 
 input DocumentFilter {
@@ -78,6 +82,8 @@ input DocumentFilter {
   gallery: GalleryFilter
   tutorials: TutorialsFilter
   downloads: DownloadsFilter
+  post: PostFilter
+  landingPage: LandingPageFilter
 }
 
 type DocumentConnectionEdges {
@@ -103,7 +109,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Home | About | Contact | Shop | Gallery | Tutorials | Downloads | Folder
+union DocumentNode = Home | About | Contact | Shop | Gallery | Tutorials | Downloads | Post | LandingPage | Folder
 
 type HomeHero {
   heading: String
@@ -111,6 +117,11 @@ type HomeHero {
   ctaPrimary: String
   ctaSecondary: String
   backgroundImage: String
+}
+
+type HomeLatestSection {
+  heading: String
+  viewAllLabel: String
 }
 
 type HomeFeaturedSection {
@@ -133,11 +144,20 @@ type HomeTutorialsSection {
   browseAllLabel: String
 }
 
+type HomeBookPromo {
+  heading: String
+  description: String
+  ctaLabel: String
+  ctaLink: String
+}
+
 type Home implements Node & Document {
   hero: HomeHero
+  latestSection: HomeLatestSection
   featuredSection: HomeFeaturedSection
   artistBanner: HomeArtistBanner
   tutorialsSection: HomeTutorialsSection
+  bookPromo: HomeBookPromo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -165,6 +185,11 @@ input HomeHeroFilter {
   backgroundImage: ImageFilter
 }
 
+input HomeLatestSectionFilter {
+  heading: StringFilter
+  viewAllLabel: StringFilter
+}
+
 input HomeFeaturedSectionFilter {
   heading: StringFilter
   subheading: StringFilter
@@ -185,11 +210,20 @@ input HomeTutorialsSectionFilter {
   browseAllLabel: StringFilter
 }
 
+input HomeBookPromoFilter {
+  heading: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
 input HomeFilter {
   hero: HomeHeroFilter
+  latestSection: HomeLatestSectionFilter
   featuredSection: HomeFeaturedSectionFilter
   artistBanner: HomeArtistBannerFilter
   tutorialsSection: HomeTutorialsSectionFilter
+  bookPromo: HomeBookPromoFilter
 }
 
 type HomeConnectionEdges {
@@ -205,6 +239,7 @@ type HomeConnection implements Connection {
 
 type About implements Node & Document {
   pageTitle: String
+  portraitImage: String
   leadText: String
   paragraph1: String
   paragraph2: String
@@ -212,7 +247,9 @@ type About implements Node & Document {
   skill2Label: String
   skill3Label: String
   ctaPrimary: String
+  ctaPrimaryLink: String
   ctaSecondary: String
+  ctaSecondaryLink: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -220,6 +257,7 @@ type About implements Node & Document {
 
 input AboutFilter {
   pageTitle: StringFilter
+  portraitImage: ImageFilter
   leadText: StringFilter
   paragraph1: StringFilter
   paragraph2: StringFilter
@@ -227,7 +265,9 @@ input AboutFilter {
   skill2Label: StringFilter
   skill3Label: StringFilter
   ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
 }
 
 type AboutConnectionEdges {
@@ -272,6 +312,8 @@ type ContactConnection implements Connection {
 type Shop implements Node & Document {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -280,6 +322,8 @@ type Shop implements Node & Document {
 input ShopFilter {
   pageTitle: StringFilter
   pageDescription: StringFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
 }
 
 type ShopConnectionEdges {
@@ -296,6 +340,8 @@ type ShopConnection implements Connection {
 type Gallery implements Node & Document {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -304,6 +350,8 @@ type Gallery implements Node & Document {
 input GalleryFilter {
   pageTitle: StringFilter
   pageDescription: StringFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
 }
 
 type GalleryConnectionEdges {
@@ -322,6 +370,8 @@ type Tutorials implements Node & Document {
   pageDescription: String
   subscribeLabel: String
   youtubeUrl: String
+  emptyHeading: String
+  emptyDescription: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -332,6 +382,8 @@ input TutorialsFilter {
   pageDescription: StringFilter
   subscribeLabel: StringFilter
   youtubeUrl: StringFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
 }
 
 type TutorialsConnectionEdges {
@@ -348,6 +400,8 @@ type TutorialsConnection implements Connection {
 type Downloads implements Node & Document {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -356,6 +410,8 @@ type Downloads implements Node & Document {
 input DownloadsFilter {
   pageTitle: StringFilter
   pageDescription: StringFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
 }
 
 type DownloadsConnectionEdges {
@@ -367,6 +423,183 @@ type DownloadsConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [DownloadsConnectionEdges]
+}
+
+type Post implements Node & Document {
+  title: String!
+  excerpt: String
+  coverImage: String
+  publishedAt: String
+  tags: [String]
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PostFilter {
+  title: StringFilter
+  excerpt: StringFilter
+  coverImage: ImageFilter
+  publishedAt: DatetimeFilter
+  tags: StringFilter
+  body: RichTextFilter
+}
+
+type PostConnectionEdges {
+  cursor: String!
+  node: Post
+}
+
+type PostConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PostConnectionEdges]
+}
+
+type LandingPageBlocksHero {
+  heading: String
+  subheading: String
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPageBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPageBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPageBlocksImageGallery {
+  heading: String
+  images: [LandingPageBlocksImageGalleryImages]
+}
+
+type LandingPageBlocksCtaBand {
+  heading: String
+  description: String
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPageBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPageBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: String
+}
+
+type LandingPageBlocksFeatureGrid {
+  heading: String
+  items: [LandingPageBlocksFeatureGridItems]
+}
+
+union LandingPageBlocks = LandingPageBlocksHero | LandingPageBlocksText | LandingPageBlocksImageGallery | LandingPageBlocksCtaBand | LandingPageBlocksVideoEmbed | LandingPageBlocksFeatureGrid
+
+type LandingPage implements Node & Document {
+  title: String!
+  blocks: [LandingPageBlocks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input LandingPageBlocksHeroFilter {
+  heading: StringFilter
+  subheading: StringFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPageBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPageBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPageBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPageBlocksImageGalleryImagesFilter
+}
+
+input LandingPageBlocksCtaBandFilter {
+  heading: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPageBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input LandingPageBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPageBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPageBlocksFeatureGridItemsFilter
+}
+
+input LandingPageBlocksFilter {
+  hero: LandingPageBlocksHeroFilter
+  text: LandingPageBlocksTextFilter
+  imageGallery: LandingPageBlocksImageGalleryFilter
+  ctaBand: LandingPageBlocksCtaBandFilter
+  videoEmbed: LandingPageBlocksVideoEmbedFilter
+  featureGrid: LandingPageBlocksFeatureGridFilter
+}
+
+input LandingPageFilter {
+  title: StringFilter
+  blocks: LandingPageBlocksFilter
+}
+
+type LandingPageConnectionEdges {
+  cursor: String!
+  node: LandingPage
+}
+
+type LandingPageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [LandingPageConnectionEdges]
 }
 
 type Mutation {
@@ -389,6 +622,10 @@ type Mutation {
   createTutorials(relativePath: String!, params: TutorialsMutation!): Tutorials!
   updateDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
   createDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
+  updatePost(relativePath: String!, params: PostMutation!): Post!
+  createPost(relativePath: String!, params: PostMutation!): Post!
+  updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
+  createLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
 }
 
 input DocumentUpdateMutation {
@@ -399,6 +636,8 @@ input DocumentUpdateMutation {
   gallery: GalleryMutation
   tutorials: TutorialsMutation
   downloads: DownloadsMutation
+  post: PostMutation
+  landingPage: LandingPageMutation
   relativePath: String
 }
 
@@ -410,6 +649,8 @@ input DocumentMutation {
   gallery: GalleryMutation
   tutorials: TutorialsMutation
   downloads: DownloadsMutation
+  post: PostMutation
+  landingPage: LandingPageMutation
 }
 
 input HomeHeroMutation {
@@ -418,6 +659,11 @@ input HomeHeroMutation {
   ctaPrimary: String
   ctaSecondary: String
   backgroundImage: String
+}
+
+input HomeLatestSectionMutation {
+  heading: String
+  viewAllLabel: String
 }
 
 input HomeFeaturedSectionMutation {
@@ -440,15 +686,25 @@ input HomeTutorialsSectionMutation {
   browseAllLabel: String
 }
 
+input HomeBookPromoMutation {
+  heading: String
+  description: String
+  ctaLabel: String
+  ctaLink: String
+}
+
 input HomeMutation {
   hero: HomeHeroMutation
+  latestSection: HomeLatestSectionMutation
   featuredSection: HomeFeaturedSectionMutation
   artistBanner: HomeArtistBannerMutation
   tutorialsSection: HomeTutorialsSectionMutation
+  bookPromo: HomeBookPromoMutation
 }
 
 input AboutMutation {
   pageTitle: String
+  portraitImage: String
   leadText: String
   paragraph1: String
   paragraph2: String
@@ -456,7 +712,9 @@ input AboutMutation {
   skill2Label: String
   skill3Label: String
   ctaPrimary: String
+  ctaPrimaryLink: String
   ctaSecondary: String
+  ctaSecondaryLink: String
 }
 
 input ContactMutation {
@@ -469,11 +727,15 @@ input ContactMutation {
 input ShopMutation {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
 }
 
 input GalleryMutation {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
 }
 
 input TutorialsMutation {
@@ -481,11 +743,86 @@ input TutorialsMutation {
   pageDescription: String
   subscribeLabel: String
   youtubeUrl: String
+  emptyHeading: String
+  emptyDescription: String
 }
 
 input DownloadsMutation {
   pageTitle: String
   pageDescription: String
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input PostMutation {
+  title: String
+  excerpt: String
+  coverImage: String
+  publishedAt: String
+  tags: [String]
+  body: JSON
+}
+
+input LandingPageBlocksHeroMutation {
+  heading: String
+  subheading: String
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPageBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPageBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPageBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPageBlocksImageGalleryImagesMutation]
+}
+
+input LandingPageBlocksCtaBandMutation {
+  heading: String
+  description: String
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPageBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input LandingPageBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: String
+}
+
+input LandingPageBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPageBlocksFeatureGridItemsMutation]
+}
+
+input LandingPageBlocksMutation {
+  hero: LandingPageBlocksHeroMutation
+  text: LandingPageBlocksTextMutation
+  imageGallery: LandingPageBlocksImageGalleryMutation
+  ctaBand: LandingPageBlocksCtaBandMutation
+  videoEmbed: LandingPageBlocksVideoEmbedMutation
+  featureGrid: LandingPageBlocksFeatureGridMutation
+}
+
+input LandingPageMutation {
+  title: String
+  blocks: [LandingPageBlocksMutation]
 }
 
 schema {

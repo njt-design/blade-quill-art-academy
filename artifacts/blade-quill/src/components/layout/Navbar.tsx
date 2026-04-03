@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/gallery", label: "Gallery" },
   { href: "/tutorials", label: "Tutorials" },
   { href: "/downloads", label: "Downloads" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -49,7 +50,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => setLocation("/shop")}
-              className="bg-orange hover:bg-amber text-white text-sm h-8 px-4"
+              className="bg-orange hover:bg-amber text-white text-sm h-8 px-4 cta-bold"
             >
               Shop
             </Button>

@@ -39,9 +39,6 @@ catalogs:
     clsx:
       specifier: 2.1.1
       version: 2.1.1
-    drizzle-orm:
-      specifier: ^0.45.1
-      version: 0.45.1
     framer-motion:
       specifier: 12.35.1
       version: 12.35.1
@@ -71,6 +68,31 @@ catalogs:
       version: 3.25.76
 
 overrides:
+  '@esbuild-kit/esm-loader': npm:tsx@^4.21.0
+  '@expo/ngrok-bin>@expo/ngrok-bin-darwin-arm64': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-darwin-x64': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-freebsd-ia32': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-freebsd-x64': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-linux-arm': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-linux-arm64': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-linux-ia32': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-sunos-x64': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-win32-ia32': '-'
+  '@expo/ngrok-bin>@expo/ngrok-bin-win32-x64': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-android-arm64': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-darwin-x64': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-freebsd-x64': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm-gnueabihf': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm64-gnu': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm64-musl': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-linux-x64-musl': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-win32-arm64-msvc': '-'
+  '@tailwindcss/oxide>@tailwindcss/oxide-win32-x64-msvc': '-'
+  esbuild: 0.27.3
+  esbuild>@esbuild/aix-ppc64: '-'
+  esbuild>@esbuild/android-arm: '-'
+  esbuild>@esbuild/android-arm64: '-'
+  esbuild>@esbuild/android-x64: '-'
   esbuild>@esbuild/darwin-arm64: '-'
   esbuild>@esbuild/darwin-x64: '-'
   esbuild>@esbuild/freebsd-arm64: '-'
@@ -87,17 +109,12 @@ overrides:
   esbuild>@esbuild/netbsd-x64: '-'
   esbuild>@esbuild/openbsd-arm64: '-'
   esbuild>@esbuild/openbsd-x64: '-'
+  esbuild>@esbuild/openharmony-arm64: '-'
   esbuild>@esbuild/sunos-x64: '-'
   esbuild>@esbuild/win32-arm64: '-'
   esbuild>@esbuild/win32-ia32: '-'
   esbuild>@esbuild/win32-x64: '-'
-  esbuild>@esbuild/aix-ppc64: '-'
-  esbuild>@esbuild/android-arm: '-'
-  esbuild>@esbuild/android-arm64: '-'
-  esbuild>@esbuild/android-x64: '-'
-  esbuild>@esbuild/openharmony-arm64: '-'
   lightningcss>lightningcss-android-arm64: '-'
-  lightningcss>lightningcss-darwin-arm64: '-'
   lightningcss>lightningcss-darwin-x64: '-'
   lightningcss>lightningcss-freebsd-x64: '-'
   lightningcss>lightningcss-linux-arm-gnueabihf: '-'
@@ -106,19 +123,8 @@ overrides:
   lightningcss>lightningcss-linux-x64-musl: '-'
   lightningcss>lightningcss-win32-arm64-msvc: '-'
   lightningcss>lightningcss-win32-x64-msvc: '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-android-arm64': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-darwin-arm64': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-darwin-x64': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-freebsd-x64': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm-gnueabihf': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm64-gnu': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm64-musl': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-win32-arm64-msvc': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-win32-x64-msvc': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-linux-x64-musl': '-'
   rollup>@rollup/rollup-android-arm-eabi: '-'
   rollup>@rollup/rollup-android-arm64: '-'
-  rollup>@rollup/rollup-darwin-arm64: '-'
   rollup>@rollup/rollup-darwin-x64: '-'
   rollup>@rollup/rollup-freebsd-arm64: '-'
   rollup>@rollup/rollup-freebsd-x64: '-'
@@ -140,18 +146,6 @@ overrides:
   rollup>@rollup/rollup-win32-ia32-msvc: '-'
   rollup>@rollup/rollup-win32-x64-gnu: '-'
   rollup>@rollup/rollup-win32-x64-msvc: '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-darwin-arm64': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-darwin-x64': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-freebsd-ia32': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-freebsd-x64': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-linux-arm64': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-linux-arm': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-linux-ia32': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-sunos-x64': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-win32-ia32': '-'
-  '@expo/ngrok-bin>@expo/ngrok-bin-win32-x64': '-'
-  '@esbuild-kit/esm-loader': npm:tsx@^4.21.0
-  esbuild: 0.27.3
 
 importers:
 
@@ -182,9 +176,6 @@ importers:
       cors:
         specifier: ^2
         version: 2.8.6
-      drizzle-orm:
-        specifier: 'catalog:'
-        version: 0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0)
       express:
         specifier: ^5
         version: 5.2.1
@@ -628,15 +619,9 @@ importers:
 
   lib/db:
     dependencies:
-      drizzle-orm:
-        specifier: 'catalog:'
-        version: 0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0)
-      drizzle-zod:
-        specifier: ^0.8.3
-        version: 0.8.3(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0))(zod@3.25.76)
-      pg:
-        specifier: ^8.20.0
-        version: 8.20.0
+      '@supabase/supabase-js':
+        specifier: ^2.49.4
+        version: 2.99.3
       zod:
         specifier: 'catalog:'
         version: 3.25.76
@@ -644,12 +629,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 25.3.5
-      '@types/pg':
-        specifier: ^8.18.0
-        version: 8.18.0
-      drizzle-kit:
-        specifier: ^0.31.9
-        version: 0.31.9
 
   scripts:
     dependencies:
@@ -809,9 +788,6 @@ packages:
     resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
     peerDependencies:
       react: '>=16.8.0'
-
-  '@drizzle-team/brocli@0.10.2':
-    resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
 
   '@emotion/is-prop-valid@0.8.8':
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
@@ -2020,6 +1996,11 @@ packages:
       rollup:
         optional: true
 
+  '@rollup/rollup-darwin-arm64@4.59.0':
+    resolution: {integrity: sha512-W2Psnbh1J8ZJw0xKAd8zdNgF9HRLkdWwwdWqubSVk0pUuQkoHnv7rx4GiF9rT4t5DIZGAsConRE3AxCdJ4m8rg==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@rollup/rollup-linux-x64-gnu@4.59.0':
     resolution: {integrity: sha512-3AHmtQq/ppNuUspKAlvA8HtLybkDflkMuLK4DPo77DfthRb71V84/c4MlWJXixZz4uruIH4uaa07IqoAkG64fg==}
     cpu: [x64]
@@ -2089,6 +2070,30 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@supabase/auth-js@2.99.3':
+    resolution: {integrity: sha512-vMEVLA1kGGYd/kdsJSwtjiFUZM1nGfrz2DWmgMBZtocV48qL+L2+4QpIkueXyBEumMQZFEyhz57i/5zGHjvdBw==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/functions-js@2.99.3':
+    resolution: {integrity: sha512-6tk2zrcBkzKaaBXPOG5nshn30uJNFGOH9LxOnE8i850eQmsX+jVm7vql9kTPyvUzEHwU4zdjSOkXS9M+9ukMVA==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/postgrest-js@2.99.3':
+    resolution: {integrity: sha512-8HxEf+zNycj7Z8+ONhhlu+7J7Ha+L6weyCtdEeK2mN5OWJbh6n4LPU4iuJ5UlCvvNnbSXMoutY7piITEEAgl2g==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/realtime-js@2.99.3':
+    resolution: {integrity: sha512-c1azgZ2nZPczbY5k5u5iFrk1InpxN81IvNE+UBAkjrBz3yc5ALLJNkeTQwbJZT4PZBuYXEzqYGLMuh9fdTtTMg==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/storage-js@2.99.3':
+    resolution: {integrity: sha512-lOfIm4hInNcd8x0i1LWphnLKxec42wwbjs+vhaVAvR801Vda0UAMbTooUY6gfqgQb8v29GofqKuQMMTAsl6w/w==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/supabase-js@2.99.3':
+    resolution: {integrity: sha512-GuPbzoEaI51AkLw9VGhLNvnzw4PHbS3p8j2/JlvLeZNQMKwZw4aEYQIDBRtFwL5Nv7/275n9m4DHtakY8nCvgg==}
+    engines: {node: '>=20.0.0'}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0':
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
@@ -2167,6 +2172,12 @@ packages:
 
   '@tailwindcss/node@4.2.1':
     resolution: {integrity: sha512-jlx6sLk4EOwO6hHe1oCGm1Q4AN/s0rSrTTPBGPM0/RQ6Uylwq17FuU8IeJJKEjtc6K6O07zsvP+gDO6MMWo7pg==}
+
+  '@tailwindcss/oxide-darwin-arm64@4.2.1':
+    resolution: {integrity: sha512-q/LHkOstoJ7pI1J0q6djesLzRvQSIfEto148ppAd+BVQK0JYjQIFSK3JgYZJa+Yzi0DDa52ZsQx2rqytBnf8Hw==}
+    engines: {node: '>= 20'}
+    cpu: [arm64]
+    os: [darwin]
 
   '@tailwindcss/oxide-linux-x64-gnu@4.2.1':
     resolution: {integrity: sha512-qMFzxI2YlBOLW5PhblzuSWlWfwLHaneBE0xHzLrBgNtqN6mWfs+qYbhryGSXQjFYB1Dzf5w+LN5qbUTPhW7Y5g==}
@@ -2366,8 +2377,8 @@ packages:
   '@types/node@25.3.5':
     resolution: {integrity: sha512-oX8xrhvpiyRCQkG1MFchB09f+cXftgIXb3a7UUa4Y3wpmZPw5tyZGTLWhlESOLq1Rq6oDlc8npVU2/9xiCuXMA==}
 
-  '@types/pg@8.18.0':
-    resolution: {integrity: sha512-gT+oueVQkqnj6ajGJXblFR4iavIXWsGAFCk3dP4Kki5+a9R4NMt0JARdk6s8cUKcfUoqP5dAtDSLU8xYUTFV+Q==}
+  '@types/phoenix@1.6.7':
+    resolution: {integrity: sha512-oN9ive//QSBkf19rfDv45M7eZPi0eEXylht2OLEXicu5b4KoQ1OzXIw+xDSGWxSxe1JmepRR/ZH283vsu518/Q==}
 
   '@types/prismjs@1.26.6':
     resolution: {integrity: sha512-vqlvI7qlMvcCBbVe0AKAb4f97//Hy0EBTaiW8AalRnG/xAN5zOiWWyrNqNXeq8+KAuvRewjCVY1+IPxk4RdNYw==}
@@ -2403,6 +2414,9 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/ws@8.18.1':
+    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   '@udecode/cmdk@0.2.2':
     resolution: {integrity: sha512-9+9W/UGtE2YJNpo/gXkiqsxKsdPh9G8fGVNaRwSKE31Cjh2B5YvCwrhHvajNpDVBsdepORbSuAJ0hJ6kfxCP6w==}
@@ -3323,108 +3337,6 @@ packages:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
     engines: {node: '>=12'}
 
-  drizzle-kit@0.31.9:
-    resolution: {integrity: sha512-GViD3IgsXn7trFyBUUHyTFBpH/FsHTxYJ66qdbVggxef4UBPHRYxQaRzYLTuekYnk9i5FIEL9pbBIwMqX/Uwrg==}
-    hasBin: true
-
-  drizzle-orm@0.45.1:
-    resolution: {integrity: sha512-Te0FOdKIistGNPMq2jscdqngBRfBpC8uMFVwqjf6gtTVJHIQ/dosgV/CLBU2N4ZJBsXL5savCba9b0YJskKdcA==}
-    peerDependencies:
-      '@aws-sdk/client-rds-data': '>=3'
-      '@cloudflare/workers-types': '>=4'
-      '@electric-sql/pglite': '>=0.2.0'
-      '@libsql/client': '>=0.10.0'
-      '@libsql/client-wasm': '>=0.10.0'
-      '@neondatabase/serverless': '>=0.10.0'
-      '@op-engineering/op-sqlite': '>=2'
-      '@opentelemetry/api': ^1.4.1
-      '@planetscale/database': '>=1.13'
-      '@prisma/client': '*'
-      '@tidbcloud/serverless': '*'
-      '@types/better-sqlite3': '*'
-      '@types/pg': '*'
-      '@types/sql.js': '*'
-      '@upstash/redis': '>=1.34.7'
-      '@vercel/postgres': '>=0.8.0'
-      '@xata.io/client': '*'
-      better-sqlite3: '>=7'
-      bun-types: '*'
-      expo-sqlite: '>=14.0.0'
-      gel: '>=2'
-      knex: '*'
-      kysely: '*'
-      mysql2: '>=2'
-      pg: '>=8'
-      postgres: '>=3'
-      prisma: '*'
-      sql.js: '>=1'
-      sqlite3: '>=5'
-    peerDependenciesMeta:
-      '@aws-sdk/client-rds-data':
-        optional: true
-      '@cloudflare/workers-types':
-        optional: true
-      '@electric-sql/pglite':
-        optional: true
-      '@libsql/client':
-        optional: true
-      '@libsql/client-wasm':
-        optional: true
-      '@neondatabase/serverless':
-        optional: true
-      '@op-engineering/op-sqlite':
-        optional: true
-      '@opentelemetry/api':
-        optional: true
-      '@planetscale/database':
-        optional: true
-      '@prisma/client':
-        optional: true
-      '@tidbcloud/serverless':
-        optional: true
-      '@types/better-sqlite3':
-        optional: true
-      '@types/pg':
-        optional: true
-      '@types/sql.js':
-        optional: true
-      '@upstash/redis':
-        optional: true
-      '@vercel/postgres':
-        optional: true
-      '@xata.io/client':
-        optional: true
-      better-sqlite3:
-        optional: true
-      bun-types:
-        optional: true
-      expo-sqlite:
-        optional: true
-      gel:
-        optional: true
-      knex:
-        optional: true
-      kysely:
-        optional: true
-      mysql2:
-        optional: true
-      pg:
-        optional: true
-      postgres:
-        optional: true
-      prisma:
-        optional: true
-      sql.js:
-        optional: true
-      sqlite3:
-        optional: true
-
-  drizzle-zod@0.8.3:
-    resolution: {integrity: sha512-66yVOuvGhKJnTdiqj1/Xaaz9/qzOdRJADpDa68enqS6g3t0kpNkwNYjUuaeXgZfO/UWuIM9HIhSlJ6C5ZraMww==}
-    peerDependencies:
-      drizzle-orm: '>=0.36.0'
-      zod: ^3.25.0 || ^4.0.0
-
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
@@ -3496,11 +3408,6 @@ packages:
 
   es-toolkit@1.45.1:
     resolution: {integrity: sha512-/jhoOj/Fx+A+IIyDNOvO3TItGmlMKhtX8ISAHKE90c4b/k1tqaqEZ+uUqfpU8DMnW5cgNJv606zS55jGvza0Xw==}
-
-  esbuild-register@3.6.0:
-    resolution: {integrity: sha512-H2/S7Pm8a9CL1uhp9OvjwrBh5Pvx0H8qVOxNu8Wed9Y7qv56MPtq+GGM8RJpq6glYJn9Wspr8uw7l55uyinNeg==}
-    peerDependencies:
-      esbuild: 0.27.3
 
   esbuild@0.27.3:
     resolution: {integrity: sha512-8VwMnyGCONIs6cWue2IdpHxHnAjzxnw2Zr7MkVxB2vjmQ2ivqGFb4LEG3SMnv0Gb2F/G/2yA8zUaiL1gywDCCg==}
@@ -3861,6 +3768,10 @@ packages:
   hyphenate-style-name@1.1.0:
     resolution: {integrity: sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==}
 
+  iceberg-js@0.8.1:
+    resolution: {integrity: sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA==}
+    engines: {node: '>=20.0.0'}
+
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -4184,6 +4095,12 @@ packages:
   leven@4.1.0:
     resolution: {integrity: sha512-KZ9W9nWDT7rF7Dazg8xyLHGLrmpgq2nVNFUckhqdW3szVP6YhCpp/RAnpmVExA9JvrMynjwSLVrEj3AepHR6ew==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  lightningcss-darwin-arm64@1.31.1:
+    resolution: {integrity: sha512-02uTEqf3vIfNMq3h/z2cJfcOXnQ0GRwQrkmPafhueLb2h7mqEidiCzkE4gBMEH65abHRiQvhdcQ+aP0D0g67sg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [darwin]
 
   lightningcss-linux-x64-gnu@1.31.1:
     resolution: {integrity: sha512-xGlFWRMl+0KvUhgySdIaReQdB4FNudfUTARn7q0hh/V67PVGCs3ADFjw+6++kG1RNd0zdGRlEKa+T13/tQjPMA==}
@@ -4803,40 +4720,6 @@ packages:
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
-  pg-cloudflare@1.3.0:
-    resolution: {integrity: sha512-6lswVVSztmHiRtD6I8hw4qP/nDm1EJbKMRhf3HCYaqud7frGysPv7FYJ5noZQdhQtN2xJnimfMtvQq21pdbzyQ==}
-
-  pg-connection-string@2.12.0:
-    resolution: {integrity: sha512-U7qg+bpswf3Cs5xLzRqbXbQl85ng0mfSV/J0nnA31MCLgvEaAo7CIhmeyrmJpOr7o+zm0rXK+hNnT5l9RHkCkQ==}
-
-  pg-int8@1.0.1:
-    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
-    engines: {node: '>=4.0.0'}
-
-  pg-pool@3.13.0:
-    resolution: {integrity: sha512-gB+R+Xud1gLFuRD/QgOIgGOBE2KCQPaPwkzBBGC9oG69pHTkhQeIuejVIk3/cnDyX39av2AxomQiyPT13WKHQA==}
-    peerDependencies:
-      pg: '>=8.0'
-
-  pg-protocol@1.13.0:
-    resolution: {integrity: sha512-zzdvXfS6v89r6v7OcFCHfHlyG/wvry1ALxZo4LqgUoy7W9xhBDMaqOuMiF3qEV45VqsN6rdlcehHrfDtlCPc8w==}
-
-  pg-types@2.2.0:
-    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
-    engines: {node: '>=4'}
-
-  pg@8.20.0:
-    resolution: {integrity: sha512-ldhMxz2r8fl/6QkXnBD3CR9/xg694oT6DZQ2s6c/RI28OjtSOpxnPrUCGOBJ46RCUxcWdx3p6kw/xnDHjKvaRA==}
-    engines: {node: '>= 16.0.0'}
-    peerDependencies:
-      pg-native: '>=3.0.1'
-    peerDependenciesMeta:
-      pg-native:
-        optional: true
-
-  pgpass@1.0.5:
-    resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -4921,22 +4804,6 @@ packages:
   postcss@8.5.8:
     resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
     engines: {node: ^10 || ^12 || >=14}
-
-  postgres-array@2.0.0:
-    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
-    engines: {node: '>=4'}
-
-  postgres-bytea@1.0.1:
-    resolution: {integrity: sha512-5+5HqXnsZPE65IJZSMkZtURARZelel2oXUEO8rH83VS/hxH5vv1uHquPg5wZs8yMAfdv971IU+kcPUczi7NVBQ==}
-    engines: {node: '>=0.10.0'}
-
-  postgres-date@1.0.7:
-    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
-    engines: {node: '>=0.10.0'}
-
-  postgres-interval@1.2.0:
-    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
-    engines: {node: '>=0.10.0'}
 
   posthog-js@1.360.2:
     resolution: {integrity: sha512-/Wed0mOuRUfyEGT/BRQaokCqBlxrEceE7MDT9A00lU5tXo443/2Pg9ZiqN5sucUluZF47hwGORpYPoVUt32UFw==}
@@ -5528,10 +5395,6 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
-  split2@4.2.0:
-    resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
-    engines: {node: '>= 10.x'}
-
   sponge-case@1.0.1:
     resolution: {integrity: sha512-dblb9Et4DAtiZ5YSUZHLl4XhH4uK80GhAZrVXdN4O2P4gQ40Wa5UIOPUHlA/nFd2PLblBZWUioLMMAVrgpoYcA==}
 
@@ -6118,9 +5981,17 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  xtend@4.0.2:
-    resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
-    engines: {node: '>=0.4'}
+  ws@8.20.0:
+    resolution: {integrity: sha512-sAt8BhgNbzCtgGbt2OxmpuryO63ZoDk/sqaB/znQm94T4fCEsy/yV+7CdC1kJhOU9lboAEU7R3kquuycDoibVA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
@@ -6362,8 +6233,6 @@ snapshots:
     dependencies:
       react: 19.1.0
       tslib: 2.8.1
-
-  '@drizzle-team/brocli@0.10.2': {}
 
   '@emotion/is-prop-valid@0.8.8':
     dependencies:
@@ -7788,6 +7657,9 @@ snapshots:
     optionalDependencies:
       rollup: 4.59.0
 
+  '@rollup/rollup-darwin-arm64@4.59.0':
+    optional: true
+
   '@rollup/rollup-linux-x64-gnu@4.59.0':
     optional: true
 
@@ -7881,6 +7753,44 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
+  '@supabase/auth-js@2.99.3':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/functions-js@2.99.3':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/postgrest-js@2.99.3':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/realtime-js@2.99.3':
+    dependencies:
+      '@types/phoenix': 1.6.7
+      '@types/ws': 8.18.1
+      tslib: 2.8.1
+      ws: 8.20.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@supabase/storage-js@2.99.3':
+    dependencies:
+      iceberg-js: 0.8.1
+      tslib: 2.8.1
+
+  '@supabase/supabase-js@2.99.3':
+    dependencies:
+      '@supabase/auth-js': 2.99.3
+      '@supabase/functions-js': 2.99.3
+      '@supabase/postgrest-js': 2.99.3
+      '@supabase/realtime-js': 2.99.3
+      '@supabase/storage-js': 2.99.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
@@ -7960,6 +7870,9 @@ snapshots:
       source-map-js: 1.2.1
       tailwindcss: 4.2.1
 
+  '@tailwindcss/oxide-darwin-arm64@4.2.1':
+    optional: true
+
   '@tailwindcss/oxide-linux-x64-gnu@4.2.1':
     optional: true
 
@@ -7968,6 +7881,7 @@ snapshots:
 
   '@tailwindcss/oxide@4.2.1':
     optionalDependencies:
+      '@tailwindcss/oxide-darwin-arm64': 4.2.1
       '@tailwindcss/oxide-linux-x64-gnu': 4.2.1
       '@tailwindcss/oxide-wasm32-wasi': 4.2.1
 
@@ -8352,11 +8266,7 @@ snapshots:
     dependencies:
       undici-types: 7.18.2
 
-  '@types/pg@8.18.0':
-    dependencies:
-      '@types/node': 25.3.5
-      pg-protocol: 1.13.0
-      pg-types: 2.2.0
+  '@types/phoenix@1.6.7': {}
 
   '@types/prismjs@1.26.6': {}
 
@@ -8391,6 +8301,10 @@ snapshots:
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
+
+  '@types/ws@8.18.1':
+    dependencies:
+      '@types/node': 25.3.5
 
   '@udecode/cmdk@0.2.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -9409,27 +9323,6 @@ snapshots:
 
   dotenv@16.6.1: {}
 
-  drizzle-kit@0.31.9:
-    dependencies:
-      '@drizzle-team/brocli': 0.10.2
-      '@esbuild-kit/esm-loader': tsx@4.21.0
-      esbuild: 0.27.3
-      esbuild-register: 3.6.0(esbuild@0.27.3)
-    transitivePeerDependencies:
-      - supports-color
-
-  drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0):
-    optionalDependencies:
-      '@opentelemetry/api': 1.9.0
-      '@types/pg': 8.18.0
-      better-sqlite3: 11.10.0
-      pg: 8.20.0
-
-  drizzle-zod@0.8.3(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0))(zod@3.25.76):
-    dependencies:
-      drizzle-orm: 0.45.1(@opentelemetry/api@1.9.0)(@types/pg@8.18.0)(better-sqlite3@11.10.0)(pg@8.20.0)
-      zod: 3.25.76
-
   dunder-proto@1.0.1:
     dependencies:
       call-bind-apply-helpers: 1.0.2
@@ -9493,13 +9386,6 @@ snapshots:
       es-errors: 1.3.0
 
   es-toolkit@1.45.1: {}
-
-  esbuild-register@3.6.0(esbuild@0.27.3):
-    dependencies:
-      debug: 4.4.3
-      esbuild: 0.27.3
-    transitivePeerDependencies:
-      - supports-color
 
   esbuild@0.27.3:
     optionalDependencies:
@@ -9958,6 +9844,8 @@ snapshots:
 
   hyphenate-style-name@1.1.0: {}
 
+  iceberg-js@0.8.1: {}
+
   iconv-lite@0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -10203,6 +10091,9 @@ snapshots:
 
   leven@4.1.0: {}
 
+  lightningcss-darwin-arm64@1.31.1:
+    optional: true
+
   lightningcss-linux-x64-gnu@1.31.1:
     optional: true
 
@@ -10210,6 +10101,7 @@ snapshots:
     dependencies:
       detect-libc: 2.1.2
     optionalDependencies:
+      lightningcss-darwin-arm64: 1.31.1
       lightningcss-linux-x64-gnu: 1.31.1
 
   lilconfig@3.1.3: {}
@@ -11095,41 +10987,6 @@ snapshots:
 
   performance-now@2.1.0: {}
 
-  pg-cloudflare@1.3.0:
-    optional: true
-
-  pg-connection-string@2.12.0: {}
-
-  pg-int8@1.0.1: {}
-
-  pg-pool@3.13.0(pg@8.20.0):
-    dependencies:
-      pg: 8.20.0
-
-  pg-protocol@1.13.0: {}
-
-  pg-types@2.2.0:
-    dependencies:
-      pg-int8: 1.0.1
-      postgres-array: 2.0.0
-      postgres-bytea: 1.0.1
-      postgres-date: 1.0.7
-      postgres-interval: 1.2.0
-
-  pg@8.20.0:
-    dependencies:
-      pg-connection-string: 2.12.0
-      pg-pool: 3.13.0(pg@8.20.0)
-      pg-protocol: 1.13.0
-      pg-types: 2.2.0
-      pgpass: 1.0.5
-    optionalDependencies:
-      pg-cloudflare: 1.3.0
-
-  pgpass@1.0.5:
-    dependencies:
-      split2: 4.2.0
-
   picocolors@1.1.1: {}
 
   picomatch-browser@2.2.6: {}
@@ -11196,16 +11053,6 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
-
-  postgres-array@2.0.0: {}
-
-  postgres-bytea@1.0.1: {}
-
-  postgres-date@1.0.7: {}
-
-  postgres-interval@1.2.0:
-    dependencies:
-      xtend: 4.0.2
 
   posthog-js@1.360.2:
     dependencies:
@@ -11655,6 +11502,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
     optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.59.0
       '@rollup/rollup-linux-x64-gnu': 4.59.0
       fsevents: 2.3.3
 
@@ -11931,8 +11779,6 @@ snapshots:
   source-map@0.6.1: {}
 
   space-separated-tokens@2.0.2: {}
-
-  split2@4.2.0: {}
 
   sponge-case@1.0.1:
     dependencies:
@@ -12600,7 +12446,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  xtend@4.0.2: {}
+  ws@8.20.0: {}
 
   y18n@5.0.8: {}
 

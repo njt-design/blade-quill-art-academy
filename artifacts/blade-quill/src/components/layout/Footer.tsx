@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Feather, Youtube, Coffee, Mail } from "lucide-react";
+import { Feather, Mail } from "lucide-react";
+import {
+  SiFacebook,
+  SiInstagram,
+  SiKofi,
+  SiTiktok,
+  SiX,
+  SiYoutube,
+} from "react-icons/si";
 import {
   Dialog,
   DialogContent,
@@ -60,27 +68,71 @@ export function Footer() {
                   <li><Link href="/gallery" className="hover:text-foreground transition-colors">Gallery</Link></li>
                   <li><Link href="/tutorials" className="hover:text-foreground transition-colors">Tutorials</Link></li>
                   <li><Link href="/downloads" className="hover:text-foreground transition-colors">Downloads</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground mb-3">Connect</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <a href="https://www.youtube.com/c/BladeQuillartacademy" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                      <Youtube className="w-3.5 h-3.5" /> YouTube
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://ko-fi.com/bladeandquill" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                      <Coffee className="w-3.5 h-3.5" /> Ko-fi
-                    </a>
-                  </li>
                   <li>
                     <Link href="/contact" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
                       <Mail className="w-3.5 h-3.5" /> Contact
                     </Link>
                   </li>
                 </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-3">Connect</h4>
+                <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
+                  <a
+                    href="https://www.youtube.com/c/BladeQuillartacademy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="YouTube"
+                  >
+                    <SiYoutube className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <SiInstagram className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="Facebook"
+                  >
+                    <SiFacebook className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://x.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="X"
+                  >
+                    <SiX className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://ko-fi.com/bladeandquill"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="Ko-fi"
+                  >
+                    <SiKofi className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://tiktok.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                    aria-label="TikTok"
+                  >
+                    <SiTiktok className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

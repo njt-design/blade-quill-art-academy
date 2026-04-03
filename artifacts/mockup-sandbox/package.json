@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
+    "dev:electric": "PORT=3002 BASE_PATH=/ VITE_INITIAL_PREVIEW=ElectricStudioHome vite dev",
+    "dev:editorial": "PORT=3003 BASE_PATH=/ VITE_INITIAL_PREVIEW=EditorialLightHome vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json --noEmit"

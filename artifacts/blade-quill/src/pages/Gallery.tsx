@@ -1,4 +1,8 @@
-import { useListGallery } from "@workspace/api-client-react";
+import { useState, useCallback } from "react";
+import { X } from "lucide-react";
+import { useListGallery, type GalleryItem } from "@workspace/api-client-react";
+import { asArray } from "@/lib/api-helpers";
+import { FALLBACK_GALLERY } from "@/lib/fallback-data";
 import { useTina, tinaField } from "tinacms/react";
 import galleryData from "../../content/gallery.json";
 const TINA_DATA_GALLERYDATA = { gallery: galleryData };
@@ -8,18 +12,76 @@ const galleryQuery = `
     gallery(relativePath: $relativePath) {
       pageTitle
       pageDescription
-      items {
-        id
-        title
-        description
-        imageUrl
-      }
+      emptyHeading
+      emptyDescription
     }
   }
 `;
 
+function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-pointer"
+      onClick={onClose}
+    >
+      <button
+        className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10"
+        onClick={onClose}
+        aria-label="Close"
+      >
+        <X className="w-8 h-8" />
+      </button>
+      <div
+        className="relative max-w-4xl max-h-[90vh] cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={item.imageUrl}
+          alt={item.title}
+          className="max-w-full max-h-[85vh] object-contain rounded-lg"
+        />
+        <div className="mt-3 text-center">
+          <h3 className="text-white font-medium">{item.title}</h3>
+          {item.description && (
+            <p className="text-white/60 text-sm mt-1">{item.description}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GalleryImage({ item, onClick }: { item: GalleryItem; onClick: () => void }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div
+      className="break-inside-avoid group rounded-lg overflow-hidden border border-border/50 relative cursor-pointer gumroad-card"
+      onClick={onClick}
+    >
+      <img
+        src={item.imageUrl}
+        alt={item.title}
+        className={`w-full h-auto transition-opacity duration-400 ${loaded ? "opacity-100" : "opacity-0"}`}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+      />
+      {!loaded && (
+        <div className="aspect-[3/4] bg-muted animate-pulse" />
+      )}
+      <div className="hover-overlay">
+        <h3 className="text-white font-medium text-sm">{item.title}</h3>
+        {item.description && (
+          <p className="text-white/70 text-xs mt-0.5">{item.description}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Gallery() {
   const { data: galleryItems, isLoading } = useListGallery();
+  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
   const { data } = useTina({
     query: galleryQuery,
@@ -28,6 +90,10 @@ export default function Gallery() {
   });
 
   const content = data.gallery;
+
+  const items = asArray<GalleryItem>(galleryItems, FALLBACK_GALLERY);
+
+  const closeLightbox = useCallback(() => setLightboxItem(null), []);
 
   return (
     <div className="min-h-screen py-10">
@@ -50,35 +116,39 @@ export default function Gallery() {
 
         {isLoading ? (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {Array.from({ length: 6 }).map((_, i) => (
+            {Array.from({ length: 9 }).map((_, i) => (
               <div key={i} className="animate-pulse bg-muted rounded-lg aspect-[3/4] break-inside-avoid" />
             ))}
           </div>
-        ) : galleryItems && galleryItems.length > 0 ? (
+        ) : items.length > 0 ? (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {galleryItems.map((item) => (
-              <div key={item.id} className="break-inside-avoid group rounded-lg overflow-hidden border border-border/50 relative">
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <h3 className="text-white font-medium text-sm">{item.title}</h3>
-                  {item.description && (
-                    <p className="text-white/70 text-xs mt-0.5">{item.description}</p>
-                  )}
-                </div>
-              </div>
+            {items.map((item) => (
+              <GalleryImage
+                key={item.id}
+                item={item}
+                onClick={() => setLightboxItem(item)}
+              />
             ))}
           </div>
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
-            <h3 className="text-xl font-display text-muted-foreground">Gallery is empty</h3>
+            <h3
+              className="text-xl font-display text-muted-foreground mb-2"
+              data-tina-field={tinaField(content, "emptyHeading")}
+            >
+              {content?.emptyHeading || "Gallery is empty"}
+            </h3>
+            <p
+              className="text-sm text-muted-foreground"
+              data-tina-field={tinaField(content, "emptyDescription")}
+            >
+              {content?.emptyDescription || "Check back soon — new artwork is added regularly."}
+            </p>
           </div>
         )}
       </div>
+
+      {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
     </div>
   );
 }

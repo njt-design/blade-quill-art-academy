@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { ShoppingBag, BookOpen, MonitorPlay, ShoppingCart, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useListProducts, useListCategories } from "@workspace/api-client-react";
-import type { ListProductsCategory } from "@workspace/api-client-react";
+import {
+  useListProducts,
+  useListCategories,
+  type ListProductsCategory,
+  type Product,
+  type Category,
+} from "@workspace/api-client-react";
+import { asArray } from "@/lib/api-helpers";
+import { FALLBACK_PRODUCTS, FALLBACK_CATEGORIES } from "@/lib/fallback-data";
 import { useCart } from "@/hooks/useCart";
 import { useTina, tinaField } from "tinacms/react";
 import shopData from "../../content/shop.json";
@@ -14,15 +20,8 @@ const shopQuery = `
     shop(relativePath: $relativePath) {
       pageTitle
       pageDescription
-      products {
-        id
-        name
-        description
-        price
-        category
-        imageUrl
-        checkoutUrl
-      }
+      emptyHeading
+      emptyDescription
     }
   }
 `;
@@ -46,11 +45,11 @@ function AddToCartButton({ product }: { product: { id: number; name: string; pri
 
   return (
     <button
-      className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+      className="flex items-center gap-1.5 text-sm font-semibold bg-foreground text-background px-3 py-1.5 rounded-lg opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 hover:bg-foreground/80 active:scale-95"
       onClick={handleAdd}
     >
       {added
-        ? <><Check className="w-3.5 h-3.5 text-emerald-600" /><span className="text-emerald-600">Added</span></>
+        ? <><Check className="w-3.5 h-3.5" />Added</>
         : <><ShoppingCart className="w-3.5 h-3.5" />Add to Cart</>}
     </button>
   );
@@ -60,10 +59,13 @@ export default function Shop() {
   const [, setLocation] = useLocation();
   const [activeCategory, setActiveCategory] = useState<ListProductsCategory | "all">("all");
 
-  const { data: categories } = useListCategories();
-  const { data: products, isLoading } = useListProducts(
+  const { data: categoriesRaw } = useListCategories();
+  const categories = asArray<Category>(categoriesRaw, FALLBACK_CATEGORIES);
+
+  const { data: productsRaw, isLoading } = useListProducts(
     activeCategory === "all" ? {} : { category: activeCategory }
   );
+  const products = asArray<Product>(productsRaw, FALLBACK_PRODUCTS);
 
   const { data } = useTina({
     query: shopQuery,
@@ -92,50 +94,52 @@ export default function Shop() {
           </p>
         </div>
 
-        {/* Category chips */}
+        {/* Gumroad-style category tag pills */}
         <div className="flex flex-nowrap overflow-x-auto gap-2 mb-10 pb-1 scrollbar-hide">
           <button
             onClick={() => setActiveCategory("all")}
-            className={`chip ${activeCategory === "all" ? "chip-active" : "chip-inactive"}`}
+            className={`tag-pill ${activeCategory === "all" ? "tag-pill-active" : "tag-pill-inactive"}`}
           >
-            <ShoppingBag className="w-3.5 h-3.5 mr-1.5" />
+            <ShoppingBag className="w-3.5 h-3.5" />
             All
-            {categories && <span className="ml-1 opacity-50 text-xs">({categories.reduce((s, c) => s + c.productCount, 0)})</span>}
+            {categories.length > 0 && (
+              <span className="text-xs opacity-60">{categories.reduce((s, c) => s + c.productCount, 0)}</span>
+            )}
           </button>
-          {categories?.map((cat) => {
+          {categories.map((cat) => {
             const Icon = CATEGORY_ICONS[cat.id] ?? ShoppingBag;
             const isActive = activeCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id as ListProductsCategory)}
-                className={`chip ${isActive ? "chip-active" : "chip-inactive"}`}
+                className={`tag-pill ${isActive ? "tag-pill-active" : "tag-pill-inactive"}`}
               >
-                <Icon className="w-3.5 h-3.5 mr-1.5" />
+                <Icon className="w-3.5 h-3.5" />
                 {cat.label}
-                <span className="ml-1 opacity-50 text-xs">({cat.productCount})</span>
+                <span className="text-xs opacity-60">{cat.productCount}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Product grid */}
+        {/* Product grid — Gumroad card style */}
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="animate-pulse bg-muted rounded-lg h-80" />
+              <div key={i} className="animate-pulse bg-muted rounded-xl h-96" />
             ))}
           </div>
-        ) : products && products.length > 0 ? (
+        ) : products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="thumb-card cursor-pointer group flex flex-col"
+                className="gumroad-card cursor-pointer group flex flex-col"
                 onClick={() => setLocation(`/shop/${product.id}`)}
               >
                 <div className="aspect-square overflow-hidden relative">
-                  <span className="absolute top-3 right-3 z-10 text-[10px] uppercase tracking-widest font-bold bg-card/90 backdrop-blur-sm px-2 py-0.5 rounded border border-border">
+                  <span className="absolute top-3 left-3 z-10 text-[10px] uppercase tracking-widest font-bold bg-card/90 backdrop-blur-sm px-2.5 py-1 rounded-full border border-border">
                     {product.category}
                   </span>
                   <img
@@ -152,7 +156,7 @@ export default function Shop() {
                     {product.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-orange">${product.price.toFixed(2)}</span>
+                    <span className="price-badge">${product.price.toFixed(2)}</span>
                     <AddToCartButton product={product} />
                   </div>
                 </div>
@@ -161,8 +165,18 @@ export default function Shop() {
           </div>
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
-            <h3 className="text-xl font-display text-muted-foreground mb-2">No products found</h3>
-            <p className="text-sm text-muted-foreground">Check back later for new releases.</p>
+            <h3
+              className="text-xl font-display text-muted-foreground mb-2"
+              data-tina-field={tinaField(content, "emptyHeading")}
+            >
+              {content?.emptyHeading || "No products found"}
+            </h3>
+            <p
+              className="text-sm text-muted-foreground"
+              data-tina-field={tinaField(content, "emptyDescription")}
+            >
+              {content?.emptyDescription || "Check back later for new releases."}
+            </p>
           </div>
         )}
       </div>

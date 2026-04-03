@@ -5,7 +5,9 @@ import express from "express";
 const PORT = Number(process.env.PORT) || 3000;
 const VITE_PORT = 3001;
 const TINA_PORT = 4001;
-const TINA_HOST = "[::1]";
+// Tina may bind to IPv4 (127.0.0.1) or IPv6 ([::1]) depending on the version.
+// Using "localhost" lets Node resolve to whichever is active.
+const TINA_HOST = "localhost";
 
 const app = express();
 

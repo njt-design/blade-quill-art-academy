@@ -84,6 +84,21 @@
   .reading-width {
     max-width: 65ch;
   }
+
+  /* Gumroad-inspired card: clean border, rounded, hover lift + shadow grow */
+  .gumroad-card {
+    @apply bg-card rounded-xl overflow-hidden border border-border/60;
+    transition: box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
+                border-color 0.3s ease;
+  }
+  .gumroad-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+    transform: translateY(-4px);
+    border-color: hsl(var(--border));
+  }
+
+  /* Simpler thumb card for grids */
   .thumb-card {
     @apply bg-card rounded-lg overflow-hidden border border-border/50;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -92,6 +107,24 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     transform: translateY(-2px);
   }
+
+  /* Tag pill — Gumroad discover-style category tags */
+  .tag-pill {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer select-none whitespace-nowrap;
+    transition: all 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .tag-pill-active {
+    @apply bg-foreground text-background border-foreground shadow-sm;
+  }
+  .tag-pill-inactive {
+    @apply bg-card text-muted-foreground border-border;
+  }
+  .tag-pill-inactive:hover {
+    @apply border-foreground/40 text-foreground bg-secondary shadow-sm;
+    transform: translateY(-1px);
+  }
+
+  /* Legacy chip (kept for backward compat) */
   .chip {
     @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border transition-colors;
   }
@@ -101,6 +134,59 @@
   .chip-inactive {
     @apply bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground;
   }
+
+  /* Fade-in for lazy-loaded images */
+  .img-fade {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .img-fade.loaded {
+    opacity: 1;
+  }
+
+  /* Overlay on hover (gallery items) */
+  .hover-overlay {
+    @apply absolute inset-0 flex flex-col justify-end p-4;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 40%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .group:hover .hover-overlay {
+    opacity: 1;
+  }
+
+  /* Price badge — Gumroad-style prominent price */
+  .price-badge {
+    @apply text-lg font-bold text-orange;
+  }
+
+  /* Bold CTA — used for primary action buttons with more visual weight */
+  .cta-bold {
+    @apply font-semibold tracking-wide;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .cta-bold:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .cta-bold:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* Download button hover effect */
+  .dl-btn {
+    @apply w-full mt-auto font-semibold;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .dl-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .dl-btn:active {
+    transform: scale(0.97);
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

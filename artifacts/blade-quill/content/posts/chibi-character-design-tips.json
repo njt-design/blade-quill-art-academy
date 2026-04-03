@@ -1,0 +1,56 @@
+{
+  "title": "5 Tips for Better Chibi Character Designs",
+  "excerpt": "Chibi characters are adorable, expressive, and surprisingly tricky to get right. Here are my top five tips for designing chibis that pop.",
+  "coverImage": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80",
+  "publishedAt": "2026-03-10T14:00:00.000Z",
+  "tags": ["Character Design", "Tips"],
+  "body": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Chibi characters are one of my absolute favorite things to draw. Their oversized heads, tiny bodies, and exaggerated expressions make them endlessly charming. But getting the proportions and personality right takes practice. Here are five tips I've learned along the way." }]
+      },
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "1. Head-to-Body Ratio is Everything" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "A classic chibi uses a 1:1 head-to-body ratio — the head is the same height as the entire body. For a slightly more detailed look, try 1:1.5 or 1:2. Consistency is key: pick a ratio and stick with it across your character lineup." }]
+      },
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "2. Simplify the Details" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Chibis work best when you strip away complex anatomy. Fingers become mittens, noses become dots or disappear entirely, and clothing folds are reduced to a few key lines. Focus on silhouette and readability." }]
+      },
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "3. Eyes Tell the Story" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Since the face is so large relative to the body, the eyes do most of the emotional heavy lifting. Make them big, expressive, and varied. Even small changes to eye shape can completely change a character's mood." }]
+      },
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "4. Exaggerate Poses" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Chibis look best in dynamic, exaggerated poses. A happy chibi should be jumping with arms wide open. An angry chibi should be stomping with furrowed brows. Don't be afraid to push the gesture further than you think you should." }]
+      },
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "5. Color with Confidence" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Bold, saturated colors work beautifully with the chibi style. Keep your palette limited (3-5 main colors per character) and use high contrast between light and shadow to add depth without overcomplicating the design." }]
+      }
+    ]
+  }
+}

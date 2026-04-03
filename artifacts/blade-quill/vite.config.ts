@@ -26,6 +26,10 @@ if (!basePath) {
   );
 }
 
+/** Proxy API during Vite dev so `/api/*` hits Express instead of the SPA fallback (HTML). */
+const apiProxyTarget =
+  process.env.VITE_API_PROXY_TARGET?.trim() || "http://127.0.0.1:5000";
+
 export default defineConfig({
   base: basePath,
   plugins: [
@@ -65,6 +69,12 @@ export default defineConfig({
     fs: {
       strict: true,
       deny: ["**/.*"],
+    },
+    proxy: {
+      "/api": {
+        target: apiProxyTarget,
+        changeOrigin: true,
+      },
     },
   },
   preview: {

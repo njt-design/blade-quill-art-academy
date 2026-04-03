@@ -1,7 +1,8 @@
 import { useLocation } from "wouter";
-import { ArrowRight, Play, BookOpen, ShoppingBag } from "lucide-react";
+import { ArrowRight, Play, BookOpen, ShoppingBag, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useListProducts, useListTutorials, useListGallery } from "@workspace/api-client-react";
+import { FALLBACK_GALLERY, FALLBACK_TUTORIALS, FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import { useTina, tinaField } from "tinacms/react";
 import homeData from "../../content/home.json";
 const TINA_DATA_HOMEDATA = { home: homeData };
@@ -15,6 +16,10 @@ const homeQuery = `
         ctaPrimary
         ctaSecondary
         backgroundImage
+      }
+      latestSection {
+        heading
+        viewAllLabel
       }
       featuredSection {
         heading
@@ -33,6 +38,12 @@ const homeQuery = `
         subheading
         browseAllLabel
       }
+      bookPromo {
+        heading
+        description
+        ctaLabel
+        ctaLink
+      }
     }
   }
 `;
@@ -43,9 +54,9 @@ export default function Home() {
   const { data: tutorials } = useListTutorials({ featured: true });
   const { data: gallery } = useListGallery();
 
-  const featuredProducts = Array.isArray(products) ? products.slice(0, 3) : [];
-  const featuredTutorials = Array.isArray(tutorials) ? tutorials.slice(0, 3) : [];
-  const galleryItems = Array.isArray(gallery) ? gallery.slice(0, 6) : [];
+  const featuredProducts = (Array.isArray(products) && products.length > 0 ? products : FALLBACK_PRODUCTS).filter((p) => p.featured).slice(0, 3);
+  const featuredTutorials = (Array.isArray(tutorials) && tutorials.length > 0 ? tutorials : FALLBACK_TUTORIALS.filter((t) => t.featured)).slice(0, 3);
+  const galleryItems = (Array.isArray(gallery) && gallery.length > 0 ? gallery : FALLBACK_GALLERY).slice(0, 6);
 
   const { data } = useTina({
     query: homeQuery,
@@ -79,7 +90,8 @@ export default function Home() {
             <Button
               size="lg"
               onClick={() => setLocation("/shop")}
-              className="bg-orange hover:bg-amber text-white px-8"
+              className="bg-orange hover:bg-amber text-white px-8 cta-bold"
+              data-tina-field={tinaField(content?.hero, "ctaPrimary")}
             >
               {content?.hero?.ctaPrimary || "Explore the Shop"}
             </Button>
@@ -88,6 +100,7 @@ export default function Home() {
               variant="outline"
               onClick={() => setLocation("/tutorials")}
               className="px-8"
+              data-tina-field={tinaField(content?.hero, "ctaSecondary")}
             >
               <Play className="w-4 h-4 mr-2" />
               {content?.hero?.ctaSecondary || "Watch Tutorials"}
@@ -100,12 +113,18 @@ export default function Home() {
       <section className="pb-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-baseline justify-between mb-8">
-            <h2 className="text-2xl font-display">Latest</h2>
+            <h2
+              className="text-2xl font-display"
+              data-tina-field={tinaField(content?.latestSection, "heading")}
+            >
+              {content?.latestSection?.heading || "Latest"}
+            </h2>
             <button
               onClick={() => setLocation("/gallery")}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              data-tina-field={tinaField(content?.latestSection, "viewAllLabel")}
             >
-              View all <ArrowRight className="w-3.5 h-3.5" />
+              {content?.latestSection?.viewAllLabel || "View all"} <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -158,6 +177,7 @@ export default function Home() {
             <button
               onClick={() => setLocation("/shop")}
               className="hidden md:flex text-sm text-muted-foreground hover:text-foreground transition-colors items-center gap-1"
+              data-tina-field={tinaField(content?.featuredSection, "viewAllLabel")}
             >
               {content?.featuredSection?.viewAllLabel || "View All"} <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -168,7 +188,7 @@ export default function Home() {
               ? featuredProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="thumb-card cursor-pointer group"
+                    className="gumroad-card cursor-pointer group"
                     onClick={() => setLocation(`/shop/${product.id}`)}
                   >
                     <div className="aspect-[4/3] overflow-hidden">
@@ -220,6 +240,7 @@ export default function Home() {
             <button
               onClick={() => setLocation("/tutorials")}
               className="hidden md:flex text-sm text-muted-foreground hover:text-foreground transition-colors items-center gap-1"
+              data-tina-field={tinaField(content?.tutorialsSection, "browseAllLabel")}
             >
               {content?.tutorialsSection?.browseAllLabel || "Browse All"} <ArrowRight className="w-3.5 h-3.5" />
             </button>
@@ -228,7 +249,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredTutorials.length > 0
               ? featuredTutorials.map((tutorial) => (
-                  <div key={tutorial.id} className="thumb-card group">
+                  <div key={tutorial.id} className="gumroad-card group">
                     <div className="aspect-video bg-muted">
                       <iframe
                         src={`https://www.youtube.com/embed/${tutorial.youtubeId}`}
@@ -259,29 +280,91 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Book promo CTA band */}
-      <section className="py-12 bg-foreground text-background">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <ShoppingBag className="w-8 h-8 shrink-0 opacity-60" />
-            <div>
-              <h2 className="text-xl md:text-2xl font-display">
-                Lheeloo &amp; Luna — The Book Is Live
-              </h2>
-              <p className="text-sm opacity-70">
-                Corinne's debut illustrated book. Order your copy today.
-              </p>
+      {/* Artist banner */}
+      {content?.artistBanner && (
+        <section className="py-16 bg-secondary/40">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col md:flex-row items-center gap-10 max-w-4xl mx-auto">
+              <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-2 border-border">
+                {content.artistBanner.portraitImage ? (
+                  <img
+                    src={content.artistBanner.portraitImage}
+                    alt={content.artistBanner.heading || "Artist portrait"}
+                    className="w-full h-full object-cover"
+                    data-tina-field={tinaField(content?.artistBanner, "portraitImage")}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-muted">
+                    <User className="w-12 h-12 text-muted-foreground/30" />
+                  </div>
+                )}
+              </div>
+              <div className="text-center md:text-left">
+                {content.artistBanner.badge && (
+                  <span
+                    className="inline-block text-xs uppercase tracking-widest font-bold text-violet bg-violet/10 px-3 py-1 rounded-full mb-3"
+                    data-tina-field={tinaField(content?.artistBanner, "badge")}
+                  >
+                    {content.artistBanner.badge}
+                  </span>
+                )}
+                <h2
+                  className="text-2xl md:text-3xl font-display mb-3"
+                  data-tina-field={tinaField(content?.artistBanner, "heading")}
+                >
+                  {content.artistBanner.heading}
+                </h2>
+                <p
+                  className="text-muted-foreground leading-relaxed mb-5 max-w-lg"
+                  data-tina-field={tinaField(content?.artistBanner, "bio")}
+                >
+                  {content.artistBanner.bio}
+                </p>
+                <Button
+                  variant="outline"
+                  onClick={() => setLocation("/about")}
+                  data-tina-field={tinaField(content?.artistBanner, "ctaLabel")}
+                >
+                  {content.artistBanner.ctaLabel || "Read My Story"} <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             </div>
           </div>
-          <Button
-            size="lg"
-            onClick={() => setLocation("/shop/1")}
-            className="bg-orange hover:bg-amber text-white shrink-0"
-          >
-            Order Now <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Book promo CTA band */}
+      {content?.bookPromo && (
+        <section className="py-12 bg-foreground text-background">
+          <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <ShoppingBag className="w-8 h-8 shrink-0 opacity-60" />
+              <div>
+                <h2
+                  className="text-xl md:text-2xl font-display"
+                  data-tina-field={tinaField(content?.bookPromo, "heading")}
+                >
+                  {content.bookPromo.heading}
+                </h2>
+                <p
+                  className="text-sm opacity-70"
+                  data-tina-field={tinaField(content?.bookPromo, "description")}
+                >
+                  {content.bookPromo.description}
+                </p>
+              </div>
+            </div>
+            <Button
+              size="lg"
+              onClick={() => setLocation(content.bookPromo.ctaLink || "/shop")}
+              className="bg-orange hover:bg-amber text-white shrink-0 cta-bold"
+              data-tina-field={tinaField(content?.bookPromo, "ctaLabel")}
+            >
+              {content.bookPromo.ctaLabel || "Order Now"} <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

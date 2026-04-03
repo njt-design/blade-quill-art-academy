@@ -19,6 +19,9 @@ import Downloads from "@/pages/Downloads";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Cart from "@/pages/Cart";
+import BlogList from "@/pages/BlogList";
+import BlogPost from "@/pages/BlogPost";
+import LandingPage from "@/pages/LandingPage";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -46,6 +49,9 @@ function Router() {
           <Route path="/downloads" component={Downloads} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/blog" component={BlogList} />
+          <Route path="/blog/:slug" component={BlogPost} />
+          <Route path="/p/:slug" component={LandingPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

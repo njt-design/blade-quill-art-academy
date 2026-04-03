@@ -17,7 +17,9 @@ const aboutQuery = `
       skill2Label
       skill3Label
       ctaPrimary
+      ctaPrimaryLink
       ctaSecondary
+      ctaSecondaryLink
     }
   }
 `;
@@ -40,7 +42,7 @@ export default function About() {
 
           <div className="w-full lg:w-2/5 shrink-0">
             <img
-              src={`${import.meta.env.BASE_URL}images/about-portrait.png`}
+              src={content?.portraitImage || `${import.meta.env.BASE_URL}images/about-portrait.png`}
               alt="Corinne working"
               className="w-full rounded-lg border border-border"
               data-tina-field={tinaField(content, "portraitImage")}
@@ -97,10 +99,18 @@ export default function About() {
             </div>
 
             <div className="flex gap-3">
-              <Button onClick={() => setLocation("/contact")} className="bg-orange hover:bg-amber text-white">
+              <Button
+                onClick={() => setLocation(content?.ctaPrimaryLink || "/contact")}
+                className="bg-orange hover:bg-amber text-white cta-bold"
+                data-tina-field={tinaField(content, "ctaPrimary")}
+              >
                 {content?.ctaPrimary || "Get in Touch"}
               </Button>
-              <Button variant="outline" onClick={() => setLocation("/gallery")}>
+              <Button
+                variant="outline"
+                onClick={() => setLocation(content?.ctaSecondaryLink || "/gallery")}
+                data-tina-field={tinaField(content, "ctaSecondary")}
+              >
                 {content?.ctaSecondary || "View Gallery"}
               </Button>
             </div>

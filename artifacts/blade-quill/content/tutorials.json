@@ -1,6 +1,8 @@
 {
   "pageTitle": "Tutorials",
-  "pageDescription": "Learn digital painting with step-by-step video guides covering everything from fundamentals to advanced techniques.",
+  "pageDescription": "Learn digital painting with step-by-step video guides. Topics include learning Krita, tools, brushes, digital painting, character design, animation, vectors, textures, and more.",
   "subscribeLabel": "Subscribe on YouTube",
-  "youtubeUrl": "https://www.youtube.com/@BladeAndQuill"
+  "youtubeUrl": "https://www.youtube.com/c/BladeQuillartacademy",
+  "emptyHeading": "No tutorials found",
+  "emptyDescription": "Visit the YouTube channel for the latest videos."
 }

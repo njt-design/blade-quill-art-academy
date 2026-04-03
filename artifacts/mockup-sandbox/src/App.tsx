@@ -128,8 +128,14 @@ function getPreviewPath(): string | null {
   return match ? match[1] : null;
 }
 
+/** When set (e.g. dedicated dev server), show this mockup at `/` instead of the gallery. */
+function getInitialPreviewFromEnv(): string | null {
+  const v = import.meta.env.VITE_INITIAL_PREVIEW;
+  return typeof v === "string" && v.trim() ? v.trim() : null;
+}
+
 function App() {
-  const previewPath = getPreviewPath();
+  const previewPath = getPreviewPath() ?? getInitialPreviewFromEnv();
 
   if (previewPath) {
     return (
