@@ -1,6 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  useParallaxValue,
+  useScrolledPast,
+  staggerContainer,
+  fadeUp,
+  fadeScale,
+  EDITORIAL_SPRING,
+} from "../../hooks/useScrollSection";
 
-/** Palette-forward: almost-white base; orange / terracotta / purple / sky for pop */
 const THEME = {
   ink: "#43434e",
   inkMuted: "rgba(67, 67, 78, 0.68)",
@@ -52,7 +60,7 @@ function Btn({ children, outline, style }: { children: React.ReactNode; outline?
       type="button"
       style={{
         padding: "14px 28px",
-        borderRadius: "10px",
+        borderRadius: "8px",
         fontFamily: fontBody,
         fontSize: "14px",
         letterSpacing: "0.05em",
@@ -128,6 +136,25 @@ function Carousel() {
 }
 
 export default function EditorialLightHome() {
+  const reduced = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const scrolled = useScrolledPast(60);
+
+  const heroBgY = useParallaxValue(heroRef, [0, 40], { spring: EDITORIAL_SPRING });
+  const heroBgScale = useParallaxValue(heroRef, [1, 1.06], { spring: EDITORIAL_SPRING });
+  const heroRotateX = useParallaxValue(heroRef, [4, 0], { spring: EDITORIAL_SPRING });
+  const heroZ = useParallaxValue(heroRef, [-20, 0], { spring: EDITORIAL_SPRING });
+
+  const aboutPortraitY = useParallaxValue(aboutRef, [0, -18], {
+    offset: ["start end", "end start"],
+    spring: EDITORIAL_SPRING,
+  });
+  const aboutTextY = useParallaxValue(aboutRef, [0, 10], {
+    offset: ["start end", "end start"],
+    spring: EDITORIAL_SPRING,
+  });
+
   return (
     <div
       style={{
@@ -144,6 +171,7 @@ export default function EditorialLightHome() {
         a { color: inherit; text-decoration: none; }
       `}</style>
 
+      {/* === Nav with scroll-density === */}
       <nav
         style={{
           position: "sticky",
@@ -152,13 +180,16 @@ export default function EditorialLightHome() {
           background: THEME.surface,
           borderBottom: `1px solid ${THEME.border}`,
           padding: "0 clamp(24px, 4vw, 48px)",
-          minHeight: "72px",
+          minHeight: scrolled ? "56px" : "72px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "24px",
           flexWrap: "wrap",
-          boxShadow: `0 1px 0 rgba(255,255,255,0.95) inset, 0 4px 20px ${THEME.accentSky}55`,
+          boxShadow: scrolled
+            ? "0 4px 24px rgba(67, 67, 78, 0.12)"
+            : `0 1px 0 rgba(255,255,255,0.95) inset, 0 4px 20px ${THEME.accentSky}55`,
+          transition: "min-height 0.3s ease, box-shadow 0.3s ease",
         }}
       >
         <span
@@ -193,8 +224,17 @@ export default function EditorialLightHome() {
         <Btn>Explore the Shop</Btn>
       </nav>
 
-      <section style={{ position: "relative", padding: "clamp(64px, 12vw, 120px) 48px 80px", overflow: "hidden" }}>
-        <img
+      {/* === Hero with 3D parallax depth === */}
+      <motion.section
+        ref={heroRef}
+        style={{
+          position: "relative",
+          padding: "clamp(64px, 12vw, 120px) 48px 80px",
+          overflow: "hidden",
+          perspective: reduced ? undefined : "1200px",
+        }}
+      >
+        <motion.img
           src={`${BLADE_QUILL_BASE}/images/hero-bg.png`}
           alt=""
           style={{
@@ -204,6 +244,8 @@ export default function EditorialLightHome() {
             height: "100%",
             objectFit: "cover",
             opacity: 0.14,
+            y: reduced ? 0 : heroBgY,
+            scale: reduced ? 1 : heroBgScale,
           }}
         />
         <div
@@ -213,7 +255,17 @@ export default function EditorialLightHome() {
             background: `linear-gradient(180deg, ${THEME.canvas}ee 0%, rgba(144, 224, 249, 0.12) 40%, ${THEME.canvas} 100%)`,
           }}
         />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: "820px", margin: "0 auto", textAlign: "center" }}>
+        <motion.div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            maxWidth: "820px",
+            margin: "0 auto",
+            textAlign: "center",
+            rotateX: reduced ? 0 : heroRotateX,
+            z: reduced ? 0 : heroZ,
+          }}
+        >
           <h1
             style={{
               fontFamily: fontHeading,
@@ -255,11 +307,16 @@ export default function EditorialLightHome() {
             <Btn>Explore the Shop</Btn>
             <Btn outline>Watch Tutorials</Btn>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section style={{ padding: "0 48px 64px" }}>
-        <div
+      {/* === Book promo with 3D settle === */}
+      <section style={{ padding: "0 48px 64px", perspective: reduced ? undefined : "900px" }}>
+        <motion.div
+          initial={reduced ? false : { rotateX: 6, z: -16, opacity: 0 }}
+          whileInView={{ rotateX: 0, z: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
@@ -310,11 +367,16 @@ export default function EditorialLightHome() {
             </div>
           </div>
           <Btn>Order Your Book →</Btn>
-        </div>
+        </motion.div>
       </section>
 
+      {/* === Gallery with staggered reveal === */}
       <section style={{ padding: "80px 48px", background: THEME.canvas }}>
-        <div
+        <motion.div
+          variants={staggerContainer(0.08)}
+          initial={reduced ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
@@ -324,7 +386,7 @@ export default function EditorialLightHome() {
             alignItems: "center",
           }}
         >
-          <div>
+          <motion.div variants={fadeUp()}>
             <div
               style={{
                 display: "inline-flex",
@@ -360,11 +422,14 @@ export default function EditorialLightHome() {
               Browse a curated selection of original digital artworks — from fantastical characters to whimsical scenes. Each piece crafted with Krita.
             </p>
             <Btn outline>View Full Gallery →</Btn>
-          </div>
-          <Carousel />
-        </div>
+          </motion.div>
+          <motion.div variants={fadeUp()}>
+            <Carousel />
+          </motion.div>
+        </motion.div>
       </section>
 
+      {/* === Products with cascade === */}
       <section style={{ padding: "80px 48px", background: THEME.surface, borderTop: `1px solid ${THEME.border}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div
@@ -405,10 +470,17 @@ export default function EditorialLightHome() {
               View All →
             </span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "28px" }}>
+          <motion.div
+            variants={staggerContainer(0.06)}
+            initial={reduced ? false : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "28px" }}
+          >
             {products.map((p) => (
-              <div
+              <motion.div
                 key={p.id}
+                variants={fadeScale()}
                 style={{
                   background: THEME.surface,
                   borderRadius: "14px",
@@ -427,13 +499,14 @@ export default function EditorialLightHome() {
                     <span style={{ color: THEME.primaryPop, fontWeight: 800, fontSize: "17px", flexShrink: 0 }}>${p.price.toFixed(2)}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section style={{ padding: "80px 48px", background: THEME.canvas }}>
+      {/* === About with parallax split === */}
+      <section ref={aboutRef} style={{ padding: "80px 48px", background: THEME.canvas }}>
         <div
           style={{
             maxWidth: "1200px",
@@ -444,7 +517,7 @@ export default function EditorialLightHome() {
             alignItems: "center",
           }}
         >
-          <div style={{ position: "relative" }}>
+          <motion.div style={{ position: "relative", y: reduced ? 0 : aboutPortraitY }}>
             <div
               style={{
                 position: "absolute",
@@ -479,8 +552,8 @@ export default function EditorialLightHome() {
                 }}
               />
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div style={{ y: reduced ? 0 : aboutTextY }}>
             <div
               style={{
                 display: "inline-flex",
@@ -515,10 +588,11 @@ export default function EditorialLightHome() {
               I&apos;m an author, illustrator, and digital art educator. As the creator of Lheeloo & Luna, I love bringing whimsical cartoon characters to life. My passion is helping fellow artists master tools like Krita so they can focus on their creativity, not the technical hurdles.
             </p>
             <Btn outline>Read My Story</Btn>
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* Tutorials */}
       <section style={{ padding: "80px 48px", background: THEME.surface, borderTop: `1px solid ${THEME.border}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "48px" }}>

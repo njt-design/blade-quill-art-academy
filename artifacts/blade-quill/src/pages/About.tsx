@@ -59,7 +59,7 @@ export default function About() {
 
             <div className="reading-width space-y-4 text-muted-foreground">
               <p
-                className="text-lg text-foreground leading-relaxed"
+                className="text-lg font-sans text-foreground leading-relaxed"
                 data-tina-field={tinaField(content, "leadText")}
               >
                 {content?.leadText}

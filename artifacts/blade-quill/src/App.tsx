@@ -22,6 +22,7 @@ import Cart from "@/pages/Cart";
 import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
 import LandingPage from "@/pages/LandingPage";
+import MockupHomePreview from "@/pages/MockupHomePreview";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -33,7 +34,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function Router() {
+function MainLayout() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -57,6 +58,15 @@ function Router() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/preview/:slug" component={MockupHomePreview} />
+      <Route component={MainLayout} />
+    </Switch>
   );
 }
 

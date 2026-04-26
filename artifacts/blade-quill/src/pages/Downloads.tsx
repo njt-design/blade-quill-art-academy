@@ -42,7 +42,7 @@ export default function Downloads() {
             {content?.pageTitle}
           </h1>
           <p
-            className="text-muted-foreground"
+            className="text-base text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}
@@ -79,7 +79,7 @@ export default function Downloads() {
                   </div>
                 )}
                 <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="font-medium text-sm mb-1 group-hover:text-violet transition-colors line-clamp-2">
+                  <h3 className="font-normal text-sm mb-1 group-hover:text-violet transition-colors line-clamp-2">
                     {item.title}
                   </h3>
                   {item.description && (
@@ -102,7 +102,7 @@ export default function Downloads() {
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
             <h3
-              className="text-xl font-display text-muted-foreground mb-2"
+              className="text-xl font-sans text-muted-foreground mb-2"
               data-tina-field={tinaField(content, "emptyHeading")}
             >
               {content?.emptyHeading || "Free resources coming soon!"}

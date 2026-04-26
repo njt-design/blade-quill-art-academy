@@ -1,4 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  useParallaxValue,
+  useScrolledPast,
+  staggerContainer,
+  fadeUp,
+  fadeScale,
+  ELECTRIC_SPRING,
+} from "../../hooks/useScrollSection";
 
 const THEME = {
   bg: "hsl(235, 45%, 5%)",
@@ -41,7 +50,7 @@ function Btn({ children, outline, accent: accentColor, style }: { children: Reac
     <button
       style={{
         padding: "12px 28px",
-        borderRadius: "4px",
+        borderRadius: "64px",
         fontFamily: "'Cinzel', serif",
         fontSize: "13px",
         letterSpacing: "0.1em",
@@ -61,8 +70,19 @@ function Btn({ children, outline, accent: accentColor, style }: { children: Reac
 }
 
 function Divider() {
+  const reduced = useReducedMotion();
   return (
-    <div style={{ height: "1px", background: `linear-gradient(90deg, transparent, ${THEME.primary}66, ${THEME.accent}66, transparent)` }} />
+    <motion.div
+      initial={reduced ? false : { scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      style={{
+        height: "1px",
+        background: `linear-gradient(90deg, transparent, ${THEME.primary}66, ${THEME.accent}66, transparent)`,
+        transformOrigin: "center",
+      }}
+    />
   );
 }
 
@@ -94,15 +114,38 @@ function Carousel() {
 }
 
 export default function ElectricStudioHome() {
+  const reduced = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+  const scrolled = useScrolledPast(60);
+
+  const heroBgY = useParallaxValue(heroRef, [0, 40], { spring: ELECTRIC_SPRING });
+  const heroBgScale = useParallaxValue(heroRef, [1, 1.06], { spring: ELECTRIC_SPRING });
+  const heroRotateX = useParallaxValue(heroRef, [4, 0], { spring: ELECTRIC_SPRING });
+  const heroZ = useParallaxValue(heroRef, [-20, 0], { spring: ELECTRIC_SPRING });
+
   return (
-    <div style={{ background: THEME.bg, color: THEME.fg, fontFamily: "'DM Sans', sans-serif", minHeight: "100vh" }}>
+    <div style={{ background: THEME.bg, color: THEME.fg, fontFamily: "'Poppins', sans-serif", minHeight: "100vh" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
       `}</style>
 
-      {/* Nav */}
-      <nav style={{ position: "sticky", top: 0, zIndex: 100, background: `${THEME.bg}ee`, backdropFilter: "blur(16px)", borderBottom: `1px solid ${THEME.border}`, padding: "0 48px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      {/* === Nav with scroll-density === */}
+      <nav style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        background: `${THEME.bg}ee`,
+        backdropFilter: scrolled ? "blur(22px)" : "blur(16px)",
+        borderBottom: `1px solid ${THEME.border}`,
+        padding: "0 48px",
+        height: scrolled ? "52px" : "64px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        boxShadow: scrolled ? `0 4px 24px ${THEME.primary}18` : "none",
+        transition: "height 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease",
+      }}>
         <span style={{ fontFamily: "'Cinzel', serif", fontSize: "20px", fontWeight: 700, color: THEME.primary, letterSpacing: "0.08em", textShadow: `0 0 20px ${THEME.primary}66` }}>Blade & Quill</span>
         <div style={{ display: "flex", gap: "32px", fontSize: "13px", color: THEME.fgMuted, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.05em" }}>
           {["Shop", "Tutorials", "Gallery", "About"].map(l => (
@@ -112,13 +155,48 @@ export default function ElectricStudioHome() {
         <Btn>Explore the Shop</Btn>
       </nav>
 
-      {/* Hero */}
-      <section style={{ position: "relative", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <img src={`${BLADE_QUILL_BASE}/images/hero-bg.png`} alt="hero" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.2, filter: "hue-rotate(200deg) saturate(2)" }} />
+      {/* === Hero with 3D parallax depth === */}
+      <motion.section
+        ref={heroRef}
+        style={{
+          position: "relative",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          perspective: reduced ? undefined : "1200px",
+        }}
+      >
+        <motion.img
+          src={`${BLADE_QUILL_BASE}/images/hero-bg.png`}
+          alt="hero"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.2,
+            filter: "hue-rotate(200deg) saturate(2)",
+            y: reduced ? 0 : heroBgY,
+            scale: reduced ? 1 : heroBgScale,
+          }}
+        />
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 40%, ${THEME.primary}18 0%, transparent 55%), radial-gradient(ellipse at 70% 60%, ${THEME.accent}14 0%, transparent 45%)` }} />
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 0%, ${THEME.bg} 100%)` }} />
 
-        <div style={{ position: "relative", zIndex: 10, textAlign: "center", maxWidth: "860px", padding: "0 32px" }}>
+        <motion.div
+          style={{
+            position: "relative",
+            zIndex: 10,
+            textAlign: "center",
+            maxWidth: "860px",
+            padding: "0 32px",
+            rotateX: reduced ? 0 : heroRotateX,
+            z: reduced ? 0 : heroZ,
+          }}
+        >
           <div style={{ display: "inline-block", padding: "5px 16px", border: `1px solid ${THEME.primary}44`, borderRadius: "2px", fontSize: "11px", letterSpacing: "0.2em", color: THEME.primary, marginBottom: "32px", textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>
             Digital Art Studio
           </div>
@@ -143,14 +221,20 @@ export default function ElectricStudioHome() {
             <Btn>Explore the Shop</Btn>
             <Btn outline>▶ Watch Tutorials</Btn>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       <Divider />
 
-      {/* Book Banner */}
-      <section style={{ padding: "44px 48px", background: THEME.bgBanner }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "32px", flexWrap: "wrap" }}>
+      {/* === Book Banner with 3D settle === */}
+      <section style={{ padding: "44px 48px", background: THEME.bgBanner, perspective: reduced ? undefined : "900px" }}>
+        <motion.div
+          initial={reduced ? false : { rotateX: 6, z: -16, opacity: 0 }}
+          whileInView={{ rotateX: 0, z: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 120, damping: 18 }}
+          style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "32px", flexWrap: "wrap" }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <div style={{ width: "60px", height: "60px", borderRadius: "8px", background: `${THEME.primary}15`, border: `1px solid ${THEME.primary}33`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "26px", flexShrink: 0, boxShadow: `0 0 20px ${THEME.primary}22` }}>
               📚
@@ -163,15 +247,21 @@ export default function ElectricStudioHome() {
             </div>
           </div>
           <Btn>Order Your Book →</Btn>
-        </div>
+        </motion.div>
       </section>
 
       <Divider />
 
-      {/* Gallery */}
+      {/* === Gallery with staggered reveal === */}
       <section style={{ padding: "96px 48px", background: THEME.bg }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-          <div>
+        <motion.div
+          variants={staggerContainer(0.08)}
+          initial={reduced ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}
+        >
+          <motion.div variants={fadeUp()}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "5px 14px", borderRadius: "2px", background: `${THEME.primary}12`, border: `1px solid ${THEME.primary}33`, fontSize: "11px", color: THEME.primary, marginBottom: "24px", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'JetBrains Mono', monospace" }}>
               🖌 Original Artwork
             </div>
@@ -182,14 +272,16 @@ export default function ElectricStudioHome() {
               Browse a curated selection of original digital artworks — from fantastical characters to whimsical scenes. Each piece crafted with Krita.
             </p>
             <Btn outline>View Full Gallery →</Btn>
-          </div>
-          <Carousel />
-        </div>
+          </motion.div>
+          <motion.div variants={fadeUp()}>
+            <Carousel />
+          </motion.div>
+        </motion.div>
       </section>
 
       <Divider />
 
-      {/* Products */}
+      {/* === Products with cascade === */}
       <section style={{ padding: "96px 48px", background: THEME.bgSection }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "48px", flexWrap: "wrap", gap: "16px" }}>
@@ -199,9 +291,19 @@ export default function ElectricStudioHome() {
             </div>
             <span style={{ color: THEME.primary, cursor: "pointer", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>View All →</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
+          <motion.div
+            variants={staggerContainer(0.06)}
+            initial={reduced ? false : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}
+          >
             {products.map((p) => (
-              <div key={p.id} style={{ background: THEME.bgCard, borderRadius: "8px", overflow: "hidden", border: `1px solid ${THEME.primary}22`, cursor: "pointer", boxShadow: `0 0 0 0 ${THEME.primary}` }}>
+              <motion.div
+                key={p.id}
+                variants={fadeScale()}
+                style={{ background: THEME.bgCard, borderRadius: "8px", overflow: "hidden", border: `1px solid ${THEME.primary}22`, cursor: "pointer", boxShadow: `0 0 0 0 ${THEME.primary}` }}
+              >
                 <div style={{ aspectRatio: "4/3", overflow: "hidden", position: "relative" }}>
                   <img src={p.src} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, ${THEME.bg}88 0%, transparent 50%)` }} />
@@ -212,9 +314,9 @@ export default function ElectricStudioHome() {
                     <span style={{ color: THEME.primary, fontWeight: 700, fontSize: "15px", flexShrink: 0, marginLeft: "8px", textShadow: `0 0 10px ${THEME.primary}66` }}>${p.price.toFixed(2)}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

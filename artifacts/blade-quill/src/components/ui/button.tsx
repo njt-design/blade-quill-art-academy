@@ -27,13 +27,13 @@ export function buttonVariants({
 
   const sizes: Record<string, string> = {
     default: "h-11 px-6 py-2",
-    sm: "h-9 rounded-md px-4 text-xs",
-    lg: "h-14 rounded-lg px-8 text-lg",
+    sm: "h-9 rounded-[16px] px-4 text-xs",
+    lg: "h-14 rounded-[16px] px-8 text-lg",
     icon: "h-11 w-11",
   };
 
   return cn(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium font-sans transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-[16px] font-medium font-sans transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
     variants[variant ?? "default"],
     sizes[size ?? "default"],
     className

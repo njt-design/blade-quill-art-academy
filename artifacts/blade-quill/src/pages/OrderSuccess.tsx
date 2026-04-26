@@ -61,7 +61,7 @@ export default function OrderSuccess() {
 
           {isDigital && (
             <div className="bg-secondary/60 rounded-lg p-5 mb-6 border border-border text-left">
-              <h3 className="font-semibold mb-3">Access Your Purchase</h3>
+              <h3 className="font-normal mb-3">Access Your Purchase</h3>
               {order.downloadUrl ? (
                 <Button className="w-full gap-2 bg-orange hover:bg-amber text-white" onClick={() => window.open(order.downloadUrl as string, "_blank")}>
                   <Download className="w-4 h-4" /> Download Files
@@ -78,7 +78,7 @@ export default function OrderSuccess() {
 
           {!isDigital && (
             <div className="bg-secondary/60 rounded-lg p-5 mb-6 border border-border text-left">
-              <h3 className="font-semibold mb-2">Shipping Information</h3>
+              <h3 className="font-normal mb-2">Shipping Information</h3>
               <p className="text-sm text-muted-foreground">Your item is being prepared for shipment. You'll receive an email when it ships.</p>
             </div>
           )}

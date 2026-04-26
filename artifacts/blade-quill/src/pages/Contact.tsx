@@ -73,7 +73,7 @@ export default function Contact() {
             {content?.pageTitle}
           </h1>
           <p
-            className="text-muted-foreground"
+            className="font-sans text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}

@@ -51,7 +51,7 @@ export default function Cart() {
                 className="w-16 h-16 object-cover rounded shrink-0"
               />
               <div className="flex-grow min-w-0">
-                <h3 className="font-medium text-sm line-clamp-1 mb-0.5">{item.name}</h3>
+                <h3 className="font-normal text-sm line-clamp-1 mb-0.5">{item.name}</h3>
                 <span className="text-xs text-muted-foreground uppercase tracking-wider">
                   {item.category === "physical" ? "Physical" : item.category === "curriculum" ? "Curriculum" : "Digital"}
                 </span>
@@ -84,7 +84,7 @@ export default function Cart() {
         </div>
 
         <div className="border border-border rounded-lg p-5 bg-card space-y-4">
-          <h2 className="text-xl font-display">Summary</h2>
+          <h2 className="text-xl font-heading">Summary</h2>
           {items.map((item) => (
             <div key={item.id} className="flex justify-between text-sm text-muted-foreground">
               <span className="truncate mr-2">{item.name} × {item.quantity}</span>

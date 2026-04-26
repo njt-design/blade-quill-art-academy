@@ -26,7 +26,7 @@ export function Navbar() {
 
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <Feather className="w-5 h-5 text-foreground group-hover:text-amber transition-colors" />
-            <span className="font-display font-bold text-base tracking-widest uppercase text-foreground">
+            <span className="font-display font-normal text-base tracking-widest uppercase text-foreground">
               Blade &amp; Quill
             </span>
           </Link>
@@ -37,7 +37,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-foreground",
+                  "font-sans text-base font-light transition-colors hover:text-foreground",
                   location === link.href ? "text-foreground" : "text-muted-foreground"
                 )}
               >
@@ -50,7 +50,7 @@ export function Navbar() {
             <Button
               size="sm"
               onClick={() => setLocation("/shop")}
-              className="bg-orange hover:bg-amber text-white text-sm h-8 px-4 cta-bold"
+              className="bg-orange hover:bg-amber text-white h-8 px-4 cta-bold"
             >
               Shop
             </Button>
@@ -102,7 +102,7 @@ export function Navbar() {
             href="/shop"
             onClick={() => setIsMobileOpen(false)}
             className={cn(
-              "py-2 text-sm font-medium transition-colors",
+              "py-2 font-sans text-base font-light transition-colors",
               location === "/shop" ? "text-foreground" : "text-muted-foreground"
             )}
           >
@@ -114,7 +114,7 @@ export function Navbar() {
               href={link.href}
               onClick={() => setIsMobileOpen(false)}
               className={cn(
-                "py-2 text-sm font-medium transition-colors",
+                "py-2 font-sans text-base font-light transition-colors",
                 location === link.href ? "text-foreground" : "text-muted-foreground"
               )}
             >

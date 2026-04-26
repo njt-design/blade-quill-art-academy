@@ -71,7 +71,7 @@ export default function BlogList() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-2xl mb-10">
           <h1 className="text-3xl md:text-4xl font-display mb-3">Blog</h1>
-          <p className="text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             News, behind-the-scenes, and art tips from Corinne.
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function BlogList() {
                       ))}
                     </div>
                   )}
-                  <h3 className="font-semibold leading-snug line-clamp-2 mb-1.5 group-hover:text-violet transition-colors">
+                  <h3 className="font-normal leading-snug line-clamp-2 mb-1.5 group-hover:text-violet transition-colors">
                     {post.title}
                   </h3>
                   {post.excerpt && (
@@ -152,7 +152,7 @@ export default function BlogList() {
           </div>
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
-            <h3 className="text-xl font-display text-muted-foreground mb-2">No posts yet</h3>
+            <h3 className="text-xl font-sans text-muted-foreground mb-2">No posts yet</h3>
             <p className="text-sm text-muted-foreground">Check back soon for updates.</p>
           </div>
         )}

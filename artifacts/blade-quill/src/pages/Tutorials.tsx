@@ -68,7 +68,7 @@ export default function Tutorials() {
               {content?.pageTitle}
             </h1>
             <p
-              className="text-muted-foreground"
+              className="text-base text-muted-foreground"
               data-tina-field={tinaField(content, "pageDescription")}
             >
               {content?.pageDescription}
@@ -135,7 +135,7 @@ export default function Tutorials() {
                       {tutorial.topic}
                     </span>
                   )}
-                  <h3 className="font-medium leading-snug line-clamp-2 group-hover:text-violet transition-colors">
+                  <h3 className="font-normal leading-snug line-clamp-2 group-hover:text-violet transition-colors">
                     {tutorial.title}
                   </h3>
                   {tutorial.description && (
@@ -148,7 +148,7 @@ export default function Tutorials() {
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
             <h3
-              className="text-xl font-display text-muted-foreground mb-2"
+              className="text-xl font-sans text-muted-foreground mb-2"
               data-tina-field={tinaField(content, "emptyHeading")}
             >
               {selectedTopic ? `No tutorials for "${selectedTopic}"` : (content?.emptyHeading || "No tutorials found")}

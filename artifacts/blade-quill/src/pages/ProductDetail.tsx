@@ -71,7 +71,7 @@ export default function ProductDetail() {
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-display text-orange">${Number(product.price).toFixed(2)}</span>
+              <span className="text-4xl font-heading text-orange">${Number(product.price).toFixed(2)}</span>
               <span className="text-sm text-muted-foreground">USD</span>
             </div>
 

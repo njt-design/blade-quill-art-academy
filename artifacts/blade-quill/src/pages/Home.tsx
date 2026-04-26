@@ -81,7 +81,7 @@ export default function Home() {
             ))}
           </h1>
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl font-sans text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
             data-tina-field={tinaField(content?.hero, "subheading")}
           >
             {content?.hero?.subheading}
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-baseline justify-between mb-8">
             <h2
-              className="text-2xl font-display"
+              className="text-2xl font-heading"
               data-tina-field={tinaField(content?.latestSection, "heading")}
             >
               {content?.latestSection?.heading || "Latest"}
@@ -162,13 +162,13 @@ export default function Home() {
           <div className="flex items-baseline justify-between mb-8">
             <div>
               <h2
-                className="text-2xl font-display mb-1"
+                className="text-2xl font-heading mb-1"
                 data-tina-field={tinaField(content?.featuredSection, "heading")}
               >
                 {content?.featuredSection?.heading}
               </h2>
               <p
-                className="text-sm text-muted-foreground"
+                className="text-sm font-sans text-muted-foreground"
                 data-tina-field={tinaField(content?.featuredSection, "subheading")}
               >
                 {content?.featuredSection?.subheading}
@@ -200,7 +200,7 @@ export default function Home() {
                     </div>
                     <div className="p-4">
                       <div className="flex justify-between items-start gap-2 mb-1">
-                        <h3 className="font-semibold text-foreground group-hover:text-violet transition-colors line-clamp-1">
+                        <h3 className="font-normal text-foreground group-hover:text-violet transition-colors line-clamp-1">
                           {product.name}
                         </h3>
                         <span className="text-orange font-bold whitespace-nowrap">
@@ -225,13 +225,13 @@ export default function Home() {
             <div>
               <BookOpen className="w-5 h-5 text-muted-foreground mb-2" />
               <h2
-                className="text-2xl font-display mb-1"
+                className="text-2xl font-heading mb-1"
                 data-tina-field={tinaField(content?.tutorialsSection, "heading")}
               >
                 {content?.tutorialsSection?.heading}
               </h2>
               <p
-                className="text-sm text-muted-foreground"
+                className="text-sm font-sans text-muted-foreground"
                 data-tina-field={tinaField(content?.tutorialsSection, "subheading")}
               >
                 {content?.tutorialsSection?.subheading}
@@ -265,7 +265,7 @@ export default function Home() {
                           {tutorial.topic}
                         </span>
                       )}
-                      <h3 className="font-medium leading-snug line-clamp-2 group-hover:text-violet transition-colors">
+                      <h3 className="font-normal leading-snug line-clamp-2 group-hover:text-violet transition-colors">
                         {tutorial.title}
                       </h3>
                     </div>
@@ -309,13 +309,13 @@ export default function Home() {
                   </span>
                 )}
                 <h2
-                  className="text-2xl md:text-3xl font-display mb-3"
+                  className="text-2xl md:text-3xl font-heading mb-3"
                   data-tina-field={tinaField(content?.artistBanner, "heading")}
                 >
                   {content.artistBanner.heading}
                 </h2>
                 <p
-                  className="text-muted-foreground leading-relaxed mb-5 max-w-lg"
+                  className="font-sans text-muted-foreground leading-relaxed mb-5 max-w-lg"
                   data-tina-field={tinaField(content?.artistBanner, "bio")}
                 >
                   {content.artistBanner.bio}
@@ -341,13 +341,13 @@ export default function Home() {
               <ShoppingBag className="w-8 h-8 shrink-0 opacity-60" />
               <div>
                 <h2
-                  className="text-xl md:text-2xl font-display"
+                  className="text-xl md:text-2xl font-heading"
                   data-tina-field={tinaField(content?.bookPromo, "heading")}
                 >
                   {content.bookPromo.heading}
                 </h2>
                 <p
-                  className="text-sm opacity-70"
+                  className="text-sm font-sans opacity-70"
                   data-tina-field={tinaField(content?.bookPromo, "description")}
                 >
                   {content.bookPromo.description}

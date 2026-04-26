@@ -54,8 +54,20 @@ export default defineConfig({
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
+      /** Homepage mockups shared with `artifacts/mockup-sandbox` */
+      "@mockups": path.resolve(
+        import.meta.dirname,
+        "..",
+        "mockup-sandbox",
+        "src",
+        "components",
+        "mockups",
+      ),
     },
-    dedupe: ["react", "react-dom"],
+    dedupe: ["react", "react-dom", "framer-motion"],
+  },
+  optimizeDeps: {
+    include: ["framer-motion"],
   },
   root: path.resolve(import.meta.dirname),
   build: {
@@ -68,6 +80,10 @@ export default defineConfig({
     allowedHosts: true,
     fs: {
       strict: true,
+      allow: [
+        path.resolve(import.meta.dirname),
+        path.resolve(import.meta.dirname, "..", "mockup-sandbox"),
+      ],
       deny: ["**/.*"],
     },
     proxy: {

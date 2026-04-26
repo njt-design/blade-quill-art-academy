@@ -17,7 +17,7 @@ export default function CtaBandBlock({ block }: Props) {
         <div>
           {block.heading && (
             <h2
-              className="text-xl md:text-2xl font-display mb-1"
+              className="text-xl md:text-2xl font-heading mb-1"
               data-tina-field={tinaField(block, "heading")}
             >
               {block.heading as string}
@@ -25,7 +25,7 @@ export default function CtaBandBlock({ block }: Props) {
           )}
           {block.description && (
             <p
-              className={`text-sm ${isDark ? "opacity-70" : "text-muted-foreground"}`}
+              className={`text-sm font-sans ${isDark ? "opacity-70" : "text-muted-foreground"}`}
               data-tina-field={tinaField(block, "description")}
             >
               {block.description as string}

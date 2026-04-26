@@ -18,7 +18,7 @@ export default function ImageGalleryBlock({ block }: Props) {
       <div className="container mx-auto px-4 md:px-6">
         {block.heading && (
           <h2
-            className="text-2xl md:text-3xl font-display mb-8"
+            className="text-2xl md:text-3xl font-heading mb-8"
             data-tina-field={tinaField(block, "heading")}
           >
             {block.heading as string}

@@ -41,7 +41,7 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
           className="max-w-full max-h-[85vh] object-contain rounded-lg"
         />
         <div className="mt-3 text-center">
-          <h3 className="text-white font-medium">{item.title}</h3>
+          <h3 className="text-white font-normal">{item.title}</h3>
           {item.description && (
             <p className="text-white/60 text-sm mt-1">{item.description}</p>
           )}
@@ -70,7 +70,7 @@ function GalleryImage({ item, onClick }: { item: GalleryItem; onClick: () => voi
         <div className="aspect-[3/4] bg-muted animate-pulse" />
       )}
       <div className="hover-overlay">
-        <h3 className="text-white font-medium text-sm">{item.title}</h3>
+        <h3 className="text-white font-normal text-sm">{item.title}</h3>
         {item.description && (
           <p className="text-white/70 text-xs mt-0.5">{item.description}</p>
         )}
@@ -107,7 +107,7 @@ export default function Gallery() {
             {content?.pageTitle}
           </h1>
           <p
-            className="text-muted-foreground"
+            className="text-base text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}
@@ -133,7 +133,7 @@ export default function Gallery() {
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
             <h3
-              className="text-xl font-display text-muted-foreground mb-2"
+              className="text-xl font-sans text-muted-foreground mb-2"
               data-tina-field={tinaField(content, "emptyHeading")}
             >
               {content?.emptyHeading || "Gallery is empty"}

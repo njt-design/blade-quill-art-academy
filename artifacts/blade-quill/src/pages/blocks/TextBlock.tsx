@@ -11,7 +11,7 @@ export default function TextBlock({ block }: Props) {
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         {block.heading && (
           <h2
-            className="text-2xl md:text-3xl font-display mb-6"
+            className="text-2xl md:text-3xl font-heading mb-6"
             data-tina-field={tinaField(block, "heading")}
           >
             {block.heading as string}

@@ -51,7 +51,7 @@ export function Footer() {
             <div className="max-w-sm">
               <div className="flex items-center gap-2 mb-3">
                 <Feather className="w-4 h-4 text-foreground" />
-                <span className="font-display font-bold text-sm tracking-widest uppercase text-foreground">
+                <span className="font-display font-normal text-base tracking-widest uppercase text-foreground">
                   Blade &amp; Quill
                 </span>
               </div>
@@ -60,23 +60,44 @@ export function Footer() {
               </p>
             </div>
 
-            <div className="flex gap-12 text-sm">
+            <div className="flex flex-wrap gap-10 md:gap-12">
               <div>
-                <h4 className="font-semibold text-foreground mb-3">Pages</h4>
+                <h4 className="font-normal text-foreground mb-3">Pages</h4>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li><Link href="/shop" className="hover:text-foreground transition-colors">Shop</Link></li>
-                  <li><Link href="/gallery" className="hover:text-foreground transition-colors">Gallery</Link></li>
-                  <li><Link href="/tutorials" className="hover:text-foreground transition-colors">Tutorials</Link></li>
-                  <li><Link href="/downloads" className="hover:text-foreground transition-colors">Downloads</Link></li>
+                  <li><Link href="/shop" className="text-sm hover:text-foreground transition-colors">Shop</Link></li>
+                  <li><Link href="/gallery" className="text-sm hover:text-foreground transition-colors">Gallery</Link></li>
+                  <li><Link href="/tutorials" className="text-sm hover:text-foreground transition-colors">Tutorials</Link></li>
+                  <li><Link href="/downloads" className="text-sm hover:text-foreground transition-colors">Downloads</Link></li>
                   <li>
-                    <Link href="/contact" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                    <Link href="/contact" className="inline-flex items-center gap-1.5 text-sm hover:text-foreground transition-colors">
                       <Mail className="w-3.5 h-3.5" /> Contact
                     </Link>
                   </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-3">Connect</h4>
+                <h4 className="font-normal text-foreground mb-3">Homepage styles</h4>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>
+                    <Link
+                      href="/preview/editorial-light"
+                      className="text-sm hover:text-foreground transition-colors"
+                    >
+                      Editorial Light
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/preview/electric-studio"
+                      className="text-sm hover:text-foreground transition-colors"
+                    >
+                      Electric Studio Home
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-normal text-foreground mb-3">Connect</h4>
                 <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
                   <a
                     href="https://www.youtube.com/c/BladeQuillartacademy"
@@ -153,7 +174,7 @@ export function Footer() {
       <Dialog open={adminOpen} onOpenChange={handleOpenChange}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-display text-xl">Admin Access</DialogTitle>
+            <DialogTitle className="font-heading text-xl">Admin Access</DialogTitle>
             <DialogDescription>Enter the admin password to access the content editor.</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleAdminSubmit} className="space-y-4 mt-2">

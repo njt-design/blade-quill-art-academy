@@ -87,7 +87,7 @@ export default function Shop() {
             {content?.pageTitle}
           </h1>
           <p
-            className="text-muted-foreground"
+            className="text-base text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
             {content?.pageDescription}
@@ -149,7 +149,7 @@ export default function Shop() {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="font-semibold mb-1 group-hover:text-violet transition-colors line-clamp-1">
+                  <h3 className="font-normal mb-1 group-hover:text-violet transition-colors line-clamp-1">
                     {product.name}
                   </h3>
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-grow">
@@ -166,7 +166,7 @@ export default function Shop() {
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
             <h3
-              className="text-xl font-display text-muted-foreground mb-2"
+              className="text-xl font-sans text-muted-foreground mb-2"
               data-tina-field={tinaField(content, "emptyHeading")}
             >
               {content?.emptyHeading || "No products found"}

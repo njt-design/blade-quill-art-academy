@@ -143,7 +143,7 @@ export default function BlogPost() {
 
         {post.excerpt && (
           <p
-            className="text-lg text-muted-foreground mb-8 leading-relaxed"
+            className="text-lg font-sans text-muted-foreground mb-8 leading-relaxed"
             data-tina-field={tinaField(post, "excerpt")}
           >
             {post.excerpt as string}

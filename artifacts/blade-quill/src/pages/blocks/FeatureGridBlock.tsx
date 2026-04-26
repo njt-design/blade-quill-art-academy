@@ -25,7 +25,7 @@ export default function FeatureGridBlock({ block }: Props) {
       <div className="container mx-auto px-4 md:px-6">
         {block.heading && (
           <h2
-            className="text-2xl md:text-3xl font-display mb-8 text-center"
+            className="text-2xl md:text-3xl font-heading mb-8 text-center"
             data-tina-field={tinaField(block, "heading")}
           >
             {block.heading as string}
@@ -38,7 +38,7 @@ export default function FeatureGridBlock({ block }: Props) {
               <div key={i} className="text-center p-6 rounded-lg border border-border/50 bg-card">
                 {Icon && <Icon className="w-8 h-8 text-orange mx-auto mb-3" />}
                 {item.title && (
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <h3 className="font-normal mb-2">{item.title}</h3>
                 )}
                 {item.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed">

@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: 'Source Sans 3', system-ui, sans-serif;
-  --font-display: 'Cinzel', serif;
+  /* Light text uses weight 300 so the Gill Sans Light cut is used where the OS provides it */
+  --font-sans: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  --font-heading: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+  --font-display: 'Young Serif', Georgia, 'Times New Roman', serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -22,28 +24,30 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-amber: #ffbd59;
-  --color-orange: #ff914d;
-  --color-violet: #8c52ff;
+  --color-charcoal: #43434d;
+  --color-rose: #b26567;
+  --color-amber: #f5bf69;
+  --color-orange: #b26567;
+  --color-violet: #8455f6;
 }
 
 :root {
-  --background: 40 33% 96%;
-  --card: 40 20% 99%;
-  --secondary: 40 18% 93%;
-  --muted: 40 10% 90%;
-  --border: 40 10% 84%;
+  --background: 0 0% 98%;
+  --card: 0 0% 100%;
+  --secondary: 37 88% 94%;
+  --muted: 240 7% 92%;
+  --border: 240 7% 82%;
 
-  --foreground: 240 8% 20%;
-  --card-foreground: 240 8% 18%;
-  --secondary-foreground: 240 8% 25%;
-  --muted-foreground: 240 4% 50%;
+  --foreground: 240 7% 28%;
+  --card-foreground: 240 7% 24%;
+  --secondary-foreground: 240 7% 28%;
+  --muted-foreground: 240 4% 48%;
 
-  --primary: 36 100% 67%;
+  --primary: 358 33% 55%;
   --primary-foreground: 0 0% 100%;
-  --ring: 36 100% 67%;
+  --ring: 358 33% 55%;
 
-  --accent: 265 100% 66%;
+  --accent: 258 90% 65%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 50% 50%;
@@ -55,23 +59,24 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased font-sans;
-    font-size: 16px;
-    line-height: 1.65;
+    @apply bg-background text-foreground antialiased font-sans font-light;
   }
 
-  h1, h2, h3 {
+  h1 {
     font-family: var(--font-display);
-    @apply font-semibold tracking-wide text-foreground;
+    @apply font-normal tracking-normal;
     line-height: 1.2;
   }
-  h4, h5, h6 {
-    @apply font-semibold text-foreground;
+
+  h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-normal tracking-normal;
+    line-height: 1.2;
   }
 
   ::selection {
-    background: hsl(36 100% 67% / 0.2);
-    color: hsl(240 8% 15%);
+    background: hsl(258 90% 65% / 0.18);
+    color: hsl(240 7% 28%);
   }
 
   ::-webkit-scrollbar { width: 8px; }
@@ -81,6 +86,11 @@
 }
 
 @layer utilities {
+  /* Secondary lines under page/section titles — Gill Sans Light (same as body) */
+  .font-subheading {
+    @apply font-sans font-light;
+  }
+
   .reading-width {
     max-width: 65ch;
   }
