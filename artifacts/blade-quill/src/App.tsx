@@ -7,6 +7,7 @@ import { CartProvider } from "@/hooks/useCart";
 // Layout
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PageTurnOverlay } from "@/components/site/PageTurnOverlay";
 
 // Pages
 import Home from "@/pages/Home";
@@ -14,7 +15,6 @@ import Shop from "@/pages/Shop";
 import ProductDetail from "@/pages/ProductDetail";
 import OrderSuccess from "@/pages/OrderSuccess";
 import Gallery from "@/pages/Gallery";
-import Tutorials from "@/pages/Tutorials";
 import Downloads from "@/pages/Downloads";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -22,7 +22,9 @@ import Cart from "@/pages/Cart";
 import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
 import LandingPage from "@/pages/LandingPage";
+import ImportantLinksPage from "@/pages/ImportantLinksPage";
 import MockupHomePreview from "@/pages/MockupHomePreview";
+import DesignSystem from "@/pages/DesignSystem";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -36,9 +38,9 @@ const queryClient = new QueryClient({
 
 function MainLayout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen page">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-[72px]">
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/shop" component={Shop} />
@@ -46,7 +48,6 @@ function MainLayout() {
           <Route path="/shop/:id" component={ProductDetail} />
           <Route path="/cart" component={Cart} />
           <Route path="/gallery" component={Gallery} />
-          <Route path="/tutorials" component={Tutorials} />
           <Route path="/downloads" component={Downloads} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
@@ -64,7 +65,9 @@ function MainLayout() {
 function Router() {
   return (
     <Switch>
+      <Route path="/important-links-page" component={ImportantLinksPage} />
       <Route path="/preview/:slug" component={MockupHomePreview} />
+      <Route path="/design-system" component={DesignSystem} />
       <Route component={MainLayout} />
     </Switch>
   );
@@ -77,6 +80,7 @@ function App() {
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Router />
+            <PageTurnOverlay />
           </WouterRouter>
           <Toaster />
         </TooltipProvider>

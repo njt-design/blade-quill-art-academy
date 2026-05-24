@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @workspace/blade-quill run build:static",
+  "outputDirectory": "artifacts/blade-quill/dist/public",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
+      "destination": "/important-links-page"
+    },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ]
+}
