@@ -63,6 +63,14 @@ function MainLayout() {
 }
 
 function Router() {
+  // Lock the newrelease subdomain to the Important Links landing page only.
+  if (
+    typeof window !== "undefined" &&
+    window.location.hostname === "newrelease.bladeandquillartacademy.com"
+  ) {
+    return <ImportantLinksPage />;
+  }
+
   return (
     <Switch>
       <Route path="/important-links-page" component={ImportantLinksPage} />

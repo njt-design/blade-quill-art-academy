@@ -4,6 +4,14 @@
   "buildCommand": "pnpm --filter @workspace/blade-quill run build:static",
   "outputDirectory": "artifacts/blade-quill/dist/public",
   "framework": null,
+  "redirects": [
+    {
+      "source": "/((?!assets/).+)",
+      "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
