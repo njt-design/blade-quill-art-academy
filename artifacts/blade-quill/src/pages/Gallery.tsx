@@ -80,7 +80,9 @@ function GalleryImage({ item, onClick }: { item: GalleryItem; onClick: () => voi
 }
 
 export default function Gallery() {
-  const { data: galleryItems, isLoading } = useListGallery();
+  const { data: galleryItems, isLoading } = useListGallery(undefined, {
+    query: { enabled: import.meta.env.PROD },
+  });
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
   const { data } = useTina({

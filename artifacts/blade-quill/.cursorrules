@@ -1,0 +1,102 @@
+# Blade & Quill — Cursor working rules
+
+You are working inside the Blade & Quill Art Academy website project (`artifacts/blade-quill/`). This is Corinne Hadaway's redesign — an art-education site with shop, gallery, downloads, blog, and YouTube-led tutorials.
+
+**Read `BLADE_AND_QUILL.md` in this folder** for brand context, site map, owner notes, and decisions. Prefer that file over chat history when they conflict.
+
+The design system is in active iteration. Nothing is locked. Prefer reversible changes; flag when you're about to make something hard to undo.
+
+---
+
+## Stack
+
+- **Vite + React (TS)**, port 3001
+- **Tailwind v4** — uses the new `@theme inline` syntax in `src/index.css`. Do NOT scaffold a `tailwind.config.{js,ts}` file; v4 doesn't use one for theme.
+- **shadcn/ui** in the *new-york* style, *neutral* base. Primitives live in `src/components/ui/`. Don't modify those files unless updating to the latest shadcn version — they're regenerable.
+- **TinaCMS** for content (running at port 4001 in dev), **Wouter** for routing
+- **next-themes** is installed for dark-mode wiring
+- Hosted on Replit (Replit Vite plugins are in `vite.config.ts`)
+
+## Design system source of truth
+
+The single source of truth for tokens is the `@theme inline` block + `:root` and `.dark` selectors in `src/index.css`. The foundations doc and `tokens.json` (in the Cowork workspace) are reference materials, not the build input — keep them in sync manually for now.
+
+When asked to add or change a color, type, spacing, or radius value, **edit `src/index.css` directly**. Don't introduce a separate `tailwind.config.ts` or a `theme.ts` file — that fragments the source.
+
+## Color rules
+
+- **Semantic tokens are the default.** Use `bg-background`, `text-foreground`, `border-border`, `bg-card`, `text-muted-foreground`, etc.
+- **Brand tokens** (`text-charcoal`, `text-rose`, `text-orange`, `text-amber`, `text-violet`, `bg-cream`) are allowed for explicit, intentional brand moments. Examples: price badges (orange), section dividers (cream), illustration accents (amber).
+- **Raw hex values are forbidden** in TSX/JSX. If you need a color that isn't in the system, add it to `index.css` first, then use the new token.
+- **Never use Tailwind's default color palette** (`bg-red-500`, `text-blue-600`, etc.). Use semantic or brand tokens.
+
+## Typography rules
+
+- **Body** uses `font-sans` (Quicksand) at `font-light` (300) by default. If text reads too thin, bump to `font-normal` (400) — don't add new weights.
+- **Headings** use `font-sans` at `font-medium` (500) or `font-normal` (400), with `tracking-normal` and `leading-tight`. Use the existing pattern in `@layer base h1-h6` rules.
+- **Display** (`font-display`, Young Serif) is reserved for `<h1>`. Do not use it for other text.
+- Loading new fonts requires updating `index.html`, not adding new `@import` rules in CSS.
+
+## Dark mode
+
+- Dark mode is supported via a `.dark` class on `<html>` or `<body>`. Toggle should write to `localStorage` and respect `prefers-color-scheme` on first load.
+- When writing new components, never hardcode colors that wouldn't translate to dark mode. If a component looks different in dark, that's a token issue — fix the token, not the component.
+- Use `next-themes` (already installed) for the toggle wiring rather than hand-rolling.
+
+## Components
+
+- Custom B&Q components live in `src/components/blade-quill/` (create the folder when you first add one).
+- shadcn primitives live in `src/components/ui/`.
+- Layout components live in `src/components/layout/`.
+- Page blocks (for landing pages) live in `src/pages/blocks/`.
+- Use **`class-variance-authority`** (already installed) for component variants. Don't roll a custom variants helper.
+- Use **`clsx` + `cn` from `@/lib/utils`** for conditional classNames. There's an existing `cn` helper — use it.
+- Prefer composition over props explosion. A `Card` with `<Card.Header>`, `<Card.Body>`, `<Card.Footer>` beats a `Card` with twelve boolean props.
+
+## Existing utility classes worth knowing about
+
+These live in `src/index.css` under `@layer utilities` and represent real, named patterns:
+
+- `.gumroad-card` — primary product/content card, white surface, 4px hover lift
+- `.thumb-card` — lighter grid card, 2px hover lift
+- `.tag-pill`, `.tag-pill-active`, `.tag-pill-inactive` — category/filter pills
+- `.cta-bold` — primary CTA button treatment
+- `.dl-btn` — download button (full-width, scales on click)
+- `.hover-overlay` — gallery hover gradient
+- `.price-badge` — bold orange price (uses `text-orange` — make sure `--color-orange` is the true orange `#e07b3a`, not rose)
+- `.reading-width` — 65ch container for long-form prose
+
+When promoting one of these to a React component, **keep the utility class as a fallback** for content authors using TinaCMS or marketing-page authoring. The React component is the typed version; the utility class is the escape hatch.
+
+## Motion
+
+- House easing curve: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` — use this for all transitions unless there's a specific reason not to.
+- Durations: 150ms (fast), 200ms (base), 300ms (smooth), 350ms (slow), 400ms (slower). Don't introduce new durations without reason.
+- Hover lifts: 1–4px translate-Y, paired with a corresponding shadow.
+
+## Accessibility
+
+- Run a contrast check (4.5:1 AA normal, 3:1 AA large) on any new color combination.
+- Focus rings use `--ring` (which equals primary). Don't remove focus rings — restyle them.
+- All interactive elements need a hover, focus, and active state.
+- Buttons, links, and form controls should have a minimum tap target of 44×44px on mobile.
+
+## File naming
+
+- React components: `PascalCase.tsx`
+- Hooks: `camelCase.ts` starting with `use`
+- Utilities: `kebab-case.ts`
+- Pages live in `src/pages/PascalCase.tsx`
+- Blocks live in `src/pages/blocks/PascalCaseBlock.tsx`
+
+## When making structural changes
+
+- Don't introduce new tooling (Style Dictionary, Storybook, etc.) without flagging first. The user has said the system is not locked yet — keep changes lightweight and reversible.
+- Don't move files between folders without flagging. Imports across the codebase will break.
+- Don't add new top-level dependencies without flagging. `package.json` already pulls from a workspace catalog — adding deps requires touching the parent workspace.
+
+## When you're unsure
+
+- Reference `foundations.html` in the parent Cowork workspace for the visual canon.
+- Reference `tokens.json` in the parent Cowork workspace for the token reference.
+- Ask before locking design decisions. The four open issues (orange, Inter, font choice, dark mode) have been resolved as of 2026-04-26 — the rest of the system is still negotiable.

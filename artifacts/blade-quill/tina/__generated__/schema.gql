@@ -58,6 +58,8 @@ type Query {
   homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
   about(relativePath: String): About!
   aboutConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AboutFilter): AboutConnection!
+  importantLinks(relativePath: String): ImportantLinks!
+  importantLinksConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ImportantLinksFilter): ImportantLinksConnection!
   contact(relativePath: String): Contact!
   contactConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ContactFilter): ContactConnection!
   shop(relativePath: String): Shop!
@@ -68,6 +70,8 @@ type Query {
   tutorialsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialsFilter): TutorialsConnection!
   downloads(relativePath: String): Downloads!
   downloadsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DownloadsFilter): DownloadsConnection!
+  shopProduct(relativePath: String): ShopProduct!
+  shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
   post(relativePath: String): Post!
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
   landingPage(relativePath: String): LandingPage!
@@ -77,11 +81,13 @@ type Query {
 input DocumentFilter {
   home: HomeFilter
   about: AboutFilter
+  importantLinks: ImportantLinksFilter
   contact: ContactFilter
   shop: ShopFilter
   gallery: GalleryFilter
   tutorials: TutorialsFilter
   downloads: DownloadsFilter
+  shopProduct: ShopProductFilter
   post: PostFilter
   landingPage: LandingPageFilter
 }
@@ -109,7 +115,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Home | About | Contact | Shop | Gallery | Tutorials | Downloads | Post | LandingPage | Folder
+union DocumentNode = Home | About | ImportantLinks | Contact | Shop | Gallery | Tutorials | Downloads | ShopProduct | Post | LandingPage | Folder
 
 type HomeHero {
   heading: String
@@ -144,6 +150,32 @@ type HomeTutorialsSection {
   browseAllLabel: String
 }
 
+type HomeClassesSection {
+  eyebrow: String
+  heading: String
+  subheading: String
+  body: String
+  bullets: [String]
+  ctaLabel: String
+  ctaLink: String
+  metaTags: String
+  image: String
+}
+
+type HomeBlogSection {
+  heading: String
+  subheading: String
+  viewAllLabel: String
+}
+
+type HomeNewsletterSection {
+  heading: String
+  subheading: String
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
 type HomeBookPromo {
   heading: String
   description: String
@@ -157,6 +189,9 @@ type Home implements Node & Document {
   featuredSection: HomeFeaturedSection
   artistBanner: HomeArtistBanner
   tutorialsSection: HomeTutorialsSection
+  classesSection: HomeClassesSection
+  blogSection: HomeBlogSection
+  newsletterSection: HomeNewsletterSection
   bookPromo: HomeBookPromo
   id: ID!
   _sys: SystemInfo!
@@ -210,6 +245,32 @@ input HomeTutorialsSectionFilter {
   browseAllLabel: StringFilter
 }
 
+input HomeClassesSectionFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: StringFilter
+  body: StringFilter
+  bullets: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  metaTags: StringFilter
+  image: ImageFilter
+}
+
+input HomeBlogSectionFilter {
+  heading: StringFilter
+  subheading: StringFilter
+  viewAllLabel: StringFilter
+}
+
+input HomeNewsletterSectionFilter {
+  heading: StringFilter
+  subheading: StringFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
 input HomeBookPromoFilter {
   heading: StringFilter
   description: StringFilter
@@ -223,6 +284,9 @@ input HomeFilter {
   featuredSection: HomeFeaturedSectionFilter
   artistBanner: HomeArtistBannerFilter
   tutorialsSection: HomeTutorialsSectionFilter
+  classesSection: HomeClassesSectionFilter
+  blogSection: HomeBlogSectionFilter
+  newsletterSection: HomeNewsletterSectionFilter
   bookPromo: HomeBookPromoFilter
 }
 
@@ -279,6 +343,96 @@ type AboutConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [AboutConnectionEdges]
+}
+
+type ImportantLinksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: String
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type ImportantLinksReviewsSection {
+  heading: String
+  intro: String
+  thankYou: String
+  ctaHeading: String
+}
+
+type ImportantLinksReviewLinks {
+  label: String!
+  href: String!
+  region: String
+}
+
+type ImportantLinksKofiSection {
+  heading: String
+  body: String
+  ctaLabel: String
+  href: String
+}
+
+type ImportantLinks implements Node & Document {
+  pageTitle: String
+  featuredRelease: ImportantLinksFeaturedRelease
+  reviewsSection: ImportantLinksReviewsSection
+  reviewLinks: [ImportantLinksReviewLinks]
+  kofiSection: ImportantLinksKofiSection
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input ImportantLinksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: StringFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input ImportantLinksReviewsSectionFilter {
+  heading: StringFilter
+  intro: StringFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+}
+
+input ImportantLinksReviewLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input ImportantLinksKofiSectionFilter {
+  heading: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+}
+
+input ImportantLinksFilter {
+  pageTitle: StringFilter
+  featuredRelease: ImportantLinksFeaturedReleaseFilter
+  reviewsSection: ImportantLinksReviewsSectionFilter
+  reviewLinks: ImportantLinksReviewLinksFilter
+  kofiSection: ImportantLinksKofiSectionFilter
+}
+
+type ImportantLinksConnectionEdges {
+  cursor: String!
+  node: ImportantLinks
+}
+
+type ImportantLinksConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ImportantLinksConnectionEdges]
 }
 
 type Contact implements Node & Document {
@@ -425,6 +579,71 @@ type DownloadsConnection implements Connection {
   edges: [DownloadsConnectionEdges]
 }
 
+type ShopProduct implements Node & Document {
+  productId: Float!
+  name: String!
+  description: String
+  price: Float!
+  category: String!
+  image: String
+  gumroadUrl: String
+  downloadUrl: String
+  featured: Boolean
+  inStock: Boolean
+  createdAt: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input ShopProductFilter {
+  productId: NumberFilter
+  name: StringFilter
+  description: StringFilter
+  price: NumberFilter
+  category: StringFilter
+  image: ImageFilter
+  gumroadUrl: StringFilter
+  downloadUrl: StringFilter
+  featured: BooleanFilter
+  inStock: BooleanFilter
+  createdAt: DatetimeFilter
+}
+
+type ShopProductConnectionEdges {
+  cursor: String!
+  node: ShopProduct
+}
+
+type ShopProductConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ShopProductConnectionEdges]
+}
+
 type Post implements Node & Document {
   title: String!
   excerpt: String
@@ -435,14 +654,6 @@ type Post implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
 }
 
 input RichTextFilter {
@@ -612,6 +823,8 @@ type Mutation {
   createHome(relativePath: String!, params: HomeMutation!): Home!
   updateAbout(relativePath: String!, params: AboutMutation!): About!
   createAbout(relativePath: String!, params: AboutMutation!): About!
+  updateImportantLinks(relativePath: String!, params: ImportantLinksMutation!): ImportantLinks!
+  createImportantLinks(relativePath: String!, params: ImportantLinksMutation!): ImportantLinks!
   updateContact(relativePath: String!, params: ContactMutation!): Contact!
   createContact(relativePath: String!, params: ContactMutation!): Contact!
   updateShop(relativePath: String!, params: ShopMutation!): Shop!
@@ -622,6 +835,8 @@ type Mutation {
   createTutorials(relativePath: String!, params: TutorialsMutation!): Tutorials!
   updateDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
   createDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
+  updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
+  createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   updatePost(relativePath: String!, params: PostMutation!): Post!
   createPost(relativePath: String!, params: PostMutation!): Post!
   updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
@@ -631,11 +846,13 @@ type Mutation {
 input DocumentUpdateMutation {
   home: HomeMutation
   about: AboutMutation
+  importantLinks: ImportantLinksMutation
   contact: ContactMutation
   shop: ShopMutation
   gallery: GalleryMutation
   tutorials: TutorialsMutation
   downloads: DownloadsMutation
+  shopProduct: ShopProductMutation
   post: PostMutation
   landingPage: LandingPageMutation
   relativePath: String
@@ -644,11 +861,13 @@ input DocumentUpdateMutation {
 input DocumentMutation {
   home: HomeMutation
   about: AboutMutation
+  importantLinks: ImportantLinksMutation
   contact: ContactMutation
   shop: ShopMutation
   gallery: GalleryMutation
   tutorials: TutorialsMutation
   downloads: DownloadsMutation
+  shopProduct: ShopProductMutation
   post: PostMutation
   landingPage: LandingPageMutation
 }
@@ -686,6 +905,32 @@ input HomeTutorialsSectionMutation {
   browseAllLabel: String
 }
 
+input HomeClassesSectionMutation {
+  eyebrow: String
+  heading: String
+  subheading: String
+  body: String
+  bullets: [String]
+  ctaLabel: String
+  ctaLink: String
+  metaTags: String
+  image: String
+}
+
+input HomeBlogSectionMutation {
+  heading: String
+  subheading: String
+  viewAllLabel: String
+}
+
+input HomeNewsletterSectionMutation {
+  heading: String
+  subheading: String
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
 input HomeBookPromoMutation {
   heading: String
   description: String
@@ -699,6 +944,9 @@ input HomeMutation {
   featuredSection: HomeFeaturedSectionMutation
   artistBanner: HomeArtistBannerMutation
   tutorialsSection: HomeTutorialsSectionMutation
+  classesSection: HomeClassesSectionMutation
+  blogSection: HomeBlogSectionMutation
+  newsletterSection: HomeNewsletterSectionMutation
   bookPromo: HomeBookPromoMutation
 }
 
@@ -715,6 +963,44 @@ input AboutMutation {
   ctaPrimaryLink: String
   ctaSecondary: String
   ctaSecondaryLink: String
+}
+
+input ImportantLinksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: String
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input ImportantLinksReviewsSectionMutation {
+  heading: String
+  intro: String
+  thankYou: String
+  ctaHeading: String
+}
+
+input ImportantLinksReviewLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input ImportantLinksKofiSectionMutation {
+  heading: String
+  body: String
+  ctaLabel: String
+  href: String
+}
+
+input ImportantLinksMutation {
+  pageTitle: String
+  featuredRelease: ImportantLinksFeaturedReleaseMutation
+  reviewsSection: ImportantLinksReviewsSectionMutation
+  reviewLinks: [ImportantLinksReviewLinksMutation]
+  kofiSection: ImportantLinksKofiSectionMutation
 }
 
 input ContactMutation {
@@ -752,6 +1038,20 @@ input DownloadsMutation {
   pageDescription: String
   emptyHeading: String
   emptyDescription: String
+}
+
+input ShopProductMutation {
+  productId: Float
+  name: String
+  description: String
+  price: Float
+  category: String
+  image: String
+  gumroadUrl: String
+  downloadUrl: String
+  featured: Boolean
+  inStock: Boolean
+  createdAt: String
 }
 
 input PostMutation {

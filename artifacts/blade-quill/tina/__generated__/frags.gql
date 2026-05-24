@@ -33,6 +33,32 @@ fragment HomeParts on Home {
     subheading
     browseAllLabel
   }
+  classesSection {
+    __typename
+    eyebrow
+    heading
+    subheading
+    body
+    bullets
+    ctaLabel
+    ctaLink
+    metaTags
+    image
+  }
+  blogSection {
+    __typename
+    heading
+    subheading
+    viewAllLabel
+  }
+  newsletterSection {
+    __typename
+    heading
+    subheading
+    placeholderText
+    ctaLabel
+    privacyNote
+  }
   bookPromo {
     __typename
     heading
@@ -56,6 +82,41 @@ fragment AboutParts on About {
   ctaPrimaryLink
   ctaSecondary
   ctaSecondaryLink
+}
+
+fragment ImportantLinksParts on ImportantLinks {
+  __typename
+  pageTitle
+  featuredRelease {
+    __typename
+    eyebrow
+    title
+    description
+    coverImage
+    backCoverImage
+    ctaLabel
+    ctaHref
+  }
+  reviewsSection {
+    __typename
+    heading
+    intro
+    thankYou
+    ctaHeading
+  }
+  reviewLinks {
+    __typename
+    label
+    href
+    region
+  }
+  kofiSection {
+    __typename
+    heading
+    body
+    ctaLabel
+    href
+  }
 }
 
 fragment ContactParts on Contact {
@@ -98,6 +159,21 @@ fragment DownloadsParts on Downloads {
   pageDescription
   emptyHeading
   emptyDescription
+}
+
+fragment ShopProductParts on ShopProduct {
+  __typename
+  productId
+  name
+  description
+  price
+  category
+  image
+  gumroadUrl
+  downloadUrl
+  featured
+  inStock
+  createdAt
 }
 
 fragment PostParts on Post {

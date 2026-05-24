@@ -1,12 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
 @import "tailwindcss";
 
-@theme inline {
-  /* Light text uses weight 300 so the Gill Sans Light cut is used where the OS provides it */
-  --font-sans: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-  --font-heading: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-  --font-display: 'Young Serif', Georgia, 'Times New Roman', serif;
+/* ──────────────────────────────────────────────────────────────
+   Blade & Quill — brand tokens
+   New tokens lifted from prototype `brand.css`. Semantic shadcn names
+   (background, foreground, card, primary, etc.) keep their identifiers
+   and get re-pointed at the new paper/ink palette so existing
+   `bg-card`, `text-foreground`, `text-orange` utilities pick up the
+   new look without any component edits.
+   ────────────────────────────────────────────────────────────── */
 
+@theme inline {
+  --font-sans: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Young Serif', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Body copy stays at 18px / 1.6 line-height for Quicksand legibility. */
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.6;
+
+  /* shadcn semantic tokens — HSL pairs in :root keep the chsh()-style wrapper. */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-primary: hsl(var(--primary));
@@ -24,34 +37,143 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-charcoal: #43434d;
-  --color-rose: #b26567;
-  --color-amber: #f5bf69;
-  --color-orange: #b26567;
-  --color-violet: #8455f6;
+  /* Brand utility colors — semantic names kept, hex repointed per HANDOFF. */
+  --color-orange: #E55934;
+  --color-orange-deep: #C13B1E;
+  --color-amber: #F2A93B;
+  --color-amber-deep: #D4861A;
+  --color-rose: #D86B7E;
+  --color-rose-deep: #B84A5E;
+  --color-violet: #6B5BA8;
+  --color-violet-deep: #483C7A;
+  --color-moss: #6B8A5B;
+  --color-charcoal: #1F1A14;
+
+  /* Ink scale */
+  --color-ink: #1F1A14;
+  --color-ink-soft: #3F3527;
+  --color-ink-mute: #6B5F4E;
+  --color-ink-faint: #9A8E7A;
+
+  /* Paper scale */
+  --color-paper: #FBF6EC;
+  --color-paper-2: #F6EFE0;
+  --color-paper-3: #EFE5D0;
+  --color-paper-deep: #E5D8BD;
 }
 
+/* ── Semantic HSL channels (light) ─────────────────────────────
+   These map shadcn names onto the new paper/ink palette.
+   Values are HSL triplets (no `hsl(...)`) so the @theme wrapper
+   can apply transparency utilities (`bg-foreground/40`, etc.). */
 :root {
-  --background: 0 0% 98%;
-  --card: 0 0% 100%;
-  --secondary: 37 88% 94%;
-  --muted: 240 7% 92%;
-  --border: 240 7% 82%;
+  --background: 40 67% 95%;      /* paper #FBF6EC */
+  --card: 40 67% 95%;            /* paper — same surface as bg, lifted by shadow */
+  --secondary: 40 66% 92%;       /* paper-2 #F6EFE0 */
+  --muted: 40 59% 87%;           /* paper-3 #EFE5D0 */
+  --border: 40 47% 82%;          /* paper-deep #E5D8BD */
 
-  --foreground: 240 7% 28%;
-  --card-foreground: 240 7% 24%;
-  --secondary-foreground: 240 7% 28%;
-  --muted-foreground: 240 4% 48%;
+  --foreground: 33 21% 10%;      /* ink #1F1A14 */
+  --card-foreground: 33 21% 10%;
+  --secondary-foreground: 34 24% 20%;  /* ink-soft */
+  --muted-foreground: 36 16% 36%;      /* ink-mute */
 
-  --primary: 358 33% 55%;
-  --primary-foreground: 0 0% 100%;
-  --ring: 358 33% 55%;
+  --primary: 11 76% 55%;          /* orange #E55934 */
+  --primary-foreground: 40 67% 95%;
+  --ring: 11 76% 55%;             /* orange */
 
-  --accent: 258 90% 65%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 252 30% 51%;          /* violet #6B5BA8 */
+  --accent-foreground: 40 67% 95%;
 
-  --destructive: 0 50% 50%;
-  --destructive-foreground: 0 0% 100%;
+  --destructive: 348 47% 50%;     /* rose-deep #B84A5E */
+  --destructive-foreground: 40 67% 95%;
+
+  /* ── Raw prototype tokens — used directly by components ── */
+  --ink: #1F1A14;
+  --ink-soft: #3F3527;
+  --ink-mute: #6B5F4E;
+  --ink-faint: #9A8E7A;
+
+  --paper: #FBF6EC;
+  --paper-2: #F6EFE0;
+  --paper-3: #EFE5D0;
+  --paper-deep: #E5D8BD;
+
+  --orange: #E55934;
+  --orange-deep: #C13B1E;
+  --amber: #F2A93B;
+  --amber-deep: #D4861A;
+  --rose: #D86B7E;
+  --rose-deep: #B84A5E;
+  --violet: #6B5BA8;
+  --violet-deep: #483C7A;
+  --moss: #6B8A5B;
+
+  /* Signature gradients */
+  --g-warm:      linear-gradient(135deg, #E55934 0%, #F2A93B 50%, #FBC56F 100%);
+  --g-twilight:  linear-gradient(135deg, #6B5BA8 0%, #D86B7E 60%, #F2A93B 100%);
+  --g-dawn:      linear-gradient(135deg, #E55934 0%, #D86B7E 50%, #6B5BA8 100%);
+  --g-cta:       linear-gradient(135deg, #E55934 0%, #F2A93B 100%);
+  --g-cta-hover: linear-gradient(135deg, #F2A93B 0%, #E55934 100%);
+  --g-paper:     linear-gradient(180deg, #FBF6EC 0%, #F6EFE0 100%);
+  --g-ink:       linear-gradient(135deg, #1F1A14 0%, #3F3527 100%);
+
+  /* Font shortcuts (mirror Tailwind tokens, exposed for inline styles) */
+  --f-serif: 'Young Serif', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --f-sans:  'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 10px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+
+  /* Warm-toned shadows */
+  --sh-sm: 0 2px 6px rgba(60, 38, 18, 0.06);
+  --sh-md: 0 8px 24px rgba(60, 38, 18, 0.08), 0 2px 6px rgba(60, 38, 18, 0.04);
+  --sh-lg: 0 18px 44px rgba(60, 38, 18, 0.12), 0 4px 12px rgba(60, 38, 18, 0.06);
+  --sh-paper:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 -1px 0 rgba(60, 38, 18, 0.04) inset,
+    0 6px 18px rgba(60, 38, 18, 0.08);
+
+  /* Eases */
+  --e-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --e-out-q:  cubic-bezier(0.25, 1, 0.5, 1);
+  --e-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --e-back:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Timings */
+  --t-fast: 180ms;
+  --t-med:  340ms;
+  --t-slow: 600ms;
+}
+
+/* ── Semantic HSL channels (dark) ──────────────────────────────
+   Mirror the paper/ink palette in dark mode: dark ink as the surface,
+   warm paper-faint as the foreground. Brand colors don't shift much. */
+.dark {
+  --background: 33 21% 10%;     /* ink */
+  --card: 34 24% 14%;           /* slightly lighter than ink */
+  --secondary: 34 24% 18%;
+  --muted: 36 16% 24%;
+  --border: 36 16% 28%;
+
+  --foreground: 40 50% 92%;     /* warm paper-faint */
+  --card-foreground: 40 50% 92%;
+  --secondary-foreground: 40 50% 92%;
+  --muted-foreground: 38 14% 62%;
+
+  --primary: 11 76% 60%;
+  --primary-foreground: 33 21% 10%;
+  --ring: 11 76% 60%;
+
+  --accent: 252 30% 60%;
+  --accent-foreground: 33 21% 10%;
+
+  --destructive: 348 47% 55%;
+  --destructive-foreground: 40 67% 95%;
 }
 
 @layer base {
@@ -59,24 +181,51 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased font-sans font-light;
+    @apply bg-background text-foreground antialiased font-sans text-base;
+    font-weight: 500;
+    text-rendering: optimizeLegibility;
   }
 
+  /* Paper texture — subtle SVG noise overlay, fixed.
+     `mix-blend-mode: multiply` darkens highlights slightly without
+     fighting the background color.
+     `z-index: 1000` keeps it under any modal layer set to 1001+. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .dark body::before {
+    opacity: 0.2;
+  }
+
+  /* h1 is the only true display element (Young Serif). h2-h6 stay
+     Quicksand per existing rules — handoff explicitly preserves this. */
   h1 {
     font-family: var(--font-display);
-    @apply font-normal tracking-normal;
-    line-height: 1.2;
+    @apply font-normal;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin: 0;
   }
-
   h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    @apply font-normal tracking-normal;
-    line-height: 1.2;
+    @apply font-normal;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    margin: 0;
   }
 
+  p { line-height: 1.6; }
+
   ::selection {
-    background: hsl(258 90% 65% / 0.18);
-    color: hsl(240 7% 28%);
+    background: var(--orange);
+    color: var(--paper);
   }
 
   ::-webkit-scrollbar { width: 8px; }
@@ -86,16 +235,339 @@
 }
 
 @layer utilities {
-  /* Secondary lines under page/section titles — Gill Sans Light (same as body) */
+  /* ── Type accents ──────────────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .eyebrow-grad {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--g-cta);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+  .grad-text {
+    background: var(--g-dawn);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .grad-text-warm {
+    background: var(--g-warm);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Existing helper retained — Quicksand at normal weight. */
   .font-subheading {
-    @apply font-sans font-light;
+    @apply font-sans font-normal;
   }
 
   .reading-width {
     max-width: 65ch;
   }
 
-  /* Gumroad-inspired card: clean border, rounded, hover lift + shadow grow */
+  /* ── Page entrance ─────────────────────────────────────────── */
+  /* PRs 2/3 will wrap each route's root element in this class so
+     hash navigation feels like flipping a page. */
+  .page {
+    animation: pageIn 0.6s var(--e-out) both;
+  }
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Page-turn overlay (kept zero-impact until PR 2 mounts it) ── */
+  .pageturn {
+    position: fixed; inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    background: var(--g-paper);
+    transform-origin: left center;
+    box-shadow: 16px 0 40px rgba(60, 38, 18, 0.2);
+    opacity: 0;
+  }
+  .pageturn.run { animation: pageturn 0.7s var(--e-in-out) forwards; }
+  @keyframes pageturn {
+    0%   { opacity: 0; transform: perspective(2000px) rotateY(0deg); }
+    10%  { opacity: 1; }
+    100% { opacity: 1; transform: perspective(2000px) rotateY(-180deg); }
+  }
+
+  /* ── Scroll reveal ─────────────────────────────────────────── */
+  /* `useReveal` (lands in PR 3) toggles the `.in` class once the
+     element intersects the viewport. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--e-out), transform 0.9s var(--e-out);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--e-out), transform 0.8s var(--e-out);
+  }
+  .reveal-stagger.in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger.in > *:nth-child(1) { transition-delay: 0ms; }
+  .reveal-stagger.in > *:nth-child(2) { transition-delay: 80ms; }
+  .reveal-stagger.in > *:nth-child(3) { transition-delay: 160ms; }
+  .reveal-stagger.in > *:nth-child(4) { transition-delay: 240ms; }
+  .reveal-stagger.in > *:nth-child(5) { transition-delay: 320ms; }
+  .reveal-stagger.in > *:nth-child(6) { transition-delay: 400ms; }
+
+  /* ── Word-reveal headline animation ───────────────────────── */
+  .word-reveal {
+    display: inline;
+  }
+  /* Per-word mask — padding keeps serif descenders (e.g. Q, g) inside the clip */
+  .word-reveal__mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+  .word-reveal__word {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.9s var(--e-out);
+  }
+  .word-reveal.in .word-reveal__word {
+    transform: translateY(0);
+  }
+
+  /* ── Hand-drawn ink underline link ────────────────────────── */
+  .link-ink {
+    position: relative;
+    padding-bottom: 2px;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1.5px;
+    transition: background-size var(--t-med) var(--e-out);
+  }
+  .link-ink:hover {
+    background-size: 100% 1.5px;
+  }
+
+  /* ── Floating drift (use with inline --rot for at-rest rotation) ── */
+  @keyframes drift {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    50%      { transform: translateY(-6px) rotate(var(--rot, 0deg)); }
+  }
+  .drift {
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  /* ── Hero floating art tiles (homepage) ──────────────────── */
+  /* Outer wrap keeps drift + tilt; inner face eases scale on hover. */
+  .hero-art-tile-wrap {
+    pointer-events: auto;
+    z-index: 1;
+  }
+  .hero-art-tile-wrap:hover {
+    z-index: 12;
+  }
+  .hero-art-tile {
+    cursor: pointer;
+    transition:
+      transform 0.85s var(--e-in-out),
+      box-shadow 0.85s var(--e-in-out);
+  }
+  .hero-art-tile-wrap:hover .hero-art-tile {
+    transform: scale(1.06);
+    box-shadow:
+      0 16px 36px rgba(60, 38, 18, 0.16),
+      0 6px 14px rgba(60, 38, 18, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .hero-art-tile .art-tile-label {
+    transition: opacity 0.85s var(--e-in-out);
+  }
+  .hero-art-tile-wrap:hover .art-tile-label {
+    opacity: 0.55;
+  }
+
+  /* Subtle grain on gradient art tiles (matches hero lavender swatch) */
+  .art-tile-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Card with page-corner peel ───────────────────────────── */
+  /* Used by PRs 3-5 (any product/blog card). Keep `overflow: visible`
+     so the peel triangle isn't clipped. */
+  .card-peel {
+    position: relative;
+    overflow: visible;
+  }
+  .card-peel::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent;
+    transition: border-width var(--t-med) var(--e-out);
+    pointer-events: none;
+    filter: drop-shadow(-2px -2px 3px rgba(60, 38, 18, 0.18));
+  }
+  .card-peel:hover::after {
+    border-width: 0 0 30px 30px;
+    border-color: transparent transparent var(--paper-2) transparent;
+  }
+
+  /* ── Btn arrow / ghost underline ──────────────────────────── */
+  /* Used by `<Btn>` to translate the right-side arrow on hover and to
+     animate the ghost variant's underline from the left edge. */
+  button:hover .btn-arrow,
+  a:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+  .btn-ghost-underline::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 10px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-med) var(--e-out);
+  }
+  .btn-ghost-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ── Polaroid hover straighten ───────────────────────────── */
+  /* Combine with `rotate` so the card lifts off and untilts. */
+  .polaroid-hover:hover {
+    transform: rotate(0deg) translateY(-8px) !important;
+    box-shadow:
+      0 24px 56px rgba(60, 38, 18, 0.22),
+      0 6px 14px rgba(60, 38, 18, 0.12) !important;
+  }
+
+  /* ── Video card hover (TutorialThumb) ────────────────────── */
+  .video-card:hover .play-btn {
+    transform: translate(-50%, -50%) scale(1.15);
+    background: var(--orange);
+  }
+  .video-card:hover .play-btn > div {
+    border-left-color: var(--paper);
+  }
+
+  /* ── Product card hover (shop + homepage strip) ───────────── */
+  .product-card:hover .product-media {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-lg);
+  }
+  .product-card:hover .quick-add > button {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+  .product-card .card-arrow {
+    transition: transform 0.25s var(--e-out);
+  }
+  .product-card:hover .card-arrow {
+    transform: translateX(6px);
+  }
+
+  /* ── Shop filter row hover ───────────────────────────────── */
+  .filter-row:hover {
+    color: var(--orange);
+  }
+
+  /* ── About "What I make" card hover ──────────────────────── */
+  .lane-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sh-lg);
+  }
+  .lane-card {
+    width: 100%;
+    background: var(--paper-2);
+  }
+
+  /* ── Blog row hover (homepage) ───────────────────────────── */
+  .blog-row {
+    transition: background 0.25s var(--e-out), padding 0.25s var(--e-out);
+  }
+  .blog-row:hover {
+    background: rgba(229, 89, 52, 0.04);
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .blog-row .blog-arrow {
+    transition: transform 0.25s var(--e-out);
+  }
+  .blog-row:hover .blog-arrow {
+    transform: translateX(6px);
+  }
+
+  /* ── Containers ───────────────────────────────────────────── */
+  .bq-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .bq-container-wide {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  @media (min-width: 1100px) {
+    .bq-container,
+    .bq-container-wide { padding: 0 48px; }
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  /* ── Reduced motion ───────────────────────────────────────── */
+  /* Belt-and-suspenders: in addition to the section utilities below,
+     blanket-reset animations and transitions. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal,
+    .reveal-stagger > * { opacity: 1; transform: none; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     LEGACY UTILITIES (to be retired by PRs 2-5)
+     Kept temporarily so existing components stay working until they
+     are migrated. New code should use the prototype's vocabulary
+     (.card-peel, .grad-text, .eyebrow, var(--g-cta), etc.).
+     ───────────────────────────────────────────────────────────── */
+
   .gumroad-card {
     @apply bg-card rounded-xl overflow-hidden border border-border/60;
     transition: box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
@@ -108,7 +580,6 @@
     border-color: hsl(var(--border));
   }
 
-  /* Simpler thumb card for grids */
   .thumb-card {
     @apply bg-card rounded-lg overflow-hidden border border-border/50;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -118,7 +589,6 @@
     transform: translateY(-2px);
   }
 
-  /* Tag pill — Gumroad discover-style category tags */
   .tag-pill {
     @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer select-none whitespace-nowrap;
     transition: all 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
@@ -134,7 +604,6 @@
     transform: translateY(-1px);
   }
 
-  /* Legacy chip (kept for backward compat) */
   .chip {
     @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border transition-colors;
   }
@@ -145,32 +614,24 @@
     @apply bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground;
   }
 
-  /* Fade-in for lazy-loaded images */
   .img-fade {
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  .img-fade.loaded {
-    opacity: 1;
-  }
+  .img-fade.loaded { opacity: 1; }
 
-  /* Overlay on hover (gallery items) */
   .hover-overlay {
     @apply absolute inset-0 flex flex-col justify-end p-4;
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 40%, transparent 65%);
     opacity: 0;
     transition: opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
   }
-  .group:hover .hover-overlay {
-    opacity: 1;
-  }
+  .group:hover .hover-overlay { opacity: 1; }
 
-  /* Price badge — Gumroad-style prominent price */
   .price-badge {
     @apply text-lg font-bold text-orange;
   }
 
-  /* Bold CTA — used for primary action buttons with more visual weight */
   .cta-bold {
     @apply font-semibold tracking-wide;
     transition: transform 0.15s ease, box-shadow 0.2s ease;
@@ -184,7 +645,6 @@
     box-shadow: none;
   }
 
-  /* Download button hover effect */
   .dl-btn {
     @apply w-full mt-auto font-semibold;
     transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
@@ -193,15 +653,105 @@
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-  .dl-btn:active {
-    transform: scale(0.97);
-  }
+  .dl-btn:active { transform: scale(0.97); }
 
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* Homepage layout helpers from the Nestig pass — retire in PR 3. */
+  .home-section {
+    @apply py-20 md:py-28 lg:py-32;
   }
+  .home-card {
+    @apply bg-card rounded-3xl overflow-hidden border border-border/40;
+    transition:
+      box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .home-card:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+    transform: translateY(-6px);
+  }
+  .home-media-mask {
+    @apply overflow-hidden rounded-2xl bg-muted m-3 md:m-4;
+  }
+  .home-media-mask img {
+    @apply w-full h-full object-cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .group:hover .home-media-mask img { transform: scale(1.06); }
+  .home-media-mask-flush { @apply overflow-hidden rounded-2xl bg-muted; }
+  .home-panel { @apply rounded-3xl border border-border/40 bg-card overflow-hidden; }
+  .important-links-page .home-panel { border-color: hsl(var(--border) / 0.72); }
+  .home-link { @apply inline-flex items-center gap-1 transition-colors; }
+  .home-link svg { transition: transform 0.25s ease; }
+  .home-link:hover svg { transform: translateX(2px); }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .home-marquee-track {
+    animation: marquee linear infinite;
+    will-change: transform;
+  }
+  .group\/marquee:hover .home-marquee-track { animation-play-state: paused; }
+
+  @keyframes marquee-single {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .home-marquee-single {
+    padding-left: 100%;
+    animation: marquee-single linear infinite;
+    will-change: transform;
+  }
+
+  .home-scroll-snap {
+    @apply flex gap-4 overflow-x-auto pb-2 -mx-4 px-4 md:-mx-6 md:px-6;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home-snap-item {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+  }
+  @media (min-width: 1024px) {
+    .home-scroll-snap.lg\:grid {
+      overflow: visible;
+      scroll-snap-type: none;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+    .home-snap-item { flex: unset; scroll-snap-align: unset; }
+  }
+  .home-sticky-col { @apply lg:sticky lg:top-24 self-start; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-card:hover { transform: none; }
+    .group:hover .home-media-mask img { transform: none; }
+    .home-marquee-track { animation: none; }
+    .home-marquee-single { animation: none; padding-left: 0; }
+    .home-scroll-snap {
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+    .home-snap-item { flex: 1 1 auto; width: 100%; }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Generic prototype-style marquee/keyframe needed by PR 3 onwards.
+   Lives outside @layer utilities so it isn't tree-shaken when no
+   class consumes it yet.
+   ───────────────────────────────────────────────────────────── */
+@keyframes bq-marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }

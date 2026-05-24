@@ -1,0 +1,12 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "css.customData": [".vscode/tailwind.css-data.json"],
+  "files.associations": {
+    "**/artifacts/blade-quill/src/**/*.css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.configFile": "artifacts/blade-quill/src/index.css",
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  }
+}

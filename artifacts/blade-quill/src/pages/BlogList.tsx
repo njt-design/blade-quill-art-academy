@@ -1,57 +1,13 @@
 import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 import { Calendar, ArrowRight } from "lucide-react";
-import { tinaField } from "tinacms/react";
-
-const postModules = import.meta.glob("../../content/posts/*.json", { eager: true }) as Record<
-  string,
-  { default?: Record<string, unknown> } & Record<string, unknown>
->;
-
-interface PostMeta {
-  slug: string;
-  title: string;
-  excerpt?: string;
-  coverImage?: string;
-  publishedAt?: string;
-  tags?: string[];
-}
-
-function loadPosts(): PostMeta[] {
-  return Object.entries(postModules)
-    .map(([path, mod]) => {
-      const data = (mod.default ?? mod) as Record<string, unknown>;
-      const slug = path.split("/").pop()?.replace(".json", "") ?? "";
-      return {
-        slug,
-        title: (data.title as string) ?? "Untitled",
-        excerpt: data.excerpt as string | undefined,
-        coverImage: data.coverImage as string | undefined,
-        publishedAt: data.publishedAt as string | undefined,
-        tags: data.tags as string[] | undefined,
-      };
-    })
-    .sort((a, b) => {
-      if (!a.publishedAt) return 1;
-      if (!b.publishedAt) return -1;
-      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-    });
-}
-
-function formatDate(iso?: string): string {
-  if (!iso) return "";
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
+import { formatBlogDate, loadBlogPosts } from "@/lib/blog-posts";
 
 export default function BlogList() {
   const [, setLocation] = useLocation();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const posts = useMemo(loadPosts, []);
+  const posts = useMemo(() => loadBlogPosts(), []);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -139,7 +95,7 @@ export default function BlogList() {
                     {post.publishedAt && (
                       <span className="text-xs text-muted-foreground flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
-                        {formatDate(post.publishedAt)}
+                        {formatBlogDate(post.publishedAt)}
                       </span>
                     )}
                     <span className="text-xs font-medium text-foreground flex items-center gap-0.5">

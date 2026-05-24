@@ -108,6 +108,61 @@ query aboutConnection($before: String, $after: String, $first: Float, $last: Flo
   }
 }
 
+query importantLinks($relativePath: String!) {
+  importantLinks(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ImportantLinksParts
+  }
+}
+
+query importantLinksConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ImportantLinksFilter) {
+  importantLinksConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ImportantLinksParts
+      }
+    }
+  }
+}
+
 query contact($relativePath: String!) {
   contact(relativePath: $relativePath) {
     ... on Document {
@@ -378,6 +433,61 @@ query downloadsConnection($before: String, $after: String, $first: Float, $last:
           id
         }
         ...DownloadsParts
+      }
+    }
+  }
+}
+
+query shopProduct($relativePath: String!) {
+  shopProduct(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ShopProductParts
+  }
+}
+
+query shopProductConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ShopProductFilter) {
+  shopProductConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ShopProductParts
       }
     }
   }

@@ -1,18 +1,18 @@
 {
   "hero": {
-    "heading": "Welcome to\nBlade & Quill",
-    "subheading": "Author, illustrator, and digital art educator. Creator of Lheeloo & Luna. Master Krita and digital painting with Corinne? asdflkjsdfl;kfdlk;jfdslk;jfds",
+    "heading": "Welcome to Blade & Quill",
+    "subheading": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Luna. ",
     "ctaPrimary": "Explore the Shop",
     "ctaSecondary": "Watch Tutorials",
-    "backgroundImage": "/images/hero-bg.png"
+    "backgroundImage": ""
   },
   "latestSection": {
     "heading": "Latest artworks",
     "viewAllLabel": "View all"
   },
   "featuredSection": {
-    "heading": "Featured Artworks",
-    "subheading": "Handcrafted digital works available for your collection",
+    "heading": "Books & Ebooks",
+    "subheading": "Illustrated books and digital guides to level up your Krita workflow.",
     "viewAllLabel": "View All"
   },
   "artistBanner": {
@@ -23,9 +23,36 @@
     "portraitImage": "/images/about-portrait.png"
   },
   "tutorialsSection": {
-    "heading": "Learn Digital Painting",
-    "subheading": "Step-by-step tutorials covering Krita tools, brushes, digital painting, character design, animation, and more",
+    "heading": "Featured Video Tutorial",
+    "subheading": "Watch a free lesson from Corinne's YouTube channel and start learning Krita today.",
     "browseAllLabel": "Browse All Tutorials"
+  },
+  "classesSection": {
+    "eyebrow": "Now Enrolling",
+    "heading": "Enroll in My Krita Education Course",
+    "subheading": "Structured digital art training designed for artists who want to master Krita.",
+    "body": "",
+    "bullets": [
+      "Beginner-friendly Krita curriculum",
+      "Step-by-step lessons with downloadable resources",
+      "Build confidence from sketch to finished painting"
+    ],
+    "ctaLabel": "Reserve Your Spot",
+    "ctaLink": "/classes",
+    "metaTags": "Self-paced · Krita 5.2 · All skill levels",
+    "image": "/images/about-portrait.png"
+  },
+  "blogSection": {
+    "heading": "Recent Blog Posts",
+    "subheading": "News, art tips, and behind-the-scenes updates from Corinne.",
+    "viewAllLabel": "View All"
+  },
+  "newsletterSection": {
+    "heading": "Stay in the Loop",
+    "subheading": "Get art tips, new tutorials, and class announcements delivered to your inbox.",
+    "placeholderText": "you@example.com",
+    "ctaLabel": "Subscribe",
+    "privacyNote": "No spam. Unsubscribe anytime."
   },
   "bookPromo": {
     "heading": "Lheeloo & Luna — The Book Is Live",

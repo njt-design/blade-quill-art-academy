@@ -224,7 +224,7 @@ var config_default = defineConfig({
                 type: "image",
                 name: "backgroundImage",
                 label: "Background Image",
-                ui: { description: "Optional hero background image. Currently not displayed but available for future use." }
+                ui: { description: "Hero image shown below the heading and CTAs on the homepage." }
               }
             ]
           },
@@ -250,19 +250,19 @@ var config_default = defineConfig({
           {
             type: "object",
             name: "featuredSection",
-            label: "Featured Products Section",
+            label: "Books & Ebooks Section",
             fields: [
               {
                 type: "string",
                 name: "heading",
                 label: "Heading",
-                ui: { description: 'The heading above the featured product cards (e.g. "Featured Artworks").' }
+                ui: { description: 'Heading for the Books & Ebooks section (e.g. "Books & Ebooks").' }
               },
               {
                 type: "string",
                 name: "subheading",
                 label: "Subheading",
-                ui: { description: "Short description below the heading in the featured products area." }
+                ui: { description: "Short description below the Books & Ebooks heading." }
               },
               {
                 type: "string",
@@ -312,25 +312,149 @@ var config_default = defineConfig({
           {
             type: "object",
             name: "tutorialsSection",
-            label: "Tutorials Section",
+            label: "Featured Video Tutorial Section",
             fields: [
               {
                 type: "string",
                 name: "heading",
                 label: "Heading",
-                ui: { description: 'The heading above the tutorial preview cards (e.g. "Learn Digital Painting").' }
+                ui: { description: 'Heading above the featured video (e.g. "Featured Video Tutorial").' }
               },
               {
                 type: "string",
                 name: "subheading",
                 label: "Subheading",
-                ui: { description: "Short description of tutorial topics, shown below the tutorials heading." }
+                ui: { description: "Short description below the featured video heading." }
               },
               {
                 type: "string",
                 name: "browseAllLabel",
                 label: "Browse All Label",
-                ui: { description: 'The "Browse All" link text on the right side of the tutorials section header.' }
+                ui: { description: "Button text linking to the full tutorials page." }
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "classesSection",
+            label: "Krita Education Classes Section",
+            fields: [
+              {
+                type: "string",
+                name: "eyebrow",
+                label: "Eyebrow",
+                ui: { description: 'Small label above the heading (e.g. "Now Enrolling").' }
+              },
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                ui: { description: 'Main heading (e.g. "Enroll in My Krita Education Classes").' }
+              },
+              {
+                type: "string",
+                name: "subheading",
+                label: "Subheading",
+                ui: { component: "textarea", description: "Supporting line below the heading." }
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body (optional)",
+                ui: { component: "textarea", description: "Optional extra paragraph." }
+              },
+              {
+                type: "string",
+                name: "bullets",
+                label: "Bullet Points",
+                list: true,
+                ui: { description: "Benefit bullets shown with checkmarks." }
+              },
+              {
+                type: "string",
+                name: "ctaLabel",
+                label: "CTA Label",
+                ui: { description: 'Primary button text (e.g. "Reserve Your Spot").' }
+              },
+              {
+                type: "string",
+                name: "ctaLink",
+                label: "CTA Link",
+                ui: { description: 'Relative URL for the CTA (e.g. "/classes").' }
+              },
+              {
+                type: "string",
+                name: "metaTags",
+                label: "Meta Line",
+                ui: { description: 'Small line below the button (e.g. "Self-paced \xB7 Krita 5.2").' }
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Section Image",
+                ui: { description: "Image shown beside the classes pitch." }
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "blogSection",
+            label: "Recent Blog Posts Section",
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                ui: { description: 'Section heading (e.g. "Recent Blog Posts").' }
+              },
+              {
+                type: "string",
+                name: "subheading",
+                label: "Subheading",
+                ui: { description: "Short description below the blog section heading." }
+              },
+              {
+                type: "string",
+                name: "viewAllLabel",
+                label: "View All Label",
+                ui: { description: "Link text to the blog index." }
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "newsletterSection",
+            label: "Newsletter Section",
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading",
+                ui: { description: 'Newsletter heading (e.g. "Stay in the Loop").' }
+              },
+              {
+                type: "string",
+                name: "subheading",
+                label: "Subheading",
+                ui: { component: "textarea", description: "Description encouraging signup." }
+              },
+              {
+                type: "string",
+                name: "placeholderText",
+                label: "Email Placeholder",
+                ui: { description: "Placeholder text in the email input." }
+              },
+              {
+                type: "string",
+                name: "ctaLabel",
+                label: "Submit Button Label",
+                ui: { description: 'Button text (e.g. "Subscribe").' }
+              },
+              {
+                type: "string",
+                name: "privacyNote",
+                label: "Privacy Note",
+                ui: { description: 'Small text below the form (e.g. "No spam.").' }
               }
             ]
           },
@@ -453,6 +577,158 @@ var config_default = defineConfig({
         ]
       },
       // ---------------------------------------------------------------
+      // Important Links Page (standalone review hub)
+      // ---------------------------------------------------------------
+      {
+        name: "importantLinks",
+        label: "Single Landing Pages",
+        path: "content",
+        match: { include: "important-links" },
+        format: "json",
+        ui: { router: () => "/important-links-page" },
+        fields: [
+          {
+            type: "string",
+            name: "pageTitle",
+            label: "Page Title",
+            ui: { description: "Browser tab title for this page." }
+          },
+          {
+            type: "object",
+            name: "featuredRelease",
+            label: "Featured Release",
+            ui: { description: "Highlight the newest book at the top of the page." },
+            fields: [
+              {
+                type: "string",
+                name: "eyebrow",
+                label: "Eyebrow Label",
+                ui: { description: 'Small label above the title (e.g. "New Featured Release").' }
+              },
+              {
+                type: "string",
+                name: "title",
+                label: "Book Title",
+                required: true
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: { component: "textarea" }
+              },
+              {
+                type: "image",
+                name: "coverImage",
+                label: "Front Cover Image",
+                ui: { description: "Leave empty to show the gradient placeholder cover." }
+              },
+              {
+                type: "image",
+                name: "backCoverImage",
+                label: "Back Cover Image",
+                ui: { description: "Optional second cover (shown alongside the front)." }
+              },
+              {
+                type: "string",
+                name: "ctaLabel",
+                label: "Button Label"
+              },
+              {
+                type: "string",
+                name: "ctaHref",
+                label: "Button URL",
+                ui: { description: "Full URL (Amazon, shop, etc.)." }
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "reviewsSection",
+            label: "Reviews Section",
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading"
+              },
+              {
+                type: "string",
+                name: "intro",
+                label: "Intro Text",
+                ui: { component: "textarea" }
+              },
+              {
+                type: "string",
+                name: "thankYou",
+                label: "Thank You Message"
+              },
+              {
+                type: "string",
+                name: "ctaHeading",
+                label: "CTA Section Heading"
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "reviewLinks",
+            label: "Review Links",
+            list: true,
+            ui: { description: "Amazon review buttons, one per region." },
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Button Label",
+                required: true
+              },
+              {
+                type: "string",
+                name: "href",
+                label: "URL",
+                required: true,
+                ui: { description: "Full Amazon review URL (opens in new tab)." }
+              },
+              {
+                type: "string",
+                name: "region",
+                label: "Region",
+                ui: { description: "Short region code for reference (e.g. US, UK, AU)." }
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "kofiSection",
+            label: "Ko-fi Support Section",
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Heading"
+              },
+              {
+                type: "string",
+                name: "body",
+                label: "Body Text",
+                ui: { component: "textarea" }
+              },
+              {
+                type: "string",
+                name: "ctaLabel",
+                label: "Button Label"
+              },
+              {
+                type: "string",
+                name: "href",
+                label: "Ko-fi URL"
+              }
+            ]
+          }
+        ]
+      },
+      // ---------------------------------------------------------------
       // Contact Page
       // ---------------------------------------------------------------
       {
@@ -504,7 +780,7 @@ var config_default = defineConfig({
             type: "string",
             name: "pageTitle",
             label: "Page Title",
-            ui: { description: 'The main heading on the Shop page (e.g. "Shop"). Products are loaded from the database.' }
+            ui: { description: 'The main heading on the Shop page (e.g. "Shop"). Product cards are managed under Shop Products.' }
           },
           {
             type: "string",
@@ -646,6 +922,107 @@ var config_default = defineConfig({
             name: "emptyDescription",
             label: "Empty State Description",
             ui: { description: "Supporting text shown when no downloads are available." }
+          }
+        ]
+      },
+      // ---------------------------------------------------------------
+      // Shop Products
+      // ---------------------------------------------------------------
+      {
+        name: "shopProduct",
+        label: "Shop Products",
+        path: "content/products",
+        format: "json",
+        ui: {
+          router: ({ document }) => {
+            const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
+            return `/shop/${base}`;
+          }
+        },
+        fields: [
+          {
+            type: "number",
+            name: "productId",
+            label: "Product ID",
+            required: true,
+            ui: {
+              description: "Stable numeric ID for cart and checkout. Use a unique number for each product (e.g. 1, 2, 3)."
+            }
+          },
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            required: true,
+            ui: { description: "Product title shown on cards and the detail page." }
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            ui: {
+              component: "textarea",
+              description: "Short description for shop cards and the product detail tab."
+            }
+          },
+          {
+            type: "number",
+            name: "price",
+            label: "Price (USD)",
+            required: true,
+            ui: { description: "Price in US dollars (e.g. 24.99)." }
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            required: true,
+            options: [
+              { value: "physical", label: "Physical (book)" },
+              { value: "digital", label: "Digital download" },
+              { value: "curriculum", label: "Curriculum" }
+            ],
+            ui: { description: "Controls card style and shop filters." }
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Cover Image",
+            ui: { description: "Product image for shop grid and detail gallery." }
+          },
+          {
+            type: "string",
+            name: "gumroadUrl",
+            label: "Gumroad URL",
+            ui: {
+              description: "Optional external purchase link. Leave blank to use site cart/checkout only."
+            }
+          },
+          {
+            type: "string",
+            name: "downloadUrl",
+            label: "Download URL",
+            ui: { description: "Optional direct download link for digital products." }
+          },
+          {
+            type: "boolean",
+            name: "featured",
+            label: "Featured",
+            ui: {
+              description: "Featured products show a NEW badge and appear in homepage/shop highlights."
+            }
+          },
+          {
+            type: "boolean",
+            name: "inStock",
+            label: "In Stock",
+            ui: { description: "When off, the product still appears but checkout may be disabled." }
+          },
+          {
+            type: "datetime",
+            name: "createdAt",
+            label: "Created Date",
+            ui: { description: "Used for \u201CNewest\u201D sort on the shop page." }
           }
         ]
       },
