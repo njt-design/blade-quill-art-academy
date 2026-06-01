@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import { Marquee } from "./Marquee";
 import { useScrollScale } from "./useScrollScale";
 
@@ -131,15 +132,15 @@ export function HomeHero({ hero, onNavigate }: Props) {
             ))}
           </h1>
 
-          <motion.p
+          <motion.div
             className="font-subheading text-lg md:text-xl text-muted-foreground reading-width mb-3 leading-relaxed mx-auto md:mx-0"
             data-tina-field={tinaField(hero, "subheading")}
             initial={reduced ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: subheadingDelay, ease: "easeOut" }}
           >
-            {hero?.subheading}
-          </motion.p>
+            <RichText value={hero?.subheading} />
+          </motion.div>
 
           <motion.div
             className="mb-12 flex items-baseline justify-center md:justify-start gap-2 font-subheading text-lg md:text-xl"

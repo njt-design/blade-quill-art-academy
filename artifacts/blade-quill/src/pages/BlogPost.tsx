@@ -3,6 +3,7 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTina, tinaField } from "tinacms/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { RichText } from "@/components/site/RichText";
 
 const postModules = import.meta.glob("../../content/posts/*.json", { eager: true }) as Record<
   string,
@@ -142,12 +143,12 @@ export default function BlogPost() {
         </h1>
 
         {post.excerpt && (
-          <p
+          <div
             className="text-lg font-sans text-muted-foreground mb-8 leading-relaxed"
             data-tina-field={tinaField(post, "excerpt")}
           >
-            {post.excerpt as string}
-          </p>
+            <RichText value={post.excerpt} />
+          </div>
         )}
 
         <div

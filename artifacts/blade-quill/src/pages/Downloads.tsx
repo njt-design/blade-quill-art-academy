@@ -4,12 +4,15 @@ import { useListDownloads, type Download } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
 import { useTina, tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import downloadsData from "../../content/downloads.json";
 const TINA_DATA_DOWNLOADSDATA = { downloads: downloadsData };
 
 const downloadsQuery = `
   query downloads($relativePath: String!) {
     downloads(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       pageDescription
       emptyHeading
@@ -41,12 +44,12 @@ export default function Downloads() {
           >
             {content?.pageTitle}
           </h1>
-          <p
+          <div
             className="text-base text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
-            {content?.pageDescription}
-          </p>
+            <RichText value={content?.pageDescription} />
+          </div>
         </div>
 
         {isLoading ? (

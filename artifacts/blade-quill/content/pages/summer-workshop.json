@@ -4,7 +4,20 @@
     {
       "_template": "hero",
       "heading": "Summer Digital Art Workshop",
-      "subheading": "A 4-week online workshop covering character design, digital painting in Krita, and color theory. Perfect for beginners and intermediate artists.",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A 4-week online workshop covering character design, digital painting in Krita, and color theory. Perfect for beginners and intermediate artists."
+              }
+            ]
+          }
+        ]
+      },
       "ctaLabel": "Register Now",
       "ctaLink": "/contact"
     },
@@ -15,17 +28,56 @@
         {
           "icon": "Brush",
           "title": "Digital Painting Fundamentals",
-          "description": "Master brush settings, layers, blending modes, and the Krita interface from scratch."
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Master brush settings, layers, blending modes, and the Krita interface from scratch."
+                  }
+                ]
+              }
+            ]
+          }
         },
         {
           "icon": "Palette",
           "title": "Color Theory in Practice",
-          "description": "Learn to pick harmonious palettes, use value contrast, and create mood through color."
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Learn to pick harmonious palettes, use value contrast, and create mood through color."
+                  }
+                ]
+              }
+            ]
+          }
         },
         {
           "icon": "User",
           "title": "Character Design",
-          "description": "Design original characters from concept sketches to fully colored illustrations."
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Design original characters from concept sketches to fully colored illustrations."
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -37,11 +89,21 @@
         "children": [
           {
             "type": "p",
-            "children": [{ "type": "text", "text": "Join Corinne for four weeks of hands-on digital art instruction. Each week includes a live session, a recorded lesson, and a creative assignment with personalized feedback." }]
+            "children": [
+              {
+                "type": "text",
+                "text": "Join Corinne for four weeks of hands-on digital art instruction. Each week includes a live session, a recorded lesson, and a creative assignment with personalized feedback."
+              }
+            ]
           },
           {
             "type": "p",
-            "children": [{ "type": "text", "text": "Whether you've never opened Krita before or you've been drawing for years and want to level up, this workshop meets you where you are. All you need is a computer and a drawing tablet (recommendations provided)." }]
+            "children": [
+              {
+                "type": "text",
+                "text": "Whether you've never opened Krita before or you've been drawing for years and want to level up, this workshop meets you where you are. All you need is a computer and a drawing tablet (recommendations provided)."
+              }
+            ]
           }
         ]
       }
@@ -54,7 +116,20 @@
     {
       "_template": "ctaBand",
       "heading": "Ready to start your creative journey?",
-      "description": "Limited spots available. Early bird pricing ends June 1st.",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Limited spots available. Early bird pricing ends June 1st."
+              }
+            ]
+          }
+        ]
+      },
       "ctaLabel": "Sign Up Today",
       "ctaLink": "/contact",
       "variant": "dark"

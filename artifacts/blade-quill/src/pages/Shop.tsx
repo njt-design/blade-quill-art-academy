@@ -14,8 +14,7 @@ import {
 import { useTina, tinaField } from "tinacms/react";
 import shopData from "../../content/shop.json";
 
-import { BookCover } from "@/components/site/BookCover";
-import { Btn } from "@/components/site/Btn";
+import { RichText } from "@/components/site/RichText";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -24,6 +23,8 @@ const TINA_DATA_SHOPDATA = { shop: shopData };
 const shopQuery = `
   query shop($relativePath: String!) {
     shop(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       pageDescription
       emptyHeading
@@ -143,7 +144,7 @@ export default function Shop() {
                 >
                   The <span className="grad-text">studio</span> shop.
                 </h1>
-                <p
+                <div
                   className="max-w-[540px]"
                   style={{
                     fontSize: 17,
@@ -152,9 +153,8 @@ export default function Shop() {
                   }}
                   data-tina-field={tinaField(content, "pageDescription")}
                 >
-                  {content?.pageDescription ||
-                    "Books, ebooks, brushes, and downloadable guides — direct from the studio."}
-                </p>
+                  <RichText value={content?.pageDescription} />
+                </div>
               </div>
               <div className="flex items-center gap-3.5">
                 <span
@@ -288,7 +288,7 @@ export default function Shop() {
                   >
                     {featuredProduct.name}
                   </h2>
-                  <p
+                  <div
                     className="mb-6 max-w-[380px]"
                     style={{
                       color: "var(--paper-3)",
@@ -296,8 +296,8 @@ export default function Shop() {
                       lineHeight: 1.6,
                     }}
                   >
-                    {featuredProduct.description}
-                  </p>
+                    <RichText value={featuredProduct.description} />
+                  </div>
                   <div className="flex flex-wrap gap-2.5">
                     <Btn
                       kind="primary"

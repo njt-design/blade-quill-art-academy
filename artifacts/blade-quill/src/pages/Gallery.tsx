@@ -4,12 +4,15 @@ import { useListGallery, type GalleryItem } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
 import { FALLBACK_GALLERY } from "@/lib/fallback-data";
 import { useTina, tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import galleryData from "../../content/gallery.json";
 const TINA_DATA_GALLERYDATA = { gallery: galleryData };
 
 const galleryQuery = `
   query gallery($relativePath: String!) {
     gallery(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       pageDescription
       emptyHeading
@@ -108,12 +111,12 @@ export default function Gallery() {
           >
             {content?.pageTitle}
           </h1>
-          <p
+          <div
             className="text-base text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
-            {content?.pageDescription}
-          </p>
+            <RichText value={content?.pageDescription} />
+          </div>
         </div>
 
         {isLoading ? (

@@ -1,6 +1,19 @@
 {
   "pageTitle": "Tutorials",
-  "pageDescription": "Learn digital painting with step-by-step video guides. Topics include learning Krita, tools, brushes, digital painting, character design, animation, vectors, textures, and more.",
+  "pageDescription": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Learn digital painting with step-by-step video guides. Topics include learning Krita, tools, brushes, digital painting, character design, animation, vectors, textures, and more."
+          }
+        ]
+      }
+    ]
+  },
   "subscribeLabel": "Subscribe on YouTube",
   "youtubeUrl": "https://www.youtube.com/c/BladeQuillartacademy",
   "emptyHeading": "No tutorials found",

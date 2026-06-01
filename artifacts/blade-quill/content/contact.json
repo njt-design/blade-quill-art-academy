@@ -1,6 +1,19 @@
 {
   "pageTitle": "Get in Touch",
-  "pageDescription": "Have a question, collaboration idea, or just want to say hello? I'd love to hear from you.",
+  "pageDescription": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Have a question, collaboration idea, or just want to say hello? I'd love to hear from you."
+          }
+        ]
+      }
+    ]
+  },
   "email": "Corinne@bladeandquillartacademy.com",
   "location": "Des Moines, IA"
 }

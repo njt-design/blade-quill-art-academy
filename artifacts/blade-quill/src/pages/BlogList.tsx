@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 import { Calendar, ArrowRight } from "lucide-react";
 import { formatBlogDate, loadBlogPosts } from "@/lib/blog-posts";
+import { richTextToPlain } from "@/lib/rich-text";
 
 export default function BlogList() {
   const [, setLocation] = useLocation();
@@ -88,7 +89,7 @@ export default function BlogList() {
                   </h3>
                   {post.excerpt && (
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-3 flex-grow">
-                      {post.excerpt}
+                      {richTextToPlain(post.excerpt)}
                     </p>
                   )}
                   <div className="flex items-center justify-between mt-auto pt-2 border-t border-border/50">

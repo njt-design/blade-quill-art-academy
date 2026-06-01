@@ -1,3 +1,5 @@
+import { isRichText, type RichTextValue } from "@/lib/rich-text";
+
 const postModules = import.meta.glob("../../content/posts/*.json", {
   eager: true,
 }) as Record<
@@ -8,7 +10,7 @@ const postModules = import.meta.glob("../../content/posts/*.json", {
 export interface BlogPostMeta {
   slug: string;
   title: string;
-  excerpt?: string;
+  excerpt?: string | RichTextValue;
   coverImage?: string;
   publishedAt?: string;
   tags?: string[];
@@ -22,7 +24,9 @@ export function loadBlogPosts(): BlogPostMeta[] {
       return {
         slug,
         title: (data.title as string) ?? "Untitled",
-        excerpt: data.excerpt as string | undefined,
+        excerpt: isRichText(data.excerpt)
+          ? data.excerpt
+          : (data.excerpt as string | undefined),
         coverImage: data.coverImage as string | undefined,
         publishedAt: data.publishedAt as string | undefined,
         tags: data.tags as string[] | undefined,

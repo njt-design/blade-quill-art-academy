@@ -1,7 +1,20 @@
 {
   "productId": 1,
   "name": "Lheeloo & Luna Cartoon Book",
-  "description": "The official Lheeloo & Luna illustrated cartoon book by Corinne — a charming story full of personality and beautiful original artwork.",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "The official Lheeloo & Luna illustrated cartoon book by Corinne — a charming story full of personality and beautiful original artwork."
+          }
+        ]
+      }
+    ]
+  },
   "price": 24.99,
   "category": "physical",
   "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",

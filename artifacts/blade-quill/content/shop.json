@@ -1,6 +1,19 @@
 {
   "pageTitle": "Shop",
-  "pageDescription": "Books, digital guides, and curriculum to fuel your creative journey. From Krita quick-start guides to the Lheeloo & Luna cartoon book.",
+  "pageDescription": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Books, digital guides, and curriculum to fuel your creative journey. From Krita quick-start guides to the Lheeloo & Luna cartoon book."
+          }
+        ]
+      }
+    ]
+  },
   "emptyHeading": "No products found",
   "emptyDescription": "Check back later for new releases."
 }

@@ -1,5 +1,13 @@
 import { defineConfig, type Template } from "tinacms";
 
+const INLINE_RICH_TEXT = {
+  toolbar: ["bold", "italic", "link", "ul", "ol"],
+  showFloatingToolbar: true,
+} as const;
+
+/** JSON collections store Slate AST directly — skip markdown re-parsing. */
+const SLATE_JSON_PARSER = { type: "slatejson" as const };
+
 // ---------------------------------------------------------------------------
 // Block templates for landing pages
 // ---------------------------------------------------------------------------
@@ -15,11 +23,12 @@ const heroBlock: Template = {
       ui: { description: "Large heading text for this hero section." },
     },
     {
-      type: "string",
+      type: "rich-text",
       name: "subheading",
       label: "Subheading",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
       ui: {
-        component: "textarea",
         description: "Supporting text shown below the heading.",
       },
     },
@@ -58,6 +67,7 @@ const textBlock: Template = {
       type: "rich-text",
       name: "body",
       label: "Body",
+      parser: SLATE_JSON_PARSER,
       ui: { description: "Rich text content. Supports headings, bold, links, images, and more." },
     },
   ],
@@ -98,9 +108,11 @@ const ctaBandBlock: Template = {
       ui: { description: "Bold heading for the call-to-action strip." },
     },
     {
-      type: "string",
+      type: "rich-text",
       name: "description",
       label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
       ui: { description: "Supporting line below the heading." },
     },
     {
@@ -167,10 +179,11 @@ const featureGridBlock: Template = {
         },
         { type: "string", name: "title", label: "Title" },
         {
-          type: "string",
+          type: "rich-text",
           name: "description",
           label: "Description",
-          ui: { component: "textarea" },
+          overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
         },
       ],
     },
@@ -217,10 +230,12 @@ export default defineConfig({
                 ui: { description: "The large heading at the very top of the homepage. Use a newline to create a line break." },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "subheading",
                 label: "Subheading",
-                ui: { component: "textarea", description: "The sentence below the main heading. Describes what the site offers and who Corinne is." },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+                ui: { description: "The sentence below the main heading. Describes what the site offers and who Corinne is." },
               },
               {
                 type: "string",
@@ -304,10 +319,12 @@ export default defineConfig({
                 ui: { description: 'The artist banner heading (e.g. "Meet Corinne").' },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "bio",
                 label: "Bio",
-                ui: { component: "textarea", description: "A short bio paragraph introducing the artist. Shown next to the portrait image." },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+                ui: { description: "A short bio paragraph introducing the artist. Shown next to the portrait image." },
               },
               {
                 type: "string",
@@ -366,16 +383,20 @@ export default defineConfig({
                 ui: { description: 'Main heading (e.g. "Enroll in My Krita Education Classes").' },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "subheading",
                 label: "Subheading",
-                ui: { component: "textarea", description: "Supporting line below the heading." },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+                ui: { description: "Supporting line below the heading." },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "body",
                 label: "Body (optional)",
-                ui: { component: "textarea", description: "Optional extra paragraph." },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+                ui: { description: "Optional extra paragraph." },
               },
               {
                 type: "string",
@@ -447,10 +468,12 @@ export default defineConfig({
                 ui: { description: 'Newsletter heading (e.g. "Stay in the Loop").' },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "subheading",
                 label: "Subheading",
-                ui: { component: "textarea", description: "Description encouraging signup." },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+                ui: { description: "Description encouraging signup." },
               },
               {
                 type: "string",
@@ -484,9 +507,11 @@ export default defineConfig({
                 ui: { description: "The heading in the dark promo band at the bottom of the homepage." },
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "description",
                 label: "Description",
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
                 ui: { description: "Short description line below the promo heading." },
               },
               {
@@ -530,22 +555,28 @@ export default defineConfig({
             ui: { description: "The photo shown on the left side of the About page. Upload a square or portrait-oriented image." },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "leadText",
             label: "Lead Text",
-            ui: { component: "textarea", description: "The bold introductory sentence at the top of the bio section. Keep it to 1-2 sentences." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "The bold introductory sentence at the top of the bio section. Keep it to 1-2 sentences." },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "paragraph1",
             label: "Paragraph 1",
-            ui: { component: "textarea", description: "The first body paragraph. Talks about what Corinne offers, tutorials, and YouTube." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "The first body paragraph. Talks about what Corinne offers, tutorials, and YouTube." },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "paragraph2",
             label: "Paragraph 2",
-            ui: { component: "textarea", description: "The second body paragraph. Mentions Lheeloo & Luna, specialties, and the Blade & Quill mission." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "The second body paragraph. Mentions Lheeloo & Luna, specialties, and the Blade & Quill mission." },
           },
           {
             type: "string",
@@ -628,10 +659,11 @@ export default defineConfig({
                 required: true,
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "description",
                 label: "Description",
-                ui: { component: "textarea" },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
               },
               {
                 type: "image",
@@ -669,10 +701,11 @@ export default defineConfig({
                 label: "Heading",
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "intro",
                 label: "Intro Text",
-                ui: { component: "textarea" },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
               },
               {
                 type: "string",
@@ -725,10 +758,11 @@ export default defineConfig({
                 label: "Heading",
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "body",
                 label: "Body Text",
-                ui: { component: "textarea" },
+                overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
               },
               {
                 type: "string",
@@ -763,10 +797,12 @@ export default defineConfig({
             ui: { description: 'The main heading on the Contact page (e.g. "Get in Touch").' },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "pageDescription",
             label: "Page Description",
-            ui: { component: "textarea", description: "The introductory text below the heading, before the contact form." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "The introductory text below the heading, before the contact form." },
           },
           {
             type: "string",
@@ -801,10 +837,12 @@ export default defineConfig({
             ui: { description: 'The main heading on the Shop page (e.g. "Shop"). Product cards are managed under Shop Products.' },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "pageDescription",
             label: "Page Description",
-            ui: { component: "textarea", description: "The introductory text below the heading on the Shop page." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "The introductory text below the heading on the Shop page." },
           },
           {
             type: "string",
@@ -839,10 +877,12 @@ export default defineConfig({
             ui: { description: 'The main heading on the Gallery page (e.g. "Gallery"). Images are loaded from the database.' },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "pageDescription",
             label: "Page Description",
-            ui: { component: "textarea", description: "Introductory text below the heading. Mention your art style or invite visitors to click images." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "Introductory text below the heading. Mention your art style or invite visitors to click images." },
           },
           {
             type: "string",
@@ -877,10 +917,12 @@ export default defineConfig({
             ui: { description: 'The main heading on the Tutorials page (e.g. "Tutorials").' },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "pageDescription",
             label: "Page Description",
-            ui: { component: "textarea", description: "Introductory text below the heading. Describe what kinds of tutorials are available." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "Introductory text below the heading. Describe what kinds of tutorials are available." },
           },
           {
             type: "string",
@@ -927,10 +969,12 @@ export default defineConfig({
             ui: { description: 'The main heading on the Downloads page (e.g. "Free Resources").' },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "pageDescription",
             label: "Page Description",
-            ui: { component: "textarea", description: "Introductory text below the heading. Describe what free resources are available." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "Introductory text below the heading. Describe what free resources are available." },
           },
           {
             type: "string",
@@ -983,11 +1027,12 @@ export default defineConfig({
             ui: { description: "Product title shown on cards and the detail page." },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "description",
             label: "Description",
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
             ui: {
-              component: "textarea",
               description: "Short description for shop cards and the product detail tab.",
             },
           },
@@ -1082,10 +1127,12 @@ export default defineConfig({
             ui: { description: "The post headline. Shows in the blog list and at the top of the post." },
           },
           {
-            type: "string",
+            type: "rich-text",
             name: "excerpt",
             label: "Excerpt",
-            ui: { component: "textarea", description: "A 1-2 sentence summary shown on blog list cards." },
+            overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+            ui: { description: "A 1-2 sentence summary shown on blog list cards." },
           },
           {
             type: "image",
@@ -1110,6 +1157,7 @@ export default defineConfig({
             type: "rich-text",
             name: "body",
             label: "Body",
+            parser: SLATE_JSON_PARSER,
             ui: { description: "The full post content. Supports headings, images, links, and embeds." },
           },
         ],

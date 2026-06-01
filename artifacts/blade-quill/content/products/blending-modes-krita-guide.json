@@ -1,7 +1,20 @@
 {
   "productId": 4,
   "name": "Blending Modes in Krita — Visual Guide",
-  "description": "Stop guessing what each blending mode does! Visual guide with real examples for every mode.",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Stop guessing what each blending mode does! Visual guide with real examples for every mode."
+          }
+        ]
+      }
+    ]
+  },
   "price": 9.99,
   "category": "digital",
   "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/60617ae2-f090-454a-8727-016083d37921/A+quick+guide+to+Krita%27s+Blending+modes_Feb.+2023.jpg",

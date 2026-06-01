@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import { Marquee } from "./Marquee";
 import { SectionReveal } from "./SectionReveal";
 
@@ -59,13 +60,12 @@ export function NewsletterSection({ content }: Props) {
           >
             {content?.heading || "Stay in the Loop"}
           </h2>
-          <p
+          <div
             className="text-sm font-subheading opacity-80 mb-8 reading-width mx-auto"
             data-tina-field={tinaField(content, "subheading")}
           >
-            {content?.subheading ||
-              "Get art tips, new tutorials, and class announcements delivered to your inbox."}
-          </p>
+            <RichText value={content?.subheading} />
+          </div>
 
           <form
             onSubmit={handleSubmit}

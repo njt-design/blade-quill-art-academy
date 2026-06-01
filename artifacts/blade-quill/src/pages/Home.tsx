@@ -26,6 +26,8 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { QuillMark } from "@/components/site/QuillMark";
 import { Reveal } from "@/components/site/Reveal";
 import { TutorialThumb } from "@/components/site/TutorialThumb";
+import { RichText } from "@/components/site/RichText";
+import { richTextToPlain } from "@/lib/rich-text";
 import { WordReveal } from "@/components/site/WordReveal";
 
 const TINA_DATA_HOMEDATA = { home: homeData };
@@ -36,6 +38,8 @@ const YOUTUBE_CHANNEL_URL =
 const homeQuery = `
   query home($relativePath: String!) {
     home(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       hero {
         heading
         subheading
@@ -138,7 +142,8 @@ export default function Home() {
         tag: "NEW BOOK",
         title: bookPromo?.heading || "The new book",
         sub:
-          bookPromo?.description || "Signed copies + digital edition",
+          richTextToPlain(bookPromo?.description) ||
+          "Signed copies + digital edition",
         cta: bookPromo?.ctaLabel || "Read more",
         badge: "LATEST",
         palette: PILLAR_PALETTES[0],
@@ -152,7 +157,8 @@ export default function Home() {
         tag: classes?.eyebrow || "KRITA CLASSES",
         title: classes?.heading || "Step into the classroom",
         sub:
-          classes?.subheading || "Structured digital art training",
+          richTextToPlain(classes?.subheading) ||
+          "Structured digital art training",
         cta: classes?.ctaLabel || "Enroll today",
         badge: "OPEN",
         palette: PILLAR_PALETTES[1],
@@ -297,13 +303,13 @@ export default function Home() {
           </h1>
 
           <Reveal>
-            <p
+            <div
               className="text-lg max-w-[560px] mx-auto mb-9 leading-[1.55]"
               style={{ color: "var(--ink-soft)" }}
               data-tina-field={tinaField(hero, "subheading")}
             >
-              {hero?.subheading}
-            </p>
+              <RichText value={hero?.subheading} />
+            </div>
           </Reveal>
 
           <Reveal>
@@ -582,7 +588,7 @@ export default function Home() {
                 </h2>
               </Reveal>
               <Reveal>
-                <p
+                <div
                   className="mb-7 max-w-[480px]"
                   style={{
                     fontSize: 17,
@@ -591,9 +597,8 @@ export default function Home() {
                   }}
                   data-tina-field={tinaField(bookPromo, "description")}
                 >
-                  {bookPromo?.description ||
-                    "An illustrated story full of personality and beautiful original artwork."}
-                </p>
+                  <RichText value={bookPromo?.description} />
+                </div>
               </Reveal>
               <Reveal>
                 <div
@@ -726,14 +731,13 @@ export default function Home() {
                 style={{ borderRight: "1px solid rgba(31,26,20,0.05)" }}
               >
                 <div className="eyebrow mb-3.5">WHAT YOU'LL MAKE</div>
-                <h3
+                <div
                   className="mb-7"
                   style={{ fontSize: 28, lineHeight: 1.2 }}
                   data-tina-field={tinaField(classes, "subheading")}
                 >
-                  {classes?.subheading ||
-                    "Structured digital art training designed for artists who want to master Krita."}
-                </h3>
+                  <RichText value={classes?.subheading} />
+                </div>
                 <div className="flex flex-col gap-5">
                   {(classes?.bullets || []).map((bullet, n) => (
                     <div
@@ -1161,7 +1165,7 @@ export default function Home() {
                   >
                     {newsletter?.heading || "Once a month, from my desk."}
                   </h3>
-                  <p
+                  <div
                     className="mb-7"
                     style={{
                       fontSize: 14,
@@ -1170,9 +1174,8 @@ export default function Home() {
                     }}
                     data-tina-field={tinaField(newsletter, "subheading")}
                   >
-                    {newsletter?.subheading ||
-                      "New work, free guides, and class openings. No spam — promise."}
-                  </p>
+                    <RichText value={newsletter?.subheading} />
+                  </div>
                   <form
                     onSubmit={(e) => e.preventDefault()}
                     className="flex flex-col gap-3"

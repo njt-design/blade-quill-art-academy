@@ -1,9 +1,48 @@
 {
   "pageTitle": "About Corinne",
   "portraitImage": "/images/about-portrait.png",
-  "leadText": "I am a French author and illustrator. This website is about digital art.",
-  "paragraph1": "I offer advice and complementary materials to assist you in your creative journey. I also offer free tutorials here, and on my YouTube channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly.",
-  "paragraph2": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home.",
+  "leadText": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "I am a French author and illustrator. This website is about digital art."
+          }
+        ]
+      }
+    ]
+  },
+  "paragraph1": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "I offer advice and complementary materials to assist you in your creative journey. I also offer free tutorials here, and on my YouTube channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly."
+          }
+        ]
+      }
+    ]
+  },
+  "paragraph2": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
+          }
+        ]
+      }
+    ]
+  },
   "skill1Label": "Krita & Digital Painting",
   "skill2Label": "Character Design",
   "skill3Label": "Color Theory",

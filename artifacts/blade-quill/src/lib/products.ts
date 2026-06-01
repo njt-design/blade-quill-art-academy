@@ -1,4 +1,5 @@
 import type { Category, Product, ProductCategory } from "@workspace/api-client-react";
+import { isRichText, type RichTextValue } from "@/lib/rich-text";
 
 const productModules = import.meta.glob("../../content/products/*.json", {
   eager: true,
@@ -7,7 +8,10 @@ const productModules = import.meta.glob("../../content/products/*.json", {
   { default?: Record<string, unknown> } & Record<string, unknown>
 >;
 
-export type CatalogProduct = Product & { slug: string };
+export type CatalogProduct = Omit<Product, "description"> & {
+  slug: string;
+  description: string | RichTextValue;
+};
 
 function parseProduct(
   path: string,
@@ -33,7 +37,9 @@ function parseProduct(
     slug,
     id,
     name,
-    description: (data.description as string) ?? "",
+    description: isRichText(data.description)
+      ? data.description
+      : ((data.description as string | undefined) ?? ""),
     price,
     category,
     imageUrl: image,

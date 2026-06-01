@@ -1,7 +1,20 @@
 {
   "hero": {
     "heading": "Welcome to Blade & Quill",
-    "subheading": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Luna. ",
+    "subheading": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Luna."
+            }
+          ]
+        }
+      ]
+    },
     "ctaPrimary": "Explore the Shop",
     "ctaSecondary": "Watch Tutorials",
     "backgroundImage": ""
@@ -18,7 +31,20 @@
   "artistBanner": {
     "badge": "Author & Illustrator",
     "heading": "Meet Corinne",
-    "bio": "I am a French author and illustrator. I offer advice and complementary materials to assist you in your creative journey, including free tutorials here and on my YouTube channel.",
+    "bio": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "I am a French author and illustrator. I offer advice and complementary materials to assist you in your creative journey, including free tutorials here and on my YouTube channel."
+            }
+          ]
+        }
+      ]
+    },
     "ctaLabel": "Read My Story",
     "portraitImage": "/images/about-portrait.png"
   },
@@ -30,8 +56,34 @@
   "classesSection": {
     "eyebrow": "Now Enrolling",
     "heading": "Enroll in My Krita Education Course",
-    "subheading": "Structured digital art training designed for artists who want to master Krita.",
-    "body": "",
+    "subheading": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Structured digital art training designed for artists who want to master Krita."
+            }
+          ]
+        }
+      ]
+    },
+    "body": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
     "bullets": [
       "Beginner-friendly Krita curriculum",
       "Step-by-step lessons with downloadable resources",
@@ -49,14 +101,40 @@
   },
   "newsletterSection": {
     "heading": "Stay in the Loop",
-    "subheading": "Get art tips, new tutorials, and class announcements delivered to your inbox.",
+    "subheading": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Get art tips, new tutorials, and class announcements delivered to your inbox."
+            }
+          ]
+        }
+      ]
+    },
     "placeholderText": "you@example.com",
     "ctaLabel": "Subscribe",
     "privacyNote": "No spam. Unsubscribe anytime."
   },
   "bookPromo": {
     "heading": "Lheeloo & Luna — The Book Is Live",
-    "description": "Corinne's debut illustrated book. Order your copy today.",
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Corinne's debut illustrated book. Order your copy today."
+            }
+          ]
+        }
+      ]
+    },
     "ctaLabel": "Order Now",
     "ctaLink": "/shop/1"
   }

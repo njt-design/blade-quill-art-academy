@@ -9,6 +9,7 @@ import {
 import { Btn } from "@/components/site/Btn";
 import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
+import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 
 const TINA_DATA_ABOUTDATA = { about: aboutData };
@@ -18,6 +19,8 @@ const YOUTUBE_CHANNEL_URL =
 const aboutQuery = `
   query about($relativePath: String!) {
     about(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       portraitImage
       leadText
@@ -174,7 +177,7 @@ export default function About() {
                 <WordReveal text="for a living." />
               </h1>
               <Reveal>
-                <p
+                <div
                   className="mb-8 max-w-[480px]"
                   style={{
                     fontSize: 17,
@@ -183,9 +186,8 @@ export default function About() {
                   }}
                   data-tina-field={tinaField(content, "leadText")}
                 >
-                  {content?.leadText ||
-                    "French author, illustrator, and Krita educator. I make books about quiet adventures, and teach digital painting to artists in 65 countries."}
-                </p>
+                  <RichText value={content?.leadText} />
+                </div>
               </Reveal>
               <Reveal>
                 <div className="flex flex-wrap gap-3 mb-7">
@@ -393,7 +395,7 @@ export default function About() {
                   }}
                   data-tina-field={tinaField(content, "paragraph1")}
                 >
-                  {content?.paragraph1}
+                  <RichText value={content?.paragraph1} />
                 </div>
               </Reveal>
               <Reveal>
@@ -419,7 +421,7 @@ export default function About() {
                   >
                     "
                   </span>
-                  <p
+                  <div
                     style={{
                       fontFamily: "var(--f-serif)",
                       fontSize: 22,
@@ -428,9 +430,8 @@ export default function About() {
                       color: "var(--paper)",
                     }}
                   >
-                    {content?.leadText ||
-                      "I wanted to be the teacher I never had as a kid — someone who told you it was okay to draw slowly."}
-                  </p>
+                    <RichText value={content?.leadText} />
+                  </div>
                 </div>
               </Reveal>
               <Reveal>
@@ -442,7 +443,7 @@ export default function About() {
                   }}
                   data-tina-field={tinaField(content, "paragraph2")}
                 >
-                  {content?.paragraph2}
+                  <RichText value={content?.paragraph2} />
                 </div>
               </Reveal>
             </div>

@@ -1,7 +1,20 @@
 {
   "productId": 11252210,
   "name": "Test Product",
-  "description": "This is a long test description: This is a long test description: This is a long test description: This is a long test description: ",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "This is a long test description: This is a long test description: This is a long test description: This is a long test description:"
+          }
+        ]
+      }
+    ]
+  },
   "price": 25.66,
   "category": "digital",
   "image": "/images/Screenshot 2026-05-12 at 4.14.21 PM.png",

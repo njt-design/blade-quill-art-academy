@@ -1,4 +1,5 @@
 import type { Product } from "@workspace/api-client-react";
+import { richTextToPlain } from "@/lib/rich-text";
 import { HomeSectionHeader } from "./HomeSectionHeader";
 import { ParallaxImage } from "./ParallaxImage";
 import {
@@ -61,7 +62,7 @@ function BookCard({
           {product.category === "physical" ? "Book" : "Ebook"}
         </p>
         <p className="text-sm text-muted-foreground line-clamp-2">
-          {product.description}
+          {richTextToPlain(product.description)}
         </p>
       </div>
     </div>

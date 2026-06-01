@@ -1,17 +1,92 @@
 {
-  "pageTitle": "Important Links",
+  "pageTitle": "New Book Release",
   "featuredRelease": {
     "eyebrow": "New Featured Release",
     "title": "Super Fun Puzzle Games for Kids Ages 8–12",
-    "description": "Packed with clever word puzzles, silly jokes, trivia, fascinating facts, coloring pages, mazes, and creative challenges!",
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "This "
+            },
+            {
+              "type": "text",
+              "id": "YJigKBjhtQ",
+              "text": "Super Fun Puzzle Games",
+              "bold": true
+            },
+            {
+              "type": "text",
+              "id": "3S1DZ7YZwW",
+              "text": " activity book is packed with entertaining activities designed to keep curious kids engaged, thinking, laughing, and learning."
+            }
+          ],
+          "id": "7gX8c0MID8"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Designed especially for kids ages 8–12",
+              "bold": true
+            },
+            {
+              "type": "text",
+              "id": "WjYsTtcR3u",
+              "text": ", it encourages creativity, problem-solving, observation skills, vocabulary building, and independent thinking through fun and engaging challenges."
+            }
+          ],
+          "id": "FkJShaqFps"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Whether your child loves puzzles, drawing, jokes, trivia, or brain teasers, this activity book offers hours of educational entertainment and creative fun."
+            }
+          ],
+          "id": "A4bqK_MqHv"
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Get ready to explore, laugh, solve puzzles, and challenge your brain, one fun page at a time!",
+              "bold": true
+            }
+          ],
+          "id": "RwEx6fWCII"
+        }
+      ]
+    },
     "coverImage": "/images/puzzle-book-front.png",
     "backCoverImage": "/images/puzzle-book-back.png",
-    "ctaLabel": "Get the Book on Amazon",
+    "ctaLabel": "Get the Book on Amazon!",
     "ctaHref": "https://www.amazon.com/dp/1733168451"
   },
   "reviewsSection": {
     "heading": "Leave your reviews here",
-    "intro": "Reviews mean the world and truly help others discover the book. Any kind words would be greatly appreciated. ",
+    "intro": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Reviews mean the world and truly help others discover the book. Any kind words would be greatly appreciated."
+            }
+          ]
+        }
+      ]
+    },
     "thankYou": "Thank you so much for your support!",
     "ctaHeading": "Review the book by clicking the button for your country!"
   },
@@ -34,7 +109,20 @@
   ],
   "kofiSection": {
     "heading": "Support the Studio",
-    "body": "If you enjoy Corinne's tutorials, books, and free resources, consider buying her a coffee on Ko-fi. Every bit of support helps keep the studio running.",
+    "body": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "If you enjoy Corinne's tutorials, books, and free resources, consider buying her a coffee on Ko-fi. Every bit of support helps keep the studio running."
+            }
+          ]
+        }
+      ]
+    },
     "ctaLabel": "Support on Ko-fi",
     "href": "https://ko-fi.com/bladeandquill"
   }

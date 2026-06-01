@@ -1,4 +1,5 @@
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import * as LucideIcons from "lucide-react";
 
 interface FeatureItem {
@@ -41,9 +42,10 @@ export default function FeatureGridBlock({ block }: Props) {
                   <h3 className="font-normal mb-2">{item.title}</h3>
                 )}
                 {item.description && (
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
+                  <RichText
+                    value={item.description}
+                    className="text-sm text-muted-foreground leading-relaxed"
+                  />
                 )}
               </div>
             );

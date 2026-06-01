@@ -1,5 +1,6 @@
 import { ArrowRight, Calendar } from "lucide-react";
 import { formatBlogDate, type BlogPostMeta } from "@/lib/blog-posts";
+import { richTextToPlain } from "@/lib/rich-text";
 import { HomeSectionHeader } from "./HomeSectionHeader";
 import { ParallaxImage } from "./ParallaxImage";
 import {
@@ -69,7 +70,7 @@ function PostCard({
         </h3>
         {post.excerpt && (
           <p className="text-sm text-muted-foreground line-clamp-2 mb-3 flex-grow">
-            {post.excerpt}
+            {richTextToPlain(post.excerpt)}
           </p>
         )}
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-border/50">

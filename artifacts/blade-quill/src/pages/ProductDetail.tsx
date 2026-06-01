@@ -23,6 +23,7 @@ import {
 } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
 import { Btn } from "@/components/site/Btn";
+import { RichText } from "@/components/site/RichText";
 import { InkUnderline } from "@/components/site/InkUnderline";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
@@ -303,12 +304,12 @@ export default function ProductDetail() {
                 </h1>
               </Reveal>
               <Reveal>
-                <p
+                <div
                   className="mb-7"
                   style={{ color: "var(--ink-mute)", fontSize: 15 }}
                 >
-                  {product.description}
-                </p>
+                  <RichText value={product.description} />
+                </div>
               </Reveal>
 
               <Reveal>
@@ -586,7 +587,7 @@ export default function ProductDetail() {
                     lineHeight: 1.8,
                   }}
                 >
-                  <p className="mb-4">{product.description}</p>
+                  <RichText value={product.description} className="mb-4" />
                   <p className="mb-4">
                     Every page in the studio gets made in Krita from
                     sketch to final color. Includes process notes,

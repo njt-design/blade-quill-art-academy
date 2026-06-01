@@ -1,11 +1,37 @@
 {
   "title": "5 Tips for Better Chibi Character Designs",
-  "excerpt": "Chibi characters are adorable, expressive, and surprisingly tricky to get right. Here are my top five tips for designing chibis that pop.",
+  "excerpt": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "This is a test."
+          }
+        ]
+      }
+    ]
+  },
   "coverImage": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80",
   "publishedAt": "2026-03-10T14:00:00.000Z",
   "tags": [
-    "Character Desig",
+    "Character Design",
     "Tips"
   ],
-  "body": "\\[object Object]\n"
+  "body": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet"
+          }
+        ]
+      }
+    ]
+  }
 }

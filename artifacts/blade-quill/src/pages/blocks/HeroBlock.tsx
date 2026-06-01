@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 
 interface Props {
   block: Record<string, unknown>;
@@ -28,12 +29,12 @@ export default function HeroBlock({ block }: Props) {
           </h2>
         )}
         {block.subheading && (
-          <p
+          <div
             className="text-lg font-sans text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed"
             data-tina-field={tinaField(block, "subheading")}
           >
-            {block.subheading as string}
-          </p>
+            <RichText value={block.subheading} />
+          </div>
         )}
         {block.ctaLabel && (
           <Button

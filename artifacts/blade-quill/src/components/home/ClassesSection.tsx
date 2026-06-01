@@ -1,6 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import { SectionReveal, SectionRevealItem, SectionRevealStagger } from "./SectionReveal";
 import { StickyTwoColumn } from "./StickyTwoColumn";
 
@@ -66,20 +67,19 @@ export function ClassesSection({ content, onNavigate }: Props) {
                 >
                   {content?.heading || "Enroll in My Krita Education Classes"}
                 </h2>
-                <p
+                <div
                   className="font-subheading text-lg text-muted-foreground mb-4"
                   data-tina-field={tinaField(content, "subheading")}
                 >
-                  {content?.subheading ||
-                    "Structured digital art training designed for artists who want to master Krita."}
-                </p>
+                  <RichText value={content?.subheading} />
+                </div>
                 {content?.body && (
-                  <p
+                  <div
                     className="text-sm text-muted-foreground mb-6 reading-width mx-auto lg:mx-0"
                     data-tina-field={tinaField(content, "body")}
                   >
-                    {content.body}
-                  </p>
+                    <RichText value={content.body} />
+                  </div>
                 )}
 
                 <SectionRevealStagger className="space-y-4 mb-8 text-left max-w-md mx-auto lg:mx-0">

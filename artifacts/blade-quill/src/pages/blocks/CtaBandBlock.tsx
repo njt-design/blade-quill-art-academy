@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 
 interface Props {
   block: Record<string, unknown>;
@@ -24,12 +25,12 @@ export default function CtaBandBlock({ block }: Props) {
             </h2>
           )}
           {block.description && (
-            <p
+            <div
               className={`text-sm font-sans ${isDark ? "opacity-70" : "text-muted-foreground"}`}
               data-tina-field={tinaField(block, "description")}
             >
-              {block.description as string}
-            </p>
+              <RichText value={block.description} />
+            </div>
           )}
         </div>
         {block.ctaLabel && (

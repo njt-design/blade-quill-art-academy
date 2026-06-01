@@ -6,6 +6,7 @@ import { FaAmazon } from "react-icons/fa";
 import { useTina, tinaField } from "tinacms/react";
 import importantLinksData from "../../content/important-links.json";
 import { Btn } from "@/components/site/Btn";
+import { RichText } from "@/components/site/RichText";
 import { QuillMark } from "@/components/site/QuillMark";
 import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/home/Marquee";
@@ -22,6 +23,8 @@ const KOFI_URL = "https://ko-fi.com/bladeandquill";
 const importantLinksQuery = `
   query importantLinks($relativePath: String!) {
     importantLinks(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       featuredRelease {
         eyebrow
@@ -137,36 +140,36 @@ export default function ImportantLinksPage() {
               >
                 <div className="w-[44%] max-w-[300px] shrink-0">
                   <img
-                    src={backCoverSrc}
-                    alt={`${featured?.title ?? "Book"} back cover`}
-                    className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
-                    style={{ transform: "rotate(2deg)" }}
-                  />
-                </div>
-                <div className="w-[44%] max-w-[300px] shrink-0">
-                  <img
                     src={frontCoverSrc}
                     alt={`${featured?.title ?? "Book"} front cover`}
                     className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
                     style={{ transform: "rotate(-2deg)" }}
                   />
                 </div>
+                <div className="w-[44%] max-w-[300px] shrink-0">
+                  <img
+                    src={backCoverSrc}
+                    alt={`${featured?.title ?? "Book"} back cover`}
+                    className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
+                    style={{ transform: "rotate(2deg)" }}
+                  />
+                </div>
               </div>
 
               <h2
                 id="featured-release-heading"
-                className="font-sans font-medium text-xl md:text-2xl lg:text-3xl text-foreground mb-3 leading-tight max-w-2xl mx-auto"
+                className="font-display text-2xl md:text-3xl text-foreground mb-3 leading-tight max-w-2xl mx-auto"
                 data-tina-field={tinaField(featured, "title")}
               >
                 {featured?.title}
               </h2>
               {featured?.description && (
-                <p
-                  className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-8 leading-relaxed"
-                  data-tina-field={tinaField(featured, "description")}
-                >
-                  {featured.description}
-                </p>
+                <div data-tina-field={tinaField(featured, "description")}>
+                  <RichText
+                    value={featured.description}
+                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-8 leading-relaxed"
+                  />
+                </div>
               )}
               {featured?.ctaLabel && featured?.ctaHref && (
                 <div data-tina-field={tinaField(featured, "ctaLabel")}>
@@ -198,12 +201,12 @@ export default function ImportantLinksPage() {
                 >
                   {reviews?.heading}
                 </h2>
-                <p
-                  className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-3 leading-relaxed"
-                  data-tina-field={tinaField(reviews, "intro")}
-                >
-                  {reviews?.intro}
-                </p>
+                <div data-tina-field={tinaField(reviews, "intro")}>
+                  <RichText
+                    value={reviews?.intro}
+                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-3 leading-relaxed"
+                  />
+                </div>
                 <p
                   className="font-sans text-sm md:text-base italic text-foreground mb-6"
                   data-tina-field={tinaField(reviews, "thankYou")}
@@ -255,12 +258,15 @@ export default function ImportantLinksPage() {
                 >
                   {kofi?.heading}
                 </h2>
-                <p
-                  className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-6 leading-relaxed flex-1"
+                <div
+                  className="flex-1"
                   data-tina-field={tinaField(kofi, "body")}
                 >
-                  {kofi?.body}
-                </p>
+                  <RichText
+                    value={kofi?.body}
+                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-6 leading-relaxed"
+                  />
+                </div>
                 {kofi?.ctaLabel && (
                   <div className="mt-auto" data-tina-field={tinaField(kofi, "ctaLabel")}>
                     <Btn

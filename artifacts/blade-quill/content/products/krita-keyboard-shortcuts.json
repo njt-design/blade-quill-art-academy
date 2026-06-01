@@ -1,7 +1,20 @@
 {
   "productId": 3,
   "name": "Krita Keyboard Shortcuts Booklet",
-  "description": "Speed up your workflow! Covers all the essential Krita keyboard shortcuts. Print it or reference digitally.",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "Speed up your workflow! Covers all the essential Krita keyboard shortcuts. Print it or reference digitally."
+          }
+        ]
+      }
+    ]
+  },
   "price": 7.99,
   "category": "digital",
   "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/d14d7a10-7b62-45ee-a21b-426af152221b/Pin+leading+to+my+shortcut+booklet.jpg",

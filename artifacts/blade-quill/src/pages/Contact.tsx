@@ -8,12 +8,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useSubmitContact } from "@workspace/api-client-react";
 import { useTina, tinaField } from "tinacms/react";
+import { RichText } from "@/components/site/RichText";
 import contactData from "../../content/contact.json";
 const TINA_DATA_CONTACTDATA = { contact: contactData };
 
 const contactQuery = `
   query contact($relativePath: String!) {
     contact(relativePath: $relativePath) {
+      ... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }
+      __typename
       pageTitle
       pageDescription
       email
@@ -72,12 +75,12 @@ export default function Contact() {
           >
             {content?.pageTitle}
           </h1>
-          <p
+          <div
             className="font-sans text-muted-foreground"
             data-tina-field={tinaField(content, "pageDescription")}
           >
-            {content?.pageDescription}
-          </p>
+            <RichText value={content?.pageDescription} />
+          </div>
         </div>
 
         <div className="flex gap-6 mb-8 text-sm text-muted-foreground">
