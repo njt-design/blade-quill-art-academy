@@ -7,7 +7,7 @@
     "dev": "concurrently 'tinacms dev -p 4001 --noTelemetry' 'PORT=3001 BASE_PATH=/ vite --config vite.config.ts --host 0.0.0.0 --port 3001' 'node dev-server.mjs'",
     "build": "tinacms build && vite build --config vite.config.ts",
     "build:deploy": "tinacms build --local --noTelemetry --datalayer-port 9100 && PORT=3001 BASE_PATH=/ vite build --config vite.config.ts",
-    "build:static": "PORT=3001 BASE_PATH=/ vite build --config vite.config.ts",
+    "build:static": "tinacms build --noTelemetry && PORT=3001 BASE_PATH=/ vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
