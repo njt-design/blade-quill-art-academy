@@ -178,6 +178,9 @@ var featureGridBlock = {
   ]
 };
 var config_default = defineConfig({
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
+  branch: process.env.TINA_BRANCH || "main",
   build: {
     outputFolder: "admin",
     publicFolder: "public"

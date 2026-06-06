@@ -74,12 +74,12 @@
     "zod": "catalog:"
   },
   "dependencies": {
-    "@tinacms/cli": "^2.1.10",
+    "@tinacms/cli": "^2.4.3",
     "concurrently": "^9.2.1",
     "express": "^5.2.1",
     "http-proxy-middleware": "^3.0.5",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "tinacms": "^3.6.2"
+    "tinacms": "^3.9.0"
   }
 }
