@@ -35,17 +35,6 @@ const importantLinksQuery = `
         ctaLabel
         ctaHref
       }
-      reviewsSection {
-        heading
-        intro
-        thankYou
-        ctaHeading
-      }
-      reviewLinks {
-        label
-        href
-        region
-      }
       kofiSection {
         heading
         body
@@ -56,12 +45,6 @@ const importantLinksQuery = `
   }
 `;
 
-type ReviewLink = {
-  label?: string | null;
-  href?: string | null;
-  region?: string | null;
-};
-
 export default function ImportantLinksPage() {
   const { data } = useTina({
     query: importantLinksQuery,
@@ -71,9 +54,7 @@ export default function ImportantLinksPage() {
 
   const page = data.importantLinks;
   const featured = page.featuredRelease;
-  const reviews = page.reviewsSection;
   const kofi = page.kofiSection;
-  const reviewLinks = (page.reviewLinks ?? []) as ReviewLink[];
 
   const frontCoverSrc = featured?.coverImage?.trim() || undefined;
   const backCoverSrc = featured?.backCoverImage?.trim() || undefined;
@@ -86,7 +67,7 @@ export default function ImportantLinksPage() {
 
   return (
     <div className="important-links-page min-h-screen bg-background flex flex-col">
-      <header className="px-6 md:px-8 py-6 border-b border-border/85">
+      <header className="px-6 md:px-8 py-4 border-b border-border/85">
         <div className="mx-auto max-w-5xl flex justify-center">
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <span
@@ -105,7 +86,7 @@ export default function ImportantLinksPage() {
       <div className="border-b border-border/85">
         <p className="sr-only">{MARQUEE_ANNOUNCEMENT}</p>
         <Marquee
-          className="bg-secondary py-2.5 font-sans text-xs md:text-sm uppercase tracking-[0.18em] text-foreground"
+          className="bg-secondary py-2 font-sans text-xs md:text-sm uppercase tracking-[0.18em] text-foreground"
           speed="slow"
           pauseOnHover={false}
           variant="single"
@@ -117,177 +98,123 @@ export default function ImportantLinksPage() {
         </Marquee>
       </div>
 
-      <main className="flex-1 px-6 md:px-8 py-10 md:py-14">
-        <div className="mx-auto max-w-5xl flex flex-col gap-8 md:gap-10">
-          {/* Featured release — full width */}
+      <main className="flex-1 px-6 md:px-8 py-6 md:py-8">
+        <div className="mx-auto max-w-5xl flex flex-col gap-6">
+          {/* Featured release — two columns (covers | content) */}
           <Reveal className="w-full">
             <section
-              className="home-panel p-6 md:p-10 text-center w-full !overflow-visible"
+              className="home-panel p-6 md:p-8 w-full !overflow-visible"
               aria-labelledby="featured-release-heading"
             >
-              {featured?.eyebrow && (
-                <p
-                  className="eyebrow text-orange mb-4"
-                  data-tina-field={tinaField(featured, "eyebrow")}
-                >
-                  {featured.eyebrow}
-                </p>
-              )}
-
-              <div
-                className="flex flex-row items-center justify-center gap-4 md:gap-10 mb-8 mx-auto max-w-3xl px-2 py-4 overflow-visible"
-                data-tina-field={tinaField(featured, "coverImage")}
-              >
-                <div className="w-[44%] max-w-[300px] shrink-0">
-                  <img
-                    src={frontCoverSrc}
-                    alt={`${featured?.title ?? "Book"} front cover`}
-                    className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
-                    style={{ transform: "rotate(-2deg)" }}
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+                <div className="flex flex-col items-center gap-15 pb-15 md:pb-0">
+                  <div
+                    className="flex flex-row items-center justify-center gap-3 md:gap-5 overflow-visible w-full"
+                    data-tina-field={tinaField(featured, "coverImage")}
+                  >
+                    <div className="w-[46%] max-w-[200px] shrink-0">
+                      <img
+                        src={frontCoverSrc}
+                        alt={`${featured?.title ?? "Book"} front cover`}
+                        className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
+                        style={{ transform: "rotate(-2deg)" }}
+                      />
+                    </div>
+                    <div className="w-[46%] max-w-[200px] shrink-0">
+                      <img
+                        src={backCoverSrc}
+                        alt={`${featured?.title ?? "Book"} back cover`}
+                        className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
+                        style={{ transform: "rotate(2deg)" }}
+                      />
+                    </div>
+                  </div>
+                  {featured?.ctaLabel && featured?.ctaHref && (
+                    <div data-tina-field={tinaField(featured, "ctaLabel")}>
+                      <Btn
+                        href={featured.ctaHref}
+                        external
+                        kind="primary"
+                        size="lg"
+                        iconRight={<ArrowUpRight className="w-4 h-4" />}
+                      >
+                        {featured.ctaLabel}
+                      </Btn>
+                    </div>
+                  )}
                 </div>
-                <div className="w-[44%] max-w-[300px] shrink-0">
-                  <img
-                    src={backCoverSrc}
-                    alt={`${featured?.title ?? "Book"} back cover`}
-                    className="w-full h-auto object-contain rounded shadow-[0_12px_32px_rgba(60,38,18,0.18)]"
-                    style={{ transform: "rotate(2deg)" }}
-                  />
+
+                <div className="text-center md:text-left">
+                  {featured?.eyebrow && (
+                    <p
+                      className="eyebrow text-orange mb-3"
+                      data-tina-field={tinaField(featured, "eyebrow")}
+                    >
+                      {featured.eyebrow}
+                    </p>
+                  )}
+                  <h2
+                    id="featured-release-heading"
+                    className="font-display text-2xl md:text-3xl text-foreground mb-3 leading-tight"
+                    data-tina-field={tinaField(featured, "title")}
+                  >
+                    {featured?.title}
+                  </h2>
+                  {featured?.description && (
+                    <div data-tina-field={tinaField(featured, "description")}>
+                      <RichText
+                        value={featured.description}
+                        className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
+            </section>
+          </Reveal>
 
+          {/* Ko-fi — single column, full width */}
+          <Reveal className="w-full">
+            <section
+              className="home-panel p-6 md:p-8 text-center bg-secondary/50 w-full"
+              aria-labelledby="kofi-heading"
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-violet/10 text-violet mb-3 mx-auto">
+                <SiKofi className="w-6 h-6" aria-hidden />
+              </div>
               <h2
-                id="featured-release-heading"
-                className="font-display text-2xl md:text-3xl text-foreground mb-3 leading-tight max-w-2xl mx-auto"
-                data-tina-field={tinaField(featured, "title")}
+                id="kofi-heading"
+                className="font-sans font-medium text-xl md:text-2xl text-foreground mb-3 leading-tight"
+                data-tina-field={tinaField(kofi, "heading")}
               >
-                {featured?.title}
+                {kofi?.heading}
               </h2>
-              {featured?.description && (
-                <div data-tina-field={tinaField(featured, "description")}>
-                  <RichText
-                    value={featured.description}
-                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-8 leading-relaxed"
-                  />
-                </div>
-              )}
-              {featured?.ctaLabel && featured?.ctaHref && (
-                <div data-tina-field={tinaField(featured, "ctaLabel")}>
+              <div data-tina-field={tinaField(kofi, "body")}>
+                <RichText
+                  value={kofi?.body}
+                  className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-5 leading-relaxed"
+                />
+              </div>
+              {kofi?.ctaLabel && (
+                <div data-tina-field={tinaField(kofi, "ctaLabel")}>
                   <Btn
-                    href={featured.ctaHref}
+                    href={kofi.href ?? KOFI_URL}
                     external
-                    kind="primary"
+                    kind="outline"
                     size="lg"
+                    iconLeft={<Heart className="w-4 h-4 text-rose" />}
                     iconRight={<ArrowUpRight className="w-4 h-4" />}
                   >
-                    {featured.ctaLabel}
+                    {kofi.ctaLabel}
                   </Btn>
                 </div>
               )}
             </section>
           </Reveal>
-
-          {/* Reviews + Ko-fi — two columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            <Reveal className="h-full">
-              <section
-                className="home-panel p-6 md:p-8 text-center h-full flex flex-col"
-                aria-labelledby="reviews-heading"
-              >
-                <h2
-                  id="reviews-heading"
-                  className="font-display text-2xl md:text-3xl text-foreground mb-4 leading-tight"
-                  data-tina-field={tinaField(reviews, "heading")}
-                >
-                  {reviews?.heading}
-                </h2>
-                <div data-tina-field={tinaField(reviews, "intro")}>
-                  <RichText
-                    value={reviews?.intro}
-                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-3 leading-relaxed"
-                  />
-                </div>
-                <p
-                  className="font-sans text-sm md:text-base italic text-foreground mb-6"
-                  data-tina-field={tinaField(reviews, "thankYou")}
-                >
-                  {reviews?.thankYou}
-                </p>
-
-                <p
-                  className="font-sans font-medium text-sm md:text-base text-foreground mb-4 italic"
-                  data-tina-field={tinaField(reviews, "ctaHeading")}
-                >
-                  {reviews?.ctaHeading}
-                </p>
-
-                <ul className="flex flex-col gap-2 max-w-sm mx-auto w-full list-none p-0 m-0 mt-auto">
-                  {reviewLinks.map((link, i) => (
-                    <li
-                      key={link.region ?? i}
-                      data-tina-field={tinaField(page, "reviewLinks")}
-                    >
-                      <Btn
-                        href={link.href ?? "#"}
-                        external
-                        kind="outline"
-                        size="md"
-                        className="w-full"
-                        iconRight={<ArrowUpRight className="w-3.5 h-3.5" />}
-                      >
-                        {link.label}
-                      </Btn>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </Reveal>
-
-            <Reveal className="h-full">
-              <section
-                className="home-panel p-6 md:p-8 text-center bg-secondary/50 h-full flex flex-col"
-                aria-labelledby="kofi-heading"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-violet/10 text-violet mb-4 mx-auto">
-                  <SiKofi className="w-6 h-6" aria-hidden />
-                </div>
-                <h2
-                  id="kofi-heading"
-                  className="font-sans font-medium text-xl md:text-2xl text-foreground mb-3 leading-tight"
-                  data-tina-field={tinaField(kofi, "heading")}
-                >
-                  {kofi?.heading}
-                </h2>
-                <div
-                  className="flex-1"
-                  data-tina-field={tinaField(kofi, "body")}
-                >
-                  <RichText
-                    value={kofi?.body}
-                    className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-6 leading-relaxed"
-                  />
-                </div>
-                {kofi?.ctaLabel && (
-                  <div className="mt-auto" data-tina-field={tinaField(kofi, "ctaLabel")}>
-                    <Btn
-                      href={kofi.href ?? KOFI_URL}
-                      external
-                      kind="outline"
-                      size="lg"
-                      iconLeft={<Heart className="w-4 h-4 text-rose" />}
-                      iconRight={<ArrowUpRight className="w-4 h-4" />}
-                    >
-                      {kofi.ctaLabel}
-                    </Btn>
-                  </div>
-                )}
-              </section>
-            </Reveal>
-          </div>
         </div>
       </main>
 
-      <footer className="px-6 md:px-8 py-8 border-t border-border/85">
+      <footer className="px-6 md:px-8 py-6 border-t border-border/85">
         <div className="mx-auto max-w-5xl flex flex-col items-center gap-4">
           <div className="flex items-center gap-5">
             <a
