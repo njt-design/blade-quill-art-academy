@@ -1098,7 +1098,7 @@ export default defineConfig({
             type: "datetime",
             name: "createdAt",
             label: "Created Date",
-            ui: { description: "Used for “Newest” sort on the shop page." },
+            ui: { description: 'Used for "Newest" sort on the shop page.' },
           },
         ],
       },

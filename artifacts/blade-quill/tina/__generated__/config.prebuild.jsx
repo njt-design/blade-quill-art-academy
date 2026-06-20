@@ -1067,7 +1067,7 @@ var config_default = defineConfig({
             type: "datetime",
             name: "createdAt",
             label: "Created Date",
-            ui: { description: "Used for \u201CNewest\u201D sort on the shop page." }
+            ui: { description: 'Used for "Newest" sort on the shop page.' }
           }
         ]
       },

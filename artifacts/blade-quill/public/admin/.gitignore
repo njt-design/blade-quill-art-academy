@@ -1,2 +1,4 @@
-index.html
-assets/
+# Intentionally left empty.
+# The admin SPA is pre-built locally (tinacms build) and committed
+# because tinacms build fails in Vercel's Linux build environment
+# due to an esbuild platform bug (unterminated string literal).

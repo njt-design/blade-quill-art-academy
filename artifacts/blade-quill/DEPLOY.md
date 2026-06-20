@@ -28,12 +28,28 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 
 ## Environment variables (Vercel project)
 
-| Variable | Value | Required |
-|----------|--------|----------|
-| `PORT` | `3001` | Set in `build:static` script |
-| `BASE_PATH` | `/` | Set in `build:static` script |
+| Variable | Where to set | Required |
+|----------|--------------|----------|
+| `TINA_PUBLIC_CLIENT_ID` | Vercel Dashboard | Yes — from [app.tina.io](https://app.tina.io) project settings |
+| `TINA_TOKEN` | Vercel Dashboard | Yes — read-only token from Tina Cloud |
+| `TINA_BRANCH` | Vercel Dashboard | No — defaults to `main` in `tina/config.ts` |
+| `PORT` | Hardcoded in `build:static` | No — set to `3001` in the script |
+| `BASE_PATH` | Hardcoded in `build:static` | No — set to `/` in the script |
 
-Production builds use `build:static` (Vite only). Tina content ships from committed `content/` and `tina/__generated__/`. Run `pnpm run build:deploy` locally if you need to regenerate Tina admin assets.
+## Pre-building the Tina admin
+
+`tinacms build` fails on Vercel's Linux build environment due to an esbuild platform bug (`Unterminated string literal`). The admin SPA and generated types are **pre-built locally** and committed to the repo.
+
+After any schema change in `tina/config.ts`, regenerate and commit:
+
+```bash
+cd artifacts/blade-quill
+pnpm run build:deploy
+git add tina/__generated__/ public/admin/
+git commit -m "Regenerate Tina admin after schema change"
+```
+
+Production builds use `build:static` (Vite only). Tina content ships from committed `content/` and `tina/__generated__/`.
 
 No Supabase/Stripe keys are required for the static client preview.
 
