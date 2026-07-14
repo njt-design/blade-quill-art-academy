@@ -110,6 +110,11 @@
       },
       "sideCaption": "my window in winter",
       "_template": "story"
+    },
+    {
+      "heading": "Gallery",
+      "images": [],
+      "_template": "imageGallery"
     }
   ],
   "_template": "info"
