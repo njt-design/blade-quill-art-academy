@@ -61,6 +61,55 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "number": "01",
+      "label": "STORY",
+      "heading": "The story behind\nall of this.",
+      "paragraph1": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "First paragraph of the story."
+              }
+            ]
+          }
+        ]
+      },
+      "quote": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A pull-quote shown in the dark panel."
+              }
+            ]
+          }
+        ]
+      },
+      "paragraph2": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Second paragraph of the story."
+              }
+            ]
+          }
+        ]
+      },
+      "sideCaption": "my window in winter",
+      "_template": "story"
     }
   ],
   "_template": "info"
