@@ -13,9 +13,11 @@
             "children": [
               {
                 "type": "text",
-                "text": "I am a French author and illustrator. This website is about digital art."
+                "text": "This is a test",
+                "bold": true
               }
-            ]
+            ],
+            "id": "KUq0eEwCLt"
           }
         ]
       },
