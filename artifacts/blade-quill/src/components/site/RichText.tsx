@@ -13,7 +13,7 @@ const components: Components<{}> = {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "underline decoration-orange/60 underline-offset-2 hover:text-orange transition-colors",
+        "underline decoration-maroon/60 underline-offset-2 hover:text-maroon transition-colors",
         (props as { className?: string }).className,
       )}
     />

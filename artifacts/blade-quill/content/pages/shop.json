@@ -1,0 +1,28 @@
+{
+  "title": "Shop",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "shopCatalog",
+      "heading": "The studio shop.",
+      "highlightText": "studio",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Books, digital guides, and curriculum to fuel your creative journey. From Krita quick-start guides to the Lheeloo & Luna cartoon book."
+              }
+            ]
+          }
+        ]
+      },
+      "showFeaturedBanner": true,
+      "emptyHeading": "No products found",
+      "emptyDescription": "Check back later for new releases."
+    }
+  ]
+}

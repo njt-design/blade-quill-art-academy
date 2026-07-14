@@ -1,13 +1,36 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
+
+// tina/blocks.ts
 var INLINE_RICH_TEXT = {
   toolbar: ["bold", "italic", "link", "ul", "ol"],
   showFloatingToolbar: true
 };
 var SLATE_JSON_PARSER = { type: "slatejson" };
+var rt = (text) => ({
+  type: "root",
+  children: [{ type: "p", children: [{ type: "text", text }] }]
+});
+function blockUi(name, label, titleField, defaultItem) {
+  return {
+    previewSrc: `/admin-previews/${name}.svg`,
+    ...defaultItem ? { defaultItem } : {},
+    itemProps: (item) => {
+      const raw = titleField ? item?.[titleField] : void 0;
+      const text = typeof raw === "string" && raw.trim() ? raw.split("\n")[0].trim() : "";
+      return { label: text ? `${label} \u2014 ${text}` : label };
+    }
+  };
+}
 var heroBlock = {
   name: "hero",
-  label: "Hero Section",
+  label: "Hero (Simple)",
+  ui: blockUi("hero", "Hero (Simple)", "heading", {
+    heading: "A big welcoming headline",
+    subheading: rt("A short sentence that supports the headline."),
+    ctaLabel: "Learn More",
+    ctaLink: "/"
+  }),
   fields: [
     {
       type: "string",
@@ -21,9 +44,7 @@ var heroBlock = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
-      ui: {
-        description: "Supporting text shown below the heading."
-      }
+      ui: { description: "Supporting text shown below the heading." }
     },
     {
       type: "image",
@@ -48,6 +69,10 @@ var heroBlock = {
 var textBlock = {
   name: "text",
   label: "Text Section",
+  ui: blockUi("text", "Text", "heading", {
+    heading: "Section heading",
+    body: rt("Write anything here \u2014 paragraphs, lists, links, and more.")
+  }),
   fields: [
     {
       type: "string",
@@ -66,7 +91,11 @@ var textBlock = {
 };
 var imageGalleryBlock = {
   name: "imageGallery",
-  label: "Image Gallery",
+  label: "Image Gallery (Manual)",
+  ui: blockUi("imageGallery", "Image Gallery", "heading", {
+    heading: "Gallery",
+    images: []
+  }),
   fields: [
     {
       type: "string",
@@ -79,6 +108,11 @@ var imageGalleryBlock = {
       name: "images",
       label: "Images",
       list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.caption || item?.alt || "Image"
+        })
+      },
       fields: [
         { type: "image", name: "src", label: "Image" },
         { type: "string", name: "alt", label: "Alt Text" },
@@ -90,6 +124,13 @@ var imageGalleryBlock = {
 var ctaBandBlock = {
   name: "ctaBand",
   label: "CTA Band",
+  ui: blockUi("ctaBand", "CTA Band", "heading", {
+    heading: "Ready to get started?",
+    description: rt("One short supporting line goes here."),
+    ctaLabel: "Get Started",
+    ctaLink: "/contact",
+    variant: "light"
+  }),
   fields: [
     {
       type: "string",
@@ -105,11 +146,7 @@ var ctaBandBlock = {
       parser: SLATE_JSON_PARSER,
       ui: { description: "Supporting line below the heading." }
     },
-    {
-      type: "string",
-      name: "ctaLabel",
-      label: "Button Label"
-    },
+    { type: "string", name: "ctaLabel", label: "Button Label" },
     {
       type: "string",
       name: "ctaLink",
@@ -128,6 +165,10 @@ var ctaBandBlock = {
 var videoEmbedBlock = {
   name: "videoEmbed",
   label: "Video Embed",
+  ui: blockUi("videoEmbed", "Video", "heading", {
+    heading: "Watch the video",
+    youtubeUrl: ""
+  }),
   fields: [
     {
       type: "string",
@@ -139,13 +180,29 @@ var videoEmbedBlock = {
       type: "string",
       name: "youtubeUrl",
       label: "YouTube URL",
-      ui: { description: "Full YouTube video URL (e.g. https://www.youtube.com/watch?v=abc123). The embed ID is extracted automatically." }
+      ui: {
+        description: "Full YouTube video URL (e.g. https://www.youtube.com/watch?v=abc123). The embed ID is extracted automatically.",
+        validate: (value) => {
+          if (value && !/youtube\.com|youtu\.be/i.test(value)) {
+            return "Please paste a full YouTube link (youtube.com or youtu.be).";
+          }
+          return void 0;
+        }
+      }
     }
   ]
 };
 var featureGridBlock = {
   name: "featureGrid",
   label: "Feature Grid",
+  ui: blockUi("featureGrid", "Feature Grid", "heading", {
+    heading: "What's included",
+    items: [
+      { icon: "Star", title: "First feature", description: rt("Describe the first feature here.") },
+      { icon: "Brush", title: "Second feature", description: rt("Describe the second feature here.") },
+      { icon: "BookOpen", title: "Third feature", description: rt("Describe the third feature here.") }
+    ]
+  }),
   fields: [
     {
       type: "string",
@@ -158,6 +215,11 @@ var featureGridBlock = {
       name: "items",
       label: "Features",
       list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.title || "Feature"
+        })
+      },
       fields: [
         {
           type: "string",
@@ -177,6 +239,1250 @@ var featureGridBlock = {
     }
   ]
 };
+var bigCtaBlock = {
+  name: "bigCta",
+  label: "Big CTA",
+  ui: blockUi("bigCta", "Big CTA", "heading", {
+    eyebrow: "SAY HI",
+    heading: "A big closing\nstatement.",
+    highlightText: "closing",
+    primaryLabel: "Get in Touch",
+    primaryLink: "/contact"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow",
+      ui: { description: "Small label above the heading." }
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: {
+        component: "textarea",
+        description: "Large centered heading. Press Enter to create a line break."
+      }
+    },
+    {
+      type: "string",
+      name: "highlightText",
+      label: "Highlighted Word",
+      ui: { description: "A word or phrase from the heading to show in gradient color. Must match the heading text exactly." }
+    },
+    { type: "string", name: "primaryLabel", label: "Primary Button Label" },
+    {
+      type: "string",
+      name: "primaryLink",
+      label: "Primary Button Link",
+      ui: { description: 'Relative URL (e.g. "/contact").' }
+    },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    {
+      type: "string",
+      name: "secondaryLink",
+      label: "Secondary Button Link",
+      ui: { description: "Relative URL or full https:// link." }
+    }
+  ]
+};
+var pageHeaderBlock = {
+  name: "pageHeader",
+  label: "Page Header",
+  ui: blockUi("pageHeader", "Page Header", "heading", {
+    heading: "Page Title",
+    description: rt("A short introduction for this page.")
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { description: "The main page title shown at the top." }
+    },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Introductory text shown below the heading." }
+    }
+  ]
+};
+var homeHeroBlock = {
+  name: "homeHero",
+  label: "Hero (Homepage)",
+  ui: blockUi("homeHero", "Hero (Homepage)", "heading", {
+    eyebrow: "\u2726 HELLO FROM THE STUDIO \u2726",
+    heading: "I write books and teach\ndigital painting.",
+    subheading: rt("A sentence about what the site offers."),
+    ctaPrimary: "Explore the Shop",
+    ctaPrimaryLink: "/shop",
+    ctaSecondary: "Watch Tutorials",
+    ctaSecondaryLink: "https://www.youtube.com/c/BladeQuillartacademy",
+    metaLine: "EST. 2018 \xB7 NANTES, FR",
+    marqueeItems: ["Author", "Illustrator", "Krita educator"]
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow",
+      ui: { description: "Small label above the big heading." }
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: {
+        component: "textarea",
+        description: "The giant homepage heading. Press Enter once to split it into two lines \u2014 the second line shows in gradient color."
+      }
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "The sentence below the main heading." }
+    },
+    {
+      type: "string",
+      name: "ctaPrimary",
+      label: "Primary Button Label",
+      ui: { description: 'Text on the orange button (e.g. "Explore the Shop").' }
+    },
+    {
+      type: "string",
+      name: "ctaPrimaryLink",
+      label: "Primary Button Link",
+      ui: { description: 'Relative URL (e.g. "/shop").' }
+    },
+    {
+      type: "string",
+      name: "ctaSecondary",
+      label: "Secondary Button Label",
+      ui: { description: "Text on the outline button next to the primary one." }
+    },
+    {
+      type: "string",
+      name: "ctaSecondaryLink",
+      label: "Secondary Button Link",
+      ui: { description: "Relative URL or a full https:// link (opens in a new tab)." }
+    },
+    {
+      type: "string",
+      name: "metaLine",
+      label: "Meta Line",
+      ui: { description: 'Small line between the quill marks (e.g. "EST. 2018 \xB7 NANTES, FR").' }
+    },
+    {
+      type: "string",
+      name: "marqueeItems",
+      label: "Scrolling Words",
+      list: true,
+      ui: { description: "Words that scroll across the bottom of the hero (e.g. Author, Illustrator)." }
+    }
+  ]
+};
+var pillarsBlock = {
+  name: "pillars",
+  label: "Pillars (3 Cards)",
+  ui: blockUi("pillars", "Pillars", "heading", {
+    eyebrow: "THREE THREADS",
+    heading: "Where would you like to start?",
+    items: [
+      { tag: "FIRST", title: "First card", sub: "One line about it", cta: "Read more", badge: "NEW", link: "/" },
+      { tag: "SECOND", title: "Second card", sub: "One line about it", cta: "Read more", badge: "OPEN", link: "/" },
+      { tag: "THIRD", title: "Third card", sub: "One line about it", cta: "Read more", badge: "HOT", link: "/" }
+    ]
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "object",
+      name: "items",
+      label: "Cards",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.title || "Card"
+        }),
+        description: "Three polaroid-style cards. Each links somewhere on (or off) the site."
+      },
+      fields: [
+        {
+          type: "string",
+          name: "tag",
+          label: "Tag",
+          ui: { description: 'Small label above the card title (e.g. "NEW BOOK").' }
+        },
+        { type: "string", name: "title", label: "Title" },
+        { type: "string", name: "sub", label: "Subtitle" },
+        { type: "string", name: "cta", label: "Link Text" },
+        {
+          type: "string",
+          name: "badge",
+          label: "Corner Badge",
+          ui: { description: 'Small pill in the top-right corner of the image (e.g. "LATEST").' }
+        },
+        {
+          type: "string",
+          name: "link",
+          label: "Link",
+          ui: { description: "Relative URL or full https:// link (https links open in a new tab)." }
+        },
+        {
+          type: "image",
+          name: "image",
+          label: "Image (optional)",
+          ui: { description: "Leave empty to automatically show a product/video preview." }
+        }
+      ]
+    }
+  ]
+};
+var featuredBookBlock = {
+  name: "featuredBook",
+  label: "Featured Book",
+  ui: blockUi("featuredBook", "Featured Book", "heading", {
+    eyebrow: "FEATURED RELEASE",
+    heading: "The new book.",
+    description: rt("A short description of the featured book."),
+    stats: [
+      { value: "$25", label: "SIGNED COPY" },
+      { value: "$14", label: "EBOOK" },
+      { value: "144", label: "FULL-COLOR PAGES" }
+    ],
+    ctaLabel: "Order Now",
+    ctaLink: "/shop",
+    secondaryLabel: "Browse the shop",
+    secondaryLink: "/shop"
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "object",
+      name: "stats",
+      label: "Stats Row",
+      list: true,
+      ui: {
+        description: "Short figures shown above the buttons (price, page count, etc.).",
+        itemProps: (item) => ({
+          label: item?.value ? `${item.value} ${item?.label ?? ""}` : "Stat"
+        })
+      },
+      fields: [
+        { type: "string", name: "value", label: "Value" },
+        { type: "string", name: "label", label: "Label" }
+      ]
+    },
+    { type: "string", name: "ctaLabel", label: "Primary Button Label" },
+    {
+      type: "string",
+      name: "ctaLink",
+      label: "Primary Button Link",
+      ui: { description: 'Relative URL (e.g. "/shop/lheeloo-luna-cartoon-book").' }
+    },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
+  ]
+};
+var classesPitchBlock = {
+  name: "classesPitch",
+  label: "Classes Pitch",
+  ui: blockUi("classesPitch", "Classes Pitch", "heading", {
+    eyebrow: "Now Enrolling",
+    heading: "Step inside the classroom.",
+    subheading: rt("Structured digital art training."),
+    bullets: ["First benefit", "Second benefit", "Third benefit"],
+    ctaLabel: "Reserve Your Spot",
+    ctaLink: "/shop",
+    secondaryLabel: "About Corinne",
+    secondaryLink: "/about",
+    metaTags: "Self-paced \xB7 Krita 5.2 \xB7 All skill levels"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow",
+      ui: { description: 'Small label above the heading (e.g. "Now Enrolling").' }
+    },
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Shown inside the left panel of the classroom card." }
+    },
+    {
+      type: "string",
+      name: "bullets",
+      label: "Bullet Points",
+      list: true,
+      ui: { description: "Numbered benefit bullets." }
+    },
+    {
+      type: "string",
+      name: "metaTags",
+      label: "Meta Line",
+      ui: { description: 'Small line below the bullets (e.g. "Self-paced \xB7 Krita 5.2"). Separate items with "\xB7".' }
+    },
+    { type: "string", name: "ctaLabel", label: "Primary Button Label" },
+    {
+      type: "string",
+      name: "ctaLink",
+      label: "Primary Button Link",
+      ui: { description: 'Relative URL (e.g. "/classes").' }
+    },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
+  ]
+};
+var tutorialsStripBlock = {
+  name: "tutorialsStrip",
+  label: "YouTube Tutorials Strip",
+  ui: blockUi("tutorialsStrip", "YouTube Strip", "headingHighlight", {
+    eyebrow: "FREE LESSONS ON YOUTUBE",
+    headingPrefix: "Join ",
+    headingHighlight: "100,000+ artists",
+    headingSuffix: "learning with me.",
+    buttonLabel: "Subscribe on YouTube",
+    youtubeUrl: "https://www.youtube.com/c/BladeQuillartacademy",
+    stats: [
+      { value: "100K+", label: "subscribers" },
+      { value: "1.5M", label: "total views" },
+      { value: "65", label: "countries" },
+      { value: "bi-weekly", label: "new videos" }
+    ]
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    {
+      type: "string",
+      name: "headingPrefix",
+      label: "Heading \u2014 Start",
+      ui: { description: 'First words of the heading (e.g. "Join ").' }
+    },
+    {
+      type: "string",
+      name: "headingHighlight",
+      label: "Heading \u2014 Highlighted Part",
+      ui: { description: 'Shown in warm gradient color (e.g. "100,000+ artists").' }
+    },
+    {
+      type: "string",
+      name: "headingSuffix",
+      label: "Heading \u2014 Second Line",
+      ui: { description: 'Rest of the heading on the next line (e.g. "learning with me.").' }
+    },
+    { type: "string", name: "buttonLabel", label: "Button Label" },
+    {
+      type: "string",
+      name: "youtubeUrl",
+      label: "YouTube Channel URL",
+      ui: { description: "Full channel URL \u2014 the button links here." }
+    },
+    {
+      type: "object",
+      name: "stats",
+      label: "Stats Row",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.value ? `${item.value} ${item?.label ?? ""}` : "Stat"
+        })
+      },
+      fields: [
+        { type: "string", name: "value", label: "Value" },
+        { type: "string", name: "label", label: "Label" }
+      ]
+    }
+  ]
+};
+var productStripBlock = {
+  name: "productStrip",
+  label: "Product Strip",
+  ui: blockUi("productStrip", "Product Strip", "heading", {
+    eyebrow: "FROM THE SHOP",
+    heading: "Books, brushes, and guides.",
+    viewAllLabel: "All products",
+    viewAllLink: "/shop"
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "viewAllLabel", label: "View All Label" },
+    {
+      type: "string",
+      name: "viewAllLink",
+      label: "View All Link",
+      ui: { description: 'Where the "view all" button goes (usually "/shop").' }
+    }
+  ]
+};
+var blogFeedBlock = {
+  name: "blogFeed",
+  label: "Blog Feed",
+  ui: blockUi("blogFeed", "Blog Feed", "heading", {
+    heading: "Recent writing.",
+    showNewsletter: true,
+    newsletter: {
+      eyebrow: "STUDIO NEWSLETTER",
+      heading: "Stay in the Loop",
+      subheading: rt("Get art tips and announcements in your inbox."),
+      placeholderText: "you@example.com",
+      ctaLabel: "Subscribe",
+      privacyNote: "No spam. Unsubscribe anytime."
+    }
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { description: "Heading above the list of recent blog posts (posts appear automatically)." }
+    },
+    {
+      type: "boolean",
+      name: "showNewsletter",
+      label: "Show Newsletter Panel",
+      ui: { description: "Show the dark newsletter signup panel beside the posts." }
+    },
+    {
+      type: "object",
+      name: "newsletter",
+      label: "Newsletter Panel",
+      fields: [
+        { type: "string", name: "eyebrow", label: "Eyebrow" },
+        { type: "string", name: "heading", label: "Heading" },
+        {
+          type: "rich-text",
+          name: "subheading",
+          label: "Description",
+          overrides: INLINE_RICH_TEXT,
+          parser: SLATE_JSON_PARSER
+        },
+        { type: "string", name: "placeholderText", label: "Email Placeholder" },
+        { type: "string", name: "ctaLabel", label: "Submit Button Label" },
+        { type: "string", name: "privacyNote", label: "Privacy Note" }
+      ]
+    }
+  ]
+};
+var newsletterSignupBlock = {
+  name: "newsletterSignup",
+  label: "Newsletter Signup",
+  ui: blockUi("newsletterSignup", "Newsletter", "heading", {
+    eyebrow: "STUDIO NEWSLETTER",
+    heading: "Stay in the Loop",
+    subheading: rt("Get art tips, new tutorials, and announcements in your inbox."),
+    placeholderText: "you@example.com",
+    ctaLabel: "Subscribe",
+    privacyNote: "No spam. Unsubscribe anytime."
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    { type: "string", name: "placeholderText", label: "Email Placeholder" },
+    { type: "string", name: "ctaLabel", label: "Submit Button Label" },
+    { type: "string", name: "privacyNote", label: "Privacy Note" }
+  ]
+};
+var aboutHeroBlock = {
+  name: "aboutHero",
+  label: "Hero (Portrait)",
+  ui: blockUi("aboutHero", "Hero (Portrait)", "heading", {
+    eyebrow: "ABOUT \xB7 A STUDIO VISIT",
+    heading: "I'm Corinne \u2014\nand I draw\nfor a living.",
+    leadText: rt("A short introduction sentence."),
+    ctaPrimary: "Get in Touch",
+    ctaPrimaryLink: "/contact",
+    ctaSecondary: "Visit the Shop",
+    ctaSecondaryLink: "/shop",
+    metaLine: "NANTES, FRANCE \xB7 EST. 2018",
+    portraitCaption: "in the studio"
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: {
+        component: "textarea",
+        description: "Up to three lines (press Enter to break). The middle line shows in gradient color."
+      }
+    },
+    {
+      type: "rich-text",
+      name: "leadText",
+      label: "Lead Text",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "The introductory sentence below the heading. Keep it to 1-2 sentences." }
+    },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label" },
+    { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label" },
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+    {
+      type: "string",
+      name: "metaLine",
+      label: "Meta Line",
+      ui: { description: 'Small line under the buttons (e.g. "NANTES, FRANCE \xB7 EST. 2018"). Separate items with "\xB7".' }
+    },
+    {
+      type: "image",
+      name: "portraitImage",
+      label: "Portrait Image",
+      ui: { description: "Photo shown in the large polaroid on the right." }
+    },
+    {
+      type: "string",
+      name: "portraitCaption",
+      label: "Portrait Caption",
+      ui: { description: "Handwritten-style caption under the portrait." }
+    }
+  ]
+};
+var statsRowBlock = {
+  name: "statsRow",
+  label: "Stats Row",
+  ui: blockUi("statsRow", "Stats Row", null, {
+    stats: [
+      { value: "100K+", label: "YouTube subscribers" },
+      { value: "1.5M", label: "video views" },
+      { value: "65", label: "countries reached" },
+      { value: "2", label: "illustrated books" }
+    ]
+  }),
+  fields: [
+    {
+      type: "object",
+      name: "stats",
+      label: "Stats",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.value ? `${item.value} ${item?.label ?? ""}` : "Stat"
+        })
+      },
+      fields: [
+        { type: "string", name: "value", label: "Value" },
+        { type: "string", name: "label", label: "Label" }
+      ]
+    }
+  ]
+};
+var storyBlock = {
+  name: "story",
+  label: "Story Section",
+  ui: blockUi("story", "Story", "heading", {
+    number: "01",
+    label: "STORY",
+    heading: "The story behind\nall of this.",
+    paragraph1: rt("First paragraph of the story."),
+    quote: rt("A pull-quote shown in the dark panel."),
+    paragraph2: rt("Second paragraph of the story."),
+    sideCaption: "my window in winter"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "number",
+      label: "Section Number",
+      ui: { description: 'The small orange number in the left margin (e.g. "01").' }
+    },
+    {
+      type: "string",
+      name: "label",
+      label: "Section Label",
+      ui: { description: 'The small label in the left margin (e.g. "STORY").' }
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea", description: "Press Enter to create a line break." }
+    },
+    {
+      type: "rich-text",
+      name: "paragraph1",
+      label: "First Paragraph",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "rich-text",
+      name: "quote",
+      label: "Pull Quote",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Shown as a large quote in a dark rounded panel between the paragraphs." }
+    },
+    {
+      type: "rich-text",
+      name: "paragraph2",
+      label: "Second Paragraph",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "string",
+      name: "sideCaption",
+      label: "Side Photo Caption",
+      ui: { description: "Caption under the small polaroid on the right." }
+    }
+  ]
+};
+var timelineBlock = {
+  name: "timeline",
+  label: "Timeline",
+  ui: blockUi("timeline", "Timeline", "label", {
+    number: "02",
+    label: "TIMELINE",
+    events: [
+      { year: "2018", title: "It all started", description: "How things began." },
+      { year: "2026", title: "Today", description: "Where things are now." }
+    ]
+  }),
+  fields: [
+    { type: "string", name: "number", label: "Section Number" },
+    { type: "string", name: "label", label: "Section Label" },
+    {
+      type: "object",
+      name: "events",
+      label: "Events",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.year ? `${item.year} \u2014 ${item?.title ?? ""}` : "Event"
+        })
+      },
+      fields: [
+        { type: "string", name: "year", label: "Year" },
+        { type: "string", name: "title", label: "Title" },
+        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+      ]
+    }
+  ]
+};
+var cardRowBlock = {
+  name: "cardRow",
+  label: "Card Row",
+  ui: blockUi("cardRow", "Card Row", "label", {
+    number: "03",
+    label: "WHAT I MAKE",
+    cards: [
+      { tag: "FIRST", title: "First card", body: "One or two sentences.", ctaLabel: "Learn more", link: "/" },
+      { tag: "SECOND", title: "Second card", body: "One or two sentences.", ctaLabel: "Learn more", link: "/" },
+      { tag: "THIRD", title: "Third card", body: "One or two sentences.", ctaLabel: "Learn more", link: "/" }
+    ]
+  }),
+  fields: [
+    { type: "string", name: "number", label: "Section Number" },
+    { type: "string", name: "label", label: "Section Label" },
+    {
+      type: "object",
+      name: "cards",
+      label: "Cards",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.title || "Card"
+        })
+      },
+      fields: [
+        {
+          type: "string",
+          name: "tag",
+          label: "Tag",
+          ui: { description: 'Small label above the title (e.g. "BOOKS").' }
+        },
+        { type: "string", name: "title", label: "Title" },
+        { type: "string", name: "body", label: "Body", ui: { component: "textarea" } },
+        { type: "string", name: "ctaLabel", label: "Link Text" },
+        {
+          type: "string",
+          name: "link",
+          label: "Link",
+          ui: { description: "Relative URL or full https:// link (https links open in a new tab)." }
+        }
+      ]
+    }
+  ]
+};
+var shopCatalogBlock = {
+  name: "shopCatalog",
+  label: "Shop Catalog",
+  ui: blockUi("shopCatalog", "Shop Catalog", "heading", {
+    heading: "The studio shop.",
+    highlightText: "studio",
+    description: rt("Books, digital guides, and curriculum."),
+    showFeaturedBanner: true,
+    emptyHeading: "No products found",
+    emptyDescription: "Check back later for new releases."
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { description: "The big shop heading. Products themselves are managed under Shop Products." }
+    },
+    {
+      type: "string",
+      name: "highlightText",
+      label: "Highlighted Word",
+      ui: { description: "A word from the heading to show in gradient color. Must match the heading text exactly." }
+    },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "boolean",
+      name: "showFeaturedBanner",
+      label: "Show Featured Banner",
+      ui: { description: "Show the dark featured-product banner above the grid." }
+    },
+    {
+      type: "string",
+      name: "emptyHeading",
+      label: "Empty State Heading",
+      ui: { description: "Heading shown when no products match the filter." }
+    },
+    {
+      type: "string",
+      name: "emptyDescription",
+      label: "Empty State Description"
+    }
+  ]
+};
+var galleryGridBlock = {
+  name: "galleryGrid",
+  label: "Art Gallery Grid",
+  ui: blockUi("galleryGrid", "Art Gallery Grid", null, {
+    emptyHeading: "Gallery is empty",
+    emptyDescription: "Check back soon \u2014 new artwork is added regularly."
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "emptyHeading",
+      label: "Empty State Heading",
+      ui: { description: "Images load automatically from the gallery database. This heading only shows if the gallery is empty." }
+    },
+    {
+      type: "string",
+      name: "emptyDescription",
+      label: "Empty State Description"
+    }
+  ]
+};
+var downloadsGridBlock = {
+  name: "downloadsGrid",
+  label: "Downloads Grid",
+  ui: blockUi("downloadsGrid", "Downloads Grid", null, {
+    emptyHeading: "Free resources coming soon!",
+    emptyDescription: "Coloring pages, guides, and more on the way."
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "emptyHeading",
+      label: "Empty State Heading",
+      ui: { description: "Downloads load automatically. This heading only shows when there are none." }
+    },
+    {
+      type: "string",
+      name: "emptyDescription",
+      label: "Empty State Description"
+    }
+  ]
+};
+var contactInfoBlock = {
+  name: "contactInfo",
+  label: "Contact Info",
+  ui: blockUi("contactInfo", "Contact Info", "email", {
+    email: "hello@example.com",
+    location: "City, State"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "email",
+      label: "Email Address",
+      ui: { description: "Shown publicly. Use a safe inbox, not a personal address." }
+    },
+    {
+      type: "string",
+      name: "location",
+      label: "Location",
+      ui: { description: 'General location (e.g. "Des Moines, IA").' }
+    }
+  ]
+};
+var contactFormBlock = {
+  name: "contactForm",
+  label: "Contact Form",
+  ui: blockUi("contactForm", "Contact Form", null, {
+    submitLabel: "Send Message"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "submitLabel",
+      label: "Submit Button Label",
+      ui: { description: "Messages are delivered to the studio inbox automatically." }
+    }
+  ]
+};
+var marqueeBlock = {
+  name: "marquee",
+  label: "Announcement Marquee",
+  ui: blockUi("marquee", "Marquee", "highlightText", {
+    highlightText: "Big news",
+    text: " \u2014 something exciting is coming soon"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "highlightText",
+      label: "Highlighted Text",
+      ui: { description: "The first part of the announcement, shown in orange." }
+    },
+    {
+      type: "string",
+      name: "text",
+      label: "Text",
+      ui: { description: "The rest of the announcement, shown in muted color." }
+    }
+  ]
+};
+var featuredReleaseBlock = {
+  name: "featuredRelease",
+  label: "Featured Release",
+  ui: blockUi("featuredRelease", "Featured Release", "title", {
+    eyebrow: "New Featured Release",
+    title: "Book Title",
+    description: rt("A short description of the release."),
+    ctaLabel: "Get the Book",
+    ctaHref: "https://"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow Label",
+      ui: { description: 'Small label above the title (e.g. "New Featured Release").' }
+    },
+    { type: "string", name: "title", label: "Title", required: true },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "image",
+      name: "coverImage",
+      label: "Front Cover Image"
+    },
+    {
+      type: "image",
+      name: "backCoverImage",
+      label: "Back Cover Image",
+      ui: { description: "Optional second cover (shown alongside the front)." }
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label" },
+    {
+      type: "string",
+      name: "ctaHref",
+      label: "Button URL",
+      ui: {
+        description: "Full URL (Amazon, shop, etc.).",
+        validate: (value) => {
+          if (value && !/^(https?:\/\/|\/)/i.test(value)) {
+            return "Links should start with https:// (or / for a page on this site).";
+          }
+          return void 0;
+        }
+      }
+    }
+  ]
+};
+var kofiSupportBlock = {
+  name: "kofiSupport",
+  label: "Ko-fi Support",
+  ui: blockUi("kofiSupport", "Ko-fi Support", "heading", {
+    heading: "Support the Studio",
+    body: rt("If you enjoy the tutorials and books, consider buying a coffee on Ko-fi."),
+    ctaLabel: "Support on Ko-fi",
+    href: "https://ko-fi.com/bladeandquill"
+  }),
+  fields: [
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body Text",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label" },
+    { type: "string", name: "href", label: "Ko-fi URL" }
+  ]
+};
+var socialLinksBlock = {
+  name: "socialLinks",
+  label: "Social Links",
+  ui: blockUi("socialLinks", "Social Links", null, {
+    links: [
+      { platform: "youtube", url: "https://www.youtube.com/c/BladeQuillartacademy", label: "YouTube" },
+      { platform: "instagram", url: "https://www.instagram.com/bladequillartacademy/", label: "Instagram" }
+    ]
+  }),
+  fields: [
+    {
+      type: "object",
+      name: "links",
+      label: "Links",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.label || item?.platform || "Link"
+        })
+      },
+      fields: [
+        {
+          type: "string",
+          name: "platform",
+          label: "Platform",
+          options: [
+            { value: "youtube", label: "YouTube" },
+            { value: "instagram", label: "Instagram" },
+            { value: "amazon", label: "Amazon" },
+            { value: "kofi", label: "Ko-fi" }
+          ],
+          ui: { description: "Controls which icon is shown." }
+        },
+        { type: "string", name: "url", label: "URL" },
+        {
+          type: "string",
+          name: "label",
+          label: "Label",
+          ui: { description: "Accessible name for the link (read by screen readers)." }
+        }
+      ]
+    }
+  ]
+};
+var reviewLinksBlock = {
+  name: "reviewLinks",
+  label: "Review Buttons",
+  ui: blockUi("reviewLinks", "Review Buttons", "heading", {
+    heading: "Leave your reviews here",
+    intro: rt("Reviews mean the world and truly help others discover the book."),
+    thankYou: "Thank you so much for your support!",
+    ctaHeading: "Review the book by clicking the button for your country!",
+    links: [
+      { label: "Review on Amazon.com", href: "https://", region: "US" }
+    ]
+  }),
+  fields: [
+    { type: "string", name: "heading", label: "Heading" },
+    {
+      type: "rich-text",
+      name: "intro",
+      label: "Intro Text",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    { type: "string", name: "thankYou", label: "Thank You Message" },
+    { type: "string", name: "ctaHeading", label: "Buttons Heading" },
+    {
+      type: "object",
+      name: "links",
+      label: "Review Links",
+      list: true,
+      ui: {
+        description: "One review button per region.",
+        itemProps: (item) => ({
+          label: item?.label || "Review link"
+        })
+      },
+      fields: [
+        { type: "string", name: "label", label: "Button Label" },
+        {
+          type: "string",
+          name: "href",
+          label: "URL",
+          ui: { description: "Full review URL (opens in a new tab)." }
+        },
+        {
+          type: "string",
+          name: "region",
+          label: "Region",
+          ui: { description: "Short region code for reference (e.g. US, UK, AU)." }
+        }
+      ]
+    }
+  ]
+};
+var ALL_BLOCKS = [
+  // Heroes & headers
+  homeHeroBlock,
+  aboutHeroBlock,
+  heroBlock,
+  pageHeaderBlock,
+  // Content
+  textBlock,
+  storyBlock,
+  timelineBlock,
+  statsRowBlock,
+  featureGridBlock,
+  cardRowBlock,
+  pillarsBlock,
+  imageGalleryBlock,
+  videoEmbedBlock,
+  // Commerce & media
+  featuredBookBlock,
+  featuredReleaseBlock,
+  productStripBlock,
+  shopCatalogBlock,
+  galleryGridBlock,
+  downloadsGridBlock,
+  tutorialsStripBlock,
+  classesPitchBlock,
+  blogFeedBlock,
+  // Calls to action & forms
+  ctaBandBlock,
+  bigCtaBlock,
+  newsletterSignupBlock,
+  contactInfoBlock,
+  contactFormBlock,
+  kofiSupportBlock,
+  reviewLinksBlock,
+  // Standalone page extras
+  marqueeBlock,
+  socialLinksBlock
+];
+
+// tina/config.ts
+var INLINE_RICH_TEXT2 = {
+  toolbar: ["bold", "italic", "link", "ul", "ol"],
+  showFloatingToolbar: true
+};
+var SLATE_JSON_PARSER2 = { type: "slatejson" };
+var rt2 = (text) => ({
+  type: "root",
+  children: [{ type: "p", children: [{ type: "text", text }] }]
+});
+var CORE_PAGE_SLUGS = [
+  "home",
+  "about",
+  "contact",
+  "shop",
+  "gallery",
+  "downloads",
+  "important-links"
+];
+var CORE_PAGE_GLOB = `{${CORE_PAGE_SLUGS.join(",")}}`;
+var pageFields = [
+  {
+    type: "string",
+    name: "title",
+    label: "Page Title",
+    required: true,
+    isTitle: true,
+    ui: { description: "Shown in the browser tab and used to name the page in this list." }
+  },
+  {
+    type: "string",
+    name: "layout",
+    label: "Page Layout",
+    options: [
+      { value: "standard", label: "Standard (with menu & footer)" },
+      { value: "standalone", label: "Standalone (full page, no menu)" }
+    ],
+    ui: {
+      description: "Standard pages show the site menu and footer. Standalone pages are full-screen with just a small logo header \u2014 great for link-in-bio or promo pages."
+    }
+  },
+  {
+    type: "object",
+    name: "blocks",
+    label: "Page Sections",
+    list: true,
+    ui: {
+      visualSelector: true,
+      description: "The sections on this page, top to bottom. Drag to reorder, click a section to edit it, or use the + button to add a new one."
+    },
+    templates: ALL_BLOCKS
+  }
+];
+function corePageRoute(basename) {
+  const base = basename.replace(/\.json$/i, "");
+  if (base === "home") return "/";
+  if (base === "important-links") return "/important-links-page";
+  return `/${base}`;
+}
+function newPageTemplate(name, label, defaultItem) {
+  return { name, label, ui: { defaultItem }, fields: pageFields };
+}
+var blankPageTemplate = newPageTemplate("blank", "Blank Page", {
+  title: "New Page",
+  layout: "standard",
+  blocks: []
+});
+var eventPageTemplate = newPageTemplate("event", "Event / Workshop", {
+  title: "New Event",
+  layout: "standard",
+  blocks: [
+    {
+      _template: "hero",
+      heading: "Your Event Name",
+      subheading: rt2("When it happens, who it's for, and why it's exciting \u2014 one or two sentences."),
+      ctaLabel: "Register Now",
+      ctaLink: "/contact"
+    },
+    {
+      _template: "featureGrid",
+      heading: "What You'll Learn",
+      items: [
+        { icon: "Brush", title: "First topic", description: rt2("Describe the first topic.") },
+        { icon: "Palette", title: "Second topic", description: rt2("Describe the second topic.") },
+        { icon: "Star", title: "Third topic", description: rt2("Describe the third topic.") }
+      ]
+    },
+    {
+      _template: "text",
+      heading: "About the Event",
+      body: rt2("Tell visitors everything they need to know \u2014 schedule, format, what to bring, and how to prepare.")
+    },
+    {
+      _template: "ctaBand",
+      heading: "Ready to join?",
+      description: rt2("Limited spots available."),
+      ctaLabel: "Sign Up Today",
+      ctaLink: "/contact",
+      variant: "dark"
+    }
+  ]
+});
+var promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
+  title: "New Promotion",
+  layout: "standard",
+  blocks: [
+    {
+      _template: "hero",
+      heading: "Something special is here",
+      subheading: rt2("Announce the promotion and what makes it a great deal."),
+      ctaLabel: "Shop Now",
+      ctaLink: "/shop"
+    },
+    {
+      _template: "featuredRelease",
+      eyebrow: "Featured",
+      title: "The featured item",
+      description: rt2("Describe the featured product or offer."),
+      ctaLabel: "Get It Now",
+      ctaHref: "/shop"
+    },
+    {
+      _template: "productStrip",
+      eyebrow: "FROM THE SHOP",
+      heading: "More from the shop",
+      viewAllLabel: "All products",
+      viewAllLink: "/shop"
+    },
+    {
+      _template: "ctaBand",
+      heading: "Don't miss out",
+      description: rt2("This offer won't last forever."),
+      ctaLabel: "Shop the Sale",
+      ctaLink: "/shop",
+      variant: "dark"
+    }
+  ]
+});
+var infoPageTemplate = newPageTemplate("info", "Info Page", {
+  title: "New Info Page",
+  layout: "standard",
+  blocks: [
+    {
+      _template: "pageHeader",
+      heading: "Page Title",
+      description: rt2("A short introduction to what this page covers.")
+    },
+    {
+      _template: "text",
+      body: rt2("Write the main content here. You can add headings, lists, links, and images.")
+    }
+  ]
+});
+var linkInBioPageTemplate = newPageTemplate("linkInBio", "Link-in-Bio / Landing", {
+  title: "New Landing Page",
+  layout: "standalone",
+  blocks: [
+    {
+      _template: "marquee",
+      highlightText: "Big news",
+      text: " \u2014 something exciting is coming"
+    },
+    {
+      _template: "featuredRelease",
+      eyebrow: "New Featured Release",
+      title: "The featured item",
+      description: rt2("Describe what you're featuring."),
+      ctaLabel: "Check It Out",
+      ctaHref: "https://"
+    },
+    {
+      _template: "kofiSupport",
+      heading: "Support the Studio",
+      body: rt2("If you enjoy the tutorials, books, and free resources, consider buying a coffee on Ko-fi."),
+      ctaLabel: "Support on Ko-fi",
+      href: "https://ko-fi.com/bladeandquill"
+    },
+    {
+      _template: "socialLinks",
+      links: [
+        { platform: "youtube", url: "https://www.youtube.com/c/BladeQuillartacademy", label: "YouTube" },
+        { platform: "instagram", url: "https://www.instagram.com/bladequillartacademy/", label: "Instagram" },
+        { platform: "kofi", url: "https://ko-fi.com/bladeandquill", label: "Ko-fi" }
+      ]
+    }
+  ]
+});
 var config_default = defineConfig({
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
   token: process.env.TINA_TOKEN,
@@ -194,779 +1500,47 @@ var config_default = defineConfig({
   schema: {
     collections: [
       // ---------------------------------------------------------------
-      // Home Page
+      // Site Pages — the core pages of the site. Protected from
+      // creation/deletion so Home, Shop, etc. can't disappear.
       // ---------------------------------------------------------------
       {
-        name: "home",
-        label: "Home Page",
-        path: "content",
-        match: { include: "home" },
+        name: "page",
+        label: "Site Pages",
+        path: "content/pages",
+        match: { include: CORE_PAGE_GLOB },
         format: "json",
-        ui: { router: () => "/" },
-        fields: [
-          {
-            type: "object",
-            name: "hero",
-            label: "Hero Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: "The large heading at the very top of the homepage. Use a newline to create a line break." }
-              },
-              {
-                type: "rich-text",
-                name: "subheading",
-                label: "Subheading",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "The sentence below the main heading. Describes what the site offers and who Corinne is." }
-              },
-              {
-                type: "string",
-                name: "ctaPrimary",
-                label: "Primary CTA Label",
-                ui: { description: 'Text on the orange button in the hero section (e.g. "Explore the Shop").' }
-              },
-              {
-                type: "string",
-                name: "ctaSecondary",
-                label: "Secondary CTA Label",
-                ui: { description: 'Text on the outline button next to the primary CTA (e.g. "Watch Tutorials").' }
-              },
-              {
-                type: "image",
-                name: "backgroundImage",
-                label: "Background Image",
-                ui: { description: "Hero image shown below the heading and CTAs on the homepage." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "latestSection",
-            label: "Latest Gallery Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Section heading above the thumbnail grid (e.g. "Latest").' }
-              },
-              {
-                type: "string",
-                name: "viewAllLabel",
-                label: "View All Label",
-                ui: { description: 'Link text on the right side (e.g. "View all").' }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "featuredSection",
-            label: "Books & Ebooks Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Heading for the Books & Ebooks section (e.g. "Books & Ebooks").' }
-              },
-              {
-                type: "string",
-                name: "subheading",
-                label: "Subheading",
-                ui: { description: "Short description below the Books & Ebooks heading." }
-              },
-              {
-                type: "string",
-                name: "viewAllLabel",
-                label: "View All Label",
-                ui: { description: 'The "View All" link text on the right side of the featured section header.' }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "artistBanner",
-            label: "Artist Banner",
-            fields: [
-              {
-                type: "string",
-                name: "badge",
-                label: "Badge Text",
-                ui: { description: 'Small badge shown above the artist heading (e.g. "Author & Illustrator").' }
-              },
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'The artist banner heading (e.g. "Meet Corinne").' }
-              },
-              {
-                type: "rich-text",
-                name: "bio",
-                label: "Bio",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "A short bio paragraph introducing the artist. Shown next to the portrait image." }
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "CTA Label",
-                ui: { description: 'Text on the button in the artist banner (e.g. "Read My Story"). Links to the About page.' }
-              },
-              {
-                type: "image",
-                name: "portraitImage",
-                label: "Portrait Image",
-                ui: { description: "The portrait photo shown in the artist banner section on the homepage." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "tutorialsSection",
-            label: "Featured Video Tutorial Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Heading above the featured video (e.g. "Featured Video Tutorial").' }
-              },
-              {
-                type: "string",
-                name: "subheading",
-                label: "Subheading",
-                ui: { description: "Short description below the featured video heading." }
-              },
-              {
-                type: "string",
-                name: "browseAllLabel",
-                label: "Browse All Label",
-                ui: { description: "Button text linking to the full tutorials page." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "classesSection",
-            label: "Krita Education Classes Section",
-            fields: [
-              {
-                type: "string",
-                name: "eyebrow",
-                label: "Eyebrow",
-                ui: { description: 'Small label above the heading (e.g. "Now Enrolling").' }
-              },
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Main heading (e.g. "Enroll in My Krita Education Classes").' }
-              },
-              {
-                type: "rich-text",
-                name: "subheading",
-                label: "Subheading",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "Supporting line below the heading." }
-              },
-              {
-                type: "rich-text",
-                name: "body",
-                label: "Body (optional)",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "Optional extra paragraph." }
-              },
-              {
-                type: "string",
-                name: "bullets",
-                label: "Bullet Points",
-                list: true,
-                ui: { description: "Benefit bullets shown with checkmarks." }
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "CTA Label",
-                ui: { description: 'Primary button text (e.g. "Reserve Your Spot").' }
-              },
-              {
-                type: "string",
-                name: "ctaLink",
-                label: "CTA Link",
-                ui: { description: 'Relative URL for the CTA (e.g. "/classes").' }
-              },
-              {
-                type: "string",
-                name: "metaTags",
-                label: "Meta Line",
-                ui: { description: 'Small line below the button (e.g. "Self-paced \xB7 Krita 5.2").' }
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Section Image",
-                ui: { description: "Image shown beside the classes pitch." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "blogSection",
-            label: "Recent Blog Posts Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Section heading (e.g. "Recent Blog Posts").' }
-              },
-              {
-                type: "string",
-                name: "subheading",
-                label: "Subheading",
-                ui: { description: "Short description below the blog section heading." }
-              },
-              {
-                type: "string",
-                name: "viewAllLabel",
-                label: "View All Label",
-                ui: { description: "Link text to the blog index." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "newsletterSection",
-            label: "Newsletter Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: 'Newsletter heading (e.g. "Stay in the Loop").' }
-              },
-              {
-                type: "rich-text",
-                name: "subheading",
-                label: "Subheading",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "Description encouraging signup." }
-              },
-              {
-                type: "string",
-                name: "placeholderText",
-                label: "Email Placeholder",
-                ui: { description: "Placeholder text in the email input." }
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "Submit Button Label",
-                ui: { description: 'Button text (e.g. "Subscribe").' }
-              },
-              {
-                type: "string",
-                name: "privacyNote",
-                label: "Privacy Note",
-                ui: { description: 'Small text below the form (e.g. "No spam.").' }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "bookPromo",
-            label: "Book Promo Banner",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading",
-                ui: { description: "The heading in the dark promo band at the bottom of the homepage." }
-              },
-              {
-                type: "rich-text",
-                name: "description",
-                label: "Description",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER,
-                ui: { description: "Short description line below the promo heading." }
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "Button Label",
-                ui: { description: 'Text on the orange button (e.g. "Order Now").' }
-              },
-              {
-                type: "string",
-                name: "ctaLink",
-                label: "Button Link",
-                ui: { description: 'Relative URL the button links to (e.g. "/shop/1").' }
-              }
-            ]
-          }
-        ]
+        ui: {
+          allowedActions: { create: false, delete: false },
+          router: ({ document }) => corePageRoute(document._sys.basename ?? document._sys.filename ?? "")
+        },
+        fields: pageFields
       },
       // ---------------------------------------------------------------
-      // About Page
+      // New Pages — pages the client creates herself, starting from a
+      // template (Blank, Event, Promo, Info, Link-in-Bio).
       // ---------------------------------------------------------------
       {
-        name: "about",
-        label: "About Page",
-        path: "content",
-        match: { include: "about" },
+        name: "landingPage",
+        label: "New Pages",
+        path: "content/pages",
+        match: { exclude: CORE_PAGE_GLOB },
         format: "json",
-        ui: { router: () => "/about" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the About page (e.g. "About Corinne").' }
+        ui: {
+          filename: {
+            readonly: true,
+            slugify: (values) => String(values?.title ?? "new-page").toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "new-page"
           },
-          {
-            type: "image",
-            name: "portraitImage",
-            label: "Portrait Image",
-            ui: { description: "The photo shown on the left side of the About page. Upload a square or portrait-oriented image." }
-          },
-          {
-            type: "rich-text",
-            name: "leadText",
-            label: "Lead Text",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The bold introductory sentence at the top of the bio section. Keep it to 1-2 sentences." }
-          },
-          {
-            type: "rich-text",
-            name: "paragraph1",
-            label: "Paragraph 1",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The first body paragraph. Talks about what Corinne offers, tutorials, and YouTube." }
-          },
-          {
-            type: "rich-text",
-            name: "paragraph2",
-            label: "Paragraph 2",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The second body paragraph. Mentions Lheeloo & Luna, specialties, and the Blade & Quill mission." }
-          },
-          {
-            type: "string",
-            name: "skill1Label",
-            label: "Skill 1 Label",
-            ui: { description: 'First skill shown in the three-column grid (e.g. "Krita & Digital Painting").' }
-          },
-          {
-            type: "string",
-            name: "skill2Label",
-            label: "Skill 2 Label",
-            ui: { description: 'Middle skill in the three-column grid (e.g. "Character Design").' }
-          },
-          {
-            type: "string",
-            name: "skill3Label",
-            label: "Skill 3 Label",
-            ui: { description: 'Third skill in the three-column grid (e.g. "Color Theory").' }
-          },
-          {
-            type: "string",
-            name: "ctaPrimary",
-            label: "Primary CTA Label",
-            ui: { description: 'Text on the orange button at the bottom of the About page (e.g. "Get in Touch").' }
-          },
-          {
-            type: "string",
-            name: "ctaPrimaryLink",
-            label: "Primary CTA Link",
-            ui: { description: 'Where the primary CTA navigates to (e.g. "/contact").' }
-          },
-          {
-            type: "string",
-            name: "ctaSecondary",
-            label: "Secondary CTA Label",
-            ui: { description: 'Text on the outline button at the bottom of the About page (e.g. "View Gallery").' }
-          },
-          {
-            type: "string",
-            name: "ctaSecondaryLink",
-            label: "Secondary CTA Link",
-            ui: { description: 'Where the secondary CTA navigates to (e.g. "/gallery").' }
+          router: ({ document }) => {
+            const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
+            return `/p/${base}`;
           }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Important Links Page (standalone review hub)
-      // ---------------------------------------------------------------
-      {
-        name: "importantLinks",
-        label: "Single Landing Pages",
-        path: "content",
-        match: { include: "important-links" },
-        format: "json",
-        ui: { router: () => "/important-links-page" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: "Browser tab title for this page." }
-          },
-          {
-            type: "object",
-            name: "featuredRelease",
-            label: "Featured Release",
-            ui: { description: "Highlight the newest book at the top of the page." },
-            fields: [
-              {
-                type: "string",
-                name: "eyebrow",
-                label: "Eyebrow Label",
-                ui: { description: 'Small label above the title (e.g. "New Featured Release").' }
-              },
-              {
-                type: "string",
-                name: "title",
-                label: "Book Title",
-                required: true
-              },
-              {
-                type: "rich-text",
-                name: "description",
-                label: "Description",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER
-              },
-              {
-                type: "image",
-                name: "coverImage",
-                label: "Front Cover Image",
-                ui: { description: "Leave empty to show the gradient placeholder cover." }
-              },
-              {
-                type: "image",
-                name: "backCoverImage",
-                label: "Back Cover Image",
-                ui: { description: "Optional second cover (shown alongside the front)." }
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "Button Label"
-              },
-              {
-                type: "string",
-                name: "ctaHref",
-                label: "Button URL",
-                ui: { description: "Full URL (Amazon, shop, etc.)." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "reviewsSection",
-            label: "Reviews Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading"
-              },
-              {
-                type: "rich-text",
-                name: "intro",
-                label: "Intro Text",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER
-              },
-              {
-                type: "string",
-                name: "thankYou",
-                label: "Thank You Message"
-              },
-              {
-                type: "string",
-                name: "ctaHeading",
-                label: "CTA Section Heading"
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "reviewLinks",
-            label: "Review Links",
-            list: true,
-            ui: { description: "Amazon review buttons, one per region." },
-            fields: [
-              {
-                type: "string",
-                name: "label",
-                label: "Button Label",
-                required: true
-              },
-              {
-                type: "string",
-                name: "href",
-                label: "URL",
-                required: true,
-                ui: { description: "Full Amazon review URL (opens in new tab)." }
-              },
-              {
-                type: "string",
-                name: "region",
-                label: "Region",
-                ui: { description: "Short region code for reference (e.g. US, UK, AU)." }
-              }
-            ]
-          },
-          {
-            type: "object",
-            name: "kofiSection",
-            label: "Ko-fi Support Section",
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Heading"
-              },
-              {
-                type: "rich-text",
-                name: "body",
-                label: "Body Text",
-                overrides: INLINE_RICH_TEXT,
-                parser: SLATE_JSON_PARSER
-              },
-              {
-                type: "string",
-                name: "ctaLabel",
-                label: "Button Label"
-              },
-              {
-                type: "string",
-                name: "href",
-                label: "Ko-fi URL"
-              }
-            ]
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Contact Page
-      // ---------------------------------------------------------------
-      {
-        name: "contact",
-        label: "Contact Page",
-        path: "content",
-        match: { include: "contact" },
-        format: "json",
-        ui: { router: () => "/contact" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the Contact page (e.g. "Get in Touch").' }
-          },
-          {
-            type: "rich-text",
-            name: "pageDescription",
-            label: "Page Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The introductory text below the heading, before the contact form." }
-          },
-          {
-            type: "string",
-            name: "email",
-            label: "Email Address",
-            ui: { description: "Shown publicly on the Contact page. Use a safe inbox, not a personal address." }
-          },
-          {
-            type: "string",
-            name: "location",
-            label: "Location",
-            ui: { description: 'General location shown on the Contact page (e.g. "Des Moines, IA").' }
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Shop Page
-      // ---------------------------------------------------------------
-      {
-        name: "shop",
-        label: "Shop Page",
-        path: "content",
-        match: { include: "shop" },
-        format: "json",
-        ui: { router: () => "/shop" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the Shop page (e.g. "Shop"). Product cards are managed under Shop Products.' }
-          },
-          {
-            type: "rich-text",
-            name: "pageDescription",
-            label: "Page Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The introductory text below the heading on the Shop page." }
-          },
-          {
-            type: "string",
-            name: "emptyHeading",
-            label: "Empty State Heading",
-            ui: { description: 'Heading shown when no products match the filter (e.g. "No products found").' }
-          },
-          {
-            type: "string",
-            name: "emptyDescription",
-            label: "Empty State Description",
-            ui: { description: "Supporting text shown when no products are available." }
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Gallery Page
-      // ---------------------------------------------------------------
-      {
-        name: "gallery",
-        label: "Gallery Page",
-        path: "content",
-        match: { include: "gallery" },
-        format: "json",
-        ui: { router: () => "/gallery" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the Gallery page (e.g. "Gallery"). Images are loaded from the database.' }
-          },
-          {
-            type: "rich-text",
-            name: "pageDescription",
-            label: "Page Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "Introductory text below the heading. Mention your art style or invite visitors to click images." }
-          },
-          {
-            type: "string",
-            name: "emptyHeading",
-            label: "Empty State Heading",
-            ui: { description: 'Heading shown when the gallery has no images (e.g. "Gallery is empty").' }
-          },
-          {
-            type: "string",
-            name: "emptyDescription",
-            label: "Empty State Description",
-            ui: { description: "Supporting text shown when the gallery is empty." }
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Tutorials Page
-      // ---------------------------------------------------------------
-      {
-        name: "tutorials",
-        label: "Tutorials Page",
-        path: "content",
-        match: { include: "tutorials" },
-        format: "json",
-        ui: { router: () => "/tutorials" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the Tutorials page (e.g. "Tutorials").' }
-          },
-          {
-            type: "rich-text",
-            name: "pageDescription",
-            label: "Page Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "Introductory text below the heading. Describe what kinds of tutorials are available." }
-          },
-          {
-            type: "string",
-            name: "subscribeLabel",
-            label: "Subscribe Button Label",
-            ui: { description: 'Text on the red YouTube button at the top of the page (e.g. "Subscribe on YouTube").' }
-          },
-          {
-            type: "string",
-            name: "youtubeUrl",
-            label: "YouTube Channel URL",
-            ui: { description: "The full YouTube channel URL. Used for the Subscribe button and empty-state links." }
-          },
-          {
-            type: "string",
-            name: "emptyHeading",
-            label: "Empty State Heading",
-            ui: { description: 'Heading shown when no tutorials match the filter (e.g. "No tutorials found").' }
-          },
-          {
-            type: "string",
-            name: "emptyDescription",
-            label: "Empty State Description",
-            ui: { description: "Supporting text shown when no tutorials are available." }
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Downloads Page
-      // ---------------------------------------------------------------
-      {
-        name: "downloads",
-        label: "Downloads Page",
-        path: "content",
-        match: { include: "downloads" },
-        format: "json",
-        ui: { router: () => "/downloads" },
-        fields: [
-          {
-            type: "string",
-            name: "pageTitle",
-            label: "Page Title",
-            ui: { description: 'The main heading on the Downloads page (e.g. "Free Resources").' }
-          },
-          {
-            type: "rich-text",
-            name: "pageDescription",
-            label: "Page Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "Introductory text below the heading. Describe what free resources are available." }
-          },
-          {
-            type: "string",
-            name: "emptyHeading",
-            label: "Empty State Heading",
-            ui: { description: 'Heading shown when no downloads are available (e.g. "Free resources coming soon!").' }
-          },
-          {
-            type: "string",
-            name: "emptyDescription",
-            label: "Empty State Description",
-            ui: { description: "Supporting text shown when no downloads are available." }
-          }
+        },
+        templates: [
+          blankPageTemplate,
+          eventPageTemplate,
+          promoPageTemplate,
+          infoPageTemplate,
+          linkInBioPageTemplate
         ]
       },
       // ---------------------------------------------------------------
@@ -1004,8 +1578,8 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "description",
             label: "Description",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
+            overrides: INLINE_RICH_TEXT2,
+            parser: SLATE_JSON_PARSER2,
             ui: {
               description: "Short description for shop cards and the product detail tab."
             }
@@ -1080,6 +1654,10 @@ var config_default = defineConfig({
         path: "content/posts",
         format: "json",
         ui: {
+          filename: {
+            readonly: true,
+            slugify: (values) => String(values?.title ?? "new-post").toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "new-post"
+          },
           // Use basename without extension so the URL matches /blog/:slug (wouter route)
           router: ({ document }) => {
             const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
@@ -1092,14 +1670,15 @@ var config_default = defineConfig({
             name: "title",
             label: "Title",
             required: true,
+            isTitle: true,
             ui: { description: "The post headline. Shows in the blog list and at the top of the post." }
           },
           {
             type: "rich-text",
             name: "excerpt",
             label: "Excerpt",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
+            overrides: INLINE_RICH_TEXT2,
+            parser: SLATE_JSON_PARSER2,
             ui: { description: "A 1-2 sentence summary shown on blog list cards." }
           },
           {
@@ -1125,46 +1704,8 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "body",
             label: "Body",
-            parser: SLATE_JSON_PARSER,
+            parser: SLATE_JSON_PARSER2,
             ui: { description: "The full post content. Supports headings, images, links, and embeds." }
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Landing Pages (block-based)
-      // ---------------------------------------------------------------
-      {
-        name: "landingPage",
-        label: "Landing Pages",
-        path: "content/pages",
-        format: "json",
-        ui: {
-          router: ({ document }) => {
-            const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
-            return `/p/${base}`;
-          }
-        },
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Page Title",
-            required: true,
-            ui: { description: "The page title. Used in the browser tab and as a default heading." }
-          },
-          {
-            type: "object",
-            name: "blocks",
-            label: "Page Sections",
-            list: true,
-            templates: [
-              heroBlock,
-              textBlock,
-              imageGalleryBlock,
-              ctaBandBlock,
-              videoEmbedBlock,
-              featureGridBlock
-            ]
           }
         ]
       }

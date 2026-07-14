@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="40" y="50" width="30" height="8" rx="4" fill="#e55934"/><rect x="90" y="50" width="120" height="8" rx="4" fill="#1f1a14"/><rect x="90" y="74" width="170" height="8" rx="4" fill="#c9bfa9"/><rect x="90" y="90" width="170" height="8" rx="4" fill="#c9bfa9"/><rect x="285" y="50" width="75" height="75" rx="4" fill="#f0e8d8"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">STORY SECTION</text>
+</svg>

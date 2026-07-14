@@ -2,11 +2,17 @@
 
 /* ──────────────────────────────────────────────────────────────
    Blade & Quill — brand tokens
-   New tokens lifted from prototype `brand.css`. Semantic shadcn names
-   (background, foreground, card, primary, etc.) keep their identifiers
-   and get re-pointed at the new paper/ink palette so existing
-   `bg-card`, `text-foreground`, `text-orange` utilities pick up the
-   new look without any component edits.
+   2026 rebrand palette:
+     gold   #D9B783 — accent only
+     maroon #9A5151 — primary / CTA
+     brown  #714B4B — deep surfaces, hovers, dark panels
+     taupe  #776562 — muted text, secondary UI
+     blush  #DFD2CC — page background
+   Semantic shadcn names (background, foreground, card, primary, etc.)
+   keep their identifiers and get re-pointed at the blush/ink palette
+   so `bg-card`, `text-foreground`, etc. pick up the new look.
+   Visual language is flat and minimal: no glows, no glassmorphism
+   (navbar excepted), subtle in-palette gradients only.
    ────────────────────────────────────────────────────────────── */
 
 @theme inline {
@@ -37,29 +43,39 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  /* Brand utility colors — semantic names kept, hex repointed per HANDOFF. */
-  --color-orange: #E55934;
-  --color-orange-deep: #C13B1E;
-  --color-amber: #F2A93B;
-  --color-amber-deep: #D4861A;
-  --color-rose: #D86B7E;
-  --color-rose-deep: #B84A5E;
-  --color-violet: #6B5BA8;
-  --color-violet-deep: #483C7A;
-  --color-moss: #6B8A5B;
-  --color-charcoal: #1F1A14;
+  /* Brand utility colors — 2026 palette. */
+  --color-maroon: #9A5151;
+  --color-maroon-deep: #7E3E3E;
+  --color-gold: #D9B783;
+  --color-gold-deep: #C29E63;
+  --color-brown: #714B4B;
+  --color-brown-deep: #5A3B3B;
+  --color-taupe: #776562;
+  --color-charcoal: #2E2222;
 
-  /* Ink scale */
-  --color-ink: #1F1A14;
-  --color-ink-soft: #3F3527;
-  --color-ink-mute: #6B5F4E;
-  --color-ink-faint: #9A8E7A;
+  /* Legacy aliases — old brand names repointed at the new palette so
+     stragglers render on-brand; new code should use the names above. */
+  --color-orange: #9A5151;
+  --color-orange-deep: #7E3E3E;
+  --color-amber: #D9B783;
+  --color-amber-deep: #C29E63;
+  --color-rose: #9A5151;
+  --color-rose-deep: #7E3E3E;
+  --color-violet: #776562;
+  --color-violet-deep: #714B4B;
+  --color-moss: #776562;
 
-  /* Paper scale */
-  --color-paper: #FBF6EC;
-  --color-paper-2: #F6EFE0;
-  --color-paper-3: #EFE5D0;
-  --color-paper-deep: #E5D8BD;
+  /* Ink scale — derived from the brown/maroon family */
+  --color-ink: #2E2222;
+  --color-ink-soft: #4A3838;
+  --color-ink-mute: #776562;
+  --color-ink-faint: #9C8B87;
+
+  /* Paper scale — blush */
+  --color-paper: #DFD2CC;
+  --color-paper-2: #D6C6BF;
+  --color-paper-3: #CCB9B1;
+  --color-paper-deep: #BFA89E;
 }
 
 /* ── Semantic HSL channels (light) ─────────────────────────────
@@ -67,56 +83,65 @@
    Values are HSL triplets (no `hsl(...)`) so the @theme wrapper
    can apply transparency utilities (`bg-foreground/40`, etc.). */
 :root {
-  --background: 40 67% 95%;      /* paper #FBF6EC */
-  --card: 40 67% 95%;            /* paper — same surface as bg, lifted by shadow */
-  --secondary: 40 66% 92%;       /* paper-2 #F6EFE0 */
-  --muted: 40 59% 87%;           /* paper-3 #EFE5D0 */
-  --border: 40 47% 82%;          /* paper-deep #E5D8BD */
+  --background: 19 23% 84%;      /* blush #DFD2CC */
+  --card: 19 23% 84%;            /* blush — same surface as bg, lifted by shadow */
+  --secondary: 18 22% 79%;       /* blush-2 #D6C6BF */
+  --muted: 18 21% 75%;           /* blush-3 #CCB9B1 */
+  --border: 18 20% 68%;          /* blush-deep #BFA89E */
 
-  --foreground: 33 21% 10%;      /* ink #1F1A14 */
-  --card-foreground: 33 21% 10%;
-  --secondary-foreground: 34 24% 20%;  /* ink-soft */
-  --muted-foreground: 36 16% 36%;      /* ink-mute */
+  --foreground: 0 15% 16%;       /* ink #2E2222 */
+  --card-foreground: 0 15% 16%;
+  --secondary-foreground: 0 14% 25%;   /* ink-soft #4A3838 */
+  --muted-foreground: 9 10% 43%;       /* taupe #776562 */
 
-  --primary: 11 76% 55%;          /* orange #E55934 */
-  --primary-foreground: 40 67% 95%;
-  --ring: 11 76% 55%;             /* orange */
+  --primary: 0 31% 46%;           /* maroon #9A5151 */
+  --primary-foreground: 20 33% 93%;
+  --ring: 0 31% 46%;              /* maroon */
 
-  --accent: 252 30% 51%;          /* violet #6B5BA8 */
-  --accent-foreground: 40 67% 95%;
+  --accent: 36 53% 68%;           /* gold #D9B783 */
+  --accent-foreground: 0 15% 16%;
 
-  --destructive: 348 47% 50%;     /* rose-deep #B84A5E */
-  --destructive-foreground: 40 67% 95%;
+  --destructive: 0 34% 37%;       /* maroon-deep #7E3E3E */
+  --destructive-foreground: 20 33% 93%;
 
   /* ── Raw prototype tokens — used directly by components ── */
-  --ink: #1F1A14;
-  --ink-soft: #3F3527;
-  --ink-mute: #6B5F4E;
-  --ink-faint: #9A8E7A;
+  --ink: #2E2222;
+  --ink-soft: #4A3838;
+  --ink-mute: #776562;
+  --ink-faint: #9C8B87;
 
-  --paper: #FBF6EC;
-  --paper-2: #F6EFE0;
-  --paper-3: #EFE5D0;
-  --paper-deep: #E5D8BD;
+  --paper: #DFD2CC;
+  --paper-2: #D6C6BF;
+  --paper-3: #CCB9B1;
+  --paper-deep: #BFA89E;
 
-  --orange: #E55934;
-  --orange-deep: #C13B1E;
-  --amber: #F2A93B;
-  --amber-deep: #D4861A;
-  --rose: #D86B7E;
-  --rose-deep: #B84A5E;
-  --violet: #6B5BA8;
-  --violet-deep: #483C7A;
-  --moss: #6B8A5B;
+  --maroon: #9A5151;
+  --maroon-deep: #7E3E3E;
+  --gold: #D9B783;
+  --gold-deep: #C29E63;
+  --brown: #714B4B;
+  --brown-deep: #5A3B3B;
+  --taupe: #776562;
 
-  /* Signature gradients */
-  --g-warm:      linear-gradient(135deg, #E55934 0%, #F2A93B 50%, #FBC56F 100%);
-  --g-twilight:  linear-gradient(135deg, #6B5BA8 0%, #D86B7E 60%, #F2A93B 100%);
-  --g-dawn:      linear-gradient(135deg, #E55934 0%, #D86B7E 50%, #6B5BA8 100%);
-  --g-cta:       linear-gradient(135deg, #E55934 0%, #F2A93B 100%);
-  --g-cta-hover: linear-gradient(135deg, #F2A93B 0%, #E55934 100%);
-  --g-paper:     linear-gradient(180deg, #FBF6EC 0%, #F6EFE0 100%);
-  --g-ink:       linear-gradient(135deg, #1F1A14 0%, #3F3527 100%);
+  /* Legacy aliases — repointed at the new palette */
+  --orange: #9A5151;
+  --orange-deep: #7E3E3E;
+  --amber: #D9B783;
+  --amber-deep: #C29E63;
+  --rose: #9A5151;
+  --rose-deep: #7E3E3E;
+  --violet: #776562;
+  --violet-deep: #714B4B;
+  --moss: #776562;
+
+  /* Signature gradients — subtle, in-palette only */
+  --g-warm:      linear-gradient(135deg, #D9B783 0%, #C29E63 100%);
+  --g-twilight:  linear-gradient(135deg, #714B4B 0%, #776562 100%);
+  --g-dawn:      linear-gradient(135deg, #9A5151 0%, #714B4B 100%);
+  --g-cta:       linear-gradient(135deg, #9A5151 0%, #7E3E3E 100%);
+  --g-cta-hover: linear-gradient(135deg, #7E3E3E 0%, #9A5151 100%);
+  --g-paper:     linear-gradient(180deg, #DFD2CC 0%, #D6C6BF 100%);
+  --g-ink:       linear-gradient(135deg, #2E2222 0%, #4A3838 100%);
 
   /* Font shortcuts (mirror Tailwind tokens, exposed for inline styles) */
   --f-serif: 'Young Serif', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
@@ -129,14 +154,11 @@
   --r-lg: 18px;
   --r-xl: 28px;
 
-  /* Warm-toned shadows */
-  --sh-sm: 0 2px 6px rgba(60, 38, 18, 0.06);
-  --sh-md: 0 8px 24px rgba(60, 38, 18, 0.08), 0 2px 6px rgba(60, 38, 18, 0.04);
-  --sh-lg: 0 18px 44px rgba(60, 38, 18, 0.12), 0 4px 12px rgba(60, 38, 18, 0.06);
-  --sh-paper:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 -1px 0 rgba(60, 38, 18, 0.04) inset,
-    0 6px 18px rgba(60, 38, 18, 0.08);
+  /* Flat, minimal shadows — neutral brown-tinted, no glow */
+  --sh-sm: 0 1px 3px rgba(46, 34, 34, 0.08);
+  --sh-md: 0 4px 12px rgba(46, 34, 34, 0.08);
+  --sh-lg: 0 8px 24px rgba(46, 34, 34, 0.10);
+  --sh-paper: 0 2px 8px rgba(46, 34, 34, 0.06);
 
   /* Eases */
   --e-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -151,29 +173,29 @@
 }
 
 /* ── Semantic HSL channels (dark) ──────────────────────────────
-   Mirror the paper/ink palette in dark mode: dark ink as the surface,
-   warm paper-faint as the foreground. Brand colors don't shift much. */
+   Mirror the blush/ink palette in dark mode: deep brown as the
+   surface, warm blush as the foreground. */
 .dark {
-  --background: 33 21% 10%;     /* ink */
-  --card: 34 24% 14%;           /* slightly lighter than ink */
-  --secondary: 34 24% 18%;
-  --muted: 36 16% 24%;
-  --border: 36 16% 28%;
+  --background: 0 15% 12%;      /* deep ink */
+  --card: 0 14% 16%;            /* slightly lighter than ink */
+  --secondary: 0 13% 20%;
+  --muted: 0 11% 26%;
+  --border: 0 10% 30%;
 
-  --foreground: 40 50% 92%;     /* warm paper-faint */
-  --card-foreground: 40 50% 92%;
-  --secondary-foreground: 40 50% 92%;
-  --muted-foreground: 38 14% 62%;
+  --foreground: 19 23% 88%;     /* blush */
+  --card-foreground: 19 23% 88%;
+  --secondary-foreground: 19 23% 88%;
+  --muted-foreground: 9 10% 62%;
 
-  --primary: 11 76% 60%;
-  --primary-foreground: 33 21% 10%;
-  --ring: 11 76% 60%;
+  --primary: 0 31% 56%;         /* lifted maroon */
+  --primary-foreground: 0 15% 12%;
+  --ring: 0 31% 56%;
 
-  --accent: 252 30% 60%;
-  --accent-foreground: 33 21% 10%;
+  --accent: 36 53% 68%;         /* gold */
+  --accent-foreground: 0 15% 12%;
 
-  --destructive: 348 47% 55%;
-  --destructive-foreground: 40 67% 95%;
+  --destructive: 0 34% 48%;
+  --destructive-foreground: 19 23% 88%;
 }
 
 @layer base {
@@ -224,7 +246,7 @@
   p { line-height: 1.6; }
 
   ::selection {
-    background: var(--orange);
+    background: var(--maroon);
     color: var(--paper);
   }
 
@@ -250,6 +272,18 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     background: var(--g-cta);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+  /* Gold variant for dark panels, where the maroon gradient lacks contrast */
+  .eyebrow-grad-gold {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--g-warm);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -295,7 +329,7 @@
     pointer-events: none;
     background: var(--g-paper);
     transform-origin: left center;
-    box-shadow: 16px 0 40px rgba(60, 38, 18, 0.2);
+    box-shadow: 16px 0 40px rgba(46, 34, 34, 0.2);
     opacity: 0;
   }
   .pageturn.run { animation: pageturn 0.7s var(--e-in-out) forwards; }
@@ -394,10 +428,7 @@
   }
   .hero-art-tile-wrap:hover .hero-art-tile {
     transform: scale(1.06);
-    box-shadow:
-      0 16px 36px rgba(60, 38, 18, 0.16),
-      0 6px 14px rgba(60, 38, 18, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 20px rgba(46, 34, 34, 0.14);
   }
   .hero-art-tile .art-tile-label {
     transition: opacity 0.85s var(--e-in-out);
@@ -434,7 +465,7 @@
     border-color: transparent;
     transition: border-width var(--t-med) var(--e-out);
     pointer-events: none;
-    filter: drop-shadow(-2px -2px 3px rgba(60, 38, 18, 0.18));
+    filter: drop-shadow(-2px -2px 3px rgba(46, 34, 34, 0.15));
   }
   .card-peel:hover::after {
     border-width: 0 0 30px 30px;
@@ -468,15 +499,13 @@
   /* Combine with `rotate` so the card lifts off and untilts. */
   .polaroid-hover:hover {
     transform: rotate(0deg) translateY(-8px) !important;
-    box-shadow:
-      0 24px 56px rgba(60, 38, 18, 0.22),
-      0 6px 14px rgba(60, 38, 18, 0.12) !important;
+    box-shadow: 0 10px 28px rgba(46, 34, 34, 0.16) !important;
   }
 
   /* ── Video card hover (TutorialThumb) ────────────────────── */
   .video-card:hover .play-btn {
     transform: translate(-50%, -50%) scale(1.15);
-    background: var(--orange);
+    background: var(--maroon);
   }
   .video-card:hover .play-btn > div {
     border-left-color: var(--paper);
@@ -487,9 +516,17 @@
     transform: translateY(-4px);
     box-shadow: var(--sh-lg);
   }
-  .product-card:hover .quick-add > button {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
+  /* Quick add: hidden-until-hover only on devices that can hover.
+     Touch devices get an always-visible button. */
+  @media (hover: hover) and (pointer: fine) {
+    .product-card .quick-add > button {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    .product-card:hover .quick-add > button {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   .product-card .card-arrow {
     transition: transform 0.25s var(--e-out);
@@ -500,7 +537,7 @@
 
   /* ── Shop filter row hover ───────────────────────────────── */
   .filter-row:hover {
-    color: var(--orange);
+    color: var(--maroon);
   }
 
   /* ── About "What I make" card hover ──────────────────────── */
@@ -518,7 +555,7 @@
     transition: background 0.25s var(--e-out), padding 0.25s var(--e-out);
   }
   .blog-row:hover {
-    background: rgba(229, 89, 52, 0.04);
+    background: rgba(154, 81, 81, 0.06);
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -533,12 +570,16 @@
   .bq-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
   }
   .bq-container-wide {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 20px;
+  }
+  @media (min-width: 640px) {
+    .bq-container,
+    .bq-container-wide { padding: 0 32px; }
   }
   @media (min-width: 1100px) {
     .bq-container,
@@ -620,16 +661,20 @@
   }
   .img-fade.loaded { opacity: 1; }
 
+  /* Always visible on touch devices; fades in on hover-capable ones. */
   .hover-overlay {
     @apply absolute inset-0 flex flex-col justify-end p-4;
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 40%, transparent 65%);
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
   }
-  .group:hover .hover-overlay { opacity: 1; }
+  @media (hover: hover) and (pointer: fine) {
+    .hover-overlay { opacity: 0; }
+    .group:hover .hover-overlay { opacity: 1; }
+  }
 
   .price-badge {
-    @apply text-lg font-bold text-orange;
+    @apply text-lg font-bold text-maroon;
   }
 
   .cta-bold {

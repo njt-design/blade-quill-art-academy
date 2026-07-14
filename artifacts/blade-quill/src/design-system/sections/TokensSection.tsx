@@ -14,11 +14,11 @@ const SEMANTIC_COLORS = [
 ];
 
 const BRAND_COLORS = [
-  { name: "charcoal", value: "#43434d" },
-  { name: "rose", value: "#b26567" },
-  { name: "amber", value: "#f5bf69" },
-  { name: "orange", value: "#e07b3a" },
-  { name: "violet", value: "#8455f6" },
+  { name: "gold", value: "#D9B783" },
+  { name: "maroon", value: "#9A5151" },
+  { name: "brown", value: "#714B4B" },
+  { name: "taupe", value: "#776562" },
+  { name: "blush", value: "#DFD2CC" },
 ];
 
 export function TokensSection() {

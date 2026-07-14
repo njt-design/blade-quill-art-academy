@@ -21,7 +21,7 @@ export function DesignSystemLayout({ children, sidebar }: Props) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur-sm px-6 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-50 border-b border-border bg-card px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link
             href="/"

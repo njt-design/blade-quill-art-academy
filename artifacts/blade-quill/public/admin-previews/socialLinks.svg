@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <circle cx="145" cy="98" r="12" fill="#e55934"/><circle cx="183" cy="98" r="12" fill="#6b5ba8"/><circle cx="221" cy="98" r="12" fill="#e55934"/><circle cx="259" cy="98" r="12" fill="#6b5ba8"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">SOCIAL LINKS</text>
+</svg>

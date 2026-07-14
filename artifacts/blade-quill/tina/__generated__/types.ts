@@ -82,28 +82,14 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  home: Home;
-  homeConnection: HomeConnection;
-  about: About;
-  aboutConnection: AboutConnection;
-  importantLinks: ImportantLinks;
-  importantLinksConnection: ImportantLinksConnection;
-  contact: Contact;
-  contactConnection: ContactConnection;
-  shop: Shop;
-  shopConnection: ShopConnection;
-  gallery: Gallery;
-  galleryConnection: GalleryConnection;
-  tutorials: Tutorials;
-  tutorialsConnection: TutorialsConnection;
-  downloads: Downloads;
-  downloadsConnection: DownloadsConnection;
+  page: Page;
+  pageConnection: PageConnection;
+  landingPage: LandingPage;
+  landingPageConnection: LandingPageConnection;
   shopProduct: ShopProduct;
   shopProductConnection: ShopProductConnection;
   post: Post;
   postConnection: PostConnection;
-  landingPage: LandingPage;
-  landingPageConnection: LandingPageConnection;
 };
 
 
@@ -128,123 +114,33 @@ export type QueryDocumentArgs = {
 };
 
 
-export type QueryHomeArgs = {
+export type QueryPageArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryHomeConnectionArgs = {
+export type QueryPageConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<HomeFilter>;
+  filter?: InputMaybe<PageFilter>;
 };
 
 
-export type QueryAboutArgs = {
+export type QueryLandingPageArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryAboutConnectionArgs = {
+export type QueryLandingPageConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<AboutFilter>;
-};
-
-
-export type QueryImportantLinksArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryImportantLinksConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ImportantLinksFilter>;
-};
-
-
-export type QueryContactArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryContactConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ContactFilter>;
-};
-
-
-export type QueryShopArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryShopConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ShopFilter>;
-};
-
-
-export type QueryGalleryArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryGalleryConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<GalleryFilter>;
-};
-
-
-export type QueryTutorialsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryTutorialsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<TutorialsFilter>;
-};
-
-
-export type QueryDownloadsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryDownloadsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<DownloadsFilter>;
+  filter?: InputMaybe<LandingPageFilter>;
 };
 
 
@@ -277,33 +173,11 @@ export type QueryPostConnectionArgs = {
   filter?: InputMaybe<PostFilter>;
 };
 
-
-export type QueryLandingPageArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryLandingPageConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<LandingPageFilter>;
-};
-
 export type DocumentFilter = {
-  home?: InputMaybe<HomeFilter>;
-  about?: InputMaybe<AboutFilter>;
-  importantLinks?: InputMaybe<ImportantLinksFilter>;
-  contact?: InputMaybe<ContactFilter>;
-  shop?: InputMaybe<ShopFilter>;
-  gallery?: InputMaybe<GalleryFilter>;
-  tutorials?: InputMaybe<TutorialsFilter>;
-  downloads?: InputMaybe<DownloadsFilter>;
+  page?: InputMaybe<PageFilter>;
+  landingPage?: InputMaybe<LandingPageFilter>;
   shopProduct?: InputMaybe<ShopProductFilter>;
   post?: InputMaybe<PostFilter>;
-  landingPage?: InputMaybe<LandingPageFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -343,68 +217,250 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Home | About | ImportantLinks | Contact | Shop | Gallery | Tutorials | Downloads | ShopProduct | Post | LandingPage | Folder;
+export type DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | ShopProduct | Post | Folder;
 
-export type HomeHero = {
-  __typename?: 'HomeHero';
-  heading?: Maybe<Scalars['String']['output']>;
-  subheading?: Maybe<Scalars['JSON']['output']>;
-  ctaPrimary?: Maybe<Scalars['String']['output']>;
-  ctaSecondary?: Maybe<Scalars['String']['output']>;
-  backgroundImage?: Maybe<Scalars['String']['output']>;
-};
-
-export type HomeLatestSection = {
-  __typename?: 'HomeLatestSection';
-  heading?: Maybe<Scalars['String']['output']>;
-  viewAllLabel?: Maybe<Scalars['String']['output']>;
-};
-
-export type HomeFeaturedSection = {
-  __typename?: 'HomeFeaturedSection';
-  heading?: Maybe<Scalars['String']['output']>;
-  subheading?: Maybe<Scalars['String']['output']>;
-  viewAllLabel?: Maybe<Scalars['String']['output']>;
-};
-
-export type HomeArtistBanner = {
-  __typename?: 'HomeArtistBanner';
-  badge?: Maybe<Scalars['String']['output']>;
-  heading?: Maybe<Scalars['String']['output']>;
-  bio?: Maybe<Scalars['JSON']['output']>;
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  portraitImage?: Maybe<Scalars['String']['output']>;
-};
-
-export type HomeTutorialsSection = {
-  __typename?: 'HomeTutorialsSection';
-  heading?: Maybe<Scalars['String']['output']>;
-  subheading?: Maybe<Scalars['String']['output']>;
-  browseAllLabel?: Maybe<Scalars['String']['output']>;
-};
-
-export type HomeClassesSection = {
-  __typename?: 'HomeClassesSection';
+export type PageBlocksHomeHero = {
+  __typename?: 'PageBlocksHomeHero';
   eyebrow?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type PageBlocksAboutHero = {
+  __typename?: 'PageBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHero = {
+  __typename?: 'PageBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
-  metaTags?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksPageHeader = {
+  __typename?: 'PageBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type PageBlocksText = {
+  __typename?: 'PageBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type PageBlocksStory = {
+  __typename?: 'PageBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksTimelineEvents = {
+  __typename?: 'PageBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksTimeline = {
+  __typename?: 'PageBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<PageBlocksTimelineEvents>>>;
+};
+
+export type PageBlocksStatsRowStats = {
+  __typename?: 'PageBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksStatsRow = {
+  __typename?: 'PageBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<PageBlocksStatsRowStats>>>;
+};
+
+export type PageBlocksFeatureGridItems = {
+  __typename?: 'PageBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type PageBlocksFeatureGrid = {
+  __typename?: 'PageBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<PageBlocksFeatureGridItems>>>;
+};
+
+export type PageBlocksCardRowCards = {
+  __typename?: 'PageBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksCardRow = {
+  __typename?: 'PageBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<PageBlocksCardRowCards>>>;
+};
+
+export type PageBlocksPillarsItems = {
+  __typename?: 'PageBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
 };
 
-export type HomeBlogSection = {
-  __typename?: 'HomeBlogSection';
+export type PageBlocksPillars = {
+  __typename?: 'PageBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
-  subheading?: Maybe<Scalars['String']['output']>;
-  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<PageBlocksPillarsItems>>>;
 };
 
-export type HomeNewsletterSection = {
-  __typename?: 'HomeNewsletterSection';
+export type PageBlocksImageGalleryImages = {
+  __typename?: 'PageBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksImageGallery = {
+  __typename?: 'PageBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<PageBlocksImageGalleryImages>>>;
+};
+
+export type PageBlocksVideoEmbed = {
+  __typename?: 'PageBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksFeaturedBookStats = {
+  __typename?: 'PageBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksFeaturedBook = {
+  __typename?: 'PageBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<PageBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksFeaturedRelease = {
+  __typename?: 'PageBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksProductStrip = {
+  __typename?: 'PageBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksShopCatalog = {
+  __typename?: 'PageBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksGalleryGrid = {
+  __typename?: 'PageBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksDownloadsGrid = {
+  __typename?: 'PageBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksTutorialsStripStats = {
+  __typename?: 'PageBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksTutorialsStrip = {
+  __typename?: 'PageBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<PageBlocksTutorialsStripStats>>>;
+};
+
+export type PageBlocksClassesPitch = {
+  __typename?: 'PageBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksBlogFeedNewsletter = {
+  __typename?: 'PageBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   placeholderText?: Maybe<Scalars['String']['output']>;
@@ -412,25 +468,103 @@ export type HomeNewsletterSection = {
   privacyNote?: Maybe<Scalars['String']['output']>;
 };
 
-export type HomeBookPromo = {
-  __typename?: 'HomeBookPromo';
+export type PageBlocksBlogFeed = {
+  __typename?: 'PageBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<PageBlocksBlogFeedNewsletter>;
+};
+
+export type PageBlocksCtaBand = {
+  __typename?: 'PageBlocksCtaBand';
   heading?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['JSON']['output']>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
 };
 
-export type Home = Node & Document & {
-  __typename?: 'Home';
-  hero?: Maybe<HomeHero>;
-  latestSection?: Maybe<HomeLatestSection>;
-  featuredSection?: Maybe<HomeFeaturedSection>;
-  artistBanner?: Maybe<HomeArtistBanner>;
-  tutorialsSection?: Maybe<HomeTutorialsSection>;
-  classesSection?: Maybe<HomeClassesSection>;
-  blogSection?: Maybe<HomeBlogSection>;
-  newsletterSection?: Maybe<HomeNewsletterSection>;
-  bookPromo?: Maybe<HomeBookPromo>;
+export type PageBlocksBigCta = {
+  __typename?: 'PageBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksNewsletterSignup = {
+  __typename?: 'PageBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksContactInfo = {
+  __typename?: 'PageBlocksContactInfo';
+  email?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksContactForm = {
+  __typename?: 'PageBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksKofiSupport = {
+  __typename?: 'PageBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksReviewLinksLinks = {
+  __typename?: 'PageBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksReviewLinks = {
+  __typename?: 'PageBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<PageBlocksReviewLinksLinks>>>;
+};
+
+export type PageBlocksMarquee = {
+  __typename?: 'PageBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksSocialLinksLinks = {
+  __typename?: 'PageBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksSocialLinks = {
+  __typename?: 'PageBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<PageBlocksSocialLinksLinks>>>;
+};
+
+export type PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks;
+
+export type Page = Node & Document & {
+  __typename?: 'Page';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<PageBlocks>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -449,6 +583,18 @@ export type RichTextFilter = {
   exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type PageBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
+};
+
 export type ImageFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
@@ -456,191 +602,142 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type HomeHeroFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
-  ctaPrimary?: InputMaybe<StringFilter>;
-  ctaSecondary?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
-};
-
-export type HomeLatestSectionFilter = {
-  heading?: InputMaybe<StringFilter>;
-  viewAllLabel?: InputMaybe<StringFilter>;
-};
-
-export type HomeFeaturedSectionFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<StringFilter>;
-  viewAllLabel?: InputMaybe<StringFilter>;
-};
-
-export type HomeArtistBannerFilter = {
-  badge?: InputMaybe<StringFilter>;
-  heading?: InputMaybe<StringFilter>;
-  bio?: InputMaybe<RichTextFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  portraitImage?: InputMaybe<ImageFilter>;
-};
-
-export type HomeTutorialsSectionFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<StringFilter>;
-  browseAllLabel?: InputMaybe<StringFilter>;
-};
-
-export type HomeClassesSectionFilter = {
+export type PageBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
-  body?: InputMaybe<RichTextFilter>;
-  bullets?: InputMaybe<StringFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
-  metaTags?: InputMaybe<StringFilter>;
-  image?: InputMaybe<ImageFilter>;
-};
-
-export type HomeBlogSectionFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<StringFilter>;
-  viewAllLabel?: InputMaybe<StringFilter>;
-};
-
-export type HomeNewsletterSectionFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
-  placeholderText?: InputMaybe<StringFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  privacyNote?: InputMaybe<StringFilter>;
-};
-
-export type HomeBookPromoFilter = {
-  heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
-};
-
-export type HomeFilter = {
-  hero?: InputMaybe<HomeHeroFilter>;
-  latestSection?: InputMaybe<HomeLatestSectionFilter>;
-  featuredSection?: InputMaybe<HomeFeaturedSectionFilter>;
-  artistBanner?: InputMaybe<HomeArtistBannerFilter>;
-  tutorialsSection?: InputMaybe<HomeTutorialsSectionFilter>;
-  classesSection?: InputMaybe<HomeClassesSectionFilter>;
-  blogSection?: InputMaybe<HomeBlogSectionFilter>;
-  newsletterSection?: InputMaybe<HomeNewsletterSectionFilter>;
-  bookPromo?: InputMaybe<HomeBookPromoFilter>;
-};
-
-export type HomeConnectionEdges = {
-  __typename?: 'HomeConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Home>;
-};
-
-export type HomeConnection = Connection & {
-  __typename?: 'HomeConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<HomeConnectionEdges>>>;
-};
-
-export type About = Node & Document & {
-  __typename?: 'About';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  portraitImage?: Maybe<Scalars['String']['output']>;
-  leadText?: Maybe<Scalars['JSON']['output']>;
-  paragraph1?: Maybe<Scalars['JSON']['output']>;
-  paragraph2?: Maybe<Scalars['JSON']['output']>;
-  skill1Label?: Maybe<Scalars['String']['output']>;
-  skill2Label?: Maybe<Scalars['String']['output']>;
-  skill3Label?: Maybe<Scalars['String']['output']>;
-  ctaPrimary?: Maybe<Scalars['String']['output']>;
-  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
-  ctaSecondary?: Maybe<Scalars['String']['output']>;
-  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type AboutFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  portraitImage?: InputMaybe<ImageFilter>;
   leadText?: InputMaybe<RichTextFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
-  skill1Label?: InputMaybe<StringFilter>;
-  skill2Label?: InputMaybe<StringFilter>;
-  skill3Label?: InputMaybe<StringFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
 };
 
-export type AboutConnectionEdges = {
-  __typename?: 'AboutConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<About>;
+export type PageBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
 };
 
-export type AboutConnection = Connection & {
-  __typename?: 'AboutConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<AboutConnectionEdges>>>;
+export type PageBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
 };
 
-export type ImportantLinksFeaturedRelease = {
-  __typename?: 'ImportantLinksFeaturedRelease';
-  eyebrow?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
-  description?: Maybe<Scalars['JSON']['output']>;
-  coverImage?: Maybe<Scalars['String']['output']>;
-  backCoverImage?: Maybe<Scalars['String']['output']>;
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  ctaHref?: Maybe<Scalars['String']['output']>;
+export type PageBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
 };
 
-export type ImportantLinksReviewsSection = {
-  __typename?: 'ImportantLinksReviewsSection';
-  heading?: Maybe<Scalars['String']['output']>;
-  intro?: Maybe<Scalars['JSON']['output']>;
-  thankYou?: Maybe<Scalars['String']['output']>;
-  ctaHeading?: Maybe<Scalars['String']['output']>;
+export type PageBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksReviewLinks = {
-  __typename?: 'ImportantLinksReviewLinks';
-  label: Scalars['String']['output'];
-  href: Scalars['String']['output'];
-  region?: Maybe<Scalars['String']['output']>;
+export type PageBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksKofiSection = {
-  __typename?: 'ImportantLinksKofiSection';
-  heading?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  href?: Maybe<Scalars['String']['output']>;
+export type PageBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<PageBlocksTimelineEventsFilter>;
 };
 
-export type ImportantLinks = Node & Document & {
-  __typename?: 'ImportantLinks';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  featuredRelease?: Maybe<ImportantLinksFeaturedRelease>;
-  reviewsSection?: Maybe<ImportantLinksReviewsSection>;
-  reviewLinks?: Maybe<Array<Maybe<ImportantLinksReviewLinks>>>;
-  kofiSection?: Maybe<ImportantLinksKofiSection>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
+export type PageBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksFeaturedReleaseFilter = {
+export type PageBlocksStatsRowFilter = {
+  stats?: InputMaybe<PageBlocksStatsRowStatsFilter>;
+};
+
+export type PageBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type PageBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<PageBlocksFeatureGridItemsFilter>;
+};
+
+export type PageBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<PageBlocksCardRowCardsFilter>;
+};
+
+export type PageBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type PageBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<PageBlocksPillarsItemsFilter>;
+};
+
+export type PageBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<PageBlocksImageGalleryImagesFilter>;
+};
+
+export type PageBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<PageBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<RichTextFilter>;
@@ -650,204 +747,3665 @@ export type ImportantLinksFeaturedReleaseFilter = {
   ctaHref?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksReviewsSectionFilter = {
+export type PageBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
-  thankYou?: InputMaybe<StringFilter>;
-  ctaHeading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksReviewLinksFilter = {
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PageBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksGalleryGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
-  href?: InputMaybe<StringFilter>;
-  region?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksKofiSectionFilter = {
+export type PageBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<PageBlocksTutorialsStripStatsFilter>;
+};
+
+export type PageBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<PageBlocksBlogFeedNewsletterFilter>;
+};
+
+export type PageBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksContactInfoFilter = {
+  email?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  featuredRelease?: InputMaybe<ImportantLinksFeaturedReleaseFilter>;
-  reviewsSection?: InputMaybe<ImportantLinksReviewsSectionFilter>;
-  reviewLinks?: InputMaybe<ImportantLinksReviewLinksFilter>;
-  kofiSection?: InputMaybe<ImportantLinksKofiSectionFilter>;
+export type PageBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
 };
 
-export type ImportantLinksConnectionEdges = {
-  __typename?: 'ImportantLinksConnectionEdges';
+export type PageBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<PageBlocksReviewLinksLinksFilter>;
+};
+
+export type PageBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksSocialLinksFilter = {
+  links?: InputMaybe<PageBlocksSocialLinksLinksFilter>;
+};
+
+export type PageBlocksFilter = {
+  homeHero?: InputMaybe<PageBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<PageBlocksAboutHeroFilter>;
+  hero?: InputMaybe<PageBlocksHeroFilter>;
+  pageHeader?: InputMaybe<PageBlocksPageHeaderFilter>;
+  text?: InputMaybe<PageBlocksTextFilter>;
+  story?: InputMaybe<PageBlocksStoryFilter>;
+  timeline?: InputMaybe<PageBlocksTimelineFilter>;
+  statsRow?: InputMaybe<PageBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<PageBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<PageBlocksCardRowFilter>;
+  pillars?: InputMaybe<PageBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<PageBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<PageBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<PageBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<PageBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<PageBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<PageBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<PageBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<PageBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<PageBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<PageBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<PageBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<PageBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<PageBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<PageBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<PageBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<PageBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<PageBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<PageBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<PageBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<PageBlocksSocialLinksFilter>;
+};
+
+export type PageFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<PageBlocksFilter>;
+};
+
+export type PageConnectionEdges = {
+  __typename?: 'PageConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<ImportantLinks>;
+  node?: Maybe<Page>;
 };
 
-export type ImportantLinksConnection = Connection & {
-  __typename?: 'ImportantLinksConnection';
+export type PageConnection = Connection & {
+  __typename?: 'PageConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<ImportantLinksConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<PageConnectionEdges>>>;
 };
 
-export type Contact = Node & Document & {
-  __typename?: 'Contact';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  pageDescription?: Maybe<Scalars['JSON']['output']>;
+export type LandingPageBlankBlocksHomeHero = {
+  __typename?: 'LandingPageBlankBlocksHomeHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type LandingPageBlankBlocksAboutHero = {
+  __typename?: 'LandingPageBlankBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHero = {
+  __typename?: 'LandingPageBlankBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksPageHeader = {
+  __typename?: 'LandingPageBlankBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageBlankBlocksText = {
+  __typename?: 'LandingPageBlankBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageBlankBlocksStory = {
+  __typename?: 'LandingPageBlankBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksTimelineEvents = {
+  __typename?: 'LandingPageBlankBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksTimeline = {
+  __typename?: 'LandingPageBlankBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<LandingPageBlankBlocksTimelineEvents>>>;
+};
+
+export type LandingPageBlankBlocksStatsRowStats = {
+  __typename?: 'LandingPageBlankBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksStatsRow = {
+  __typename?: 'LandingPageBlankBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<LandingPageBlankBlocksStatsRowStats>>>;
+};
+
+export type LandingPageBlankBlocksFeatureGridItems = {
+  __typename?: 'LandingPageBlankBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageBlankBlocksFeatureGrid = {
+  __typename?: 'LandingPageBlankBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageBlankBlocksFeatureGridItems>>>;
+};
+
+export type LandingPageBlankBlocksCardRowCards = {
+  __typename?: 'LandingPageBlankBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksCardRow = {
+  __typename?: 'LandingPageBlankBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<LandingPageBlankBlocksCardRowCards>>>;
+};
+
+export type LandingPageBlankBlocksPillarsItems = {
+  __typename?: 'LandingPageBlankBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksPillars = {
+  __typename?: 'LandingPageBlankBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageBlankBlocksPillarsItems>>>;
+};
+
+export type LandingPageBlankBlocksImageGalleryImages = {
+  __typename?: 'LandingPageBlankBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksImageGallery = {
+  __typename?: 'LandingPageBlankBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageBlankBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageBlankBlocksVideoEmbed = {
+  __typename?: 'LandingPageBlankBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookStats = {
+  __typename?: 'LandingPageBlankBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksFeaturedBook = {
+  __typename?: 'LandingPageBlankBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageBlankBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksFeaturedRelease = {
+  __typename?: 'LandingPageBlankBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksProductStrip = {
+  __typename?: 'LandingPageBlankBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksShopCatalog = {
+  __typename?: 'LandingPageBlankBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksGalleryGrid = {
+  __typename?: 'LandingPageBlankBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksDownloadsGrid = {
+  __typename?: 'LandingPageBlankBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksTutorialsStripStats = {
+  __typename?: 'LandingPageBlankBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksTutorialsStrip = {
+  __typename?: 'LandingPageBlankBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageBlankBlocksTutorialsStripStats>>>;
+};
+
+export type LandingPageBlankBlocksClassesPitch = {
+  __typename?: 'LandingPageBlankBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksBlogFeedNewsletter = {
+  __typename?: 'LandingPageBlankBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksBlogFeed = {
+  __typename?: 'LandingPageBlankBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<LandingPageBlankBlocksBlogFeedNewsletter>;
+};
+
+export type LandingPageBlankBlocksCtaBand = {
+  __typename?: 'LandingPageBlankBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksBigCta = {
+  __typename?: 'LandingPageBlankBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksNewsletterSignup = {
+  __typename?: 'LandingPageBlankBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksContactInfo = {
+  __typename?: 'LandingPageBlankBlocksContactInfo';
   email?: Maybe<Scalars['String']['output']>;
   location?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksContactForm = {
+  __typename?: 'LandingPageBlankBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksKofiSupport = {
+  __typename?: 'LandingPageBlankBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksReviewLinksLinks = {
+  __typename?: 'LandingPageBlankBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksReviewLinks = {
+  __typename?: 'LandingPageBlankBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<LandingPageBlankBlocksReviewLinksLinks>>>;
+};
+
+export type LandingPageBlankBlocksMarquee = {
+  __typename?: 'LandingPageBlankBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksSocialLinksLinks = {
+  __typename?: 'LandingPageBlankBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksSocialLinks = {
+  __typename?: 'LandingPageBlankBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<LandingPageBlankBlocksSocialLinksLinks>>>;
+};
+
+export type LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks;
+
+export type LandingPageBlank = Node & Document & {
+  __typename?: 'LandingPageBlank';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<LandingPageBlankBlocks>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type ContactFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  pageDescription?: InputMaybe<RichTextFilter>;
+export type LandingPageEventBlocksHomeHero = {
+  __typename?: 'LandingPageEventBlocksHomeHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type LandingPageEventBlocksAboutHero = {
+  __typename?: 'LandingPageEventBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHero = {
+  __typename?: 'LandingPageEventBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksPageHeader = {
+  __typename?: 'LandingPageEventBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageEventBlocksText = {
+  __typename?: 'LandingPageEventBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageEventBlocksStory = {
+  __typename?: 'LandingPageEventBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksTimelineEvents = {
+  __typename?: 'LandingPageEventBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksTimeline = {
+  __typename?: 'LandingPageEventBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<LandingPageEventBlocksTimelineEvents>>>;
+};
+
+export type LandingPageEventBlocksStatsRowStats = {
+  __typename?: 'LandingPageEventBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksStatsRow = {
+  __typename?: 'LandingPageEventBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<LandingPageEventBlocksStatsRowStats>>>;
+};
+
+export type LandingPageEventBlocksFeatureGridItems = {
+  __typename?: 'LandingPageEventBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageEventBlocksFeatureGrid = {
+  __typename?: 'LandingPageEventBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageEventBlocksFeatureGridItems>>>;
+};
+
+export type LandingPageEventBlocksCardRowCards = {
+  __typename?: 'LandingPageEventBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksCardRow = {
+  __typename?: 'LandingPageEventBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<LandingPageEventBlocksCardRowCards>>>;
+};
+
+export type LandingPageEventBlocksPillarsItems = {
+  __typename?: 'LandingPageEventBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksPillars = {
+  __typename?: 'LandingPageEventBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageEventBlocksPillarsItems>>>;
+};
+
+export type LandingPageEventBlocksImageGalleryImages = {
+  __typename?: 'LandingPageEventBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksImageGallery = {
+  __typename?: 'LandingPageEventBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageEventBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageEventBlocksVideoEmbed = {
+  __typename?: 'LandingPageEventBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksFeaturedBookStats = {
+  __typename?: 'LandingPageEventBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksFeaturedBook = {
+  __typename?: 'LandingPageEventBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageEventBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksFeaturedRelease = {
+  __typename?: 'LandingPageEventBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksProductStrip = {
+  __typename?: 'LandingPageEventBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksShopCatalog = {
+  __typename?: 'LandingPageEventBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksGalleryGrid = {
+  __typename?: 'LandingPageEventBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksDownloadsGrid = {
+  __typename?: 'LandingPageEventBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksTutorialsStripStats = {
+  __typename?: 'LandingPageEventBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksTutorialsStrip = {
+  __typename?: 'LandingPageEventBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageEventBlocksTutorialsStripStats>>>;
+};
+
+export type LandingPageEventBlocksClassesPitch = {
+  __typename?: 'LandingPageEventBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksBlogFeedNewsletter = {
+  __typename?: 'LandingPageEventBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksBlogFeed = {
+  __typename?: 'LandingPageEventBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<LandingPageEventBlocksBlogFeedNewsletter>;
+};
+
+export type LandingPageEventBlocksCtaBand = {
+  __typename?: 'LandingPageEventBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksBigCta = {
+  __typename?: 'LandingPageEventBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksNewsletterSignup = {
+  __typename?: 'LandingPageEventBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksContactInfo = {
+  __typename?: 'LandingPageEventBlocksContactInfo';
+  email?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksContactForm = {
+  __typename?: 'LandingPageEventBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksKofiSupport = {
+  __typename?: 'LandingPageEventBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksReviewLinksLinks = {
+  __typename?: 'LandingPageEventBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksReviewLinks = {
+  __typename?: 'LandingPageEventBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<LandingPageEventBlocksReviewLinksLinks>>>;
+};
+
+export type LandingPageEventBlocksMarquee = {
+  __typename?: 'LandingPageEventBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksSocialLinksLinks = {
+  __typename?: 'LandingPageEventBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksSocialLinks = {
+  __typename?: 'LandingPageEventBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<LandingPageEventBlocksSocialLinksLinks>>>;
+};
+
+export type LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks;
+
+export type LandingPageEvent = Node & Document & {
+  __typename?: 'LandingPageEvent';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<LandingPageEventBlocks>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LandingPagePromoBlocksHomeHero = {
+  __typename?: 'LandingPagePromoBlocksHomeHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type LandingPagePromoBlocksAboutHero = {
+  __typename?: 'LandingPagePromoBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHero = {
+  __typename?: 'LandingPagePromoBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksPageHeader = {
+  __typename?: 'LandingPagePromoBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPagePromoBlocksText = {
+  __typename?: 'LandingPagePromoBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPagePromoBlocksStory = {
+  __typename?: 'LandingPagePromoBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksTimelineEvents = {
+  __typename?: 'LandingPagePromoBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksTimeline = {
+  __typename?: 'LandingPagePromoBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<LandingPagePromoBlocksTimelineEvents>>>;
+};
+
+export type LandingPagePromoBlocksStatsRowStats = {
+  __typename?: 'LandingPagePromoBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksStatsRow = {
+  __typename?: 'LandingPagePromoBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<LandingPagePromoBlocksStatsRowStats>>>;
+};
+
+export type LandingPagePromoBlocksFeatureGridItems = {
+  __typename?: 'LandingPagePromoBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPagePromoBlocksFeatureGrid = {
+  __typename?: 'LandingPagePromoBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPagePromoBlocksFeatureGridItems>>>;
+};
+
+export type LandingPagePromoBlocksCardRowCards = {
+  __typename?: 'LandingPagePromoBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksCardRow = {
+  __typename?: 'LandingPagePromoBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<LandingPagePromoBlocksCardRowCards>>>;
+};
+
+export type LandingPagePromoBlocksPillarsItems = {
+  __typename?: 'LandingPagePromoBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksPillars = {
+  __typename?: 'LandingPagePromoBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPagePromoBlocksPillarsItems>>>;
+};
+
+export type LandingPagePromoBlocksImageGalleryImages = {
+  __typename?: 'LandingPagePromoBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksImageGallery = {
+  __typename?: 'LandingPagePromoBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPagePromoBlocksImageGalleryImages>>>;
+};
+
+export type LandingPagePromoBlocksVideoEmbed = {
+  __typename?: 'LandingPagePromoBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookStats = {
+  __typename?: 'LandingPagePromoBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksFeaturedBook = {
+  __typename?: 'LandingPagePromoBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPagePromoBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksFeaturedRelease = {
+  __typename?: 'LandingPagePromoBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksProductStrip = {
+  __typename?: 'LandingPagePromoBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksShopCatalog = {
+  __typename?: 'LandingPagePromoBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksGalleryGrid = {
+  __typename?: 'LandingPagePromoBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksDownloadsGrid = {
+  __typename?: 'LandingPagePromoBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksTutorialsStripStats = {
+  __typename?: 'LandingPagePromoBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksTutorialsStrip = {
+  __typename?: 'LandingPagePromoBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPagePromoBlocksTutorialsStripStats>>>;
+};
+
+export type LandingPagePromoBlocksClassesPitch = {
+  __typename?: 'LandingPagePromoBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksBlogFeedNewsletter = {
+  __typename?: 'LandingPagePromoBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksBlogFeed = {
+  __typename?: 'LandingPagePromoBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<LandingPagePromoBlocksBlogFeedNewsletter>;
+};
+
+export type LandingPagePromoBlocksCtaBand = {
+  __typename?: 'LandingPagePromoBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksBigCta = {
+  __typename?: 'LandingPagePromoBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksNewsletterSignup = {
+  __typename?: 'LandingPagePromoBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksContactInfo = {
+  __typename?: 'LandingPagePromoBlocksContactInfo';
+  email?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksContactForm = {
+  __typename?: 'LandingPagePromoBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksKofiSupport = {
+  __typename?: 'LandingPagePromoBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksReviewLinksLinks = {
+  __typename?: 'LandingPagePromoBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksReviewLinks = {
+  __typename?: 'LandingPagePromoBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<LandingPagePromoBlocksReviewLinksLinks>>>;
+};
+
+export type LandingPagePromoBlocksMarquee = {
+  __typename?: 'LandingPagePromoBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksSocialLinksLinks = {
+  __typename?: 'LandingPagePromoBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksSocialLinks = {
+  __typename?: 'LandingPagePromoBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<LandingPagePromoBlocksSocialLinksLinks>>>;
+};
+
+export type LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks;
+
+export type LandingPagePromo = Node & Document & {
+  __typename?: 'LandingPagePromo';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<LandingPagePromoBlocks>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LandingPageInfoBlocksHomeHero = {
+  __typename?: 'LandingPageInfoBlocksHomeHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type LandingPageInfoBlocksAboutHero = {
+  __typename?: 'LandingPageInfoBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHero = {
+  __typename?: 'LandingPageInfoBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksPageHeader = {
+  __typename?: 'LandingPageInfoBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageInfoBlocksText = {
+  __typename?: 'LandingPageInfoBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageInfoBlocksStory = {
+  __typename?: 'LandingPageInfoBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksTimelineEvents = {
+  __typename?: 'LandingPageInfoBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksTimeline = {
+  __typename?: 'LandingPageInfoBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<LandingPageInfoBlocksTimelineEvents>>>;
+};
+
+export type LandingPageInfoBlocksStatsRowStats = {
+  __typename?: 'LandingPageInfoBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksStatsRow = {
+  __typename?: 'LandingPageInfoBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<LandingPageInfoBlocksStatsRowStats>>>;
+};
+
+export type LandingPageInfoBlocksFeatureGridItems = {
+  __typename?: 'LandingPageInfoBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageInfoBlocksFeatureGrid = {
+  __typename?: 'LandingPageInfoBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageInfoBlocksFeatureGridItems>>>;
+};
+
+export type LandingPageInfoBlocksCardRowCards = {
+  __typename?: 'LandingPageInfoBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksCardRow = {
+  __typename?: 'LandingPageInfoBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<LandingPageInfoBlocksCardRowCards>>>;
+};
+
+export type LandingPageInfoBlocksPillarsItems = {
+  __typename?: 'LandingPageInfoBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksPillars = {
+  __typename?: 'LandingPageInfoBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageInfoBlocksPillarsItems>>>;
+};
+
+export type LandingPageInfoBlocksImageGalleryImages = {
+  __typename?: 'LandingPageInfoBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksImageGallery = {
+  __typename?: 'LandingPageInfoBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageInfoBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageInfoBlocksVideoEmbed = {
+  __typename?: 'LandingPageInfoBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookStats = {
+  __typename?: 'LandingPageInfoBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksFeaturedBook = {
+  __typename?: 'LandingPageInfoBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageInfoBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksFeaturedRelease = {
+  __typename?: 'LandingPageInfoBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksProductStrip = {
+  __typename?: 'LandingPageInfoBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksShopCatalog = {
+  __typename?: 'LandingPageInfoBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksGalleryGrid = {
+  __typename?: 'LandingPageInfoBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksDownloadsGrid = {
+  __typename?: 'LandingPageInfoBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksTutorialsStripStats = {
+  __typename?: 'LandingPageInfoBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksTutorialsStrip = {
+  __typename?: 'LandingPageInfoBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageInfoBlocksTutorialsStripStats>>>;
+};
+
+export type LandingPageInfoBlocksClassesPitch = {
+  __typename?: 'LandingPageInfoBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksBlogFeedNewsletter = {
+  __typename?: 'LandingPageInfoBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksBlogFeed = {
+  __typename?: 'LandingPageInfoBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<LandingPageInfoBlocksBlogFeedNewsletter>;
+};
+
+export type LandingPageInfoBlocksCtaBand = {
+  __typename?: 'LandingPageInfoBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksBigCta = {
+  __typename?: 'LandingPageInfoBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksNewsletterSignup = {
+  __typename?: 'LandingPageInfoBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksContactInfo = {
+  __typename?: 'LandingPageInfoBlocksContactInfo';
+  email?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksContactForm = {
+  __typename?: 'LandingPageInfoBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksKofiSupport = {
+  __typename?: 'LandingPageInfoBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksReviewLinksLinks = {
+  __typename?: 'LandingPageInfoBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksReviewLinks = {
+  __typename?: 'LandingPageInfoBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<LandingPageInfoBlocksReviewLinksLinks>>>;
+};
+
+export type LandingPageInfoBlocksMarquee = {
+  __typename?: 'LandingPageInfoBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksSocialLinksLinks = {
+  __typename?: 'LandingPageInfoBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksSocialLinks = {
+  __typename?: 'LandingPageInfoBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<LandingPageInfoBlocksSocialLinksLinks>>>;
+};
+
+export type LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks;
+
+export type LandingPageInfo = Node & Document & {
+  __typename?: 'LandingPageInfo';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<LandingPageInfoBlocks>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LandingPageLinkInBioBlocksHomeHero = {
+  __typename?: 'LandingPageLinkInBioBlocksHomeHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  marqueeItems?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type LandingPageLinkInBioBlocksAboutHero = {
+  __typename?: 'LandingPageLinkInBioBlocksAboutHero';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  leadText?: Maybe<Scalars['JSON']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+  metaLine?: Maybe<Scalars['String']['output']>;
+  portraitImage?: Maybe<Scalars['String']['output']>;
+  portraitCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHero = {
+  __typename?: 'LandingPageLinkInBioBlocksHero';
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksPageHeader = {
+  __typename?: 'LandingPageLinkInBioBlocksPageHeader';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksText = {
+  __typename?: 'LandingPageLinkInBioBlocksText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksStory = {
+  __typename?: 'LandingPageLinkInBioBlocksStory';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  paragraph1?: Maybe<Scalars['JSON']['output']>;
+  quote?: Maybe<Scalars['JSON']['output']>;
+  paragraph2?: Maybe<Scalars['JSON']['output']>;
+  sideCaption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksTimelineEvents = {
+  __typename?: 'LandingPageLinkInBioBlocksTimelineEvents';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksTimeline = {
+  __typename?: 'LandingPageLinkInBioBlocksTimeline';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksTimelineEvents>>>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRowStats = {
+  __typename?: 'LandingPageLinkInBioBlocksStatsRowStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRow = {
+  __typename?: 'LandingPageLinkInBioBlocksStatsRow';
+  stats?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksStatsRowStats>>>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridItems = {
+  __typename?: 'LandingPageLinkInBioBlocksFeatureGridItems';
+  icon?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGrid = {
+  __typename?: 'LandingPageLinkInBioBlocksFeatureGrid';
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksFeatureGridItems>>>;
+};
+
+export type LandingPageLinkInBioBlocksCardRowCards = {
+  __typename?: 'LandingPageLinkInBioBlocksCardRowCards';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksCardRow = {
+  __typename?: 'LandingPageLinkInBioBlocksCardRow';
+  number?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  cards?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksCardRowCards>>>;
+};
+
+export type LandingPageLinkInBioBlocksPillarsItems = {
+  __typename?: 'LandingPageLinkInBioBlocksPillarsItems';
+  tag?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  sub?: Maybe<Scalars['String']['output']>;
+  cta?: Maybe<Scalars['String']['output']>;
+  badge?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksPillars = {
+  __typename?: 'LandingPageLinkInBioBlocksPillars';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksPillarsItems>>>;
+};
+
+export type LandingPageLinkInBioBlocksImageGalleryImages = {
+  __typename?: 'LandingPageLinkInBioBlocksImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageGallery = {
+  __typename?: 'LandingPageLinkInBioBlocksImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageLinkInBioBlocksVideoEmbed = {
+  __typename?: 'LandingPageLinkInBioBlocksVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookStats = {
+  __typename?: 'LandingPageLinkInBioBlocksFeaturedBookStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBook = {
+  __typename?: 'LandingPageLinkInBioBlocksFeaturedBook';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksFeaturedBookStats>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedRelease = {
+  __typename?: 'LandingPageLinkInBioBlocksFeaturedRelease';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['JSON']['output']>;
+  coverImage?: Maybe<Scalars['String']['output']>;
+  backCoverImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaHref?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksProductStrip = {
+  __typename?: 'LandingPageLinkInBioBlocksProductStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  viewAllLabel?: Maybe<Scalars['String']['output']>;
+  viewAllLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksShopCatalog = {
+  __typename?: 'LandingPageLinkInBioBlocksShopCatalog';
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  showFeaturedBanner?: Maybe<Scalars['Boolean']['output']>;
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksGalleryGrid = {
+  __typename?: 'LandingPageLinkInBioBlocksGalleryGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksDownloadsGrid = {
+  __typename?: 'LandingPageLinkInBioBlocksDownloadsGrid';
+  emptyHeading?: Maybe<Scalars['String']['output']>;
+  emptyDescription?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStripStats = {
+  __typename?: 'LandingPageLinkInBioBlocksTutorialsStripStats';
+  value?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStrip = {
+  __typename?: 'LandingPageLinkInBioBlocksTutorialsStrip';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  headingPrefix?: Maybe<Scalars['String']['output']>;
+  headingHighlight?: Maybe<Scalars['String']['output']>;
+  headingSuffix?: Maybe<Scalars['String']['output']>;
+  buttonLabel?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksTutorialsStripStats>>>;
+};
+
+export type LandingPageLinkInBioBlocksClassesPitch = {
+  __typename?: 'LandingPageLinkInBioBlocksClassesPitch';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  bullets?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  metaTags?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedNewsletter = {
+  __typename?: 'LandingPageLinkInBioBlocksBlogFeedNewsletter';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeed = {
+  __typename?: 'LandingPageLinkInBioBlocksBlogFeed';
+  heading?: Maybe<Scalars['String']['output']>;
+  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
+  newsletter?: Maybe<LandingPageLinkInBioBlocksBlogFeedNewsletter>;
+};
+
+export type LandingPageLinkInBioBlocksCtaBand = {
+  __typename?: 'LandingPageLinkInBioBlocksCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksBigCta = {
+  __typename?: 'LandingPageLinkInBioBlocksBigCta';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightText?: Maybe<Scalars['String']['output']>;
+  primaryLabel?: Maybe<Scalars['String']['output']>;
+  primaryLink?: Maybe<Scalars['String']['output']>;
+  secondaryLabel?: Maybe<Scalars['String']['output']>;
+  secondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksNewsletterSignup = {
+  __typename?: 'LandingPageLinkInBioBlocksNewsletterSignup';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  placeholderText?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  privacyNote?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksContactInfo = {
+  __typename?: 'LandingPageLinkInBioBlocksContactInfo';
+  email?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksContactForm = {
+  __typename?: 'LandingPageLinkInBioBlocksContactForm';
+  submitLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksKofiSupport = {
+  __typename?: 'LandingPageLinkInBioBlocksKofiSupport';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksLinks = {
+  __typename?: 'LandingPageLinkInBioBlocksReviewLinksLinks';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinks = {
+  __typename?: 'LandingPageLinkInBioBlocksReviewLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  intro?: Maybe<Scalars['JSON']['output']>;
+  thankYou?: Maybe<Scalars['String']['output']>;
+  ctaHeading?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksReviewLinksLinks>>>;
+};
+
+export type LandingPageLinkInBioBlocksMarquee = {
+  __typename?: 'LandingPageLinkInBioBlocksMarquee';
+  highlightText?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksLinks = {
+  __typename?: 'LandingPageLinkInBioBlocksSocialLinksLinks';
+  platform?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinks = {
+  __typename?: 'LandingPageLinkInBioBlocksSocialLinks';
+  links?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksSocialLinksLinks>>>;
+};
+
+export type LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks;
+
+export type LandingPageLinkInBio = Node & Document & {
+  __typename?: 'LandingPageLinkInBio';
+  title: Scalars['String']['output'];
+  layout?: Maybe<Scalars['String']['output']>;
+  blocks?: Maybe<Array<Maybe<LandingPageLinkInBioBlocks>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LandingPage = LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio;
+
+export type LandingPageBlankBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksAboutHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  leadText?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageBlankBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageBlankBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<LandingPageBlankBlocksTimelineEventsFilter>;
+};
+
+export type LandingPageBlankBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksStatsRowFilter = {
+  stats?: InputMaybe<LandingPageBlankBlocksStatsRowStatsFilter>;
+};
+
+export type LandingPageBlankBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageBlankBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageBlankBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPageBlankBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<LandingPageBlankBlocksCardRowCardsFilter>;
+};
+
+export type LandingPageBlankBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type LandingPageBlankBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageBlankBlocksPillarsItemsFilter>;
+};
+
+export type LandingPageBlankBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageBlankBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageBlankBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<LandingPageBlankBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedReleaseFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  backCoverImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksGalleryGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<LandingPageBlankBlocksTutorialsStripStatsFilter>;
+};
+
+export type LandingPageBlankBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<LandingPageBlankBlocksBlogFeedNewsletterFilter>;
+};
+
+export type LandingPageBlankBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksContactInfoFilter = {
   email?: InputMaybe<StringFilter>;
   location?: InputMaybe<StringFilter>;
 };
 
-export type ContactConnectionEdges = {
-  __typename?: 'ContactConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Contact>;
+export type LandingPageBlankBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
 };
 
-export type ContactConnection = Connection & {
-  __typename?: 'ContactConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<ContactConnectionEdges>>>;
+export type LandingPageBlankBlocksKofiSupportFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
 };
 
-export type Shop = Node & Document & {
-  __typename?: 'Shop';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  pageDescription?: Maybe<Scalars['JSON']['output']>;
-  emptyHeading?: Maybe<Scalars['String']['output']>;
-  emptyDescription?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
+export type LandingPageBlankBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
 };
 
-export type ShopFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  pageDescription?: InputMaybe<RichTextFilter>;
-  emptyHeading?: InputMaybe<StringFilter>;
-  emptyDescription?: InputMaybe<StringFilter>;
+export type LandingPageBlankBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<LandingPageBlankBlocksReviewLinksLinksFilter>;
 };
 
-export type ShopConnectionEdges = {
-  __typename?: 'ShopConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Shop>;
+export type LandingPageBlankBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
 };
 
-export type ShopConnection = Connection & {
-  __typename?: 'ShopConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<ShopConnectionEdges>>>;
+export type LandingPageBlankBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
 };
 
-export type Gallery = Node & Document & {
-  __typename?: 'Gallery';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  pageDescription?: Maybe<Scalars['JSON']['output']>;
-  emptyHeading?: Maybe<Scalars['String']['output']>;
-  emptyDescription?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
+export type LandingPageBlankBlocksSocialLinksFilter = {
+  links?: InputMaybe<LandingPageBlankBlocksSocialLinksLinksFilter>;
 };
 
-export type GalleryFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  pageDescription?: InputMaybe<RichTextFilter>;
-  emptyHeading?: InputMaybe<StringFilter>;
-  emptyDescription?: InputMaybe<StringFilter>;
+export type LandingPageBlankBlocksFilter = {
+  homeHero?: InputMaybe<LandingPageBlankBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<LandingPageBlankBlocksAboutHeroFilter>;
+  hero?: InputMaybe<LandingPageBlankBlocksHeroFilter>;
+  pageHeader?: InputMaybe<LandingPageBlankBlocksPageHeaderFilter>;
+  text?: InputMaybe<LandingPageBlankBlocksTextFilter>;
+  story?: InputMaybe<LandingPageBlankBlocksStoryFilter>;
+  timeline?: InputMaybe<LandingPageBlankBlocksTimelineFilter>;
+  statsRow?: InputMaybe<LandingPageBlankBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<LandingPageBlankBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<LandingPageBlankBlocksCardRowFilter>;
+  pillars?: InputMaybe<LandingPageBlankBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<LandingPageBlankBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<LandingPageBlankBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<LandingPageBlankBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<LandingPageBlankBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<LandingPageBlankBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<LandingPageBlankBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<LandingPageBlankBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<LandingPageBlankBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<LandingPageBlankBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<LandingPageBlankBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<LandingPageBlankBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<LandingPageBlankBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<LandingPageBlankBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<LandingPageBlankBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<LandingPageBlankBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<LandingPageBlankBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<LandingPageBlankBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<LandingPageBlankBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<LandingPageBlankBlocksSocialLinksFilter>;
 };
 
-export type GalleryConnectionEdges = {
-  __typename?: 'GalleryConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Gallery>;
+export type LandingPageBlankFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPageBlankBlocksFilter>;
 };
 
-export type GalleryConnection = Connection & {
-  __typename?: 'GalleryConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<GalleryConnectionEdges>>>;
+export type LandingPageEventBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
 };
 
-export type Tutorials = Node & Document & {
-  __typename?: 'Tutorials';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  pageDescription?: Maybe<Scalars['JSON']['output']>;
-  subscribeLabel?: Maybe<Scalars['String']['output']>;
-  youtubeUrl?: Maybe<Scalars['String']['output']>;
-  emptyHeading?: Maybe<Scalars['String']['output']>;
-  emptyDescription?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
+export type LandingPageEventBlocksAboutHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  leadText?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
 };
 
-export type TutorialsFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  pageDescription?: InputMaybe<RichTextFilter>;
-  subscribeLabel?: InputMaybe<StringFilter>;
+export type LandingPageEventBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageEventBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageEventBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<LandingPageEventBlocksTimelineEventsFilter>;
+};
+
+export type LandingPageEventBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksStatsRowFilter = {
+  stats?: InputMaybe<LandingPageEventBlocksStatsRowStatsFilter>;
+};
+
+export type LandingPageEventBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageEventBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageEventBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPageEventBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<LandingPageEventBlocksCardRowCardsFilter>;
+};
+
+export type LandingPageEventBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type LandingPageEventBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageEventBlocksPillarsItemsFilter>;
+};
+
+export type LandingPageEventBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageEventBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageEventBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
   youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<LandingPageEventBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedReleaseFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  backCoverImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
 };
 
-export type TutorialsConnectionEdges = {
-  __typename?: 'TutorialsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Tutorials>;
-};
-
-export type TutorialsConnection = Connection & {
-  __typename?: 'TutorialsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<TutorialsConnectionEdges>>>;
-};
-
-export type Downloads = Node & Document & {
-  __typename?: 'Downloads';
-  pageTitle?: Maybe<Scalars['String']['output']>;
-  pageDescription?: Maybe<Scalars['JSON']['output']>;
-  emptyHeading?: Maybe<Scalars['String']['output']>;
-  emptyDescription?: Maybe<Scalars['String']['output']>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type DownloadsFilter = {
-  pageTitle?: InputMaybe<StringFilter>;
-  pageDescription?: InputMaybe<RichTextFilter>;
+export type LandingPageEventBlocksGalleryGridFilter = {
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
 };
 
-export type DownloadsConnectionEdges = {
-  __typename?: 'DownloadsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Downloads>;
+export type LandingPageEventBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
 };
 
-export type DownloadsConnection = Connection & {
-  __typename?: 'DownloadsConnection';
+export type LandingPageEventBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<LandingPageEventBlocksTutorialsStripStatsFilter>;
+};
+
+export type LandingPageEventBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<LandingPageEventBlocksBlogFeedNewsletterFilter>;
+};
+
+export type LandingPageEventBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksContactInfoFilter = {
+  email?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksKofiSupportFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<LandingPageEventBlocksReviewLinksLinksFilter>;
+};
+
+export type LandingPageEventBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksSocialLinksFilter = {
+  links?: InputMaybe<LandingPageEventBlocksSocialLinksLinksFilter>;
+};
+
+export type LandingPageEventBlocksFilter = {
+  homeHero?: InputMaybe<LandingPageEventBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<LandingPageEventBlocksAboutHeroFilter>;
+  hero?: InputMaybe<LandingPageEventBlocksHeroFilter>;
+  pageHeader?: InputMaybe<LandingPageEventBlocksPageHeaderFilter>;
+  text?: InputMaybe<LandingPageEventBlocksTextFilter>;
+  story?: InputMaybe<LandingPageEventBlocksStoryFilter>;
+  timeline?: InputMaybe<LandingPageEventBlocksTimelineFilter>;
+  statsRow?: InputMaybe<LandingPageEventBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<LandingPageEventBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<LandingPageEventBlocksCardRowFilter>;
+  pillars?: InputMaybe<LandingPageEventBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<LandingPageEventBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<LandingPageEventBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<LandingPageEventBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<LandingPageEventBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<LandingPageEventBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<LandingPageEventBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<LandingPageEventBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<LandingPageEventBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<LandingPageEventBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<LandingPageEventBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<LandingPageEventBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<LandingPageEventBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<LandingPageEventBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<LandingPageEventBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<LandingPageEventBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<LandingPageEventBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<LandingPageEventBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<LandingPageEventBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<LandingPageEventBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<LandingPageEventBlocksSocialLinksFilter>;
+};
+
+export type LandingPageEventFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPageEventBlocksFilter>;
+};
+
+export type LandingPagePromoBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksAboutHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  leadText?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPagePromoBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPagePromoBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<LandingPagePromoBlocksTimelineEventsFilter>;
+};
+
+export type LandingPagePromoBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksStatsRowFilter = {
+  stats?: InputMaybe<LandingPagePromoBlocksStatsRowStatsFilter>;
+};
+
+export type LandingPagePromoBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPagePromoBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPagePromoBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPagePromoBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<LandingPagePromoBlocksCardRowCardsFilter>;
+};
+
+export type LandingPagePromoBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type LandingPagePromoBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPagePromoBlocksPillarsItemsFilter>;
+};
+
+export type LandingPagePromoBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPagePromoBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPagePromoBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<LandingPagePromoBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedReleaseFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  backCoverImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksGalleryGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<LandingPagePromoBlocksTutorialsStripStatsFilter>;
+};
+
+export type LandingPagePromoBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<LandingPagePromoBlocksBlogFeedNewsletterFilter>;
+};
+
+export type LandingPagePromoBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksContactInfoFilter = {
+  email?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksKofiSupportFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<LandingPagePromoBlocksReviewLinksLinksFilter>;
+};
+
+export type LandingPagePromoBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksSocialLinksFilter = {
+  links?: InputMaybe<LandingPagePromoBlocksSocialLinksLinksFilter>;
+};
+
+export type LandingPagePromoBlocksFilter = {
+  homeHero?: InputMaybe<LandingPagePromoBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<LandingPagePromoBlocksAboutHeroFilter>;
+  hero?: InputMaybe<LandingPagePromoBlocksHeroFilter>;
+  pageHeader?: InputMaybe<LandingPagePromoBlocksPageHeaderFilter>;
+  text?: InputMaybe<LandingPagePromoBlocksTextFilter>;
+  story?: InputMaybe<LandingPagePromoBlocksStoryFilter>;
+  timeline?: InputMaybe<LandingPagePromoBlocksTimelineFilter>;
+  statsRow?: InputMaybe<LandingPagePromoBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<LandingPagePromoBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<LandingPagePromoBlocksCardRowFilter>;
+  pillars?: InputMaybe<LandingPagePromoBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<LandingPagePromoBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<LandingPagePromoBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<LandingPagePromoBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<LandingPagePromoBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<LandingPagePromoBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<LandingPagePromoBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<LandingPagePromoBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<LandingPagePromoBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<LandingPagePromoBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<LandingPagePromoBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<LandingPagePromoBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<LandingPagePromoBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<LandingPagePromoBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<LandingPagePromoBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<LandingPagePromoBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<LandingPagePromoBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<LandingPagePromoBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<LandingPagePromoBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<LandingPagePromoBlocksSocialLinksFilter>;
+};
+
+export type LandingPagePromoFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPagePromoBlocksFilter>;
+};
+
+export type LandingPageInfoBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksAboutHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  leadText?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageInfoBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageInfoBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<LandingPageInfoBlocksTimelineEventsFilter>;
+};
+
+export type LandingPageInfoBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksStatsRowFilter = {
+  stats?: InputMaybe<LandingPageInfoBlocksStatsRowStatsFilter>;
+};
+
+export type LandingPageInfoBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageInfoBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageInfoBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPageInfoBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<LandingPageInfoBlocksCardRowCardsFilter>;
+};
+
+export type LandingPageInfoBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type LandingPageInfoBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageInfoBlocksPillarsItemsFilter>;
+};
+
+export type LandingPageInfoBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageInfoBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageInfoBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<LandingPageInfoBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedReleaseFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  backCoverImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksGalleryGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<LandingPageInfoBlocksTutorialsStripStatsFilter>;
+};
+
+export type LandingPageInfoBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<LandingPageInfoBlocksBlogFeedNewsletterFilter>;
+};
+
+export type LandingPageInfoBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksContactInfoFilter = {
+  email?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksKofiSupportFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<LandingPageInfoBlocksReviewLinksLinksFilter>;
+};
+
+export type LandingPageInfoBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksSocialLinksFilter = {
+  links?: InputMaybe<LandingPageInfoBlocksSocialLinksLinksFilter>;
+};
+
+export type LandingPageInfoBlocksFilter = {
+  homeHero?: InputMaybe<LandingPageInfoBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<LandingPageInfoBlocksAboutHeroFilter>;
+  hero?: InputMaybe<LandingPageInfoBlocksHeroFilter>;
+  pageHeader?: InputMaybe<LandingPageInfoBlocksPageHeaderFilter>;
+  text?: InputMaybe<LandingPageInfoBlocksTextFilter>;
+  story?: InputMaybe<LandingPageInfoBlocksStoryFilter>;
+  timeline?: InputMaybe<LandingPageInfoBlocksTimelineFilter>;
+  statsRow?: InputMaybe<LandingPageInfoBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<LandingPageInfoBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<LandingPageInfoBlocksCardRowFilter>;
+  pillars?: InputMaybe<LandingPageInfoBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<LandingPageInfoBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<LandingPageInfoBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<LandingPageInfoBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<LandingPageInfoBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<LandingPageInfoBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<LandingPageInfoBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<LandingPageInfoBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<LandingPageInfoBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<LandingPageInfoBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<LandingPageInfoBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<LandingPageInfoBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<LandingPageInfoBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<LandingPageInfoBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<LandingPageInfoBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<LandingPageInfoBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<LandingPageInfoBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<LandingPageInfoBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<LandingPageInfoBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<LandingPageInfoBlocksSocialLinksFilter>;
+};
+
+export type LandingPageInfoFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPageInfoBlocksFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHomeHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  marqueeItems?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksAboutHeroFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  leadText?: InputMaybe<RichTextFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+  metaLine?: InputMaybe<StringFilter>;
+  portraitImage?: InputMaybe<ImageFilter>;
+  portraitCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFilter = {
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksPageHeaderFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  paragraph1?: InputMaybe<RichTextFilter>;
+  quote?: InputMaybe<RichTextFilter>;
+  paragraph2?: InputMaybe<RichTextFilter>;
+  sideCaption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTimelineEventsFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTimelineFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  events?: InputMaybe<LandingPageLinkInBioBlocksTimelineEventsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRowStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRowFilter = {
+  stats?: InputMaybe<LandingPageLinkInBioBlocksStatsRowStatsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridItemsFilter = {
+  icon?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridFilter = {
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageLinkInBioBlocksFeatureGridItemsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksCardRowCardsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksCardRowFilter = {
+  number?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  cards?: InputMaybe<LandingPageLinkInBioBlocksCardRowCardsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksPillarsItemsFilter = {
+  tag?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  sub?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  badge?: InputMaybe<StringFilter>;
+  link?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+};
+
+export type LandingPageLinkInBioBlocksPillarsFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  items?: InputMaybe<LandingPageLinkInBioBlocksPillarsItemsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageLinkInBioBlocksVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  stats?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookStatsFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedReleaseFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  coverImage?: InputMaybe<ImageFilter>;
+  backCoverImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaHref?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksProductStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  viewAllLabel?: InputMaybe<StringFilter>;
+  viewAllLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksShopCatalogFilter = {
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  showFeaturedBanner?: InputMaybe<BooleanFilter>;
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksGalleryGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksDownloadsGridFilter = {
+  emptyHeading?: InputMaybe<StringFilter>;
+  emptyDescription?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStripStatsFilter = {
+  value?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStripFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  headingPrefix?: InputMaybe<StringFilter>;
+  headingHighlight?: InputMaybe<StringFilter>;
+  headingSuffix?: InputMaybe<StringFilter>;
+  buttonLabel?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<LandingPageLinkInBioBlocksTutorialsStripStatsFilter>;
+};
+
+export type LandingPageLinkInBioBlocksClassesPitchFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  bullets?: InputMaybe<StringFilter>;
+  metaTags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedNewsletterFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  showNewsletter?: InputMaybe<BooleanFilter>;
+  newsletter?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedNewsletterFilter>;
+};
+
+export type LandingPageLinkInBioBlocksCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksBigCtaFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  highlightText?: InputMaybe<StringFilter>;
+  primaryLabel?: InputMaybe<StringFilter>;
+  primaryLink?: InputMaybe<StringFilter>;
+  secondaryLabel?: InputMaybe<StringFilter>;
+  secondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksNewsletterSignupFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  placeholderText?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  privacyNote?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksContactInfoFilter = {
+  email?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksContactFormFilter = {
+  submitLabel?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksKofiSupportFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksLinksFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  intro?: InputMaybe<RichTextFilter>;
+  thankYou?: InputMaybe<StringFilter>;
+  ctaHeading?: InputMaybe<StringFilter>;
+  links?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksLinksFilter>;
+};
+
+export type LandingPageLinkInBioBlocksMarqueeFilter = {
+  highlightText?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksLinksFilter = {
+  platform?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksFilter = {
+  links?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksLinksFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFilter = {
+  homeHero?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroFilter>;
+  aboutHero?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroFilter>;
+  hero?: InputMaybe<LandingPageLinkInBioBlocksHeroFilter>;
+  pageHeader?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderFilter>;
+  text?: InputMaybe<LandingPageLinkInBioBlocksTextFilter>;
+  story?: InputMaybe<LandingPageLinkInBioBlocksStoryFilter>;
+  timeline?: InputMaybe<LandingPageLinkInBioBlocksTimelineFilter>;
+  statsRow?: InputMaybe<LandingPageLinkInBioBlocksStatsRowFilter>;
+  featureGrid?: InputMaybe<LandingPageLinkInBioBlocksFeatureGridFilter>;
+  cardRow?: InputMaybe<LandingPageLinkInBioBlocksCardRowFilter>;
+  pillars?: InputMaybe<LandingPageLinkInBioBlocksPillarsFilter>;
+  imageGallery?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryFilter>;
+  videoEmbed?: InputMaybe<LandingPageLinkInBioBlocksVideoEmbedFilter>;
+  featuredBook?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookFilter>;
+  featuredRelease?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseFilter>;
+  productStrip?: InputMaybe<LandingPageLinkInBioBlocksProductStripFilter>;
+  shopCatalog?: InputMaybe<LandingPageLinkInBioBlocksShopCatalogFilter>;
+  galleryGrid?: InputMaybe<LandingPageLinkInBioBlocksGalleryGridFilter>;
+  downloadsGrid?: InputMaybe<LandingPageLinkInBioBlocksDownloadsGridFilter>;
+  tutorialsStrip?: InputMaybe<LandingPageLinkInBioBlocksTutorialsStripFilter>;
+  classesPitch?: InputMaybe<LandingPageLinkInBioBlocksClassesPitchFilter>;
+  blogFeed?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedFilter>;
+  ctaBand?: InputMaybe<LandingPageLinkInBioBlocksCtaBandFilter>;
+  bigCta?: InputMaybe<LandingPageLinkInBioBlocksBigCtaFilter>;
+  newsletterSignup?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupFilter>;
+  contactInfo?: InputMaybe<LandingPageLinkInBioBlocksContactInfoFilter>;
+  contactForm?: InputMaybe<LandingPageLinkInBioBlocksContactFormFilter>;
+  kofiSupport?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportFilter>;
+  reviewLinks?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksFilter>;
+  marquee?: InputMaybe<LandingPageLinkInBioBlocksMarqueeFilter>;
+  socialLinks?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksFilter>;
+};
+
+export type LandingPageLinkInBioFilter = {
+  title?: InputMaybe<StringFilter>;
+  layout?: InputMaybe<StringFilter>;
+  blocks?: InputMaybe<LandingPageLinkInBioBlocksFilter>;
+};
+
+export type LandingPageFilter = {
+  blank?: InputMaybe<LandingPageBlankFilter>;
+  event?: InputMaybe<LandingPageEventFilter>;
+  promo?: InputMaybe<LandingPagePromoFilter>;
+  info?: InputMaybe<LandingPageInfoFilter>;
+  linkInBio?: InputMaybe<LandingPageLinkInBioFilter>;
+};
+
+export type LandingPageConnectionEdges = {
+  __typename?: 'LandingPageConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<LandingPage>;
+};
+
+export type LandingPageConnection = Connection & {
+  __typename?: 'LandingPageConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<DownloadsConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<LandingPageConnectionEdges>>>;
 };
 
 export type ShopProduct = Node & Document & {
@@ -876,11 +4434,6 @@ export type NumberFilter = {
   eq?: InputMaybe<Scalars['Float']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
-};
-
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type DatetimeFilter = {
@@ -953,148 +4506,6 @@ export type PostConnection = Connection & {
   edges?: Maybe<Array<Maybe<PostConnectionEdges>>>;
 };
 
-export type LandingPageBlocksHero = {
-  __typename?: 'LandingPageBlocksHero';
-  heading?: Maybe<Scalars['String']['output']>;
-  subheading?: Maybe<Scalars['JSON']['output']>;
-  backgroundImage?: Maybe<Scalars['String']['output']>;
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  ctaLink?: Maybe<Scalars['String']['output']>;
-};
-
-export type LandingPageBlocksText = {
-  __typename?: 'LandingPageBlocksText';
-  heading?: Maybe<Scalars['String']['output']>;
-  body?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type LandingPageBlocksImageGalleryImages = {
-  __typename?: 'LandingPageBlocksImageGalleryImages';
-  src?: Maybe<Scalars['String']['output']>;
-  alt?: Maybe<Scalars['String']['output']>;
-  caption?: Maybe<Scalars['String']['output']>;
-};
-
-export type LandingPageBlocksImageGallery = {
-  __typename?: 'LandingPageBlocksImageGallery';
-  heading?: Maybe<Scalars['String']['output']>;
-  images?: Maybe<Array<Maybe<LandingPageBlocksImageGalleryImages>>>;
-};
-
-export type LandingPageBlocksCtaBand = {
-  __typename?: 'LandingPageBlocksCtaBand';
-  heading?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['JSON']['output']>;
-  ctaLabel?: Maybe<Scalars['String']['output']>;
-  ctaLink?: Maybe<Scalars['String']['output']>;
-  variant?: Maybe<Scalars['String']['output']>;
-};
-
-export type LandingPageBlocksVideoEmbed = {
-  __typename?: 'LandingPageBlocksVideoEmbed';
-  heading?: Maybe<Scalars['String']['output']>;
-  youtubeUrl?: Maybe<Scalars['String']['output']>;
-};
-
-export type LandingPageBlocksFeatureGridItems = {
-  __typename?: 'LandingPageBlocksFeatureGridItems';
-  icon?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type LandingPageBlocksFeatureGrid = {
-  __typename?: 'LandingPageBlocksFeatureGrid';
-  heading?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<LandingPageBlocksFeatureGridItems>>>;
-};
-
-export type LandingPageBlocks = LandingPageBlocksHero | LandingPageBlocksText | LandingPageBlocksImageGallery | LandingPageBlocksCtaBand | LandingPageBlocksVideoEmbed | LandingPageBlocksFeatureGrid;
-
-export type LandingPage = Node & Document & {
-  __typename?: 'LandingPage';
-  title: Scalars['String']['output'];
-  blocks?: Maybe<Array<Maybe<LandingPageBlocks>>>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type LandingPageBlocksHeroFilter = {
-  heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
-  backgroundImage?: InputMaybe<ImageFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
-};
-
-export type LandingPageBlocksTextFilter = {
-  heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
-};
-
-export type LandingPageBlocksImageGalleryImagesFilter = {
-  src?: InputMaybe<ImageFilter>;
-  alt?: InputMaybe<StringFilter>;
-  caption?: InputMaybe<StringFilter>;
-};
-
-export type LandingPageBlocksImageGalleryFilter = {
-  heading?: InputMaybe<StringFilter>;
-  images?: InputMaybe<LandingPageBlocksImageGalleryImagesFilter>;
-};
-
-export type LandingPageBlocksCtaBandFilter = {
-  heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
-  ctaLabel?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
-  variant?: InputMaybe<StringFilter>;
-};
-
-export type LandingPageBlocksVideoEmbedFilter = {
-  heading?: InputMaybe<StringFilter>;
-  youtubeUrl?: InputMaybe<StringFilter>;
-};
-
-export type LandingPageBlocksFeatureGridItemsFilter = {
-  icon?: InputMaybe<StringFilter>;
-  title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
-};
-
-export type LandingPageBlocksFeatureGridFilter = {
-  heading?: InputMaybe<StringFilter>;
-  items?: InputMaybe<LandingPageBlocksFeatureGridItemsFilter>;
-};
-
-export type LandingPageBlocksFilter = {
-  hero?: InputMaybe<LandingPageBlocksHeroFilter>;
-  text?: InputMaybe<LandingPageBlocksTextFilter>;
-  imageGallery?: InputMaybe<LandingPageBlocksImageGalleryFilter>;
-  ctaBand?: InputMaybe<LandingPageBlocksCtaBandFilter>;
-  videoEmbed?: InputMaybe<LandingPageBlocksVideoEmbedFilter>;
-  featureGrid?: InputMaybe<LandingPageBlocksFeatureGridFilter>;
-};
-
-export type LandingPageFilter = {
-  title?: InputMaybe<StringFilter>;
-  blocks?: InputMaybe<LandingPageBlocksFilter>;
-};
-
-export type LandingPageConnectionEdges = {
-  __typename?: 'LandingPageConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<LandingPage>;
-};
-
-export type LandingPageConnection = Connection & {
-  __typename?: 'LandingPageConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<LandingPageConnectionEdges>>>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -1102,28 +4513,14 @@ export type Mutation = {
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
   createFolder: DocumentNode;
-  updateHome: Home;
-  createHome: Home;
-  updateAbout: About;
-  createAbout: About;
-  updateImportantLinks: ImportantLinks;
-  createImportantLinks: ImportantLinks;
-  updateContact: Contact;
-  createContact: Contact;
-  updateShop: Shop;
-  createShop: Shop;
-  updateGallery: Gallery;
-  createGallery: Gallery;
-  updateTutorials: Tutorials;
-  createTutorials: Tutorials;
-  updateDownloads: Downloads;
-  createDownloads: Downloads;
+  updatePage: Page;
+  createPage: Page;
+  updateLandingPage: LandingPage;
+  createLandingPage: LandingPage;
   updateShopProduct: ShopProduct;
   createShopProduct: ShopProduct;
   updatePost: Post;
   createPost: Post;
-  updateLandingPage: LandingPage;
-  createLandingPage: LandingPage;
 };
 
 
@@ -1160,99 +4557,27 @@ export type MutationCreateFolderArgs = {
 };
 
 
-export type MutationUpdateHomeArgs = {
+export type MutationUpdatePageArgs = {
   relativePath: Scalars['String']['input'];
-  params: HomeMutation;
+  params: PageMutation;
 };
 
 
-export type MutationCreateHomeArgs = {
+export type MutationCreatePageArgs = {
   relativePath: Scalars['String']['input'];
-  params: HomeMutation;
+  params: PageMutation;
 };
 
 
-export type MutationUpdateAboutArgs = {
+export type MutationUpdateLandingPageArgs = {
   relativePath: Scalars['String']['input'];
-  params: AboutMutation;
+  params: LandingPageMutation;
 };
 
 
-export type MutationCreateAboutArgs = {
+export type MutationCreateLandingPageArgs = {
   relativePath: Scalars['String']['input'];
-  params: AboutMutation;
-};
-
-
-export type MutationUpdateImportantLinksArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ImportantLinksMutation;
-};
-
-
-export type MutationCreateImportantLinksArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ImportantLinksMutation;
-};
-
-
-export type MutationUpdateContactArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ContactMutation;
-};
-
-
-export type MutationCreateContactArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ContactMutation;
-};
-
-
-export type MutationUpdateShopArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ShopMutation;
-};
-
-
-export type MutationCreateShopArgs = {
-  relativePath: Scalars['String']['input'];
-  params: ShopMutation;
-};
-
-
-export type MutationUpdateGalleryArgs = {
-  relativePath: Scalars['String']['input'];
-  params: GalleryMutation;
-};
-
-
-export type MutationCreateGalleryArgs = {
-  relativePath: Scalars['String']['input'];
-  params: GalleryMutation;
-};
-
-
-export type MutationUpdateTutorialsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: TutorialsMutation;
-};
-
-
-export type MutationCreateTutorialsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: TutorialsMutation;
-};
-
-
-export type MutationUpdateDownloadsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: DownloadsMutation;
-};
-
-
-export type MutationCreateDownloadsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: DownloadsMutation;
+  params: LandingPageMutation;
 };
 
 
@@ -1279,141 +4604,169 @@ export type MutationCreatePostArgs = {
   params: PostMutation;
 };
 
-
-export type MutationUpdateLandingPageArgs = {
-  relativePath: Scalars['String']['input'];
-  params: LandingPageMutation;
-};
-
-
-export type MutationCreateLandingPageArgs = {
-  relativePath: Scalars['String']['input'];
-  params: LandingPageMutation;
-};
-
 export type DocumentUpdateMutation = {
-  home?: InputMaybe<HomeMutation>;
-  about?: InputMaybe<AboutMutation>;
-  importantLinks?: InputMaybe<ImportantLinksMutation>;
-  contact?: InputMaybe<ContactMutation>;
-  shop?: InputMaybe<ShopMutation>;
-  gallery?: InputMaybe<GalleryMutation>;
-  tutorials?: InputMaybe<TutorialsMutation>;
-  downloads?: InputMaybe<DownloadsMutation>;
+  page?: InputMaybe<PageMutation>;
+  landingPage?: InputMaybe<LandingPageMutation>;
   shopProduct?: InputMaybe<ShopProductMutation>;
   post?: InputMaybe<PostMutation>;
-  landingPage?: InputMaybe<LandingPageMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
-  home?: InputMaybe<HomeMutation>;
-  about?: InputMaybe<AboutMutation>;
-  importantLinks?: InputMaybe<ImportantLinksMutation>;
-  contact?: InputMaybe<ContactMutation>;
-  shop?: InputMaybe<ShopMutation>;
-  gallery?: InputMaybe<GalleryMutation>;
-  tutorials?: InputMaybe<TutorialsMutation>;
-  downloads?: InputMaybe<DownloadsMutation>;
+  page?: InputMaybe<PageMutation>;
+  landingPage?: InputMaybe<LandingPageMutation>;
   shopProduct?: InputMaybe<ShopProductMutation>;
   post?: InputMaybe<PostMutation>;
-  landingPage?: InputMaybe<LandingPageMutation>;
 };
 
-export type HomeHeroMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['JSON']['input']>;
-  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
-  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
-  backgroundImage?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeLatestSectionMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeFeaturedSectionMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['String']['input']>;
-  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeArtistBannerMutation = {
-  badge?: InputMaybe<Scalars['String']['input']>;
-  heading?: InputMaybe<Scalars['String']['input']>;
-  bio?: InputMaybe<Scalars['JSON']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  portraitImage?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeTutorialsSectionMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['String']['input']>;
-  browseAllLabel?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeClassesSectionMutation = {
+export type PageBlocksHomeHeroMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
-  metaTags?: InputMaybe<Scalars['String']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeBlogSectionMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['String']['input']>;
-  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeNewsletterSectionMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['JSON']['input']>;
-  placeholderText?: InputMaybe<Scalars['String']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  privacyNote?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeBookPromoMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['JSON']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HomeMutation = {
-  hero?: InputMaybe<HomeHeroMutation>;
-  latestSection?: InputMaybe<HomeLatestSectionMutation>;
-  featuredSection?: InputMaybe<HomeFeaturedSectionMutation>;
-  artistBanner?: InputMaybe<HomeArtistBannerMutation>;
-  tutorialsSection?: InputMaybe<HomeTutorialsSectionMutation>;
-  classesSection?: InputMaybe<HomeClassesSectionMutation>;
-  blogSection?: InputMaybe<HomeBlogSectionMutation>;
-  newsletterSection?: InputMaybe<HomeNewsletterSectionMutation>;
-  bookPromo?: InputMaybe<HomeBookPromoMutation>;
-};
-
-export type AboutMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  portraitImage?: InputMaybe<Scalars['String']['input']>;
-  leadText?: InputMaybe<Scalars['JSON']['input']>;
-  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
-  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
-  skill1Label?: InputMaybe<Scalars['String']['input']>;
-  skill2Label?: InputMaybe<Scalars['String']['input']>;
-  skill3Label?: InputMaybe<Scalars['String']['input']>;
   ctaPrimary?: InputMaybe<Scalars['String']['input']>;
   ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
   ctaSecondary?: InputMaybe<Scalars['String']['input']>;
   ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type ImportantLinksFeaturedReleaseMutation = {
+export type PageBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PageBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PageBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<PageBlocksTimelineEventsMutation>>>;
+};
+
+export type PageBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<PageBlocksStatsRowStatsMutation>>>;
+};
+
+export type PageBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PageBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<PageBlocksFeatureGridItemsMutation>>>;
+};
+
+export type PageBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<PageBlocksCardRowCardsMutation>>>;
+};
+
+export type PageBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<PageBlocksPillarsItemsMutation>>>;
+};
+
+export type PageBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<PageBlocksImageGalleryImagesMutation>>>;
+};
+
+export type PageBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<PageBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksFeaturedReleaseMutation = {
   eyebrow?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['JSON']['input']>;
@@ -1423,69 +4776,1877 @@ export type ImportantLinksFeaturedReleaseMutation = {
   ctaHref?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ImportantLinksReviewsSectionMutation = {
+export type PageBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
-  intro?: InputMaybe<Scalars['JSON']['input']>;
-  thankYou?: InputMaybe<Scalars['String']['input']>;
-  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ImportantLinksReviewLinksMutation = {
+export type PageBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksGalleryGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
-  href?: InputMaybe<Scalars['String']['input']>;
-  region?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ImportantLinksKofiSectionMutation = {
+export type PageBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<PageBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type PageBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<PageBlocksBlogFeedNewsletterMutation>;
+};
+
+export type PageBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksContactInfoMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ImportantLinksMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  featuredRelease?: InputMaybe<ImportantLinksFeaturedReleaseMutation>;
-  reviewsSection?: InputMaybe<ImportantLinksReviewsSectionMutation>;
-  reviewLinks?: InputMaybe<Array<InputMaybe<ImportantLinksReviewLinksMutation>>>;
-  kofiSection?: InputMaybe<ImportantLinksKofiSectionMutation>;
+export type PageBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ContactMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  pageDescription?: InputMaybe<Scalars['JSON']['input']>;
+export type PageBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<PageBlocksReviewLinksLinksMutation>>>;
+};
+
+export type PageBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<PageBlocksSocialLinksLinksMutation>>>;
+};
+
+export type PageBlocksMutation = {
+  homeHero?: InputMaybe<PageBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<PageBlocksAboutHeroMutation>;
+  hero?: InputMaybe<PageBlocksHeroMutation>;
+  pageHeader?: InputMaybe<PageBlocksPageHeaderMutation>;
+  text?: InputMaybe<PageBlocksTextMutation>;
+  story?: InputMaybe<PageBlocksStoryMutation>;
+  timeline?: InputMaybe<PageBlocksTimelineMutation>;
+  statsRow?: InputMaybe<PageBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<PageBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<PageBlocksCardRowMutation>;
+  pillars?: InputMaybe<PageBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<PageBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<PageBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<PageBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<PageBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<PageBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<PageBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<PageBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<PageBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<PageBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<PageBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<PageBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<PageBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<PageBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<PageBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<PageBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<PageBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<PageBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<PageBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<PageBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<PageBlocksSocialLinksMutation>;
+};
+
+export type PageMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<PageBlocksMutation>>>;
+};
+
+export type LandingPageBlankBlocksHomeHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LandingPageBlankBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageBlankBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageBlankBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksTimelineEventsMutation>>>;
+};
+
+export type LandingPageBlankBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksStatsRowStatsMutation>>>;
+};
+
+export type LandingPageBlankBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageBlankBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPageBlankBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksCardRowCardsMutation>>>;
+};
+
+export type LandingPageBlankBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksPillarsItemsMutation>>>;
+};
+
+export type LandingPageBlankBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageBlankBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksFeaturedReleaseMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  backCoverImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksGalleryGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type LandingPageBlankBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<LandingPageBlankBlocksBlogFeedNewsletterMutation>;
+};
+
+export type LandingPageBlankBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksContactInfoMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   location?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ShopMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  pageDescription?: InputMaybe<Scalars['JSON']['input']>;
-  emptyHeading?: InputMaybe<Scalars['String']['input']>;
-  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+export type LandingPageBlankBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type GalleryMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  pageDescription?: InputMaybe<Scalars['JSON']['input']>;
-  emptyHeading?: InputMaybe<Scalars['String']['input']>;
-  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+export type LandingPageBlankBlocksKofiSupportMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TutorialsMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  pageDescription?: InputMaybe<Scalars['JSON']['input']>;
-  subscribeLabel?: InputMaybe<Scalars['String']['input']>;
+export type LandingPageBlankBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksReviewLinksLinksMutation>>>;
+};
+
+export type LandingPageBlankBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksSocialLinksLinksMutation>>>;
+};
+
+export type LandingPageBlankBlocksMutation = {
+  homeHero?: InputMaybe<LandingPageBlankBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<LandingPageBlankBlocksAboutHeroMutation>;
+  hero?: InputMaybe<LandingPageBlankBlocksHeroMutation>;
+  pageHeader?: InputMaybe<LandingPageBlankBlocksPageHeaderMutation>;
+  text?: InputMaybe<LandingPageBlankBlocksTextMutation>;
+  story?: InputMaybe<LandingPageBlankBlocksStoryMutation>;
+  timeline?: InputMaybe<LandingPageBlankBlocksTimelineMutation>;
+  statsRow?: InputMaybe<LandingPageBlankBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<LandingPageBlankBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<LandingPageBlankBlocksCardRowMutation>;
+  pillars?: InputMaybe<LandingPageBlankBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<LandingPageBlankBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<LandingPageBlankBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<LandingPageBlankBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<LandingPageBlankBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<LandingPageBlankBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<LandingPageBlankBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<LandingPageBlankBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<LandingPageBlankBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<LandingPageBlankBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<LandingPageBlankBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<LandingPageBlankBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<LandingPageBlankBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<LandingPageBlankBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<LandingPageBlankBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<LandingPageBlankBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<LandingPageBlankBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<LandingPageBlankBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<LandingPageBlankBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<LandingPageBlankBlocksSocialLinksMutation>;
+};
+
+export type LandingPageBlankMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksMutation>>>;
+};
+
+export type LandingPageEventBlocksHomeHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LandingPageEventBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageEventBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageEventBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksTimelineEventsMutation>>>;
+};
+
+export type LandingPageEventBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksStatsRowStatsMutation>>>;
+};
+
+export type LandingPageEventBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageEventBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPageEventBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksCardRowCardsMutation>>>;
+};
+
+export type LandingPageEventBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksPillarsItemsMutation>>>;
+};
+
+export type LandingPageEventBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageEventBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
   youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksFeaturedReleaseMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  backCoverImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
   emptyHeading?: InputMaybe<Scalars['String']['input']>;
   emptyDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DownloadsMutation = {
-  pageTitle?: InputMaybe<Scalars['String']['input']>;
-  pageDescription?: InputMaybe<Scalars['JSON']['input']>;
+export type LandingPageEventBlocksGalleryGridMutation = {
   emptyHeading?: InputMaybe<Scalars['String']['input']>;
   emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type LandingPageEventBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<LandingPageEventBlocksBlogFeedNewsletterMutation>;
+};
+
+export type LandingPageEventBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksContactInfoMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksKofiSupportMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksReviewLinksLinksMutation>>>;
+};
+
+export type LandingPageEventBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksSocialLinksLinksMutation>>>;
+};
+
+export type LandingPageEventBlocksMutation = {
+  homeHero?: InputMaybe<LandingPageEventBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<LandingPageEventBlocksAboutHeroMutation>;
+  hero?: InputMaybe<LandingPageEventBlocksHeroMutation>;
+  pageHeader?: InputMaybe<LandingPageEventBlocksPageHeaderMutation>;
+  text?: InputMaybe<LandingPageEventBlocksTextMutation>;
+  story?: InputMaybe<LandingPageEventBlocksStoryMutation>;
+  timeline?: InputMaybe<LandingPageEventBlocksTimelineMutation>;
+  statsRow?: InputMaybe<LandingPageEventBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<LandingPageEventBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<LandingPageEventBlocksCardRowMutation>;
+  pillars?: InputMaybe<LandingPageEventBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<LandingPageEventBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<LandingPageEventBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<LandingPageEventBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<LandingPageEventBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<LandingPageEventBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<LandingPageEventBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<LandingPageEventBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<LandingPageEventBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<LandingPageEventBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<LandingPageEventBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<LandingPageEventBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<LandingPageEventBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<LandingPageEventBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<LandingPageEventBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<LandingPageEventBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<LandingPageEventBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<LandingPageEventBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<LandingPageEventBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<LandingPageEventBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<LandingPageEventBlocksSocialLinksMutation>;
+};
+
+export type LandingPageEventMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksMutation>>>;
+};
+
+export type LandingPagePromoBlocksHomeHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LandingPagePromoBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPagePromoBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPagePromoBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksTimelineEventsMutation>>>;
+};
+
+export type LandingPagePromoBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksStatsRowStatsMutation>>>;
+};
+
+export type LandingPagePromoBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPagePromoBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPagePromoBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksCardRowCardsMutation>>>;
+};
+
+export type LandingPagePromoBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksPillarsItemsMutation>>>;
+};
+
+export type LandingPagePromoBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPagePromoBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksFeaturedReleaseMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  backCoverImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksGalleryGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type LandingPagePromoBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<LandingPagePromoBlocksBlogFeedNewsletterMutation>;
+};
+
+export type LandingPagePromoBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksContactInfoMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksKofiSupportMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksReviewLinksLinksMutation>>>;
+};
+
+export type LandingPagePromoBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksSocialLinksLinksMutation>>>;
+};
+
+export type LandingPagePromoBlocksMutation = {
+  homeHero?: InputMaybe<LandingPagePromoBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<LandingPagePromoBlocksAboutHeroMutation>;
+  hero?: InputMaybe<LandingPagePromoBlocksHeroMutation>;
+  pageHeader?: InputMaybe<LandingPagePromoBlocksPageHeaderMutation>;
+  text?: InputMaybe<LandingPagePromoBlocksTextMutation>;
+  story?: InputMaybe<LandingPagePromoBlocksStoryMutation>;
+  timeline?: InputMaybe<LandingPagePromoBlocksTimelineMutation>;
+  statsRow?: InputMaybe<LandingPagePromoBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<LandingPagePromoBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<LandingPagePromoBlocksCardRowMutation>;
+  pillars?: InputMaybe<LandingPagePromoBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<LandingPagePromoBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<LandingPagePromoBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<LandingPagePromoBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<LandingPagePromoBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<LandingPagePromoBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<LandingPagePromoBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<LandingPagePromoBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<LandingPagePromoBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<LandingPagePromoBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<LandingPagePromoBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<LandingPagePromoBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<LandingPagePromoBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<LandingPagePromoBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<LandingPagePromoBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<LandingPagePromoBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<LandingPagePromoBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<LandingPagePromoBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<LandingPagePromoBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<LandingPagePromoBlocksSocialLinksMutation>;
+};
+
+export type LandingPagePromoMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksMutation>>>;
+};
+
+export type LandingPageInfoBlocksHomeHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LandingPageInfoBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageInfoBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageInfoBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksTimelineEventsMutation>>>;
+};
+
+export type LandingPageInfoBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksStatsRowStatsMutation>>>;
+};
+
+export type LandingPageInfoBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageInfoBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPageInfoBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksCardRowCardsMutation>>>;
+};
+
+export type LandingPageInfoBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksPillarsItemsMutation>>>;
+};
+
+export type LandingPageInfoBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageInfoBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksFeaturedReleaseMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  backCoverImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksGalleryGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type LandingPageInfoBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<LandingPageInfoBlocksBlogFeedNewsletterMutation>;
+};
+
+export type LandingPageInfoBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksContactInfoMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksKofiSupportMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksReviewLinksLinksMutation>>>;
+};
+
+export type LandingPageInfoBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksSocialLinksLinksMutation>>>;
+};
+
+export type LandingPageInfoBlocksMutation = {
+  homeHero?: InputMaybe<LandingPageInfoBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<LandingPageInfoBlocksAboutHeroMutation>;
+  hero?: InputMaybe<LandingPageInfoBlocksHeroMutation>;
+  pageHeader?: InputMaybe<LandingPageInfoBlocksPageHeaderMutation>;
+  text?: InputMaybe<LandingPageInfoBlocksTextMutation>;
+  story?: InputMaybe<LandingPageInfoBlocksStoryMutation>;
+  timeline?: InputMaybe<LandingPageInfoBlocksTimelineMutation>;
+  statsRow?: InputMaybe<LandingPageInfoBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<LandingPageInfoBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<LandingPageInfoBlocksCardRowMutation>;
+  pillars?: InputMaybe<LandingPageInfoBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<LandingPageInfoBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<LandingPageInfoBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<LandingPageInfoBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<LandingPageInfoBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<LandingPageInfoBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<LandingPageInfoBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<LandingPageInfoBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<LandingPageInfoBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<LandingPageInfoBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<LandingPageInfoBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<LandingPageInfoBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<LandingPageInfoBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<LandingPageInfoBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<LandingPageInfoBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<LandingPageInfoBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<LandingPageInfoBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<LandingPageInfoBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<LandingPageInfoBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<LandingPageInfoBlocksSocialLinksMutation>;
+};
+
+export type LandingPageInfoMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksHomeHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  marqueeItems?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type LandingPageLinkInBioBlocksAboutHeroMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leadText?: InputMaybe<Scalars['JSON']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+  metaLine?: InputMaybe<Scalars['String']['input']>;
+  portraitImage?: InputMaybe<Scalars['String']['input']>;
+  portraitCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksPageHeaderMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksStoryMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  paragraph1?: InputMaybe<Scalars['JSON']['input']>;
+  quote?: InputMaybe<Scalars['JSON']['input']>;
+  paragraph2?: InputMaybe<Scalars['JSON']['input']>;
+  sideCaption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksTimelineEventsMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksTimelineMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksTimelineEventsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRowStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksStatsRowMutation = {
+  stats?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksStatsRowStatsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridItemsMutation = {
+  icon?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksFeatureGridItemsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksCardRowCardsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksCardRowMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  cards?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksCardRowCardsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksPillarsItemsMutation = {
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  sub?: InputMaybe<Scalars['String']['input']>;
+  cta?: InputMaybe<Scalars['String']['input']>;
+  badge?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksPillarsMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksPillarsItemsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksFeaturedBookStatsMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedReleaseMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  coverImage?: InputMaybe<Scalars['String']['input']>;
+  backCoverImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaHref?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksProductStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  viewAllLabel?: InputMaybe<Scalars['String']['input']>;
+  viewAllLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksShopCatalogMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  showFeaturedBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksGalleryGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksDownloadsGridMutation = {
+  emptyHeading?: InputMaybe<Scalars['String']['input']>;
+  emptyDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStripStatsMutation = {
+  value?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksTutorialsStripMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  headingPrefix?: InputMaybe<Scalars['String']['input']>;
+  headingHighlight?: InputMaybe<Scalars['String']['input']>;
+  headingSuffix?: InputMaybe<Scalars['String']['input']>;
+  buttonLabel?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksTutorialsStripStatsMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksClassesPitchMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  bullets?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  metaTags?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedNewsletterMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+  newsletter?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedNewsletterMutation>;
+};
+
+export type LandingPageLinkInBioBlocksCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksBigCtaMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  primaryLabel?: InputMaybe<Scalars['String']['input']>;
+  primaryLink?: InputMaybe<Scalars['String']['input']>;
+  secondaryLabel?: InputMaybe<Scalars['String']['input']>;
+  secondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksNewsletterSignupMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  placeholderText?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  privacyNote?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksContactInfoMutation = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksContactFormMutation = {
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksKofiSupportMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksLinksMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['JSON']['input']>;
+  thankYou?: InputMaybe<Scalars['String']['input']>;
+  ctaHeading?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksReviewLinksLinksMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksMarqueeMutation = {
+  highlightText?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksLinksMutation = {
+  platform?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksMutation = {
+  links?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksSocialLinksLinksMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksMutation = {
+  homeHero?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroMutation>;
+  aboutHero?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroMutation>;
+  hero?: InputMaybe<LandingPageLinkInBioBlocksHeroMutation>;
+  pageHeader?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderMutation>;
+  text?: InputMaybe<LandingPageLinkInBioBlocksTextMutation>;
+  story?: InputMaybe<LandingPageLinkInBioBlocksStoryMutation>;
+  timeline?: InputMaybe<LandingPageLinkInBioBlocksTimelineMutation>;
+  statsRow?: InputMaybe<LandingPageLinkInBioBlocksStatsRowMutation>;
+  featureGrid?: InputMaybe<LandingPageLinkInBioBlocksFeatureGridMutation>;
+  cardRow?: InputMaybe<LandingPageLinkInBioBlocksCardRowMutation>;
+  pillars?: InputMaybe<LandingPageLinkInBioBlocksPillarsMutation>;
+  imageGallery?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryMutation>;
+  videoEmbed?: InputMaybe<LandingPageLinkInBioBlocksVideoEmbedMutation>;
+  featuredBook?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookMutation>;
+  featuredRelease?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseMutation>;
+  productStrip?: InputMaybe<LandingPageLinkInBioBlocksProductStripMutation>;
+  shopCatalog?: InputMaybe<LandingPageLinkInBioBlocksShopCatalogMutation>;
+  galleryGrid?: InputMaybe<LandingPageLinkInBioBlocksGalleryGridMutation>;
+  downloadsGrid?: InputMaybe<LandingPageLinkInBioBlocksDownloadsGridMutation>;
+  tutorialsStrip?: InputMaybe<LandingPageLinkInBioBlocksTutorialsStripMutation>;
+  classesPitch?: InputMaybe<LandingPageLinkInBioBlocksClassesPitchMutation>;
+  blogFeed?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedMutation>;
+  ctaBand?: InputMaybe<LandingPageLinkInBioBlocksCtaBandMutation>;
+  bigCta?: InputMaybe<LandingPageLinkInBioBlocksBigCtaMutation>;
+  newsletterSignup?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupMutation>;
+  contactInfo?: InputMaybe<LandingPageLinkInBioBlocksContactInfoMutation>;
+  contactForm?: InputMaybe<LandingPageLinkInBioBlocksContactFormMutation>;
+  kofiSupport?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportMutation>;
+  reviewLinks?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksMutation>;
+  marquee?: InputMaybe<LandingPageLinkInBioBlocksMarqueeMutation>;
+  socialLinks?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksMutation>;
+};
+
+export type LandingPageLinkInBioMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  blocks?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksMutation>>>;
+};
+
+export type LandingPageMutation = {
+  blank?: InputMaybe<LandingPageBlankMutation>;
+  event?: InputMaybe<LandingPageEventMutation>;
+  promo?: InputMaybe<LandingPagePromoMutation>;
+  info?: InputMaybe<LandingPageInfoMutation>;
+  linkInBio?: InputMaybe<LandingPageLinkInBioMutation>;
 };
 
 export type ShopProductMutation = {
@@ -1511,241 +6672,61 @@ export type PostMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type LandingPageBlocksHeroMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  subheading?: InputMaybe<Scalars['JSON']['input']>;
-  backgroundImage?: InputMaybe<Scalars['String']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
-};
+export type PagePartsFragment = { __typename: 'Page', title: string, layout?: string | null, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksTextMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
-};
+type LandingPageParts_LandingPageBlank_Fragment = { __typename: 'LandingPageBlank', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksImageGalleryImagesMutation = {
-  src?: InputMaybe<Scalars['String']['input']>;
-  alt?: InputMaybe<Scalars['String']['input']>;
-  caption?: InputMaybe<Scalars['String']['input']>;
-};
+type LandingPageParts_LandingPageEvent_Fragment = { __typename: 'LandingPageEvent', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksImageGalleryMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  images?: InputMaybe<Array<InputMaybe<LandingPageBlocksImageGalleryImagesMutation>>>;
-};
+type LandingPageParts_LandingPagePromo_Fragment = { __typename: 'LandingPagePromo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksCtaBandMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['JSON']['input']>;
-  ctaLabel?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
-  variant?: InputMaybe<Scalars['String']['input']>;
-};
+type LandingPageParts_LandingPageInfo_Fragment = { __typename: 'LandingPageInfo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksVideoEmbedMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
-};
+type LandingPageParts_LandingPageLinkInBio_Fragment = { __typename: 'LandingPageLinkInBio', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-export type LandingPageBlocksFeatureGridItemsMutation = {
-  icon?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type LandingPageBlocksFeatureGridMutation = {
-  heading?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<LandingPageBlocksFeatureGridItemsMutation>>>;
-};
-
-export type LandingPageBlocksMutation = {
-  hero?: InputMaybe<LandingPageBlocksHeroMutation>;
-  text?: InputMaybe<LandingPageBlocksTextMutation>;
-  imageGallery?: InputMaybe<LandingPageBlocksImageGalleryMutation>;
-  ctaBand?: InputMaybe<LandingPageBlocksCtaBandMutation>;
-  videoEmbed?: InputMaybe<LandingPageBlocksVideoEmbedMutation>;
-  featureGrid?: InputMaybe<LandingPageBlocksFeatureGridMutation>;
-};
-
-export type LandingPageMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  blocks?: InputMaybe<Array<InputMaybe<LandingPageBlocksMutation>>>;
-};
-
-export type HomePartsFragment = { __typename: 'Home', hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: any | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, classesSection?: { __typename: 'HomeClassesSection', eyebrow?: string | null, heading?: string | null, subheading?: any | null, body?: any | null, bullets?: Array<string | null> | null, ctaLabel?: string | null, ctaLink?: string | null, metaTags?: string | null, image?: string | null } | null, blogSection?: { __typename: 'HomeBlogSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, newsletterSection?: { __typename: 'HomeNewsletterSection', heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null } | null };
-
-export type AboutPartsFragment = { __typename: 'About', pageTitle?: string | null, portraitImage?: string | null, leadText?: any | null, paragraph1?: any | null, paragraph2?: any | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null };
-
-export type ImportantLinksPartsFragment = { __typename: 'ImportantLinks', pageTitle?: string | null, featuredRelease?: { __typename: 'ImportantLinksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, reviewsSection?: { __typename: 'ImportantLinksReviewsSection', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null } | null, reviewLinks?: Array<{ __typename: 'ImportantLinksReviewLinks', label: string, href: string, region?: string | null } | null> | null, kofiSection?: { __typename: 'ImportantLinksKofiSection', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | null };
-
-export type ContactPartsFragment = { __typename: 'Contact', pageTitle?: string | null, pageDescription?: any | null, email?: string | null, location?: string | null };
-
-export type ShopPartsFragment = { __typename: 'Shop', pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null };
-
-export type GalleryPartsFragment = { __typename: 'Gallery', pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null };
-
-export type TutorialsPartsFragment = { __typename: 'Tutorials', pageTitle?: string | null, pageDescription?: any | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null };
-
-export type DownloadsPartsFragment = { __typename: 'Downloads', pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null };
+export type LandingPagePartsFragment = LandingPageParts_LandingPageBlank_Fragment | LandingPageParts_LandingPageEvent_Fragment | LandingPageParts_LandingPagePromo_Fragment | LandingPageParts_LandingPageInfo_Fragment | LandingPageParts_LandingPageLinkInBio_Fragment;
 
 export type ShopProductPartsFragment = { __typename: 'ShopProduct', productId: number, name: string, description?: any | null, price: number, category: string, image?: string | null, gumroadUrl?: string | null, downloadUrl?: string | null, featured?: boolean | null, inStock?: boolean | null, createdAt?: string | null };
 
 export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null };
 
-export type LandingPagePartsFragment = { __typename: 'LandingPage', title: string, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | null> | null };
-
-export type HomeQueryVariables = Exact<{
+export type PageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type HomeQuery = { __typename?: 'Query', home: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: any | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, classesSection?: { __typename: 'HomeClassesSection', eyebrow?: string | null, heading?: string | null, subheading?: any | null, body?: any | null, bullets?: Array<string | null> | null, ctaLabel?: string | null, ctaLink?: string | null, metaTags?: string | null, image?: string | null } | null, blogSection?: { __typename: 'HomeBlogSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, newsletterSection?: { __typename: 'HomeNewsletterSection', heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null } | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
 
-export type HomeConnectionQueryVariables = Exact<{
+export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<HomeFilter>;
+  filter?: InputMaybe<PageFilter>;
 }>;
 
 
-export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeConnectionEdges', cursor: string, node?: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaSecondary?: string | null, backgroundImage?: string | null } | null, latestSection?: { __typename: 'HomeLatestSection', heading?: string | null, viewAllLabel?: string | null } | null, featuredSection?: { __typename: 'HomeFeaturedSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, artistBanner?: { __typename: 'HomeArtistBanner', badge?: string | null, heading?: string | null, bio?: any | null, ctaLabel?: string | null, portraitImage?: string | null } | null, tutorialsSection?: { __typename: 'HomeTutorialsSection', heading?: string | null, subheading?: string | null, browseAllLabel?: string | null } | null, classesSection?: { __typename: 'HomeClassesSection', eyebrow?: string | null, heading?: string | null, subheading?: any | null, body?: any | null, bullets?: Array<string | null> | null, ctaLabel?: string | null, ctaLink?: string | null, metaTags?: string | null, image?: string | null } | null, blogSection?: { __typename: 'HomeBlogSection', heading?: string | null, subheading?: string | null, viewAllLabel?: string | null } | null, newsletterSection?: { __typename: 'HomeNewsletterSection', heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, bookPromo?: { __typename: 'HomeBookPromo', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null } | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
-export type AboutQueryVariables = Exact<{
+export type LandingPageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, pageTitle?: string | null, portraitImage?: string | null, leadText?: any | null, paragraph1?: any | null, paragraph2?: any | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type LandingPageQuery = { __typename?: 'Query', landingPage: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
 
-export type AboutConnectionQueryVariables = Exact<{
+export type LandingPageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<AboutFilter>;
+  filter?: InputMaybe<LandingPageFilter>;
 }>;
 
 
-export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, pageTitle?: string | null, portraitImage?: string | null, leadText?: any | null, paragraph1?: any | null, paragraph2?: any | null, skill1Label?: string | null, skill2Label?: string | null, skill3Label?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type ImportantLinksQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type ImportantLinksQuery = { __typename?: 'Query', importantLinks: { __typename: 'ImportantLinks', id: string, pageTitle?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, featuredRelease?: { __typename: 'ImportantLinksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, reviewsSection?: { __typename: 'ImportantLinksReviewsSection', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null } | null, reviewLinks?: Array<{ __typename: 'ImportantLinksReviewLinks', label: string, href: string, region?: string | null } | null> | null, kofiSection?: { __typename: 'ImportantLinksKofiSection', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | null } };
-
-export type ImportantLinksConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ImportantLinksFilter>;
-}>;
-
-
-export type ImportantLinksConnectionQuery = { __typename?: 'Query', importantLinksConnection: { __typename?: 'ImportantLinksConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ImportantLinksConnectionEdges', cursor: string, node?: { __typename: 'ImportantLinks', id: string, pageTitle?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, featuredRelease?: { __typename: 'ImportantLinksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, reviewsSection?: { __typename: 'ImportantLinksReviewsSection', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null } | null, reviewLinks?: Array<{ __typename: 'ImportantLinksReviewLinks', label: string, href: string, region?: string | null } | null> | null, kofiSection?: { __typename: 'ImportantLinksKofiSection', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | null } | null } | null> | null } };
-
-export type ContactQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type ContactQuery = { __typename?: 'Query', contact: { __typename: 'Contact', id: string, pageTitle?: string | null, pageDescription?: any | null, email?: string | null, location?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type ContactConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ContactFilter>;
-}>;
-
-
-export type ContactConnectionQuery = { __typename?: 'Query', contactConnection: { __typename?: 'ContactConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ContactConnectionEdges', cursor: string, node?: { __typename: 'Contact', id: string, pageTitle?: string | null, pageDescription?: any | null, email?: string | null, location?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type ShopQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type ShopQuery = { __typename?: 'Query', shop: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type ShopConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<ShopFilter>;
-}>;
-
-
-export type ShopConnectionQuery = { __typename?: 'Query', shopConnection: { __typename?: 'ShopConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ShopConnectionEdges', cursor: string, node?: { __typename: 'Shop', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type GalleryQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type GalleryQuery = { __typename?: 'Query', gallery: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type GalleryConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<GalleryFilter>;
-}>;
-
-
-export type GalleryConnectionQuery = { __typename?: 'Query', galleryConnection: { __typename?: 'GalleryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GalleryConnectionEdges', cursor: string, node?: { __typename: 'Gallery', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type TutorialsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type TutorialsQuery = { __typename?: 'Query', tutorials: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: any | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type TutorialsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<TutorialsFilter>;
-}>;
-
-
-export type TutorialsConnectionQuery = { __typename?: 'Query', tutorialsConnection: { __typename?: 'TutorialsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TutorialsConnectionEdges', cursor: string, node?: { __typename: 'Tutorials', id: string, pageTitle?: string | null, pageDescription?: any | null, subscribeLabel?: string | null, youtubeUrl?: string | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
-
-export type DownloadsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type DownloadsQuery = { __typename?: 'Query', downloads: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
-
-export type DownloadsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<DownloadsFilter>;
-}>;
-
-
-export type DownloadsConnectionQuery = { __typename?: 'Query', downloadsConnection: { __typename?: 'DownloadsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DownloadsConnectionEdges', cursor: string, node?: { __typename: 'Downloads', id: string, pageTitle?: string | null, pageDescription?: any | null, emptyHeading?: string | null, emptyDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type LandingPageConnectionQuery = { __typename?: 'Query', landingPageConnection: { __typename?: 'LandingPageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingPageConnectionEdges', cursor: string, node?: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type ShopProductQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1785,194 +6766,1584 @@ export type PostConnectionQueryVariables = Exact<{
 
 export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', cursor: string, node?: { __typename: 'Post', id: string, title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type LandingPageQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type LandingPageQuery = { __typename?: 'Query', landingPage: { __typename: 'LandingPage', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | null> | null } };
-
-export type LandingPageConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<LandingPageFilter>;
-}>;
-
-
-export type LandingPageConnectionQuery = { __typename?: 'Query', landingPageConnection: { __typename?: 'LandingPageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingPageConnectionEdges', cursor: string, node?: { __typename: 'LandingPage', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | null> | null } | null } | null> | null } };
-
-export const HomePartsFragmentDoc = gql`
-    fragment HomeParts on Home {
+export const PagePartsFragmentDoc = gql`
+    fragment PageParts on Page {
   __typename
-  hero {
+  title
+  layout
+  blocks {
     __typename
-    heading
-    subheading
-    ctaPrimary
-    ctaSecondary
-    backgroundImage
-  }
-  latestSection {
-    __typename
-    heading
-    viewAllLabel
-  }
-  featuredSection {
-    __typename
-    heading
-    subheading
-    viewAllLabel
-  }
-  artistBanner {
-    __typename
-    badge
-    heading
-    bio
-    ctaLabel
-    portraitImage
-  }
-  tutorialsSection {
-    __typename
-    heading
-    subheading
-    browseAllLabel
-  }
-  classesSection {
-    __typename
-    eyebrow
-    heading
-    subheading
-    body
-    bullets
-    ctaLabel
-    ctaLink
-    metaTags
-    image
-  }
-  blogSection {
-    __typename
-    heading
-    subheading
-    viewAllLabel
-  }
-  newsletterSection {
-    __typename
-    heading
-    subheading
-    placeholderText
-    ctaLabel
-    privacyNote
-  }
-  bookPromo {
-    __typename
-    heading
-    description
-    ctaLabel
-    ctaLink
+    ... on PageBlocksHomeHero {
+      eyebrow
+      heading
+      subheading
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      marqueeItems
+    }
+    ... on PageBlocksAboutHero {
+      eyebrow
+      heading
+      leadText
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      portraitImage
+      portraitCaption
+    }
+    ... on PageBlocksHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+    }
+    ... on PageBlocksPageHeader {
+      heading
+      description
+    }
+    ... on PageBlocksText {
+      heading
+      body
+    }
+    ... on PageBlocksStory {
+      number
+      label
+      heading
+      paragraph1
+      quote
+      paragraph2
+      sideCaption
+    }
+    ... on PageBlocksTimeline {
+      number
+      label
+      events {
+        __typename
+        year
+        title
+        description
+      }
+    }
+    ... on PageBlocksStatsRow {
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on PageBlocksFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+    }
+    ... on PageBlocksCardRow {
+      number
+      label
+      cards {
+        __typename
+        tag
+        title
+        body
+        ctaLabel
+        link
+      }
+    }
+    ... on PageBlocksPillars {
+      eyebrow
+      heading
+      items {
+        __typename
+        tag
+        title
+        sub
+        cta
+        badge
+        link
+        image
+      }
+    }
+    ... on PageBlocksImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+    }
+    ... on PageBlocksVideoEmbed {
+      heading
+      youtubeUrl
+    }
+    ... on PageBlocksFeaturedBook {
+      eyebrow
+      heading
+      description
+      stats {
+        __typename
+        value
+        label
+      }
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksFeaturedRelease {
+      eyebrow
+      title
+      description
+      coverImage
+      backCoverImage
+      ctaLabel
+      ctaHref
+    }
+    ... on PageBlocksProductStrip {
+      eyebrow
+      heading
+      viewAllLabel
+      viewAllLink
+    }
+    ... on PageBlocksShopCatalog {
+      heading
+      highlightText
+      description
+      showFeaturedBanner
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksGalleryGrid {
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksDownloadsGrid {
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksTutorialsStrip {
+      eyebrow
+      headingPrefix
+      headingHighlight
+      headingSuffix
+      buttonLabel
+      youtubeUrl
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on PageBlocksClassesPitch {
+      eyebrow
+      heading
+      subheading
+      bullets
+      metaTags
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksBlogFeed {
+      heading
+      showNewsletter
+      newsletter {
+        __typename
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+    }
+    ... on PageBlocksCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+    }
+    ... on PageBlocksBigCta {
+      eyebrow
+      heading
+      highlightText
+      primaryLabel
+      primaryLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksNewsletterSignup {
+      eyebrow
+      heading
+      subheading
+      placeholderText
+      ctaLabel
+      privacyNote
+    }
+    ... on PageBlocksContactInfo {
+      email
+      location
+    }
+    ... on PageBlocksContactForm {
+      submitLabel
+    }
+    ... on PageBlocksKofiSupport {
+      heading
+      body
+      ctaLabel
+      href
+    }
+    ... on PageBlocksReviewLinks {
+      heading
+      intro
+      thankYou
+      ctaHeading
+      links {
+        __typename
+        label
+        href
+        region
+      }
+    }
+    ... on PageBlocksMarquee {
+      highlightText
+      text
+    }
+    ... on PageBlocksSocialLinks {
+      links {
+        __typename
+        platform
+        url
+        label
+      }
+    }
   }
 }
     `;
-export const AboutPartsFragmentDoc = gql`
-    fragment AboutParts on About {
+export const LandingPagePartsFragmentDoc = gql`
+    fragment LandingPageParts on LandingPage {
   __typename
-  pageTitle
-  portraitImage
-  leadText
-  paragraph1
-  paragraph2
-  skill1Label
-  skill2Label
-  skill3Label
-  ctaPrimary
-  ctaPrimaryLink
-  ctaSecondary
-  ctaSecondaryLink
-}
-    `;
-export const ImportantLinksPartsFragmentDoc = gql`
-    fragment ImportantLinksParts on ImportantLinks {
-  __typename
-  pageTitle
-  featuredRelease {
-    __typename
-    eyebrow
+  ... on LandingPageBlank {
     title
-    description
-    coverImage
-    backCoverImage
-    ctaLabel
-    ctaHref
+    layout
+    blocks {
+      __typename
+      ... on LandingPageBlankBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageBlankBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageBlankBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageBlankBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageBlankBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageBlankBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageBlankBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageBlankBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageBlankBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageBlankBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageBlankBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageBlankBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageBlankBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageBlankBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageBlankBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageBlankBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageBlankBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageBlankBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageBlankBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageBlankBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageBlankBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageBlankBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageBlankBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageBlankBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  reviewsSection {
-    __typename
-    heading
-    intro
-    thankYou
-    ctaHeading
+  ... on LandingPageEvent {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageEventBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageEventBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageEventBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageEventBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageEventBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageEventBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageEventBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageEventBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageEventBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageEventBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageEventBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageEventBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageEventBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageEventBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageEventBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageEventBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageEventBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageEventBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageEventBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageEventBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageEventBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageEventBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageEventBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageEventBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  reviewLinks {
-    __typename
-    label
-    href
-    region
+  ... on LandingPagePromo {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPagePromoBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPagePromoBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPagePromoBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPagePromoBlocksText {
+        heading
+        body
+      }
+      ... on LandingPagePromoBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPagePromoBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPagePromoBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPagePromoBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPagePromoBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPagePromoBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPagePromoBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPagePromoBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPagePromoBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPagePromoBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPagePromoBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPagePromoBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPagePromoBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPagePromoBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPagePromoBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPagePromoBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPagePromoBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPagePromoBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPagePromoBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPagePromoBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  kofiSection {
-    __typename
-    heading
-    body
-    ctaLabel
-    href
+  ... on LandingPageInfo {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageInfoBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageInfoBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageInfoBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageInfoBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageInfoBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageInfoBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageInfoBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageInfoBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageInfoBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageInfoBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageInfoBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageInfoBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageInfoBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageInfoBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageInfoBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageInfoBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageInfoBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageInfoBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageInfoBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageInfoBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageInfoBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageInfoBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageInfoBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageInfoBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-}
-    `;
-export const ContactPartsFragmentDoc = gql`
-    fragment ContactParts on Contact {
-  __typename
-  pageTitle
-  pageDescription
-  email
-  location
-}
-    `;
-export const ShopPartsFragmentDoc = gql`
-    fragment ShopParts on Shop {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const GalleryPartsFragmentDoc = gql`
-    fragment GalleryParts on Gallery {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const TutorialsPartsFragmentDoc = gql`
-    fragment TutorialsParts on Tutorials {
-  __typename
-  pageTitle
-  pageDescription
-  subscribeLabel
-  youtubeUrl
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const DownloadsPartsFragmentDoc = gql`
-    fragment DownloadsParts on Downloads {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
+  ... on LandingPageLinkInBio {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageLinkInBioBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageLinkInBioBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageLinkInBioBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageLinkInBioBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageLinkInBioBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageLinkInBioBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageLinkInBioBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageLinkInBioBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageLinkInBioBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageLinkInBioBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageLinkInBioBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageLinkInBioBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageLinkInBioBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageLinkInBioBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageLinkInBioBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageLinkInBioBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageLinkInBioBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageLinkInBioBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageLinkInBioBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageLinkInBioBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageLinkInBioBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageLinkInBioBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageLinkInBioBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageLinkInBioBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
+  }
 }
     `;
 export const ShopProductPartsFragmentDoc = gql`
@@ -2002,58 +8373,9 @@ export const PostPartsFragmentDoc = gql`
   body
 }
     `;
-export const LandingPagePartsFragmentDoc = gql`
-    fragment LandingPageParts on LandingPage {
-  __typename
-  title
-  blocks {
-    __typename
-    ... on LandingPageBlocksHero {
-      heading
-      subheading
-      backgroundImage
-      ctaLabel
-      ctaLink
-    }
-    ... on LandingPageBlocksText {
-      heading
-      body
-    }
-    ... on LandingPageBlocksImageGallery {
-      heading
-      images {
-        __typename
-        src
-        alt
-        caption
-      }
-    }
-    ... on LandingPageBlocksCtaBand {
-      heading
-      description
-      ctaLabel
-      ctaLink
-      variant
-    }
-    ... on LandingPageBlocksVideoEmbed {
-      heading
-      youtubeUrl
-    }
-    ... on LandingPageBlocksFeatureGrid {
-      heading
-      items {
-        __typename
-        icon
-        title
-        description
-      }
-    }
-  }
-}
-    `;
-export const HomeDocument = gql`
-    query home($relativePath: String!) {
-  home(relativePath: $relativePath) {
+export const PageDocument = gql`
+    query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -2066,13 +8388,13 @@ export const HomeDocument = gql`
       }
       id
     }
-    ...HomeParts
+    ...PageParts
   }
 }
-    ${HomePartsFragmentDoc}`;
-export const HomeConnectionDocument = gql`
-    query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: HomeFilter) {
-  homeConnection(
+    ${PagePartsFragmentDoc}`;
+export const PageConnectionDocument = gql`
+    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
+  pageConnection(
     before: $before
     after: $after
     first: $first
@@ -2102,15 +8424,15 @@ export const HomeConnectionDocument = gql`
           }
           id
         }
-        ...HomeParts
+        ...PageParts
       }
     }
   }
 }
-    ${HomePartsFragmentDoc}`;
-export const AboutDocument = gql`
-    query about($relativePath: String!) {
-  about(relativePath: $relativePath) {
+    ${PagePartsFragmentDoc}`;
+export const LandingPageDocument = gql`
+    query landingPage($relativePath: String!) {
+  landingPage(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -2123,13 +8445,13 @@ export const AboutDocument = gql`
       }
       id
     }
-    ...AboutParts
+    ...LandingPageParts
   }
 }
-    ${AboutPartsFragmentDoc}`;
-export const AboutConnectionDocument = gql`
-    query aboutConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AboutFilter) {
-  aboutConnection(
+    ${LandingPagePartsFragmentDoc}`;
+export const LandingPageConnectionDocument = gql`
+    query landingPageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LandingPageFilter) {
+  landingPageConnection(
     before: $before
     after: $after
     first: $first
@@ -2159,354 +8481,12 @@ export const AboutConnectionDocument = gql`
           }
           id
         }
-        ...AboutParts
+        ...LandingPageParts
       }
     }
   }
 }
-    ${AboutPartsFragmentDoc}`;
-export const ImportantLinksDocument = gql`
-    query importantLinks($relativePath: String!) {
-  importantLinks(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ImportantLinksParts
-  }
-}
-    ${ImportantLinksPartsFragmentDoc}`;
-export const ImportantLinksConnectionDocument = gql`
-    query importantLinksConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ImportantLinksFilter) {
-  importantLinksConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ImportantLinksParts
-      }
-    }
-  }
-}
-    ${ImportantLinksPartsFragmentDoc}`;
-export const ContactDocument = gql`
-    query contact($relativePath: String!) {
-  contact(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ContactParts
-  }
-}
-    ${ContactPartsFragmentDoc}`;
-export const ContactConnectionDocument = gql`
-    query contactConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ContactFilter) {
-  contactConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ContactParts
-      }
-    }
-  }
-}
-    ${ContactPartsFragmentDoc}`;
-export const ShopDocument = gql`
-    query shop($relativePath: String!) {
-  shop(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ShopParts
-  }
-}
-    ${ShopPartsFragmentDoc}`;
-export const ShopConnectionDocument = gql`
-    query shopConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ShopFilter) {
-  shopConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ShopParts
-      }
-    }
-  }
-}
-    ${ShopPartsFragmentDoc}`;
-export const GalleryDocument = gql`
-    query gallery($relativePath: String!) {
-  gallery(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...GalleryParts
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const GalleryConnectionDocument = gql`
-    query galleryConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GalleryFilter) {
-  galleryConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...GalleryParts
-      }
-    }
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const TutorialsDocument = gql`
-    query tutorials($relativePath: String!) {
-  tutorials(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...TutorialsParts
-  }
-}
-    ${TutorialsPartsFragmentDoc}`;
-export const TutorialsConnectionDocument = gql`
-    query tutorialsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TutorialsFilter) {
-  tutorialsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...TutorialsParts
-      }
-    }
-  }
-}
-    ${TutorialsPartsFragmentDoc}`;
-export const DownloadsDocument = gql`
-    query downloads($relativePath: String!) {
-  downloads(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...DownloadsParts
-  }
-}
-    ${DownloadsPartsFragmentDoc}`;
-export const DownloadsConnectionDocument = gql`
-    query downloadsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DownloadsFilter) {
-  downloadsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...DownloadsParts
-      }
-    }
-  }
-}
-    ${DownloadsPartsFragmentDoc}`;
+    ${LandingPagePartsFragmentDoc}`;
 export const ShopProductDocument = gql`
     query shopProduct($relativePath: String!) {
   shopProduct(relativePath: $relativePath) {
@@ -2621,113 +8601,20 @@ export const PostConnectionDocument = gql`
   }
 }
     ${PostPartsFragmentDoc}`;
-export const LandingPageDocument = gql`
-    query landingPage($relativePath: String!) {
-  landingPage(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...LandingPageParts
-  }
-}
-    ${LandingPagePartsFragmentDoc}`;
-export const LandingPageConnectionDocument = gql`
-    query landingPageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LandingPageFilter) {
-  landingPageConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...LandingPageParts
-      }
-    }
-  }
-}
-    ${LandingPagePartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      home(variables: HomeQueryVariables, options?: C): Promise<{data: HomeQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeQueryVariables, query: string}> {
-        return requester<{data: HomeQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeQueryVariables, query: string}, HomeQueryVariables>(HomeDocument, variables, options);
+      page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}> {
+        return requester<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);
       },
-    homeConnection(variables?: HomeConnectionQueryVariables, options?: C): Promise<{data: HomeConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeConnectionQueryVariables, query: string}> {
-        return requester<{data: HomeConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeConnectionQueryVariables, query: string}, HomeConnectionQueryVariables>(HomeConnectionDocument, variables, options);
+    pageConnection(variables?: PageConnectionQueryVariables, options?: C): Promise<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}> {
+        return requester<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}, PageConnectionQueryVariables>(PageConnectionDocument, variables, options);
       },
-    about(variables: AboutQueryVariables, options?: C): Promise<{data: AboutQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutQueryVariables, query: string}> {
-        return requester<{data: AboutQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutQueryVariables, query: string}, AboutQueryVariables>(AboutDocument, variables, options);
+    landingPage(variables: LandingPageQueryVariables, options?: C): Promise<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}> {
+        return requester<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}, LandingPageQueryVariables>(LandingPageDocument, variables, options);
       },
-    aboutConnection(variables?: AboutConnectionQueryVariables, options?: C): Promise<{data: AboutConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutConnectionQueryVariables, query: string}> {
-        return requester<{data: AboutConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutConnectionQueryVariables, query: string}, AboutConnectionQueryVariables>(AboutConnectionDocument, variables, options);
-      },
-    importantLinks(variables: ImportantLinksQueryVariables, options?: C): Promise<{data: ImportantLinksQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ImportantLinksQueryVariables, query: string}> {
-        return requester<{data: ImportantLinksQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ImportantLinksQueryVariables, query: string}, ImportantLinksQueryVariables>(ImportantLinksDocument, variables, options);
-      },
-    importantLinksConnection(variables?: ImportantLinksConnectionQueryVariables, options?: C): Promise<{data: ImportantLinksConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ImportantLinksConnectionQueryVariables, query: string}> {
-        return requester<{data: ImportantLinksConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ImportantLinksConnectionQueryVariables, query: string}, ImportantLinksConnectionQueryVariables>(ImportantLinksConnectionDocument, variables, options);
-      },
-    contact(variables: ContactQueryVariables, options?: C): Promise<{data: ContactQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ContactQueryVariables, query: string}> {
-        return requester<{data: ContactQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ContactQueryVariables, query: string}, ContactQueryVariables>(ContactDocument, variables, options);
-      },
-    contactConnection(variables?: ContactConnectionQueryVariables, options?: C): Promise<{data: ContactConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ContactConnectionQueryVariables, query: string}> {
-        return requester<{data: ContactConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ContactConnectionQueryVariables, query: string}, ContactConnectionQueryVariables>(ContactConnectionDocument, variables, options);
-      },
-    shop(variables: ShopQueryVariables, options?: C): Promise<{data: ShopQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopQueryVariables, query: string}> {
-        return requester<{data: ShopQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopQueryVariables, query: string}, ShopQueryVariables>(ShopDocument, variables, options);
-      },
-    shopConnection(variables?: ShopConnectionQueryVariables, options?: C): Promise<{data: ShopConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopConnectionQueryVariables, query: string}> {
-        return requester<{data: ShopConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopConnectionQueryVariables, query: string}, ShopConnectionQueryVariables>(ShopConnectionDocument, variables, options);
-      },
-    gallery(variables: GalleryQueryVariables, options?: C): Promise<{data: GalleryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryQueryVariables, query: string}> {
-        return requester<{data: GalleryQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryQueryVariables, query: string}, GalleryQueryVariables>(GalleryDocument, variables, options);
-      },
-    galleryConnection(variables?: GalleryConnectionQueryVariables, options?: C): Promise<{data: GalleryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryConnectionQueryVariables, query: string}> {
-        return requester<{data: GalleryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryConnectionQueryVariables, query: string}, GalleryConnectionQueryVariables>(GalleryConnectionDocument, variables, options);
-      },
-    tutorials(variables: TutorialsQueryVariables, options?: C): Promise<{data: TutorialsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialsQueryVariables, query: string}> {
-        return requester<{data: TutorialsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialsQueryVariables, query: string}, TutorialsQueryVariables>(TutorialsDocument, variables, options);
-      },
-    tutorialsConnection(variables?: TutorialsConnectionQueryVariables, options?: C): Promise<{data: TutorialsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialsConnectionQueryVariables, query: string}> {
-        return requester<{data: TutorialsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialsConnectionQueryVariables, query: string}, TutorialsConnectionQueryVariables>(TutorialsConnectionDocument, variables, options);
-      },
-    downloads(variables: DownloadsQueryVariables, options?: C): Promise<{data: DownloadsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsQueryVariables, query: string}> {
-        return requester<{data: DownloadsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsQueryVariables, query: string}, DownloadsQueryVariables>(DownloadsDocument, variables, options);
-      },
-    downloadsConnection(variables?: DownloadsConnectionQueryVariables, options?: C): Promise<{data: DownloadsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsConnectionQueryVariables, query: string}> {
-        return requester<{data: DownloadsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadsConnectionQueryVariables, query: string}, DownloadsConnectionQueryVariables>(DownloadsConnectionDocument, variables, options);
+    landingPageConnection(variables?: LandingPageConnectionQueryVariables, options?: C): Promise<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}> {
+        return requester<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}, LandingPageConnectionQueryVariables>(LandingPageConnectionDocument, variables, options);
       },
     shopProduct(variables: ShopProductQueryVariables, options?: C): Promise<{data: ShopProductQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopProductQueryVariables, query: string}> {
         return requester<{data: ShopProductQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ShopProductQueryVariables, query: string}, ShopProductQueryVariables>(ShopProductDocument, variables, options);
@@ -2740,12 +8627,6 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     postConnection(variables?: PostConnectionQueryVariables, options?: C): Promise<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}> {
         return requester<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}, PostConnectionQueryVariables>(PostConnectionDocument, variables, options);
-      },
-    landingPage(variables: LandingPageQueryVariables, options?: C): Promise<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}> {
-        return requester<{data: LandingPageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageQueryVariables, query: string}, LandingPageQueryVariables>(LandingPageDocument, variables, options);
-      },
-    landingPageConnection(variables?: LandingPageConnectionQueryVariables, options?: C): Promise<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}> {
-        return requester<{data: LandingPageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LandingPageConnectionQueryVariables, query: string}, LandingPageConnectionQueryVariables>(LandingPageConnectionDocument, variables, options);
       }
     };
   }

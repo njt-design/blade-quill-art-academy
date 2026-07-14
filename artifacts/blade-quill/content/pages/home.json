@@ -1,0 +1,174 @@
+{
+  "title": "Home",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "homeHero",
+      "eyebrow": "✦ HELLO FROM THE STUDIO ✦",
+      "heading": "Welcome to Blade & Quill\ndigital painting.",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Luna."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaPrimary": "Explore the Shop",
+      "ctaPrimaryLink": "/shop/1",
+      "ctaSecondary": "Watch Tutorials",
+      "ctaSecondaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
+      "metaLine": "EST. 2018 · NANTES, FR",
+      "marqueeItems": [
+        "Author",
+        "Illustrator",
+        "Krita educator",
+        "Chibi specialist",
+        "Storyteller",
+        "YouTuber"
+      ]
+    },
+    {
+      "_template": "pillars",
+      "eyebrow": "THREE THREADS",
+      "heading": "Where would you like to start?",
+      "items": [
+        {
+          "tag": "NEW BOOK",
+          "title": "Lheeloo & Luna — The Book Is Live",
+          "sub": "Corinne's debut illustrated book. Order your copy today.",
+          "cta": "Order Now",
+          "badge": "LATEST",
+          "link": "/shop/1"
+        },
+        {
+          "tag": "Now Enrolling",
+          "title": "Enroll in My Krita Education Course",
+          "sub": "Structured digital art training designed for artists who want to master Krita.",
+          "cta": "Reserve Your Spot",
+          "badge": "OPEN",
+          "link": "/classes"
+        },
+        {
+          "tag": "YOUTUBE",
+          "title": "Join 100,000+ artists",
+          "sub": "Free Krita tutorials, bi-weekly",
+          "cta": "Subscribe",
+          "badge": "100K+",
+          "link": "https://www.youtube.com/c/BladeQuillartacademy"
+        }
+      ]
+    },
+    {
+      "_template": "featuredBook",
+      "eyebrow": "FEATURED RELEASE",
+      "heading": "Lheeloo & Luna — The Book Is Live",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Corinne's debut illustrated book. Order your copy today."
+              }
+            ]
+          }
+        ]
+      },
+      "stats": [
+        { "value": "$25", "label": "SIGNED COPY" },
+        { "value": "$15", "label": "EBOOK" },
+        { "value": "144", "label": "FULL-COLOR PAGES" }
+      ],
+      "ctaLabel": "Order Now",
+      "ctaLink": "/shop/1",
+      "secondaryLabel": "Browse the shop",
+      "secondaryLink": "/shop"
+    },
+    {
+      "_template": "classesPitch",
+      "eyebrow": "Now Enrolling",
+      "heading": "Enroll in My Krita Education Course",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Structured digital art training designed for artists who want to master Krita."
+              }
+            ]
+          }
+        ]
+      },
+      "bullets": [
+        "Beginner-friendly Krita curriculum",
+        "Step-by-step lessons with downloadable resources",
+        "Build confidence from sketch to finished painting"
+      ],
+      "metaTags": "Self-paced · Krita 5.2 · All skill levels",
+      "ctaLabel": "Reserve Your Spot",
+      "ctaLink": "/classes",
+      "secondaryLabel": "About Corinne",
+      "secondaryLink": "/about"
+    },
+    {
+      "_template": "tutorialsStrip",
+      "eyebrow": "FREE LESSONS ON YOUTUBE",
+      "headingPrefix": "Join ",
+      "headingHighlight": "100,000+ artists",
+      "headingSuffix": "learning with me.",
+      "buttonLabel": "Browse All Tutorials",
+      "youtubeUrl": "https://www.youtube.com/c/BladeQuillartacademy",
+      "stats": [
+        { "value": "100K+", "label": "subscribers" },
+        { "value": "1.5M", "label": "total views" },
+        { "value": "65", "label": "countries" },
+        { "value": "bi-weekly", "label": "new videos" }
+      ]
+    },
+    {
+      "_template": "productStrip",
+      "eyebrow": "FROM THE SHOP",
+      "heading": "Books & Ebooks",
+      "viewAllLabel": "View All",
+      "viewAllLink": "/shop"
+    },
+    {
+      "_template": "blogFeed",
+      "heading": "Recent Blog Posts",
+      "showNewsletter": true,
+      "newsletter": {
+        "eyebrow": "STUDIO NEWSLETTER",
+        "heading": "Stay in the Loop",
+        "subheading": {
+          "type": "root",
+          "children": [
+            {
+              "type": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Get art tips, new tutorials, and class announcements delivered to your inbox."
+                }
+              ]
+            }
+          ]
+        },
+        "placeholderText": "you@example.com",
+        "ctaLabel": "Subscribe",
+        "privacyNote": "No spam. Unsubscribe anytime."
+      }
+    }
+  ]
+}

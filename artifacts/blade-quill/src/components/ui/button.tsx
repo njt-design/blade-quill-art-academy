@@ -17,8 +17,8 @@ export function buttonVariants({
   className?: string;
 } = {}): string {
   const variants: Record<string, string> = {
-    default: "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90 hover:shadow-primary/30",
-    accent: "bg-accent text-accent-foreground shadow-lg shadow-accent/20 hover:bg-accent/90 hover:shadow-accent/30",
+    default: "bg-primary text-primary-foreground hover:bg-primary/90",
+    accent: "bg-accent text-accent-foreground hover:bg-accent/90",
     secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
     outline: "border-2 border-primary/50 text-primary hover:bg-primary/10",
     ghost: "hover:bg-accent hover:text-accent-foreground",

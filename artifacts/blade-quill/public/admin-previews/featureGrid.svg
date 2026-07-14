@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="45" y="45" width="92" height="70" rx="4" fill="#f0e8d8"/><rect x="45" y="125" width="70" height="8" rx="4" fill="#1f1a14"/><rect x="45" y="140" width="92" height="8" rx="4" fill="#c9bfa9"/><rect x="153" y="45" width="92" height="70" rx="4" fill="#f0e8d8"/><rect x="153" y="125" width="70" height="8" rx="4" fill="#1f1a14"/><rect x="153" y="140" width="92" height="8" rx="4" fill="#c9bfa9"/><rect x="261" y="45" width="92" height="70" rx="4" fill="#f0e8d8"/><rect x="261" y="125" width="70" height="8" rx="4" fill="#1f1a14"/><rect x="261" y="140" width="92" height="8" rx="4" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">FEATURE GRID</text>
+</svg>

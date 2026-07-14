@@ -63,11 +63,15 @@ export default function BlogList() {
                 onClick={() => setLocation(`/blog/${post.slug}`)}
               >
                 {post.coverImage && (
-                  <div className="aspect-[16/9] overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden bg-muted">
                     <img
                       src={post.coverImage}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        // Broken cover URL: hide the image area instead of showing alt text.
+                        e.currentTarget.parentElement!.style.display = "none";
+                      }}
                     />
                   </div>
                 )}
@@ -77,14 +81,14 @@ export default function BlogList() {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] uppercase tracking-widest font-bold text-violet bg-violet/10 px-2 py-0.5 rounded"
+                          className="text-[10px] uppercase tracking-widest font-bold text-brown bg-brown/10 px-2 py-0.5 rounded"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                   )}
-                  <h3 className="font-normal leading-snug line-clamp-2 mb-1.5 group-hover:text-violet transition-colors">
+                  <h3 className="font-normal leading-snug line-clamp-2 mb-1.5 group-hover:text-brown transition-colors">
                     {post.title}
                   </h3>
                   {post.excerpt && (

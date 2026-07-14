@@ -37,7 +37,7 @@ export default function CtaBandBlock({ block }: Props) {
           <Button
             size="lg"
             onClick={() => setLocation((block.ctaLink as string) || "/")}
-            className="bg-orange hover:bg-amber text-white shrink-0 cta-bold"
+            className="bg-maroon hover:bg-maroon-deep text-white shrink-0 cta-bold"
             data-tina-field={tinaField(block, "ctaLabel")}
           >
             {block.ctaLabel as string} <ArrowRight className="w-4 h-4 ml-2" />

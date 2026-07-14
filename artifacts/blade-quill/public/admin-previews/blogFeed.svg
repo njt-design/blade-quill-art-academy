@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="40" y="48" width="46" height="24" rx="3" fill="#f0e8d8"/><rect x="96" y="55" width="110" height="8" rx="4" fill="#1f1a14"/><rect x="40" y="82" width="46" height="24" rx="3" fill="#f0e8d8"/><rect x="96" y="89" width="110" height="8" rx="4" fill="#1f1a14"/><rect x="40" y="116" width="46" height="24" rx="3" fill="#f0e8d8"/><rect x="96" y="123" width="110" height="8" rx="4" fill="#1f1a14"/><rect x="240" y="45" width="120" height="110" rx="8" fill="#1f1a14"/><rect x="255" y="65" width="80" height="8" rx="4" fill="#fbf6ec"/><rect x="255" y="115" width="90" height="14" rx="7" fill="#e55934"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">BLOG FEED</text>
+</svg>

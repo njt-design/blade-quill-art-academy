@@ -1,0 +1,160 @@
+{
+  "title": "About Corinne",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "aboutHero",
+      "eyebrow": "ABOUT · A STUDIO VISIT",
+      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "leadText": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I am a French author and illustrator. This website is about digital art."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaPrimary": "Explore Tutorial",
+      "ctaPrimaryLink": "/contact",
+      "ctaSecondary": "Visit the Shop",
+      "ctaSecondaryLink": "/gallery",
+      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "portraitImage": "/images/about-portrait.png",
+      "portraitCaption": "in the studio"
+    },
+    {
+      "_template": "statsRow",
+      "stats": [
+        { "value": "100K+", "label": "YouTube subscribers" },
+        { "value": "1.5M", "label": "video views" },
+        { "value": "65", "label": "countries reached" },
+        { "value": "2", "label": "illustrated books" }
+      ]
+    },
+    {
+      "_template": "story",
+      "number": "01",
+      "label": "STORY",
+      "heading": "How a French kid with a sketchbook\nended up teaching Krita on the internet.",
+      "paragraph1": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I offer advice and complementary materials to assist you in your creative journey. I also offer free tutorials here, and on my YouTube channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly."
+              }
+            ]
+          }
+        ]
+      },
+      "quote": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I am a French author and illustrator. This website is about digital art."
+              }
+            ]
+          }
+        ]
+      },
+      "paragraph2": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
+              }
+            ]
+          }
+        ]
+      },
+      "sideCaption": "my window in winter"
+    },
+    {
+      "_template": "timeline",
+      "number": "02",
+      "label": "TIMELINE",
+      "events": [
+        {
+          "year": "2018",
+          "title": "Started the YouTube channel",
+          "description": "First Krita lesson uploaded from a small apartment."
+        },
+        {
+          "year": "2020",
+          "title": "Published Lheeloo & Luna, Vol. I",
+          "description": "A small press run that quickly sold out."
+        },
+        {
+          "year": "2022",
+          "title": "Crossed 50K subscribers",
+          "description": "And took a deep breath about the future of all this."
+        },
+        {
+          "year": "2024",
+          "title": "Launched Krita Academy classes",
+          "description": "A real, live cohort with critique sessions and homework."
+        },
+        {
+          "year": "2026",
+          "title": "Working on the next book",
+          "description": "Vol. II — two years in the making."
+        }
+      ]
+    },
+    {
+      "_template": "cardRow",
+      "number": "03",
+      "label": "WHAT I MAKE",
+      "cards": [
+        {
+          "tag": "BOOKS",
+          "title": "Krita & Digital Painting",
+          "body": "Lheeloo & Luna, plus more on the desk. Signed copies ship from the studio.",
+          "ctaLabel": "Browse books",
+          "link": "/shop"
+        },
+        {
+          "tag": "CLASSES",
+          "title": "Character Design",
+          "body": "Structured digital art training designed for artists who want to master Krita.",
+          "ctaLabel": "See the curriculum",
+          "link": "/shop"
+        },
+        {
+          "tag": "VIDEOS",
+          "title": "Color Theory",
+          "body": "Free Krita lessons, every other week. 100K+ artists watching.",
+          "ctaLabel": "Watch on YouTube",
+          "link": "https://www.youtube.com/c/BladeQuillartacademy"
+        }
+      ]
+    },
+    {
+      "_template": "bigCta",
+      "eyebrow": "SAY HI",
+      "heading": "For press, collabs, or\njust a hello.",
+      "highlightText": "hello",
+      "primaryLabel": "Email Corinne",
+      "primaryLink": "/contact",
+      "secondaryLabel": "Watch on YouTube",
+      "secondaryLink": "https://www.youtube.com/c/BladeQuillartacademy"
+    }
+  ]
+}

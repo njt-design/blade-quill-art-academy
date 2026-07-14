@@ -1,8 +1,8 @@
 {
   "title": "Summer Digital Art Workshop 2026",
+  "layout": "standard",
   "blocks": [
     {
-      "_template": "hero",
       "heading": "Summer Digital Art Workshop",
       "subheading": {
         "type": "root",
@@ -19,10 +19,10 @@
         ]
       },
       "ctaLabel": "Register Now",
-      "ctaLink": "/contact"
+      "ctaLink": "/contact",
+      "_template": "hero"
     },
     {
-      "_template": "featureGrid",
       "heading": "What You'll Learn",
       "items": [
         {
@@ -79,10 +79,15 @@
             ]
           }
         }
-      ]
+      ],
+      "_template": "featureGrid"
     },
     {
-      "_template": "text",
+      "heading": "Watch the Workshop Preview",
+      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "_template": "videoEmbed"
+    },
+    {
       "heading": "About the Workshop",
       "body": {
         "type": "root",
@@ -106,15 +111,10 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "videoEmbed",
-      "heading": "Watch the Workshop Preview",
-      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    },
-    {
-      "_template": "ctaBand",
       "heading": "Ready to start your creative journey?",
       "description": {
         "type": "root",
@@ -132,7 +132,9 @@
       },
       "ctaLabel": "Sign Up Today",
       "ctaLink": "/contact",
-      "variant": "dark"
+      "variant": "dark",
+      "_template": "ctaBand"
     }
-  ]
+  ],
+  "_template": "event"
 }

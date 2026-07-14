@@ -65,7 +65,7 @@ export function TutorialThumb({
           width: 64,
           height: 64,
           borderRadius: "50%",
-          background: "rgba(251,246,236,0.95)",
+          background: "rgba(223,210,204,0.95)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -89,7 +89,7 @@ export function TutorialThumb({
           position: "absolute",
           bottom: 10,
           right: 10,
-          background: "rgba(31,26,20,0.85)",
+          background: "rgba(46,34,34,0.85)",
           color: "var(--paper)",
           fontFamily: "var(--f-mono)",
           fontSize: 10,
@@ -109,7 +109,7 @@ export function TutorialThumb({
             right: 0,
             padding: "40px 14px 14px",
             background:
-              "linear-gradient(0deg, rgba(31,26,20,0.85), transparent)",
+              "linear-gradient(0deg, rgba(46,34,34,0.85), transparent)",
             color: "var(--paper)",
           }}
         >

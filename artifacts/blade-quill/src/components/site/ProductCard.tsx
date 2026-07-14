@@ -123,7 +123,7 @@ export function ProductCard({
             position: "absolute",
             top: 14,
             left: 14,
-            background: "rgba(251,246,236,0.95)",
+            background: "rgba(223,210,204,0.95)",
             color: "var(--ink)",
             fontFamily: "var(--f-mono)",
             fontSize: 10,
@@ -148,7 +148,6 @@ export function ProductCard({
               letterSpacing: "0.12em",
               padding: "5px 10px",
               borderRadius: 999,
-              boxShadow: "0 4px 12px rgba(229,89,52,0.4)",
             }}
           >
             NEW
@@ -167,8 +166,6 @@ export function ProductCard({
               padding: "12px 18px",
               fontSize: 13,
               cursor: "pointer",
-              transform: "translateY(20px)",
-              opacity: 0,
               transition:
                 "transform .35s var(--e-out), opacity .35s ease, background .2s ease",
             }}
@@ -215,7 +212,7 @@ export function ProductCard({
             style={{
               fontFamily: "var(--f-mono)",
               fontSize: 14,
-              color: "var(--orange)",
+              color: "var(--maroon)",
             }}
           >
             →

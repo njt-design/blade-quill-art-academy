@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="0" y="0" width="400" height="220" rx="0" fill="#1f1a14"/><rect x="40" y="42" width="150" height="8" rx="4" fill="#fbf6ec"/><rect x="38" y="70" width="70" height="50" rx="4" fill="#3a332a"/><rect x="122" y="70" width="70" height="50" rx="4" fill="#3a332a"/><rect x="206" y="70" width="70" height="50" rx="4" fill="#3a332a"/><rect x="290" y="70" width="70" height="50" rx="4" fill="#3a332a"/><rect x="40" y="140" width="300" height="8" rx="4" fill="#3a332a"/>
+  <rect x="0" y="182" width="400" height="38" fill="#141110"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">YOUTUBE STRIP</text>
+</svg>

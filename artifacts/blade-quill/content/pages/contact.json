@@ -1,0 +1,33 @@
+{
+  "title": "Get in Touch",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "Get in Touch",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Have a question, collaboration idea, or just want to say hello? I'd love to hear from you."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "contactInfo",
+      "email": "Corinne@bladeandquillartacademy.com",
+      "location": "Des Moines, IA"
+    },
+    {
+      "_template": "contactForm",
+      "submitLabel": "Send Message"
+    }
+  ]
+}

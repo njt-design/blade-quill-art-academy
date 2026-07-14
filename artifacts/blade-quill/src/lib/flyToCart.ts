@@ -28,7 +28,7 @@ export function flyToCart(originEl: HTMLElement | null | undefined) {
     top: ${origin.top + origin.height / 2 - 14}px;
     width: 28px; height: 28px; border-radius: 50%;
     background: var(--g-cta);
-    box-shadow: 0 6px 18px rgba(229, 89, 52, 0.4);
+    box-shadow: var(--sh-sm);
     z-index: 200; pointer-events: none;
     transition: transform .8s var(--e-in-out), opacity .8s ease;
   `;

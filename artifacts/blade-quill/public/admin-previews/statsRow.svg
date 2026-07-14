@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="45" y="70" width="50" height="8" rx="4" fill="#e55934"/><rect x="45" y="92" width="60" height="8" rx="4" fill="#c9bfa9"/><rect x="130" y="70" width="50" height="8" rx="4" fill="#6b5ba8"/><rect x="130" y="92" width="60" height="8" rx="4" fill="#c9bfa9"/><rect x="215" y="70" width="50" height="8" rx="4" fill="#e55934"/><rect x="215" y="92" width="60" height="8" rx="4" fill="#c9bfa9"/><rect x="300" y="70" width="50" height="8" rx="4" fill="#6b5ba8"/><rect x="300" y="92" width="60" height="8" rx="4" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">STATS ROW</text>
+</svg>

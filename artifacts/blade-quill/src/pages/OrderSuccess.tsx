@@ -22,7 +22,7 @@ export default function OrderSuccess() {
     return (
       <div className="min-h-screen py-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-2xl font-display mb-4">No Session Found</h1>
-        <Button onClick={() => setLocation("/shop")} className="bg-orange hover:bg-amber text-white">Return to Shop</Button>
+        <Button onClick={() => setLocation("/shop")} className="bg-maroon hover:bg-maroon-deep text-white">Return to Shop</Button>
       </div>
     );
   }
@@ -40,7 +40,7 @@ export default function OrderSuccess() {
       <div className="min-h-screen py-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-2xl font-display text-destructive mb-3">Order Verification Failed</h1>
         <p className="text-muted-foreground mb-6 max-w-sm">We couldn't verify your session. Please contact support if you were charged.</p>
-        <Button onClick={() => setLocation("/contact")} className="bg-orange hover:bg-amber text-white">Contact Support</Button>
+        <Button onClick={() => setLocation("/contact")} className="bg-maroon hover:bg-maroon-deep text-white">Contact Support</Button>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export default function OrderSuccess() {
             <div className="bg-secondary/60 rounded-lg p-5 mb-6 border border-border text-left">
               <h3 className="font-normal mb-3">Access Your Purchase</h3>
               {order.downloadUrl ? (
-                <Button className="w-full gap-2 bg-orange hover:bg-amber text-white" onClick={() => window.open(order.downloadUrl as string, "_blank")}>
+                <Button className="w-full gap-2 bg-maroon hover:bg-maroon-deep text-white" onClick={() => window.open(order.downloadUrl as string, "_blank")}>
                   <Download className="w-4 h-4" /> Download Files
                 </Button>
               ) : order.gumroadUrl ? (

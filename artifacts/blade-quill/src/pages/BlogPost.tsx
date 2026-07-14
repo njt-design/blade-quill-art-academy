@@ -126,7 +126,7 @@ export default function BlogPost() {
               {(post.tags as string[]).map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] uppercase tracking-widest font-bold text-violet bg-violet/10 px-2 py-0.5 rounded"
+                  className="text-[10px] uppercase tracking-widest font-bold text-brown bg-brown/10 px-2 py-0.5 rounded"
                 >
                   {tag}
                 </span>

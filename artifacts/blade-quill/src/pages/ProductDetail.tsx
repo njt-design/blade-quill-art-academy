@@ -207,10 +207,9 @@ export default function ProductDetail() {
             <div>
               <Reveal>
                 <div
-                  className="relative flex items-center justify-center overflow-hidden"
+                  className="relative flex items-center justify-center overflow-hidden h-[min(60vh,560px)] sm:h-[560px]"
                   style={{
                     borderRadius: 20,
-                    height: 560,
                     background: isBook
                       ? "var(--paper-2)"
                       : "transparent",
@@ -247,13 +246,16 @@ export default function ProductDetail() {
                 </div>
               </Reveal>
 
-              <div className="grid grid-cols-5 gap-3 mt-4">
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 mt-4">
                 {[0, 1, 2, 3, 4].map((i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setThumb(i)}
-                    className="relative overflow-hidden p-0 border-0 bg-transparent cursor-pointer"
+                    className={cn(
+                      "relative overflow-hidden p-0 border-0 bg-transparent cursor-pointer",
+                      i === 4 && "hidden sm:block"
+                    )}
                     style={{
                       borderRadius: 10,
                       transform:
@@ -276,7 +278,7 @@ export default function ProductDetail() {
                         aria-hidden
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          border: "2.5px solid var(--orange)",
+                          border: "2.5px solid var(--maroon)",
                           borderRadius: 10,
                         }}
                       />
@@ -329,7 +331,7 @@ export default function ProductDetail() {
                         fontFamily: "var(--f-mono)",
                         fontSize: 11,
                         background: "rgba(184,74,94,0.12)",
-                        color: "var(--rose-deep)",
+                        color: "var(--maroon-deep)",
                         padding: "5px 10px",
                         borderRadius: 999,
                         letterSpacing: "0.08em",
@@ -366,7 +368,7 @@ export default function ProductDetail() {
                             border: `1.5px solid ${
                               selected
                                 ? "var(--ink)"
-                                : "rgba(31,26,20,0.15)"
+                                : "rgba(46,34,34,0.15)"
                             }`,
                             borderRadius: 14,
                             transform: selected
@@ -403,7 +405,7 @@ export default function ProductDetail() {
                             <span
                               aria-hidden
                               className="absolute top-2 right-2.5 block w-2 h-2 rounded-full"
-                              style={{ background: "var(--orange)" }}
+                              style={{ background: "var(--maroon)" }}
                             />
                           )}
                         </button>
@@ -497,8 +499,8 @@ export default function ProductDetail() {
                 <div
                   className="flex flex-wrap gap-x-7 gap-y-3 py-5"
                   style={{
-                    borderTop: "1px solid rgba(31,26,20,0.1)",
-                    borderBottom: "1px solid rgba(31,26,20,0.1)",
+                    borderTop: "1px solid rgba(46,34,34,0.1)",
+                    borderBottom: "1px solid rgba(46,34,34,0.1)",
                   }}
                 >
                   {[
@@ -517,9 +519,9 @@ export default function ProductDetail() {
                         className="block w-2 h-2 rounded-full"
                         style={{
                           background: [
-                            "var(--orange)",
-                            "var(--amber)",
-                            "var(--violet)",
+                            "var(--maroon)",
+                            "var(--gold)",
+                            "var(--taupe)",
                           ][i % 3],
                         }}
                       />
@@ -535,13 +537,13 @@ export default function ProductDetail() {
 
       <section
         className="py-10"
-        style={{ borderTop: "1px solid rgba(31,26,20,0.08)" }}
+        style={{ borderTop: "1px solid rgba(46,34,34,0.08)" }}
       >
         <div className="bq-container">
           <div
             className="flex flex-wrap gap-9 relative"
             style={{
-              borderBottom: "1px solid rgba(31,26,20,0.08)",
+              borderBottom: "1px solid rgba(46,34,34,0.08)",
               marginBottom: 36,
             }}
           >
@@ -569,7 +571,7 @@ export default function ProductDetail() {
                       className="absolute left-0 right-0"
                       style={{ bottom: -1, height: 6 }}
                     >
-                      <InkUnderline color="var(--orange)" />
+                      <InkUnderline color="var(--maroon)" />
                     </span>
                   )}
                 </button>
@@ -619,7 +621,7 @@ export default function ProductDetail() {
                       className="flex justify-between py-3 text-sm"
                       style={{
                         borderBottom:
-                          "1px dashed rgba(31,26,20,0.12)",
+                          "1px dashed rgba(46,34,34,0.12)",
                       }}
                     >
                       <span style={{ color: "var(--ink-mute)" }}>{k}</span>
@@ -661,7 +663,7 @@ export default function ProductDetail() {
                     4.9
                   </span>
                   <span
-                    style={{ color: "var(--amber)", fontSize: 22 }}
+                    style={{ color: "var(--gold)", fontSize: 22 }}
                   >
                     ★★★★★
                   </span>
@@ -704,7 +706,7 @@ export default function ProductDetail() {
                     >
                       <div
                         className="mb-2.5"
-                        style={{ color: "var(--amber)" }}
+                        style={{ color: "var(--gold)" }}
                       >
                         ★★★★★
                       </div>
@@ -746,7 +748,7 @@ export default function ProductDetail() {
                   <a
                     href="mailto:hello@bladeandquillacademy.com"
                     className="link-ink"
-                    style={{ color: "var(--orange)" }}
+                    style={{ color: "var(--maroon)" }}
                   >
                     hello@bladeandquillacademy.com
                   </a>

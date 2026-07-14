@@ -54,42 +54,21 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  home(relativePath: String): Home!
-  homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
-  about(relativePath: String): About!
-  aboutConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AboutFilter): AboutConnection!
-  importantLinks(relativePath: String): ImportantLinks!
-  importantLinksConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ImportantLinksFilter): ImportantLinksConnection!
-  contact(relativePath: String): Contact!
-  contactConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ContactFilter): ContactConnection!
-  shop(relativePath: String): Shop!
-  shopConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopFilter): ShopConnection!
-  gallery(relativePath: String): Gallery!
-  galleryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GalleryFilter): GalleryConnection!
-  tutorials(relativePath: String): Tutorials!
-  tutorialsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialsFilter): TutorialsConnection!
-  downloads(relativePath: String): Downloads!
-  downloadsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DownloadsFilter): DownloadsConnection!
+  page(relativePath: String): Page!
+  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
+  landingPage(relativePath: String): LandingPage!
+  landingPageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingPageFilter): LandingPageConnection!
   shopProduct(relativePath: String): ShopProduct!
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
   post(relativePath: String): Post!
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
-  landingPage(relativePath: String): LandingPage!
-  landingPageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingPageFilter): LandingPageConnection!
 }
 
 input DocumentFilter {
-  home: HomeFilter
-  about: AboutFilter
-  importantLinks: ImportantLinksFilter
-  contact: ContactFilter
-  shop: ShopFilter
-  gallery: GalleryFilter
-  tutorials: TutorialsFilter
-  downloads: DownloadsFilter
+  page: PageFilter
+  landingPage: LandingPageFilter
   shopProduct: ShopProductFilter
   post: PostFilter
-  landingPage: LandingPageFilter
 }
 
 type DocumentConnectionEdges {
@@ -115,60 +94,220 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Home | About | ImportantLinks | Contact | Shop | Gallery | Tutorials | Downloads | ShopProduct | Post | LandingPage | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | ShopProduct | Post | Folder
 
-type HomeHero {
-  heading: String
-  subheading: JSON
-  ctaPrimary: String
-  ctaSecondary: String
-  backgroundImage: String
-}
-
-type HomeLatestSection {
-  heading: String
-  viewAllLabel: String
-}
-
-type HomeFeaturedSection {
-  heading: String
-  subheading: String
-  viewAllLabel: String
-}
-
-type HomeArtistBanner {
-  badge: String
-  heading: String
-  bio: JSON
-  ctaLabel: String
-  portraitImage: String
-}
-
-type HomeTutorialsSection {
-  heading: String
-  subheading: String
-  browseAllLabel: String
-}
-
-type HomeClassesSection {
+type PageBlocksHomeHero {
   eyebrow: String
   heading: String
   subheading: JSON
-  body: JSON
-  bullets: [String]
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type PageBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type PageBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
   ctaLabel: String
   ctaLink: String
-  metaTags: String
+}
+
+type PageBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type PageBlocksText {
+  heading: String
+  body: JSON
+}
+
+type PageBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type PageBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type PageBlocksTimeline {
+  number: String
+  label: String
+  events: [PageBlocksTimelineEvents]
+}
+
+type PageBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type PageBlocksStatsRow {
+  stats: [PageBlocksStatsRowStats]
+}
+
+type PageBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type PageBlocksFeatureGrid {
+  heading: String
+  items: [PageBlocksFeatureGridItems]
+}
+
+type PageBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type PageBlocksCardRow {
+  number: String
+  label: String
+  cards: [PageBlocksCardRowCards]
+}
+
+type PageBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
   image: String
 }
 
-type HomeBlogSection {
+type PageBlocksPillars {
+  eyebrow: String
   heading: String
-  subheading: String
-  viewAllLabel: String
+  items: [PageBlocksPillarsItems]
 }
 
-type HomeNewsletterSection {
+type PageBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PageBlocksImageGallery {
+  heading: String
+  images: [PageBlocksImageGalleryImages]
+}
+
+type PageBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type PageBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type PageBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [PageBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type PageBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type PageBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type PageBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type PageBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type PageBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type PageBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type PageBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [PageBlocksTutorialsStripStats]
+}
+
+type PageBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type PageBlocksBlogFeedNewsletter {
+  eyebrow: String
   heading: String
   subheading: JSON
   placeholderText: String
@@ -176,23 +315,90 @@ type HomeNewsletterSection {
   privacyNote: String
 }
 
-type HomeBookPromo {
+type PageBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: PageBlocksBlogFeedNewsletter
+}
+
+type PageBlocksCtaBand {
   heading: String
   description: JSON
   ctaLabel: String
   ctaLink: String
+  variant: String
 }
 
-type Home implements Node & Document {
-  hero: HomeHero
-  latestSection: HomeLatestSection
-  featuredSection: HomeFeaturedSection
-  artistBanner: HomeArtistBanner
-  tutorialsSection: HomeTutorialsSection
-  classesSection: HomeClassesSection
-  blogSection: HomeBlogSection
-  newsletterSection: HomeNewsletterSection
-  bookPromo: HomeBookPromo
+type PageBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type PageBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type PageBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type PageBlocksContactForm {
+  submitLabel: String
+}
+
+type PageBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type PageBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type PageBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [PageBlocksReviewLinksLinks]
+}
+
+type PageBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type PageBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type PageBlocksSocialLinks {
+  links: [PageBlocksSocialLinksLinks]
+}
+
+union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
+
+type Page implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [PageBlocks]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -211,6 +417,18 @@ input RichTextFilter {
   exists: Boolean
 }
 
+input PageBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+}
+
 input ImageFilter {
   startsWith: String
   eq: String
@@ -218,181 +436,142 @@ input ImageFilter {
   in: [String]
 }
 
-input HomeHeroFilter {
-  heading: StringFilter
-  subheading: RichTextFilter
-  ctaPrimary: StringFilter
-  ctaSecondary: StringFilter
-  backgroundImage: ImageFilter
-}
-
-input HomeLatestSectionFilter {
-  heading: StringFilter
-  viewAllLabel: StringFilter
-}
-
-input HomeFeaturedSectionFilter {
-  heading: StringFilter
-  subheading: StringFilter
-  viewAllLabel: StringFilter
-}
-
-input HomeArtistBannerFilter {
-  badge: StringFilter
-  heading: StringFilter
-  bio: RichTextFilter
-  ctaLabel: StringFilter
-  portraitImage: ImageFilter
-}
-
-input HomeTutorialsSectionFilter {
-  heading: StringFilter
-  subheading: StringFilter
-  browseAllLabel: StringFilter
-}
-
-input HomeClassesSectionFilter {
+input PageBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
-  body: RichTextFilter
-  bullets: StringFilter
-  ctaLabel: StringFilter
-  ctaLink: StringFilter
-  metaTags: StringFilter
-  image: ImageFilter
-}
-
-input HomeBlogSectionFilter {
-  heading: StringFilter
-  subheading: StringFilter
-  viewAllLabel: StringFilter
-}
-
-input HomeNewsletterSectionFilter {
-  heading: StringFilter
-  subheading: RichTextFilter
-  placeholderText: StringFilter
-  ctaLabel: StringFilter
-  privacyNote: StringFilter
-}
-
-input HomeBookPromoFilter {
-  heading: StringFilter
-  description: RichTextFilter
-  ctaLabel: StringFilter
-  ctaLink: StringFilter
-}
-
-input HomeFilter {
-  hero: HomeHeroFilter
-  latestSection: HomeLatestSectionFilter
-  featuredSection: HomeFeaturedSectionFilter
-  artistBanner: HomeArtistBannerFilter
-  tutorialsSection: HomeTutorialsSectionFilter
-  classesSection: HomeClassesSectionFilter
-  blogSection: HomeBlogSectionFilter
-  newsletterSection: HomeNewsletterSectionFilter
-  bookPromo: HomeBookPromoFilter
-}
-
-type HomeConnectionEdges {
-  cursor: String!
-  node: Home
-}
-
-type HomeConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [HomeConnectionEdges]
-}
-
-type About implements Node & Document {
-  pageTitle: String
-  portraitImage: String
-  leadText: JSON
-  paragraph1: JSON
-  paragraph2: JSON
-  skill1Label: String
-  skill2Label: String
-  skill3Label: String
-  ctaPrimary: String
-  ctaPrimaryLink: String
-  ctaSecondary: String
-  ctaSecondaryLink: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input AboutFilter {
-  pageTitle: StringFilter
-  portraitImage: ImageFilter
   leadText: RichTextFilter
-  paragraph1: RichTextFilter
-  paragraph2: RichTextFilter
-  skill1Label: StringFilter
-  skill2Label: StringFilter
-  skill3Label: StringFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
 }
 
-type AboutConnectionEdges {
-  cursor: String!
-  node: About
+input PageBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
 }
 
-type AboutConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [AboutConnectionEdges]
+input PageBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
 }
 
-type ImportantLinksFeaturedRelease {
-  eyebrow: String
-  title: String!
-  description: JSON
-  coverImage: String
-  backCoverImage: String
-  ctaLabel: String
-  ctaHref: String
+input PageBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
 }
 
-type ImportantLinksReviewsSection {
-  heading: String
-  intro: JSON
-  thankYou: String
-  ctaHeading: String
+input PageBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
 }
 
-type ImportantLinksReviewLinks {
-  label: String!
-  href: String!
-  region: String
+input PageBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
 }
 
-type ImportantLinksKofiSection {
-  heading: String
-  body: JSON
-  ctaLabel: String
-  href: String
+input PageBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: PageBlocksTimelineEventsFilter
 }
 
-type ImportantLinks implements Node & Document {
-  pageTitle: String
-  featuredRelease: ImportantLinksFeaturedRelease
-  reviewsSection: ImportantLinksReviewsSection
-  reviewLinks: [ImportantLinksReviewLinks]
-  kofiSection: ImportantLinksKofiSection
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
+input PageBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
 }
 
-input ImportantLinksFeaturedReleaseFilter {
+input PageBlocksStatsRowFilter {
+  stats: PageBlocksStatsRowStatsFilter
+}
+
+input PageBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input PageBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: PageBlocksFeatureGridItemsFilter
+}
+
+input PageBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input PageBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: PageBlocksCardRowCardsFilter
+}
+
+input PageBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input PageBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: PageBlocksPillarsItemsFilter
+}
+
+input PageBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PageBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: PageBlocksImageGalleryImagesFilter
+}
+
+input PageBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input PageBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input PageBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: PageBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input PageBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
   description: RichTextFilter
@@ -402,187 +581,3446 @@ input ImportantLinksFeaturedReleaseFilter {
   ctaHref: StringFilter
 }
 
-input ImportantLinksReviewsSectionFilter {
+input PageBlocksProductStripFilter {
+  eyebrow: StringFilter
   heading: StringFilter
-  intro: RichTextFilter
-  thankYou: StringFilter
-  ctaHeading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
 }
 
-input ImportantLinksReviewLinksFilter {
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input PageBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input PageBlocksGalleryGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input PageBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input PageBlocksTutorialsStripStatsFilter {
+  value: StringFilter
   label: StringFilter
-  href: StringFilter
-  region: StringFilter
 }
 
-input ImportantLinksKofiSectionFilter {
+input PageBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: PageBlocksTutorialsStripStatsFilter
+}
+
+input PageBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input PageBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input PageBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: PageBlocksBlogFeedNewsletterFilter
+}
+
+input PageBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input PageBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input PageBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input PageBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input PageBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input PageBlocksKofiSupportFilter {
   heading: StringFilter
   body: RichTextFilter
   ctaLabel: StringFilter
   href: StringFilter
 }
 
-input ImportantLinksFilter {
-  pageTitle: StringFilter
-  featuredRelease: ImportantLinksFeaturedReleaseFilter
-  reviewsSection: ImportantLinksReviewsSectionFilter
-  reviewLinks: ImportantLinksReviewLinksFilter
-  kofiSection: ImportantLinksKofiSectionFilter
+input PageBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
 }
 
-type ImportantLinksConnectionEdges {
+input PageBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: PageBlocksReviewLinksLinksFilter
+}
+
+input PageBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input PageBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input PageBlocksSocialLinksFilter {
+  links: PageBlocksSocialLinksLinksFilter
+}
+
+input PageBlocksFilter {
+  homeHero: PageBlocksHomeHeroFilter
+  aboutHero: PageBlocksAboutHeroFilter
+  hero: PageBlocksHeroFilter
+  pageHeader: PageBlocksPageHeaderFilter
+  text: PageBlocksTextFilter
+  story: PageBlocksStoryFilter
+  timeline: PageBlocksTimelineFilter
+  statsRow: PageBlocksStatsRowFilter
+  featureGrid: PageBlocksFeatureGridFilter
+  cardRow: PageBlocksCardRowFilter
+  pillars: PageBlocksPillarsFilter
+  imageGallery: PageBlocksImageGalleryFilter
+  videoEmbed: PageBlocksVideoEmbedFilter
+  featuredBook: PageBlocksFeaturedBookFilter
+  featuredRelease: PageBlocksFeaturedReleaseFilter
+  productStrip: PageBlocksProductStripFilter
+  shopCatalog: PageBlocksShopCatalogFilter
+  galleryGrid: PageBlocksGalleryGridFilter
+  downloadsGrid: PageBlocksDownloadsGridFilter
+  tutorialsStrip: PageBlocksTutorialsStripFilter
+  classesPitch: PageBlocksClassesPitchFilter
+  blogFeed: PageBlocksBlogFeedFilter
+  ctaBand: PageBlocksCtaBandFilter
+  bigCta: PageBlocksBigCtaFilter
+  newsletterSignup: PageBlocksNewsletterSignupFilter
+  contactInfo: PageBlocksContactInfoFilter
+  contactForm: PageBlocksContactFormFilter
+  kofiSupport: PageBlocksKofiSupportFilter
+  reviewLinks: PageBlocksReviewLinksFilter
+  marquee: PageBlocksMarqueeFilter
+  socialLinks: PageBlocksSocialLinksFilter
+}
+
+input PageFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: PageBlocksFilter
+}
+
+type PageConnectionEdges {
   cursor: String!
-  node: ImportantLinks
+  node: Page
 }
 
-type ImportantLinksConnection implements Connection {
+type PageConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [ImportantLinksConnectionEdges]
+  edges: [PageConnectionEdges]
 }
 
-type Contact implements Node & Document {
-  pageTitle: String
-  pageDescription: JSON
+type LandingPageBlankBlocksHomeHero {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type LandingPageBlankBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type LandingPageBlankBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPageBlankBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type LandingPageBlankBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPageBlankBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type LandingPageBlankBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type LandingPageBlankBlocksTimeline {
+  number: String
+  label: String
+  events: [LandingPageBlankBlocksTimelineEvents]
+}
+
+type LandingPageBlankBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type LandingPageBlankBlocksStatsRow {
+  stats: [LandingPageBlankBlocksStatsRowStats]
+}
+
+type LandingPageBlankBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type LandingPageBlankBlocksFeatureGrid {
+  heading: String
+  items: [LandingPageBlankBlocksFeatureGridItems]
+}
+
+type LandingPageBlankBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type LandingPageBlankBlocksCardRow {
+  number: String
+  label: String
+  cards: [LandingPageBlankBlocksCardRowCards]
+}
+
+type LandingPageBlankBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type LandingPageBlankBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [LandingPageBlankBlocksPillarsItems]
+}
+
+type LandingPageBlankBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPageBlankBlocksImageGallery {
+  heading: String
+  images: [LandingPageBlankBlocksImageGalleryImages]
+}
+
+type LandingPageBlankBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPageBlankBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type LandingPageBlankBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageBlankBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageBlankBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type LandingPageBlankBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type LandingPageBlankBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageBlankBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageBlankBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageBlankBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type LandingPageBlankBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageBlankBlocksTutorialsStripStats]
+}
+
+type LandingPageBlankBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageBlankBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageBlankBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageBlankBlocksBlogFeedNewsletter
+}
+
+type LandingPageBlankBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPageBlankBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageBlankBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageBlankBlocksContactInfo {
   email: String
   location: String
+}
+
+type LandingPageBlankBlocksContactForm {
+  submitLabel: String
+}
+
+type LandingPageBlankBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type LandingPageBlankBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type LandingPageBlankBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageBlankBlocksReviewLinksLinks]
+}
+
+type LandingPageBlankBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type LandingPageBlankBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type LandingPageBlankBlocksSocialLinks {
+  links: [LandingPageBlankBlocksSocialLinksLinks]
+}
+
+union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
+
+type LandingPageBlank implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [LandingPageBlankBlocks]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input ContactFilter {
-  pageTitle: StringFilter
-  pageDescription: RichTextFilter
+type LandingPageEventBlocksHomeHero {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type LandingPageEventBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type LandingPageEventBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPageEventBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type LandingPageEventBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPageEventBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type LandingPageEventBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type LandingPageEventBlocksTimeline {
+  number: String
+  label: String
+  events: [LandingPageEventBlocksTimelineEvents]
+}
+
+type LandingPageEventBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type LandingPageEventBlocksStatsRow {
+  stats: [LandingPageEventBlocksStatsRowStats]
+}
+
+type LandingPageEventBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type LandingPageEventBlocksFeatureGrid {
+  heading: String
+  items: [LandingPageEventBlocksFeatureGridItems]
+}
+
+type LandingPageEventBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type LandingPageEventBlocksCardRow {
+  number: String
+  label: String
+  cards: [LandingPageEventBlocksCardRowCards]
+}
+
+type LandingPageEventBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type LandingPageEventBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [LandingPageEventBlocksPillarsItems]
+}
+
+type LandingPageEventBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPageEventBlocksImageGallery {
+  heading: String
+  images: [LandingPageEventBlocksImageGalleryImages]
+}
+
+type LandingPageEventBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPageEventBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type LandingPageEventBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageEventBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageEventBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type LandingPageEventBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type LandingPageEventBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageEventBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageEventBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageEventBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type LandingPageEventBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageEventBlocksTutorialsStripStats]
+}
+
+type LandingPageEventBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageEventBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageEventBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageEventBlocksBlogFeedNewsletter
+}
+
+type LandingPageEventBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPageEventBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageEventBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageEventBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type LandingPageEventBlocksContactForm {
+  submitLabel: String
+}
+
+type LandingPageEventBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type LandingPageEventBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type LandingPageEventBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageEventBlocksReviewLinksLinks]
+}
+
+type LandingPageEventBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type LandingPageEventBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type LandingPageEventBlocksSocialLinks {
+  links: [LandingPageEventBlocksSocialLinksLinks]
+}
+
+union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
+
+type LandingPageEvent implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [LandingPageEventBlocks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+type LandingPagePromoBlocksHomeHero {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type LandingPagePromoBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type LandingPagePromoBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPagePromoBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type LandingPagePromoBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPagePromoBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type LandingPagePromoBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type LandingPagePromoBlocksTimeline {
+  number: String
+  label: String
+  events: [LandingPagePromoBlocksTimelineEvents]
+}
+
+type LandingPagePromoBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type LandingPagePromoBlocksStatsRow {
+  stats: [LandingPagePromoBlocksStatsRowStats]
+}
+
+type LandingPagePromoBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type LandingPagePromoBlocksFeatureGrid {
+  heading: String
+  items: [LandingPagePromoBlocksFeatureGridItems]
+}
+
+type LandingPagePromoBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type LandingPagePromoBlocksCardRow {
+  number: String
+  label: String
+  cards: [LandingPagePromoBlocksCardRowCards]
+}
+
+type LandingPagePromoBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type LandingPagePromoBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [LandingPagePromoBlocksPillarsItems]
+}
+
+type LandingPagePromoBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPagePromoBlocksImageGallery {
+  heading: String
+  images: [LandingPagePromoBlocksImageGalleryImages]
+}
+
+type LandingPagePromoBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPagePromoBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type LandingPagePromoBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPagePromoBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPagePromoBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type LandingPagePromoBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type LandingPagePromoBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPagePromoBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPagePromoBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPagePromoBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type LandingPagePromoBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPagePromoBlocksTutorialsStripStats]
+}
+
+type LandingPagePromoBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPagePromoBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPagePromoBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPagePromoBlocksBlogFeedNewsletter
+}
+
+type LandingPagePromoBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPagePromoBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPagePromoBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPagePromoBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type LandingPagePromoBlocksContactForm {
+  submitLabel: String
+}
+
+type LandingPagePromoBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type LandingPagePromoBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type LandingPagePromoBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPagePromoBlocksReviewLinksLinks]
+}
+
+type LandingPagePromoBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type LandingPagePromoBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type LandingPagePromoBlocksSocialLinks {
+  links: [LandingPagePromoBlocksSocialLinksLinks]
+}
+
+union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
+
+type LandingPagePromo implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [LandingPagePromoBlocks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+type LandingPageInfoBlocksHomeHero {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type LandingPageInfoBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type LandingPageInfoBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPageInfoBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type LandingPageInfoBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPageInfoBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type LandingPageInfoBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type LandingPageInfoBlocksTimeline {
+  number: String
+  label: String
+  events: [LandingPageInfoBlocksTimelineEvents]
+}
+
+type LandingPageInfoBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type LandingPageInfoBlocksStatsRow {
+  stats: [LandingPageInfoBlocksStatsRowStats]
+}
+
+type LandingPageInfoBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type LandingPageInfoBlocksFeatureGrid {
+  heading: String
+  items: [LandingPageInfoBlocksFeatureGridItems]
+}
+
+type LandingPageInfoBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type LandingPageInfoBlocksCardRow {
+  number: String
+  label: String
+  cards: [LandingPageInfoBlocksCardRowCards]
+}
+
+type LandingPageInfoBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type LandingPageInfoBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [LandingPageInfoBlocksPillarsItems]
+}
+
+type LandingPageInfoBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPageInfoBlocksImageGallery {
+  heading: String
+  images: [LandingPageInfoBlocksImageGalleryImages]
+}
+
+type LandingPageInfoBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPageInfoBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type LandingPageInfoBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageInfoBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageInfoBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type LandingPageInfoBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type LandingPageInfoBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageInfoBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageInfoBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageInfoBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type LandingPageInfoBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageInfoBlocksTutorialsStripStats]
+}
+
+type LandingPageInfoBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageInfoBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageInfoBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageInfoBlocksBlogFeedNewsletter
+}
+
+type LandingPageInfoBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPageInfoBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageInfoBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageInfoBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type LandingPageInfoBlocksContactForm {
+  submitLabel: String
+}
+
+type LandingPageInfoBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type LandingPageInfoBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type LandingPageInfoBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageInfoBlocksReviewLinksLinks]
+}
+
+type LandingPageInfoBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type LandingPageInfoBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type LandingPageInfoBlocksSocialLinks {
+  links: [LandingPageInfoBlocksSocialLinksLinks]
+}
+
+union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
+
+type LandingPageInfo implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [LandingPageInfoBlocks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+type LandingPageLinkInBioBlocksHomeHero {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+type LandingPageLinkInBioBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+type LandingPageLinkInBioBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+type LandingPageLinkInBioBlocksPageHeader {
+  heading: String
+  description: JSON
+}
+
+type LandingPageLinkInBioBlocksText {
+  heading: String
+  body: JSON
+}
+
+type LandingPageLinkInBioBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+type LandingPageLinkInBioBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+}
+
+type LandingPageLinkInBioBlocksTimeline {
+  number: String
+  label: String
+  events: [LandingPageLinkInBioBlocksTimelineEvents]
+}
+
+type LandingPageLinkInBioBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type LandingPageLinkInBioBlocksStatsRow {
+  stats: [LandingPageLinkInBioBlocksStatsRowStats]
+}
+
+type LandingPageLinkInBioBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type LandingPageLinkInBioBlocksFeatureGrid {
+  heading: String
+  items: [LandingPageLinkInBioBlocksFeatureGridItems]
+}
+
+type LandingPageLinkInBioBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+type LandingPageLinkInBioBlocksCardRow {
+  number: String
+  label: String
+  cards: [LandingPageLinkInBioBlocksCardRowCards]
+}
+
+type LandingPageLinkInBioBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type LandingPageLinkInBioBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [LandingPageLinkInBioBlocksPillarsItems]
+}
+
+type LandingPageLinkInBioBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type LandingPageLinkInBioBlocksImageGallery {
+  heading: String
+  images: [LandingPageLinkInBioBlocksImageGalleryImages]
+}
+
+type LandingPageLinkInBioBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+}
+
+type LandingPageLinkInBioBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type LandingPageLinkInBioBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageLinkInBioBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageLinkInBioBlocksFeaturedRelease {
+  eyebrow: String
+  title: String!
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type LandingPageLinkInBioBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+type LandingPageLinkInBioBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageLinkInBioBlocksGalleryGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageLinkInBioBlocksDownloadsGrid {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type LandingPageLinkInBioBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type LandingPageLinkInBioBlocksTutorialsStrip {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageLinkInBioBlocksTutorialsStripStats]
+}
+
+type LandingPageLinkInBioBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageLinkInBioBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageLinkInBioBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageLinkInBioBlocksBlogFeedNewsletter
+}
+
+type LandingPageLinkInBioBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+type LandingPageLinkInBioBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+type LandingPageLinkInBioBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type LandingPageLinkInBioBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type LandingPageLinkInBioBlocksContactForm {
+  submitLabel: String
+}
+
+type LandingPageLinkInBioBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+type LandingPageLinkInBioBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type LandingPageLinkInBioBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageLinkInBioBlocksReviewLinksLinks]
+}
+
+type LandingPageLinkInBioBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type LandingPageLinkInBioBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type LandingPageLinkInBioBlocksSocialLinks {
+  links: [LandingPageLinkInBioBlocksSocialLinksLinks]
+}
+
+union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
+
+type LandingPageLinkInBio implements Node & Document {
+  title: String!
+  layout: String
+  blocks: [LandingPageLinkInBioBlocks]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union LandingPage = LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
+
+input LandingPageBlankBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+}
+
+input LandingPageBlankBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+}
+
+input LandingPageBlankBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPageBlankBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageBlankBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPageBlankBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
+}
+
+input LandingPageBlankBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPageBlankBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: LandingPageBlankBlocksTimelineEventsFilter
+}
+
+input LandingPageBlankBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageBlankBlocksStatsRowFilter {
+  stats: LandingPageBlankBlocksStatsRowStatsFilter
+}
+
+input LandingPageBlankBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageBlankBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPageBlankBlocksFeatureGridItemsFilter
+}
+
+input LandingPageBlankBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input LandingPageBlankBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: LandingPageBlankBlocksCardRowCardsFilter
+}
+
+input LandingPageBlankBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input LandingPageBlankBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: LandingPageBlankBlocksPillarsItemsFilter
+}
+
+input LandingPageBlankBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPageBlankBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPageBlankBlocksImageGalleryImagesFilter
+}
+
+input LandingPageBlankBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input LandingPageBlankBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageBlankBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: LandingPageBlankBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageBlankBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input LandingPageBlankBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+}
+
+input LandingPageBlankBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageBlankBlocksGalleryGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageBlankBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageBlankBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageBlankBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: LandingPageBlankBlocksTutorialsStripStatsFilter
+}
+
+input LandingPageBlankBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageBlankBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageBlankBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: LandingPageBlankBlocksBlogFeedNewsletterFilter
+}
+
+input LandingPageBlankBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPageBlankBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageBlankBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageBlankBlocksContactInfoFilter {
   email: StringFilter
   location: StringFilter
 }
 
-type ContactConnectionEdges {
-  cursor: String!
-  node: Contact
+input LandingPageBlankBlocksContactFormFilter {
+  submitLabel: StringFilter
 }
 
-type ContactConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [ContactConnectionEdges]
+input LandingPageBlankBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  ctaLabel: StringFilter
+  href: StringFilter
 }
 
-type Shop implements Node & Document {
-  pageTitle: String
-  pageDescription: JSON
-  emptyHeading: String
-  emptyDescription: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
+input LandingPageBlankBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
 }
 
-input ShopFilter {
-  pageTitle: StringFilter
-  pageDescription: RichTextFilter
-  emptyHeading: StringFilter
-  emptyDescription: StringFilter
+input LandingPageBlankBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: LandingPageBlankBlocksReviewLinksLinksFilter
 }
 
-type ShopConnectionEdges {
-  cursor: String!
-  node: Shop
+input LandingPageBlankBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
 }
 
-type ShopConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [ShopConnectionEdges]
+input LandingPageBlankBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
 }
 
-type Gallery implements Node & Document {
-  pageTitle: String
-  pageDescription: JSON
-  emptyHeading: String
-  emptyDescription: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
+input LandingPageBlankBlocksSocialLinksFilter {
+  links: LandingPageBlankBlocksSocialLinksLinksFilter
 }
 
-input GalleryFilter {
-  pageTitle: StringFilter
-  pageDescription: RichTextFilter
-  emptyHeading: StringFilter
-  emptyDescription: StringFilter
+input LandingPageBlankBlocksFilter {
+  homeHero: LandingPageBlankBlocksHomeHeroFilter
+  aboutHero: LandingPageBlankBlocksAboutHeroFilter
+  hero: LandingPageBlankBlocksHeroFilter
+  pageHeader: LandingPageBlankBlocksPageHeaderFilter
+  text: LandingPageBlankBlocksTextFilter
+  story: LandingPageBlankBlocksStoryFilter
+  timeline: LandingPageBlankBlocksTimelineFilter
+  statsRow: LandingPageBlankBlocksStatsRowFilter
+  featureGrid: LandingPageBlankBlocksFeatureGridFilter
+  cardRow: LandingPageBlankBlocksCardRowFilter
+  pillars: LandingPageBlankBlocksPillarsFilter
+  imageGallery: LandingPageBlankBlocksImageGalleryFilter
+  videoEmbed: LandingPageBlankBlocksVideoEmbedFilter
+  featuredBook: LandingPageBlankBlocksFeaturedBookFilter
+  featuredRelease: LandingPageBlankBlocksFeaturedReleaseFilter
+  productStrip: LandingPageBlankBlocksProductStripFilter
+  shopCatalog: LandingPageBlankBlocksShopCatalogFilter
+  galleryGrid: LandingPageBlankBlocksGalleryGridFilter
+  downloadsGrid: LandingPageBlankBlocksDownloadsGridFilter
+  tutorialsStrip: LandingPageBlankBlocksTutorialsStripFilter
+  classesPitch: LandingPageBlankBlocksClassesPitchFilter
+  blogFeed: LandingPageBlankBlocksBlogFeedFilter
+  ctaBand: LandingPageBlankBlocksCtaBandFilter
+  bigCta: LandingPageBlankBlocksBigCtaFilter
+  newsletterSignup: LandingPageBlankBlocksNewsletterSignupFilter
+  contactInfo: LandingPageBlankBlocksContactInfoFilter
+  contactForm: LandingPageBlankBlocksContactFormFilter
+  kofiSupport: LandingPageBlankBlocksKofiSupportFilter
+  reviewLinks: LandingPageBlankBlocksReviewLinksFilter
+  marquee: LandingPageBlankBlocksMarqueeFilter
+  socialLinks: LandingPageBlankBlocksSocialLinksFilter
 }
 
-type GalleryConnectionEdges {
-  cursor: String!
-  node: Gallery
+input LandingPageBlankFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: LandingPageBlankBlocksFilter
 }
 
-type GalleryConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [GalleryConnectionEdges]
+input LandingPageEventBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
 }
 
-type Tutorials implements Node & Document {
-  pageTitle: String
-  pageDescription: JSON
-  subscribeLabel: String
-  youtubeUrl: String
-  emptyHeading: String
-  emptyDescription: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
+input LandingPageEventBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
 }
 
-input TutorialsFilter {
-  pageTitle: StringFilter
-  pageDescription: RichTextFilter
-  subscribeLabel: StringFilter
+input LandingPageEventBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPageEventBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageEventBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPageEventBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
+}
+
+input LandingPageEventBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPageEventBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: LandingPageEventBlocksTimelineEventsFilter
+}
+
+input LandingPageEventBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageEventBlocksStatsRowFilter {
+  stats: LandingPageEventBlocksStatsRowStatsFilter
+}
+
+input LandingPageEventBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageEventBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPageEventBlocksFeatureGridItemsFilter
+}
+
+input LandingPageEventBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input LandingPageEventBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: LandingPageEventBlocksCardRowCardsFilter
+}
+
+input LandingPageEventBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input LandingPageEventBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: LandingPageEventBlocksPillarsItemsFilter
+}
+
+input LandingPageEventBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPageEventBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPageEventBlocksImageGalleryImagesFilter
+}
+
+input LandingPageEventBlocksVideoEmbedFilter {
+  heading: StringFilter
   youtubeUrl: StringFilter
+}
+
+input LandingPageEventBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageEventBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: LandingPageEventBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageEventBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input LandingPageEventBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+}
+
+input LandingPageEventBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
 }
 
-type TutorialsConnectionEdges {
-  cursor: String!
-  node: Tutorials
-}
-
-type TutorialsConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [TutorialsConnectionEdges]
-}
-
-type Downloads implements Node & Document {
-  pageTitle: String
-  pageDescription: JSON
-  emptyHeading: String
-  emptyDescription: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input DownloadsFilter {
-  pageTitle: StringFilter
-  pageDescription: RichTextFilter
+input LandingPageEventBlocksGalleryGridFilter {
   emptyHeading: StringFilter
   emptyDescription: StringFilter
 }
 
-type DownloadsConnectionEdges {
-  cursor: String!
-  node: Downloads
+input LandingPageEventBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
 }
 
-type DownloadsConnection implements Connection {
+input LandingPageEventBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageEventBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: LandingPageEventBlocksTutorialsStripStatsFilter
+}
+
+input LandingPageEventBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageEventBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageEventBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: LandingPageEventBlocksBlogFeedNewsletterFilter
+}
+
+input LandingPageEventBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPageEventBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageEventBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageEventBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input LandingPageEventBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input LandingPageEventBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+}
+
+input LandingPageEventBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input LandingPageEventBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: LandingPageEventBlocksReviewLinksLinksFilter
+}
+
+input LandingPageEventBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input LandingPageEventBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input LandingPageEventBlocksSocialLinksFilter {
+  links: LandingPageEventBlocksSocialLinksLinksFilter
+}
+
+input LandingPageEventBlocksFilter {
+  homeHero: LandingPageEventBlocksHomeHeroFilter
+  aboutHero: LandingPageEventBlocksAboutHeroFilter
+  hero: LandingPageEventBlocksHeroFilter
+  pageHeader: LandingPageEventBlocksPageHeaderFilter
+  text: LandingPageEventBlocksTextFilter
+  story: LandingPageEventBlocksStoryFilter
+  timeline: LandingPageEventBlocksTimelineFilter
+  statsRow: LandingPageEventBlocksStatsRowFilter
+  featureGrid: LandingPageEventBlocksFeatureGridFilter
+  cardRow: LandingPageEventBlocksCardRowFilter
+  pillars: LandingPageEventBlocksPillarsFilter
+  imageGallery: LandingPageEventBlocksImageGalleryFilter
+  videoEmbed: LandingPageEventBlocksVideoEmbedFilter
+  featuredBook: LandingPageEventBlocksFeaturedBookFilter
+  featuredRelease: LandingPageEventBlocksFeaturedReleaseFilter
+  productStrip: LandingPageEventBlocksProductStripFilter
+  shopCatalog: LandingPageEventBlocksShopCatalogFilter
+  galleryGrid: LandingPageEventBlocksGalleryGridFilter
+  downloadsGrid: LandingPageEventBlocksDownloadsGridFilter
+  tutorialsStrip: LandingPageEventBlocksTutorialsStripFilter
+  classesPitch: LandingPageEventBlocksClassesPitchFilter
+  blogFeed: LandingPageEventBlocksBlogFeedFilter
+  ctaBand: LandingPageEventBlocksCtaBandFilter
+  bigCta: LandingPageEventBlocksBigCtaFilter
+  newsletterSignup: LandingPageEventBlocksNewsletterSignupFilter
+  contactInfo: LandingPageEventBlocksContactInfoFilter
+  contactForm: LandingPageEventBlocksContactFormFilter
+  kofiSupport: LandingPageEventBlocksKofiSupportFilter
+  reviewLinks: LandingPageEventBlocksReviewLinksFilter
+  marquee: LandingPageEventBlocksMarqueeFilter
+  socialLinks: LandingPageEventBlocksSocialLinksFilter
+}
+
+input LandingPageEventFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: LandingPageEventBlocksFilter
+}
+
+input LandingPagePromoBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+}
+
+input LandingPagePromoBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+}
+
+input LandingPagePromoBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPagePromoBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPagePromoBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPagePromoBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
+}
+
+input LandingPagePromoBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPagePromoBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: LandingPagePromoBlocksTimelineEventsFilter
+}
+
+input LandingPagePromoBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPagePromoBlocksStatsRowFilter {
+  stats: LandingPagePromoBlocksStatsRowStatsFilter
+}
+
+input LandingPagePromoBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPagePromoBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPagePromoBlocksFeatureGridItemsFilter
+}
+
+input LandingPagePromoBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input LandingPagePromoBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: LandingPagePromoBlocksCardRowCardsFilter
+}
+
+input LandingPagePromoBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input LandingPagePromoBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: LandingPagePromoBlocksPillarsItemsFilter
+}
+
+input LandingPagePromoBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPagePromoBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPagePromoBlocksImageGalleryImagesFilter
+}
+
+input LandingPagePromoBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input LandingPagePromoBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPagePromoBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: LandingPagePromoBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPagePromoBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input LandingPagePromoBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+}
+
+input LandingPagePromoBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPagePromoBlocksGalleryGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPagePromoBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPagePromoBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPagePromoBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: LandingPagePromoBlocksTutorialsStripStatsFilter
+}
+
+input LandingPagePromoBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPagePromoBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPagePromoBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: LandingPagePromoBlocksBlogFeedNewsletterFilter
+}
+
+input LandingPagePromoBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPagePromoBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPagePromoBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPagePromoBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input LandingPagePromoBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input LandingPagePromoBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+}
+
+input LandingPagePromoBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input LandingPagePromoBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: LandingPagePromoBlocksReviewLinksLinksFilter
+}
+
+input LandingPagePromoBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input LandingPagePromoBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input LandingPagePromoBlocksSocialLinksFilter {
+  links: LandingPagePromoBlocksSocialLinksLinksFilter
+}
+
+input LandingPagePromoBlocksFilter {
+  homeHero: LandingPagePromoBlocksHomeHeroFilter
+  aboutHero: LandingPagePromoBlocksAboutHeroFilter
+  hero: LandingPagePromoBlocksHeroFilter
+  pageHeader: LandingPagePromoBlocksPageHeaderFilter
+  text: LandingPagePromoBlocksTextFilter
+  story: LandingPagePromoBlocksStoryFilter
+  timeline: LandingPagePromoBlocksTimelineFilter
+  statsRow: LandingPagePromoBlocksStatsRowFilter
+  featureGrid: LandingPagePromoBlocksFeatureGridFilter
+  cardRow: LandingPagePromoBlocksCardRowFilter
+  pillars: LandingPagePromoBlocksPillarsFilter
+  imageGallery: LandingPagePromoBlocksImageGalleryFilter
+  videoEmbed: LandingPagePromoBlocksVideoEmbedFilter
+  featuredBook: LandingPagePromoBlocksFeaturedBookFilter
+  featuredRelease: LandingPagePromoBlocksFeaturedReleaseFilter
+  productStrip: LandingPagePromoBlocksProductStripFilter
+  shopCatalog: LandingPagePromoBlocksShopCatalogFilter
+  galleryGrid: LandingPagePromoBlocksGalleryGridFilter
+  downloadsGrid: LandingPagePromoBlocksDownloadsGridFilter
+  tutorialsStrip: LandingPagePromoBlocksTutorialsStripFilter
+  classesPitch: LandingPagePromoBlocksClassesPitchFilter
+  blogFeed: LandingPagePromoBlocksBlogFeedFilter
+  ctaBand: LandingPagePromoBlocksCtaBandFilter
+  bigCta: LandingPagePromoBlocksBigCtaFilter
+  newsletterSignup: LandingPagePromoBlocksNewsletterSignupFilter
+  contactInfo: LandingPagePromoBlocksContactInfoFilter
+  contactForm: LandingPagePromoBlocksContactFormFilter
+  kofiSupport: LandingPagePromoBlocksKofiSupportFilter
+  reviewLinks: LandingPagePromoBlocksReviewLinksFilter
+  marquee: LandingPagePromoBlocksMarqueeFilter
+  socialLinks: LandingPagePromoBlocksSocialLinksFilter
+}
+
+input LandingPagePromoFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: LandingPagePromoBlocksFilter
+}
+
+input LandingPageInfoBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+}
+
+input LandingPageInfoBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+}
+
+input LandingPageInfoBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPageInfoBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageInfoBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPageInfoBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
+}
+
+input LandingPageInfoBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPageInfoBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: LandingPageInfoBlocksTimelineEventsFilter
+}
+
+input LandingPageInfoBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageInfoBlocksStatsRowFilter {
+  stats: LandingPageInfoBlocksStatsRowStatsFilter
+}
+
+input LandingPageInfoBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageInfoBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPageInfoBlocksFeatureGridItemsFilter
+}
+
+input LandingPageInfoBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input LandingPageInfoBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: LandingPageInfoBlocksCardRowCardsFilter
+}
+
+input LandingPageInfoBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input LandingPageInfoBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: LandingPageInfoBlocksPillarsItemsFilter
+}
+
+input LandingPageInfoBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPageInfoBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPageInfoBlocksImageGalleryImagesFilter
+}
+
+input LandingPageInfoBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input LandingPageInfoBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageInfoBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: LandingPageInfoBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageInfoBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input LandingPageInfoBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+}
+
+input LandingPageInfoBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageInfoBlocksGalleryGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageInfoBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageInfoBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageInfoBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: LandingPageInfoBlocksTutorialsStripStatsFilter
+}
+
+input LandingPageInfoBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageInfoBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageInfoBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: LandingPageInfoBlocksBlogFeedNewsletterFilter
+}
+
+input LandingPageInfoBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPageInfoBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageInfoBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageInfoBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input LandingPageInfoBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input LandingPageInfoBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+}
+
+input LandingPageInfoBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input LandingPageInfoBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: LandingPageInfoBlocksReviewLinksLinksFilter
+}
+
+input LandingPageInfoBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input LandingPageInfoBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input LandingPageInfoBlocksSocialLinksFilter {
+  links: LandingPageInfoBlocksSocialLinksLinksFilter
+}
+
+input LandingPageInfoBlocksFilter {
+  homeHero: LandingPageInfoBlocksHomeHeroFilter
+  aboutHero: LandingPageInfoBlocksAboutHeroFilter
+  hero: LandingPageInfoBlocksHeroFilter
+  pageHeader: LandingPageInfoBlocksPageHeaderFilter
+  text: LandingPageInfoBlocksTextFilter
+  story: LandingPageInfoBlocksStoryFilter
+  timeline: LandingPageInfoBlocksTimelineFilter
+  statsRow: LandingPageInfoBlocksStatsRowFilter
+  featureGrid: LandingPageInfoBlocksFeatureGridFilter
+  cardRow: LandingPageInfoBlocksCardRowFilter
+  pillars: LandingPageInfoBlocksPillarsFilter
+  imageGallery: LandingPageInfoBlocksImageGalleryFilter
+  videoEmbed: LandingPageInfoBlocksVideoEmbedFilter
+  featuredBook: LandingPageInfoBlocksFeaturedBookFilter
+  featuredRelease: LandingPageInfoBlocksFeaturedReleaseFilter
+  productStrip: LandingPageInfoBlocksProductStripFilter
+  shopCatalog: LandingPageInfoBlocksShopCatalogFilter
+  galleryGrid: LandingPageInfoBlocksGalleryGridFilter
+  downloadsGrid: LandingPageInfoBlocksDownloadsGridFilter
+  tutorialsStrip: LandingPageInfoBlocksTutorialsStripFilter
+  classesPitch: LandingPageInfoBlocksClassesPitchFilter
+  blogFeed: LandingPageInfoBlocksBlogFeedFilter
+  ctaBand: LandingPageInfoBlocksCtaBandFilter
+  bigCta: LandingPageInfoBlocksBigCtaFilter
+  newsletterSignup: LandingPageInfoBlocksNewsletterSignupFilter
+  contactInfo: LandingPageInfoBlocksContactInfoFilter
+  contactForm: LandingPageInfoBlocksContactFormFilter
+  kofiSupport: LandingPageInfoBlocksKofiSupportFilter
+  reviewLinks: LandingPageInfoBlocksReviewLinksFilter
+  marquee: LandingPageInfoBlocksMarqueeFilter
+  socialLinks: LandingPageInfoBlocksSocialLinksFilter
+}
+
+input LandingPageInfoFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: LandingPageInfoBlocksFilter
+}
+
+input LandingPageLinkInBioBlocksHomeHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+}
+
+input LandingPageLinkInBioBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: RichTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+}
+
+input LandingPageLinkInBioBlocksHeroFilter {
+  heading: StringFilter
+  subheading: RichTextFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+}
+
+input LandingPageLinkInBioBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageLinkInBioBlocksTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+}
+
+input LandingPageLinkInBioBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: RichTextFilter
+  quote: RichTextFilter
+  paragraph2: RichTextFilter
+  sideCaption: StringFilter
+}
+
+input LandingPageLinkInBioBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input LandingPageLinkInBioBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: LandingPageLinkInBioBlocksTimelineEventsFilter
+}
+
+input LandingPageLinkInBioBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageLinkInBioBlocksStatsRowFilter {
+  stats: LandingPageLinkInBioBlocksStatsRowStatsFilter
+}
+
+input LandingPageLinkInBioBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+}
+
+input LandingPageLinkInBioBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: LandingPageLinkInBioBlocksFeatureGridItemsFilter
+}
+
+input LandingPageLinkInBioBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input LandingPageLinkInBioBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: LandingPageLinkInBioBlocksCardRowCardsFilter
+}
+
+input LandingPageLinkInBioBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input LandingPageLinkInBioBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: LandingPageLinkInBioBlocksPillarsItemsFilter
+}
+
+input LandingPageLinkInBioBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input LandingPageLinkInBioBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: LandingPageLinkInBioBlocksImageGalleryImagesFilter
+}
+
+input LandingPageLinkInBioBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: RichTextFilter
+  stats: LandingPageLinkInBioBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: RichTextFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input LandingPageLinkInBioBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+}
+
+input LandingPageLinkInBioBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: RichTextFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageLinkInBioBlocksGalleryGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsGridFilter {
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input LandingPageLinkInBioBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input LandingPageLinkInBioBlocksTutorialsStripFilter {
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: LandingPageLinkInBioBlocksTutorialsStripStatsFilter
+}
+
+input LandingPageLinkInBioBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageLinkInBioBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageLinkInBioBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: LandingPageLinkInBioBlocksBlogFeedNewsletterFilter
+}
+
+input LandingPageLinkInBioBlocksCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+}
+
+input LandingPageLinkInBioBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+}
+
+input LandingPageLinkInBioBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: RichTextFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input LandingPageLinkInBioBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input LandingPageLinkInBioBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input LandingPageLinkInBioBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+}
+
+input LandingPageLinkInBioBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input LandingPageLinkInBioBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: RichTextFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: LandingPageLinkInBioBlocksReviewLinksLinksFilter
+}
+
+input LandingPageLinkInBioBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input LandingPageLinkInBioBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input LandingPageLinkInBioBlocksSocialLinksFilter {
+  links: LandingPageLinkInBioBlocksSocialLinksLinksFilter
+}
+
+input LandingPageLinkInBioBlocksFilter {
+  homeHero: LandingPageLinkInBioBlocksHomeHeroFilter
+  aboutHero: LandingPageLinkInBioBlocksAboutHeroFilter
+  hero: LandingPageLinkInBioBlocksHeroFilter
+  pageHeader: LandingPageLinkInBioBlocksPageHeaderFilter
+  text: LandingPageLinkInBioBlocksTextFilter
+  story: LandingPageLinkInBioBlocksStoryFilter
+  timeline: LandingPageLinkInBioBlocksTimelineFilter
+  statsRow: LandingPageLinkInBioBlocksStatsRowFilter
+  featureGrid: LandingPageLinkInBioBlocksFeatureGridFilter
+  cardRow: LandingPageLinkInBioBlocksCardRowFilter
+  pillars: LandingPageLinkInBioBlocksPillarsFilter
+  imageGallery: LandingPageLinkInBioBlocksImageGalleryFilter
+  videoEmbed: LandingPageLinkInBioBlocksVideoEmbedFilter
+  featuredBook: LandingPageLinkInBioBlocksFeaturedBookFilter
+  featuredRelease: LandingPageLinkInBioBlocksFeaturedReleaseFilter
+  productStrip: LandingPageLinkInBioBlocksProductStripFilter
+  shopCatalog: LandingPageLinkInBioBlocksShopCatalogFilter
+  galleryGrid: LandingPageLinkInBioBlocksGalleryGridFilter
+  downloadsGrid: LandingPageLinkInBioBlocksDownloadsGridFilter
+  tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripFilter
+  classesPitch: LandingPageLinkInBioBlocksClassesPitchFilter
+  blogFeed: LandingPageLinkInBioBlocksBlogFeedFilter
+  ctaBand: LandingPageLinkInBioBlocksCtaBandFilter
+  bigCta: LandingPageLinkInBioBlocksBigCtaFilter
+  newsletterSignup: LandingPageLinkInBioBlocksNewsletterSignupFilter
+  contactInfo: LandingPageLinkInBioBlocksContactInfoFilter
+  contactForm: LandingPageLinkInBioBlocksContactFormFilter
+  kofiSupport: LandingPageLinkInBioBlocksKofiSupportFilter
+  reviewLinks: LandingPageLinkInBioBlocksReviewLinksFilter
+  marquee: LandingPageLinkInBioBlocksMarqueeFilter
+  socialLinks: LandingPageLinkInBioBlocksSocialLinksFilter
+}
+
+input LandingPageLinkInBioFilter {
+  title: StringFilter
+  layout: StringFilter
+  blocks: LandingPageLinkInBioBlocksFilter
+}
+
+input LandingPageFilter {
+  blank: LandingPageBlankFilter
+  event: LandingPageEventFilter
+  promo: LandingPagePromoFilter
+  info: LandingPageInfoFilter
+  linkInBio: LandingPageLinkInBioFilter
+}
+
+type LandingPageConnectionEdges {
+  cursor: String!
+  node: LandingPage
+}
+
+type LandingPageConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [DownloadsConnectionEdges]
+  edges: [LandingPageConnectionEdges]
 }
 
 type ShopProduct implements Node & Document {
@@ -610,11 +4048,6 @@ input NumberFilter {
   eq: Float
   exists: Boolean
   in: [Float]
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
 }
 
 input DatetimeFilter {
@@ -682,290 +4115,185 @@ type PostConnection implements Connection {
   edges: [PostConnectionEdges]
 }
 
-type LandingPageBlocksHero {
-  heading: String
-  subheading: JSON
-  backgroundImage: String
-  ctaLabel: String
-  ctaLink: String
-}
-
-type LandingPageBlocksText {
-  heading: String
-  body: JSON
-}
-
-type LandingPageBlocksImageGalleryImages {
-  src: String
-  alt: String
-  caption: String
-}
-
-type LandingPageBlocksImageGallery {
-  heading: String
-  images: [LandingPageBlocksImageGalleryImages]
-}
-
-type LandingPageBlocksCtaBand {
-  heading: String
-  description: JSON
-  ctaLabel: String
-  ctaLink: String
-  variant: String
-}
-
-type LandingPageBlocksVideoEmbed {
-  heading: String
-  youtubeUrl: String
-}
-
-type LandingPageBlocksFeatureGridItems {
-  icon: String
-  title: String
-  description: JSON
-}
-
-type LandingPageBlocksFeatureGrid {
-  heading: String
-  items: [LandingPageBlocksFeatureGridItems]
-}
-
-union LandingPageBlocks = LandingPageBlocksHero | LandingPageBlocksText | LandingPageBlocksImageGallery | LandingPageBlocksCtaBand | LandingPageBlocksVideoEmbed | LandingPageBlocksFeatureGrid
-
-type LandingPage implements Node & Document {
-  title: String!
-  blocks: [LandingPageBlocks]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input LandingPageBlocksHeroFilter {
-  heading: StringFilter
-  subheading: RichTextFilter
-  backgroundImage: ImageFilter
-  ctaLabel: StringFilter
-  ctaLink: StringFilter
-}
-
-input LandingPageBlocksTextFilter {
-  heading: StringFilter
-  body: RichTextFilter
-}
-
-input LandingPageBlocksImageGalleryImagesFilter {
-  src: ImageFilter
-  alt: StringFilter
-  caption: StringFilter
-}
-
-input LandingPageBlocksImageGalleryFilter {
-  heading: StringFilter
-  images: LandingPageBlocksImageGalleryImagesFilter
-}
-
-input LandingPageBlocksCtaBandFilter {
-  heading: StringFilter
-  description: RichTextFilter
-  ctaLabel: StringFilter
-  ctaLink: StringFilter
-  variant: StringFilter
-}
-
-input LandingPageBlocksVideoEmbedFilter {
-  heading: StringFilter
-  youtubeUrl: StringFilter
-}
-
-input LandingPageBlocksFeatureGridItemsFilter {
-  icon: StringFilter
-  title: StringFilter
-  description: RichTextFilter
-}
-
-input LandingPageBlocksFeatureGridFilter {
-  heading: StringFilter
-  items: LandingPageBlocksFeatureGridItemsFilter
-}
-
-input LandingPageBlocksFilter {
-  hero: LandingPageBlocksHeroFilter
-  text: LandingPageBlocksTextFilter
-  imageGallery: LandingPageBlocksImageGalleryFilter
-  ctaBand: LandingPageBlocksCtaBandFilter
-  videoEmbed: LandingPageBlocksVideoEmbedFilter
-  featureGrid: LandingPageBlocksFeatureGridFilter
-}
-
-input LandingPageFilter {
-  title: StringFilter
-  blocks: LandingPageBlocksFilter
-}
-
-type LandingPageConnectionEdges {
-  cursor: String!
-  node: LandingPage
-}
-
-type LandingPageConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [LandingPageConnectionEdges]
-}
-
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
-  updateHome(relativePath: String!, params: HomeMutation!): Home!
-  createHome(relativePath: String!, params: HomeMutation!): Home!
-  updateAbout(relativePath: String!, params: AboutMutation!): About!
-  createAbout(relativePath: String!, params: AboutMutation!): About!
-  updateImportantLinks(relativePath: String!, params: ImportantLinksMutation!): ImportantLinks!
-  createImportantLinks(relativePath: String!, params: ImportantLinksMutation!): ImportantLinks!
-  updateContact(relativePath: String!, params: ContactMutation!): Contact!
-  createContact(relativePath: String!, params: ContactMutation!): Contact!
-  updateShop(relativePath: String!, params: ShopMutation!): Shop!
-  createShop(relativePath: String!, params: ShopMutation!): Shop!
-  updateGallery(relativePath: String!, params: GalleryMutation!): Gallery!
-  createGallery(relativePath: String!, params: GalleryMutation!): Gallery!
-  updateTutorials(relativePath: String!, params: TutorialsMutation!): Tutorials!
-  createTutorials(relativePath: String!, params: TutorialsMutation!): Tutorials!
-  updateDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
-  createDownloads(relativePath: String!, params: DownloadsMutation!): Downloads!
+  updatePage(relativePath: String!, params: PageMutation!): Page!
+  createPage(relativePath: String!, params: PageMutation!): Page!
+  updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
+  createLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
   updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   updatePost(relativePath: String!, params: PostMutation!): Post!
   createPost(relativePath: String!, params: PostMutation!): Post!
-  updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
-  createLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
 }
 
 input DocumentUpdateMutation {
-  home: HomeMutation
-  about: AboutMutation
-  importantLinks: ImportantLinksMutation
-  contact: ContactMutation
-  shop: ShopMutation
-  gallery: GalleryMutation
-  tutorials: TutorialsMutation
-  downloads: DownloadsMutation
+  page: PageMutation
+  landingPage: LandingPageMutation
   shopProduct: ShopProductMutation
   post: PostMutation
-  landingPage: LandingPageMutation
   relativePath: String
 }
 
 input DocumentMutation {
-  home: HomeMutation
-  about: AboutMutation
-  importantLinks: ImportantLinksMutation
-  contact: ContactMutation
-  shop: ShopMutation
-  gallery: GalleryMutation
-  tutorials: TutorialsMutation
-  downloads: DownloadsMutation
+  page: PageMutation
+  landingPage: LandingPageMutation
   shopProduct: ShopProductMutation
   post: PostMutation
-  landingPage: LandingPageMutation
 }
 
-input HomeHeroMutation {
-  heading: String
-  subheading: JSON
-  ctaPrimary: String
-  ctaSecondary: String
-  backgroundImage: String
-}
-
-input HomeLatestSectionMutation {
-  heading: String
-  viewAllLabel: String
-}
-
-input HomeFeaturedSectionMutation {
-  heading: String
-  subheading: String
-  viewAllLabel: String
-}
-
-input HomeArtistBannerMutation {
-  badge: String
-  heading: String
-  bio: JSON
-  ctaLabel: String
-  portraitImage: String
-}
-
-input HomeTutorialsSectionMutation {
-  heading: String
-  subheading: String
-  browseAllLabel: String
-}
-
-input HomeClassesSectionMutation {
+input PageBlocksHomeHeroMutation {
   eyebrow: String
   heading: String
   subheading: JSON
-  body: JSON
-  bullets: [String]
-  ctaLabel: String
-  ctaLink: String
-  metaTags: String
-  image: String
-}
-
-input HomeBlogSectionMutation {
-  heading: String
-  subheading: String
-  viewAllLabel: String
-}
-
-input HomeNewsletterSectionMutation {
-  heading: String
-  subheading: JSON
-  placeholderText: String
-  ctaLabel: String
-  privacyNote: String
-}
-
-input HomeBookPromoMutation {
-  heading: String
-  description: JSON
-  ctaLabel: String
-  ctaLink: String
-}
-
-input HomeMutation {
-  hero: HomeHeroMutation
-  latestSection: HomeLatestSectionMutation
-  featuredSection: HomeFeaturedSectionMutation
-  artistBanner: HomeArtistBannerMutation
-  tutorialsSection: HomeTutorialsSectionMutation
-  classesSection: HomeClassesSectionMutation
-  blogSection: HomeBlogSectionMutation
-  newsletterSection: HomeNewsletterSectionMutation
-  bookPromo: HomeBookPromoMutation
-}
-
-input AboutMutation {
-  pageTitle: String
-  portraitImage: String
-  leadText: JSON
-  paragraph1: JSON
-  paragraph2: JSON
-  skill1Label: String
-  skill2Label: String
-  skill3Label: String
   ctaPrimary: String
   ctaPrimaryLink: String
   ctaSecondary: String
   ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
 }
 
-input ImportantLinksFeaturedReleaseMutation {
+input PageBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input PageBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input PageBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input PageBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input PageBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input PageBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input PageBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [PageBlocksTimelineEventsMutation]
+}
+
+input PageBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input PageBlocksStatsRowMutation {
+  stats: [PageBlocksStatsRowStatsMutation]
+}
+
+input PageBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input PageBlocksFeatureGridMutation {
+  heading: String
+  items: [PageBlocksFeatureGridItemsMutation]
+}
+
+input PageBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input PageBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [PageBlocksCardRowCardsMutation]
+}
+
+input PageBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input PageBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [PageBlocksPillarsItemsMutation]
+}
+
+input PageBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PageBlocksImageGalleryMutation {
+  heading: String
+  images: [PageBlocksImageGalleryImagesMutation]
+}
+
+input PageBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input PageBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input PageBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [PageBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input PageBlocksFeaturedReleaseMutation {
   eyebrow: String
   title: String
   description: JSON
@@ -975,69 +4303,1877 @@ input ImportantLinksFeaturedReleaseMutation {
   ctaHref: String
 }
 
-input ImportantLinksReviewsSectionMutation {
+input PageBlocksProductStripMutation {
+  eyebrow: String
   heading: String
-  intro: JSON
-  thankYou: String
-  ctaHeading: String
+  viewAllLabel: String
+  viewAllLink: String
 }
 
-input ImportantLinksReviewLinksMutation {
+input PageBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input PageBlocksGalleryGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input PageBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input PageBlocksTutorialsStripStatsMutation {
+  value: String
   label: String
-  href: String
-  region: String
 }
 
-input ImportantLinksKofiSectionMutation {
+input PageBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [PageBlocksTutorialsStripStatsMutation]
+}
+
+input PageBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input PageBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input PageBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: PageBlocksBlogFeedNewsletterMutation
+}
+
+input PageBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input PageBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input PageBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input PageBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input PageBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input PageBlocksKofiSupportMutation {
   heading: String
   body: JSON
   ctaLabel: String
   href: String
 }
 
-input ImportantLinksMutation {
-  pageTitle: String
-  featuredRelease: ImportantLinksFeaturedReleaseMutation
-  reviewsSection: ImportantLinksReviewsSectionMutation
-  reviewLinks: [ImportantLinksReviewLinksMutation]
-  kofiSection: ImportantLinksKofiSectionMutation
+input PageBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
 }
 
-input ContactMutation {
-  pageTitle: String
-  pageDescription: JSON
+input PageBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [PageBlocksReviewLinksLinksMutation]
+}
+
+input PageBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input PageBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input PageBlocksSocialLinksMutation {
+  links: [PageBlocksSocialLinksLinksMutation]
+}
+
+input PageBlocksMutation {
+  homeHero: PageBlocksHomeHeroMutation
+  aboutHero: PageBlocksAboutHeroMutation
+  hero: PageBlocksHeroMutation
+  pageHeader: PageBlocksPageHeaderMutation
+  text: PageBlocksTextMutation
+  story: PageBlocksStoryMutation
+  timeline: PageBlocksTimelineMutation
+  statsRow: PageBlocksStatsRowMutation
+  featureGrid: PageBlocksFeatureGridMutation
+  cardRow: PageBlocksCardRowMutation
+  pillars: PageBlocksPillarsMutation
+  imageGallery: PageBlocksImageGalleryMutation
+  videoEmbed: PageBlocksVideoEmbedMutation
+  featuredBook: PageBlocksFeaturedBookMutation
+  featuredRelease: PageBlocksFeaturedReleaseMutation
+  productStrip: PageBlocksProductStripMutation
+  shopCatalog: PageBlocksShopCatalogMutation
+  galleryGrid: PageBlocksGalleryGridMutation
+  downloadsGrid: PageBlocksDownloadsGridMutation
+  tutorialsStrip: PageBlocksTutorialsStripMutation
+  classesPitch: PageBlocksClassesPitchMutation
+  blogFeed: PageBlocksBlogFeedMutation
+  ctaBand: PageBlocksCtaBandMutation
+  bigCta: PageBlocksBigCtaMutation
+  newsletterSignup: PageBlocksNewsletterSignupMutation
+  contactInfo: PageBlocksContactInfoMutation
+  contactForm: PageBlocksContactFormMutation
+  kofiSupport: PageBlocksKofiSupportMutation
+  reviewLinks: PageBlocksReviewLinksMutation
+  marquee: PageBlocksMarqueeMutation
+  socialLinks: PageBlocksSocialLinksMutation
+}
+
+input PageMutation {
+  title: String
+  layout: String
+  blocks: [PageBlocksMutation]
+}
+
+input LandingPageBlankBlocksHomeHeroMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+input LandingPageBlankBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input LandingPageBlankBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPageBlankBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input LandingPageBlankBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPageBlankBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input LandingPageBlankBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input LandingPageBlankBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [LandingPageBlankBlocksTimelineEventsMutation]
+}
+
+input LandingPageBlankBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageBlankBlocksStatsRowMutation {
+  stats: [LandingPageBlankBlocksStatsRowStatsMutation]
+}
+
+input LandingPageBlankBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input LandingPageBlankBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPageBlankBlocksFeatureGridItemsMutation]
+}
+
+input LandingPageBlankBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input LandingPageBlankBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [LandingPageBlankBlocksCardRowCardsMutation]
+}
+
+input LandingPageBlankBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input LandingPageBlankBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [LandingPageBlankBlocksPillarsItemsMutation]
+}
+
+input LandingPageBlankBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPageBlankBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPageBlankBlocksImageGalleryImagesMutation]
+}
+
+input LandingPageBlankBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input LandingPageBlankBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageBlankBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageBlankBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageBlankBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input LandingPageBlankBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+input LandingPageBlankBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageBlankBlocksGalleryGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageBlankBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageBlankBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageBlankBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageBlankBlocksTutorialsStripStatsMutation]
+}
+
+input LandingPageBlankBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageBlankBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageBlankBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageBlankBlocksBlogFeedNewsletterMutation
+}
+
+input LandingPageBlankBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPageBlankBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageBlankBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageBlankBlocksContactInfoMutation {
   email: String
   location: String
 }
 
-input ShopMutation {
-  pageTitle: String
-  pageDescription: JSON
-  emptyHeading: String
-  emptyDescription: String
+input LandingPageBlankBlocksContactFormMutation {
+  submitLabel: String
 }
 
-input GalleryMutation {
-  pageTitle: String
-  pageDescription: JSON
-  emptyHeading: String
-  emptyDescription: String
+input LandingPageBlankBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
 }
 
-input TutorialsMutation {
-  pageTitle: String
-  pageDescription: JSON
-  subscribeLabel: String
+input LandingPageBlankBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input LandingPageBlankBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageBlankBlocksReviewLinksLinksMutation]
+}
+
+input LandingPageBlankBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input LandingPageBlankBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input LandingPageBlankBlocksSocialLinksMutation {
+  links: [LandingPageBlankBlocksSocialLinksLinksMutation]
+}
+
+input LandingPageBlankBlocksMutation {
+  homeHero: LandingPageBlankBlocksHomeHeroMutation
+  aboutHero: LandingPageBlankBlocksAboutHeroMutation
+  hero: LandingPageBlankBlocksHeroMutation
+  pageHeader: LandingPageBlankBlocksPageHeaderMutation
+  text: LandingPageBlankBlocksTextMutation
+  story: LandingPageBlankBlocksStoryMutation
+  timeline: LandingPageBlankBlocksTimelineMutation
+  statsRow: LandingPageBlankBlocksStatsRowMutation
+  featureGrid: LandingPageBlankBlocksFeatureGridMutation
+  cardRow: LandingPageBlankBlocksCardRowMutation
+  pillars: LandingPageBlankBlocksPillarsMutation
+  imageGallery: LandingPageBlankBlocksImageGalleryMutation
+  videoEmbed: LandingPageBlankBlocksVideoEmbedMutation
+  featuredBook: LandingPageBlankBlocksFeaturedBookMutation
+  featuredRelease: LandingPageBlankBlocksFeaturedReleaseMutation
+  productStrip: LandingPageBlankBlocksProductStripMutation
+  shopCatalog: LandingPageBlankBlocksShopCatalogMutation
+  galleryGrid: LandingPageBlankBlocksGalleryGridMutation
+  downloadsGrid: LandingPageBlankBlocksDownloadsGridMutation
+  tutorialsStrip: LandingPageBlankBlocksTutorialsStripMutation
+  classesPitch: LandingPageBlankBlocksClassesPitchMutation
+  blogFeed: LandingPageBlankBlocksBlogFeedMutation
+  ctaBand: LandingPageBlankBlocksCtaBandMutation
+  bigCta: LandingPageBlankBlocksBigCtaMutation
+  newsletterSignup: LandingPageBlankBlocksNewsletterSignupMutation
+  contactInfo: LandingPageBlankBlocksContactInfoMutation
+  contactForm: LandingPageBlankBlocksContactFormMutation
+  kofiSupport: LandingPageBlankBlocksKofiSupportMutation
+  reviewLinks: LandingPageBlankBlocksReviewLinksMutation
+  marquee: LandingPageBlankBlocksMarqueeMutation
+  socialLinks: LandingPageBlankBlocksSocialLinksMutation
+}
+
+input LandingPageBlankMutation {
+  title: String
+  layout: String
+  blocks: [LandingPageBlankBlocksMutation]
+}
+
+input LandingPageEventBlocksHomeHeroMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+input LandingPageEventBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input LandingPageEventBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPageEventBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input LandingPageEventBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPageEventBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input LandingPageEventBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input LandingPageEventBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [LandingPageEventBlocksTimelineEventsMutation]
+}
+
+input LandingPageEventBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageEventBlocksStatsRowMutation {
+  stats: [LandingPageEventBlocksStatsRowStatsMutation]
+}
+
+input LandingPageEventBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input LandingPageEventBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPageEventBlocksFeatureGridItemsMutation]
+}
+
+input LandingPageEventBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input LandingPageEventBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [LandingPageEventBlocksCardRowCardsMutation]
+}
+
+input LandingPageEventBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input LandingPageEventBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [LandingPageEventBlocksPillarsItemsMutation]
+}
+
+input LandingPageEventBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPageEventBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPageEventBlocksImageGalleryImagesMutation]
+}
+
+input LandingPageEventBlocksVideoEmbedMutation {
+  heading: String
   youtubeUrl: String
+}
+
+input LandingPageEventBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageEventBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageEventBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageEventBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input LandingPageEventBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+input LandingPageEventBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
   emptyHeading: String
   emptyDescription: String
 }
 
-input DownloadsMutation {
-  pageTitle: String
-  pageDescription: JSON
+input LandingPageEventBlocksGalleryGridMutation {
   emptyHeading: String
   emptyDescription: String
+}
+
+input LandingPageEventBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageEventBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageEventBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageEventBlocksTutorialsStripStatsMutation]
+}
+
+input LandingPageEventBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageEventBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageEventBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageEventBlocksBlogFeedNewsletterMutation
+}
+
+input LandingPageEventBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPageEventBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageEventBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageEventBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input LandingPageEventBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input LandingPageEventBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+input LandingPageEventBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input LandingPageEventBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageEventBlocksReviewLinksLinksMutation]
+}
+
+input LandingPageEventBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input LandingPageEventBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input LandingPageEventBlocksSocialLinksMutation {
+  links: [LandingPageEventBlocksSocialLinksLinksMutation]
+}
+
+input LandingPageEventBlocksMutation {
+  homeHero: LandingPageEventBlocksHomeHeroMutation
+  aboutHero: LandingPageEventBlocksAboutHeroMutation
+  hero: LandingPageEventBlocksHeroMutation
+  pageHeader: LandingPageEventBlocksPageHeaderMutation
+  text: LandingPageEventBlocksTextMutation
+  story: LandingPageEventBlocksStoryMutation
+  timeline: LandingPageEventBlocksTimelineMutation
+  statsRow: LandingPageEventBlocksStatsRowMutation
+  featureGrid: LandingPageEventBlocksFeatureGridMutation
+  cardRow: LandingPageEventBlocksCardRowMutation
+  pillars: LandingPageEventBlocksPillarsMutation
+  imageGallery: LandingPageEventBlocksImageGalleryMutation
+  videoEmbed: LandingPageEventBlocksVideoEmbedMutation
+  featuredBook: LandingPageEventBlocksFeaturedBookMutation
+  featuredRelease: LandingPageEventBlocksFeaturedReleaseMutation
+  productStrip: LandingPageEventBlocksProductStripMutation
+  shopCatalog: LandingPageEventBlocksShopCatalogMutation
+  galleryGrid: LandingPageEventBlocksGalleryGridMutation
+  downloadsGrid: LandingPageEventBlocksDownloadsGridMutation
+  tutorialsStrip: LandingPageEventBlocksTutorialsStripMutation
+  classesPitch: LandingPageEventBlocksClassesPitchMutation
+  blogFeed: LandingPageEventBlocksBlogFeedMutation
+  ctaBand: LandingPageEventBlocksCtaBandMutation
+  bigCta: LandingPageEventBlocksBigCtaMutation
+  newsletterSignup: LandingPageEventBlocksNewsletterSignupMutation
+  contactInfo: LandingPageEventBlocksContactInfoMutation
+  contactForm: LandingPageEventBlocksContactFormMutation
+  kofiSupport: LandingPageEventBlocksKofiSupportMutation
+  reviewLinks: LandingPageEventBlocksReviewLinksMutation
+  marquee: LandingPageEventBlocksMarqueeMutation
+  socialLinks: LandingPageEventBlocksSocialLinksMutation
+}
+
+input LandingPageEventMutation {
+  title: String
+  layout: String
+  blocks: [LandingPageEventBlocksMutation]
+}
+
+input LandingPagePromoBlocksHomeHeroMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+input LandingPagePromoBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input LandingPagePromoBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPagePromoBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input LandingPagePromoBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPagePromoBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input LandingPagePromoBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input LandingPagePromoBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [LandingPagePromoBlocksTimelineEventsMutation]
+}
+
+input LandingPagePromoBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPagePromoBlocksStatsRowMutation {
+  stats: [LandingPagePromoBlocksStatsRowStatsMutation]
+}
+
+input LandingPagePromoBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input LandingPagePromoBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPagePromoBlocksFeatureGridItemsMutation]
+}
+
+input LandingPagePromoBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input LandingPagePromoBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [LandingPagePromoBlocksCardRowCardsMutation]
+}
+
+input LandingPagePromoBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input LandingPagePromoBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [LandingPagePromoBlocksPillarsItemsMutation]
+}
+
+input LandingPagePromoBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPagePromoBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPagePromoBlocksImageGalleryImagesMutation]
+}
+
+input LandingPagePromoBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input LandingPagePromoBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPagePromoBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPagePromoBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPagePromoBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input LandingPagePromoBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+input LandingPagePromoBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPagePromoBlocksGalleryGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPagePromoBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPagePromoBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPagePromoBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPagePromoBlocksTutorialsStripStatsMutation]
+}
+
+input LandingPagePromoBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPagePromoBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPagePromoBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPagePromoBlocksBlogFeedNewsletterMutation
+}
+
+input LandingPagePromoBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPagePromoBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPagePromoBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPagePromoBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input LandingPagePromoBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input LandingPagePromoBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+input LandingPagePromoBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input LandingPagePromoBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPagePromoBlocksReviewLinksLinksMutation]
+}
+
+input LandingPagePromoBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input LandingPagePromoBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input LandingPagePromoBlocksSocialLinksMutation {
+  links: [LandingPagePromoBlocksSocialLinksLinksMutation]
+}
+
+input LandingPagePromoBlocksMutation {
+  homeHero: LandingPagePromoBlocksHomeHeroMutation
+  aboutHero: LandingPagePromoBlocksAboutHeroMutation
+  hero: LandingPagePromoBlocksHeroMutation
+  pageHeader: LandingPagePromoBlocksPageHeaderMutation
+  text: LandingPagePromoBlocksTextMutation
+  story: LandingPagePromoBlocksStoryMutation
+  timeline: LandingPagePromoBlocksTimelineMutation
+  statsRow: LandingPagePromoBlocksStatsRowMutation
+  featureGrid: LandingPagePromoBlocksFeatureGridMutation
+  cardRow: LandingPagePromoBlocksCardRowMutation
+  pillars: LandingPagePromoBlocksPillarsMutation
+  imageGallery: LandingPagePromoBlocksImageGalleryMutation
+  videoEmbed: LandingPagePromoBlocksVideoEmbedMutation
+  featuredBook: LandingPagePromoBlocksFeaturedBookMutation
+  featuredRelease: LandingPagePromoBlocksFeaturedReleaseMutation
+  productStrip: LandingPagePromoBlocksProductStripMutation
+  shopCatalog: LandingPagePromoBlocksShopCatalogMutation
+  galleryGrid: LandingPagePromoBlocksGalleryGridMutation
+  downloadsGrid: LandingPagePromoBlocksDownloadsGridMutation
+  tutorialsStrip: LandingPagePromoBlocksTutorialsStripMutation
+  classesPitch: LandingPagePromoBlocksClassesPitchMutation
+  blogFeed: LandingPagePromoBlocksBlogFeedMutation
+  ctaBand: LandingPagePromoBlocksCtaBandMutation
+  bigCta: LandingPagePromoBlocksBigCtaMutation
+  newsletterSignup: LandingPagePromoBlocksNewsletterSignupMutation
+  contactInfo: LandingPagePromoBlocksContactInfoMutation
+  contactForm: LandingPagePromoBlocksContactFormMutation
+  kofiSupport: LandingPagePromoBlocksKofiSupportMutation
+  reviewLinks: LandingPagePromoBlocksReviewLinksMutation
+  marquee: LandingPagePromoBlocksMarqueeMutation
+  socialLinks: LandingPagePromoBlocksSocialLinksMutation
+}
+
+input LandingPagePromoMutation {
+  title: String
+  layout: String
+  blocks: [LandingPagePromoBlocksMutation]
+}
+
+input LandingPageInfoBlocksHomeHeroMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+input LandingPageInfoBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input LandingPageInfoBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPageInfoBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input LandingPageInfoBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPageInfoBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input LandingPageInfoBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input LandingPageInfoBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [LandingPageInfoBlocksTimelineEventsMutation]
+}
+
+input LandingPageInfoBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageInfoBlocksStatsRowMutation {
+  stats: [LandingPageInfoBlocksStatsRowStatsMutation]
+}
+
+input LandingPageInfoBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input LandingPageInfoBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPageInfoBlocksFeatureGridItemsMutation]
+}
+
+input LandingPageInfoBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input LandingPageInfoBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [LandingPageInfoBlocksCardRowCardsMutation]
+}
+
+input LandingPageInfoBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input LandingPageInfoBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [LandingPageInfoBlocksPillarsItemsMutation]
+}
+
+input LandingPageInfoBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPageInfoBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPageInfoBlocksImageGalleryImagesMutation]
+}
+
+input LandingPageInfoBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input LandingPageInfoBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageInfoBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageInfoBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageInfoBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input LandingPageInfoBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+input LandingPageInfoBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageInfoBlocksGalleryGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageInfoBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageInfoBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageInfoBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageInfoBlocksTutorialsStripStatsMutation]
+}
+
+input LandingPageInfoBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageInfoBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageInfoBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageInfoBlocksBlogFeedNewsletterMutation
+}
+
+input LandingPageInfoBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPageInfoBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageInfoBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageInfoBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input LandingPageInfoBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input LandingPageInfoBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+input LandingPageInfoBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input LandingPageInfoBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageInfoBlocksReviewLinksLinksMutation]
+}
+
+input LandingPageInfoBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input LandingPageInfoBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input LandingPageInfoBlocksSocialLinksMutation {
+  links: [LandingPageInfoBlocksSocialLinksLinksMutation]
+}
+
+input LandingPageInfoBlocksMutation {
+  homeHero: LandingPageInfoBlocksHomeHeroMutation
+  aboutHero: LandingPageInfoBlocksAboutHeroMutation
+  hero: LandingPageInfoBlocksHeroMutation
+  pageHeader: LandingPageInfoBlocksPageHeaderMutation
+  text: LandingPageInfoBlocksTextMutation
+  story: LandingPageInfoBlocksStoryMutation
+  timeline: LandingPageInfoBlocksTimelineMutation
+  statsRow: LandingPageInfoBlocksStatsRowMutation
+  featureGrid: LandingPageInfoBlocksFeatureGridMutation
+  cardRow: LandingPageInfoBlocksCardRowMutation
+  pillars: LandingPageInfoBlocksPillarsMutation
+  imageGallery: LandingPageInfoBlocksImageGalleryMutation
+  videoEmbed: LandingPageInfoBlocksVideoEmbedMutation
+  featuredBook: LandingPageInfoBlocksFeaturedBookMutation
+  featuredRelease: LandingPageInfoBlocksFeaturedReleaseMutation
+  productStrip: LandingPageInfoBlocksProductStripMutation
+  shopCatalog: LandingPageInfoBlocksShopCatalogMutation
+  galleryGrid: LandingPageInfoBlocksGalleryGridMutation
+  downloadsGrid: LandingPageInfoBlocksDownloadsGridMutation
+  tutorialsStrip: LandingPageInfoBlocksTutorialsStripMutation
+  classesPitch: LandingPageInfoBlocksClassesPitchMutation
+  blogFeed: LandingPageInfoBlocksBlogFeedMutation
+  ctaBand: LandingPageInfoBlocksCtaBandMutation
+  bigCta: LandingPageInfoBlocksBigCtaMutation
+  newsletterSignup: LandingPageInfoBlocksNewsletterSignupMutation
+  contactInfo: LandingPageInfoBlocksContactInfoMutation
+  contactForm: LandingPageInfoBlocksContactFormMutation
+  kofiSupport: LandingPageInfoBlocksKofiSupportMutation
+  reviewLinks: LandingPageInfoBlocksReviewLinksMutation
+  marquee: LandingPageInfoBlocksMarqueeMutation
+  socialLinks: LandingPageInfoBlocksSocialLinksMutation
+}
+
+input LandingPageInfoMutation {
+  title: String
+  layout: String
+  blocks: [LandingPageInfoBlocksMutation]
+}
+
+input LandingPageLinkInBioBlocksHomeHeroMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+}
+
+input LandingPageLinkInBioBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+}
+
+input LandingPageLinkInBioBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+}
+
+input LandingPageLinkInBioBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+}
+
+input LandingPageLinkInBioBlocksTextMutation {
+  heading: String
+  body: JSON
+}
+
+input LandingPageLinkInBioBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideCaption: String
+}
+
+input LandingPageLinkInBioBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+}
+
+input LandingPageLinkInBioBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [LandingPageLinkInBioBlocksTimelineEventsMutation]
+}
+
+input LandingPageLinkInBioBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageLinkInBioBlocksStatsRowMutation {
+  stats: [LandingPageLinkInBioBlocksStatsRowStatsMutation]
+}
+
+input LandingPageLinkInBioBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input LandingPageLinkInBioBlocksFeatureGridMutation {
+  heading: String
+  items: [LandingPageLinkInBioBlocksFeatureGridItemsMutation]
+}
+
+input LandingPageLinkInBioBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  ctaLabel: String
+  link: String
+}
+
+input LandingPageLinkInBioBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [LandingPageLinkInBioBlocksCardRowCardsMutation]
+}
+
+input LandingPageLinkInBioBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input LandingPageLinkInBioBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [LandingPageLinkInBioBlocksPillarsItemsMutation]
+}
+
+input LandingPageLinkInBioBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input LandingPageLinkInBioBlocksImageGalleryMutation {
+  heading: String
+  images: [LandingPageLinkInBioBlocksImageGalleryImagesMutation]
+}
+
+input LandingPageLinkInBioBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+}
+
+input LandingPageLinkInBioBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageLinkInBioBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [LandingPageLinkInBioBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageLinkInBioBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input LandingPageLinkInBioBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+}
+
+input LandingPageLinkInBioBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageLinkInBioBlocksGalleryGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageLinkInBioBlocksDownloadsGridMutation {
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input LandingPageLinkInBioBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input LandingPageLinkInBioBlocksTutorialsStripMutation {
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [LandingPageLinkInBioBlocksTutorialsStripStatsMutation]
+}
+
+input LandingPageLinkInBioBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageLinkInBioBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageLinkInBioBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: LandingPageLinkInBioBlocksBlogFeedNewsletterMutation
+}
+
+input LandingPageLinkInBioBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+}
+
+input LandingPageLinkInBioBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+}
+
+input LandingPageLinkInBioBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input LandingPageLinkInBioBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input LandingPageLinkInBioBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input LandingPageLinkInBioBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+}
+
+input LandingPageLinkInBioBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input LandingPageLinkInBioBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [LandingPageLinkInBioBlocksReviewLinksLinksMutation]
+}
+
+input LandingPageLinkInBioBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input LandingPageLinkInBioBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input LandingPageLinkInBioBlocksSocialLinksMutation {
+  links: [LandingPageLinkInBioBlocksSocialLinksLinksMutation]
+}
+
+input LandingPageLinkInBioBlocksMutation {
+  homeHero: LandingPageLinkInBioBlocksHomeHeroMutation
+  aboutHero: LandingPageLinkInBioBlocksAboutHeroMutation
+  hero: LandingPageLinkInBioBlocksHeroMutation
+  pageHeader: LandingPageLinkInBioBlocksPageHeaderMutation
+  text: LandingPageLinkInBioBlocksTextMutation
+  story: LandingPageLinkInBioBlocksStoryMutation
+  timeline: LandingPageLinkInBioBlocksTimelineMutation
+  statsRow: LandingPageLinkInBioBlocksStatsRowMutation
+  featureGrid: LandingPageLinkInBioBlocksFeatureGridMutation
+  cardRow: LandingPageLinkInBioBlocksCardRowMutation
+  pillars: LandingPageLinkInBioBlocksPillarsMutation
+  imageGallery: LandingPageLinkInBioBlocksImageGalleryMutation
+  videoEmbed: LandingPageLinkInBioBlocksVideoEmbedMutation
+  featuredBook: LandingPageLinkInBioBlocksFeaturedBookMutation
+  featuredRelease: LandingPageLinkInBioBlocksFeaturedReleaseMutation
+  productStrip: LandingPageLinkInBioBlocksProductStripMutation
+  shopCatalog: LandingPageLinkInBioBlocksShopCatalogMutation
+  galleryGrid: LandingPageLinkInBioBlocksGalleryGridMutation
+  downloadsGrid: LandingPageLinkInBioBlocksDownloadsGridMutation
+  tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripMutation
+  classesPitch: LandingPageLinkInBioBlocksClassesPitchMutation
+  blogFeed: LandingPageLinkInBioBlocksBlogFeedMutation
+  ctaBand: LandingPageLinkInBioBlocksCtaBandMutation
+  bigCta: LandingPageLinkInBioBlocksBigCtaMutation
+  newsletterSignup: LandingPageLinkInBioBlocksNewsletterSignupMutation
+  contactInfo: LandingPageLinkInBioBlocksContactInfoMutation
+  contactForm: LandingPageLinkInBioBlocksContactFormMutation
+  kofiSupport: LandingPageLinkInBioBlocksKofiSupportMutation
+  reviewLinks: LandingPageLinkInBioBlocksReviewLinksMutation
+  marquee: LandingPageLinkInBioBlocksMarqueeMutation
+  socialLinks: LandingPageLinkInBioBlocksSocialLinksMutation
+}
+
+input LandingPageLinkInBioMutation {
+  title: String
+  layout: String
+  blocks: [LandingPageLinkInBioBlocksMutation]
+}
+
+input LandingPageMutation {
+  blank: LandingPageBlankMutation
+  event: LandingPageEventMutation
+  promo: LandingPagePromoMutation
+  info: LandingPageInfoMutation
+  linkInBio: LandingPageLinkInBioMutation
 }
 
 input ShopProductMutation {
@@ -1061,68 +6197,6 @@ input PostMutation {
   publishedAt: String
   tags: [String]
   body: JSON
-}
-
-input LandingPageBlocksHeroMutation {
-  heading: String
-  subheading: JSON
-  backgroundImage: String
-  ctaLabel: String
-  ctaLink: String
-}
-
-input LandingPageBlocksTextMutation {
-  heading: String
-  body: JSON
-}
-
-input LandingPageBlocksImageGalleryImagesMutation {
-  src: String
-  alt: String
-  caption: String
-}
-
-input LandingPageBlocksImageGalleryMutation {
-  heading: String
-  images: [LandingPageBlocksImageGalleryImagesMutation]
-}
-
-input LandingPageBlocksCtaBandMutation {
-  heading: String
-  description: JSON
-  ctaLabel: String
-  ctaLink: String
-  variant: String
-}
-
-input LandingPageBlocksVideoEmbedMutation {
-  heading: String
-  youtubeUrl: String
-}
-
-input LandingPageBlocksFeatureGridItemsMutation {
-  icon: String
-  title: String
-  description: JSON
-}
-
-input LandingPageBlocksFeatureGridMutation {
-  heading: String
-  items: [LandingPageBlocksFeatureGridItemsMutation]
-}
-
-input LandingPageBlocksMutation {
-  hero: LandingPageBlocksHeroMutation
-  text: LandingPageBlocksTextMutation
-  imageGallery: LandingPageBlocksImageGalleryMutation
-  ctaBand: LandingPageBlocksCtaBandMutation
-  videoEmbed: LandingPageBlocksVideoEmbedMutation
-  featureGrid: LandingPageBlocksFeatureGridMutation
-}
-
-input LandingPageMutation {
-  title: String
-  blocks: [LandingPageBlocksMutation]
 }
 
 schema {

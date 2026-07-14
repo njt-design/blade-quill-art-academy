@@ -25,26 +25,28 @@ interface BookCoverProps {
   rotate?: number;
 }
 
+/* Palette keys are kept from the old brand; gradients rebuilt from the
+   2026 palette (gold / maroon / brown / taupe / blush), subtle only. */
 const PALETTES: Record<BookCoverPalette, { bg: string; ink: string }> = {
   warm: {
-    bg: "linear-gradient(160deg, #E55934 0%, #F2A93B 60%, #FBC56F 100%)",
-    ink: "#2A1A0E",
+    bg: "linear-gradient(160deg, #C29E63 0%, #D9B783 60%, #E5CCA4 100%)",
+    ink: "#2E2222",
   },
   rose: {
-    bg: "linear-gradient(160deg, #D86B7E 0%, #F2A93B 100%)",
-    ink: "#2A0E18",
+    bg: "linear-gradient(160deg, #9A5151 0%, #A96A6A 100%)",
+    ink: "#EFE7E2",
   },
   violet: {
-    bg: "linear-gradient(160deg, #6B5BA8 0%, #D86B7E 100%)",
-    ink: "#1A0E28",
+    bg: "linear-gradient(160deg, #776562 0%, #714B4B 100%)",
+    ink: "#EFE7E2",
   },
   twilight: {
-    bg: "linear-gradient(180deg, #483C7A 0%, #6B5BA8 50%, #D86B7E 100%)",
-    ink: "#F6EFE0",
+    bg: "linear-gradient(180deg, #5A3B3B 0%, #714B4B 50%, #9A5151 100%)",
+    ink: "#EFE7E2",
   },
   paper: {
-    bg: "linear-gradient(180deg, #F6EFE0 0%, #E5D8BD 100%)",
-    ink: "#1F1A14",
+    bg: "linear-gradient(180deg, #D6C6BF 0%, #BFA89E 100%)",
+    ink: "#2E2222",
   },
 };
 
@@ -87,7 +89,7 @@ export function BookCover({
           flexDirection: "column",
           justifyContent: "space-between",
           boxShadow:
-            "0 12px 32px rgba(60,38,18,0.22), 0 2px 6px rgba(60,38,18,0.18), inset 1px 0 0 rgba(255,255,255,0.15), inset -3px 0 8px rgba(0,0,0,0.15)",
+            "0 8px 20px rgba(46,34,34,0.16), inset -3px 0 8px rgba(0,0,0,0.12)",
           overflow: "hidden",
           fontFamily: "var(--f-serif)",
           transform: rotate ? `rotate(${rot})` : undefined,

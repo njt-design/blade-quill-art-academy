@@ -9,10 +9,10 @@ interface InkUnderlineProps {
 /**
  * Hand-drawn curvy SVG path used under active nav links, active product
  * detail tabs, and editorial accents. Stroke color is themable via the
- * `color` prop (defaults to brand orange).
+ * `color` prop (defaults to brand maroon).
  */
 export function InkUnderline({
-  color = "var(--orange)",
+  color = "var(--maroon)",
   className,
   style,
 }: InkUnderlineProps) {

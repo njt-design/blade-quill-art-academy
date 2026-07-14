@@ -31,7 +31,7 @@ export default function MockupHomePreview() {
       <div className="fixed top-3 left-3 z-[10000] pointer-events-none">
         <Link
           href="/"
-          className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/95 px-3 py-2 text-sm font-medium text-foreground shadow-md backdrop-blur-sm hover:bg-secondary transition-colors"
+          className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm hover:bg-secondary transition-colors"
         >
           ← Back to site
         </Link>

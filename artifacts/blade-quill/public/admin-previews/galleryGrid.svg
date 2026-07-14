@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="45" y="45" width="92" height="90" rx="4" fill="#f0e8d8"/><rect x="153" y="45" width="92" height="60" rx="4" fill="#c9bfa9"/><rect x="261" y="45" width="92" height="80" rx="4" fill="#f0e8d8"/><rect x="153" y="115" width="92" height="45" rx="4" fill="#f0e8d8"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">ART GALLERY GRID</text>
+</svg>

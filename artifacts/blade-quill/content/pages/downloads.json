@@ -1,0 +1,29 @@
+{
+  "title": "Free Downloads",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "Free Downloads",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Completely free coloring pages, reference guides, and printable resources. For private use only — these creations are copyright protected."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "downloadsGrid",
+      "emptyHeading": "Free resources coming soon!",
+      "emptyDescription": "Coloring pages, guides, and more on the way."
+    }
+  ]
+}

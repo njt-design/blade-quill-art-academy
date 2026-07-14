@@ -1,0 +1,29 @@
+{
+  "title": "Gallery",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "Gallery",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Click on an image to enlarge it. I specialize in chibi-style cartoons, character designs, and digital illustrations — all created in Krita."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "galleryGrid",
+      "emptyHeading": "Gallery is empty",
+      "emptyDescription": "Check back soon — new artwork is added regularly."
+    }
+  ]
+}

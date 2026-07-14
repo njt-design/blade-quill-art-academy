@@ -57,8 +57,10 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 px-6 md:px-8",
         "transition-[transform,backdrop-filter,background,border-color] duration-300",
         hidden ? "-translate-y-full" : "translate-y-0",
-        scrolled
-          ? "bg-[rgba(251,246,236,0.85)] backdrop-blur-xl border-b border-[rgba(31,26,20,0.06)]"
+        // Solid backdrop whenever scrolled OR the mobile menu is open,
+        // so menu links never sit on top of page content unreadably.
+        scrolled || isMobileOpen
+          ? "bg-[rgba(223,210,204,0.92)] backdrop-blur-xl border-b border-[rgba(46,34,34,0.08)]"
           : "bg-transparent border-b border-transparent"
       )}
       style={{ transitionTimingFunction: "var(--e-out)" }}
@@ -71,7 +73,6 @@ export function Navbar() {
               width: 38,
               height: 38,
               background: "var(--g-cta)",
-              boxShadow: "0 4px 12px rgba(229, 89, 52, 0.32)",
             }}
           >
             <QuillMark size={20} color="var(--paper)" />
@@ -103,7 +104,7 @@ export function Navbar() {
                 {active && (
                   <span className="absolute inset-x-0 -bottom-1">
                     <InkUnderline
-                      color="var(--orange)"
+                      color="var(--maroon)"
                       style={{ height: 6 }}
                     />
                   </span>
@@ -133,7 +134,7 @@ export function Navbar() {
               <span
                 className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full text-[10px] font-bold grid place-items-center"
                 style={{
-                  background: "var(--orange)",
+                  background: "var(--maroon)",
                   color: "var(--paper)",
                   fontFamily: "var(--f-mono)",
                 }}
@@ -161,7 +162,7 @@ export function Navbar() {
         className={cn(
           "lg:hidden overflow-hidden transition-all duration-300",
           isMobileOpen
-            ? "max-h-[480px] pb-4 pt-1 border-t border-[rgba(31,26,20,0.08)]"
+            ? "max-h-[480px] pb-4 pt-1 border-t border-[rgba(46,34,34,0.08)]"
             : "max-h-0 pb-0 pt-0 border-t border-transparent"
         )}
         style={{ transitionTimingFunction: "var(--e-out)" }}

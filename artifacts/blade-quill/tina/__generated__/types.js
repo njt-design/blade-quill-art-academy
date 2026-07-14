@@ -5,175 +5,1584 @@ export function gql(strings, ...args) {
   });
   return str;
 }
-export const HomePartsFragmentDoc = gql`
-    fragment HomeParts on Home {
+export const PagePartsFragmentDoc = gql`
+    fragment PageParts on Page {
   __typename
-  hero {
+  title
+  layout
+  blocks {
     __typename
-    heading
-    subheading
-    ctaPrimary
-    ctaSecondary
-    backgroundImage
-  }
-  latestSection {
-    __typename
-    heading
-    viewAllLabel
-  }
-  featuredSection {
-    __typename
-    heading
-    subheading
-    viewAllLabel
-  }
-  artistBanner {
-    __typename
-    badge
-    heading
-    bio
-    ctaLabel
-    portraitImage
-  }
-  tutorialsSection {
-    __typename
-    heading
-    subheading
-    browseAllLabel
-  }
-  classesSection {
-    __typename
-    eyebrow
-    heading
-    subheading
-    body
-    bullets
-    ctaLabel
-    ctaLink
-    metaTags
-    image
-  }
-  blogSection {
-    __typename
-    heading
-    subheading
-    viewAllLabel
-  }
-  newsletterSection {
-    __typename
-    heading
-    subheading
-    placeholderText
-    ctaLabel
-    privacyNote
-  }
-  bookPromo {
-    __typename
-    heading
-    description
-    ctaLabel
-    ctaLink
+    ... on PageBlocksHomeHero {
+      eyebrow
+      heading
+      subheading
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      marqueeItems
+    }
+    ... on PageBlocksAboutHero {
+      eyebrow
+      heading
+      leadText
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      portraitImage
+      portraitCaption
+    }
+    ... on PageBlocksHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+    }
+    ... on PageBlocksPageHeader {
+      heading
+      description
+    }
+    ... on PageBlocksText {
+      heading
+      body
+    }
+    ... on PageBlocksStory {
+      number
+      label
+      heading
+      paragraph1
+      quote
+      paragraph2
+      sideCaption
+    }
+    ... on PageBlocksTimeline {
+      number
+      label
+      events {
+        __typename
+        year
+        title
+        description
+      }
+    }
+    ... on PageBlocksStatsRow {
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on PageBlocksFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+    }
+    ... on PageBlocksCardRow {
+      number
+      label
+      cards {
+        __typename
+        tag
+        title
+        body
+        ctaLabel
+        link
+      }
+    }
+    ... on PageBlocksPillars {
+      eyebrow
+      heading
+      items {
+        __typename
+        tag
+        title
+        sub
+        cta
+        badge
+        link
+        image
+      }
+    }
+    ... on PageBlocksImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+    }
+    ... on PageBlocksVideoEmbed {
+      heading
+      youtubeUrl
+    }
+    ... on PageBlocksFeaturedBook {
+      eyebrow
+      heading
+      description
+      stats {
+        __typename
+        value
+        label
+      }
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksFeaturedRelease {
+      eyebrow
+      title
+      description
+      coverImage
+      backCoverImage
+      ctaLabel
+      ctaHref
+    }
+    ... on PageBlocksProductStrip {
+      eyebrow
+      heading
+      viewAllLabel
+      viewAllLink
+    }
+    ... on PageBlocksShopCatalog {
+      heading
+      highlightText
+      description
+      showFeaturedBanner
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksGalleryGrid {
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksDownloadsGrid {
+      emptyHeading
+      emptyDescription
+    }
+    ... on PageBlocksTutorialsStrip {
+      eyebrow
+      headingPrefix
+      headingHighlight
+      headingSuffix
+      buttonLabel
+      youtubeUrl
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on PageBlocksClassesPitch {
+      eyebrow
+      heading
+      subheading
+      bullets
+      metaTags
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksBlogFeed {
+      heading
+      showNewsletter
+      newsletter {
+        __typename
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+    }
+    ... on PageBlocksCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+    }
+    ... on PageBlocksBigCta {
+      eyebrow
+      heading
+      highlightText
+      primaryLabel
+      primaryLink
+      secondaryLabel
+      secondaryLink
+    }
+    ... on PageBlocksNewsletterSignup {
+      eyebrow
+      heading
+      subheading
+      placeholderText
+      ctaLabel
+      privacyNote
+    }
+    ... on PageBlocksContactInfo {
+      email
+      location
+    }
+    ... on PageBlocksContactForm {
+      submitLabel
+    }
+    ... on PageBlocksKofiSupport {
+      heading
+      body
+      ctaLabel
+      href
+    }
+    ... on PageBlocksReviewLinks {
+      heading
+      intro
+      thankYou
+      ctaHeading
+      links {
+        __typename
+        label
+        href
+        region
+      }
+    }
+    ... on PageBlocksMarquee {
+      highlightText
+      text
+    }
+    ... on PageBlocksSocialLinks {
+      links {
+        __typename
+        platform
+        url
+        label
+      }
+    }
   }
 }
     `;
-export const AboutPartsFragmentDoc = gql`
-    fragment AboutParts on About {
+export const LandingPagePartsFragmentDoc = gql`
+    fragment LandingPageParts on LandingPage {
   __typename
-  pageTitle
-  portraitImage
-  leadText
-  paragraph1
-  paragraph2
-  skill1Label
-  skill2Label
-  skill3Label
-  ctaPrimary
-  ctaPrimaryLink
-  ctaSecondary
-  ctaSecondaryLink
-}
-    `;
-export const ImportantLinksPartsFragmentDoc = gql`
-    fragment ImportantLinksParts on ImportantLinks {
-  __typename
-  pageTitle
-  featuredRelease {
-    __typename
-    eyebrow
+  ... on LandingPageBlank {
     title
-    description
-    coverImage
-    backCoverImage
-    ctaLabel
-    ctaHref
+    layout
+    blocks {
+      __typename
+      ... on LandingPageBlankBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageBlankBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageBlankBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageBlankBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageBlankBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageBlankBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageBlankBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageBlankBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageBlankBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageBlankBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageBlankBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageBlankBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageBlankBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageBlankBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageBlankBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageBlankBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageBlankBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageBlankBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageBlankBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageBlankBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageBlankBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageBlankBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageBlankBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageBlankBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageBlankBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageBlankBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  reviewsSection {
-    __typename
-    heading
-    intro
-    thankYou
-    ctaHeading
+  ... on LandingPageEvent {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageEventBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageEventBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageEventBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageEventBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageEventBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageEventBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageEventBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageEventBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageEventBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageEventBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageEventBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageEventBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageEventBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageEventBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageEventBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageEventBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageEventBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageEventBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageEventBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageEventBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageEventBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageEventBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageEventBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageEventBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageEventBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageEventBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  reviewLinks {
-    __typename
-    label
-    href
-    region
+  ... on LandingPagePromo {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPagePromoBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPagePromoBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPagePromoBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPagePromoBlocksText {
+        heading
+        body
+      }
+      ... on LandingPagePromoBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPagePromoBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPagePromoBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPagePromoBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPagePromoBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPagePromoBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPagePromoBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPagePromoBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPagePromoBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPagePromoBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPagePromoBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPagePromoBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPagePromoBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPagePromoBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPagePromoBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPagePromoBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPagePromoBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPagePromoBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPagePromoBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPagePromoBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPagePromoBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPagePromoBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-  kofiSection {
-    __typename
-    heading
-    body
-    ctaLabel
-    href
+  ... on LandingPageInfo {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageInfoBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageInfoBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageInfoBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageInfoBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageInfoBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageInfoBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageInfoBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageInfoBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageInfoBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageInfoBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageInfoBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageInfoBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageInfoBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageInfoBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageInfoBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageInfoBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageInfoBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageInfoBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageInfoBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageInfoBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageInfoBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageInfoBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageInfoBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageInfoBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageInfoBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageInfoBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
   }
-}
-    `;
-export const ContactPartsFragmentDoc = gql`
-    fragment ContactParts on Contact {
-  __typename
-  pageTitle
-  pageDescription
-  email
-  location
-}
-    `;
-export const ShopPartsFragmentDoc = gql`
-    fragment ShopParts on Shop {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const GalleryPartsFragmentDoc = gql`
-    fragment GalleryParts on Gallery {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const TutorialsPartsFragmentDoc = gql`
-    fragment TutorialsParts on Tutorials {
-  __typename
-  pageTitle
-  pageDescription
-  subscribeLabel
-  youtubeUrl
-  emptyHeading
-  emptyDescription
-}
-    `;
-export const DownloadsPartsFragmentDoc = gql`
-    fragment DownloadsParts on Downloads {
-  __typename
-  pageTitle
-  pageDescription
-  emptyHeading
-  emptyDescription
+  ... on LandingPageLinkInBio {
+    title
+    layout
+    blocks {
+      __typename
+      ... on LandingPageLinkInBioBlocksHomeHero {
+        eyebrow
+        heading
+        subheading
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        marqueeItems
+      }
+      ... on LandingPageLinkInBioBlocksAboutHero {
+        eyebrow
+        heading
+        leadText
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+        metaLine
+        portraitImage
+        portraitCaption
+      }
+      ... on LandingPageLinkInBioBlocksHero {
+        heading
+        subheading
+        backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksPageHeader {
+        heading
+        description
+      }
+      ... on LandingPageLinkInBioBlocksText {
+        heading
+        body
+      }
+      ... on LandingPageLinkInBioBlocksStory {
+        number
+        label
+        heading
+        paragraph1
+        quote
+        paragraph2
+        sideCaption
+      }
+      ... on LandingPageLinkInBioBlocksTimeline {
+        number
+        label
+        events {
+          __typename
+          year
+          title
+          description
+        }
+      }
+      ... on LandingPageLinkInBioBlocksStatsRow {
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageLinkInBioBlocksFeatureGrid {
+        heading
+        items {
+          __typename
+          icon
+          title
+          description
+        }
+      }
+      ... on LandingPageLinkInBioBlocksCardRow {
+        number
+        label
+        cards {
+          __typename
+          tag
+          title
+          body
+          ctaLabel
+          link
+        }
+      }
+      ... on LandingPageLinkInBioBlocksPillars {
+        eyebrow
+        heading
+        items {
+          __typename
+          tag
+          title
+          sub
+          cta
+          badge
+          link
+          image
+        }
+      }
+      ... on LandingPageLinkInBioBlocksImageGallery {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+      }
+      ... on LandingPageLinkInBioBlocksVideoEmbed {
+        heading
+        youtubeUrl
+      }
+      ... on LandingPageLinkInBioBlocksFeaturedBook {
+        eyebrow
+        heading
+        description
+        stats {
+          __typename
+          value
+          label
+        }
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksFeaturedRelease {
+        eyebrow
+        title
+        description
+        coverImage
+        backCoverImage
+        ctaLabel
+        ctaHref
+      }
+      ... on LandingPageLinkInBioBlocksProductStrip {
+        eyebrow
+        heading
+        viewAllLabel
+        viewAllLink
+      }
+      ... on LandingPageLinkInBioBlocksShopCatalog {
+        heading
+        highlightText
+        description
+        showFeaturedBanner
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksGalleryGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksDownloadsGrid {
+        emptyHeading
+        emptyDescription
+      }
+      ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        eyebrow
+        headingPrefix
+        headingHighlight
+        headingSuffix
+        buttonLabel
+        youtubeUrl
+        stats {
+          __typename
+          value
+          label
+        }
+      }
+      ... on LandingPageLinkInBioBlocksClassesPitch {
+        eyebrow
+        heading
+        subheading
+        bullets
+        metaTags
+        ctaLabel
+        ctaLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksBlogFeed {
+        heading
+        showNewsletter
+        newsletter {
+          __typename
+          eyebrow
+          heading
+          subheading
+          placeholderText
+          ctaLabel
+          privacyNote
+        }
+      }
+      ... on LandingPageLinkInBioBlocksCtaBand {
+        heading
+        description
+        ctaLabel
+        ctaLink
+        variant
+      }
+      ... on LandingPageLinkInBioBlocksBigCta {
+        eyebrow
+        heading
+        highlightText
+        primaryLabel
+        primaryLink
+        secondaryLabel
+        secondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksNewsletterSignup {
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      ... on LandingPageLinkInBioBlocksContactInfo {
+        email
+        location
+      }
+      ... on LandingPageLinkInBioBlocksContactForm {
+        submitLabel
+      }
+      ... on LandingPageLinkInBioBlocksKofiSupport {
+        heading
+        body
+        ctaLabel
+        href
+      }
+      ... on LandingPageLinkInBioBlocksReviewLinks {
+        heading
+        intro
+        thankYou
+        ctaHeading
+        links {
+          __typename
+          label
+          href
+          region
+        }
+      }
+      ... on LandingPageLinkInBioBlocksMarquee {
+        highlightText
+        text
+      }
+      ... on LandingPageLinkInBioBlocksSocialLinks {
+        links {
+          __typename
+          platform
+          url
+          label
+        }
+      }
+    }
+  }
 }
     `;
 export const ShopProductPartsFragmentDoc = gql`
@@ -203,58 +1612,9 @@ export const PostPartsFragmentDoc = gql`
   body
 }
     `;
-export const LandingPagePartsFragmentDoc = gql`
-    fragment LandingPageParts on LandingPage {
-  __typename
-  title
-  blocks {
-    __typename
-    ... on LandingPageBlocksHero {
-      heading
-      subheading
-      backgroundImage
-      ctaLabel
-      ctaLink
-    }
-    ... on LandingPageBlocksText {
-      heading
-      body
-    }
-    ... on LandingPageBlocksImageGallery {
-      heading
-      images {
-        __typename
-        src
-        alt
-        caption
-      }
-    }
-    ... on LandingPageBlocksCtaBand {
-      heading
-      description
-      ctaLabel
-      ctaLink
-      variant
-    }
-    ... on LandingPageBlocksVideoEmbed {
-      heading
-      youtubeUrl
-    }
-    ... on LandingPageBlocksFeatureGrid {
-      heading
-      items {
-        __typename
-        icon
-        title
-        description
-      }
-    }
-  }
-}
-    `;
-export const HomeDocument = gql`
-    query home($relativePath: String!) {
-  home(relativePath: $relativePath) {
+export const PageDocument = gql`
+    query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -267,13 +1627,13 @@ export const HomeDocument = gql`
       }
       id
     }
-    ...HomeParts
+    ...PageParts
   }
 }
-    ${HomePartsFragmentDoc}`;
-export const HomeConnectionDocument = gql`
-    query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: HomeFilter) {
-  homeConnection(
+    ${PagePartsFragmentDoc}`;
+export const PageConnectionDocument = gql`
+    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
+  pageConnection(
     before: $before
     after: $after
     first: $first
@@ -303,15 +1663,15 @@ export const HomeConnectionDocument = gql`
           }
           id
         }
-        ...HomeParts
+        ...PageParts
       }
     }
   }
 }
-    ${HomePartsFragmentDoc}`;
-export const AboutDocument = gql`
-    query about($relativePath: String!) {
-  about(relativePath: $relativePath) {
+    ${PagePartsFragmentDoc}`;
+export const LandingPageDocument = gql`
+    query landingPage($relativePath: String!) {
+  landingPage(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -324,13 +1684,13 @@ export const AboutDocument = gql`
       }
       id
     }
-    ...AboutParts
+    ...LandingPageParts
   }
 }
-    ${AboutPartsFragmentDoc}`;
-export const AboutConnectionDocument = gql`
-    query aboutConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AboutFilter) {
-  aboutConnection(
+    ${LandingPagePartsFragmentDoc}`;
+export const LandingPageConnectionDocument = gql`
+    query landingPageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LandingPageFilter) {
+  landingPageConnection(
     before: $before
     after: $after
     first: $first
@@ -360,354 +1720,12 @@ export const AboutConnectionDocument = gql`
           }
           id
         }
-        ...AboutParts
+        ...LandingPageParts
       }
     }
   }
 }
-    ${AboutPartsFragmentDoc}`;
-export const ImportantLinksDocument = gql`
-    query importantLinks($relativePath: String!) {
-  importantLinks(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ImportantLinksParts
-  }
-}
-    ${ImportantLinksPartsFragmentDoc}`;
-export const ImportantLinksConnectionDocument = gql`
-    query importantLinksConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ImportantLinksFilter) {
-  importantLinksConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ImportantLinksParts
-      }
-    }
-  }
-}
-    ${ImportantLinksPartsFragmentDoc}`;
-export const ContactDocument = gql`
-    query contact($relativePath: String!) {
-  contact(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ContactParts
-  }
-}
-    ${ContactPartsFragmentDoc}`;
-export const ContactConnectionDocument = gql`
-    query contactConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ContactFilter) {
-  contactConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ContactParts
-      }
-    }
-  }
-}
-    ${ContactPartsFragmentDoc}`;
-export const ShopDocument = gql`
-    query shop($relativePath: String!) {
-  shop(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ShopParts
-  }
-}
-    ${ShopPartsFragmentDoc}`;
-export const ShopConnectionDocument = gql`
-    query shopConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ShopFilter) {
-  shopConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ShopParts
-      }
-    }
-  }
-}
-    ${ShopPartsFragmentDoc}`;
-export const GalleryDocument = gql`
-    query gallery($relativePath: String!) {
-  gallery(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...GalleryParts
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const GalleryConnectionDocument = gql`
-    query galleryConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GalleryFilter) {
-  galleryConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...GalleryParts
-      }
-    }
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const TutorialsDocument = gql`
-    query tutorials($relativePath: String!) {
-  tutorials(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...TutorialsParts
-  }
-}
-    ${TutorialsPartsFragmentDoc}`;
-export const TutorialsConnectionDocument = gql`
-    query tutorialsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TutorialsFilter) {
-  tutorialsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...TutorialsParts
-      }
-    }
-  }
-}
-    ${TutorialsPartsFragmentDoc}`;
-export const DownloadsDocument = gql`
-    query downloads($relativePath: String!) {
-  downloads(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...DownloadsParts
-  }
-}
-    ${DownloadsPartsFragmentDoc}`;
-export const DownloadsConnectionDocument = gql`
-    query downloadsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DownloadsFilter) {
-  downloadsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...DownloadsParts
-      }
-    }
-  }
-}
-    ${DownloadsPartsFragmentDoc}`;
+    ${LandingPagePartsFragmentDoc}`;
 export const ShopProductDocument = gql`
     query shopProduct($relativePath: String!) {
   shopProduct(relativePath: $relativePath) {
@@ -822,112 +1840,19 @@ export const PostConnectionDocument = gql`
   }
 }
     ${PostPartsFragmentDoc}`;
-export const LandingPageDocument = gql`
-    query landingPage($relativePath: String!) {
-  landingPage(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...LandingPageParts
-  }
-}
-    ${LandingPagePartsFragmentDoc}`;
-export const LandingPageConnectionDocument = gql`
-    query landingPageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LandingPageFilter) {
-  landingPageConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...LandingPageParts
-      }
-    }
-  }
-}
-    ${LandingPagePartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
-    home(variables, options) {
-      return requester(HomeDocument, variables, options);
+    page(variables, options) {
+      return requester(PageDocument, variables, options);
     },
-    homeConnection(variables, options) {
-      return requester(HomeConnectionDocument, variables, options);
+    pageConnection(variables, options) {
+      return requester(PageConnectionDocument, variables, options);
     },
-    about(variables, options) {
-      return requester(AboutDocument, variables, options);
+    landingPage(variables, options) {
+      return requester(LandingPageDocument, variables, options);
     },
-    aboutConnection(variables, options) {
-      return requester(AboutConnectionDocument, variables, options);
-    },
-    importantLinks(variables, options) {
-      return requester(ImportantLinksDocument, variables, options);
-    },
-    importantLinksConnection(variables, options) {
-      return requester(ImportantLinksConnectionDocument, variables, options);
-    },
-    contact(variables, options) {
-      return requester(ContactDocument, variables, options);
-    },
-    contactConnection(variables, options) {
-      return requester(ContactConnectionDocument, variables, options);
-    },
-    shop(variables, options) {
-      return requester(ShopDocument, variables, options);
-    },
-    shopConnection(variables, options) {
-      return requester(ShopConnectionDocument, variables, options);
-    },
-    gallery(variables, options) {
-      return requester(GalleryDocument, variables, options);
-    },
-    galleryConnection(variables, options) {
-      return requester(GalleryConnectionDocument, variables, options);
-    },
-    tutorials(variables, options) {
-      return requester(TutorialsDocument, variables, options);
-    },
-    tutorialsConnection(variables, options) {
-      return requester(TutorialsConnectionDocument, variables, options);
-    },
-    downloads(variables, options) {
-      return requester(DownloadsDocument, variables, options);
-    },
-    downloadsConnection(variables, options) {
-      return requester(DownloadsConnectionDocument, variables, options);
+    landingPageConnection(variables, options) {
+      return requester(LandingPageConnectionDocument, variables, options);
     },
     shopProduct(variables, options) {
       return requester(ShopProductDocument, variables, options);
@@ -940,12 +1865,6 @@ export function getSdk(requester) {
     },
     postConnection(variables, options) {
       return requester(PostConnectionDocument, variables, options);
-    },
-    landingPage(variables, options) {
-      return requester(LandingPageDocument, variables, options);
-    },
-    landingPageConnection(variables, options) {
-      return requester(LandingPageConnectionDocument, variables, options);
     }
   };
 }

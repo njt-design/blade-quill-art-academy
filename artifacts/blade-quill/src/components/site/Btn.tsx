@@ -27,17 +27,17 @@ interface BtnProps
 }
 
 const SIZES: Record<BtnSize, string> = {
-  sm: "px-4 py-2 text-xs",
-  md: "px-[22px] py-3.5 text-sm",
+  // min-h keeps even the small size at a comfortable touch-target height.
+  sm: "px-4 py-2 text-xs min-h-11",
+  md: "px-[22px] py-3.5 text-sm min-h-11",
   lg: "px-7 py-[17px] text-[15px]",
 };
 
 const KINDS: Record<BtnKind, string> = {
   primary:
     "text-[var(--paper)] bg-[image:var(--g-cta)] [background-size:200%_200%] [background-position:0%_0%] " +
-    "shadow-[0_6px_18px_rgba(229,89,52,0.32),0_2px_4px_rgba(229,89,52,0.18)] " +
     "hover:[background-position:100%_100%] hover:-translate-y-0.5 " +
-    "hover:shadow-[0_10px_26px_rgba(229,89,52,0.42),0_3px_8px_rgba(229,89,52,0.22)]",
+    "hover:shadow-[var(--sh-sm)]",
   outline:
     "border-[1.5px] border-foreground text-foreground bg-transparent " +
     "hover:bg-foreground hover:text-[var(--paper)] hover:-translate-y-0.5 hover:shadow-md",

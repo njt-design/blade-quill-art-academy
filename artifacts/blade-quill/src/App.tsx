@@ -10,19 +10,12 @@ import { Footer } from "@/components/layout/Footer";
 import { PageTurnOverlay } from "@/components/site/PageTurnOverlay";
 
 // Pages
-import Home from "@/pages/Home";
-import Shop from "@/pages/Shop";
+import Page from "@/pages/Page";
 import ProductDetail from "@/pages/ProductDetail";
 import OrderSuccess from "@/pages/OrderSuccess";
-import Gallery from "@/pages/Gallery";
-import Downloads from "@/pages/Downloads";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
 import Cart from "@/pages/Cart";
 import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
-import LandingPage from "@/pages/LandingPage";
-import ImportantLinksPage from "@/pages/ImportantLinksPage";
 import MockupHomePreview from "@/pages/MockupHomePreview";
 import DesignSystem from "@/pages/DesignSystem";
 import NotFound from "@/pages/not-found";
@@ -42,18 +35,29 @@ function MainLayout() {
       <Navbar />
       <main className="flex-grow pt-[72px]">
         <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/shop" component={Shop} />
+          <Route path="/">
+            <Page slug="home" />
+          </Route>
+          <Route path="/shop">
+            <Page slug="shop" />
+          </Route>
           <Route path="/shop/success" component={OrderSuccess} />
           <Route path="/shop/:id" component={ProductDetail} />
           <Route path="/cart" component={Cart} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/downloads" component={Downloads} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/gallery">
+            <Page slug="gallery" />
+          </Route>
+          <Route path="/downloads">
+            <Page slug="downloads" />
+          </Route>
+          <Route path="/about">
+            <Page slug="about" />
+          </Route>
+          <Route path="/contact">
+            <Page slug="contact" />
+          </Route>
           <Route path="/blog" component={BlogList} />
           <Route path="/blog/:slug" component={BlogPost} />
-          <Route path="/p/:slug" component={LandingPage} />
           <Route component={NotFound} />
         </Switch>
       </main>
@@ -68,12 +72,18 @@ function Router() {
     typeof window !== "undefined" &&
     window.location.hostname === "newrelease.bladeandquillartacademy.com"
   ) {
-    return <ImportantLinksPage />;
+    return <Page slug="important-links" chrome="auto" />;
   }
 
   return (
     <Switch>
-      <Route path="/important-links-page" component={ImportantLinksPage} />
+      <Route path="/important-links-page">
+        <Page slug="important-links" chrome="auto" />
+      </Route>
+      {/* Client-created pages choose their own layout (standard/standalone). */}
+      <Route path="/p/:slug">
+        {(params) => <Page slug={params.slug} chrome="auto" />}
+      </Route>
       <Route path="/preview/:slug" component={MockupHomePreview} />
       <Route path="/design-system" component={DesignSystem} />
       <Route component={MainLayout} />

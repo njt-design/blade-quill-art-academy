@@ -11,16 +11,18 @@ export type ArtTilePalette =
   | "paper"
   | "ink";
 
+/* Palette keys are kept from the old brand; gradients rebuilt from the
+   2026 palette (gold / maroon / brown / taupe / blush), subtle only. */
 const PALETTES: Record<ArtTilePalette, string> = {
-  warm: "linear-gradient(135deg, #F2A93B 0%, #E55934 100%)",
-  rose: "linear-gradient(135deg, #D86B7E 0%, #F2A93B 100%)",
-  violet: "linear-gradient(135deg, #6B5BA8 0%, #D86B7E 100%)",
-  lavender: "linear-gradient(180deg, #7062A3 0%, #D87C82 100%)",
+  warm: "linear-gradient(135deg, #D9B783 0%, #C29E63 100%)",
+  rose: "linear-gradient(135deg, #A96A6A 0%, #9A5151 100%)",
+  violet: "linear-gradient(135deg, #776562 0%, #714B4B 100%)",
+  lavender: "linear-gradient(180deg, #776562 0%, #9A5151 100%)",
   twilight:
-    "linear-gradient(180deg, #483C7A 0%, #6B5BA8 60%, #D86B7E 100%)",
-  moss: "linear-gradient(135deg, #6B8A5B 0%, #F2A93B 100%)",
-  paper: "linear-gradient(180deg, #F6EFE0 0%, #E5D8BD 100%)",
-  ink: "linear-gradient(135deg, #3F3527 0%, #1F1A14 100%)",
+    "linear-gradient(180deg, #5A3B3B 0%, #714B4B 60%, #9A5151 100%)",
+  moss: "linear-gradient(135deg, #776562 0%, #D9B783 100%)",
+  paper: "linear-gradient(180deg, #D6C6BF 0%, #BFA89E 100%)",
+  ink: "linear-gradient(135deg, #4A3838 0%, #2E2222 100%)",
 };
 
 interface ArtTileProps {
@@ -96,8 +98,7 @@ export function ArtTile({
     borderRadius: radius,
     position: "relative",
     overflow: "hidden",
-    boxShadow:
-      "0 8px 22px rgba(60,38,18,0.14), inset 0 1px 0 rgba(255,255,255,0.18)",
+    boxShadow: "0 4px 12px rgba(46,34,34,0.12)",
     transform: interactive || !rotate ? undefined : `rotate(${rot})`,
     "--rot": interactive ? undefined : rot,
   };

@@ -30,7 +30,7 @@ export default function Cart() {
         <p className="text-muted-foreground mb-8 max-w-sm">
           Discover books, digital guides, and curriculum to start your artistic journey.
         </p>
-        <Button onClick={() => setLocation("/shop")} className="bg-orange hover:bg-amber text-white">
+        <Button onClick={() => setLocation("/shop")} className="bg-maroon hover:bg-maroon-deep text-white">
           Browse the Shop <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </div>
@@ -56,25 +56,31 @@ export default function Cart() {
                   {item.category === "physical" ? "Physical" : item.category === "curriculum" ? "Curriculum" : "Digital"}
                 </span>
                 <div className="flex items-center justify-between mt-2">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="w-6 h-6 rounded border border-border flex items-center justify-center hover:bg-secondary transition-colors"
+                      aria-label="Decrease quantity"
+                      className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:bg-secondary transition-colors"
                     >
-                      <Minus className="w-3 h-3" />
+                      <Minus className="w-4 h-4" />
                     </button>
-                    <span className="w-4 text-center text-sm">{item.quantity}</span>
+                    <span className="w-8 text-center text-sm">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="w-6 h-6 rounded border border-border flex items-center justify-center hover:bg-secondary transition-colors"
+                      aria-label="Increase quantity"
+                      className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:bg-secondary transition-colors"
                     >
-                      <Plus className="w-3 h-3" />
+                      <Plus className="w-4 h-4" />
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-bold text-orange">${(item.price * item.quantity).toFixed(2)}</span>
-                    <button onClick={() => removeItem(item.id)} className="text-muted-foreground hover:text-destructive transition-colors">
-                      <Trash2 className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-1">
+                    <span className="font-bold text-maroon">${(item.price * item.quantity).toFixed(2)}</span>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      aria-label={`Remove ${item.name} from cart`}
+                      className="w-10 h-10 grid place-items-center text-muted-foreground hover:text-destructive transition-colors"
+                    >
+                      <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -93,14 +99,14 @@ export default function Cart() {
           ))}
           <div className="border-t border-border pt-3 flex justify-between font-bold">
             <span>Total</span>
-            <span className="text-orange">${totalPrice.toFixed(2)}</span>
+            <span className="text-maroon">${totalPrice.toFixed(2)}</span>
           </div>
           <p className="text-xs text-muted-foreground text-center">Each item checks out separately via Stripe.</p>
           <div className="space-y-2">
             {items.map((item) => (
               <Button
                 key={item.id}
-                className="w-full bg-orange hover:bg-amber text-white text-sm"
+                className="w-full bg-maroon hover:bg-maroon-deep text-white text-sm"
                 size="sm"
                 disabled={checkingOutId !== null}
                 onClick={() => handleCheckoutItem(item.id, item.quantity)}

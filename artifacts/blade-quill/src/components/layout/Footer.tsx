@@ -187,34 +187,32 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@studio"
-                  className="flex-1 rounded-full px-4 py-2.5 text-[13px] outline-none focus:border-[rgba(251,246,236,0.45)] transition-colors"
+                  className="flex-1 min-w-0 min-h-11 rounded-full px-4 py-2.5 text-[13px] outline-none focus:border-[rgba(223,210,204,0.45)] transition-colors"
                   style={{
                     background: "transparent",
-                    border: "1px solid rgba(251,246,236,0.2)",
+                    border: "1px solid rgba(223,210,204,0.2)",
                     color: "var(--paper)",
                     fontFamily: "var(--f-sans)",
                   }}
                 />
                 <button
                   type="submit"
-                  className="btn-cta px-5 py-2.5 rounded-full text-[13px] font-semibold whitespace-nowrap"
+                  className="btn-cta min-h-11 px-5 py-2.5 rounded-full text-[13px] font-semibold whitespace-nowrap"
                   style={{
                     background: "var(--g-cta)",
                     color: "var(--paper)",
-                    boxShadow:
-                      "0 6px 18px rgba(229,89,52,0.32), 0 2px 4px rgba(229,89,52,0.18)",
                   }}
                 >
                   Join
                 </button>
               </form>
-              <div className="flex items-center gap-4 mt-6">
+              <div className="flex items-center gap-1 mt-4 -ml-3">
                 <a
                   href={YOUTUBE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="hover:text-paper transition-colors"
+                  className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                   style={{ color: "var(--paper-3)" }}
                 >
                   <SiYoutube className="w-5 h-5" />
@@ -224,7 +222,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="hover:text-paper transition-colors"
+                  className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                   style={{ color: "var(--paper-3)" }}
                 >
                   <SiInstagram className="w-5 h-5" />
@@ -234,7 +232,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Lheeloo & Luna on Amazon"
-                  className="hover:text-paper transition-colors"
+                  className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                   style={{ color: "var(--paper-3)" }}
                 >
                   <FaAmazon className="w-5 h-5" />
@@ -244,7 +242,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Ko-fi"
-                  className="hover:text-paper transition-colors"
+                  className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                   style={{ color: "var(--paper-3)" }}
                 >
                   <SiKofi className="w-5 h-5" />
@@ -255,7 +253,7 @@ export function Footer() {
 
           <div
             className="pt-7 flex flex-wrap items-center justify-between gap-3"
-            style={{ borderTop: "1px solid rgba(251,246,236,0.08)" }}
+            style={{ borderTop: "1px solid rgba(223,210,204,0.08)" }}
           >
             <div
               className="eyebrow"
@@ -283,7 +281,7 @@ export function Footer() {
                 type="button"
                 onClick={() => setAdminOpen(true)}
                 className="link-ink"
-                style={{ color: "rgba(251,246,236,0.25)" }}
+                style={{ color: "rgba(223,210,204,0.25)" }}
                 aria-label="Admin login"
               >
                 Admin
