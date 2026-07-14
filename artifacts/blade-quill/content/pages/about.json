@@ -52,59 +52,6 @@
       "_template": "statsRow"
     },
     {
-      "number": "01",
-      "label": "STORY",
-      "heading": "How a French kid with a sketchbook\nended up teaching Krita on the internet.",
-      "paragraph1": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Test copy channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly.",
-                "bold": true
-              }
-            ],
-            "id": "gdHXFkSmT8"
-          }
-        ]
-      },
-      "quote": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "I am a French author and illustrator. This website is about digital art."
-              }
-            ],
-            "id": "aN0J2sVj5g"
-          }
-        ]
-      },
-      "paragraph2": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
-              }
-            ],
-            "id": "NRXodk1Tqx"
-          }
-        ]
-      },
-      "sideCaption": "my window in winter",
-      "_template": "story"
-    },
-    {
       "number": "02",
       "label": "TIMELINE",
       "events": [
@@ -173,6 +120,59 @@
       "secondaryLabel": "Watch on YouTube",
       "secondaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
       "_template": "bigCta"
+    },
+    {
+      "number": "01",
+      "label": "STORY",
+      "heading": "How a French kid with a sketchbook\nended up teaching Krita on the internet.",
+      "paragraph1": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Test copy channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly.",
+                "bold": true
+              }
+            ],
+            "id": "gdHXFkSmT8"
+          }
+        ]
+      },
+      "quote": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I am a French author and illustrator. This website is about digital art."
+              }
+            ],
+            "id": "aN0J2sVj5g"
+          }
+        ]
+      },
+      "paragraph2": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
+              }
+            ],
+            "id": "NRXodk1Tqx"
+          }
+        ]
+      },
+      "sideCaption": "my window in winter",
+      "_template": "story"
     }
   ]
 }
