@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "aboutHero",
       "eyebrow": "ABOUT · A STUDIO VISIT",
       "heading": "I'm Corinne —\nand I draw\nfor a living.",
       "leadText": {
@@ -26,19 +25,31 @@
       "ctaSecondaryLink": "/gallery",
       "metaLine": "NANTES, FRANCE · EST. 2018",
       "portraitImage": "/images/about-portrait.png",
-      "portraitCaption": "in the studio"
+      "portraitCaption": "in the studio",
+      "_template": "aboutHero"
     },
     {
-      "_template": "statsRow",
       "stats": [
-        { "value": "100K+", "label": "YouTube subscribers" },
-        { "value": "1.5M", "label": "video views" },
-        { "value": "65", "label": "countries reached" },
-        { "value": "2", "label": "illustrated books" }
-      ]
+        {
+          "value": "100K+",
+          "label": "YouTube subscribers"
+        },
+        {
+          "value": "1.5M",
+          "label": "video views"
+        },
+        {
+          "value": "65",
+          "label": "countries reached"
+        },
+        {
+          "value": "2",
+          "label": "illustrated books"
+        }
+      ],
+      "_template": "statsRow"
     },
     {
-      "_template": "story",
       "number": "01",
       "label": "STORY",
       "heading": "How a French kid with a sketchbook\nended up teaching Krita on the internet.",
@@ -50,9 +61,11 @@
             "children": [
               {
                 "type": "text",
-                "text": "I offer advice and complementary materials to assist you in your creative journey. I also offer free tutorials here, and on my YouTube channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly."
+                "text": "Test copy channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly.",
+                "bold": true
               }
-            ]
+            ],
+            "id": "gdHXFkSmT8"
           }
         ]
       },
@@ -66,7 +79,8 @@
                 "type": "text",
                 "text": "I am a French author and illustrator. This website is about digital art."
               }
-            ]
+            ],
+            "id": "aN0J2sVj5g"
           }
         ]
       },
@@ -80,14 +94,15 @@
                 "type": "text",
                 "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
               }
-            ]
+            ],
+            "id": "NRXodk1Tqx"
           }
         ]
       },
-      "sideCaption": "my window in winter"
+      "sideCaption": "my window in winter",
+      "_template": "story"
     },
     {
-      "_template": "timeline",
       "number": "02",
       "label": "TIMELINE",
       "events": [
@@ -116,10 +131,10 @@
           "title": "Working on the next book",
           "description": "Vol. II — two years in the making."
         }
-      ]
+      ],
+      "_template": "timeline"
     },
     {
-      "_template": "cardRow",
       "number": "03",
       "label": "WHAT I MAKE",
       "cards": [
@@ -144,17 +159,18 @@
           "ctaLabel": "Watch on YouTube",
           "link": "https://www.youtube.com/c/BladeQuillartacademy"
         }
-      ]
+      ],
+      "_template": "cardRow"
     },
     {
-      "_template": "bigCta",
       "eyebrow": "SAY HI",
       "heading": "For press, collabs, or\njust a hello.",
       "highlightText": "hello",
       "primaryLabel": "Email Corinne",
       "primaryLink": "/contact",
       "secondaryLabel": "Watch on YouTube",
-      "secondaryLink": "https://www.youtube.com/c/BladeQuillartacademy"
+      "secondaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
+      "_template": "bigCta"
     }
   ]
 }
