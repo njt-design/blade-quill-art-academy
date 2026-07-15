@@ -1,18 +1,24 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
+import { galleryImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block, followLink } from "./block-utils";
 
-const MODULE_TILES: Array<{ p: ArtTilePalette; l: string }> = [
-  { p: "warm", l: "M1 · LINES" },
-  { p: "rose", l: "M2 · COLOR" },
-  { p: "warm", l: "M3 · LIGHT" },
-  { p: "violet", l: "M4 · CHARACTER" },
-  { p: "twilight", l: "M5 · STUDIO" },
-  { p: "moss", l: "M6 · FINAL" },
+const MODULE_TILES: Array<{ p: ArtTilePalette; l: string; src?: string; alt: string }> = [
+  { p: "warm", l: "M1 · LINES", src: galleryImageUrl("Chibi Hippo"), alt: "Chibi Hippo line art" },
+  { p: "rose", l: "M2 · COLOR", src: galleryImageUrl("Chibi of the Sea"), alt: "Chibi of the Sea" },
+  {
+    p: "warm",
+    l: "M3 · LIGHT",
+    src: galleryImageUrl("Fantasy Creature Guarding Dragon Egg"),
+    alt: "Fantasy creature painting with dramatic lighting",
+  },
+  { p: "violet", l: "M4 · CHARACTER", src: galleryImageUrl("Steampunk Girl"), alt: "Steampunk Girl character design" },
+  { p: "twilight", l: "M5 · STUDIO", src: youtubeThumb("Oe2xkeU_mV0"), alt: "Krita studio workspace" },
+  { p: "moss", l: "M6 · FINAL", src: galleryImageUrl("Geisha"), alt: "Geisha — finished digital painting" },
 ];
 
 interface Props {
@@ -138,7 +144,15 @@ export default function ClassesPitchBlock({ block }: Props) {
               <div className="eyebrow mb-3.5">SIX MODULES</div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-7">
                 {MODULE_TILES.map((m) => (
-                  <ArtTile key={m.l} palette={m.p} width="100%" height={80} label={m.l} />
+                  <ArtTile
+                    key={m.l}
+                    palette={m.p}
+                    width="100%"
+                    height={80}
+                    src={m.src}
+                    alt={m.alt}
+                    label={m.l}
+                  />
                 ))}
               </div>
               {block.ctaLabel ? (

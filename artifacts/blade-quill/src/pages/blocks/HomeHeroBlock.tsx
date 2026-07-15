@@ -1,6 +1,6 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
-import { FALLBACK_GALLERY } from "@/lib/fallback-data";
+import { galleryImageUrl } from "@/lib/artwork";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { QuillMark } from "@/components/site/QuillMark";
@@ -16,12 +16,12 @@ const MARQUEE_COLORS = [
   "var(--gold)",
 ];
 
-function galleryImageUrl(title: string): string | undefined {
-  return FALLBACK_GALLERY.find((item) => item.title === title)?.imageUrl;
-}
-
 const HERO_STEAMPUNK_CAT = galleryImageUrl("Steampunk Cat");
 const HERO_CHIBI_ELEPHANT = galleryImageUrl("Chibi Elephant");
+const HERO_SILA = galleryImageUrl("Sila");
+const HERO_CHILD_AND_BEAR = galleryImageUrl("Child and Bear");
+const HERO_BABY_DRAGON = galleryImageUrl("Baby Dragon");
+const HERO_CHIBI_DRAGON = galleryImageUrl("Chibi Dragon");
 
 interface Props {
   block: Block;
@@ -44,6 +44,8 @@ export default function HomeHeroBlock({ block }: Props) {
           className="art-tile-grain"
           width={170}
           height={220}
+          src={HERO_SILA}
+          alt="Sila — original character portrait"
           drift
           rotate={-7}
           interactive
@@ -69,7 +71,8 @@ export default function HomeHeroBlock({ block }: Props) {
           palette="rose"
           width={120}
           height={160}
-          label="study"
+          src={HERO_CHILD_AND_BEAR}
+          alt="Child and Bear"
           drift
           rotate={-4}
           interactive
@@ -95,7 +98,8 @@ export default function HomeHeroBlock({ block }: Props) {
           palette="moss"
           width={140}
           height={180}
-          label="palette"
+          src={HERO_BABY_DRAGON}
+          alt="Baby Dragon"
           drift
           rotate={-5}
           interactive
@@ -110,7 +114,8 @@ export default function HomeHeroBlock({ block }: Props) {
           palette="warm"
           width={130}
           height={170}
-          label="sketch"
+          src={HERO_CHIBI_DRAGON}
+          alt="Chibi Dragon sketch"
           drift
           rotate={4}
           interactive

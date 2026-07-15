@@ -1,11 +1,19 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
+import { productImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, isExternalLink } from "./block-utils";
 import { SidebarLabel } from "./SidebarLabel";
 
 const CARD_PALETTES: ArtTilePalette[] = ["warm", "violet", "twilight"];
+
+/* Default art per card, matching the "what I make" lanes: books, classes, videos. */
+const CARD_ART: Array<{ src?: string; alt: string }> = [
+  { src: productImageUrl("physical"), alt: "Lheeloo & Luna book cover" },
+  { src: productImageUrl("curriculum"), alt: "Digital art curriculum" },
+  { src: youtubeThumb("63_gp_rFtOc"), alt: "Krita tutorial video" },
+];
 
 interface CardItem {
   tag?: string;
@@ -42,6 +50,8 @@ export default function CardRowBlock({ block }: Props) {
                       palette={palette}
                       width="100%"
                       height={140}
+                      src={CARD_ART[i % CARD_ART.length].src}
+                      alt={CARD_ART[i % CARD_ART.length].alt}
                       label={(card.tag || "").toLowerCase()}
                       style={{ marginBottom: 22 }}
                     />

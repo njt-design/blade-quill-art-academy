@@ -4,7 +4,7 @@ import type { DesignSystemEntry } from "./types";
 export const registry: DesignSystemEntry[] = [
   // --- Organisms ---
   { id: "navbar", name: "Navbar", category: "organism", description: "Site header with navigation, cart, and mobile menu.", demo: lazy(() => import("./demos/organisms/NavbarDemo")) },
-  { id: "footer", name: "Footer", category: "organism", description: "Site footer with pages, social icons, and admin access.", demo: lazy(() => import("./demos/organisms/FooterDemo")) },
+  { id: "footer", name: "Footer", category: "organism", description: "Site footer with pages, social icons, newsletter signup, and admin link.", demo: lazy(() => import("./demos/organisms/FooterDemo")) },
   { id: "hero-block", name: "Hero Block", category: "organism", description: "Full-width hero section with heading, subheading, and CTA.", demo: lazy(() => import("./demos/organisms/HeroBlockDemo")) },
   { id: "cta-band-block", name: "CTA Band Block", category: "organism", description: "Horizontal call-to-action band (light and dark variants).", demo: lazy(() => import("./demos/organisms/CtaBandBlockDemo")) },
   { id: "feature-grid-block", name: "Feature Grid Block", category: "organism", description: "Icon + title + description grid for feature highlights.", demo: lazy(() => import("./demos/organisms/FeatureGridBlockDemo")) },

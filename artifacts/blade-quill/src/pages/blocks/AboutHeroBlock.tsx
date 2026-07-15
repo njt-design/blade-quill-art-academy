@@ -1,5 +1,6 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
+import { galleryImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { Polaroid } from "@/components/site/Polaroid";
@@ -7,6 +8,10 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
+
+const DESK_ART = galleryImageUrl("Japanese Girl");
+// Krita interface walkthrough — the literal "screen" from Corinne's channel.
+const KRITA_SCREEN = youtubeThumb("Oe2xkeU_mV0");
 
 interface Props {
   block: Block;
@@ -207,7 +212,15 @@ export default function AboutHeroBlock({ block }: Props) {
                   width: 220,
                 }}
               >
-                <ArtTile palette="violet" width="100%" height={240} label="at the desk" radius={2} />
+                <ArtTile
+                  palette="violet"
+                  width="100%"
+                  height={240}
+                  src={DESK_ART}
+                  alt="Japanese-inspired character portrait"
+                  label="from the desk"
+                  radius={2}
+                />
               </Polaroid>
               <Polaroid
                 rotate={5}
@@ -221,7 +234,15 @@ export default function AboutHeroBlock({ block }: Props) {
                   width: 200,
                 }}
               >
-                <ArtTile palette="rose" width="100%" height={200} label="krita screen" radius={2} />
+                <ArtTile
+                  palette="rose"
+                  width="100%"
+                  height={200}
+                  src={KRITA_SCREEN}
+                  alt="Krita interface walkthrough"
+                  label="krita screen"
+                  radius={2}
+                />
               </Polaroid>
             </div>
           </Reveal>

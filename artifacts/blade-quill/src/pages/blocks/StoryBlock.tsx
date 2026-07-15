@@ -1,10 +1,13 @@
 import { tinaField } from "tinacms/react";
+import { galleryImageUrl } from "@/lib/artwork";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
 import { SidebarLabel } from "./SidebarLabel";
+
+const STUDIO_ART = galleryImageUrl("Landscape");
 
 interface Props {
   block: Block;
@@ -102,7 +105,14 @@ export default function StoryBlock({ block }: Props) {
 
           <div className="hidden lg:block lg:sticky lg:top-28">
             <Polaroid rotate={3} washiColor="var(--gold-deep)" hoverStraighten>
-              <ArtTile palette="moss" width="100%" height={240} label="the studio" radius={2} />
+              <ArtTile
+                palette="moss"
+                width="100%"
+                height={240}
+                src={STUDIO_ART}
+                alt="Digital landscape painting"
+                radius={2}
+              />
               {block.sideCaption ? (
                 <div
                   className="mt-3 text-center"

@@ -1,10 +1,24 @@
 import { tinaField } from "tinacms/react";
+import { galleryImageUrl, productImageUrl } from "@/lib/artwork";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block } from "./block-utils";
 import { SidebarLabel } from "./SidebarLabel";
 
 const EVENT_PALETTES: ArtTilePalette[] = ["warm", "rose", "warm", "violet", "twilight"];
+
+/* Real artwork for each milestone, matching the default timeline story:
+   early character art → first book → channel growth → classes → next book. */
+const EVENT_ART: Array<{ src?: string; alt: string }> = [
+  { src: galleryImageUrl("Chibi Ninja Girl"), alt: "Early chibi character art" },
+  { src: productImageUrl("physical"), alt: "Lheeloo & Luna book cover" },
+  { src: galleryImageUrl("Dragon"), alt: "Dragon digital painting" },
+  { src: productImageUrl("curriculum"), alt: "Digital art curriculum" },
+  {
+    src: `${import.meta.env.BASE_URL}images/puzzle-book-front.png`,
+    alt: "The new activity book",
+  },
+];
 
 interface TimelineEvent {
   year?: string;
@@ -85,6 +99,8 @@ export default function TimelineBlock({ block }: Props) {
                     palette={EVENT_PALETTES[i % EVENT_PALETTES.length]}
                     width="100%"
                     height={120}
+                    src={EVENT_ART[i % EVENT_ART.length].src}
+                    alt={EVENT_ART[i % EVENT_ART.length].alt}
                     label={e.year}
                   />
                 </div>

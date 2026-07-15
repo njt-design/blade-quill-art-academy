@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { useListProducts } from "@workspace/api-client-react";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
+import { galleryImageUrl } from "@/lib/artwork";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { ArtTile } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
@@ -13,6 +14,9 @@ import { RichText } from "@/components/site/RichText";
 import { type Block, followLink } from "./block-utils";
 
 const STAT_COLORS = ["var(--maroon)", "var(--taupe)", "var(--ink)"];
+
+const BOOK_SPREAD_SRC = `${import.meta.env.BASE_URL}images/puzzle-book-back.png`;
+const BOOK_CHARACTER_SRC = galleryImageUrl("Chibi of the Sea");
 
 interface StatItem {
   value?: string;
@@ -66,10 +70,26 @@ export default function FeaturedBookBlock({ block }: Props) {
               {/* Accent polaroids don't fit next to the cover on phones. */}
               <div className="hidden sm:flex flex-col gap-4">
                 <Polaroid rotate={3} washi={false}>
-                  <ArtTile palette="rose" width={180} height={130} label="spread" radius={2} />
+                  <ArtTile
+                    palette="rose"
+                    width={180}
+                    height={130}
+                    src={BOOK_SPREAD_SRC}
+                    alt="Inside the book — puzzles and activities"
+                    label="spread"
+                    radius={2}
+                  />
                 </Polaroid>
                 <Polaroid rotate={-4} washi={false}>
-                  <ArtTile palette="violet" width={180} height={130} label="character" radius={2} />
+                  <ArtTile
+                    palette="violet"
+                    width={180}
+                    height={130}
+                    src={BOOK_CHARACTER_SRC}
+                    alt="Chibi of the Sea character art"
+                    label="character"
+                    radius={2}
+                  />
                 </Polaroid>
               </div>
             </div>
