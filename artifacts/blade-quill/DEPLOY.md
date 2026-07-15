@@ -9,10 +9,10 @@ The Vercel project is connected to the GitHub repo (`njt-design/blade-quill-art-
 **CMS save → live flow:**
 
 1. Client saves in `/admin` → Tina Cloud commits to GitHub `main` ("TinaCMS content update").
-2. GitHub push triggers a Vercel production build (`build:static`, ~30s build + propagation).
-3. The change is live roughly **2–3 minutes after saving**. Rapid consecutive saves cancel superseded builds; only the newest one finishes (canceled deployments in the dashboard are normal).
+2. **Immediately:** the live site re-fetches the saved content from the Tina Cloud content API (runtime GraphQL, read-only token). A page refresh shows the change in seconds — no rebuild wait.
+3. **In parallel:** GitHub push triggers a Vercel production build (`build:static`, ~30s build + propagation). This refreshes the bundled JSON fallback in the JS bundle.
 
-Content is bundled into the JS at build time (`import.meta.glob` in `src/lib/page-content.ts`), so a rebuild is required for saves to appear — there is no runtime fetch from Tina Cloud.
+The bundled content (`import.meta.glob` in `src/lib/page-content.ts`) still renders first for an instant, flash-free load. The runtime fetch (`src/lib/tina-live.ts`) swaps in fresh data silently. If Tina Cloud is unreachable, visitors still see the last bundled version from the most recent deploy.
 
 **Important:** because Tina Cloud commits directly to `main`, run `git pull` before starting local work, and expect `content/` to change out from under you while the client is editing.
 
@@ -45,7 +45,8 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 | Variable | Where to set | Required |
 |----------|--------------|----------|
 | `TINA_PUBLIC_CLIENT_ID` | Vercel Dashboard | Yes — from [app.tina.io](https://app.tina.io) project settings |
-| `TINA_TOKEN` | Vercel Dashboard | Yes — read-only token from Tina Cloud |
+| `TINA_TOKEN` | Vercel Dashboard | Yes — read-only token from Tina Cloud (used by Tina admin build) |
+| `TINA_PUBLIC_READONLY_TOKEN` | Vercel Dashboard | Yes — same read-only token as `TINA_TOKEN`; injected into the browser bundle for runtime content fetches |
 | `TINA_BRANCH` | Vercel Dashboard | No — defaults to `main` in `tina/config.ts` |
 | `PORT` | Hardcoded in `build:static` | No — set to `3001` in the script |
 | `BASE_PATH` | Hardcoded in `build:static` | No — set to `/` in the script |

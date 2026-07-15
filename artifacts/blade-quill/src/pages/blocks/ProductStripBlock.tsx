@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { useListProducts } from "@workspace/api-client-react";
+import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { Btn } from "@/components/site/Btn";
@@ -16,12 +17,13 @@ interface Props {
 export default function ProductStripBlock({ block }: Props) {
   const [, setLocation] = useLocation();
 
+  const catalog = useLiveProducts();
   const { data: products } = useListProducts(undefined, {
     query: { enabled: !hasCatalogProducts() },
   });
   const allProducts = useMemo(
-    () => resolveCatalogProducts(products, FALLBACK_PRODUCTS),
-    [products]
+    () => resolveCatalogProducts(products, FALLBACK_PRODUCTS, catalog),
+    [products, catalog]
   );
 
   return (

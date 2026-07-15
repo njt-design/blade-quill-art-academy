@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
-import { useTina } from "tinacms/react";
+import { useLiveTina } from "@/hooks/use-live-tina";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -83,7 +83,7 @@ export default function Page({ slug: rawSlug, chrome = "none" }: PageProps) {
       }
     : {};
 
-  const { data } = useTina({
+  const { data } = useLiveTina({
     query: isCore ? sitePageQuery : landingPageQuery,
     variables: { relativePath: `${slug}.json` },
     data: isCore ? { page: seed } : { landingPage: seed },

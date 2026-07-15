@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { useListProducts, useListTutorials } from "@workspace/api-client-react";
+import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS, FALLBACK_TUTORIALS } from "@/lib/fallback-data";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
@@ -38,6 +39,7 @@ export default function PillarsBlock({ block }: Props) {
   const [, setLocation] = useLocation();
   const items = ((block.items as PillarItem[] | undefined) ?? []).slice(0, 3);
 
+  const catalog = useLiveProducts();
   const { data: products } = useListProducts(undefined, {
     query: { enabled: !hasCatalogProducts() },
   });
@@ -47,8 +49,8 @@ export default function PillarsBlock({ block }: Props) {
   );
 
   const allProducts = useMemo(
-    () => resolveCatalogProducts(products, FALLBACK_PRODUCTS),
-    [products]
+    () => resolveCatalogProducts(products, FALLBACK_PRODUCTS, catalog),
+    [products, catalog]
   );
 
   const featuredVideo = useMemo(() => {

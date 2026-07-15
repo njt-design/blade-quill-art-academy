@@ -31,6 +31,13 @@ const apiProxyTarget =
 
 export default defineConfig({
   base: basePath,
+  define: {
+    __TINA_CLIENT_ID__: JSON.stringify(process.env.TINA_PUBLIC_CLIENT_ID ?? ""),
+    __TINA_READONLY_TOKEN__: JSON.stringify(
+      process.env.TINA_PUBLIC_READONLY_TOKEN ?? process.env.TINA_TOKEN ?? ""
+    ),
+    __TINA_BRANCH__: JSON.stringify(process.env.TINA_BRANCH ?? "main"),
+  },
   plugins: [
     react(),
     tailwindcss(),

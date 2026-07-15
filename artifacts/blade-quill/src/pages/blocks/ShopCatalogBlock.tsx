@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { useListProducts } from "@workspace/api-client-react";
+import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_CATEGORIES, FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import {
   deriveCategories,
@@ -62,13 +63,14 @@ export default function ShopCatalogBlock({ block }: Props) {
   const [sort, setSort] = useState<SortOption>("Newest");
   const [sortOpen, setSortOpen] = useState(false);
 
+  const catalog = useLiveProducts();
   const { data: productsRaw, isLoading } = useListProducts(
     {},
     { query: { enabled: !hasCatalogProducts() } }
   );
   const allProducts = useMemo(
-    () => resolveCatalogProducts(productsRaw, FALLBACK_PRODUCTS),
-    [productsRaw]
+    () => resolveCatalogProducts(productsRaw, FALLBACK_PRODUCTS, catalog),
+    [productsRaw, catalog]
   );
   const categories = useMemo(() => {
     const derived = deriveCategories(allProducts);

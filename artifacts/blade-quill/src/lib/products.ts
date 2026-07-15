@@ -13,12 +13,11 @@ export type CatalogProduct = Omit<Product, "description"> & {
   description: string | RichTextValue;
 };
 
-function parseProduct(
-  path: string,
-  mod: { default?: Record<string, unknown> } & Record<string, unknown>
+/** Build a CatalogProduct from raw Tina document data (bundled JSON or GraphQL node). */
+export function toCatalogProduct(
+  slug: string,
+  data: Record<string, unknown>
 ): CatalogProduct | null {
-  const data = (mod.default ?? mod) as Record<string, unknown>;
-  const slug = path.split("/").pop()?.replace(/\.json$/i, "") ?? "";
   const id = Number(data.productId ?? data.id);
   const name = data.name as string | undefined;
   const price = Number(data.price);
@@ -57,21 +56,33 @@ export function hasCatalogProducts(): boolean {
   return Object.keys(productModules).length > 0;
 }
 
-/** Products authored in Tina (`content/products/*.json`). */
-export function loadCatalogProducts(): CatalogProduct[] {
-  return Object.entries(productModules)
-    .map(([path, mod]) => parseProduct(path, mod))
-    .filter((p): p is CatalogProduct => p !== null)
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+/** Newest-first sort shared by the bundled and live catalog loaders. */
+export function sortCatalogProducts(
+  products: CatalogProduct[]
+): CatalogProduct[] {
+  return [...products].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 }
 
-export function getCatalogProduct(
+/** Products authored in Tina (`content/products/*.json`). */
+export function loadCatalogProducts(): CatalogProduct[] {
+  return sortCatalogProducts(
+    Object.entries(productModules)
+      .map(([path, mod]) => {
+        const data = (mod.default ?? mod) as Record<string, unknown>;
+        const slug = path.split("/").pop()?.replace(/\.json$/i, "") ?? "";
+        return toCatalogProduct(slug, data);
+      })
+      .filter((p): p is CatalogProduct => p !== null)
+  );
+}
+
+/** Find a product by slug (preferred) or numeric ID. */
+export function findCatalogProduct(
+  products: CatalogProduct[],
   slugOrId: string
 ): CatalogProduct | undefined {
-  const products = loadCatalogProducts();
   const bySlug = products.find((p) => p.slug === slugOrId);
   if (bySlug) return bySlug;
 
@@ -80,6 +91,12 @@ export function getCatalogProduct(
     return products.find((p) => p.id === id);
   }
   return undefined;
+}
+
+export function getCatalogProduct(
+  slugOrId: string
+): CatalogProduct | undefined {
+  return findCatalogProduct(loadCatalogProducts(), slugOrId);
 }
 
 const CATEGORY_LABELS: Record<ProductCategory, string> = {
@@ -105,9 +122,9 @@ export function deriveCategories(products: CatalogProduct[]): Category[] {
 
 export function resolveCatalogProducts(
   apiProducts: Product[] | undefined,
-  fallback: Product[]
+  fallback: Product[],
+  catalog: CatalogProduct[] = loadCatalogProducts()
 ): CatalogProduct[] {
-  const catalog = loadCatalogProducts();
   if (catalog.length > 0) return catalog;
 
   const api = Array.isArray(apiProducts) ? apiProducts : [];

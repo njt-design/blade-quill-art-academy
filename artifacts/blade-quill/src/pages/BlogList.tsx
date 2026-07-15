@@ -1,14 +1,15 @@
 import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 import { Calendar, ArrowRight } from "lucide-react";
-import { formatBlogDate, loadBlogPosts } from "@/lib/blog-posts";
+import { useLiveBlogPosts } from "@/hooks/use-live-content";
+import { formatBlogDate } from "@/lib/blog-posts";
 import { richTextToPlain } from "@/lib/rich-text";
 
 export default function BlogList() {
   const [, setLocation] = useLocation();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const posts = useMemo(() => loadBlogPosts(), []);
+  const posts = useLiveBlogPosts();
 
   const allTags = useMemo(() => {
     const set = new Set<string>();

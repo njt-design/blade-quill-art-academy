@@ -1,7 +1,7 @@
-import { useMemo } from "react";
 import { Link } from "wouter";
 import { tinaField } from "tinacms/react";
-import { loadBlogPosts, formatBlogDate } from "@/lib/blog-posts";
+import { useLiveBlogPosts } from "@/hooks/use-live-content";
+import { formatBlogDate } from "@/lib/blog-posts";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block } from "./block-utils";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function BlogFeedBlock({ block }: Props) {
-  const blogPosts = useMemo(() => loadBlogPosts().slice(0, 3), []);
+  const blogPosts = useLiveBlogPosts().slice(0, 3);
   const showNewsletter = block.showNewsletter !== false;
   const newsletter = (block.newsletter as NewsletterContent | undefined) ?? {};
 

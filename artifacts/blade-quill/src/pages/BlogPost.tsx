@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { useRoute, useLocation } from "wouter";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTina, tinaField } from "tinacms/react";
+import { tinaField } from "tinacms/react";
+import { useLiveTina } from "@/hooks/use-live-tina";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { RichText } from "@/components/site/RichText";
 
@@ -65,7 +67,7 @@ export default function BlogPost() {
 
   const staticData = getPostData(slug);
 
-  const { data } = useTina({
+  const { data } = useLiveTina({
     query: postQuery,
     variables: { relativePath: `${slug}.json` },
     data: {

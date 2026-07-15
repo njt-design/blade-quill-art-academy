@@ -6,9 +6,10 @@ import {
   useGetProduct,
   useListProducts,
 } from "@workspace/api-client-react";
+import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import {
-  getCatalogProduct,
+  findCatalogProduct,
   hasCatalogProducts,
   resolveCatalogProducts,
   type CatalogProduct,
@@ -92,9 +93,10 @@ export default function ProductDetail() {
   const [, setLocation] = useLocation();
   const routeParam = params?.id ?? "";
 
+  const catalog = useLiveProducts();
   const catalogProduct = useMemo(
-    () => getCatalogProduct(routeParam),
-    [routeParam]
+    () => findCatalogProduct(catalog, routeParam),
+    [catalog, routeParam]
   );
   const numericId = Number(routeParam);
   const useApi =
@@ -112,8 +114,8 @@ export default function ProductDetail() {
     { query: { enabled: !hasCatalogProducts() } }
   );
   const allProducts = useMemo(
-    () => resolveCatalogProducts(allProductsRaw, FALLBACK_PRODUCTS),
-    [allProductsRaw]
+    () => resolveCatalogProducts(allProductsRaw, FALLBACK_PRODUCTS, catalog),
+    [allProductsRaw, catalog]
   );
 
   const product = useMemo((): CatalogProduct | undefined => {
@@ -121,8 +123,8 @@ export default function ProductDetail() {
     if (apiProduct) {
       return { ...apiProduct, slug: String(apiProduct.id) };
     }
-    return getCatalogProduct(routeParam);
-  }, [catalogProduct, apiProduct, routeParam]);
+    return findCatalogProduct(catalog, routeParam);
+  }, [catalogProduct, apiProduct, catalog, routeParam]);
 
   const isLoading = useApi && apiLoading && !product;
   const error = useApi ? apiError : undefined;
