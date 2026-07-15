@@ -65,6 +65,14 @@ git commit -m "Regenerate Tina admin after schema change"
 
 Production builds use `build:static` (Vite only). Tina content ships from committed `content/` and `tina/__generated__/`.
 
+**Warning — the dev server clobbers the pre-built admin.** Running `pnpm dev` (`tinacms dev`) rewrites `public/admin/index.html` to a dev-mode version that loads scripts from `localhost:4001`, and replaces `public/admin/.gitignore`. Committing those dev-mode files breaks `/admin` in production ("Failed loading TinaCMS assets"). Before committing, discard them:
+
+```bash
+git restore artifacts/blade-quill/public/admin/
+```
+
+Only commit `public/admin/` when intentionally regenerating it via `pnpm run build:deploy`.
+
 No Supabase/Stripe keys are required for the static client preview.
 
 ## Temporary domain (Important Links launch)
