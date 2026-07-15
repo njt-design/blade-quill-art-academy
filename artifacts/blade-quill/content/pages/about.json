@@ -13,8 +13,9 @@
             "children": [
               {
                 "type": "text",
-                "text": "asdfasdf",
-                "bold": true
+                "text": "This is new copy. ",
+                "bold": true,
+                "italic": true
               }
             ],
             "id": "KUq0eEwCLt"
