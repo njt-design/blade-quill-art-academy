@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "homeHero",
       "eyebrow": "✦ HELLO FROM THE STUDIO ✦",
       "heading": "Welcome to Blade & Quill\ndigital painting.",
       "subheading": {
@@ -14,9 +13,10 @@
             "children": [
               {
                 "type": "text",
-                "text": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Luna."
+                "text": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Loona."
               }
-            ]
+            ],
+            "id": "gXFMefywJV"
           }
         ]
       },
@@ -32,10 +32,10 @@
         "Chibi specialist",
         "Storyteller",
         "YouTuber"
-      ]
+      ],
+      "_template": "homeHero"
     },
     {
-      "_template": "pillars",
       "eyebrow": "THREE THREADS",
       "heading": "Where would you like to start?",
       "items": [
@@ -63,10 +63,10 @@
           "badge": "100K+",
           "link": "https://www.youtube.com/c/BladeQuillartacademy"
         }
-      ]
+      ],
+      "_template": "pillars"
     },
     {
-      "_template": "featuredBook",
       "eyebrow": "FEATURED RELEASE",
       "heading": "Lheeloo & Luna — The Book Is Live",
       "description": {
@@ -84,17 +84,26 @@
         ]
       },
       "stats": [
-        { "value": "$25", "label": "SIGNED COPY" },
-        { "value": "$15", "label": "EBOOK" },
-        { "value": "144", "label": "FULL-COLOR PAGES" }
+        {
+          "value": "$25",
+          "label": "SIGNED COPY"
+        },
+        {
+          "value": "$15",
+          "label": "EBOOK"
+        },
+        {
+          "value": "144",
+          "label": "FULL-COLOR PAGES"
+        }
       ],
       "ctaLabel": "Order Now",
       "ctaLink": "/shop/1",
       "secondaryLabel": "Browse the shop",
-      "secondaryLink": "/shop"
+      "secondaryLink": "/shop",
+      "_template": "featuredBook"
     },
     {
-      "_template": "classesPitch",
       "eyebrow": "Now Enrolling",
       "heading": "Enroll in My Krita Education Course",
       "subheading": {
@@ -120,10 +129,10 @@
       "ctaLabel": "Reserve Your Spot",
       "ctaLink": "/classes",
       "secondaryLabel": "About Corinne",
-      "secondaryLink": "/about"
+      "secondaryLink": "/about",
+      "_template": "classesPitch"
     },
     {
-      "_template": "tutorialsStrip",
       "eyebrow": "FREE LESSONS ON YOUTUBE",
       "headingPrefix": "Join ",
       "headingHighlight": "100,000+ artists",
@@ -131,21 +140,33 @@
       "buttonLabel": "Browse All Tutorials",
       "youtubeUrl": "https://www.youtube.com/c/BladeQuillartacademy",
       "stats": [
-        { "value": "100K+", "label": "subscribers" },
-        { "value": "1.5M", "label": "total views" },
-        { "value": "65", "label": "countries" },
-        { "value": "bi-weekly", "label": "new videos" }
-      ]
+        {
+          "value": "100K+",
+          "label": "subscribers"
+        },
+        {
+          "value": "1.5M",
+          "label": "total views"
+        },
+        {
+          "value": "65",
+          "label": "countries"
+        },
+        {
+          "value": "bi-weekly",
+          "label": "new videos"
+        }
+      ],
+      "_template": "tutorialsStrip"
     },
     {
-      "_template": "productStrip",
       "eyebrow": "FROM THE SHOP",
       "heading": "Books & Ebooks",
       "viewAllLabel": "View All",
-      "viewAllLink": "/shop"
+      "viewAllLink": "/shop",
+      "_template": "productStrip"
     },
     {
-      "_template": "blogFeed",
       "heading": "Recent Blog Posts",
       "showNewsletter": true,
       "newsletter": {
@@ -168,7 +189,8 @@
         "placeholderText": "you@example.com",
         "ctaLabel": "Subscribe",
         "privacyNote": "No spam. Unsubscribe anytime."
-      }
+      },
+      "_template": "blogFeed"
     }
   ]
 }
