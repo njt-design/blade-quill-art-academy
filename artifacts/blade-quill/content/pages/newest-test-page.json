@@ -1,0 +1,89 @@
+{
+  "title": "newest-test-page",
+  "layout": "standard",
+  "blocks": [
+    {
+      "heading": "Page Title",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short introduction to what this page covers."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "pageHeader"
+    },
+    {
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write the main content here. You can add headings, lists, links, and images."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "eyebrow": "ABOUT · A STUDIO VISIT",
+      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "leadText": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short introduction sentence."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaPrimary": "Get in Touch",
+      "ctaPrimaryLink": "/contact",
+      "ctaSecondary": "Visit the Shop",
+      "ctaSecondaryLink": "/shop",
+      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "portraitCaption": "in the studio",
+      "_template": "aboutHero"
+    },
+    {
+      "heading": "The studio shop.",
+      "highlightText": "studio",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Books, digital guides, and curriculum."
+              }
+            ]
+          }
+        ]
+      },
+      "showFeaturedBanner": true,
+      "emptyHeading": "No products found",
+      "emptyDescription": "Check back later for new releases.",
+      "_template": "shopCatalog"
+    }
+  ],
+  "_template": "info"
+}
