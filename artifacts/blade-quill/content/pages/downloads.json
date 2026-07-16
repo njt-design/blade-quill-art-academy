@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "pageHeader",
       "heading": "Free Downloads",
       "description": {
         "type": "root",
@@ -13,17 +12,19 @@
             "children": [
               {
                 "type": "text",
-                "text": "Completely free coloring pages, reference guides, and printable resources. For private use only — these creations are copyright protected."
+                "text": "Here are free coloring pages, reference guides, and printable resources. For private use only — these creations are copyright protected."
               }
-            ]
+            ],
+            "id": "iSy5bKH3ii"
           }
         ]
-      }
+      },
+      "_template": "pageHeader"
     },
     {
-      "_template": "downloadsGrid",
       "emptyHeading": "Free resources coming soon!",
-      "emptyDescription": "Coloring pages, guides, and more on the way."
+      "emptyDescription": "Coloring pages, guides, and more on the way.",
+      "_template": "downloadsGrid"
     }
   ]
 }
