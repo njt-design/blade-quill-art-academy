@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "ABOUT · A STUDIO VISIT",
-      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "heading": "I'm Corinne -- illustrator and digital creator.",
       "leadText": {
         "type": "root",
         "children": [
@@ -13,9 +13,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Testing out the new visual editor",
-                "bold": true,
-                "italic": true
+                "text": "This would be sub copy"
               }
             ],
             "id": "KUq0eEwCLt"
@@ -197,8 +195,8 @@
           }
         ]
       },
-      "sideCaption": "my window in winter",
       "sideImage": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691361810475-1O27U98PD2Q4K9VD6E25/LANDSCAPE.jpg",
+      "sideCaption": "my window in winter",
       "_template": "story"
     }
   ]
