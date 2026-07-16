@@ -50,3 +50,9 @@ Thumbs.db
 
 # Vercel
 .vercel
+*.local
+
+# Local env files (never commit secrets)
+.env
+.env.*
+!.env.example
