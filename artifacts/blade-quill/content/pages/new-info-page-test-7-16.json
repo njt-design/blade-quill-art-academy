@@ -1,0 +1,42 @@
+{
+  "title": "New Info Page Test 7/16",
+  "layout": "standard",
+  "blocks": [
+    {
+      "heading": "Page Title",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short introduction to what this page covers."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "pageHeader"
+    },
+    {
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write the main content here. You can add headings, lists, links, and images."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    }
+  ],
+  "_template": "info"
+}
