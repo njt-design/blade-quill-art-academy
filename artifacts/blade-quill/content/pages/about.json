@@ -13,12 +13,25 @@
             "children": [
               {
                 "type": "text",
-                "text": "This is new copy. ",
+                "text": "Testing out the new visual editor",
                 "bold": true,
                 "italic": true
               }
             ],
             "id": "KUq0eEwCLt"
+          },
+          {
+            "type": "p",
+            "id": "6jylN6axyh",
+            "children": [
+              {
+                "type": "text",
+                "bold": true,
+                "italic": true,
+                "id": "Yfu8nFw_eg",
+                "text": ""
+              }
+            ]
           }
         ]
       },
