@@ -58,6 +58,8 @@ type Query {
   pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
   landingPage(relativePath: String): LandingPage!
   landingPageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingPageFilter): LandingPageConnection!
+  navigation(relativePath: String): Navigation!
+  navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
   shopProduct(relativePath: String): ShopProduct!
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
   post(relativePath: String): Post!
@@ -67,6 +69,7 @@ type Query {
 input DocumentFilter {
   page: PageFilter
   landingPage: LandingPageFilter
+  navigation: NavigationFilter
   shopProduct: ShopProductFilter
   post: PostFilter
 }
@@ -94,7 +97,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | ShopProduct | Post | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Navigation | ShopProduct | Post | Folder
 
 type PageBlocksHomeHero {
   eyebrow: String
@@ -4107,6 +4110,105 @@ type LandingPageConnection implements Connection {
   edges: [LandingPageConnectionEdges]
 }
 
+union NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
+
+union NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
+
+type NavigationItemsChildren {
+  label: String!
+  linkType: String
+  page: NavigationItemsChildrenPage
+  href: String
+}
+
+type NavigationItems {
+  label: String!
+  linkType: String
+  page: NavigationItemsPage
+  href: String
+  children: [NavigationItemsChildren]
+}
+
+union NavigationFooterColumnsLinksPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
+
+type NavigationFooterColumnsLinks {
+  label: String!
+  linkType: String
+  page: NavigationFooterColumnsLinksPage
+  href: String
+}
+
+type NavigationFooterColumns {
+  heading: String!
+  links: [NavigationFooterColumnsLinks]
+}
+
+type Navigation implements Node & Document {
+  items: [NavigationItems]
+  footerColumns: [NavigationFooterColumns]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NavigationItemsPageFilter {
+  page: PageFilter
+  landingPage: LandingPageFilter
+}
+
+input NavigationItemsChildrenPageFilter {
+  page: PageFilter
+  landingPage: LandingPageFilter
+}
+
+input NavigationItemsChildrenFilter {
+  label: StringFilter
+  linkType: StringFilter
+  page: NavigationItemsChildrenPageFilter
+  href: StringFilter
+}
+
+input NavigationItemsFilter {
+  label: StringFilter
+  linkType: StringFilter
+  page: NavigationItemsPageFilter
+  href: StringFilter
+  children: NavigationItemsChildrenFilter
+}
+
+input NavigationFooterColumnsLinksPageFilter {
+  page: PageFilter
+  landingPage: LandingPageFilter
+}
+
+input NavigationFooterColumnsLinksFilter {
+  label: StringFilter
+  linkType: StringFilter
+  page: NavigationFooterColumnsLinksPageFilter
+  href: StringFilter
+}
+
+input NavigationFooterColumnsFilter {
+  heading: StringFilter
+  links: NavigationFooterColumnsLinksFilter
+}
+
+input NavigationFilter {
+  items: NavigationItemsFilter
+  footerColumns: NavigationFooterColumnsFilter
+}
+
+type NavigationConnectionEdges {
+  cursor: String!
+  node: Navigation
+}
+
+type NavigationConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [NavigationConnectionEdges]
+}
+
 type ShopProduct implements Node & Document {
   productId: Float!
   name: String!
@@ -4209,6 +4311,8 @@ type Mutation {
   createPage(relativePath: String!, params: PageMutation!): Page!
   updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
   createLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
+  updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
+  createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
   updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   updatePost(relativePath: String!, params: PostMutation!): Post!
@@ -4218,6 +4322,7 @@ type Mutation {
 input DocumentUpdateMutation {
   page: PageMutation
   landingPage: LandingPageMutation
+  navigation: NavigationMutation
   shopProduct: ShopProductMutation
   post: PostMutation
   relativePath: String
@@ -4226,6 +4331,7 @@ input DocumentUpdateMutation {
 input DocumentMutation {
   page: PageMutation
   landingPage: LandingPageMutation
+  navigation: NavigationMutation
   shopProduct: ShopProductMutation
   post: PostMutation
 }
@@ -6300,6 +6406,38 @@ input LandingPageMutation {
   promo: LandingPagePromoMutation
   info: LandingPageInfoMutation
   linkInBio: LandingPageLinkInBioMutation
+}
+
+input NavigationItemsChildrenMutation {
+  label: String
+  linkType: String
+  page: String
+  href: String
+}
+
+input NavigationItemsMutation {
+  label: String
+  linkType: String
+  page: String
+  href: String
+  children: [NavigationItemsChildrenMutation]
+}
+
+input NavigationFooterColumnsLinksMutation {
+  label: String
+  linkType: String
+  page: String
+  href: String
+}
+
+input NavigationFooterColumnsMutation {
+  heading: String
+  links: [NavigationFooterColumnsLinksMutation]
+}
+
+input NavigationMutation {
+  items: [NavigationItemsMutation]
+  footerColumns: [NavigationFooterColumnsMutation]
 }
 
 input ShopProductMutation {

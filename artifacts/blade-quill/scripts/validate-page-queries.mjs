@@ -9,6 +9,7 @@ import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sitePageQuery, landingPageQuery } from "../src/lib/page-queries.ts";
+import { navigationQuery } from "../src/lib/navigation-queries.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -25,6 +26,7 @@ let failed = false;
 for (const [name, query] of [
   ["sitePageQuery", sitePageQuery],
   ["landingPageQuery", landingPageQuery],
+  ["navigationQuery", navigationQuery],
 ]) {
   const errors = validate(schema, parse(query));
   if (errors.length > 0) {

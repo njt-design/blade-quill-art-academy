@@ -1,0 +1,111 @@
+{
+  "items": [
+    {
+      "label": "Shop",
+      "linkType": "page",
+      "page": "content/pages/shop.json"
+    },
+    {
+      "label": "Gallery",
+      "linkType": "page",
+      "page": "content/pages/gallery.json"
+    },
+    {
+      "label": "Downloads",
+      "linkType": "page",
+      "page": "content/pages/downloads.json"
+    },
+    {
+      "label": "Blog",
+      "linkType": "path",
+      "href": "/blog"
+    },
+    {
+      "label": "About",
+      "linkType": "page",
+      "page": "content/pages/about.json"
+    },
+    {
+      "label": "Contact",
+      "linkType": "page",
+      "page": "content/pages/contact.json"
+    }
+  ],
+  "footerColumns": [
+    {
+      "heading": "Shop",
+      "links": [
+        {
+          "label": "Books",
+          "linkType": "page",
+          "page": "content/pages/shop.json"
+        },
+        {
+          "label": "Ebooks",
+          "linkType": "page",
+          "page": "content/pages/shop.json"
+        },
+        {
+          "label": "Downloads",
+          "linkType": "page",
+          "page": "content/pages/downloads.json"
+        },
+        {
+          "label": "Gallery",
+          "linkType": "page",
+          "page": "content/pages/gallery.json"
+        }
+      ]
+    },
+    {
+      "heading": "Studio",
+      "links": [
+        {
+          "label": "About",
+          "linkType": "page",
+          "page": "content/pages/about.json"
+        },
+        {
+          "label": "Blog",
+          "linkType": "path",
+          "href": "/blog"
+        },
+        {
+          "label": "Contact",
+          "linkType": "page",
+          "page": "content/pages/contact.json"
+        },
+        {
+          "label": "Cart",
+          "linkType": "path",
+          "href": "/cart"
+        }
+      ]
+    },
+    {
+      "heading": "Follow",
+      "links": [
+        {
+          "label": "YouTube",
+          "linkType": "external",
+          "href": "https://www.youtube.com/c/BladeQuillartacademy"
+        },
+        {
+          "label": "Instagram",
+          "linkType": "external",
+          "href": "https://www.instagram.com/bladequillartacademy/"
+        },
+        {
+          "label": "Amazon",
+          "linkType": "external",
+          "href": "https://www.amazon.com/dp/1733168451"
+        },
+        {
+          "label": "Ko-fi",
+          "linkType": "external",
+          "href": "https://ko-fi.com/bladeandquill"
+        }
+      ]
+    }
+  ]
+}

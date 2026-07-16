@@ -82,6 +82,61 @@ function corePageRoute(basename: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// Navigation (site menu + footer links, editable as a single document)
+// ---------------------------------------------------------------------------
+
+/**
+ * Fields shared by every nav link (top-level menu items, dropdown children,
+ * and footer links). A link points at a site page, a built-in path like
+ * /blog, or an external URL.
+ */
+function navLinkFields(): TinaField[] {
+  return [
+    {
+      type: "string",
+      name: "label",
+      label: "Label",
+      required: true,
+      ui: { description: "The text shown in the menu." },
+    },
+    {
+      type: "string",
+      name: "linkType",
+      label: "Link Type",
+      options: [
+        { value: "page", label: "Site page" },
+        { value: "path", label: "Site link (e.g. /blog or /cart)" },
+        { value: "external", label: "External URL" },
+      ],
+      ui: {
+        description:
+          'Where this link goes: pick "Site page" to link to one of your pages.',
+      },
+    },
+    {
+      type: "reference",
+      name: "page",
+      label: "Page",
+      collections: ["page", "landingPage"],
+      ui: { description: 'The page to link to (used when Link Type is "Site page").' },
+    },
+    {
+      type: "string",
+      name: "href",
+      label: "URL / Path",
+      ui: {
+        description:
+          'Used for "Site link" (e.g. /blog) or "External URL" (e.g. https://youtube.com/...).',
+      },
+    },
+  ];
+}
+
+const navItemProps = (item?: Record<string, unknown>) => ({
+  label: (item?.label as string) || "Menu item",
+});
+
+// ---------------------------------------------------------------------------
 // Starter templates for new pages
 // ---------------------------------------------------------------------------
 
@@ -295,6 +350,79 @@ export default defineConfig({
           promoPageTemplate,
           infoPageTemplate,
           linkInBioPageTemplate,
+        ],
+      },
+
+      // ---------------------------------------------------------------
+      // Navigation — a single document controlling the site menu and
+      // footer link columns. Protected so it can't be deleted.
+      // ---------------------------------------------------------------
+      {
+        name: "navigation",
+        label: "Navigation",
+        path: "content/navigation",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          // Preview nav edits live on the homepage.
+          router: () => "/",
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "Menu Items",
+            list: true,
+            ui: {
+              itemProps: navItemProps,
+              description:
+                "The links in the site header, left to right. Drag to reorder. Add Dropdown Items to a link to group pages under it.",
+            },
+            fields: [
+              ...navLinkFields(),
+              {
+                type: "object",
+                name: "children",
+                label: "Dropdown Items",
+                list: true,
+                ui: {
+                  itemProps: navItemProps,
+                  description:
+                    "Optional links shown in a dropdown under this menu item.",
+                },
+                fields: navLinkFields(),
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "footerColumns",
+            label: "Footer Columns",
+            list: true,
+            ui: {
+              itemProps: (item?: Record<string, unknown>) => ({
+                label: (item?.heading as string) || "Footer column",
+              }),
+              description:
+                "The link columns in the site footer, left to right. Drag to reorder.",
+            },
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Column Heading",
+                required: true,
+              },
+              {
+                type: "object",
+                name: "links",
+                label: "Links",
+                list: true,
+                ui: { itemProps: navItemProps },
+                fields: navLinkFields(),
+              },
+            ],
+          },
         ],
       },
 

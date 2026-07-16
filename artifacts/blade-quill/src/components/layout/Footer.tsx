@@ -3,49 +3,18 @@ import { Link } from "wouter";
 import { SiInstagram, SiKofi, SiYoutube } from "react-icons/si";
 import { FaAmazon } from "react-icons/fa";
 import { QuillMark } from "@/components/site/QuillMark";
+import { useLiveNavigation } from "@/hooks/use-live-navigation";
 
 const AMAZON_BOOK_URL = "https://www.amazon.com/dp/1733168451";
 const YOUTUBE_URL = "https://www.youtube.com/c/BladeQuillartacademy";
 const INSTAGRAM_URL = "https://www.instagram.com/bladequillartacademy/";
 const KOFI_URL = "https://ko-fi.com/bladeandquill";
 
-interface FooterColumn {
-  heading: string;
-  items: Array<{ label: string; href: string; external?: boolean }>;
-}
-
-const COLUMNS: FooterColumn[] = [
-  {
-    heading: "Shop",
-    items: [
-      { label: "Books", href: "/shop" },
-      { label: "Ebooks", href: "/shop" },
-      { label: "Downloads", href: "/downloads" },
-      { label: "Gallery", href: "/gallery" },
-    ],
-  },
-  {
-    heading: "Studio",
-    items: [
-      { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "/contact" },
-      { label: "Cart", href: "/cart" },
-    ],
-  },
-  {
-    heading: "Follow",
-    items: [
-      { label: "YouTube", href: YOUTUBE_URL, external: true },
-      { label: "Instagram", href: INSTAGRAM_URL, external: true },
-      { label: "Amazon", href: AMAZON_BOOK_URL, external: true },
-      { label: "Ko-fi", href: KOFI_URL, external: true },
-    ],
-  },
-];
-
 export function Footer() {
   const [email, setEmail] = useState("");
+  // Link columns come from the CMS Navigation document, so the client can
+  // reorganize them (alongside the header menu) in Tina.
+  const { footerColumns } = useLiveNavigation();
 
   return (
     <footer
@@ -58,7 +27,7 @@ export function Footer() {
       />
 
       <div className="bq-container-wide">
-        <div className="grid gap-10 md:gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr_1.6fr] mb-14">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-[2fr_3fr_1.6fr] mb-14">
           <div>
             <div className="flex items-center gap-3 mb-5">
               <span
@@ -90,17 +59,18 @@ export function Footer() {
             </p>
           </div>
 
-          {COLUMNS.map((col) => (
+        <div className="grid gap-10 md:gap-12 [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))]">
+          {footerColumns.map((col) => (
             <div key={col.heading}>
               <div className="eyebrow mb-5" style={{ color: "var(--paper-3)" }}>
                 {col.heading}
               </div>
               <ul className="flex flex-col gap-3">
-                {col.items.map((item) =>
+                {col.links.map((item) =>
                   item.external ? (
                     <li key={item.label}>
                       <a
-                        href={item.href}
+                        href={item.href ?? "#"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="link-ink text-sm self-start"
@@ -112,7 +82,7 @@ export function Footer() {
                   ) : (
                     <li key={item.label}>
                       <Link
-                        href={item.href}
+                        href={item.href ?? "/"}
                         className="link-ink text-sm self-start"
                         style={{ color: "var(--paper-2)" }}
                       >
@@ -124,6 +94,7 @@ export function Footer() {
               </ul>
             </div>
           ))}
+        </div>
 
           <div>
             <div className="eyebrow mb-5" style={{ color: "var(--paper-3)" }}>

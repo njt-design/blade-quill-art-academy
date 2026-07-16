@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, Search } from "lucide-react";
+import { Menu, X, ShoppingCart, Search, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/hooks/useCart";
+import { useLiveNavigation } from "@/hooks/use-live-navigation";
+import { type ResolvedNavLink } from "@/lib/navigation-content";
 import { InkUnderline } from "@/components/site/InkUnderline";
 import { QuillMark } from "@/components/site/QuillMark";
 
@@ -13,18 +15,143 @@ import { QuillMark } from "@/components/site/QuillMark";
  *  - Backdrop blur + faint border kick in once `scrollY > 30`.
  *  - Active link shows a hand-drawn `InkUnderline` SVG.
  *
- * Routes match our existing site (Shop, Gallery, Downloads, Blog, About,
- * Contact). Prototype's `/classes` doesn't map to a route here, so we
- * keep our actual nav.
+ * Menu items come from the CMS Navigation document
+ * (content/navigation/main.json) so the client can reorder, nest, and
+ * add/remove links in Tina. Items with children render a one-level dropdown.
  */
-const NAV_LINKS = [
-  { href: "/shop", label: "Shop" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/downloads", label: "Downloads" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+
+function isLinkActive(location: string, link: ResolvedNavLink): boolean {
+  return (
+    location === link.href || link.children.some((c) => location === c.href)
+  );
+}
+
+/** Renders a nav destination as a wouter Link or external anchor. */
+function NavAnchor({
+  link,
+  className,
+  onClick,
+  children,
+}: {
+  link: ResolvedNavLink;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  if (link.external) {
+    return (
+      <a
+        href={link.href ?? "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href ?? "/"} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
+
+function DesktopNavItem({ link }: { link: ResolvedNavLink }) {
+  const [location] = useLocation();
+  const [open, setOpen] = useState(false);
+  const hasChildren = link.children.length > 0;
+  const active = isLinkActive(location, link);
+
+  // Close the dropdown after navigating.
+  useEffect(() => setOpen(false), [location]);
+
+  const labelClasses = cn(
+    "relative font-sans text-sm py-2 inline-flex items-center gap-1",
+    active ? "text-foreground" : "text-foreground/75 hover:text-foreground"
+  );
+
+  const underline = active ? (
+    <span className="absolute inset-x-0 -bottom-1">
+      <InkUnderline color="var(--maroon)" style={{ height: 6 }} />
+    </span>
+  ) : null;
+
+  if (!hasChildren) {
+    return (
+      <NavAnchor link={link} className={labelClasses}>
+        {link.label}
+        {underline}
+      </NavAnchor>
+    );
+  }
+
+  const chevron = (
+    <ChevronDown
+      className={cn(
+        "w-3.5 h-3.5 transition-transform duration-200",
+        open && "rotate-180"
+      )}
+      strokeWidth={1.8}
+    />
+  );
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      {link.href ? (
+        <NavAnchor link={link} className={labelClasses}>
+          {link.label}
+          {chevron}
+          {underline}
+        </NavAnchor>
+      ) : (
+        <button
+          type="button"
+          className={labelClasses}
+          aria-expanded={open}
+          aria-haspopup="menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {link.label}
+          {chevron}
+          {underline}
+        </button>
+      )}
+
+      <div
+        className={cn(
+          "absolute left-1/2 -translate-x-1/2 top-full pt-3 transition-all duration-200",
+          open
+            ? "visible opacity-100 translate-y-0"
+            : "invisible opacity-0 -translate-y-1"
+        )}
+        style={{ transitionTimingFunction: "var(--e-out)" }}
+      >
+        <div className="min-w-[190px] rounded-xl border border-[rgba(46,34,34,0.1)] bg-[rgba(238,229,224,0.97)] backdrop-blur-xl shadow-[0_12px_32px_rgba(46,34,34,0.14)] py-2">
+          {link.children.map((child) => (
+            <NavAnchor
+              key={child.label + (child.href ?? "")}
+              link={child}
+              className={cn(
+                "block px-4 py-2 font-sans text-sm whitespace-nowrap",
+                location === child.href
+                  ? "text-foreground"
+                  : "text-foreground/75 hover:text-foreground"
+              )}
+            >
+              {child.label}
+            </NavAnchor>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
@@ -33,6 +160,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const lastYRef = useRef(0);
   const { totalItems } = useCart();
+  const { items: navLinks } = useLiveNavigation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -50,6 +178,8 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [isMobileOpen]);
+
+  const closeMobile = () => setIsMobileOpen(false);
 
   return (
     <nav
@@ -87,31 +217,9 @@ export function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => {
-            const active = location === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "relative font-sans text-sm py-2",
-                  active
-                    ? "text-foreground"
-                    : "text-foreground/75 hover:text-foreground"
-                )}
-              >
-                {link.label}
-                {active && (
-                  <span className="absolute inset-x-0 -bottom-1">
-                    <InkUnderline
-                      color="var(--maroon)"
-                      style={{ height: 6 }}
-                    />
-                  </span>
-                )}
-              </Link>
-            );
-          })}
+          {navLinks.map((link) => (
+            <DesktopNavItem key={link.label + (link.href ?? "")} link={link} />
+          ))}
         </div>
 
         <div className="flex items-center gap-2">
@@ -162,26 +270,45 @@ export function Navbar() {
         className={cn(
           "lg:hidden overflow-hidden transition-all duration-300",
           isMobileOpen
-            ? "max-h-[480px] pb-4 pt-1 border-t border-[rgba(46,34,34,0.08)]"
+            ? "max-h-[70vh] overflow-y-auto pb-4 pt-1 border-t border-[rgba(46,34,34,0.08)]"
             : "max-h-0 pb-0 pt-0 border-t border-transparent"
         )}
         style={{ transitionTimingFunction: "var(--e-out)" }}
       >
         <div className="flex flex-col">
-          {NAV_LINKS.map((link) => {
-            const active = location === link.href;
+          {navLinks.map((link) => {
+            const key = link.label + (link.href ?? "");
+            const parentClasses = cn(
+              "py-3 text-base",
+              location === link.href ? "text-foreground" : "text-foreground/70"
+            );
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className={cn(
-                  "py-3 text-base",
-                  active ? "text-foreground" : "text-foreground/70"
+              <div key={key} className="flex flex-col">
+                {link.href ? (
+                  <NavAnchor link={link} className={parentClasses} onClick={closeMobile}>
+                    {link.label}
+                  </NavAnchor>
+                ) : (
+                  <span className={cn(parentClasses, "text-foreground/50")}>
+                    {link.label}
+                  </span>
                 )}
-              >
-                {link.label}
-              </Link>
+                {link.children.map((child) => (
+                  <NavAnchor
+                    key={child.label + (child.href ?? "")}
+                    link={child}
+                    onClick={closeMobile}
+                    className={cn(
+                      "py-2.5 pl-5 text-[15px]",
+                      location === child.href
+                        ? "text-foreground"
+                        : "text-foreground/60"
+                    )}
+                  >
+                    {child.label}
+                  </NavAnchor>
+                ))}
+              </div>
             );
           })}
         </div>

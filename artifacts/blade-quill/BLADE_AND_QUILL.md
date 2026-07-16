@@ -286,3 +286,4 @@ pnpm --filter @workspace/blade-quill run dev
 | 2026-05 | Homepage redesign: Proko-style section order, Nestig polish, cinematic scroll |
 | 2026-05 | Removed public `/tutorials` page; nav link removed; CTAs → YouTube |
 | 2026-05 | Fixed Footer `FaAmazon` icon (was breaking entire app load) |
+| 2026-07 | Header menu + footer link columns now CMS-driven via Tina "Navigation" document (`content/navigation/main.json`); supports reordering, one-level dropdowns, and linking to any page |
