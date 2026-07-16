@@ -7,9 +7,8 @@ import { SidebarLabel } from "./SidebarLabel";
 
 const EVENT_PALETTES: ArtTilePalette[] = ["warm", "rose", "warm", "violet", "twilight"];
 
-/* Real artwork for each milestone, matching the default timeline story:
-   early character art → first book → channel growth → classes → next book. */
-const EVENT_ART: Array<{ src?: string; alt: string }> = [
+/* Fallback artwork per milestone when an event has no CMS image. */
+const EVENT_ART_FALLBACK: Array<{ src?: string; alt: string }> = [
   { src: galleryImageUrl("Chibi Ninja Girl"), alt: "Early chibi character art" },
   { src: productImageUrl("physical"), alt: "Lheeloo & Luna book cover" },
   { src: galleryImageUrl("Dragon"), alt: "Dragon digital painting" },
@@ -24,6 +23,7 @@ interface TimelineEvent {
   year?: string;
   title?: string;
   description?: string;
+  image?: string;
 }
 
 interface Props {
@@ -41,6 +41,8 @@ export default function TimelineBlock({ block }: Props) {
           <SidebarLabel
             number={block.number as string | undefined}
             label={(block.label as string) || "TIMELINE"}
+            numberField={tinaField(block, "number")}
+            labelField={tinaField(block, "label")}
           />
           <div className="relative">
             <span
@@ -56,55 +58,69 @@ export default function TimelineBlock({ block }: Props) {
               }}
             />
             <Reveal stagger>
-              {events.map((e, i) => (
-                <div
-                  key={`${e.year}-${i}`}
-                  className="relative grid lg:grid-cols-[1fr_200px] gap-6 lg:gap-8 items-start"
-                  style={{ paddingLeft: 56, paddingBottom: 44 }}
-                  data-tina-field={tinaField(block, "events", i)}
-                >
-                  <span
-                    aria-hidden
-                    className="absolute block rounded-full"
-                    style={{
-                      left: 0,
-                      top: 6,
-                      width: 24,
-                      height: 24,
-                      background: "var(--paper)",
-                      border: "3px solid var(--maroon)",
-                      boxShadow: "0 0 0 4px var(--paper-2)",
-                    }}
-                  />
-                  <div>
-                    <div
-                      className="mb-2"
+              {events.map((e, i) => {
+                const fallback = EVENT_ART_FALLBACK[i % EVENT_ART_FALLBACK.length];
+                const src = e.image || fallback.src;
+                return (
+                  <div
+                    key={`${e.year}-${i}`}
+                    className="relative grid lg:grid-cols-[1fr_200px] gap-6 lg:gap-8 items-start"
+                    style={{ paddingLeft: 56, paddingBottom: 44 }}
+                    data-tina-field={tinaField(block, "events", i)}
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute block rounded-full"
                       style={{
-                        fontFamily: "var(--f-mono)",
-                        fontSize: 12,
-                        color: "var(--maroon)",
-                        letterSpacing: "0.12em",
+                        left: 0,
+                        top: 6,
+                        width: 24,
+                        height: 24,
+                        background: "var(--paper)",
+                        border: "3px solid var(--maroon)",
+                        boxShadow: "0 0 0 4px var(--paper-2)",
                       }}
-                    >
-                      {e.year}
+                    />
+                    <div>
+                      <div
+                        className="mb-2"
+                        style={{
+                          fontFamily: "var(--f-mono)",
+                          fontSize: 12,
+                          color: "var(--maroon)",
+                          letterSpacing: "0.12em",
+                        }}
+                        data-tina-field={tinaField(e, "year")}
+                      >
+                        {e.year}
+                      </div>
+                      <h3
+                        className="mb-2"
+                        style={{ fontSize: 26, lineHeight: 1.2 }}
+                        data-tina-field={tinaField(e, "title")}
+                      >
+                        {e.title}
+                      </h3>
+                      <p
+                        style={{ color: "var(--ink-mute)", fontSize: 14, lineHeight: 1.6 }}
+                        data-tina-field={tinaField(e, "description")}
+                      >
+                        {e.description}
+                      </p>
                     </div>
-                    <h3 className="mb-2" style={{ fontSize: 26, lineHeight: 1.2 }}>
-                      {e.title}
-                    </h3>
-                    <p style={{ color: "var(--ink-mute)", fontSize: 14, lineHeight: 1.6 }}>
-                      {e.description}
-                    </p>
+                    <div data-tina-field={tinaField(e, "image")}>
+                      <ArtTile
+                        palette={EVENT_PALETTES[i % EVENT_PALETTES.length]}
+                        width="100%"
+                        height={120}
+                        src={src}
+                        alt={e.title || fallback.alt}
+                        label={e.year}
+                      />
+                    </div>
                   </div>
-                  <ArtTile
-                    palette={EVENT_PALETTES[i % EVENT_PALETTES.length]}
-                    width="100%"
-                    height={120}
-                    src={EVENT_ART[i % EVENT_ART.length].src}
-                    alt={EVENT_ART[i % EVENT_ART.length].alt}
-                    label={e.year}
-                  />
-                </div>
-              ))}
+                );
+              })}
             </Reveal>
           </div>
         </div>

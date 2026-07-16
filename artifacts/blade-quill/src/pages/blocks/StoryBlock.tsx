@@ -23,6 +23,8 @@ export default function StoryBlock({ block }: Props) {
           <SidebarLabel
             number={block.number as string | undefined}
             label={(block.label as string) || "STORY"}
+            numberField={tinaField(block, "number")}
+            labelField={tinaField(block, "label")}
           />
           <div className="max-w-[640px]">
             {headingLines.length > 0 && (
@@ -103,13 +105,16 @@ export default function StoryBlock({ block }: Props) {
             ) : null}
           </div>
 
-          <div className="hidden lg:block lg:sticky lg:top-28">
+          <div
+            className="hidden lg:block lg:sticky lg:top-28"
+            data-tina-field={tinaField(block, "sideImage")}
+          >
             <Polaroid rotate={3} washiColor="var(--gold-deep)" hoverStraighten>
               <ArtTile
                 palette="moss"
                 width="100%"
                 height={240}
-                src={STUDIO_ART}
+                src={(block.sideImage as string | undefined) || STUDIO_ART}
                 alt="Digital landscape painting"
                 radius={2}
               />

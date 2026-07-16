@@ -34,9 +34,9 @@ export default function TutorialsStripBlock({ block }: Props) {
     return list.slice(0, 4);
   }, [tutorials]);
 
-  const stats = ((block.stats as StatItem[] | undefined) ?? []).filter(
-    (s) => s.value || s.label
-  );
+  // Keep original list indices for tinaField(block, "stats", i).
+  const stats = (block.stats as StatItem[] | undefined) ?? [];
+  const hasStats = stats.some((s) => s?.value || s?.label);
   const youtubeUrl =
     (block.youtubeUrl as string) || "https://www.youtube.com/c/BladeQuillartacademy";
 
@@ -135,7 +135,7 @@ export default function TutorialsStripBlock({ block }: Props) {
           </div>
         </Reveal>
 
-        {stats.length > 0 && (
+        {hasStats && (
           <Reveal>
             <div
               className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-5 p-6 sm:px-10 sm:py-9"
@@ -144,34 +144,42 @@ export default function TutorialsStripBlock({ block }: Props) {
                 border: "1px solid rgba(223,210,204,0.08)",
                 borderRadius: 18,
               }}
-              data-tina-field={tinaField(block, "stats")}
             >
-              {stats.map((stat, i) => (
-                <div
-                  key={`${stat.label}-${i}`}
-                  className={cn(
-                    // Divider only when the item isn't first in its row:
-                    // 2-col grid on mobile, 4-col from lg up.
-                    i % 2 === 1 && "pl-4 sm:pl-6 border-l border-[rgba(223,210,204,0.1)]",
-                    i % 2 === 0 && i > 0 && "lg:pl-6 lg:border-l lg:border-[rgba(223,210,204,0.1)]"
-                  )}
-                >
+              {stats.map((stat, i) => {
+                if (!stat?.value && !stat?.label) return null;
+                return (
                   <div
-                    className="mb-2"
-                    style={{
-                      fontFamily: "var(--f-serif)",
-                      fontSize: "clamp(28px, 3.5vw, 44px)",
-                      lineHeight: 1,
-                      color: `var(--${STAT_COLORS[i % STAT_COLORS.length]})`,
-                    }}
+                    key={`${stat.label}-${i}`}
+                    className={cn(
+                      // Divider only when the item isn't first in its row:
+                      // 2-col grid on mobile, 4-col from lg up.
+                      i % 2 === 1 && "pl-4 sm:pl-6 border-l border-[rgba(223,210,204,0.1)]",
+                      i % 2 === 0 && i > 0 && "lg:pl-6 lg:border-l lg:border-[rgba(223,210,204,0.1)]"
+                    )}
+                    data-tina-field={tinaField(block, "stats", i)}
                   >
-                    {stat.value}
+                    <div
+                      className="mb-2"
+                      style={{
+                        fontFamily: "var(--f-serif)",
+                        fontSize: "clamp(28px, 3.5vw, 44px)",
+                        lineHeight: 1,
+                        color: `var(--${STAT_COLORS[i % STAT_COLORS.length]})`,
+                      }}
+                      data-tina-field={tinaField(stat, "value")}
+                    >
+                      {stat.value}
+                    </div>
+                    <div
+                      className="eyebrow"
+                      style={{ color: "var(--ink-faint)" }}
+                      data-tina-field={tinaField(stat, "label")}
+                    >
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="eyebrow" style={{ color: "var(--ink-faint)" }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Reveal>
         )}

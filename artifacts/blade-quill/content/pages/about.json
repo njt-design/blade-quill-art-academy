@@ -42,6 +42,10 @@
       "metaLine": "NANTES, FRANCE · EST. 2018",
       "portraitImage": "/images/about-portrait.png",
       "portraitCaption": "Test",
+      "deskImage": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360643932-7T55S2PTLVHCYXB9NQXT/JAPANESE+GIRL.jpg",
+      "deskCaption": "from the desk",
+      "screenImage": "https://i.ytimg.com/vi/Oe2xkeU_mV0/hqdefault.jpg",
+      "screenCaption": "krita screen",
       "_template": "aboutHero"
     },
     {
@@ -72,27 +76,32 @@
         {
           "year": "2018",
           "title": "Started the YouTube channel",
-          "description": "First Krita lesson uploaded from a small apartment."
+          "description": "First Krita lesson uploaded from a small apartment.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379338703-PI7QZ7QZAQ5O42ZAZVAA/Chibi+Ninja+Girl.png"
         },
         {
           "year": "2020",
           "title": "Published Lheeloo & Luna, Vol. I",
-          "description": "A small press run that quickly sold out."
+          "description": "A small press run that quickly sold out.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png"
         },
         {
           "year": "2022",
           "title": "Crossed 50K subscribers",
-          "description": "And took a deep breath about the future of all this."
+          "description": "And took a deep breath about the future of all this.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693251243868-SV2H67B9OLHPBAO025LM/DRAGON.jpg"
         },
         {
           "year": "2024",
           "title": "Launched Krita Academy classes",
-          "description": "A real, live cohort with critique sessions and homework."
+          "description": "A real, live cohort with critique sessions and homework.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg"
         },
         {
           "year": "2026",
           "title": "Working on the next book",
-          "description": "Vol. II — two years in the making."
+          "description": "Vol. II — two years in the making.",
+          "image": "/images/puzzle-book-front.png"
         }
       ],
       "_template": "timeline"
@@ -105,6 +114,7 @@
           "tag": "BOOKS",
           "title": "Krita & Digital Painting",
           "body": "Lheeloo & Luna, plus more on the desk. Signed copies ship from the studio.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",
           "ctaLabel": "Browse books",
           "link": "/shop"
         },
@@ -112,6 +122,7 @@
           "tag": "CLASSES",
           "title": "Character Design",
           "body": "Structured digital art training designed for artists who want to master Krita.",
+          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg",
           "ctaLabel": "See the curriculum",
           "link": "/shop"
         },
@@ -119,6 +130,7 @@
           "tag": "VIDEOS",
           "title": "Color Theory",
           "body": "Free Krita lessons, every other week. 100K+ artists watching.",
+          "image": "https://i.ytimg.com/vi/63_gp_rFtOc/hqdefault.jpg",
           "ctaLabel": "Watch on YouTube",
           "link": "https://www.youtube.com/c/BladeQuillartacademy"
         }
@@ -186,6 +198,7 @@
         ]
       },
       "sideCaption": "my window in winter",
+      "sideImage": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691361810475-1O27U98PD2Q4K9VD6E25/LANDSCAPE.jpg",
       "_template": "story"
     }
   ]

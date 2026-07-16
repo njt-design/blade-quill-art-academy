@@ -16,9 +16,8 @@ interface Props {
 }
 
 export default function ReviewLinksBlock({ block }: Props) {
-  const links = ((block.links as ReviewLink[] | undefined) ?? []).filter(
-    (l) => l.label && l.href
-  );
+  const links = (block.links as ReviewLink[] | undefined) ?? [];
+  const visibleLinks = links.some((l) => l?.label && l?.href);
 
   return (
     <div className="px-6 md:px-8 py-6">
@@ -49,23 +48,24 @@ export default function ReviewLinksBlock({ block }: Props) {
                 {block.ctaHeading as string}
               </p>
             ) : null}
-            {links.length > 0 && (
-              <div
-                className="flex flex-wrap items-center justify-center gap-3 mb-5"
-                data-tina-field={tinaField(block, "links")}
-              >
-                {links.map((link, i) => (
-                  <Btn
-                    key={`${link.region}-${i}`}
-                    href={link.href}
-                    external
-                    kind="outline"
-                    size="md"
-                    iconRight={<ArrowUpRight className="w-4 h-4" />}
-                  >
-                    {link.label}
-                  </Btn>
-                ))}
+            {visibleLinks && (
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
+                {links.map((link, i) => {
+                  if (!link?.label || !link?.href) return null;
+                  return (
+                    <span key={`${link.region}-${i}`} data-tina-field={tinaField(block, "links", i)}>
+                      <Btn
+                        href={link.href}
+                        external
+                        kind="outline"
+                        size="md"
+                        iconRight={<ArrowUpRight className="w-4 h-4" />}
+                      >
+                        {link.label}
+                      </Btn>
+                    </span>
+                  );
+                })}
               </div>
             )}
             {block.thankYou ? (

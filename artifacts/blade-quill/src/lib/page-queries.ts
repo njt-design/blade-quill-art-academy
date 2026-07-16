@@ -59,11 +59,11 @@ const BLOCK_FIELDS: Record<string, string> = {
   newsletterSignup:
     "eyebrow heading subheading placeholderText ctaLabel privacyNote",
   aboutHero:
-    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitCaption",
+    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitCaption deskImage deskCaption screenImage screenCaption",
   statsRow: "stats { value label }",
-  story: "number label heading paragraph1 quote paragraph2 sideCaption",
-  timeline: "number label events { year title description }",
-  cardRow: "number label cards { tag title body ctaLabel link }",
+  story: "number label heading paragraph1 quote paragraph2 sideImage sideCaption",
+  timeline: "number label events { year title description image }",
+  cardRow: "number label cards { tag title body image ctaLabel link }",
   shopCatalog:
     "heading highlightText description showFeaturedBanner emptyHeading emptyDescription",
   galleryGrid: "emptyHeading emptyDescription",

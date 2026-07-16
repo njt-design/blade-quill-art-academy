@@ -9,9 +9,9 @@ import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 
-const DESK_ART = galleryImageUrl("Japanese Girl");
+const DEFAULT_DESK_ART = galleryImageUrl("Japanese Girl");
 // Krita interface walkthrough — the literal "screen" from Corinne's channel.
-const KRITA_SCREEN = youtubeThumb("Oe2xkeU_mV0");
+const DEFAULT_KRITA_SCREEN = youtubeThumb("Oe2xkeU_mV0");
 
 interface Props {
   block: Block;
@@ -28,6 +28,10 @@ export default function AboutHeroBlock({ block }: Props) {
     (block.portraitImage as string) ||
     `${import.meta.env.BASE_URL}images/about-portrait.png`;
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
+  const deskSrc = (block.deskImage as string | undefined) || DEFAULT_DESK_ART;
+  const deskCaption = (block.deskCaption as string | undefined) || "from the desk";
+  const screenSrc = (block.screenImage as string | undefined) || DEFAULT_KRITA_SCREEN;
+  const screenCaption = (block.screenCaption as string | undefined) || "krita screen";
 
   const portraitCaption = block.portraitCaption ? (
     <div
@@ -173,15 +177,9 @@ export default function AboutHeroBlock({ block }: Props) {
             </div>
 
             {/* Desktop: layered collage. */}
-            <div
-              className="relative hidden lg:block"
-              style={{ minHeight: 520 }}
-              data-tina-field={tinaField(block, "portraitImage")}
-            >
-              <Polaroid
-                rotate={4}
-                washiColor="var(--maroon)"
-                hoverStraighten
+            <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
+              <div
+                data-tina-field={tinaField(block, "portraitImage")}
                 style={{
                   position: "absolute",
                   top: 0,
@@ -190,20 +188,20 @@ export default function AboutHeroBlock({ block }: Props) {
                   width: 280,
                 }}
               >
-                <ArtTile
-                  palette="warm"
-                  src={portraitSrc}
-                  alt="Corinne in the studio"
-                  width="100%"
-                  height={320}
-                  radius={2}
-                />
-                {portraitCaption}
-              </Polaroid>
-              <Polaroid
-                rotate={-6}
-                washiColor="var(--taupe)"
-                hoverStraighten
+                <Polaroid rotate={4} washiColor="var(--maroon)" hoverStraighten>
+                  <ArtTile
+                    palette="warm"
+                    src={portraitSrc}
+                    alt="Corinne in the studio"
+                    width="100%"
+                    height={320}
+                    radius={2}
+                  />
+                  {portraitCaption}
+                </Polaroid>
+              </div>
+              <div
+                data-tina-field={tinaField(block, "deskImage")}
                 style={{
                   position: "absolute",
                   top: 80,
@@ -212,20 +210,26 @@ export default function AboutHeroBlock({ block }: Props) {
                   width: 220,
                 }}
               >
-                <ArtTile
-                  palette="violet"
-                  width="100%"
-                  height={240}
-                  src={DESK_ART}
-                  alt="Japanese-inspired character portrait"
-                  label="from the desk"
-                  radius={2}
-                />
-              </Polaroid>
-              <Polaroid
-                rotate={5}
-                washiColor="var(--gold)"
-                hoverStraighten
+                <Polaroid rotate={-6} washiColor="var(--taupe)" hoverStraighten>
+                  <ArtTile
+                    palette="violet"
+                    width="100%"
+                    height={240}
+                    src={deskSrc}
+                    alt={deskCaption}
+                    label={deskCaption}
+                    radius={2}
+                  />
+                </Polaroid>
+                <div
+                  className="sr-only"
+                  data-tina-field={tinaField(block, "deskCaption")}
+                >
+                  {deskCaption}
+                </div>
+              </div>
+              <div
+                data-tina-field={tinaField(block, "screenImage")}
                 style={{
                   position: "absolute",
                   bottom: 0,
@@ -234,16 +238,24 @@ export default function AboutHeroBlock({ block }: Props) {
                   width: 200,
                 }}
               >
-                <ArtTile
-                  palette="rose"
-                  width="100%"
-                  height={200}
-                  src={KRITA_SCREEN}
-                  alt="Krita interface walkthrough"
-                  label="krita screen"
-                  radius={2}
-                />
-              </Polaroid>
+                <Polaroid rotate={5} washiColor="var(--gold)" hoverStraighten>
+                  <ArtTile
+                    palette="rose"
+                    width="100%"
+                    height={200}
+                    src={screenSrc}
+                    alt={screenCaption}
+                    label={screenCaption}
+                    radius={2}
+                  />
+                </Polaroid>
+                <div
+                  className="sr-only"
+                  data-tina-field={tinaField(block, "screenCaption")}
+                >
+                  {screenCaption}
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

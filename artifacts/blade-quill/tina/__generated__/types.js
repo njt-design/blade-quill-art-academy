@@ -34,6 +34,10 @@ export const PagePartsFragmentDoc = gql`
       metaLine
       portraitImage
       portraitCaption
+      deskImage
+      deskCaption
+      screenImage
+      screenCaption
     }
     ... on PageBlocksHero {
       heading
@@ -57,6 +61,7 @@ export const PagePartsFragmentDoc = gql`
       paragraph1
       quote
       paragraph2
+      sideImage
       sideCaption
     }
     ... on PageBlocksTimeline {
@@ -67,6 +72,7 @@ export const PagePartsFragmentDoc = gql`
         year
         title
         description
+        image
       }
     }
     ... on PageBlocksStatsRow {
@@ -93,6 +99,7 @@ export const PagePartsFragmentDoc = gql`
         tag
         title
         body
+        image
         ctaLabel
         link
       }
@@ -300,6 +307,10 @@ export const LandingPagePartsFragmentDoc = gql`
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageBlankBlocksHero {
         heading
@@ -323,6 +334,7 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageBlankBlocksTimeline {
@@ -333,6 +345,7 @@ export const LandingPagePartsFragmentDoc = gql`
           year
           title
           description
+          image
         }
       }
       ... on LandingPageBlankBlocksStatsRow {
@@ -359,6 +372,7 @@ export const LandingPagePartsFragmentDoc = gql`
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -562,6 +576,10 @@ export const LandingPagePartsFragmentDoc = gql`
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageEventBlocksHero {
         heading
@@ -585,6 +603,7 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageEventBlocksTimeline {
@@ -595,6 +614,7 @@ export const LandingPagePartsFragmentDoc = gql`
           year
           title
           description
+          image
         }
       }
       ... on LandingPageEventBlocksStatsRow {
@@ -621,6 +641,7 @@ export const LandingPagePartsFragmentDoc = gql`
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -824,6 +845,10 @@ export const LandingPagePartsFragmentDoc = gql`
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPagePromoBlocksHero {
         heading
@@ -847,6 +872,7 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPagePromoBlocksTimeline {
@@ -857,6 +883,7 @@ export const LandingPagePartsFragmentDoc = gql`
           year
           title
           description
+          image
         }
       }
       ... on LandingPagePromoBlocksStatsRow {
@@ -883,6 +910,7 @@ export const LandingPagePartsFragmentDoc = gql`
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -1086,6 +1114,10 @@ export const LandingPagePartsFragmentDoc = gql`
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageInfoBlocksHero {
         heading
@@ -1109,6 +1141,7 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageInfoBlocksTimeline {
@@ -1119,6 +1152,7 @@ export const LandingPagePartsFragmentDoc = gql`
           year
           title
           description
+          image
         }
       }
       ... on LandingPageInfoBlocksStatsRow {
@@ -1145,6 +1179,7 @@ export const LandingPagePartsFragmentDoc = gql`
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -1348,6 +1383,10 @@ export const LandingPagePartsFragmentDoc = gql`
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageLinkInBioBlocksHero {
         heading
@@ -1371,6 +1410,7 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageLinkInBioBlocksTimeline {
@@ -1381,6 +1421,7 @@ export const LandingPagePartsFragmentDoc = gql`
           year
           title
           description
+          image
         }
       }
       ... on LandingPageLinkInBioBlocksStatsRow {
@@ -1407,6 +1448,7 @@ export const LandingPagePartsFragmentDoc = gql`
           tag
           title
           body
+          image
           ctaLabel
           link
         }

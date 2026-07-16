@@ -20,10 +20,19 @@ declare const __TINA_BRANCH__: string;
 /** major.minor of @tinacms/graphql — the version segment of the content API URL. */
 const TINA_API_VERSION = "2.4";
 
-const clientId = typeof __TINA_CLIENT_ID__ === "string" ? __TINA_CLIENT_ID__ : "";
+const clientId =
+  (typeof __TINA_CLIENT_ID__ === "string" ? __TINA_CLIENT_ID__ : "")
+    .replace(/\\n/g, "")
+    .trim();
 const token =
-  typeof __TINA_READONLY_TOKEN__ === "string" ? __TINA_READONLY_TOKEN__ : "";
-const branch = typeof __TINA_BRANCH__ === "string" && __TINA_BRANCH__ ? __TINA_BRANCH__ : "main";
+  (typeof __TINA_READONLY_TOKEN__ === "string" ? __TINA_READONLY_TOKEN__ : "")
+    .replace(/\\n/g, "")
+    .trim();
+const branch = (
+  typeof __TINA_BRANCH__ === "string" && __TINA_BRANCH__ ? __TINA_BRANCH__ : "main"
+)
+  .replace(/\\n/g, "")
+  .trim();
 
 const contentApiUrl = `https://content.tinajs.io/${TINA_API_VERSION}/content/${clientId}/github/${branch}`;
 

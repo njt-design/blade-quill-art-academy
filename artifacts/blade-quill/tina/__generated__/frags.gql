@@ -26,6 +26,10 @@ fragment PageParts on Page {
       metaLine
       portraitImage
       portraitCaption
+      deskImage
+      deskCaption
+      screenImage
+      screenCaption
     }
     ... on PageBlocksHero {
       heading
@@ -49,6 +53,7 @@ fragment PageParts on Page {
       paragraph1
       quote
       paragraph2
+      sideImage
       sideCaption
     }
     ... on PageBlocksTimeline {
@@ -59,6 +64,7 @@ fragment PageParts on Page {
         year
         title
         description
+        image
       }
     }
     ... on PageBlocksStatsRow {
@@ -85,6 +91,7 @@ fragment PageParts on Page {
         tag
         title
         body
+        image
         ctaLabel
         link
       }
@@ -291,6 +298,10 @@ fragment LandingPageParts on LandingPage {
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageBlankBlocksHero {
         heading
@@ -314,6 +325,7 @@ fragment LandingPageParts on LandingPage {
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageBlankBlocksTimeline {
@@ -324,6 +336,7 @@ fragment LandingPageParts on LandingPage {
           year
           title
           description
+          image
         }
       }
       ... on LandingPageBlankBlocksStatsRow {
@@ -350,6 +363,7 @@ fragment LandingPageParts on LandingPage {
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -553,6 +567,10 @@ fragment LandingPageParts on LandingPage {
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageEventBlocksHero {
         heading
@@ -576,6 +594,7 @@ fragment LandingPageParts on LandingPage {
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageEventBlocksTimeline {
@@ -586,6 +605,7 @@ fragment LandingPageParts on LandingPage {
           year
           title
           description
+          image
         }
       }
       ... on LandingPageEventBlocksStatsRow {
@@ -612,6 +632,7 @@ fragment LandingPageParts on LandingPage {
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -815,6 +836,10 @@ fragment LandingPageParts on LandingPage {
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPagePromoBlocksHero {
         heading
@@ -838,6 +863,7 @@ fragment LandingPageParts on LandingPage {
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPagePromoBlocksTimeline {
@@ -848,6 +874,7 @@ fragment LandingPageParts on LandingPage {
           year
           title
           description
+          image
         }
       }
       ... on LandingPagePromoBlocksStatsRow {
@@ -874,6 +901,7 @@ fragment LandingPageParts on LandingPage {
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -1077,6 +1105,10 @@ fragment LandingPageParts on LandingPage {
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageInfoBlocksHero {
         heading
@@ -1100,6 +1132,7 @@ fragment LandingPageParts on LandingPage {
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageInfoBlocksTimeline {
@@ -1110,6 +1143,7 @@ fragment LandingPageParts on LandingPage {
           year
           title
           description
+          image
         }
       }
       ... on LandingPageInfoBlocksStatsRow {
@@ -1136,6 +1170,7 @@ fragment LandingPageParts on LandingPage {
           tag
           title
           body
+          image
           ctaLabel
           link
         }
@@ -1339,6 +1374,10 @@ fragment LandingPageParts on LandingPage {
         metaLine
         portraitImage
         portraitCaption
+        deskImage
+        deskCaption
+        screenImage
+        screenCaption
       }
       ... on LandingPageLinkInBioBlocksHero {
         heading
@@ -1362,6 +1401,7 @@ fragment LandingPageParts on LandingPage {
         paragraph1
         quote
         paragraph2
+        sideImage
         sideCaption
       }
       ... on LandingPageLinkInBioBlocksTimeline {
@@ -1372,6 +1412,7 @@ fragment LandingPageParts on LandingPage {
           year
           title
           description
+          image
         }
       }
       ... on LandingPageLinkInBioBlocksStatsRow {
@@ -1398,6 +1439,7 @@ fragment LandingPageParts on LandingPage {
           tag
           title
           body
+          image
           ctaLabel
           link
         }

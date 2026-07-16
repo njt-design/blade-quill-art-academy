@@ -765,6 +765,34 @@ var aboutHeroBlock = {
       name: "portraitCaption",
       label: "Portrait Caption",
       ui: { description: "Handwritten-style caption under the portrait." }
+    },
+    {
+      type: "image",
+      name: "deskImage",
+      label: "Desk Accent Image",
+      ui: {
+        description: "Smaller polaroid on the left of the collage (desktop only). Leave blank to hide."
+      }
+    },
+    {
+      type: "string",
+      name: "deskCaption",
+      label: "Desk Accent Caption",
+      ui: { description: 'Small label on the desk polaroid (e.g. "from the desk").' }
+    },
+    {
+      type: "image",
+      name: "screenImage",
+      label: "Screen Accent Image",
+      ui: {
+        description: "Bottom-right polaroid in the collage (desktop only). Leave blank to hide."
+      }
+    },
+    {
+      type: "string",
+      name: "screenCaption",
+      label: "Screen Accent Caption",
+      ui: { description: 'Small label on the screen polaroid (e.g. "krita screen").' }
     }
   ]
 };
@@ -851,6 +879,12 @@ var storyBlock = {
       parser: SLATE_JSON_PARSER
     },
     {
+      type: "image",
+      name: "sideImage",
+      label: "Side Photo",
+      ui: { description: "Small polaroid on the right of the story section (desktop)." }
+    },
+    {
       type: "string",
       name: "sideCaption",
       label: "Side Photo Caption",
@@ -885,7 +919,13 @@ var timelineBlock = {
       fields: [
         { type: "string", name: "year", label: "Year" },
         { type: "string", name: "title", label: "Title" },
-        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } }
+        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+        {
+          type: "image",
+          name: "image",
+          label: "Image",
+          ui: { description: "Optional artwork shown beside this timeline event." }
+        }
       ]
     }
   ]
@@ -924,6 +964,12 @@ var cardRowBlock = {
         },
         { type: "string", name: "title", label: "Title" },
         { type: "string", name: "body", label: "Body", ui: { component: "textarea" } },
+        {
+          type: "image",
+          name: "image",
+          label: "Image",
+          ui: { description: "Card thumbnail. Leave blank to use the default fallback art." }
+        },
         { type: "string", name: "ctaLabel", label: "Link Text" },
         {
           type: "string",

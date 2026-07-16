@@ -41,9 +41,9 @@ export default function FeaturedBookBlock({ block }: Props) {
   );
   const featuredProduct = allProducts[0];
 
-  const stats = ((block.stats as StatItem[] | undefined) ?? []).filter(
-    (s) => s.value || s.label
-  );
+  // Keep original list indices for tinaField(block, "stats", i).
+  const stats = (block.stats as StatItem[] | undefined) ?? [];
+  const hasStats = stats.some((s) => s?.value || s?.label);
 
   return (
     <section
@@ -123,27 +123,38 @@ export default function FeaturedBookBlock({ block }: Props) {
                 <RichText value={block.description} />
               </div>
             </Reveal>
-            {stats.length > 0 && (
+            {hasStats && (
               <Reveal>
                 <div
                   className="flex flex-wrap gap-9 mb-8 pb-6"
                   style={{ borderBottom: "1px solid rgba(46,34,34,0.1)" }}
-                  data-tina-field={tinaField(block, "stats")}
                 >
-                  {stats.map((stat, i) => (
-                    <div key={`${stat.label}-${i}`}>
+                  {stats.map((stat, i) => {
+                    if (!stat?.value && !stat?.label) return null;
+                    return (
                       <div
-                        style={{
-                          fontFamily: "var(--f-serif)",
-                          fontSize: 36,
-                          color: STAT_COLORS[i % STAT_COLORS.length],
-                        }}
+                        key={`${stat.label}-${i}`}
+                        data-tina-field={tinaField(block, "stats", i)}
                       >
-                        {stat.value}
+                        <div
+                          style={{
+                            fontFamily: "var(--f-serif)",
+                            fontSize: 36,
+                            color: STAT_COLORS[i % STAT_COLORS.length],
+                          }}
+                          data-tina-field={tinaField(stat, "value")}
+                        >
+                          {stat.value}
+                        </div>
+                        <div
+                          className="eyebrow"
+                          data-tina-field={tinaField(stat, "label")}
+                        >
+                          {stat.label}
+                        </div>
                       </div>
-                      <div className="eyebrow">{stat.label}</div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </Reveal>
             )}
