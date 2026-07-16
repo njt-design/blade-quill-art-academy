@@ -10,6 +10,14 @@
       "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "has": [
+        { "type": "host", "value": "blade-quill-art-academy-.+\\.vercel\\.app" }
+      ],
+      "destination": "https://blade-quill-art-academy.vercel.app/admin/:path*",
+      "permanent": false
     }
   ],
   "rewrites": [
