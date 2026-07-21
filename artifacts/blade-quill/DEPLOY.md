@@ -1,6 +1,6 @@
 # Client preview on Vercel
 
-Static preview of the Blade & Quill frontend (Tina content from the repo; API routes are not deployed — shop/gallery use fallbacks).
+Static preview of the Blade & Quill frontend (Tina content from the repo; the Express API is not deployed — shop/gallery use fallbacks). Exception: **the contact form works in production** via a Vercel serverless function (`api/contact.ts` at the repo root) that emails submissions through Resend.
 
 ## How deploys work (git-connected)
 
@@ -48,8 +48,32 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 | `TINA_TOKEN` | Vercel Dashboard | Yes — read-only token from Tina Cloud (used by Tina admin build) |
 | `TINA_PUBLIC_READONLY_TOKEN` | Vercel Dashboard | Yes — same read-only token as `TINA_TOKEN`; injected into the browser bundle for runtime content fetches |
 | `TINA_BRANCH` | Vercel Dashboard | No — defaults to `main` in `tina/config.ts` |
+| `RESEND_API_KEY` | Vercel Dashboard | Yes — API key from [resend.com](https://resend.com); used by `api/contact.ts` to send contact form email |
+| `CONTACT_TO_EMAIL` | Vercel Dashboard | Yes — inbox that receives contact form messages (Corinne's email) |
+| `CONTACT_FROM_EMAIL` | Vercel Dashboard | Yes — verified Resend sender, e.g. `Blade & Quill <contact@bladeandquillartacademy.com>` (use `onboarding@resend.dev` until the domain is verified) |
+| `RESEND_AUDIENCE_ID` | Vercel Dashboard | Yes — id of the Resend Audience that stores newsletter subscribers (Resend dashboard → Audiences) |
 | `PORT` | Hardcoded in `build:static` | No — set to `3001` in the script |
 | `BASE_PATH` | Hardcoded in `build:static` | No — set to `/` in the script |
+
+## Contact form email (Resend)
+
+`POST /api/contact` is served by the Vercel function [`api/contact.ts`](../../api/contact.ts) (the SPA rewrite in `vercel.json` excludes `api/`). It validates `{ name, email, message }` and sends the message to `CONTACT_TO_EMAIL` via Resend with the guest's address as Reply-To, so replies go straight to the guest.
+
+Setup (one time):
+
+1. Create a Resend account and API key.
+2. Verify the sending domain in Resend (DNS records). Until verified, set `CONTACT_FROM_EMAIL=onboarding@resend.dev` — Resend then only delivers to the account owner's email.
+3. Add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in Vercel project settings.
+
+Local dev is unchanged: Vite proxies `/api` to the Express api-server, which stores submissions in Supabase.
+
+## Newsletter signups (Resend Audience)
+
+`POST /api/newsletter` is served by the Vercel function [`api/newsletter.ts`](../../api/newsletter.ts). It validates the email and stores it as a contact in the Resend Audience identified by `RESEND_AUDIENCE_ID` — no separate database. Duplicate signups return success. Both newsletter forms (the dark "Stay in the Loop" panel and the footer "Join" form) post here and show inline success/error feedback.
+
+Setup: in the Resend dashboard create an Audience (**Audiences → Create**), copy its id, and add it as `RESEND_AUDIENCE_ID` in Vercel project settings. Subscribers can then be emailed with Resend Broadcasts.
+
+Note: the newsletter route only exists as a Vercel function — in local dev the Express api-server has no `/api/newsletter` route, so signups 404 locally.
 
 ## Pre-building the Tina admin
 

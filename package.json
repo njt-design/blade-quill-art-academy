@@ -10,8 +10,12 @@
   },
   "private": true,
   "devDependencies": {
+    "@types/node": "catalog:",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vercel/node": "^5.8.26",
+    "resend": "^6.17.2"
+  }
 }

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { tinaField } from "tinacms/react";
 import { Btn } from "@/components/site/Btn";
 import { RichText } from "@/components/site/RichText";
+import { useNewsletterSignup } from "@/hooks/use-newsletter";
 
 export type NewsletterContent = Record<string, unknown> & {
   eyebrow?: string;
@@ -13,6 +15,16 @@ export type NewsletterContent = Record<string, unknown> & {
 
 /** The dark rounded newsletter signup panel (shared by BlogFeed + NewsletterSignup blocks). */
 export function NewsletterPanel({ content }: { content: NewsletterContent }) {
+  const [email, setEmail] = useState("");
+  const { status, message, subscribe } = useNewsletterSignup();
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (status === "submitting") return;
+    const ok = await subscribe(email);
+    if (ok) setEmail("");
+  }
+
   return (
     <div
       className="relative overflow-hidden p-6 sm:px-9 sm:py-10"
@@ -45,9 +57,12 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
         >
           <RichText value={content.subheading} />
         </div>
-        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder={content.placeholderText || "your@email.com"}
             data-tina-field={tinaField(content, "placeholderText")}
             className="rounded-full outline-none transition-colors"
@@ -62,10 +77,25 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
           />
           <Btn kind="primary" size="lg" iconRight="→" type="submit">
             <span data-tina-field={tinaField(content, "ctaLabel")}>
-              {content.ctaLabel || "Subscribe"}
+              {status === "submitting"
+                ? "Subscribing..."
+                : content.ctaLabel || "Subscribe"}
             </span>
           </Btn>
         </form>
+        {status === "success" || status === "error" ? (
+          <div
+            role="status"
+            className="mt-4"
+            style={{
+              fontSize: 13,
+              lineHeight: 1.5,
+              color: status === "success" ? "var(--gold)" : "#f2b8b5",
+            }}
+          >
+            {message}
+          </div>
+        ) : null}
         {content.privacyNote ? (
           <div
             className="mt-5"

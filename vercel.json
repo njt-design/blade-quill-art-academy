@@ -26,6 +26,6 @@
       "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
       "destination": "/important-links-page"
     },
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|api/).*)", "destination": "/index.html" }
   ]
 }

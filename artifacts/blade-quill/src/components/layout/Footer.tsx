@@ -4,6 +4,7 @@ import { SiInstagram, SiKofi, SiYoutube } from "react-icons/si";
 import { FaAmazon } from "react-icons/fa";
 import { QuillMark } from "@/components/site/QuillMark";
 import { useLiveNavigation } from "@/hooks/use-live-navigation";
+import { useNewsletterSignup } from "@/hooks/use-newsletter";
 
 const AMAZON_BOOK_URL = "https://www.amazon.com/dp/1733168451";
 const YOUTUBE_URL = "https://www.youtube.com/c/BladeQuillartacademy";
@@ -12,6 +13,7 @@ const KOFI_URL = "https://ko-fi.com/bladeandquill";
 
 export function Footer() {
   const [email, setEmail] = useState("");
+  const { status, message, subscribe } = useNewsletterSignup();
   // Link columns come from the CMS Navigation document, so the client can
   // reorganize them (alongside the header menu) in Tina.
   const { footerColumns } = useLiveNavigation();
@@ -107,9 +109,11 @@ export function Footer() {
               New work, free guides, class openings. Once a month.
             </p>
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setEmail("");
+                if (status === "submitting") return;
+                const ok = await subscribe(email);
+                if (ok) setEmail("");
               }}
               className="flex gap-2"
             >
@@ -135,9 +139,20 @@ export function Footer() {
                   color: "var(--paper)",
                 }}
               >
-                Join
+                {status === "submitting" ? "..." : "Join"}
               </button>
             </form>
+            {status === "success" || status === "error" ? (
+              <div
+                role="status"
+                className="mt-3 text-[12px] leading-relaxed"
+                style={{
+                  color: status === "success" ? "var(--gold)" : "#f2b8b5",
+                }}
+              >
+                {message}
+              </div>
+            ) : null}
             <div className="flex items-center gap-1 mt-4 -ml-3">
               <a
                 href={YOUTUBE_URL}
