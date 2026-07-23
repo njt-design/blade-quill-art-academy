@@ -80,6 +80,43 @@
       "ctaHref": "https://a.co/d/0gOcVYO3"
     },
     {
+      "_template": "reviewLinks",
+      "heading": "Leave your reviews here",
+      "intro": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Reviews mean the world and truly help others discover the book. Use the buttons below that represent your country."
+              }
+            ]
+          }
+        ]
+      },
+      "thankYou": "Thank you so much for your support!",
+      "ctaHeading": "Review the book by clicking the button for your country!",
+      "links": [
+        {
+          "label": "Review on Amazon.com",
+          "href": "https://www.amazon.com/review/create-review?&asin=1733168451",
+          "region": "US"
+        },
+        {
+          "label": "Review on Amazon UK",
+          "href": "https://www.amazon.co.uk/review/create-review?&asin=1733168451",
+          "region": "UK"
+        },
+        {
+          "label": "Review on Amazon Australia",
+          "href": "https://www.amazon.com.au/review/create-review?&asin=1733168451",
+          "region": "AU"
+        }
+      ]
+    },
+    {
       "_template": "kofiSupport",
       "heading": "Support the Studio",
       "body": {

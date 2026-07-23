@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "ABOUT ME",
-      "heading": "I'm Corinne - illustrator and digital creator.",
+      "heading": "I'm Corinne —\nFrench author\nand illustrator.",
       "leadText": {
         "type": "root",
         "children": [
@@ -13,56 +13,42 @@
             "children": [
               {
                 "type": "text",
-                "text": "This would be sub copy"
-              }
-            ],
-            "id": "KUq0eEwCLt"
-          },
-          {
-            "type": "p",
-            "id": "6jylN6axyh",
-            "children": [
-              {
-                "type": "text",
-                "bold": true,
-                "italic": true,
-                "id": "Yfu8nFw_eg",
-                "text": ""
+                "text": "I am delighted to welcome you! This website is about digital art — I offer advice and complementary materials to assist you in your creative journey."
               }
             ]
           }
         ]
       },
-      "ctaPrimary": "Explore Tutorial",
+      "ctaPrimary": "Contact Me",
       "ctaPrimaryLink": "/contact",
       "ctaSecondary": "Visit the Shop",
-      "ctaSecondaryLink": "/gallery",
-      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "ctaSecondaryLink": "/shop",
+      "metaLine": "AUTHOR · ILLUSTRATOR · DIGITAL ART EDUCATOR",
       "portraitImage": "/images/about-portrait.png",
-      "portraitCaption": "Test",
-      "deskImage": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360643932-7T55S2PTLVHCYXB9NQXT/JAPANESE+GIRL.jpg",
-      "deskCaption": "from the desk",
-      "screenImage": "https://i.ytimg.com/vi/Oe2xkeU_mV0/hqdefault.jpg",
-      "screenCaption": "krita screen",
+      "portraitCaption": "Corinne",
+      "deskImage": "/images/squarespace/about-corinne/arc-de-triomphe-paris-france-marc-and-corinne.jpg",
+      "deskCaption": "Paris with my husband Mark",
+      "screenImage": "/images/squarespace/about-corinne/mah-0159.jpg",
+      "screenCaption": "hiking in France",
       "_template": "aboutHero"
     },
     {
       "stats": [
         {
-          "value": "100K+",
+          "value": "12K+",
           "label": "YouTube subscribers"
         },
         {
-          "value": "1.5M",
-          "label": "video views"
-        },
-        {
-          "value": "65",
-          "label": "countries reached"
-        },
-        {
           "value": "2",
-          "label": "illustrated books"
+          "label": "published books"
+        },
+        {
+          "value": "3",
+          "label": "free Krita guides"
+        },
+        {
+          "value": "9",
+          "label": "free coloring pages"
         }
       ],
       "_template": "statsRow"
@@ -72,33 +58,33 @@
       "label": "TIMELINE",
       "events": [
         {
-          "year": "2018",
-          "title": "Started the YouTube channel",
-          "description": "First Krita lesson uploaded France",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379338703-PI7QZ7QZAQ5O42ZAZVAA/Chibi+Ninja+Girl.png"
+          "year": "2019",
+          "title": "Blade & Quill Art Academy launches",
+          "description": "Free Krita video tutorials on YouTube and the web.",
+          "image": "/images/squarespace/digital-paintings/chibi-ninja-girl.png"
         },
         {
-          "year": "2020",
-          "title": "Published Lheeloo & Luna, Vol. I",
-          "description": "A small press run that quickly sold out.",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png"
+          "year": "2023",
+          "title": "Free Krita guides released",
+          "description": "Blending modes, most-used shortcuts, and lag fixes — free PDF downloads.",
+          "image": "/images/squarespace/home/a-quick-guide-to-kritas-blending-modes-feb-2023.jpg"
         },
         {
-          "year": "2022",
-          "title": "Crossed 50K subscribers",
-          "description": "And took a deep breath about the future of all this.",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693251243868-SV2H67B9OLHPBAO025LM/DRAGON.jpg"
+          "year": "2025",
+          "title": "Krita Quick Start Guide — 2nd Edition",
+          "description": "Updated and expanded with 25 extra pages for Krita 5.2.6.",
+          "image": "/images/squarespace/home/new-image-for-gumroad-1280-x-720-px.png"
         },
         {
-          "year": "2024",
-          "title": "Launched Krita Academy classes",
-          "description": "A real, live cohort with critique sessions and homework.",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg"
+          "year": "2025",
+          "title": "Lheeloo & Luna — the book is live",
+          "description": "The illustrated cartoon book starring a French Bulldog and her tiny mouse best friend.",
+          "image": "/images/squarespace/home/the-book-is-live-1.png"
         },
         {
           "year": "2026",
-          "title": "Working on the next book",
-          "description": "Vol. II — two years in the making.",
+          "title": "Super Fun Activity Book for kids",
+          "description": "Puzzle games for kids ages 8–12, starring Lheeloo & Luna.",
           "image": "/images/puzzle-book-front.png"
         }
       ],
@@ -110,24 +96,24 @@
       "cards": [
         {
           "tag": "BOOKS",
-          "title": "Krita & Digital Painting",
-          "body": "Lheeloo & Luna, plus more on the desk. Signed copies ship from the studio.",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",
+          "title": "Lheeloo & Luna + Activity Book",
+          "body": "The Lheeloo & Luna illustrated cartoon book and the Super Fun Activity Book for kids ages 8–12.",
+          "image": "/images/squarespace/home/the-book-is-live-1.png",
           "ctaLabel": "Browse books",
           "link": "/shop"
         },
         {
-          "tag": "CLASSES",
-          "title": "Character Design",
-          "body": "Structured digital art training designed for artists who want to master Krita.",
-          "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg",
-          "ctaLabel": "See the curriculum",
-          "link": "/shop"
+          "tag": "FREE RESOURCES",
+          "title": "Coloring Pages & Krita Guides",
+          "body": "Nine free printable coloring pages, plus free PDF guides on blending modes, shortcuts, and fixing lag.",
+          "image": "/images/squarespace/free-coloring-pages-downloads/color-friends-take-care-of-each-other.png",
+          "ctaLabel": "Get free downloads",
+          "link": "/downloads"
         },
         {
           "tag": "VIDEOS",
-          "title": "Color Theory",
-          "body": "Free Krita lessons, every other week. 100K+ artists watching.",
+          "title": "Krita Video Tutorials",
+          "body": "Free Krita lessons on YouTube, usually bi-weekly. Join 12,000+ artists learning digital painting.",
           "image": "https://i.ytimg.com/vi/63_gp_rFtOc/hqdefault.jpg",
           "ctaLabel": "Watch on YouTube",
           "link": "https://www.youtube.com/c/BladeQuillartacademy"
@@ -148,7 +134,7 @@
     {
       "number": "01",
       "label": "STORY",
-      "heading": "What happened here\n",
+      "heading": "A little more\nabout me",
       "paragraph1": {
         "type": "root",
         "children": [
@@ -157,11 +143,9 @@
             "children": [
               {
                 "type": "text",
-                "text": "More test copy channel called Blade and Quill Art Academy. New YouTube videos are created usually bi-weekly.",
-                "bold": true
+                "text": "I offer advice and complementary materials to assist you in your creative journey, along with free tutorials on my YouTube channel, Blade and Quill Art Academy. New videos are created usually bi-weekly."
               }
-            ],
-            "id": "gdHXFkSmT8"
+            ]
           }
         ]
       },
@@ -175,8 +159,7 @@
                 "type": "text",
                 "text": "I am a French author and illustrator. This website is about digital art."
               }
-            ],
-            "id": "aN0J2sVj5g"
+            ]
           }
         ]
       },
@@ -184,19 +167,18 @@
         "type": "root",
         "children": [
           {
+            "type": "p",
             "children": [
               {
                 "type": "text",
-                "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Whether you're just starting out or looking to refine your technique, Blade & Quill is your creative home."
+                "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Please make sure to come back often to see my new illustrations and paintings — I hope you will enjoy your stay here."
               }
-            ],
-            "id": "NRXodk1Tqx",
-            "type": "p"
+            ]
           }
         ]
       },
-      "sideImage": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691361810475-1O27U98PD2Q4K9VD6E25/LANDSCAPE.jpg",
-      "sideCaption": "my window in winter",
+      "sideImage": "/images/squarespace/about-corinne/pxl-20221022-231428521.jpg",
+      "sideCaption": "we love the outdoors",
       "_template": "story"
     }
   ]
