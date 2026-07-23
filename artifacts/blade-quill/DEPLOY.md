@@ -69,11 +69,19 @@ Local dev is unchanged: Vite proxies `/api` to the Express api-server, which sto
 
 ## Newsletter signups (Resend Audience)
 
-`POST /api/newsletter` is served by the Vercel function [`api/newsletter.ts`](../../api/newsletter.ts). It validates the email and stores it as a contact in the Resend Audience identified by `RESEND_AUDIENCE_ID` — no separate database. Duplicate signups return success. Both newsletter forms (the dark "Stay in the Loop" panel and the footer "Join" form) post here and show inline success/error feedback.
+`POST /api/newsletter` is served by the Vercel function [`api/newsletter.ts`](../../api/newsletter.ts). It:
 
-Setup: in the Resend dashboard create an Audience (**Audiences → Create**), copy its id, and add it as `RESEND_AUDIENCE_ID` in Vercel project settings. Subscribers can then be emailed with Resend Broadcasts.
+1. Validates the email and stores it as a contact in the Resend Audience (`RESEND_AUDIENCE_ID`).
+2. Sends a confirmation email from `CONTACT_FROM_EMAIL` to the subscriber, with a signed **unsubscribe** link.
+3. Treats duplicate / re-subscribe as success (and clears any prior `unsubscribed` flag).
 
-Note: the newsletter route only exists as a Vercel function — in local dev the Express api-server has no `/api/newsletter` route, so signups 404 locally.
+`GET /api/newsletter/unsubscribe?email=…&token=…` ([`api/newsletter/unsubscribe.ts`](../../api/newsletter/unsubscribe.ts)) verifies the HMAC token and marks the contact `unsubscribed: true` in Resend, then shows a simple confirmation page. Future Resend Broadcasts respect that flag. Broadcast emails Corinne sends from the Resend dashboard also include Resend's own unsubscribe controls.
+
+Both newsletter forms (the dark "Stay in the Loop" panel and the footer "Join" form) post to `/api/newsletter` and show inline success/error feedback.
+
+Setup: in the Resend dashboard create an Audience (**Audiences → Create**), copy its id, and add it as `RESEND_AUDIENCE_ID` in Vercel project settings. Optional: set `NEWSLETTER_UNSUBSCRIBE_SECRET` for signed unsubscribe links (defaults to `RESEND_API_KEY`).
+
+Note: the newsletter routes only exist as Vercel functions — in local dev the Express api-server has no `/api/newsletter` route, so signups 404 locally. Until a custom domain is verified in Resend, confirmation emails from `onboarding@resend.dev` only deliver to the Resend account owner's inbox.
 
 ## Pre-building the Tina admin
 
