@@ -1,0 +1,377 @@
+{
+  "title": "The Making of Lheeloo & Luna",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "Behind the Scenes: The Making of Lheeloo & Luna",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "This page offers a behind-the-scenes look at the creative process behind Lheeloo & Luna, from the earliest character sketches to the development of their personalities, proportions, and visual storytelling."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/for-webpage-how-it-all-started.png",
+          "alt": "How it all started — early Lheeloo sketches"
+        }
+      ]
+    },
+    {
+      "_template": "text",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "For professional review purposes, a complete picture-book dummy for Lheeloo & Luna is available: "
+              },
+              {
+                "type": "a",
+                "url": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "PDF 30-page dummy"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "text",
+      "heading": "How It All Began",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "It all started with a calendar idea. I needed to create a series of funny illustrations, one for each day. As I was drawing the dog character, I realized there was the potential for a story."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "So, I started creating different poses for Lheeloo. She looked so funny and cute to me that I began to wonder… should I give her a sidekick and see where it might lead?"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "heading": "Lheeloo's poses and expressions",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/seven-day-so-being-lazy.jpg",
+          "alt": "Seven days of Lheeloo calendar illustrations",
+          "caption": "The calendar idea that started it all"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/solution-page-lheeloo-i-bet-you-did-amazing.png",
+          "alt": "Lheeloo saying I bet you did amazing"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-food-taste-better-on-the-ground-funny-face.png",
+          "alt": "Lheeloo — food tastes better on the ground"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/i-don-27t-feel-good.png",
+          "alt": "Lheeloo — I don't feel good"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/2026-lheeloo-ready-to-bark-at-any-time-line-art-only.png",
+          "alt": "Lheeloo ready to bark at any time — line art"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/different-poses-lheeloo-run-for-your-life-2026.png",
+          "alt": "Lheeloo run-for-your-life poses"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-face-when-not-happy-about-dinner.png",
+          "alt": "Lheeloo's face when not happy about dinner"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/i-cannot-help-it-i-fart.png",
+          "alt": "Lheeloo — I cannot help it, I fart"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/chew-first-ask-later.png",
+          "alt": "Lheeloo — chew first, ask later"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/is-this-even-food.png",
+          "alt": "Lheeloo — is this even food?"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/wait-what-am-i-eating.png",
+          "alt": "Lheeloo — wait, what am I eating?"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/edible-taste-funny.png",
+          "alt": "Lheeloo — edible, tastes funny"
+        }
+      ]
+    },
+    {
+      "_template": "text",
+      "heading": "The Making of Luna",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "To create Luna, I began with what I call a “puppet.” I broke her down into simple parts: the face shape in red, the features in yellow, and the body in brown."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Once this base was set, I could easily create new poses. This method helped me keep her design consistent from one drawing to the next."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "heading": "Luna's poses and expressions",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/the-making-of-luna.jpg",
+          "alt": "The Luna puppet — face shape in red, features in yellow, body in brown",
+          "caption": "Luna's 'puppet' — the base used to keep her design consistent"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-waking-up-and-stretching.png",
+          "alt": "Luna waking up and stretching"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-pintching-her-nose.png",
+          "alt": "Luna pinching her nose"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-seriously-2c-you-don-27t-see-it.png",
+          "alt": "Luna — seriously, you don't see it?"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-oh-la-la.png",
+          "alt": "Luna — oh la la"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-you-have-a-tendency-to-dig-things-up.png",
+          "alt": "Luna — you have a tendency to dig things up"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-back.png",
+          "alt": "Luna from the back"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/smiling-luna.png",
+          "alt": "Smiling Luna"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-shocked.png",
+          "alt": "Luna shocked"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-2brealizing-2bsomething-2bor-2bthinking.png",
+          "alt": "Luna realizing something"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-laughing-hard.png",
+          "alt": "Luna laughing hard"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-sleeping5.png",
+          "alt": "Luna sleeping"
+        }
+      ]
+    },
+    {
+      "_template": "text",
+      "heading": "The Birth of the Duo",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Keeping their proportions consistent was very important to me."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Luna is a mouse and therefore much smaller than Lheeloo, but Lheeloo isn't a big dog either! French Bulldogs are relatively small."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Finding the right visual balance between them became a key part of shaping the story."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-and-luna-poses.png",
+          "alt": "Lheeloo and Luna poses together",
+          "caption": "Finding the right visual balance between the duo"
+        }
+      ]
+    },
+    {
+      "_template": "text",
+      "heading": "The Naming of the Characters",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I'm French, and I've always been a big fan of The Fifth Element, directed by Luc Besson. When the movie was released in 1997, the main characters were Korben Dallas (played by Bruce Willis) and Leeloo (played by Milla Jovovich). I instantly fell in love with the name Leeloo. I remember thinking that if I ever had another dog one day, I would name her Leeloo."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "When it came time to create the book, I decided to slightly change the spelling by adding an “H”, turning it into Lheeloo. I felt this small change made the name more personal and visually interesting."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "As for Luna, it's a very common pet name in France, and one I've always liked. Luna is a feminine given name of Latin origin, meaning moon. In Roman mythology, Luna was the divine personification of the Moon. I chose Luna because I wanted a name that paired naturally with Lheeloo. When you say Lheeloo and Luna together, the names sound soft, balanced, and harmonious. They became a perfect duo!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I experimented with many other names, like Lulu, Bella, Maya, Coco, and even Fifi, but none of them felt quite right alongside Lheeloo. And that's how Lheeloo and Luna were born."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "text",
+      "heading": "Lheeloo & Luna Continue to Grow",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Lheeloo & Luna are just getting started. The series is designed to grow through future stories, with plans for bilingual editions in French and Spanish to reach a broader international audience."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "For now, Lheeloo & Luna continue to evolve through weekly cartoons shared on Instagram, where I post Lheeloo's Thoughts of the Week, small moments meant to bring a smile and connect with readers. Many more adventures await this little duo, and I'm excited to keep building their world, one story at a time."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/32181.jpg",
+          "alt": "Lheeloo and Luna illustration"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBand",
+      "heading": "Order your book today!",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "The Lheeloo & Luna cartoon book — a pure delight for both children and adults."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Get the Book",
+      "ctaLink": "/shop/lheeloo-luna-cartoon-book",
+      "variant": "dark"
+    }
+  ],
+  "_template": "info"
+}
