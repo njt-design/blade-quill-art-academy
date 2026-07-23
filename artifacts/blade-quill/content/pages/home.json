@@ -13,10 +13,21 @@
             "children": [
               {
                 "type": "text",
-                "text": "Welcome! I'm Corinne — creator of Lheeloo & Luna. Master Krita and digital painting with my books, guides, free coloring pages, and video tutorials."
+                "text": "Welcome! I'm Corinne, creator of Lheeloo & Luna. "
               }
             ],
             "id": "0Kw8dR5xeL"
+          },
+          {
+            "type": "p",
+            "id": "d0M2NoB3Js",
+            "children": [
+              {
+                "type": "text",
+                "id": "swjnV5bKC6",
+                "text": "Master Krita and digital painting with my books, guides, free coloring pages, and video tutorials."
+              }
+            ]
           }
         ]
       },
