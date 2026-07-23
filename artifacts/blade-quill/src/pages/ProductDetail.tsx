@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation, useRoute } from "wouter";
-import { Heart } from "lucide-react";
 import {
   useCreateCheckoutSession,
   useGetProduct,
@@ -484,17 +483,6 @@ export default function ProductDetail() {
                       : `Add to cart`}
                   </Btn>
                 </div>
-              </Reveal>
-
-              <Reveal>
-                <Btn
-                  kind="outline"
-                  size="md"
-                  className="w-full mb-8"
-                  iconLeft={<Heart className="w-4 h-4" />}
-                >
-                  Save for later
-                </Btn>
               </Reveal>
 
               <Reveal>

@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { tinaField } from "tinacms/react";
 import { useListGallery, type GalleryItem } from "@workspace/api-client-react";
@@ -7,26 +8,45 @@ import { FALLBACK_GALLERY } from "@/lib/fallback-data";
 import { type Block } from "./block-utils";
 
 function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
-  return (
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  // Portal to body so `position: fixed` is viewport-relative. Ancestors with
+  // `.page` keep a CSS transform from the page-entrance animation, which would
+  // otherwise make the overlay cover the full document and center mid-page.
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 cursor-pointer"
+      className="fixed inset-0 z-[1001] flex items-start justify-center overflow-y-auto bg-black/80 px-4 pt-16 pb-8 cursor-pointer sm:pt-20"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.title}
     >
       <button
-        className="absolute top-2 right-2 w-11 h-11 grid place-items-center text-white/70 hover:text-white transition-colors z-10"
+        className="fixed top-3 right-3 w-11 h-11 grid place-items-center text-white/70 hover:text-white transition-colors z-10"
         onClick={onClose}
         aria-label="Close"
       >
         <X className="w-7 h-7" />
       </button>
       <div
-        className="relative max-w-4xl max-h-[90vh] cursor-default"
+        className="relative w-full max-w-4xl cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={item.imageUrl}
           alt={item.title}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg"
+          className="mx-auto max-w-full max-h-[75vh] object-contain rounded-lg"
         />
         <div className="mt-3 text-center">
           <h3 className="text-white font-normal">{item.title}</h3>
@@ -35,7 +55,8 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

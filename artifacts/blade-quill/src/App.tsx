@@ -8,6 +8,7 @@ import { CartProvider } from "@/hooks/useCart";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTurnOverlay } from "@/components/site/PageTurnOverlay";
+import { ScrollToTop } from "@/components/site/ScrollToTop";
 
 // Pages
 import Page from "@/pages/Page";
@@ -97,6 +98,7 @@ function App() {
       <CartProvider>
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <ScrollToTop />
             <Router />
             <PageTurnOverlay />
           </WouterRouter>

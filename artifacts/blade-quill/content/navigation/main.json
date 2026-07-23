@@ -8,24 +8,7 @@
     {
       "label": "Gallery",
       "linkType": "page",
-      "page": "content/pages/gallery.json",
-      "children": [
-        {
-          "label": "Digital Paintings",
-          "linkType": "page",
-          "page": "content/pages/gallery.json"
-        },
-        {
-          "label": "The Making of Lheeloo & Luna",
-          "linkType": "page",
-          "page": "content/pages/the-making-of-lheeloo-and-luna.json"
-        },
-        {
-          "label": "Lheeloo & Luna Social Posts",
-          "linkType": "page",
-          "page": "content/pages/lheeloo-and-luna-extra-posts.json"
-        }
-      ]
+      "page": "content/pages/gallery.json"
     },
     {
       "label": "Downloads",
