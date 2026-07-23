@@ -33,8 +33,11 @@ Full-stack website for Corinne's Blade & Quill Art Academy — an online art edu
 
 | Variable | Description |
 |---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only) |
 | `STRIPE_SECRET_KEY` | Stripe sandbox/live secret key |
+
+Copy `.env.example` to `.env` in the repo root and fill in the values before seeding or running the API.
 
 ## Local Development
 
@@ -47,7 +50,7 @@ pnpm --filter @workspace/blade-quill run dev
 # Start the API server
 pnpm --filter @workspace/api-server run dev
 
-# Seed the database
+# Seed the database (requires .env with Supabase credentials)
 pnpm --filter @workspace/scripts run seed
 
 # Re-run codegen after OpenAPI changes

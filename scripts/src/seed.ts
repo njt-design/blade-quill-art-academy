@@ -1,3 +1,4 @@
+import "./load-env.js";
 import { supabase } from "@workspace/db";
 
 /**
