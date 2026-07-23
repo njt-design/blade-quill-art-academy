@@ -3,8 +3,8 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "✦ HELLO FROM THE STUDIO ✦",
-      "heading": "Welcome to Blade & Quill\ndigital painting.",
+      "eyebrow": "✦ WELCOME TO BLADE & QUILL ✦",
+      "heading": "Author, illustrator &\ndigital art educator.",
       "subheading": {
         "type": "root",
         "children": [
@@ -13,24 +13,23 @@
             "children": [
               {
                 "type": "text",
-                "text": "Master Krita and digital painting with Corinne -- author, illustrator, and digital art educator. Creator of Lheeloo & Loana."
+                "text": "Welcome! I'm Corinne — creator of Lheeloo & Luna. Master Krita and digital painting with my books, guides, free coloring pages, and video tutorials."
               }
-            ],
-            "id": "gXFMefywJV"
+            ]
           }
         ]
       },
       "ctaPrimary": "Explore the Shop",
-      "ctaPrimaryLink": "/shop/1",
+      "ctaPrimaryLink": "/shop",
       "ctaSecondary": "Watch Tutorials",
       "ctaSecondaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
-      "metaLine": "EST. 2018 · NANTES, FR",
+      "metaLine": "CREATOR OF LHEELOO & LUNA",
       "marqueeItems": [
         "Author",
         "Illustrator",
-        "Krita educator",
-        "Chibi specialist",
-        "Storyteller",
+        "Digital art educator",
+        "Krita specialist",
+        "Chibi cartoons",
         "YouTuber"
       ],
       "_template": "homeHero"
@@ -40,27 +39,29 @@
       "heading": "Where would you like to start?",
       "items": [
         {
-          "tag": "NEW BOOK",
-          "title": "Lheeloo & Luna — The Book Is Live",
-          "sub": "Corinne's debut illustrated book. Order your copy today.",
+          "tag": "THE BOOK",
+          "title": "Lheeloo & Luna — Order Your Book Today!",
+          "sub": "A pure delight for both children and adults. eBook on Gumroad and Google Play.",
           "cta": "Order Now",
           "badge": "LATEST",
-          "link": "/shop/1"
+          "link": "/shop/lheeloo-luna-cartoon-book",
+          "image": "/images/squarespace/home/the-book-is-live-1.png"
         },
         {
-          "tag": "Now Enrolling",
-          "title": "Enroll in My Krita Education Course",
-          "sub": "Structured digital art training designed for artists who want to master Krita.",
-          "cta": "Reserve Your Spot",
-          "badge": "OPEN",
-          "link": "/classes"
+          "tag": "FREE DOWNLOADS",
+          "title": "Coloring Pages & Free Krita Guides",
+          "sub": "Enjoy free downloads: printable coloring pages and free PDF guides.",
+          "cta": "Get Free Downloads",
+          "badge": "FREE",
+          "link": "/downloads",
+          "image": "/images/squarespace/free-coloring-pages-downloads/color-friends-take-care-of-each-other.png"
         },
         {
           "tag": "YOUTUBE",
-          "title": "Join 100,000+ artists",
-          "sub": "Free Krita tutorials, bi-weekly",
+          "title": "Join 12,000+ artists",
+          "sub": "Free Krita video tutorials, usually bi-weekly",
           "cta": "Subscribe",
-          "badge": "100K+",
+          "badge": "12K+",
           "link": "https://www.youtube.com/c/BladeQuillartacademy"
         }
       ],
@@ -68,7 +69,7 @@
     },
     {
       "eyebrow": "FEATURED RELEASE",
-      "heading": "Lheeloo & Luna — The Book Is Live",
+      "heading": "Lheeloo & Luna — Order your book today!",
       "description": {
         "type": "root",
         "children": [
@@ -77,7 +78,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Corinne's debut illustrated book. Order your copy today."
+                "text": "A pure delight for both children and adults! The paperback is currently out of print on Amazon — the eBook is available on Gumroad and Google Play, whichever is best for you."
               }
             ]
           }
@@ -85,28 +86,23 @@
       },
       "stats": [
         {
-          "value": "$25",
-          "label": "SIGNED COPY"
+          "value": "$24.99",
+          "label": "PAPERBACK"
         },
         {
-          "value": "$15",
-          "label": "EBOOK"
-        },
-        {
-          "value": "144",
-          "label": "FULL-COLOR PAGES"
+          "value": "eBook",
+          "label": "GUMROAD · GOOGLE PLAY"
         }
       ],
       "ctaLabel": "Order Now",
-      "ctaLink": "/shop/1",
+      "ctaLink": "/shop/lheeloo-luna-cartoon-book",
       "secondaryLabel": "Browse the shop",
       "secondaryLink": "/shop",
       "_template": "featuredBook"
     },
     {
-      "eyebrow": "Now Enrolling",
-      "heading": "Enroll in My Krita Education Course",
-      "subheading": {
+      "heading": "Support the Studio",
+      "body": {
         "type": "root",
         "children": [
           {
@@ -114,47 +110,35 @@
             "children": [
               {
                 "type": "text",
-                "text": "Structured digital art training designed for artists who want to master Krita."
+                "text": "If you enjoy the tutorials, books, and free resources, consider buying Corinne a coffee on Ko-fi. Every bit of support helps keep the studio running."
               }
             ]
           }
         ]
       },
-      "bullets": [
-        "Beginner-friendly Krita curriculum",
-        "Step-by-step lessons with downloadable resources",
-        "Build confidence from sketch to finished painting"
-      ],
-      "metaTags": "Self-paced · Krita 5.2 · All skill levels",
-      "ctaLabel": "Reserve Your Spot",
-      "ctaLink": "/classes",
-      "secondaryLabel": "About Corinne",
-      "secondaryLink": "/about",
-      "_template": "classesPitch"
+      "ctaLabel": "Support on Ko-fi",
+      "href": "https://ko-fi.com/bladeandquill",
+      "_template": "kofiSupport"
     },
     {
       "eyebrow": "FREE LESSONS ON YOUTUBE",
       "headingPrefix": "Join ",
-      "headingHighlight": "100,000+ artists",
+      "headingHighlight": "12,000+ artists",
       "headingSuffix": "learning with me.",
-      "buttonLabel": "Browse All Tutorials",
+      "buttonLabel": "Subscribe on YouTube",
       "youtubeUrl": "https://www.youtube.com/c/BladeQuillartacademy",
       "stats": [
         {
-          "value": "100K+",
+          "value": "12K+",
           "label": "subscribers"
-        },
-        {
-          "value": "1.5M",
-          "label": "total views"
-        },
-        {
-          "value": "65",
-          "label": "countries"
         },
         {
           "value": "bi-weekly",
           "label": "new videos"
+        },
+        {
+          "value": "100%",
+          "label": "free lessons"
         }
       ],
       "_template": "tutorialsStrip"
@@ -180,7 +164,7 @@
               "children": [
                 {
                   "type": "text",
-                  "text": "Get art tips, new tutorials, and class announcements delivered to your inbox."
+                  "text": "Get art tips, new tutorials, and book announcements delivered to your inbox."
                 }
               ]
             }

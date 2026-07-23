@@ -9,7 +9,7 @@
         "children": [
           {
             "type": "text",
-            "text": "The official Lheeloo & Luna illustrated cartoon book by Corinne — a charming story full of personality and beautiful original artwork."
+            "text": "The official Lheeloo & Luna illustrated cartoon book by Corinne — a pure delight for both children and adults! The paperback is currently out of print on Amazon (check back for updates). The eBook is available on Gumroad and Google Play, whichever is best for you."
           }
         ]
       }
@@ -17,7 +17,7 @@
   },
   "price": 24.99,
   "category": "physical",
-  "image": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",
+  "image": "/images/squarespace/home/the-book-is-live-1.png",
   "gumroadUrl": "https://bladeandquill.gumroad.com/l/qilks",
   "featured": true,
   "inStock": true,

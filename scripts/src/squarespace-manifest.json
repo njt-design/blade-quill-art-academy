@@ -1,0 +1,942 @@
+[
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",
+    "newPath": "/images/squarespace/home/the-book-is-live-1.png"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1757370951268-8CUJR40DYSW3QNWNH5AM/Lheeloo+and+Luna+2025.jpg",
+    "newPath": "/images/squarespace/home/lheeloo-and-luna-2025.jpg",
+    "alt": "Lheeloo and Luna 2025.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1737649297250-MKI7VHJKULM3ZKY46V96/Sila+01_23_2025.jpg",
+    "newPath": "/images/squarespace/home/sila-01-23-2025.jpg",
+    "alt": "Sila 01_23_2025.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1713649096616-X7LLBH8VQHM4VSPL3P6L/FANTASY+CREATURE+GUARDING+DRAGON+EGG.jpg",
+    "newPath": "/images/squarespace/home/fantasy-creature-guarding-dragon-egg.jpg",
+    "alt": "FANTASY CREATURE GUARDING DRAGON EGG.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1712868214628-QX2GLHA3J84SJPA34ZAD/Chibi+of+the+sea.jpg",
+    "newPath": "/images/squarespace/home/chibi-of-the-sea.jpg",
+    "alt": "Chibi of the sea.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1697913044317-ATLH03U0IZI217MJLHJN/child+and+bear.jpg",
+    "newPath": "/images/squarespace/home/child-and-bear.jpg",
+    "alt": "child and bear.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693250658954-CZQK7FOMTAIW7TNYBJSL/STEAMPUNK+CAT.jpg",
+    "newPath": "/images/squarespace/home/steampunk-cat.jpg",
+    "alt": "STEAMPUNK CAT.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691357812253-6ZY6K1JMMVNA3ENGQPME/STEAMPUNK.jpg",
+    "newPath": "/images/squarespace/home/steampunk.jpg",
+    "alt": "STEAMPUNK.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691357810743-6P0XNHX1YIXP0RKGU8DW/MAID.jpg",
+    "newPath": "/images/squarespace/home/maid.jpg",
+    "alt": "MAID.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691359515482-RB0VF2KHWRF5VMS0D2U5/GNOME.jpg",
+    "newPath": "/images/squarespace/home/gnome.jpg",
+    "alt": "GNOME.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691359696313-A7QFXXBHNXNAIF58IC23/DRAGON+BABY.jpg",
+    "newPath": "/images/squarespace/home/dragon-baby.jpg",
+    "alt": "DRAGON BABY.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693251201040-XUPC7TL8XXY8RUS8THON/DRAGON.jpg",
+    "newPath": "/images/squarespace/home/dragon.jpg",
+    "alt": "DRAGON.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693250891094-HKW9DI0KMRB2SS8KSMRO/GEISHA.jpg",
+    "newPath": "/images/squarespace/home/geisha.jpg",
+    "alt": "GEISHA.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691359962076-S81CLT21LG6RIF18KC0Y/JAPANESE+GIRL.jpg",
+    "newPath": "/images/squarespace/home/japanese-girl.jpg",
+    "alt": "JAPANESE GIRL.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360282367-P91C53IOJES4C248XAA0/LANDSCAPE.jpg",
+    "newPath": "/images/squarespace/home/landscape.jpg",
+    "alt": "LANDSCAPE.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693251365287-G6KLJ7VG6WFGL29L2UVP/Steampunk+cat+August+2023.jpg",
+    "newPath": "/images/squarespace/home/steampunk-cat-august-2023.jpg",
+    "alt": "Steampunk cat August 2023.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1654432538976-2JJ0576R8S128MKNC3R6/Baby+dragon+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/home/baby-dragon-with-signature-and-text.jpg",
+    "alt": "Baby dragon with signature and text.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1654432543865-A0BT3B52UBYU2PU85553/Baby+dragon2+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/home/baby-dragon2-with-signature-and-text.jpg",
+    "alt": "Baby dragon2 with signature and text.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1654432548904-HPLDAUFZ93UUC7U40C1T/Chibi+Geisha+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/home/chibi-geisha-with-signature-and-text.jpg",
+    "alt": "Chibi Geisha with signature and text.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1654432558422-866Z4B4A91347XET1OLN/Kitty+princess+sketch+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/home/kitty-princess-sketch-with-signature-and-text.jpg",
+    "alt": "Kitty princess sketch with signature and text.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/d14d7a10-7b62-45ee-a21b-426af152221b/Pin+leading+to+my+shortcut+booklet.jpg",
+    "newPath": "/images/squarespace/home/pin-leading-to-my-shortcut-booklet.jpg",
+    "alt": "Pin leading to my shortcut booklet.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/60617ae2-f090-454a-8727-016083d37921/A+quick+guide+to+Krita%27s+Blending+modes_Feb.+2023.jpg",
+    "newPath": "/images/squarespace/home/a-quick-guide-to-kritas-blending-modes-feb-2023.jpg",
+    "alt": "A quick guide to Krita's Blending modes_Feb. 2023.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg",
+    "newPath": "/images/squarespace/home/faster-krita-fix-these-8-lag-issues-now.jpg",
+    "alt": "Faster Krita Fix These 8 Lag Issues Now!.jpg"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/3ad8f47c-ff90-4cf2-ab96-f8bd214e99ec/A%2B+Content+Module+%28970+x+300+px%29.png",
+    "newPath": "/images/squarespace/home/a-content-module-970-x-300-px.png"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1ece7ddd-670a-4cd3-922a-826e5cc59f6f/new+image+for+gumroad+%281280+x+720+px%29.png",
+    "newPath": "/images/squarespace/home/new-image-for-gumroad-1280-x-720-px.png"
+  },
+  {
+    "page": "home",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/85e5d102-7d13-4a42-9f43-1bc4b17708dd/IMG_20200208_155328.jpg",
+    "newPath": "/images/squarespace/home/img-20200208-155328.jpg"
+  },
+  {
+    "page": "about-corinne",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/c9161c05-8e6f-4fe6-a3fa-2108a804d0cb/Arc+de+Triomphe_Paris_France_Marc+and+Corinne.jpg",
+    "newPath": "/images/squarespace/about-corinne/arc-de-triomphe-paris-france-marc-and-corinne.jpg"
+  },
+  {
+    "page": "about-corinne",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/c6cfecf6-c86c-42c4-b3ab-9f48343fd665/PXL_20221022_231428521.jpg",
+    "newPath": "/images/squarespace/about-corinne/pxl-20221022-231428521.jpg"
+  },
+  {
+    "page": "about-corinne",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/44668626-4f58-468f-b420-8347e3528f6a/MAH_0159.JPG",
+    "newPath": "/images/squarespace/about-corinne/mah-0159.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/4adcd908-f2b2-48cd-822a-e0a323ee2132/Lheeloo+and+Luna+2025.jpg",
+    "newPath": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/c9b861fe-4f82-45f5-ba59-db2c05d2e84d/Caricature+French+Bulldog_Krita.png",
+    "newPath": "/images/squarespace/digital-paintings/caricature-french-bulldog-krita.png",
+    "caption": "French Bulldog caricature 02/21/2026 Inspired by a reference photo, this caricature focuses on exaggeration and playfulness. I’ve heavily stylized the dog’s features to ensure this is a unique, transformative piece of art that respects the original creator’s copyright. By leaning into the silliness and distortion inherent to the caricature style, anyone can create an original work that is distinct from the source material."
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1737649201802-12U1JLSVOV1RDFFJ6WGH/Sila+01_23_2025.jpg",
+    "newPath": "/images/squarespace/digital-paintings/sila-01-23-2025.jpg",
+    "alt": "Sila 01_23_2025.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1713649136758-DXUKU15N6OFZWOY9ZMDW/FANTASY+CREATURE+GUARDING+DRAGON+EGG.jpg",
+    "newPath": "/images/squarespace/digital-paintings/fantasy-creature-guarding-dragon-egg.jpg",
+    "alt": "FANTASY CREATURE GUARDING DRAGON EGG.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1712786602948-26N39WV9LXRDHUCO7YHU/Chibi+of+the+sea.jpg",
+    "newPath": "/images/squarespace/digital-paintings/chibi-of-the-sea.jpg",
+    "alt": "Chibi of the sea.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1697912973844-9KD6S8IQS0J4QC7PAHLQ/child+and+bear.jpg",
+    "newPath": "/images/squarespace/digital-paintings/child-and-bear.jpg",
+    "alt": "child and bear.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693250618628-EH1OHR8O69QU14IXV2JF/STEAMPUNK+CAT.jpg",
+    "newPath": "/images/squarespace/digital-paintings/steampunk-cat.jpg",
+    "alt": "STEAMPUNK CAT.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360486654-TYVJ21QRX3XNG1A762R8/STEAMPUNK.jpg",
+    "newPath": "/images/squarespace/digital-paintings/steampunk.jpg",
+    "alt": "STEAMPUNK.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360486161-II7X5JEKO26DSX8LXRVQ/MAID.jpg",
+    "newPath": "/images/squarespace/digital-paintings/maid.jpg",
+    "alt": "MAID.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379339397-3W8LMRULBAV50DOUQWYQ/Chibi+Ninja+Man.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-ninja-man.png",
+    "alt": "Chibi Ninja Man.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379338703-PI7QZ7QZAQ5O42ZAZVAA/Chibi+Ninja+Girl.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-ninja-girl.png",
+    "alt": "Chibi Ninja Girl.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693250927799-S4H0IT5GXNYDPN10KI2N/GEISHA.jpg",
+    "newPath": "/images/squarespace/digital-paintings/geisha.jpg",
+    "alt": "GEISHA.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379336727-LPBVJH3IR8QW40PGLC8U/Chibi+Elephant.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-elephant.png",
+    "alt": "Chibi Elephant.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379337615-BY8Y5GT79X3EBGU59I0X/Chibi+Hippo.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-hippo.png",
+    "alt": "Chibi Hippo.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379337538-SNYKQFIBYAH8SVCGVAEQ/Chibi+Giraffe.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-giraffe.png",
+    "alt": "Chibi Giraffe.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691361590881-E68GADAOUG8NR6EOUB5Y/GNOME.jpg",
+    "newPath": "/images/squarespace/digital-paintings/gnome.jpg",
+    "alt": "GNOME.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1647379336775-2KN4VR9X3K9GBRGJ2N2E/Chibi+Dragon.png",
+    "newPath": "/images/squarespace/digital-paintings/chibi-dragon.png",
+    "alt": "Chibi Dragon.png"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1693251243868-SV2H67B9OLHPBAO025LM/DRAGON.jpg",
+    "newPath": "/images/squarespace/digital-paintings/dragon.jpg",
+    "alt": "DRAGON.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360480867-UBFA4KFHH5QV5PV9Z8GF/DRAGON+BABY.jpg",
+    "newPath": "/images/squarespace/digital-paintings/dragon-baby.jpg",
+    "alt": "DRAGON BABY.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691360643932-7T55S2PTLVHCYXB9NQXT/JAPANESE+GIRL.jpg",
+    "newPath": "/images/squarespace/digital-paintings/japanese-girl.jpg",
+    "alt": "JAPANESE GIRL.jpg"
+  },
+  {
+    "page": "digital-paintings",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1691361810475-1O27U98PD2Q4K9VD6E25/LANDSCAPE.jpg",
+    "newPath": "/images/squarespace/digital-paintings/landscape.jpg",
+    "alt": "LANDSCAPE.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/65f60dbd-49f6-43d9-9e3d-757c05211c75/Steampunk+cat+August+2023.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/steampunk-cat-august-2023.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/ab54d088-7dc5-463d-8133-7ab1ec230680/Chibi+French+Maid+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/chibi-french-maid-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/0c1f035a-8901-46d3-89f3-d6d444cfcc70/Gnome+Druide+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/gnome-druide-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/9d1a2b6b-7387-4d29-9c0f-cc136b215d5e/Chibi+Geisha+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/chibi-geisha-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/2442311e-8348-46a8-b31e-f8b620e8bf18/Kitty+princess+sketch+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/kitty-princess-sketch-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/17100aaf-209e-41cd-b5af-5840a55f8d98/Baby+dragon2+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/baby-dragon2-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/d0561487-47bd-479e-9bcb-1ee99da7701d/Baby+dragon+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/baby-dragon-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/528ec059-d2a0-4cf7-a2df-ee0f95ebf602/Manga+girl+with+signature+and+text.jpg",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/manga-girl-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32b73a09-f263-42ed-97c1-f913dfd9bb3c/COLOR_Friends+take+care+of+each+other.png",
+    "newPath": "/images/squarespace/free-coloring-pages-downloads/color-friends-take-care-of-each-other.png"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Steampunk-cat-August-2023.jpg",
+    "newPath": "/files/steampunk-cat-august-2023.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Chibi-French-Maid-with-signature-and-text.jpg",
+    "newPath": "/files/chibi-french-maid-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Gnome-Druide-with-signature-and-text.jpg",
+    "newPath": "/files/gnome-druide-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Chibi-Geisha-with-signature-and-text.jpg",
+    "newPath": "/files/chibi-geisha-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Kitty-princess-sketch-with-signature-and-text.jpg",
+    "newPath": "/files/kitty-princess-sketch-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Baby-dragon2-with-signature-and-text.jpg",
+    "newPath": "/files/baby-dragon2-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Baby-dragon-with-signature-and-text-pjft.jpg",
+    "newPath": "/files/baby-dragon-with-signature-and-text-pjft.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Manga-girl-with-signature-and-text.jpg",
+    "newPath": "/files/manga-girl-with-signature-and-text.jpg"
+  },
+  {
+    "page": "free-coloring-pages-downloads",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/COLOR_Friends-take-care-of-each-other-yyw2.png",
+    "newPath": "/files/color-friends-take-care-of-each-other-yyw2.png"
+  },
+  {
+    "page": "resources",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/32c18851-4256-4c83-984b-a1d0a614e0b4/Faster+Krita+Fix+These+8+Lag+Issues+Now%21.jpg",
+    "newPath": "/images/squarespace/home/faster-krita-fix-these-8-lag-issues-now.jpg",
+    "caption": "Free guide CLICK ON THE IMAGE TO GET YOUR FREE GUIDE ON HOW TO FIX LAG IN KRITA."
+  },
+  {
+    "page": "resources",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/60617ae2-f090-454a-8727-016083d37921/A+quick+guide+to+Krita%27s+Blending+modes_Feb.+2023.jpg",
+    "newPath": "/images/squarespace/home/a-quick-guide-to-kritas-blending-modes-feb-2023.jpg",
+    "caption": "FREE GUIDE CLICK ON THE IMAGE TO GET YOUR FREE GUIDE TO KRITA’S BLENDING MODES."
+  },
+  {
+    "page": "resources",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/727abd66-da01-4e93-b492-80724e3eb47c/A+quick+guide+to+Krita%27s+shortcuts.jpg",
+    "newPath": "/images/squarespace/resources/a-quick-guide-to-kritas-shortcuts.jpg",
+    "caption": "free guide CLICK ON THE IMAGE TO GET YOUR FREE GUIDE TO KRITA’S MOST USED SHORTCUTS."
+  },
+  {
+    "page": "resources",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/056579f9-52bd-4840-bb72-efb5a62019a4/download+button.jpg",
+    "newPath": "/images/squarespace/resources/download-button.jpg"
+  },
+  {
+    "page": "resources",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/GUIDE_-Faster-Krita-Fix-These-8-Lag-Issues-Now-mb4n.pdf",
+    "newPath": "/files/guide-faster-krita-fix-these-8-lag-issues-now-mb4n.pdf"
+  },
+  {
+    "page": "resources",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/A-GUIDE-TO-KRITA-BLENDING-MODES_2023_KRITA-50.pdf",
+    "newPath": "/files/a-guide-to-krita-blending-modes-2023-krita-50.pdf"
+  },
+  {
+    "page": "resources",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/A-GUIDE-TO-KRITA-MOST-USED-SHORTCUTS_2023_KRITA-50.pdf",
+    "newPath": "/files/a-guide-to-krita-most-used-shortcuts-2023-krita-50.pdf"
+  },
+  {
+    "page": "important-links-page",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/234c54ef-9345-4259-9a7f-50f8c4d73427/THE+BOOK+IS+LIVE.jpg",
+    "newPath": "/images/squarespace/important-links-page/the-book-is-live.jpg"
+  },
+  {
+    "page": "important-links-page",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/d584f67d-e269-47a9-b9a9-ef633010f647/1.png",
+    "newPath": "/images/squarespace/important-links-page/1.png"
+  },
+  {
+    "page": "important-links-page",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/faf39683-057a-4b7d-936f-dbc2ed4ced22/2.png",
+    "newPath": "/images/squarespace/important-links-page/2.png"
+  },
+  {
+    "page": "important-links-page",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/5df24ca8-b0d0-4ec1-b4bf-0a980d0180eb/A%2B+KDP+CONTENT+BOARD.png",
+    "newPath": "/images/squarespace/important-links-page/a-kdp-content-board.png"
+  },
+  {
+    "page": "lheeloo-luna-cartoon-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/b23e74de-dc37-4929-877b-ad77351f2844/THE+BOOK+IS+LIVE+%281%29.png",
+    "newPath": "/images/squarespace/home/the-book-is-live-1.png",
+    "caption": "A pure delight for both children and adults!💖"
+  },
+  {
+    "page": "lheeloo-luna-cartoon-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/d3aba955-cd05-425c-8bac-9765ef3603e4/Pin+5+for+ad+campaign+dec+2025.png",
+    "newPath": "/images/squarespace/lheeloo-luna-cartoon-book/pin-5-for-ad-campaign-dec-2025.png"
+  },
+  {
+    "page": "lheeloo-luna-cartoon-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/f273b9f6-145f-4168-9562-12bc4cb3b156/Pin+5+for+ad+campaign+dec+2025+%281%29.png",
+    "newPath": "/images/squarespace/lheeloo-luna-cartoon-book/pin-5-for-ad-campaign-dec-2025-1.png"
+  },
+  {
+    "page": "krita-quick-start-guide-ebook",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/448cd4da-c6cd-425d-a539-66250a72eb4d/1.png",
+    "newPath": "/images/squarespace/krita-quick-start-guide-ebook/1.png"
+  },
+  {
+    "page": "krita-quick-start-guide-ebook",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1ece7ddd-670a-4cd3-922a-826e5cc59f6f/new+image+for+gumroad+%281280+x+720+px%29.png",
+    "newPath": "/images/squarespace/home/new-image-for-gumroad-1280-x-720-px.png"
+  },
+  {
+    "page": "super-fun-activity-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/518c25d8-9c78-4690-9c50-028bc6fecc98/A%2B+Content+Module+%28970+x+300+px%29.png",
+    "newPath": "/images/squarespace/super-fun-activity-book/a-content-module-970-x-300-px.png"
+  },
+  {
+    "page": "super-fun-activity-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/bdb9c8af-3c61-47ec-adc8-e6a6497b2061/A%2B+Content+Module+%28970+x+300+px%29.png",
+    "newPath": "/images/squarespace/super-fun-activity-book/a-content-module-970-x-300-px-2.png"
+  },
+  {
+    "page": "super-fun-activity-book",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/78d8dcca-b94a-4671-8de4-f5da3d3b3d23/A%2B+Content+Module+%28970+x+300+px%29.png",
+    "newPath": "/images/squarespace/super-fun-activity-book/a-content-module-970-x-300-px-3.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/f1912337-edcc-49a4-9b58-acfc590f80aa/For+webpage_how+it+all+started.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/for-webpage-how-it-all-started.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/2e501cf8-d40e-4de1-bf83-b59a35c9afa9/SEVEN+DAY+SO+BEING+LAZY.jpg",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/seven-day-so-being-lazy.jpg"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/0add5144-5db6-441a-84e4-9427f21b1edd/the+making+of+luna.jpg",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/the-making-of-luna.jpg"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/5a53b1db-1e47-4d5f-8070-180f9e9374fc/LHEELOO+AND+LUNA+POSES+.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-and-luna-poses.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/de01c61e-cd06-4076-ab7e-37935a970ec0/32181.jpg",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/32181.jpg"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915419655-SS4BZG5XVGM0S5Y4QQV4/solution%2Bpage%2BLheeloo%2BI%2Bbet%2Byou%2Bdid%2Bamazing.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/solution-page-lheeloo-i-bet-you-did-amazing.png",
+    "alt": "solution+page+Lheeloo+I+bet+you+did+amazing.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915407872-3SYLB24BDIF7RE7JMSE0/Lheeloo%2Bfood%2Btaste%2Bbetter%2Bon%2Bthe%2Bground%2Bfunny%2Bface.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-food-taste-better-on-the-ground-funny-face.png",
+    "alt": "Lheeloo+food+taste+better+on+the+ground+funny+face.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915459237-WL3OYCUMM6NYDHGDWTO3/I%2BDON%2527T%2BFEEL%2BGOOD.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/i-don-27t-feel-good.png",
+    "alt": "I+DON%27T+FEEL+GOOD.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915363514-5M4U20IUHHR3GHIC5P8W/2026_Lheeloo%2Bready%2Bto%2Bbark%2Bat%2Bany%2Btime_line%2Bart%2Bonly.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/2026-lheeloo-ready-to-bark-at-any-time-line-art-only.png",
+    "alt": "2026_Lheeloo+ready+to+bark+at+any+time_line+art+only.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915349179-H8617KB8EI6TX59FABM1/Different%2Bposes_Lheeloo%2Brun%2Bfor%2Byour%2Blife_2026.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/different-poses-lheeloo-run-for-your-life-2026.png",
+    "alt": "Different+poses_Lheeloo+run+for+your+life_2026.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915375379-E6AL9DSYEJJM5OM9AEFP/Lheeloo%2Bface%2Bwhen%2Bnot%2Bhappy%2Babout%2Bdinner.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-face-when-not-happy-about-dinner.png",
+    "alt": "Lheeloo+face+when+not+happy+about+dinner.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915429705-6DRCLIL5CSXFZSBVJGAO/I%2Bcannot%2Bhelp%2Bit.%2BI%2Bfart.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/i-cannot-help-it-i-fart.png",
+    "alt": "I+cannot+help+it.+I+fart.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915488803-MZQUBDYGOBZNWR42RX9O/CHEW%2BFIRST%2BASK%2BLATER.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/chew-first-ask-later.png",
+    "alt": "CHEW+FIRST+ASK+LATER.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915449774-D9980QWHXHTEKPY55N9S/IS%2BTHIS%2BEVEN%2BFOOD.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/is-this-even-food.png",
+    "alt": "IS+THIS+EVEN+FOOD.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915470814-O1DZCEQFDNVSV07R19HL/WAIT%2BWHAT%2BAM%2BI%2BEATING.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/wait-what-am-i-eating.png",
+    "alt": "WAIT+WHAT+AM+I+EATING.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915480654-V5CQJNK454ZL0L7OV2BB/EDIBLE%2BTASTE%2BFUNNY.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/edible-taste-funny.png",
+    "alt": "EDIBLE+TASTE+FUNNY.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915710261-JI0NZT3TWTO2CXG1NYJW/LUNA%2BWAKING%2BUP%2BAND%2BSTRETCHING.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-waking-up-and-stretching.png",
+    "alt": "LUNA+WAKING+UP+AND+STRETCHING.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915681595-WGM93MR0FE61LV2NK7RY/luna%2Bpintching%2Bher%2Bnose.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-pintching-her-nose.png",
+    "alt": "luna+pintching+her+nose.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915643129-Z0ATJRSFQ1CB3YXBL913/Luna_%2BSeriously%252C%2Byou%2Bdon%2527t%2Bsee%2Bit.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-seriously-2c-you-don-27t-see-it.png",
+    "alt": "Luna_+Seriously%2C+you+don%27t+see+it.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915662212-L23CJQARAIA540CCG84W/Luna%2BOh%2BLa%2BLa.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-oh-la-la.png",
+    "alt": "Luna+Oh+La+La.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915816200-C61F00BOFWGN3TBY5M1J/Luna_you%2Bhave%2Ba%2Btendency%2Bto%2Bdig%2Bthings%2Bup.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-you-have-a-tendency-to-dig-things-up.png",
+    "alt": "Luna_you+have+a+tendency+to+dig+things+up.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915803354-0MDW1FFM6XVD55W20U9A/Luna%2Bback.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-back.png",
+    "alt": "Luna+back.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915692499-GCBYNA8RAGF3S0VPKZNQ/smiling%2BLuna.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/smiling-luna.png",
+    "alt": "smiling+Luna.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915624414-8TV93UPRW7L7VKYHM2QD/Luna%2Bshocked.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-shocked.png",
+    "alt": "Luna+shocked.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915792449-K7S7FMSNXPPQQLDC6WER/Luna%252Brealizing%252Bsomething%252Bor%252Bthinking.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-2brealizing-2bsomething-2bor-2bthinking.png",
+    "alt": "Luna%2Brealizing%2Bsomething%2Bor%2Bthinking.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915652686-UIVX82OXQXJQW9ZKSJHS/Luna%2Blaughing%2Bhard.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-laughing-hard.png",
+    "alt": "Luna+laughing+hard.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769915701331-90VARS39P8X42F7N7HTQ/LUNA%2BSLEEPING5.png",
+    "newPath": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-sleeping5.png",
+    "alt": "LUNA+SLEEPING5.png"
+  },
+  {
+    "page": "the-making-of-lheeloo-and-luna",
+    "kind": "file",
+    "oldUrl": "https://bladeandquillartacademy.com/s/Lheeloo-and-Luna-Bath-Time_Episode-Thursday-Dummy-Book.pdf",
+    "newPath": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932296257-HZ6LY06155WY1ZR8FJ75/060125_Toxic+Toots.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/060125-toxic-toots.png",
+    "alt": "060125_Toxic Toots.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932296251-B6NABR0XEUPUF4JSWJUK/060925_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/060925-thought-of-the-week.png",
+    "alt": "060925_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932297347-4IBUI2VCFX6A839X288W/061825_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/061825-thought-of-the-week.png",
+    "alt": "061825_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932297493-GRIYCREZJ8NKZNUPPT3C/070225_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/070225-thought-of-the-week.png",
+    "alt": "070225_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932298396-ZI1R90ILOGFDUALMZB1O/071025_Thought+of+the+week.jpg",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/071025-thought-of-the-week.jpg",
+    "alt": "071025_Thought of the week.jpg"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932298654-J4D1ED1KF48PZREUZPVK/080125_Going+on+vacation_Summer+2025.jpg",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/080125-going-on-vacation-summer-2025.jpg",
+    "alt": "080125_Going on vacation_Summer 2025.jpg"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932299777-ONDOGQQ96MDUYHR53NCJ/090225_food+tastes+better+on+the+ground.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/090225-food-tastes-better-on-the-ground.png",
+    "alt": "090225_food tastes better on the ground.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932300651-NJ8FYPKAX2YCNJWDE1M4/091025_Frenchies+don%27t+do+rules.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/091025-frenchies-dont-do-rules.png",
+    "alt": "091025_Frenchies don't do rules.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932300944-FRYZEAM7Q3FY5AQMFO8E/091725_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/091725-thought-of-the-week.png",
+    "alt": "091725_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932301862-UM2YQX2U3OM0V38BFDBG/092425_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/092425-thought-of-the-week.png",
+    "alt": "092425_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932302684-CHDQG44STST3QZ29S5CN/100125_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/100125-thought-of-the-week.png",
+    "alt": "100125_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1759932303140-9K4CEYIOT9CS20WZBIRW/100825_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/100825-thought-of-the-week.png",
+    "alt": "100825_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1760556309681-R6F8OSFSC8I2DWPAIQQ4/101525_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/101525-thought-of-the-week.png",
+    "alt": "101525_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1761254257068-ZAIPBQ62RADQH8JD6JXT/102225_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/102225-thought-of-the-week.png",
+    "alt": "102225_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1761773040464-2MMOK31MXH6RR343JYX7/102925_Hallow.+.+een_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/102925-hallow-een-thought-of-the-week.png",
+    "alt": "102925_Hallow. . een_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1762383154166-6REWGSVA363TLT2BIV04/110525_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/110525-thought-of-the-week.png",
+    "alt": "110525_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1764951229896-MNP473Q35BTX8GFBZT0G/120425_Merry+Christmas.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/120425-merry-christmas.png",
+    "alt": "120425_Merry Christmas.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769917378662-MZR1K3I5J2FQGLIEAFGG/010726_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/010726-thought-of-the-week.png",
+    "alt": "010726_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769917378685-4PT2AKMXPNQLNXQF1K87/011426_PreChewed+News.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/011426-prechewed-news.png",
+    "alt": "011426_PreChewed News.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769917379776-QW2B5BMYKBOMN93K6JMI/012126_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/012126-thought-of-the-week.png",
+    "alt": "012126_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1769917379858-QCZWTQ66MAL81LZT9IJ8/012826_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/012826-thought-of-the-week.png",
+    "alt": "012826_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1770742322951-EG6SIKCMFNHY7SEVSMZL/020426_Thought+of+the+week.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/020426-thought-of-the-week.png",
+    "alt": "020426_Thought of the week.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1770742723710-U47XWPKIAKGGIIM9OZ10/021126_Bad+Bunny.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/021126-bad-bunny.png",
+    "alt": "021126_Bad Bunny.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1772042169015-HS4COOR079S3ET2AY0RS/022526_it%27s+about+discipline.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/022526-its-about-discipline.png",
+    "alt": "022526_it's about discipline.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1772983031571-WRD0K1O8VEUQIBPIQ3J2/030426.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/030426.png",
+    "alt": "030426.png"
+  },
+  {
+    "page": "lheeloo-and-luna-extra-posts",
+    "kind": "image",
+    "oldUrl": "https://images.squarespace-cdn.com/content/v1/5d4c7ff6cba600000192c59b/1773233695420-Y5VRC0WNWQTYD640WP90/031126.png",
+    "newPath": "/images/squarespace/lheeloo-and-luna-extra-posts/031126.png",
+    "alt": "031126.png"
+  }
+]

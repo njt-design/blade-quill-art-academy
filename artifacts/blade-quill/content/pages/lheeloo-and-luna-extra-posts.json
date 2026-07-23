@@ -1,0 +1,181 @@
+{
+  "title": "Lheeloo & Luna Social Media Posts",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "What Are Lheeloo & Luna Up To?",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Catch up on all their social media posts here! Lheeloo's Thoughts of the Week are shared weekly on Instagram — small moments meant to bring a smile."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "imageGallery",
+      "images": [
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/031126.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — March 11, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/030426.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — March 4, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/022526-its-about-discipline.png",
+          "alt": "Lheeloo & Luna — It's About Discipline",
+          "caption": "It's About Discipline — February 25, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/021126-bad-bunny.png",
+          "alt": "Lheeloo & Luna — Bad Bunny",
+          "caption": "Bad Bunny — February 11, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/020426-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — February 4, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/012826-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — January 28, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/012126-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — January 21, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/011426-prechewed-news.png",
+          "alt": "Lheeloo & Luna — Pre-Chewed News",
+          "caption": "Pre-Chewed News — January 14, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/010726-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — January 7, 2026"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/120425-merry-christmas.png",
+          "alt": "Lheeloo & Luna — Merry Christmas",
+          "caption": "Merry Christmas — December 4, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/110525-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — November 5, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/102925-hallow-een-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Halloween Thought of the Week",
+          "caption": "Halloween Thought of the Week — October 29, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/102225-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — October 22, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/101525-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — October 15, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/100825-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — October 8, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/100125-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — October 1, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/092425-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — September 24, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/091725-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — September 17, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/091025-frenchies-dont-do-rules.png",
+          "alt": "Lheeloo & Luna — Frenchies Don't Do Rules",
+          "caption": "Frenchies Don't Do Rules — September 10, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/090225-food-tastes-better-on-the-ground.png",
+          "alt": "Lheeloo & Luna — Food Tastes Better on the Ground",
+          "caption": "Food Tastes Better on the Ground — September 2, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/080125-going-on-vacation-summer-2025.jpg",
+          "alt": "Lheeloo & Luna — Going on Vacation — Summer 2025",
+          "caption": "Going on Vacation — Summer 2025 — August 1, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/071025-thought-of-the-week.jpg",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — July 10, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/070225-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — July 2, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/061825-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — June 18, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/060925-thought-of-the-week.png",
+          "alt": "Lheeloo & Luna — Thought of the Week",
+          "caption": "Thought of the Week — June 9, 2025"
+        },
+        {
+          "src": "/images/squarespace/lheeloo-and-luna-extra-posts/060125-toxic-toots.png",
+          "alt": "Lheeloo & Luna — Toxic Toots",
+          "caption": "Toxic Toots — June 1, 2025"
+        }
+      ]
+    },
+    {
+      "_template": "ctaBand",
+      "heading": "Want more Lheeloo & Luna?",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Discover how the duo was created, or order the book today."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "See the Making Of",
+      "ctaLink": "/p/the-making-of-lheeloo-and-luna",
+      "variant": "light"
+    }
+  ],
+  "_template": "info"
+}
