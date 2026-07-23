@@ -18,6 +18,66 @@
       ],
       "destination": "https://blade-quill-art-academy.vercel.app/admin/:path*",
       "permanent": false
+    },
+    {
+      "source": "/welcometoallofyou",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-paintings",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/free-coloring-pages-downloads",
+      "destination": "/downloads",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/downloads",
+      "permanent": true
+    },
+    {
+      "source": "/about-corinne",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/lheeloo-luna-cartoon-book",
+      "destination": "/shop/lheeloo-luna-cartoon-book",
+      "permanent": true
+    },
+    {
+      "source": "/krita-quick-start-guide-ebook",
+      "destination": "/shop/krita-quick-start-guide",
+      "permanent": true
+    },
+    {
+      "source": "/super-fun-activity-book",
+      "destination": "/shop/super-fun-activity-book",
+      "permanent": true
+    },
+    {
+      "source": "/new-folder-1",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/the-making-of-lheeloo-and-luna",
+      "destination": "/p/the-making-of-lheeloo-and-luna",
+      "permanent": true
+    },
+    {
+      "source": "/lheeloo-and-luna-extra-posts",
+      "destination": "/p/lheeloo-and-luna-extra-posts",
+      "permanent": true
+    },
+    {
+      "source": "/(tutorials|free-tutorials|tutorials-with-materials-to-download-or-use|learning-how-to-use-krita|tools-series|brush-series|vectors-series|animation-series|how-to-draw-digitally|character-designs|useful-tips-and-tricks|textures-and-designs)",
+      "destination": "https://www.youtube.com/c/BladeQuillartacademy",
+      "permanent": false
     }
   ],
   "rewrites": [
