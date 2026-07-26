@@ -160,14 +160,22 @@ Note: Squarespace used Consent Mode (analytics denied until cookies accepted). T
 
 `tinacms build` fails on Vercel's Linux build environment due to an esbuild platform bug (`Unterminated string literal`). The admin SPA and generated types are **pre-built locally** and committed to the repo.
 
-After any schema change in `tina/config.ts` (including `cmsCallback` screens like Insights), regenerate and commit:
+**Env file location:** The Tina CLI only reads `artifacts/blade-quill/.env` (sibling of the `tina/` folder). Credentials live in the **repo-root** `.env`, so symlink once:
+
+```bash
+ln -sf ../../.env artifacts/blade-quill/.env
+```
+
+Without that symlink, the CLI gets empty `clientId`/`token` (`401` / `ERR_CLOUD_CHECK_FAILED`). Builds that then use `--skip-cloud-checks` can leave `tina/tina-lock.json` stale. **A stale lock breaks `/admin` login** — Tina Cloud indexes the lock, and a mismatch with the committed admin SPA causes auth/schema errors after sign-in. Always commit an updated `tina/tina-lock.json` with schema changes (verify new template names appear in the lock before pushing).
+
+After any schema change in `tina/config.ts` or `tina/blocks.ts` (including `cmsCallback` screens like Insights), regenerate and commit:
 
 ```bash
 cd artifacts/blade-quill
 # If Tina Cloud hasn't indexed the latest schema yet, add --skip-cloud-checks:
 # pnpm exec tinacms build --local --noTelemetry --datalayer-port 9100 --skip-cloud-checks
 pnpm run build:deploy
-git add tina/__generated__/ public/admin/
+git add tina/__generated__/ tina/tina-lock.json public/admin/
 git commit -m "Regenerate Tina admin after schema change"
 ```
 
@@ -179,7 +187,7 @@ Production builds use `build:static` (Vite only). Tina content ships from commit
 git restore artifacts/blade-quill/public/admin/
 ```
 
-Only commit `public/admin/` when intentionally regenerating it via `pnpm run build:deploy`.
+Only commit `public/admin/` when intentionally regenerating it via `pnpm run build:deploy`. Note: `tinacms build` also overwrites `public/admin/.gitignore` — restore the intentional empty one from git after regenerating so assets stay trackable.
 
 No Supabase/Stripe keys are required for the static client preview.
 
