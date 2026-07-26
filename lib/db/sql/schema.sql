@@ -1,7 +1,7 @@
 -- Blade & Quill Art Academy — Supabase schema
 -- Apply via Supabase SQL Editor or: psql "$POSTGRES_URL_NON_POOLING" -f lib/db/sql/schema.sql
 -- All tables have RLS enabled with no anon policies: the app only accesses
--- them server-side through the service role key, which bypasses RLS.
+-- them server-side via the service role key, which bypasses RLS.
 
 create table if not exists products (
   id bigint primary key generated always as identity,
@@ -48,10 +48,17 @@ create table if not exists downloads (
   created_at timestamptz not null default now()
 );
 
+-- Orders store a snapshot of Tina product fields at checkout time so
+-- fulfillment does not depend on the Supabase products seed matching Tina.
 create table if not exists orders (
   id bigint primary key generated always as identity,
   stripe_session_id text not null unique,
-  product_id bigint not null references products (id),
+  product_id bigint not null,
+  product_name text,
+  product_category text,
+  product_slug text,
+  gumroad_url text,
+  download_url text,
   customer_email text,
   status text not null default 'pending',
   download_token text,
@@ -66,6 +73,24 @@ create table if not exists contacts (
   message text not null,
   created_at timestamptz not null default now()
 );
+
+-- Migrate existing orders tables that still FK to products and lack snapshots.
+do $$
+begin
+  if exists (
+    select 1 from information_schema.table_constraints
+    where constraint_name = 'orders_product_id_fkey'
+      and table_name = 'orders'
+  ) then
+    alter table orders drop constraint orders_product_id_fkey;
+  end if;
+end $$;
+
+alter table orders add column if not exists product_name text;
+alter table orders add column if not exists product_category text;
+alter table orders add column if not exists product_slug text;
+alter table orders add column if not exists gumroad_url text;
+alter table orders add column if not exists download_url text;
 
 alter table products enable row level security;
 alter table gallery enable row level security;

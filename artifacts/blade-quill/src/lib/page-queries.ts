@@ -19,6 +19,7 @@ export const CORE_PAGE_SLUGS = [
   "shop",
   "gallery",
   "downloads",
+  "publishers",
   "important-links",
 ] as const;
 
@@ -70,12 +71,26 @@ const BLOCK_FIELDS: Record<string, string> = {
   downloadsGrid: "emptyHeading emptyDescription",
   contactInfo: "email location",
   contactForm: "submitLabel",
+  dummyBookRequest:
+    "heading description pdfUrl submitLabel successHeading successNote downloadLabel",
   marquee: "highlightText text",
   featuredRelease:
     "eyebrow title description coverImage backCoverImage ctaLabel ctaHref",
   kofiSupport: "heading body ctaLabel href",
-  socialLinks: "links { platform url label }",
+  socialLinks: "heading body links { platform url label }",
   reviewLinks: "heading intro thankYou ctaHeading links { label href region }",
+  heroSplitImage:
+    "eyebrow heading subheading featuredImage imageAlt imageCaption imagePosition ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink",
+  heroFullBleed:
+    "backgroundImage heading subheading overlay textAlign minHeight ctaLabel ctaLink",
+  heroFloatingImages:
+    "eyebrow heading subheading images { src alt caption } ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink",
+  heroImageGrid:
+    "eyebrow heading subheading layout images { src alt caption } ctaLabel ctaLink",
+  imageSpotlight: "eyebrow heading image alt caption aspect body",
+  imageSideBySide:
+    "heading leftImage { src alt caption } rightImage { src alt caption } style",
+  imageMasonry: "heading images { src alt caption size }",
 };
 
 export function pascalCase(name: string): string {

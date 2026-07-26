@@ -1,0 +1,180 @@
+{
+  "title": "For Publishers",
+  "layout": "standard",
+  "blocks": [
+    {
+      "_template": "pageHeader",
+      "heading": "For Publishers & Literary Agents",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "I'm Corinne Hadaway — author, illustrator, and creator of Lheeloo & Luna. Below you'll find my published work, a look at my process, and a complete 30-page PDF of the picture book available for professional review."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "_template": "dummyBookRequest",
+      "heading": "Request the 30-page PDF",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Fill in your details and the complete 30-page PDF unlocks instantly. Corinne is notified of every request and will follow up personally."
+              }
+            ]
+          }
+        ]
+      },
+      "pdfUrl": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
+      "submitLabel": "Request the 30-page PDF",
+      "successHeading": "Thank you — the PDF is ready",
+      "successNote": "Your request has been sent to Corinne. In the meantime, the full 30-page PDF is available below.",
+      "downloadLabel": "Download the 30-page PDF"
+    },
+    {
+      "_template": "socialLinks",
+      "heading": "An audience that's already following along",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "12,000+ artists learn Krita with Corinne on YouTube, Lheeloo & Luna share new antics on Instagram every week, and her Pinterest boards power ongoing ad campaigns. See the platform for yourself."
+              }
+            ]
+          }
+        ]
+      },
+      "links": [
+        {
+          "platform": "youtube",
+          "url": "https://www.youtube.com/c/BladeQuillartacademy",
+          "label": "YouTube"
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/bladequillartacademy/",
+          "label": "Instagram"
+        },
+        {
+          "platform": "pinterest",
+          "url": "https://www.pinterest.com/celticcoco9161/",
+          "label": "Pinterest"
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/1733168451",
+          "label": "Amazon"
+        },
+        {
+          "platform": "kofi",
+          "url": "https://ko-fi.com/bladeandquill",
+          "label": "Ko-fi"
+        }
+      ]
+    },
+    {
+      "_template": "cardRow",
+      "number": "01",
+      "label": "THE WORK",
+      "cards": [
+        {
+          "tag": "CARTOON BOOK",
+          "title": "Lheeloo & Luna",
+          "body": "The flagship illustrated book. Character-driven humor with all-ages appeal, published 2025.",
+          "image": "/images/squarespace/home/the-book-is-live-1.png",
+          "ctaLabel": "View the book",
+          "link": "/shop/lheeloo-luna-cartoon-book"
+        },
+        {
+          "tag": "ACTIVITY BOOK",
+          "title": "Super Fun Activity Book",
+          "body": "A puzzle and activity spin-off for kids 8–12 starring the same characters, published 2026.",
+          "image": "/images/puzzle-book-front.png",
+          "ctaLabel": "View the book",
+          "link": "/shop/super-fun-activity-book"
+        },
+        {
+          "tag": "PROCESS",
+          "title": "The Making of Lheeloo & Luna",
+          "body": "From first calendar sketches to finished characters — the full development story.",
+          "image": "/images/squarespace/the-making-of-lheeloo-and-luna/for-webpage-how-it-all-started.png",
+          "ctaLabel": "Read the story",
+          "link": "/p/the-making-of-lheeloo-and-luna"
+        }
+      ]
+    },
+    {
+      "_template": "imageGallery",
+      "heading": "From the sketchbook",
+      "images": [
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-and-luna-poses.png",
+          "alt": "Lheeloo and Luna character pose studies"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/the-making-of-luna.jpg",
+          "alt": "The making of Luna — character development"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/different-poses-lheeloo-run-for-your-life-2026.png",
+          "alt": "Lheeloo action poses — run for your life"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-waking-up-and-stretching.png",
+          "alt": "Luna waking up and stretching"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-laughing-hard.png",
+          "alt": "Luna laughing hard — expression study"
+        },
+        {
+          "src": "/images/squarespace/the-making-of-lheeloo-and-luna/smiling-luna.png",
+          "alt": "Smiling Luna character art"
+        }
+      ]
+    },
+    {
+      "_template": "text",
+      "heading": "About the author",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Corinne Hadaway is a French author-illustrator based in Des Moines, Iowa. She has self-published two illustrated books, built a YouTube audience of 12,000+ artists through her Krita tutorials, and maintains an active Instagram following for the Lheeloo & Luna series. The characters have a complete visual bible — poses, expressions, and proportions — and bilingual French and Spanish editions are planned."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "She is currently seeking publishing and rights partners for the Lheeloo & Luna picture-book series. A complete 30-page PDF is available for professional review above."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

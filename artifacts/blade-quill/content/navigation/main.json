@@ -26,6 +26,11 @@
       "page": "content/pages/about.json"
     },
     {
+      "label": "Publishers",
+      "linkType": "page",
+      "page": "content/pages/publishers.json"
+    },
+    {
       "label": "Contact",
       "linkType": "page",
       "page": "content/pages/contact.json"
@@ -69,6 +74,11 @@
           "label": "About",
           "linkType": "page",
           "page": "content/pages/about.json"
+        },
+        {
+          "label": "For Publishers",
+          "linkType": "page",
+          "page": "content/pages/publishers.json"
         },
         {
           "label": "Blog",

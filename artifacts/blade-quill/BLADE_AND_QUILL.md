@@ -60,8 +60,9 @@ Three options were reviewed; the selected direction became:
 ---
 ## Analytics (important requirement)
 - Analytics are “very important” to Corinne.
-- Plan to integrate / connect **Google Analytics**.
-- Also discussed: making a dedicated analytics page (and/or tying analytics into CMS vs viewing separately in GA).
+- **GA4 Measurement ID:** `G-50YS8RZ7HL` (same property as Squarespace `bladeandquillartacademy.com`).
+- Public site fires page views + conversion events (`purchase`, `amazon_click`, `dummy_book_request`).
+- Owner Studio at `/insights` (Tina login required): sessions, bounce rate, Stripe sales, Amazon clicks, dummy-book requests, recent orders. Tina sidebar → Insights.
 - Suggested experiment: remove tutorials from current Squarespace site and monitor impact on visits.
 ---
 ## Traffic & audience signals captured in notes
@@ -104,7 +105,7 @@ Three options were reviewed; the selected direction became:
 - Corinne: explore Patreon (membership features)
 - Corinne: create custom quill logo
 - Apply selected styling direction to templates (e.g., blog template)
-- Integrate Google Analytics (and/or create an analytics page)
+- ~~Integrate Google Analytics (and/or create an analytics page)~~ — done (`G-50YS8RZ7HL` + `/insights`)
 - Content experiments: remove tutorials on current site and monitor impact
 
 <empty-block/>

@@ -70,6 +70,8 @@ export interface CheckoutRequest {
   productId: number;
   /** @minimum 1 */
   quantity: number;
+  /** Optional Tina product filename slug for O(1) catalog lookup */
+  productSlug?: string;
 }
 
 export interface CheckoutResponse {
@@ -85,10 +87,25 @@ export interface OrderSuccess {
   email?: string | null;
 }
 
+/**
+ * Why the form was submitted; defaults to general.
+ */
+export type ContactRequestIntent =
+  (typeof ContactRequestIntent)[keyof typeof ContactRequestIntent];
+
+export const ContactRequestIntent = {
+  general: "general",
+  "dummy-book": "dummy-book",
+} as const;
+
 export interface ContactRequest {
   name: string;
   email: string;
   message: string;
+  /** Publisher or company name (dummy-book requests). */
+  company?: string;
+  /** Why the form was submitted; defaults to general. */
+  intent?: ContactRequestIntent;
 }
 
 export interface ContactResponse {

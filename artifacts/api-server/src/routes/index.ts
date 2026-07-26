@@ -7,6 +7,7 @@ import tutorialsRouter from "./tutorials";
 import downloadsRouter from "./downloads";
 import checkoutRouter from "./checkout";
 import contactRouter from "./contact";
+import insightsRouter from "./insights";
 
 const router: IRouter = Router();
 
@@ -18,5 +19,6 @@ router.use(tutorialsRouter);
 router.use(downloadsRouter);
 router.use(checkoutRouter);
 router.use(contactRouter);
+router.use(insightsRouter);
 
 export default router;

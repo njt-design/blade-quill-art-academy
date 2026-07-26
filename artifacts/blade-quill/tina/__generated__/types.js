@@ -46,6 +46,58 @@ export const PagePartsFragmentDoc = gql`
       ctaLabel
       ctaLink
     }
+    ... on PageBlocksHeroSplitImage {
+      eyebrow
+      heading
+      subheading
+      featuredImage
+      imageAlt
+      imageCaption
+      imagePosition
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+    }
+    ... on PageBlocksHeroFullBleed {
+      backgroundImage
+      heading
+      subheading
+      overlay
+      textAlign
+      minHeight
+      ctaLabel
+      ctaLink
+    }
+    ... on PageBlocksHeroFloatingImages {
+      eyebrow
+      heading
+      subheading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+    }
+    ... on PageBlocksHeroImageGrid {
+      eyebrow
+      heading
+      subheading
+      layout
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaLabel
+      ctaLink
+    }
     ... on PageBlocksPageHeader {
       heading
       description
@@ -125,6 +177,41 @@ export const PagePartsFragmentDoc = gql`
         src
         alt
         caption
+      }
+    }
+    ... on PageBlocksImageSpotlight {
+      eyebrow
+      heading
+      image
+      alt
+      caption
+      aspect
+      body
+    }
+    ... on PageBlocksImageSideBySide {
+      heading
+      leftImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      rightImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      style
+    }
+    ... on PageBlocksImageMasonry {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+        size
       }
     }
     ... on PageBlocksVideoEmbed {
@@ -244,6 +331,15 @@ export const PagePartsFragmentDoc = gql`
     ... on PageBlocksContactForm {
       submitLabel
     }
+    ... on PageBlocksDummyBookRequest {
+      heading
+      description
+      pdfUrl
+      submitLabel
+      successHeading
+      successNote
+      downloadLabel
+    }
     ... on PageBlocksKofiSupport {
       heading
       body
@@ -267,6 +363,8 @@ export const PagePartsFragmentDoc = gql`
       text
     }
     ... on PageBlocksSocialLinks {
+      heading
+      body
       links {
         __typename
         platform
@@ -316,6 +414,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageBlankBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageBlankBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -398,6 +548,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageBlankBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageBlankBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageBlankBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageBlankBlocksVideoEmbed {
@@ -517,6 +702,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageBlankBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageBlankBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageBlankBlocksKofiSupport {
         heading
         body
@@ -540,6 +734,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageBlankBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -585,6 +781,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageEventBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageEventBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -667,6 +915,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageEventBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageEventBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageEventBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageEventBlocksVideoEmbed {
@@ -786,6 +1069,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageEventBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageEventBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageEventBlocksKofiSupport {
         heading
         body
@@ -809,6 +1101,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageEventBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -854,6 +1148,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPagePromoBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPagePromoBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -936,6 +1282,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPagePromoBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPagePromoBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPagePromoBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPagePromoBlocksVideoEmbed {
@@ -1055,6 +1436,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPagePromoBlocksContactForm {
         submitLabel
       }
+      ... on LandingPagePromoBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPagePromoBlocksKofiSupport {
         heading
         body
@@ -1078,6 +1468,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPagePromoBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -1123,6 +1515,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageInfoBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageInfoBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -1205,6 +1649,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageInfoBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageInfoBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageInfoBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageInfoBlocksVideoEmbed {
@@ -1324,6 +1803,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageInfoBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageInfoBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageInfoBlocksKofiSupport {
         heading
         body
@@ -1347,6 +1835,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageInfoBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -1392,6 +1882,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -1474,6 +2016,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageLinkInBioBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageLinkInBioBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageLinkInBioBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -1593,6 +2170,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageLinkInBioBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageLinkInBioBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageLinkInBioBlocksKofiSupport {
         heading
         body
@@ -1616,6 +2202,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageLinkInBioBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -1672,6 +2260,58 @@ export const NavigationPartsFragmentDoc = gql`
             heading
             subheading
             backgroundImage
+            ctaLabel
+            ctaLink
+          }
+          ... on PageBlocksHeroSplitImage {
+            eyebrow
+            heading
+            subheading
+            featuredImage
+            imageAlt
+            imageCaption
+            imagePosition
+            ctaPrimary
+            ctaPrimaryLink
+            ctaSecondary
+            ctaSecondaryLink
+          }
+          ... on PageBlocksHeroFullBleed {
+            backgroundImage
+            heading
+            subheading
+            overlay
+            textAlign
+            minHeight
+            ctaLabel
+            ctaLink
+          }
+          ... on PageBlocksHeroFloatingImages {
+            eyebrow
+            heading
+            subheading
+            images {
+              __typename
+              src
+              alt
+              caption
+            }
+            ctaPrimary
+            ctaPrimaryLink
+            ctaSecondary
+            ctaSecondaryLink
+          }
+          ... on PageBlocksHeroImageGrid {
+            eyebrow
+            heading
+            subheading
+            layout
+            images {
+              __typename
+              src
+              alt
+              caption
+            }
             ctaLabel
             ctaLink
           }
@@ -1754,6 +2394,41 @@ export const NavigationPartsFragmentDoc = gql`
               src
               alt
               caption
+            }
+          }
+          ... on PageBlocksImageSpotlight {
+            eyebrow
+            heading
+            image
+            alt
+            caption
+            aspect
+            body
+          }
+          ... on PageBlocksImageSideBySide {
+            heading
+            leftImage {
+              __typename
+              src
+              alt
+              caption
+            }
+            rightImage {
+              __typename
+              src
+              alt
+              caption
+            }
+            style
+          }
+          ... on PageBlocksImageMasonry {
+            heading
+            images {
+              __typename
+              src
+              alt
+              caption
+              size
             }
           }
           ... on PageBlocksVideoEmbed {
@@ -1873,6 +2548,15 @@ export const NavigationPartsFragmentDoc = gql`
           ... on PageBlocksContactForm {
             submitLabel
           }
+          ... on PageBlocksDummyBookRequest {
+            heading
+            description
+            pdfUrl
+            submitLabel
+            successHeading
+            successNote
+            downloadLabel
+          }
           ... on PageBlocksKofiSupport {
             heading
             body
@@ -1896,6 +2580,8 @@ export const NavigationPartsFragmentDoc = gql`
             text
           }
           ... on PageBlocksSocialLinks {
+            heading
+            body
             links {
               __typename
               platform
@@ -1943,6 +2629,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageBlankBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageBlankBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageBlankBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageBlankBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -2025,6 +2763,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageBlankBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageBlankBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageBlankBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageBlankBlocksVideoEmbed {
@@ -2144,6 +2917,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageBlankBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageBlankBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageBlankBlocksKofiSupport {
               heading
               body
@@ -2167,6 +2949,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageBlankBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -2212,6 +2996,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageEventBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageEventBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageEventBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageEventBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -2294,6 +3130,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageEventBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageEventBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageEventBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageEventBlocksVideoEmbed {
@@ -2413,6 +3284,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageEventBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageEventBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageEventBlocksKofiSupport {
               heading
               body
@@ -2436,6 +3316,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageEventBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -2481,6 +3363,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPagePromoBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPagePromoBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPagePromoBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPagePromoBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -2563,6 +3497,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPagePromoBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPagePromoBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPagePromoBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPagePromoBlocksVideoEmbed {
@@ -2682,6 +3651,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPagePromoBlocksContactForm {
               submitLabel
             }
+            ... on LandingPagePromoBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPagePromoBlocksKofiSupport {
               heading
               body
@@ -2705,6 +3683,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPagePromoBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -2750,6 +3730,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageInfoBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageInfoBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageInfoBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageInfoBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -2832,6 +3864,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageInfoBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageInfoBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageInfoBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageInfoBlocksVideoEmbed {
@@ -2951,6 +4018,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageInfoBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageInfoBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageInfoBlocksKofiSupport {
               heading
               body
@@ -2974,6 +4050,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageInfoBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -3019,6 +4097,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -3101,6 +4231,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageLinkInBioBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageLinkInBioBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageLinkInBioBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -3220,6 +4385,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageLinkInBioBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageLinkInBioBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageLinkInBioBlocksKofiSupport {
               heading
               body
@@ -3243,6 +4417,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageLinkInBioBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -3309,6 +4485,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -3391,6 +4619,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on PageBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on PageBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on PageBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on PageBlocksVideoEmbed {
@@ -3510,6 +4773,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on PageBlocksContactForm {
               submitLabel
             }
+            ... on PageBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on PageBlocksKofiSupport {
               heading
               body
@@ -3533,6 +4805,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on PageBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -3580,6 +4854,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -3662,6 +4988,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageBlankBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageBlankBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageBlankBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
@@ -3781,6 +5142,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageBlankBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
@@ -3804,6 +5174,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageBlankBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -3849,6 +5221,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -3931,6 +5355,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageEventBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageEventBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageEventBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageEventBlocksVideoEmbed {
@@ -4050,6 +5509,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageEventBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageEventBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
@@ -4073,6 +5541,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageEventBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -4118,6 +5588,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -4200,6 +5722,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPagePromoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPagePromoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPagePromoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
@@ -4319,6 +5876,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPagePromoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
@@ -4342,6 +5908,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPagePromoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -4387,6 +5955,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -4469,6 +6089,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageInfoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageInfoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageInfoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
@@ -4588,6 +6243,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageInfoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageInfoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
@@ -4611,6 +6275,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageInfoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -4656,6 +6322,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -4738,6 +6456,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageLinkInBioBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageLinkInBioBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageLinkInBioBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -4857,6 +6610,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageLinkInBioBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
@@ -4880,6 +6642,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageLinkInBioBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -4954,6 +6718,58 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
             }
+            ... on PageBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaLabel
+              ctaLink
+            }
             ... on PageBlocksPageHeader {
               heading
               description
@@ -5033,6 +6849,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on PageBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on PageBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on PageBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on PageBlocksVideoEmbed {
@@ -5152,6 +7003,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on PageBlocksContactForm {
               submitLabel
             }
+            ... on PageBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on PageBlocksKofiSupport {
               heading
               body
@@ -5175,6 +7035,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on PageBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -5222,6 +7084,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -5304,6 +7218,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageBlankBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageBlankBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageBlankBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
@@ -5423,6 +7372,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageBlankBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
@@ -5446,6 +7404,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageBlankBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -5491,6 +7451,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -5573,6 +7585,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageEventBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageEventBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageEventBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageEventBlocksVideoEmbed {
@@ -5692,6 +7739,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageEventBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageEventBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
@@ -5715,6 +7771,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageEventBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -5760,6 +7818,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -5842,6 +7952,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPagePromoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPagePromoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPagePromoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
@@ -5961,6 +8106,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPagePromoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
@@ -5984,6 +8138,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPagePromoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -6029,6 +8185,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -6111,6 +8319,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageInfoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageInfoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageInfoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
@@ -6230,6 +8473,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageInfoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageInfoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
@@ -6253,6 +8505,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageInfoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -6298,6 +8552,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -6380,6 +8686,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageLinkInBioBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageLinkInBioBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageLinkInBioBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -6499,6 +8840,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageLinkInBioBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
@@ -6522,6 +8872,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageLinkInBioBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform

@@ -87,7 +87,8 @@ export function BookCover({
           padding: src ? 0 : "8% 9%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: src ? "center" : "space-between",
+          alignItems: src ? "center" : undefined,
           boxShadow:
             "0 8px 20px rgba(46,34,34,0.16), inset -3px 0 8px rgba(0,0,0,0.12)",
           overflow: "hidden",
@@ -114,7 +115,7 @@ export function BookCover({
         <img
           src={src}
           alt={alt ?? (typeof title === "string" ? title : "Book cover")}
-          className="w-full h-full object-cover"
+          className="max-w-full max-h-full w-auto h-auto object-contain"
         />
       ) : (
         <>

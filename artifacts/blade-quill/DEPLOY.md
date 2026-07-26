@@ -1,6 +1,6 @@
 # Client preview on Vercel
 
-Static preview of the Blade & Quill frontend (Tina content from the repo; the Express API is not deployed — shop/gallery use fallbacks). Exception: **the contact form works in production** via a Vercel serverless function (`api/contact.ts` at the repo root) that emails submissions through Resend.
+Static Blade & Quill frontend (Tina content from the repo). The Express api-server is **not** deployed — gallery/tutorials use Tina or fallbacks. Production serverless functions under repo-root `api/` handle **contact**, **newsletter**, **Stripe checkout** (prices come from Tina Shop Products), and **Owner Insights** (`/api/insights`).
 
 ## How deploys work (git-connected)
 
@@ -52,6 +52,13 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 | `CONTACT_TO_EMAIL` | Vercel Dashboard | Yes — inbox that receives contact form messages (Corinne's email) |
 | `CONTACT_FROM_EMAIL` | Vercel Dashboard | Yes — verified Resend sender, e.g. `Blade & Quill <contact@bladeandquillartacademy.com>` (use `onboarding@resend.dev` until the domain is verified) |
 | `RESEND_AUDIENCE_ID` | Vercel Dashboard | Yes — id of the Resend Audience that stores newsletter subscribers (Resend dashboard → Audiences) |
+| `STRIPE_SECRET_KEY` | Vercel Dashboard | Yes — from Stripe Developers → API keys (test or live) |
+| `STRIPE_WEBHOOK_SECRET` | Vercel Dashboard | Yes — from Stripe webhook endpoint for `/api/stripe/webhook` |
+| `SUPABASE_URL` | Vercel Dashboard | Yes — orders storage for checkout |
+| `SUPABASE_SERVICE_ROLE_KEY` | Vercel Dashboard | Yes — server-side Supabase key (never expose to the browser) |
+| `VITE_GA_MEASUREMENT_ID` | Vercel Dashboard | No — defaults to Corinne's existing `G-50YS8RZ7HL` (Squarespace property) |
+| `GA_PROPERTY_ID` | Vercel Dashboard | Yes for Insights — numeric GA4 property ID (Admin → Property settings) |
+| `GA_SERVICE_ACCOUNT_JSON` | Vercel Dashboard | Yes for Insights — GCP service account JSON (raw or base64) with Viewer on that property |
 | `PORT` | Hardcoded in `build:static` | No — set to `3001` in the script |
 | `BASE_PATH` | Hardcoded in `build:static` | No — set to `/` in the script |
 
@@ -83,14 +90,82 @@ Setup: in the Resend dashboard create an Audience (**Audiences → Create**), co
 
 Note: the newsletter routes only exist as Vercel functions — in local dev the Express api-server has no `/api/newsletter` route, so signups 404 locally. Until a custom domain is verified in Resend, confirmation emails from `onboarding@resend.dev` only deliver to the Resend account owner's inbox.
 
+## Stripe checkout (Tina prices)
+
+Guests pay through **Stripe Checkout Sessions**. Product **name, price, stock, and download URL are edited in Tina** (`/admin` → Shop Products). Checkout reads the live Tina Cloud catalog and charges that price with inline `price_data` — Corinne never creates Products/Prices in the Stripe dashboard.
+
+| Route | Function |
+|-------|----------|
+| `POST /api/checkout` | [`api/checkout.ts`](../../api/checkout.ts) |
+| `GET /api/checkout/success` | [`api/checkout/success.ts`](../../api/checkout/success.ts) |
+| `POST /api/stripe/webhook` | [`api/stripe/webhook.ts`](../../api/stripe/webhook.ts) |
+| `GET /api/download/:token` | [`api/download/[token].ts`](../../api/download/[token].ts) |
+
+Shared logic lives in [`lib/checkout`](../../lib/checkout). Local Express uses the same package via Vite’s `/api` proxy.
+
+Checkout is built for catalogs of **30–100+ products**: the API resolves a single product via Tina path/`productId` filter (not a full catalog scan), and the live shop list paginates Tina connections. Pass `productSlug` from the storefront when available for the fastest lookup.
+
+### One-time Stripe setup (then stop)
+
+1. Create / log into Corinne’s Stripe account.
+2. Developers → API keys → copy **Secret key** → Vercel env `STRIPE_SECRET_KEY` (and root `.env` for local).
+3. Developers → Webhooks → Add endpoint: `https://<your-production-domain>/api/stripe/webhook`  
+   Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`.
+4. Copy the webhook signing secret → Vercel env `STRIPE_WEBHOOK_SECRET` (and `.env`).
+5. Ensure Supabase has the latest [`lib/db/sql/schema.sql`](../../lib/db/sql/schema.sql) applied (orders snapshot columns — run the whole file in the Supabase SQL Editor). Set `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on Vercel.
+6. Tina tokens (`TINA_PUBLIC_CLIENT_ID`, `TINA_TOKEN`) must already be set so checkout can load Shop Products.
+
+Smoke test locally after schema + Stripe test keys are in `.env`:
+
+```bash
+pnpm --filter @workspace/scripts run test:checkout
+```
+
+Expect `TINA_OK`, `SCHEMA_OK`, and `STRIPE_OK` (or `STRIPE_SKIPPED` if the key is still a placeholder).
+
+After that, change prices only in Tina. Use Stripe Dashboard only for payouts, disputes, or switching test → live keys.
+
+Local: put the same Stripe + Supabase + Tina vars in `.env`, run Express (`pnpm --filter @workspace/api-server run dev`) and the Vite app.
+
+## Google Analytics + Owner Insights
+
+The public site loads **GA4 Measurement ID `G-50YS8RZ7HL`** (same as the live Squarespace site) so engagement history stays continuous through cutover. SPA page views and conversion events fire from the browser:
+
+| Event | When |
+|-------|------|
+| `page_view` | Every client-side route change |
+| `purchase` | Stripe order success page |
+| `amazon_click` | Outbound Amazon book / review links |
+| `dummy_book_request` | Publisher dummy-book form success |
+
+**One-time GA4 console setup**
+
+1. Open [Google Analytics](https://analytics.google.com/) for Corinne's property.
+2. Admin → Events → mark `purchase`, `amazon_click`, and `dummy_book_request` as **key events**.
+3. Create a GCP service account, download its JSON key, and add the service account email as a **Viewer** on the GA4 property (Admin → Property access management).
+4. Copy the numeric **Property ID** (Admin → Property settings) into Vercel as `GA_PROPERTY_ID`.
+5. Paste the service account JSON (or base64 of it) into Vercel as `GA_SERVICE_ACCOUNT_JSON`.
+
+**Owner Studio (`/insights`)**
+
+- Tina-authenticated page showing sessions, bounce rate, Stripe paid sales, Amazon clicks, dummy-book requests, a sessions sparkline, and recent orders.
+- Corinne workflow: sign in at `/admin` (Tina Cloud) → open **Insights** in the Tina sidebar (Dashboard), or visit `/insights` directly while the Tina session is still in localStorage.
+- API: `GET /api/insights?clientID=…&range=7|28|90` with `Authorization: Bearer <tina id_token>` ([`api/insights.ts`](../../api/insights.ts)). Shared logic lives in [`lib/insights`](../../lib/insights).
+
+Products / prices stay in Tina (**Shop Products**). Insights is the glanceable analytics + Stripe orders surface — not a second product editor.
+
+Note: Squarespace used Consent Mode (analytics denied until cookies accepted). This site loads gtag without a consent banner, so absolute counts may differ slightly from the old site even with the same Measurement ID.
+
 ## Pre-building the Tina admin
 
 `tinacms build` fails on Vercel's Linux build environment due to an esbuild platform bug (`Unterminated string literal`). The admin SPA and generated types are **pre-built locally** and committed to the repo.
 
-After any schema change in `tina/config.ts`, regenerate and commit:
+After any schema change in `tina/config.ts` (including `cmsCallback` screens like Insights), regenerate and commit:
 
 ```bash
 cd artifacts/blade-quill
+# If Tina Cloud hasn't indexed the latest schema yet, add --skip-cloud-checks:
+# pnpm exec tinacms build --local --noTelemetry --datalayer-port 9100 --skip-cloud-checks
 pnpm run build:deploy
 git add tina/__generated__/ public/admin/
 git commit -m "Regenerate Tina admin after schema change"

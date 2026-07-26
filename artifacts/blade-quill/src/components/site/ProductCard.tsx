@@ -59,6 +59,7 @@ export function ProductCard({
     e.stopPropagation();
     addItem({
       id: product.id,
+      slug: product.slug,
       name: product.name,
       price: product.price,
       imageUrl: product.imageUrl,

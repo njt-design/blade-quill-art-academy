@@ -7,6 +7,12 @@
       "path": "./lib/db"
     },
     {
+      "path": "./lib/checkout"
+    },
+    {
+      "path": "./lib/insights"
+    },
+    {
       "path": "./lib/api-client-react"
     },
     {

@@ -54,6 +54,7 @@ export default function FeaturedReleaseBlock({ block }: Props) {
                     <Btn
                       href={block.ctaHref as string}
                       external
+                      analyticsPlacement="featured_release"
                       kind="primary"
                       size="lg"
                       iconRight={<ArrowUpRight className="w-4 h-4" />}

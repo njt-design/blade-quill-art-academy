@@ -277,6 +277,70 @@ export type PageBlocksHero = {
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
 
+export type PageBlocksHeroSplitImage = {
+  __typename?: 'PageBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHeroFullBleed = {
+  __typename?: 'PageBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHeroFloatingImagesImages = {
+  __typename?: 'PageBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHeroFloatingImages = {
+  __typename?: 'PageBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<PageBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHeroImageGridImages = {
+  __typename?: 'PageBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksHeroImageGrid = {
+  __typename?: 'PageBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<PageBlocksHeroImageGridImages>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
 export type PageBlocksPageHeader = {
   __typename?: 'PageBlocksPageHeader';
   heading?: Maybe<Scalars['String']['output']>;
@@ -386,6 +450,53 @@ export type PageBlocksImageGallery = {
   __typename?: 'PageBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<PageBlocksImageGalleryImages>>>;
+};
+
+export type PageBlocksImageSpotlight = {
+  __typename?: 'PageBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type PageBlocksImageSideBySideLeftImage = {
+  __typename?: 'PageBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksImageSideBySideRightImage = {
+  __typename?: 'PageBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksImageSideBySide = {
+  __typename?: 'PageBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<PageBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<PageBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksImageMasonryImages = {
+  __typename?: 'PageBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageBlocksImageMasonry = {
+  __typename?: 'PageBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<PageBlocksImageMasonryImages>>>;
 };
 
 export type PageBlocksVideoEmbed = {
@@ -541,6 +652,17 @@ export type PageBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type PageBlocksDummyBookRequest = {
+  __typename?: 'PageBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type PageBlocksKofiSupport = {
   __typename?: 'PageBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -580,10 +702,12 @@ export type PageBlocksSocialLinksLinks = {
 
 export type PageBlocksSocialLinks = {
   __typename?: 'PageBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<PageBlocksSocialLinksLinks>>>;
 };
 
-export type PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks;
+export type PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks;
 
 export type Page = Node & Document & {
   __typename?: 'Page';
@@ -648,6 +772,64 @@ export type PageBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<PageBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<PageBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -746,6 +928,47 @@ export type PageBlocksImageGalleryImagesFilter = {
 export type PageBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<PageBlocksImageGalleryImagesFilter>;
+};
+
+export type PageBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type PageBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<PageBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<PageBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<PageBlocksImageMasonryImagesFilter>;
 };
 
 export type PageBlocksVideoEmbedFilter = {
@@ -888,6 +1111,16 @@ export type PageBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type PageBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type PageBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -921,6 +1154,8 @@ export type PageBlocksSocialLinksLinksFilter = {
 };
 
 export type PageBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<PageBlocksSocialLinksLinksFilter>;
 };
 
@@ -928,6 +1163,10 @@ export type PageBlocksFilter = {
   homeHero?: InputMaybe<PageBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<PageBlocksAboutHeroFilter>;
   hero?: InputMaybe<PageBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<PageBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<PageBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<PageBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<PageBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<PageBlocksPageHeaderFilter>;
   text?: InputMaybe<PageBlocksTextFilter>;
   story?: InputMaybe<PageBlocksStoryFilter>;
@@ -937,6 +1176,9 @@ export type PageBlocksFilter = {
   cardRow?: InputMaybe<PageBlocksCardRowFilter>;
   pillars?: InputMaybe<PageBlocksPillarsFilter>;
   imageGallery?: InputMaybe<PageBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<PageBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<PageBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<PageBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<PageBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<PageBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<PageBlocksFeaturedReleaseFilter>;
@@ -952,6 +1194,7 @@ export type PageBlocksFilter = {
   newsletterSignup?: InputMaybe<PageBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<PageBlocksContactInfoFilter>;
   contactForm?: InputMaybe<PageBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<PageBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<PageBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<PageBlocksReviewLinksFilter>;
   marquee?: InputMaybe<PageBlocksMarqueeFilter>;
@@ -1013,6 +1256,70 @@ export type LandingPageBlankBlocksHero = {
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroSplitImage = {
+  __typename?: 'LandingPageBlankBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroFullBleed = {
+  __typename?: 'LandingPageBlankBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesImages = {
+  __typename?: 'LandingPageBlankBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImages = {
+  __typename?: 'LandingPageBlankBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageBlankBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridImages = {
+  __typename?: 'LandingPageBlankBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksHeroImageGrid = {
+  __typename?: 'LandingPageBlankBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageBlankBlocksHeroImageGridImages>>>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
@@ -1126,6 +1433,53 @@ export type LandingPageBlankBlocksImageGallery = {
   __typename?: 'LandingPageBlankBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<LandingPageBlankBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageBlankBlocksImageSpotlight = {
+  __typename?: 'LandingPageBlankBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideLeftImage = {
+  __typename?: 'LandingPageBlankBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideRightImage = {
+  __typename?: 'LandingPageBlankBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySide = {
+  __typename?: 'LandingPageBlankBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<LandingPageBlankBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<LandingPageBlankBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksImageMasonryImages = {
+  __typename?: 'LandingPageBlankBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageBlankBlocksImageMasonry = {
+  __typename?: 'LandingPageBlankBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageBlankBlocksImageMasonryImages>>>;
 };
 
 export type LandingPageBlankBlocksVideoEmbed = {
@@ -1281,6 +1635,17 @@ export type LandingPageBlankBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type LandingPageBlankBlocksDummyBookRequest = {
+  __typename?: 'LandingPageBlankBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type LandingPageBlankBlocksKofiSupport = {
   __typename?: 'LandingPageBlankBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -1320,10 +1685,12 @@ export type LandingPageBlankBlocksSocialLinksLinks = {
 
 export type LandingPageBlankBlocksSocialLinks = {
   __typename?: 'LandingPageBlankBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<LandingPageBlankBlocksSocialLinksLinks>>>;
 };
 
-export type LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks;
+export type LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks;
 
 export type LandingPageBlank = Node & Document & {
   __typename?: 'LandingPageBlank';
@@ -1371,6 +1738,70 @@ export type LandingPageEventBlocksHero = {
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroSplitImage = {
+  __typename?: 'LandingPageEventBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroFullBleed = {
+  __typename?: 'LandingPageEventBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesImages = {
+  __typename?: 'LandingPageEventBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImages = {
+  __typename?: 'LandingPageEventBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageEventBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroImageGridImages = {
+  __typename?: 'LandingPageEventBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksHeroImageGrid = {
+  __typename?: 'LandingPageEventBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageEventBlocksHeroImageGridImages>>>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
@@ -1484,6 +1915,53 @@ export type LandingPageEventBlocksImageGallery = {
   __typename?: 'LandingPageEventBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<LandingPageEventBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageEventBlocksImageSpotlight = {
+  __typename?: 'LandingPageEventBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageEventBlocksImageSideBySideLeftImage = {
+  __typename?: 'LandingPageEventBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksImageSideBySideRightImage = {
+  __typename?: 'LandingPageEventBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksImageSideBySide = {
+  __typename?: 'LandingPageEventBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<LandingPageEventBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<LandingPageEventBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksImageMasonryImages = {
+  __typename?: 'LandingPageEventBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageEventBlocksImageMasonry = {
+  __typename?: 'LandingPageEventBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageEventBlocksImageMasonryImages>>>;
 };
 
 export type LandingPageEventBlocksVideoEmbed = {
@@ -1639,6 +2117,17 @@ export type LandingPageEventBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type LandingPageEventBlocksDummyBookRequest = {
+  __typename?: 'LandingPageEventBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type LandingPageEventBlocksKofiSupport = {
   __typename?: 'LandingPageEventBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -1678,10 +2167,12 @@ export type LandingPageEventBlocksSocialLinksLinks = {
 
 export type LandingPageEventBlocksSocialLinks = {
   __typename?: 'LandingPageEventBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<LandingPageEventBlocksSocialLinksLinks>>>;
 };
 
-export type LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks;
+export type LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks;
 
 export type LandingPageEvent = Node & Document & {
   __typename?: 'LandingPageEvent';
@@ -1729,6 +2220,70 @@ export type LandingPagePromoBlocksHero = {
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroSplitImage = {
+  __typename?: 'LandingPagePromoBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroFullBleed = {
+  __typename?: 'LandingPagePromoBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesImages = {
+  __typename?: 'LandingPagePromoBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImages = {
+  __typename?: 'LandingPagePromoBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<LandingPagePromoBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridImages = {
+  __typename?: 'LandingPagePromoBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksHeroImageGrid = {
+  __typename?: 'LandingPagePromoBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPagePromoBlocksHeroImageGridImages>>>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
@@ -1842,6 +2397,53 @@ export type LandingPagePromoBlocksImageGallery = {
   __typename?: 'LandingPagePromoBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<LandingPagePromoBlocksImageGalleryImages>>>;
+};
+
+export type LandingPagePromoBlocksImageSpotlight = {
+  __typename?: 'LandingPagePromoBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideLeftImage = {
+  __typename?: 'LandingPagePromoBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideRightImage = {
+  __typename?: 'LandingPagePromoBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySide = {
+  __typename?: 'LandingPagePromoBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<LandingPagePromoBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<LandingPagePromoBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksImageMasonryImages = {
+  __typename?: 'LandingPagePromoBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPagePromoBlocksImageMasonry = {
+  __typename?: 'LandingPagePromoBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPagePromoBlocksImageMasonryImages>>>;
 };
 
 export type LandingPagePromoBlocksVideoEmbed = {
@@ -1997,6 +2599,17 @@ export type LandingPagePromoBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type LandingPagePromoBlocksDummyBookRequest = {
+  __typename?: 'LandingPagePromoBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type LandingPagePromoBlocksKofiSupport = {
   __typename?: 'LandingPagePromoBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -2036,10 +2649,12 @@ export type LandingPagePromoBlocksSocialLinksLinks = {
 
 export type LandingPagePromoBlocksSocialLinks = {
   __typename?: 'LandingPagePromoBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<LandingPagePromoBlocksSocialLinksLinks>>>;
 };
 
-export type LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks;
+export type LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks;
 
 export type LandingPagePromo = Node & Document & {
   __typename?: 'LandingPagePromo';
@@ -2087,6 +2702,70 @@ export type LandingPageInfoBlocksHero = {
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroSplitImage = {
+  __typename?: 'LandingPageInfoBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroFullBleed = {
+  __typename?: 'LandingPageInfoBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesImages = {
+  __typename?: 'LandingPageInfoBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImages = {
+  __typename?: 'LandingPageInfoBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageInfoBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridImages = {
+  __typename?: 'LandingPageInfoBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksHeroImageGrid = {
+  __typename?: 'LandingPageInfoBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageInfoBlocksHeroImageGridImages>>>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
@@ -2200,6 +2879,53 @@ export type LandingPageInfoBlocksImageGallery = {
   __typename?: 'LandingPageInfoBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<LandingPageInfoBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageInfoBlocksImageSpotlight = {
+  __typename?: 'LandingPageInfoBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideLeftImage = {
+  __typename?: 'LandingPageInfoBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideRightImage = {
+  __typename?: 'LandingPageInfoBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySide = {
+  __typename?: 'LandingPageInfoBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<LandingPageInfoBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<LandingPageInfoBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksImageMasonryImages = {
+  __typename?: 'LandingPageInfoBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageInfoBlocksImageMasonry = {
+  __typename?: 'LandingPageInfoBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageInfoBlocksImageMasonryImages>>>;
 };
 
 export type LandingPageInfoBlocksVideoEmbed = {
@@ -2355,6 +3081,17 @@ export type LandingPageInfoBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type LandingPageInfoBlocksDummyBookRequest = {
+  __typename?: 'LandingPageInfoBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type LandingPageInfoBlocksKofiSupport = {
   __typename?: 'LandingPageInfoBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -2394,10 +3131,12 @@ export type LandingPageInfoBlocksSocialLinksLinks = {
 
 export type LandingPageInfoBlocksSocialLinks = {
   __typename?: 'LandingPageInfoBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<LandingPageInfoBlocksSocialLinksLinks>>>;
 };
 
-export type LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks;
+export type LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks;
 
 export type LandingPageInfo = Node & Document & {
   __typename?: 'LandingPageInfo';
@@ -2445,6 +3184,70 @@ export type LandingPageLinkInBioBlocksHero = {
   heading?: Maybe<Scalars['String']['output']>;
   subheading?: Maybe<Scalars['JSON']['output']>;
   backgroundImage?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSplitImage = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroSplitImage';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFullBleed = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroFullBleed';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  overlay?: Maybe<Scalars['String']['output']>;
+  textAlign?: Maybe<Scalars['String']['output']>;
+  minHeight?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesImages = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroFloatingImagesImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImages = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroFloatingImages';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksHeroFloatingImagesImages>>>;
+  ctaPrimary?: Maybe<Scalars['String']['output']>;
+  ctaPrimaryLink?: Maybe<Scalars['String']['output']>;
+  ctaSecondary?: Maybe<Scalars['String']['output']>;
+  ctaSecondaryLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridImages = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroImageGridImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGrid = {
+  __typename?: 'LandingPageLinkInBioBlocksHeroImageGrid';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  subheading?: Maybe<Scalars['JSON']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksHeroImageGridImages>>>;
   ctaLabel?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
@@ -2558,6 +3361,53 @@ export type LandingPageLinkInBioBlocksImageGallery = {
   __typename?: 'LandingPageLinkInBioBlocksImageGallery';
   heading?: Maybe<Scalars['String']['output']>;
   images?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksImageGalleryImages>>>;
+};
+
+export type LandingPageLinkInBioBlocksImageSpotlight = {
+  __typename?: 'LandingPageLinkInBioBlocksImageSpotlight';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideLeftImage = {
+  __typename?: 'LandingPageLinkInBioBlocksImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideRightImage = {
+  __typename?: 'LandingPageLinkInBioBlocksImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySide = {
+  __typename?: 'LandingPageLinkInBioBlocksImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<LandingPageLinkInBioBlocksImageSideBySideLeftImage>;
+  rightImage?: Maybe<LandingPageLinkInBioBlocksImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonryImages = {
+  __typename?: 'LandingPageLinkInBioBlocksImageMasonryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonry = {
+  __typename?: 'LandingPageLinkInBioBlocksImageMasonry';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksImageMasonryImages>>>;
 };
 
 export type LandingPageLinkInBioBlocksVideoEmbed = {
@@ -2713,6 +3563,17 @@ export type LandingPageLinkInBioBlocksContactForm = {
   submitLabel?: Maybe<Scalars['String']['output']>;
 };
 
+export type LandingPageLinkInBioBlocksDummyBookRequest = {
+  __typename?: 'LandingPageLinkInBioBlocksDummyBookRequest';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  pdfUrl?: Maybe<Scalars['String']['output']>;
+  submitLabel?: Maybe<Scalars['String']['output']>;
+  successHeading?: Maybe<Scalars['String']['output']>;
+  successNote?: Maybe<Scalars['String']['output']>;
+  downloadLabel?: Maybe<Scalars['String']['output']>;
+};
+
 export type LandingPageLinkInBioBlocksKofiSupport = {
   __typename?: 'LandingPageLinkInBioBlocksKofiSupport';
   heading?: Maybe<Scalars['String']['output']>;
@@ -2752,10 +3613,12 @@ export type LandingPageLinkInBioBlocksSocialLinksLinks = {
 
 export type LandingPageLinkInBioBlocksSocialLinks = {
   __typename?: 'LandingPageLinkInBioBlocksSocialLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
   links?: Maybe<Array<Maybe<LandingPageLinkInBioBlocksSocialLinksLinks>>>;
 };
 
-export type LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks;
+export type LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks;
 
 export type LandingPageLinkInBio = Node & Document & {
   __typename?: 'LandingPageLinkInBio';
@@ -2802,6 +3665,64 @@ export type LandingPageBlankBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageBlankBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -2900,6 +3821,47 @@ export type LandingPageBlankBlocksImageGalleryImagesFilter = {
 export type LandingPageBlankBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageBlankBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageBlankBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<LandingPageBlankBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<LandingPageBlankBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageBlankBlocksImageMasonryImagesFilter>;
 };
 
 export type LandingPageBlankBlocksVideoEmbedFilter = {
@@ -3037,6 +3999,16 @@ export type LandingPageBlankBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageBlankBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type LandingPageBlankBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -3070,6 +4042,8 @@ export type LandingPageBlankBlocksSocialLinksLinksFilter = {
 };
 
 export type LandingPageBlankBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<LandingPageBlankBlocksSocialLinksLinksFilter>;
 };
 
@@ -3077,6 +4051,10 @@ export type LandingPageBlankBlocksFilter = {
   homeHero?: InputMaybe<LandingPageBlankBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<LandingPageBlankBlocksAboutHeroFilter>;
   hero?: InputMaybe<LandingPageBlankBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<LandingPageBlankBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<LandingPageBlankBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<LandingPageBlankBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<LandingPageBlankBlocksPageHeaderFilter>;
   text?: InputMaybe<LandingPageBlankBlocksTextFilter>;
   story?: InputMaybe<LandingPageBlankBlocksStoryFilter>;
@@ -3086,6 +4064,9 @@ export type LandingPageBlankBlocksFilter = {
   cardRow?: InputMaybe<LandingPageBlankBlocksCardRowFilter>;
   pillars?: InputMaybe<LandingPageBlankBlocksPillarsFilter>;
   imageGallery?: InputMaybe<LandingPageBlankBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<LandingPageBlankBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<LandingPageBlankBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<LandingPageBlankBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<LandingPageBlankBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<LandingPageBlankBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseFilter>;
@@ -3101,6 +4082,7 @@ export type LandingPageBlankBlocksFilter = {
   newsletterSignup?: InputMaybe<LandingPageBlankBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<LandingPageBlankBlocksContactInfoFilter>;
   contactForm?: InputMaybe<LandingPageBlankBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<LandingPageBlankBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<LandingPageBlankBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<LandingPageBlankBlocksReviewLinksFilter>;
   marquee?: InputMaybe<LandingPageBlankBlocksMarqueeFilter>;
@@ -3146,6 +4128,64 @@ export type LandingPageEventBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageEventBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -3244,6 +4284,47 @@ export type LandingPageEventBlocksImageGalleryImagesFilter = {
 export type LandingPageEventBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageEventBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageEventBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageEventBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<LandingPageEventBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<LandingPageEventBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageEventBlocksImageMasonryImagesFilter>;
 };
 
 export type LandingPageEventBlocksVideoEmbedFilter = {
@@ -3381,6 +4462,16 @@ export type LandingPageEventBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageEventBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type LandingPageEventBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -3414,6 +4505,8 @@ export type LandingPageEventBlocksSocialLinksLinksFilter = {
 };
 
 export type LandingPageEventBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<LandingPageEventBlocksSocialLinksLinksFilter>;
 };
 
@@ -3421,6 +4514,10 @@ export type LandingPageEventBlocksFilter = {
   homeHero?: InputMaybe<LandingPageEventBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<LandingPageEventBlocksAboutHeroFilter>;
   hero?: InputMaybe<LandingPageEventBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<LandingPageEventBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<LandingPageEventBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<LandingPageEventBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<LandingPageEventBlocksPageHeaderFilter>;
   text?: InputMaybe<LandingPageEventBlocksTextFilter>;
   story?: InputMaybe<LandingPageEventBlocksStoryFilter>;
@@ -3430,6 +4527,9 @@ export type LandingPageEventBlocksFilter = {
   cardRow?: InputMaybe<LandingPageEventBlocksCardRowFilter>;
   pillars?: InputMaybe<LandingPageEventBlocksPillarsFilter>;
   imageGallery?: InputMaybe<LandingPageEventBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<LandingPageEventBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<LandingPageEventBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<LandingPageEventBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<LandingPageEventBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<LandingPageEventBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<LandingPageEventBlocksFeaturedReleaseFilter>;
@@ -3445,6 +4545,7 @@ export type LandingPageEventBlocksFilter = {
   newsletterSignup?: InputMaybe<LandingPageEventBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<LandingPageEventBlocksContactInfoFilter>;
   contactForm?: InputMaybe<LandingPageEventBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<LandingPageEventBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<LandingPageEventBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<LandingPageEventBlocksReviewLinksFilter>;
   marquee?: InputMaybe<LandingPageEventBlocksMarqueeFilter>;
@@ -3490,6 +4591,64 @@ export type LandingPagePromoBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPagePromoBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -3588,6 +4747,47 @@ export type LandingPagePromoBlocksImageGalleryImagesFilter = {
 export type LandingPagePromoBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPagePromoBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPagePromoBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<LandingPagePromoBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<LandingPagePromoBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPagePromoBlocksImageMasonryImagesFilter>;
 };
 
 export type LandingPagePromoBlocksVideoEmbedFilter = {
@@ -3725,6 +4925,16 @@ export type LandingPagePromoBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPagePromoBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type LandingPagePromoBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -3758,6 +4968,8 @@ export type LandingPagePromoBlocksSocialLinksLinksFilter = {
 };
 
 export type LandingPagePromoBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<LandingPagePromoBlocksSocialLinksLinksFilter>;
 };
 
@@ -3765,6 +4977,10 @@ export type LandingPagePromoBlocksFilter = {
   homeHero?: InputMaybe<LandingPagePromoBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<LandingPagePromoBlocksAboutHeroFilter>;
   hero?: InputMaybe<LandingPagePromoBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<LandingPagePromoBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<LandingPagePromoBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<LandingPagePromoBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<LandingPagePromoBlocksPageHeaderFilter>;
   text?: InputMaybe<LandingPagePromoBlocksTextFilter>;
   story?: InputMaybe<LandingPagePromoBlocksStoryFilter>;
@@ -3774,6 +4990,9 @@ export type LandingPagePromoBlocksFilter = {
   cardRow?: InputMaybe<LandingPagePromoBlocksCardRowFilter>;
   pillars?: InputMaybe<LandingPagePromoBlocksPillarsFilter>;
   imageGallery?: InputMaybe<LandingPagePromoBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<LandingPagePromoBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<LandingPagePromoBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<LandingPagePromoBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<LandingPagePromoBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<LandingPagePromoBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseFilter>;
@@ -3789,6 +5008,7 @@ export type LandingPagePromoBlocksFilter = {
   newsletterSignup?: InputMaybe<LandingPagePromoBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<LandingPagePromoBlocksContactInfoFilter>;
   contactForm?: InputMaybe<LandingPagePromoBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<LandingPagePromoBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<LandingPagePromoBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<LandingPagePromoBlocksReviewLinksFilter>;
   marquee?: InputMaybe<LandingPagePromoBlocksMarqueeFilter>;
@@ -3834,6 +5054,64 @@ export type LandingPageInfoBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageInfoBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -3932,6 +5210,47 @@ export type LandingPageInfoBlocksImageGalleryImagesFilter = {
 export type LandingPageInfoBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageInfoBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageInfoBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<LandingPageInfoBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<LandingPageInfoBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageInfoBlocksImageMasonryImagesFilter>;
 };
 
 export type LandingPageInfoBlocksVideoEmbedFilter = {
@@ -4069,6 +5388,16 @@ export type LandingPageInfoBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageInfoBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type LandingPageInfoBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -4102,6 +5431,8 @@ export type LandingPageInfoBlocksSocialLinksLinksFilter = {
 };
 
 export type LandingPageInfoBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<LandingPageInfoBlocksSocialLinksLinksFilter>;
 };
 
@@ -4109,6 +5440,10 @@ export type LandingPageInfoBlocksFilter = {
   homeHero?: InputMaybe<LandingPageInfoBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<LandingPageInfoBlocksAboutHeroFilter>;
   hero?: InputMaybe<LandingPageInfoBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<LandingPageInfoBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<LandingPageInfoBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<LandingPageInfoBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<LandingPageInfoBlocksPageHeaderFilter>;
   text?: InputMaybe<LandingPageInfoBlocksTextFilter>;
   story?: InputMaybe<LandingPageInfoBlocksStoryFilter>;
@@ -4118,6 +5453,9 @@ export type LandingPageInfoBlocksFilter = {
   cardRow?: InputMaybe<LandingPageInfoBlocksCardRowFilter>;
   pillars?: InputMaybe<LandingPageInfoBlocksPillarsFilter>;
   imageGallery?: InputMaybe<LandingPageInfoBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<LandingPageInfoBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<LandingPageInfoBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<LandingPageInfoBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<LandingPageInfoBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<LandingPageInfoBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseFilter>;
@@ -4133,6 +5471,7 @@ export type LandingPageInfoBlocksFilter = {
   newsletterSignup?: InputMaybe<LandingPageInfoBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<LandingPageInfoBlocksContactInfoFilter>;
   contactForm?: InputMaybe<LandingPageInfoBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<LandingPageInfoBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<LandingPageInfoBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<LandingPageInfoBlocksReviewLinksFilter>;
   marquee?: InputMaybe<LandingPageInfoBlocksMarqueeFilter>;
@@ -4178,6 +5517,64 @@ export type LandingPageLinkInBioBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
   subheading?: InputMaybe<RichTextFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSplitImageFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFullBleedFilter = {
+  backgroundImage?: InputMaybe<ImageFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  overlay?: InputMaybe<StringFilter>;
+  textAlign?: InputMaybe<StringFilter>;
+  minHeight?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  images?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter>;
+  ctaPrimary?: InputMaybe<StringFilter>;
+  ctaPrimaryLink?: InputMaybe<StringFilter>;
+  ctaSecondary?: InputMaybe<StringFilter>;
+  ctaSecondaryLink?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  subheading?: InputMaybe<RichTextFilter>;
+  layout?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
@@ -4276,6 +5673,47 @@ export type LandingPageLinkInBioBlocksImageGalleryImagesFilter = {
 export type LandingPageLinkInBioBlocksImageGalleryFilter = {
   heading?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryImagesFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageSpotlightFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<LandingPageLinkInBioBlocksImageMasonryImagesFilter>;
 };
 
 export type LandingPageLinkInBioBlocksVideoEmbedFilter = {
@@ -4413,6 +5851,16 @@ export type LandingPageLinkInBioBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageLinkInBioBlocksDummyBookRequestFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  pdfUrl?: InputMaybe<StringFilter>;
+  submitLabel?: InputMaybe<StringFilter>;
+  successHeading?: InputMaybe<StringFilter>;
+  successNote?: InputMaybe<StringFilter>;
+  downloadLabel?: InputMaybe<StringFilter>;
+};
+
 export type LandingPageLinkInBioBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
@@ -4446,6 +5894,8 @@ export type LandingPageLinkInBioBlocksSocialLinksLinksFilter = {
 };
 
 export type LandingPageLinkInBioBlocksSocialLinksFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
   links?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksLinksFilter>;
 };
 
@@ -4453,6 +5903,10 @@ export type LandingPageLinkInBioBlocksFilter = {
   homeHero?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroFilter>;
   aboutHero?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroFilter>;
   hero?: InputMaybe<LandingPageLinkInBioBlocksHeroFilter>;
+  heroSplitImage?: InputMaybe<LandingPageLinkInBioBlocksHeroSplitImageFilter>;
+  heroFullBleed?: InputMaybe<LandingPageLinkInBioBlocksHeroFullBleedFilter>;
+  heroFloatingImages?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesFilter>;
+  heroImageGrid?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridFilter>;
   pageHeader?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderFilter>;
   text?: InputMaybe<LandingPageLinkInBioBlocksTextFilter>;
   story?: InputMaybe<LandingPageLinkInBioBlocksStoryFilter>;
@@ -4462,6 +5916,9 @@ export type LandingPageLinkInBioBlocksFilter = {
   cardRow?: InputMaybe<LandingPageLinkInBioBlocksCardRowFilter>;
   pillars?: InputMaybe<LandingPageLinkInBioBlocksPillarsFilter>;
   imageGallery?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryFilter>;
+  imageSpotlight?: InputMaybe<LandingPageLinkInBioBlocksImageSpotlightFilter>;
+  imageSideBySide?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideFilter>;
+  imageMasonry?: InputMaybe<LandingPageLinkInBioBlocksImageMasonryFilter>;
   videoEmbed?: InputMaybe<LandingPageLinkInBioBlocksVideoEmbedFilter>;
   featuredBook?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookFilter>;
   featuredRelease?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseFilter>;
@@ -4477,6 +5934,7 @@ export type LandingPageLinkInBioBlocksFilter = {
   newsletterSignup?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupFilter>;
   contactInfo?: InputMaybe<LandingPageLinkInBioBlocksContactInfoFilter>;
   contactForm?: InputMaybe<LandingPageLinkInBioBlocksContactFormFilter>;
+  dummyBookRequest?: InputMaybe<LandingPageLinkInBioBlocksDummyBookRequestFilter>;
   kofiSupport?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportFilter>;
   reviewLinks?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksFilter>;
   marquee?: InputMaybe<LandingPageLinkInBioBlocksMarqueeFilter>;
@@ -4880,6 +6338,64 @@ export type PageBlocksHeroMutation = {
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PageBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<PageBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<PageBlocksHeroImageGridImagesMutation>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type PageBlocksPageHeaderMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['JSON']['input']>;
@@ -4974,6 +6490,47 @@ export type PageBlocksImageGalleryImagesMutation = {
 export type PageBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<PageBlocksImageGalleryImagesMutation>>>;
+};
+
+export type PageBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PageBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<PageBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<PageBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<PageBlocksImageMasonryImagesMutation>>>;
 };
 
 export type PageBlocksVideoEmbedMutation = {
@@ -5111,6 +6668,16 @@ export type PageBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PageBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type PageBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -5144,6 +6711,8 @@ export type PageBlocksSocialLinksLinksMutation = {
 };
 
 export type PageBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<PageBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -5151,6 +6720,10 @@ export type PageBlocksMutation = {
   homeHero?: InputMaybe<PageBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<PageBlocksAboutHeroMutation>;
   hero?: InputMaybe<PageBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<PageBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<PageBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<PageBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<PageBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<PageBlocksPageHeaderMutation>;
   text?: InputMaybe<PageBlocksTextMutation>;
   story?: InputMaybe<PageBlocksStoryMutation>;
@@ -5160,6 +6733,9 @@ export type PageBlocksMutation = {
   cardRow?: InputMaybe<PageBlocksCardRowMutation>;
   pillars?: InputMaybe<PageBlocksPillarsMutation>;
   imageGallery?: InputMaybe<PageBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<PageBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<PageBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<PageBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<PageBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<PageBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<PageBlocksFeaturedReleaseMutation>;
@@ -5175,6 +6751,7 @@ export type PageBlocksMutation = {
   newsletterSignup?: InputMaybe<PageBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<PageBlocksContactInfoMutation>;
   contactForm?: InputMaybe<PageBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<PageBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<PageBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<PageBlocksReviewLinksMutation>;
   marquee?: InputMaybe<PageBlocksMarqueeMutation>;
@@ -5220,6 +6797,64 @@ export type LandingPageBlankBlocksHeroMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksHeroImageGridImagesMutation>>>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
@@ -5318,6 +6953,47 @@ export type LandingPageBlankBlocksImageGalleryImagesMutation = {
 export type LandingPageBlankBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageBlankBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<LandingPageBlankBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<LandingPageBlankBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageBlankBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksImageMasonryImagesMutation>>>;
 };
 
 export type LandingPageBlankBlocksVideoEmbedMutation = {
@@ -5455,6 +7131,16 @@ export type LandingPageBlankBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingPageBlankBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingPageBlankBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -5488,6 +7174,8 @@ export type LandingPageBlankBlocksSocialLinksLinksMutation = {
 };
 
 export type LandingPageBlankBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<LandingPageBlankBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -5495,6 +7183,10 @@ export type LandingPageBlankBlocksMutation = {
   homeHero?: InputMaybe<LandingPageBlankBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<LandingPageBlankBlocksAboutHeroMutation>;
   hero?: InputMaybe<LandingPageBlankBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<LandingPageBlankBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<LandingPageBlankBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<LandingPageBlankBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<LandingPageBlankBlocksPageHeaderMutation>;
   text?: InputMaybe<LandingPageBlankBlocksTextMutation>;
   story?: InputMaybe<LandingPageBlankBlocksStoryMutation>;
@@ -5504,6 +7196,9 @@ export type LandingPageBlankBlocksMutation = {
   cardRow?: InputMaybe<LandingPageBlankBlocksCardRowMutation>;
   pillars?: InputMaybe<LandingPageBlankBlocksPillarsMutation>;
   imageGallery?: InputMaybe<LandingPageBlankBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<LandingPageBlankBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<LandingPageBlankBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<LandingPageBlankBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<LandingPageBlankBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<LandingPageBlankBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseMutation>;
@@ -5519,6 +7214,7 @@ export type LandingPageBlankBlocksMutation = {
   newsletterSignup?: InputMaybe<LandingPageBlankBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<LandingPageBlankBlocksContactInfoMutation>;
   contactForm?: InputMaybe<LandingPageBlankBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<LandingPageBlankBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<LandingPageBlankBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<LandingPageBlankBlocksReviewLinksMutation>;
   marquee?: InputMaybe<LandingPageBlankBlocksMarqueeMutation>;
@@ -5564,6 +7260,64 @@ export type LandingPageEventBlocksHeroMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksHeroImageGridImagesMutation>>>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
@@ -5662,6 +7416,47 @@ export type LandingPageEventBlocksImageGalleryImagesMutation = {
 export type LandingPageEventBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageEventBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageEventBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<LandingPageEventBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<LandingPageEventBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageEventBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksImageMasonryImagesMutation>>>;
 };
 
 export type LandingPageEventBlocksVideoEmbedMutation = {
@@ -5799,6 +7594,16 @@ export type LandingPageEventBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingPageEventBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingPageEventBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -5832,6 +7637,8 @@ export type LandingPageEventBlocksSocialLinksLinksMutation = {
 };
 
 export type LandingPageEventBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<LandingPageEventBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -5839,6 +7646,10 @@ export type LandingPageEventBlocksMutation = {
   homeHero?: InputMaybe<LandingPageEventBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<LandingPageEventBlocksAboutHeroMutation>;
   hero?: InputMaybe<LandingPageEventBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<LandingPageEventBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<LandingPageEventBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<LandingPageEventBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<LandingPageEventBlocksPageHeaderMutation>;
   text?: InputMaybe<LandingPageEventBlocksTextMutation>;
   story?: InputMaybe<LandingPageEventBlocksStoryMutation>;
@@ -5848,6 +7659,9 @@ export type LandingPageEventBlocksMutation = {
   cardRow?: InputMaybe<LandingPageEventBlocksCardRowMutation>;
   pillars?: InputMaybe<LandingPageEventBlocksPillarsMutation>;
   imageGallery?: InputMaybe<LandingPageEventBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<LandingPageEventBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<LandingPageEventBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<LandingPageEventBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<LandingPageEventBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<LandingPageEventBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<LandingPageEventBlocksFeaturedReleaseMutation>;
@@ -5863,6 +7677,7 @@ export type LandingPageEventBlocksMutation = {
   newsletterSignup?: InputMaybe<LandingPageEventBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<LandingPageEventBlocksContactInfoMutation>;
   contactForm?: InputMaybe<LandingPageEventBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<LandingPageEventBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<LandingPageEventBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<LandingPageEventBlocksReviewLinksMutation>;
   marquee?: InputMaybe<LandingPageEventBlocksMarqueeMutation>;
@@ -5908,6 +7723,64 @@ export type LandingPagePromoBlocksHeroMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksHeroImageGridImagesMutation>>>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
@@ -6006,6 +7879,47 @@ export type LandingPagePromoBlocksImageGalleryImagesMutation = {
 export type LandingPagePromoBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPagePromoBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<LandingPagePromoBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<LandingPagePromoBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPagePromoBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksImageMasonryImagesMutation>>>;
 };
 
 export type LandingPagePromoBlocksVideoEmbedMutation = {
@@ -6143,6 +8057,16 @@ export type LandingPagePromoBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingPagePromoBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingPagePromoBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -6176,6 +8100,8 @@ export type LandingPagePromoBlocksSocialLinksLinksMutation = {
 };
 
 export type LandingPagePromoBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<LandingPagePromoBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -6183,6 +8109,10 @@ export type LandingPagePromoBlocksMutation = {
   homeHero?: InputMaybe<LandingPagePromoBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<LandingPagePromoBlocksAboutHeroMutation>;
   hero?: InputMaybe<LandingPagePromoBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<LandingPagePromoBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<LandingPagePromoBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<LandingPagePromoBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<LandingPagePromoBlocksPageHeaderMutation>;
   text?: InputMaybe<LandingPagePromoBlocksTextMutation>;
   story?: InputMaybe<LandingPagePromoBlocksStoryMutation>;
@@ -6192,6 +8122,9 @@ export type LandingPagePromoBlocksMutation = {
   cardRow?: InputMaybe<LandingPagePromoBlocksCardRowMutation>;
   pillars?: InputMaybe<LandingPagePromoBlocksPillarsMutation>;
   imageGallery?: InputMaybe<LandingPagePromoBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<LandingPagePromoBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<LandingPagePromoBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<LandingPagePromoBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<LandingPagePromoBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<LandingPagePromoBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseMutation>;
@@ -6207,6 +8140,7 @@ export type LandingPagePromoBlocksMutation = {
   newsletterSignup?: InputMaybe<LandingPagePromoBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<LandingPagePromoBlocksContactInfoMutation>;
   contactForm?: InputMaybe<LandingPagePromoBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<LandingPagePromoBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<LandingPagePromoBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<LandingPagePromoBlocksReviewLinksMutation>;
   marquee?: InputMaybe<LandingPagePromoBlocksMarqueeMutation>;
@@ -6252,6 +8186,64 @@ export type LandingPageInfoBlocksHeroMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksHeroImageGridImagesMutation>>>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
@@ -6350,6 +8342,47 @@ export type LandingPageInfoBlocksImageGalleryImagesMutation = {
 export type LandingPageInfoBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageInfoBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<LandingPageInfoBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<LandingPageInfoBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageInfoBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksImageMasonryImagesMutation>>>;
 };
 
 export type LandingPageInfoBlocksVideoEmbedMutation = {
@@ -6487,6 +8520,16 @@ export type LandingPageInfoBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingPageInfoBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingPageInfoBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -6520,6 +8563,8 @@ export type LandingPageInfoBlocksSocialLinksLinksMutation = {
 };
 
 export type LandingPageInfoBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<LandingPageInfoBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -6527,6 +8572,10 @@ export type LandingPageInfoBlocksMutation = {
   homeHero?: InputMaybe<LandingPageInfoBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<LandingPageInfoBlocksAboutHeroMutation>;
   hero?: InputMaybe<LandingPageInfoBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<LandingPageInfoBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<LandingPageInfoBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<LandingPageInfoBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<LandingPageInfoBlocksPageHeaderMutation>;
   text?: InputMaybe<LandingPageInfoBlocksTextMutation>;
   story?: InputMaybe<LandingPageInfoBlocksStoryMutation>;
@@ -6536,6 +8585,9 @@ export type LandingPageInfoBlocksMutation = {
   cardRow?: InputMaybe<LandingPageInfoBlocksCardRowMutation>;
   pillars?: InputMaybe<LandingPageInfoBlocksPillarsMutation>;
   imageGallery?: InputMaybe<LandingPageInfoBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<LandingPageInfoBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<LandingPageInfoBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<LandingPageInfoBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<LandingPageInfoBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<LandingPageInfoBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseMutation>;
@@ -6551,6 +8603,7 @@ export type LandingPageInfoBlocksMutation = {
   newsletterSignup?: InputMaybe<LandingPageInfoBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<LandingPageInfoBlocksContactInfoMutation>;
   contactForm?: InputMaybe<LandingPageInfoBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<LandingPageInfoBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<LandingPageInfoBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<LandingPageInfoBlocksReviewLinksMutation>;
   marquee?: InputMaybe<LandingPageInfoBlocksMarqueeMutation>;
@@ -6596,6 +8649,64 @@ export type LandingPageLinkInBioBlocksHeroMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   subheading?: InputMaybe<Scalars['JSON']['input']>;
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSplitImageMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFullBleedMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  overlay?: InputMaybe<Scalars['String']['input']>;
+  textAlign?: InputMaybe<Scalars['String']['input']>;
+  minHeight?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesImagesMutation>>>;
+  ctaPrimary?: InputMaybe<Scalars['String']['input']>;
+  ctaPrimaryLink?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondary?: InputMaybe<Scalars['String']['input']>;
+  ctaSecondaryLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  subheading?: InputMaybe<Scalars['JSON']['input']>;
+  layout?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksHeroImageGridImagesMutation>>>;
   ctaLabel?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
@@ -6694,6 +8805,47 @@ export type LandingPageLinkInBioBlocksImageGalleryImagesMutation = {
 export type LandingPageLinkInBioBlocksImageGalleryMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   images?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksImageGalleryImagesMutation>>>;
+};
+
+export type LandingPageLinkInBioBlocksImageSpotlightMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LandingPageLinkInBioBlocksImageMasonryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksImageMasonryImagesMutation>>>;
 };
 
 export type LandingPageLinkInBioBlocksVideoEmbedMutation = {
@@ -6831,6 +8983,16 @@ export type LandingPageLinkInBioBlocksContactFormMutation = {
   submitLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LandingPageLinkInBioBlocksDummyBookRequestMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  pdfUrl?: InputMaybe<Scalars['String']['input']>;
+  submitLabel?: InputMaybe<Scalars['String']['input']>;
+  successHeading?: InputMaybe<Scalars['String']['input']>;
+  successNote?: InputMaybe<Scalars['String']['input']>;
+  downloadLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type LandingPageLinkInBioBlocksKofiSupportMutation = {
   heading?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
@@ -6864,6 +9026,8 @@ export type LandingPageLinkInBioBlocksSocialLinksLinksMutation = {
 };
 
 export type LandingPageLinkInBioBlocksSocialLinksMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
   links?: InputMaybe<Array<InputMaybe<LandingPageLinkInBioBlocksSocialLinksLinksMutation>>>;
 };
 
@@ -6871,6 +9035,10 @@ export type LandingPageLinkInBioBlocksMutation = {
   homeHero?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroMutation>;
   aboutHero?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroMutation>;
   hero?: InputMaybe<LandingPageLinkInBioBlocksHeroMutation>;
+  heroSplitImage?: InputMaybe<LandingPageLinkInBioBlocksHeroSplitImageMutation>;
+  heroFullBleed?: InputMaybe<LandingPageLinkInBioBlocksHeroFullBleedMutation>;
+  heroFloatingImages?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesMutation>;
+  heroImageGrid?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridMutation>;
   pageHeader?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderMutation>;
   text?: InputMaybe<LandingPageLinkInBioBlocksTextMutation>;
   story?: InputMaybe<LandingPageLinkInBioBlocksStoryMutation>;
@@ -6880,6 +9048,9 @@ export type LandingPageLinkInBioBlocksMutation = {
   cardRow?: InputMaybe<LandingPageLinkInBioBlocksCardRowMutation>;
   pillars?: InputMaybe<LandingPageLinkInBioBlocksPillarsMutation>;
   imageGallery?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryMutation>;
+  imageSpotlight?: InputMaybe<LandingPageLinkInBioBlocksImageSpotlightMutation>;
+  imageSideBySide?: InputMaybe<LandingPageLinkInBioBlocksImageSideBySideMutation>;
+  imageMasonry?: InputMaybe<LandingPageLinkInBioBlocksImageMasonryMutation>;
   videoEmbed?: InputMaybe<LandingPageLinkInBioBlocksVideoEmbedMutation>;
   featuredBook?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookMutation>;
   featuredRelease?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseMutation>;
@@ -6895,6 +9066,7 @@ export type LandingPageLinkInBioBlocksMutation = {
   newsletterSignup?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupMutation>;
   contactInfo?: InputMaybe<LandingPageLinkInBioBlocksContactInfoMutation>;
   contactForm?: InputMaybe<LandingPageLinkInBioBlocksContactFormMutation>;
+  dummyBookRequest?: InputMaybe<LandingPageLinkInBioBlocksDummyBookRequestMutation>;
   kofiSupport?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportMutation>;
   reviewLinks?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksMutation>;
   marquee?: InputMaybe<LandingPageLinkInBioBlocksMarqueeMutation>;
@@ -6970,21 +9142,21 @@ export type PostMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, layout?: string | null, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+export type PagePartsFragment = { __typename: 'Page', title: string, layout?: string | null, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-type LandingPageParts_LandingPageBlank_Fragment = { __typename: 'LandingPageBlank', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+type LandingPageParts_LandingPageBlank_Fragment = { __typename: 'LandingPageBlank', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageBlankBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-type LandingPageParts_LandingPageEvent_Fragment = { __typename: 'LandingPageEvent', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+type LandingPageParts_LandingPageEvent_Fragment = { __typename: 'LandingPageEvent', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageEventBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageEventBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageEventBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-type LandingPageParts_LandingPagePromo_Fragment = { __typename: 'LandingPagePromo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+type LandingPageParts_LandingPagePromo_Fragment = { __typename: 'LandingPagePromo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPagePromoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-type LandingPageParts_LandingPageInfo_Fragment = { __typename: 'LandingPageInfo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+type LandingPageParts_LandingPageInfo_Fragment = { __typename: 'LandingPageInfo', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageInfoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
-type LandingPageParts_LandingPageLinkInBio_Fragment = { __typename: 'LandingPageLinkInBio', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
+type LandingPageParts_LandingPageLinkInBio_Fragment = { __typename: 'LandingPageLinkInBio', title: string, layout?: string | null, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null };
 
 export type LandingPagePartsFragment = LandingPageParts_LandingPageBlank_Fragment | LandingPageParts_LandingPageEvent_Fragment | LandingPageParts_LandingPagePromo_Fragment | LandingPageParts_LandingPageInfo_Fragment | LandingPageParts_LandingPageLinkInBio_Fragment;
 
-export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null };
+export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null };
 
 export type ShopProductPartsFragment = { __typename: 'ShopProduct', productId: number, name: string, description?: any | null, price: number, category: string, image?: string | null, gumroadUrl?: string | null, downloadUrl?: string | null, featured?: boolean | null, inStock?: boolean | null, createdAt?: string | null };
 
@@ -6995,7 +9167,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7007,14 +9179,14 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type LandingPageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type LandingPageQuery = { __typename?: 'Query', landingPage: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
+export type LandingPageQuery = { __typename?: 'Query', landingPage: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageBlankBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageEventBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageEventBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageEventBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPagePromoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageInfoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } };
 
 export type LandingPageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7026,14 +9198,14 @@ export type LandingPageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type LandingPageConnectionQuery = { __typename?: 'Query', landingPageConnection: { __typename?: 'LandingPageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingPageConnectionEdges', cursor: string, node?: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
+export type LandingPageConnectionQuery = { __typename?: 'Query', landingPageConnection: { __typename?: 'LandingPageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LandingPageConnectionEdges', cursor: string, node?: { __typename: 'LandingPageBlank', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageBlankBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageBlankBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageBlankBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageBlankBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageBlankBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageBlankBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageBlankBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageBlankBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageBlankBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageBlankBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageBlankBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageBlankBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageBlankBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageBlankBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageBlankBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageBlankBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageBlankBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageBlankBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageBlankBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageBlankBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageBlankBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageBlankBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageBlankBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageBlankBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageBlankBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageBlankBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageBlankBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageBlankBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageBlankBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageBlankBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageBlankBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageBlankBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageBlankBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageEvent', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageEventBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageEventBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageEventBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageEventBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageEventBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageEventBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageEventBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageEventBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageEventBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageEventBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageEventBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageEventBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageEventBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageEventBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageEventBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageEventBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageEventBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageEventBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageEventBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageEventBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageEventBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageEventBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageEventBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageEventBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageEventBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageEventBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageEventBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageEventBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageEventBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageEventBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageEventBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageEventBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageEventBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageEventBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPagePromo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPagePromoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPagePromoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPagePromoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPagePromoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPagePromoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPagePromoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPagePromoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPagePromoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPagePromoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPagePromoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPagePromoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPagePromoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPagePromoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPagePromoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPagePromoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPagePromoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPagePromoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPagePromoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPagePromoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPagePromoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPagePromoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPagePromoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPagePromoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPagePromoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPagePromoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPagePromoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPagePromoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPagePromoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPagePromoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPagePromoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPagePromoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPagePromoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPagePromoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageInfo', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageInfoBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageInfoBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageInfoBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageInfoBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageInfoBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageInfoBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageInfoBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageInfoBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageInfoBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageInfoBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageInfoBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageInfoBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageInfoBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageInfoBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageInfoBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageInfoBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageInfoBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageInfoBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageInfoBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageInfoBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageInfoBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageInfoBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageInfoBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageInfoBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageInfoBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageInfoBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageInfoBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageInfoBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageInfoBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageInfoBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageInfoBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageInfoBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageInfoBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | { __typename: 'LandingPageLinkInBio', id: string, title: string, layout?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'LandingPageLinkInBioBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'LandingPageLinkInBioBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'LandingPageLinkInBioBlocksText', heading?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'LandingPageLinkInBioBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksStatsRow', stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'LandingPageLinkInBioBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'LandingPageLinkInBioBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'LandingPageLinkInBioBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'LandingPageLinkInBioBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'LandingPageLinkInBioBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'LandingPageLinkInBioBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'LandingPageLinkInBioBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'LandingPageLinkInBioBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'LandingPageLinkInBioBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'LandingPageLinkInBioBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'LandingPageLinkInBioBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'LandingPageLinkInBioBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'LandingPageLinkInBioBlocksContactForm', submitLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'LandingPageLinkInBioBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'LandingPageLinkInBioBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'LandingPageLinkInBioBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'LandingPageLinkInBioBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'LandingPageLinkInBioBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type NavigationQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type NavigationQuery = { __typename?: 'Query', navigation: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } };
+export type NavigationQuery = { __typename?: 'Query', navigation: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } };
 
 export type NavigationConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -7045,7 +9217,7 @@ export type NavigationConnectionQueryVariables = Exact<{
 }>;
 
 
-export type NavigationConnectionQuery = { __typename?: 'Query', navigationConnection: { __typename?: 'NavigationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'NavigationConnectionEdges', cursor: string, node?: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } | null } | null> | null } };
+export type NavigationConnectionQuery = { __typename?: 'Query', navigationConnection: { __typename?: 'NavigationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'NavigationConnectionEdges', cursor: string, node?: { __typename: 'Navigation', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type ShopProductQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -7123,6 +9295,58 @@ export const PagePartsFragmentDoc = gql`
       heading
       subheading
       backgroundImage
+      ctaLabel
+      ctaLink
+    }
+    ... on PageBlocksHeroSplitImage {
+      eyebrow
+      heading
+      subheading
+      featuredImage
+      imageAlt
+      imageCaption
+      imagePosition
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+    }
+    ... on PageBlocksHeroFullBleed {
+      backgroundImage
+      heading
+      subheading
+      overlay
+      textAlign
+      minHeight
+      ctaLabel
+      ctaLink
+    }
+    ... on PageBlocksHeroFloatingImages {
+      eyebrow
+      heading
+      subheading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+    }
+    ... on PageBlocksHeroImageGrid {
+      eyebrow
+      heading
+      subheading
+      layout
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
       ctaLabel
       ctaLink
     }
@@ -7205,6 +9429,41 @@ export const PagePartsFragmentDoc = gql`
         src
         alt
         caption
+      }
+    }
+    ... on PageBlocksImageSpotlight {
+      eyebrow
+      heading
+      image
+      alt
+      caption
+      aspect
+      body
+    }
+    ... on PageBlocksImageSideBySide {
+      heading
+      leftImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      rightImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      style
+    }
+    ... on PageBlocksImageMasonry {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+        size
       }
     }
     ... on PageBlocksVideoEmbed {
@@ -7324,6 +9583,15 @@ export const PagePartsFragmentDoc = gql`
     ... on PageBlocksContactForm {
       submitLabel
     }
+    ... on PageBlocksDummyBookRequest {
+      heading
+      description
+      pdfUrl
+      submitLabel
+      successHeading
+      successNote
+      downloadLabel
+    }
     ... on PageBlocksKofiSupport {
       heading
       body
@@ -7347,6 +9615,8 @@ export const PagePartsFragmentDoc = gql`
       text
     }
     ... on PageBlocksSocialLinks {
+      heading
+      body
       links {
         __typename
         platform
@@ -7396,6 +9666,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageBlankBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageBlankBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageBlankBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -7478,6 +9800,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageBlankBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageBlankBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageBlankBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageBlankBlocksVideoEmbed {
@@ -7597,6 +9954,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageBlankBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageBlankBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageBlankBlocksKofiSupport {
         heading
         body
@@ -7620,6 +9986,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageBlankBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -7665,6 +10033,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageEventBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageEventBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageEventBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -7747,6 +10167,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageEventBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageEventBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageEventBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageEventBlocksVideoEmbed {
@@ -7866,6 +10321,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageEventBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageEventBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageEventBlocksKofiSupport {
         heading
         body
@@ -7889,6 +10353,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageEventBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -7934,6 +10400,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPagePromoBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPagePromoBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPagePromoBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -8016,6 +10534,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPagePromoBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPagePromoBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPagePromoBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPagePromoBlocksVideoEmbed {
@@ -8135,6 +10688,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPagePromoBlocksContactForm {
         submitLabel
       }
+      ... on LandingPagePromoBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPagePromoBlocksKofiSupport {
         heading
         body
@@ -8158,6 +10720,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPagePromoBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -8203,6 +10767,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageInfoBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageInfoBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageInfoBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -8285,6 +10901,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageInfoBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageInfoBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageInfoBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageInfoBlocksVideoEmbed {
@@ -8404,6 +11055,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageInfoBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageInfoBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageInfoBlocksKofiSupport {
         heading
         body
@@ -8427,6 +11087,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageInfoBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -8472,6 +11134,58 @@ export const LandingPagePartsFragmentDoc = gql`
         heading
         subheading
         backgroundImage
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroSplitImage {
+        eyebrow
+        heading
+        subheading
+        featuredImage
+        imageAlt
+        imageCaption
+        imagePosition
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroFullBleed {
+        backgroundImage
+        heading
+        subheading
+        overlay
+        textAlign
+        minHeight
+        ctaLabel
+        ctaLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+        eyebrow
+        heading
+        subheading
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
+        ctaPrimary
+        ctaPrimaryLink
+        ctaSecondary
+        ctaSecondaryLink
+      }
+      ... on LandingPageLinkInBioBlocksHeroImageGrid {
+        eyebrow
+        heading
+        subheading
+        layout
+        images {
+          __typename
+          src
+          alt
+          caption
+        }
         ctaLabel
         ctaLink
       }
@@ -8554,6 +11268,41 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+      }
+      ... on LandingPageLinkInBioBlocksImageSpotlight {
+        eyebrow
+        heading
+        image
+        alt
+        caption
+        aspect
+        body
+      }
+      ... on LandingPageLinkInBioBlocksImageSideBySide {
+        heading
+        leftImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        rightImage {
+          __typename
+          src
+          alt
+          caption
+        }
+        style
+      }
+      ... on LandingPageLinkInBioBlocksImageMasonry {
+        heading
+        images {
+          __typename
+          src
+          alt
+          caption
+          size
         }
       }
       ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -8673,6 +11422,15 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageLinkInBioBlocksContactForm {
         submitLabel
       }
+      ... on LandingPageLinkInBioBlocksDummyBookRequest {
+        heading
+        description
+        pdfUrl
+        submitLabel
+        successHeading
+        successNote
+        downloadLabel
+      }
       ... on LandingPageLinkInBioBlocksKofiSupport {
         heading
         body
@@ -8696,6 +11454,8 @@ export const LandingPagePartsFragmentDoc = gql`
         text
       }
       ... on LandingPageLinkInBioBlocksSocialLinks {
+        heading
+        body
         links {
           __typename
           platform
@@ -8752,6 +11512,58 @@ export const NavigationPartsFragmentDoc = gql`
             heading
             subheading
             backgroundImage
+            ctaLabel
+            ctaLink
+          }
+          ... on PageBlocksHeroSplitImage {
+            eyebrow
+            heading
+            subheading
+            featuredImage
+            imageAlt
+            imageCaption
+            imagePosition
+            ctaPrimary
+            ctaPrimaryLink
+            ctaSecondary
+            ctaSecondaryLink
+          }
+          ... on PageBlocksHeroFullBleed {
+            backgroundImage
+            heading
+            subheading
+            overlay
+            textAlign
+            minHeight
+            ctaLabel
+            ctaLink
+          }
+          ... on PageBlocksHeroFloatingImages {
+            eyebrow
+            heading
+            subheading
+            images {
+              __typename
+              src
+              alt
+              caption
+            }
+            ctaPrimary
+            ctaPrimaryLink
+            ctaSecondary
+            ctaSecondaryLink
+          }
+          ... on PageBlocksHeroImageGrid {
+            eyebrow
+            heading
+            subheading
+            layout
+            images {
+              __typename
+              src
+              alt
+              caption
+            }
             ctaLabel
             ctaLink
           }
@@ -8834,6 +11646,41 @@ export const NavigationPartsFragmentDoc = gql`
               src
               alt
               caption
+            }
+          }
+          ... on PageBlocksImageSpotlight {
+            eyebrow
+            heading
+            image
+            alt
+            caption
+            aspect
+            body
+          }
+          ... on PageBlocksImageSideBySide {
+            heading
+            leftImage {
+              __typename
+              src
+              alt
+              caption
+            }
+            rightImage {
+              __typename
+              src
+              alt
+              caption
+            }
+            style
+          }
+          ... on PageBlocksImageMasonry {
+            heading
+            images {
+              __typename
+              src
+              alt
+              caption
+              size
             }
           }
           ... on PageBlocksVideoEmbed {
@@ -8953,6 +11800,15 @@ export const NavigationPartsFragmentDoc = gql`
           ... on PageBlocksContactForm {
             submitLabel
           }
+          ... on PageBlocksDummyBookRequest {
+            heading
+            description
+            pdfUrl
+            submitLabel
+            successHeading
+            successNote
+            downloadLabel
+          }
           ... on PageBlocksKofiSupport {
             heading
             body
@@ -8976,6 +11832,8 @@ export const NavigationPartsFragmentDoc = gql`
             text
           }
           ... on PageBlocksSocialLinks {
+            heading
+            body
             links {
               __typename
               platform
@@ -9023,6 +11881,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageBlankBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageBlankBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageBlankBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageBlankBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -9105,6 +12015,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageBlankBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageBlankBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageBlankBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageBlankBlocksVideoEmbed {
@@ -9224,6 +12169,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageBlankBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageBlankBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageBlankBlocksKofiSupport {
               heading
               body
@@ -9247,6 +12201,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageBlankBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -9292,6 +12248,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageEventBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageEventBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageEventBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageEventBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -9374,6 +12382,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageEventBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageEventBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageEventBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageEventBlocksVideoEmbed {
@@ -9493,6 +12536,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageEventBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageEventBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageEventBlocksKofiSupport {
               heading
               body
@@ -9516,6 +12568,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageEventBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -9561,6 +12615,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPagePromoBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPagePromoBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPagePromoBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPagePromoBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -9643,6 +12749,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPagePromoBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPagePromoBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPagePromoBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPagePromoBlocksVideoEmbed {
@@ -9762,6 +12903,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPagePromoBlocksContactForm {
               submitLabel
             }
+            ... on LandingPagePromoBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPagePromoBlocksKofiSupport {
               heading
               body
@@ -9785,6 +12935,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPagePromoBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -9830,6 +12982,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageInfoBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageInfoBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageInfoBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageInfoBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -9912,6 +13116,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageInfoBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageInfoBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageInfoBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageInfoBlocksVideoEmbed {
@@ -10031,6 +13270,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageInfoBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageInfoBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageInfoBlocksKofiSupport {
               heading
               body
@@ -10054,6 +13302,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageInfoBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -10099,6 +13349,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on LandingPageLinkInBioBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -10181,6 +13483,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on LandingPageLinkInBioBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on LandingPageLinkInBioBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on LandingPageLinkInBioBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -10300,6 +13637,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageLinkInBioBlocksContactForm {
               submitLabel
             }
+            ... on LandingPageLinkInBioBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on LandingPageLinkInBioBlocksKofiSupport {
               heading
               body
@@ -10323,6 +13669,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on LandingPageLinkInBioBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -10389,6 +13737,58 @@ export const NavigationPartsFragmentDoc = gql`
               heading
               subheading
               backgroundImage
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
               ctaLabel
               ctaLink
             }
@@ -10471,6 +13871,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on PageBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on PageBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on PageBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on PageBlocksVideoEmbed {
@@ -10590,6 +14025,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on PageBlocksContactForm {
               submitLabel
             }
+            ... on PageBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on PageBlocksKofiSupport {
               heading
               body
@@ -10613,6 +14057,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on PageBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -10660,6 +14106,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -10742,6 +14240,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageBlankBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageBlankBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageBlankBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
@@ -10861,6 +14394,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageBlankBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
@@ -10884,6 +14426,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageBlankBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -10929,6 +14473,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -11011,6 +14607,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageEventBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageEventBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageEventBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageEventBlocksVideoEmbed {
@@ -11130,6 +14761,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageEventBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageEventBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
@@ -11153,6 +14793,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageEventBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -11198,6 +14840,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -11280,6 +14974,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPagePromoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPagePromoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPagePromoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
@@ -11399,6 +15128,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPagePromoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
@@ -11422,6 +15160,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPagePromoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -11467,6 +15207,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -11549,6 +15341,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageInfoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageInfoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageInfoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
@@ -11668,6 +15495,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageInfoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageInfoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
@@ -11691,6 +15527,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageInfoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -11736,6 +15574,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -11818,6 +15708,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageLinkInBioBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageLinkInBioBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageLinkInBioBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -11937,6 +15862,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageLinkInBioBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
@@ -11960,6 +15894,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageLinkInBioBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -12034,6 +15970,58 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
             }
+            ... on PageBlocksHeroSplitImage {
+              eyebrow
+              heading
+              subheading
+              featuredImage
+              imageAlt
+              imageCaption
+              imagePosition
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroFullBleed {
+              backgroundImage
+              heading
+              subheading
+              overlay
+              textAlign
+              minHeight
+              ctaLabel
+              ctaLink
+            }
+            ... on PageBlocksHeroFloatingImages {
+              eyebrow
+              heading
+              subheading
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaPrimary
+              ctaPrimaryLink
+              ctaSecondary
+              ctaSecondaryLink
+            }
+            ... on PageBlocksHeroImageGrid {
+              eyebrow
+              heading
+              subheading
+              layout
+              images {
+                __typename
+                src
+                alt
+                caption
+              }
+              ctaLabel
+              ctaLink
+            }
             ... on PageBlocksPageHeader {
               heading
               description
@@ -12113,6 +16101,41 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+            }
+            ... on PageBlocksImageSpotlight {
+              eyebrow
+              heading
+              image
+              alt
+              caption
+              aspect
+              body
+            }
+            ... on PageBlocksImageSideBySide {
+              heading
+              leftImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              rightImage {
+                __typename
+                src
+                alt
+                caption
+              }
+              style
+            }
+            ... on PageBlocksImageMasonry {
+              heading
+              images {
+                __typename
+                src
+                alt
+                caption
+                size
               }
             }
             ... on PageBlocksVideoEmbed {
@@ -12232,6 +16255,15 @@ export const NavigationPartsFragmentDoc = gql`
             ... on PageBlocksContactForm {
               submitLabel
             }
+            ... on PageBlocksDummyBookRequest {
+              heading
+              description
+              pdfUrl
+              submitLabel
+              successHeading
+              successNote
+              downloadLabel
+            }
             ... on PageBlocksKofiSupport {
               heading
               body
@@ -12255,6 +16287,8 @@ export const NavigationPartsFragmentDoc = gql`
               text
             }
             ... on PageBlocksSocialLinks {
+              heading
+              body
               links {
                 __typename
                 platform
@@ -12302,6 +16336,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageBlankBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageBlankBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -12384,6 +16470,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageBlankBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageBlankBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageBlankBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
@@ -12503,6 +16624,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageBlankBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
@@ -12526,6 +16656,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageBlankBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -12571,6 +16703,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageEventBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageEventBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -12653,6 +16837,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageEventBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageEventBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageEventBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageEventBlocksVideoEmbed {
@@ -12772,6 +16991,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageEventBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageEventBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
@@ -12795,6 +17023,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageEventBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -12840,6 +17070,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPagePromoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPagePromoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -12922,6 +17204,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPagePromoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPagePromoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPagePromoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
@@ -13041,6 +17358,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPagePromoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
@@ -13064,6 +17390,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPagePromoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -13109,6 +17437,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageInfoBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageInfoBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -13191,6 +17571,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageInfoBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageInfoBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageInfoBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
@@ -13310,6 +17725,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageInfoBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageInfoBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
@@ -13333,6 +17757,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageInfoBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform
@@ -13378,6 +17804,58 @@ export const NavigationPartsFragmentDoc = gql`
                 heading
                 subheading
                 backgroundImage
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroSplitImage {
+                eyebrow
+                heading
+                subheading
+                featuredImage
+                imageAlt
+                imageCaption
+                imagePosition
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFullBleed {
+                backgroundImage
+                heading
+                subheading
+                overlay
+                textAlign
+                minHeight
+                ctaLabel
+                ctaLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroFloatingImages {
+                eyebrow
+                heading
+                subheading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                ctaPrimary
+                ctaPrimaryLink
+                ctaSecondary
+                ctaSecondaryLink
+              }
+              ... on LandingPageLinkInBioBlocksHeroImageGrid {
+                eyebrow
+                heading
+                subheading
+                layout
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
                 ctaLabel
                 ctaLink
               }
@@ -13460,6 +17938,41 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+              }
+              ... on LandingPageLinkInBioBlocksImageSpotlight {
+                eyebrow
+                heading
+                image
+                alt
+                caption
+                aspect
+                body
+              }
+              ... on LandingPageLinkInBioBlocksImageSideBySide {
+                heading
+                leftImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                rightImage {
+                  __typename
+                  src
+                  alt
+                  caption
+                }
+                style
+              }
+              ... on LandingPageLinkInBioBlocksImageMasonry {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                  caption
+                  size
                 }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
@@ -13579,6 +18092,15 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksContactForm {
                 submitLabel
               }
+              ... on LandingPageLinkInBioBlocksDummyBookRequest {
+                heading
+                description
+                pdfUrl
+                submitLabel
+                successHeading
+                successNote
+                downloadLabel
+              }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
@@ -13602,6 +18124,8 @@ export const NavigationPartsFragmentDoc = gql`
                 text
               }
               ... on LandingPageLinkInBioBlocksSocialLinks {
+                heading
+                body
                 links {
                   __typename
                   platform

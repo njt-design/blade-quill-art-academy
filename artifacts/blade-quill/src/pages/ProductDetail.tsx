@@ -455,32 +455,45 @@ export default function ProductDetail() {
                     </button>
                   </div>
                   <Btn
+                    kind="outline"
+                    size="lg"
+                    className="flex-1 h-[52px]"
+                    disabled={!product.inStock}
+                    onClick={(e) => {
+                      addItem(
+                        {
+                          id: product.id,
+                          slug: product.slug,
+                          name: product.name,
+                          price: product.price,
+                          imageUrl: product.imageUrl,
+                          category: product.category,
+                        },
+                        qty
+                      );
+                      flyToCart(e.currentTarget);
+                    }}
+                  >
+                    {!product.inStock ? "Out of stock" : "Add to cart"}
+                  </Btn>
+                  <Btn
                     kind="primary"
                     size="lg"
                     iconRight="→"
                     className="flex-1 h-[52px]"
                     disabled={isCheckingOut || !product.inStock}
-                    onClick={(e) => {
-                      addItem({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        imageUrl: product.imageUrl,
-                        category: product.category,
+                    onClick={() => {
+                      if (!product.inStock) return;
+                      checkout({
+                        data: {
+                          productId: product.id,
+                          quantity: qty,
+                          productSlug: product.slug,
+                        },
                       });
-                      flyToCart(e.currentTarget);
-                      if (product.inStock) {
-                        checkout({
-                          data: { productId: product.id, quantity: qty },
-                        });
-                      }
                     }}
                   >
-                    {!product.inStock
-                      ? "Out of stock"
-                      : isCheckingOut
-                      ? "Redirecting…"
-                      : `Add to cart`}
+                    {isCheckingOut ? "Redirecting…" : "Buy now"}
                   </Btn>
                 </div>
               </Reveal>

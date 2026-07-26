@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="30" y="50" width="60" height="80" rx="3" fill="#776562" transform="rotate(-8 60 90)"/>
+  <rect x="310" y="45" width="55" height="75" rx="3" fill="#A96A6A" transform="rotate(6 337 82)"/>
+  <rect x="25" y="130" width="50" height="65" rx="3" fill="#9A5151" transform="rotate(4 50 162)"/>
+  <rect x="320" y="125" width="52" height="68" rx="3" fill="#D9B783" transform="rotate(-5 346 159)"/>
+  <rect x="120" y="75" width="160" height="10" rx="5" fill="#1f1a14"/><rect x="140" y="95" width="120" height="8" rx="4" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="1" fill="#fbf6ec">HERO  FLOATING IMAGES</text>
+</svg>

@@ -621,6 +621,15 @@
     border-color: hsl(var(--border));
   }
 
+  /** Center an image and scale it down to fit — never crop. */
+  .img-fit-wrap {
+    @apply flex items-center justify-center overflow-hidden;
+  }
+  .img-fit-wrap > img,
+  .img-fit {
+    @apply max-w-full max-h-full w-auto h-auto object-contain;
+  }
+
   .thumb-card {
     @apply bg-card rounded-lg overflow-hidden border border-border/50;
     transition: box-shadow 0.2s ease, transform 0.2s ease;

@@ -119,6 +119,7 @@ export const ListDownloadsResponse = zod.array(ListDownloadsResponseItem);
 export const CreateCheckoutSessionBody = zod.object({
   productId: zod.number(),
   quantity: zod.number().min(1),
+  productSlug: zod.string().optional(),
 });
 
 export const CreateCheckoutSessionResponse = zod.object({
@@ -148,6 +149,14 @@ export const SubmitContactBody = zod.object({
   name: zod.string(),
   email: zod.string().email(),
   message: zod.string(),
+  company: zod
+    .string()
+    .optional()
+    .describe("Publisher or company name (dummy-book requests)."),
+  intent: zod
+    .enum(["general", "dummy-book"])
+    .optional()
+    .describe("Why the form was submitted; defaults to general."),
 });
 
 export const SubmitContactResponse = zod.object({

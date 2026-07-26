@@ -28,11 +28,11 @@ export default function ImageGalleryBlock({ block }: Props) {
           {images.map((img, i) => (
             <div key={i} className="gumroad-card overflow-hidden group">
               {img.src && (
-                <div className="aspect-square overflow-hidden">
+                <div className="aspect-square img-fit-wrap bg-muted/40">
                   <img
                     src={img.src}
                     alt={img.alt || ""}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="img-fit"
                   />
                 </div>
               )}

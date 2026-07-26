@@ -57,6 +57,7 @@ export default function ReviewLinksBlock({ block }: Props) {
                       <Btn
                         href={link.href}
                         external
+                        analyticsPlacement="review_links"
                         kind="outline"
                         size="md"
                         iconRight={<ArrowUpRight className="w-4 h-4" />}

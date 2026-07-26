@@ -16,6 +16,23 @@ const rt = (text: string) => ({
   children: [{ type: "p", children: [{ type: "text", text }] }],
 });
 
+/** Reusable image list item fields for showcase blocks. */
+const IMAGE_ITEM_FIELDS = [
+  { type: "image" as const, name: "src", label: "Image" },
+  { type: "string" as const, name: "alt", label: "Alt Text" },
+  {
+    type: "string" as const,
+    name: "caption",
+    label: "Caption (optional)",
+  },
+];
+
+const IMAGE_LIST_UI = {
+  itemProps: (item: Record<string, unknown> | undefined) => ({
+    label: (item?.caption as string) || (item?.alt as string) || "Image",
+  }),
+};
+
 /**
  * Shared UI config for a block template: preview image for the visual
  * "Add Section" picker + a readable label in the section list sidebar.
@@ -1157,6 +1174,62 @@ export const contactInfoBlock: Template = {
   ],
 };
 
+export const dummyBookRequestBlock: Template = {
+  name: "dummyBookRequest",
+  label: "Dummy Book Request",
+  ui: blockUi("dummyBookRequest", "Dummy Book Request", "heading", {
+    heading: "Request the 30-page PDF",
+    description: rt(
+      "Fill in your details and the complete 30-page PDF unlocks instantly. Corinne is notified of every request."
+    ),
+    pdfUrl: "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
+    submitLabel: "Request the 30-page PDF",
+    successHeading: "Thank you — the PDF is ready",
+    successNote:
+      "Your request has been sent to Corinne. In the meantime, the full 30-page PDF is available below.",
+    downloadLabel: "Download the 30-page PDF",
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { description: "Heading above the request form." },
+    },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Short text below the heading explaining the request." },
+    },
+    {
+      type: "string",
+      name: "pdfUrl",
+      label: "Dummy PDF",
+      ui: {
+        description:
+          "Path or URL to the dummy-book PDF revealed after a successful request.",
+      },
+    },
+    { type: "string", name: "submitLabel", label: "Submit Button Label" },
+    {
+      type: "string",
+      name: "successHeading",
+      label: "Success Heading",
+      ui: { description: "Shown after the request is sent." },
+    },
+    {
+      type: "string",
+      name: "successNote",
+      label: "Success Note",
+      ui: { component: "textarea", description: "Short note above the download button." },
+    },
+    { type: "string", name: "downloadLabel", label: "Download Button Label" },
+  ],
+};
+
 export const contactFormBlock: Template = {
   name: "contactForm",
   label: "Contact Form",
@@ -1288,6 +1361,23 @@ export const socialLinksBlock: Template = {
   }),
   fields: [
     {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: {
+        description:
+          "When set, the links show inside a centered panel with this heading (like the Ko-fi support section). Leave blank for a simple icon row.",
+      },
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body Text (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Short text under the heading (panel style only)." },
+    },
+    {
       type: "object",
       name: "links",
       label: "Links",
@@ -1305,6 +1395,7 @@ export const socialLinksBlock: Template = {
           options: [
             { value: "youtube", label: "YouTube" },
             { value: "instagram", label: "Instagram" },
+            { value: "pinterest", label: "Pinterest" },
             { value: "amazon", label: "Amazon" },
             { value: "kofi", label: "Ko-fi" },
           ],
@@ -1376,6 +1467,358 @@ export const reviewLinksBlock: Template = {
 };
 
 // ---------------------------------------------------------------------------
+// Image showcase blocks — heroes
+// ---------------------------------------------------------------------------
+
+export const heroSplitImageBlock: Template = {
+  name: "heroSplitImage",
+  label: "Hero (Split Image)",
+  ui: blockUi("heroSplitImage", "Hero (Split Image)", "heading", {
+    eyebrow: "Featured Work",
+    heading: "Showcase your\nbest piece",
+    subheading: rt("Pair a bold headline with one large image — great for book launches, class promos, or portfolio highlights."),
+    imagePosition: "right",
+    ctaPrimary: "Learn More",
+    ctaPrimaryLink: "/contact",
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow (optional)",
+      ui: { description: "Small label above the heading." },
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea", description: "Use a line break for a two-line headline." },
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+    },
+    {
+      type: "image",
+      name: "featuredImage",
+      label: "Featured Image",
+      ui: { description: "Large image shown beside the headline." },
+    },
+    {
+      type: "string",
+      name: "imageAlt",
+      label: "Image Alt Text",
+    },
+    {
+      type: "string",
+      name: "imageCaption",
+      label: "Image Caption (optional)",
+    },
+    {
+      type: "string",
+      name: "imagePosition",
+      label: "Image Position",
+      options: [
+        { value: "right", label: "Image on right" },
+        { value: "left", label: "Image on left" },
+      ],
+    },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label" },
+    { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+  ],
+};
+
+export const heroFullBleedBlock: Template = {
+  name: "heroFullBleed",
+  label: "Hero (Full Bleed)",
+  ui: blockUi("heroFullBleed", "Hero (Full Bleed)", "heading", {
+    heading: "A cinematic\nfull-width moment",
+    subheading: rt("Edge-to-edge artwork with text overlay — perfect for dramatic portfolio pieces or event banners."),
+    overlay: "medium",
+    textAlign: "center",
+    minHeight: "tall",
+    ctaLabel: "Explore",
+    ctaLink: "/gallery",
+  }),
+  fields: [
+    {
+      type: "image",
+      name: "backgroundImage",
+      label: "Background Image",
+      ui: { description: "Full-width image behind the text." },
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" },
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+    },
+    {
+      type: "string",
+      name: "overlay",
+      label: "Overlay Darkness",
+      options: [
+        { value: "light", label: "Light" },
+        { value: "medium", label: "Medium" },
+        { value: "dark", label: "Dark" },
+      ],
+    },
+    {
+      type: "string",
+      name: "textAlign",
+      label: "Text Alignment",
+      options: [
+        { value: "center", label: "Center" },
+        { value: "left", label: "Bottom left" },
+      ],
+    },
+    {
+      type: "string",
+      name: "minHeight",
+      label: "Section Height",
+      options: [
+        { value: "medium", label: "Medium (60vh)" },
+        { value: "tall", label: "Tall (80vh)" },
+        { value: "short", label: "Short (45vh)" },
+      ],
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLink", label: "Button Link" },
+  ],
+};
+
+export const heroFloatingImagesBlock: Template = {
+  name: "heroFloatingImages",
+  label: "Hero (Floating Images)",
+  ui: blockUi("heroFloatingImages", "Hero (Floating Images)", "heading", {
+    eyebrow: "Portfolio",
+    heading: "Art that floats\noff the page",
+    subheading: rt("Scatter up to six images around the headline — like the homepage hero, but fully editable."),
+    images: [],
+    ctaPrimary: "View Gallery",
+    ctaPrimaryLink: "/gallery",
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" },
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Floating Images",
+      list: true,
+      ui: {
+        ...IMAGE_LIST_UI,
+        description: "Add 2–6 images. They auto-position around the headline on desktop.",
+      },
+      fields: IMAGE_ITEM_FIELDS,
+    },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)" },
+    { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+  ],
+};
+
+export const heroImageGridBlock: Template = {
+  name: "heroImageGrid",
+  label: "Hero (Image Mosaic)",
+  ui: blockUi("heroImageGrid", "Hero (Image Mosaic)", "heading", {
+    eyebrow: "Gallery",
+    heading: "A mosaic\nof your work",
+    layout: "trio",
+    images: [],
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" },
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Grid Layout",
+      options: [
+        { value: "duo", label: "2 images" },
+        { value: "trio", label: "3 images" },
+        { value: "quad", label: "4 images" },
+      ],
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Images",
+      list: true,
+      ui: IMAGE_LIST_UI,
+      fields: IMAGE_ITEM_FIELDS,
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLink", label: "Button Link" },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// Image showcase blocks — page sections
+// ---------------------------------------------------------------------------
+
+export const imageSpotlightBlock: Template = {
+  name: "imageSpotlight",
+  label: "Image (Spotlight)",
+  ui: blockUi("imageSpotlight", "Image (Spotlight)", "heading", {
+    eyebrow: "Featured",
+    heading: "One piece,\nfront and center",
+    caption: "A single large image with room to breathe.",
+    aspect: "landscape",
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: { component: "textarea" },
+    },
+    {
+      type: "image",
+      name: "image",
+      label: "Image",
+    },
+    { type: "string", name: "alt", label: "Alt Text" },
+    { type: "string", name: "caption", label: "Caption (optional)" },
+    {
+      type: "string",
+      name: "aspect",
+      label: "Aspect Ratio",
+      options: [
+        { value: "landscape", label: "Landscape (16:10)" },
+        { value: "square", label: "Square (1:1)" },
+        { value: "portrait", label: "Portrait (3:4)" },
+        { value: "wide", label: "Wide banner (21:9)" },
+      ],
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body Text (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+    },
+  ],
+};
+
+export const imageSideBySideBlock: Template = {
+  name: "imageSideBySide",
+  label: "Image (Side by Side)",
+  ui: blockUi("imageSideBySide", "Image (Side by Side)", "heading", {
+    heading: "Compare or contrast",
+    leftImage: {},
+    rightImage: {},
+    style: "polaroid",
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+    },
+    {
+      type: "object",
+      name: "leftImage",
+      label: "Left Image",
+      fields: IMAGE_ITEM_FIELDS,
+    },
+    {
+      type: "object",
+      name: "rightImage",
+      label: "Right Image",
+      fields: IMAGE_ITEM_FIELDS,
+    },
+    {
+      type: "string",
+      name: "style",
+      label: "Frame Style",
+      options: [
+        { value: "polaroid", label: "Polaroid frames" },
+        { value: "clean", label: "Clean (no frame)" },
+        { value: "rounded", label: "Rounded corners" },
+      ],
+    },
+  ],
+};
+
+export const imageMasonryBlock: Template = {
+  name: "imageMasonry",
+  label: "Image (Masonry)",
+  ui: blockUi("imageMasonry", "Image (Masonry)", "heading", {
+    heading: "A wall of work",
+    images: [],
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Images",
+      list: true,
+      ui: {
+        ...IMAGE_LIST_UI,
+        description: "Add 3–6 images for an asymmetric masonry layout.",
+      },
+      fields: [
+        ...IMAGE_ITEM_FIELDS,
+        {
+          type: "string",
+          name: "size",
+          label: "Tile Size",
+          options: [
+            { value: "auto", label: "Auto" },
+            { value: "tall", label: "Tall" },
+            { value: "wide", label: "Wide" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // Master list — every block available on every page
 // ---------------------------------------------------------------------------
 
@@ -1384,6 +1827,10 @@ export const ALL_BLOCKS: Template[] = [
   homeHeroBlock,
   aboutHeroBlock,
   heroBlock,
+  heroSplitImageBlock,
+  heroFullBleedBlock,
+  heroFloatingImagesBlock,
+  heroImageGridBlock,
   pageHeaderBlock,
   // Content
   textBlock,
@@ -1394,6 +1841,9 @@ export const ALL_BLOCKS: Template[] = [
   cardRowBlock,
   pillarsBlock,
   imageGalleryBlock,
+  imageSpotlightBlock,
+  imageSideBySideBlock,
+  imageMasonryBlock,
   videoEmbedBlock,
   // Commerce & media
   featuredBookBlock,
@@ -1411,6 +1861,7 @@ export const ALL_BLOCKS: Template[] = [
   newsletterSignupBlock,
   contactInfoBlock,
   contactFormBlock,
+  dummyBookRequestBlock,
   kofiSupportBlock,
   reviewLinksBlock,
   // Standalone page extras

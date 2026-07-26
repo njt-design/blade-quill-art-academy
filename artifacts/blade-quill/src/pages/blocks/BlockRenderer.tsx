@@ -27,11 +27,19 @@ import GalleryGridBlock from "./GalleryGridBlock";
 import DownloadsGridBlock from "./DownloadsGridBlock";
 import ContactInfoBlock from "./ContactInfoBlock";
 import ContactFormBlock from "./ContactFormBlock";
+import DummyBookRequestBlock from "./DummyBookRequestBlock";
 import MarqueeBlock from "./MarqueeBlock";
 import FeaturedReleaseBlock from "./FeaturedReleaseBlock";
 import KofiSupportBlock from "./KofiSupportBlock";
 import SocialLinksBlock from "./SocialLinksBlock";
 import ReviewLinksBlock from "./ReviewLinksBlock";
+import HeroSplitImageBlock from "./HeroSplitImageBlock";
+import HeroFullBleedBlock from "./HeroFullBleedBlock";
+import HeroFloatingImagesBlock from "./HeroFloatingImagesBlock";
+import HeroImageGridBlock from "./HeroImageGridBlock";
+import ImageSpotlightBlock from "./ImageSpotlightBlock";
+import ImageSideBySideBlock from "./ImageSideBySideBlock";
+import ImageMasonryBlock from "./ImageMasonryBlock";
 
 const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   hero: HeroBlock,
@@ -60,11 +68,19 @@ const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   downloadsGrid: DownloadsGridBlock,
   contactInfo: ContactInfoBlock,
   contactForm: ContactFormBlock,
+  dummyBookRequest: DummyBookRequestBlock,
   marquee: MarqueeBlock,
   featuredRelease: FeaturedReleaseBlock,
   kofiSupport: KofiSupportBlock,
   socialLinks: SocialLinksBlock,
   reviewLinks: ReviewLinksBlock,
+  heroSplitImage: HeroSplitImageBlock,
+  heroFullBleed: HeroFullBleedBlock,
+  heroFloatingImages: HeroFloatingImagesBlock,
+  heroImageGrid: HeroImageGridBlock,
+  imageSpotlight: ImageSpotlightBlock,
+  imageSideBySide: ImageSideBySideBlock,
+  imageMasonry: ImageMasonryBlock,
 };
 
 /**

@@ -349,6 +349,9 @@ components:
         quantity:
           type: integer
           minimum: 1
+        productSlug:
+          type: string
+          description: Optional Tina product filename slug for O(1) catalog lookup
       required: [productId, quantity]
 
     CheckoutResponse:
@@ -388,6 +391,13 @@ components:
           format: email
         message:
           type: string
+        company:
+          type: string
+          description: Publisher or company name (dummy-book requests).
+        intent:
+          type: string
+          enum: [general, dummy-book]
+          description: Why the form was submitted; defaults to general.
       required: [name, email, message]
 
     ContactResponse:

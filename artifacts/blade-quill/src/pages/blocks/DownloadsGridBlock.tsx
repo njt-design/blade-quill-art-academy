@@ -28,11 +28,11 @@ export default function DownloadsGridBlock({ block }: Props) {
             {downloads.map((item) => (
               <div key={item.id} className="gumroad-card flex flex-col group">
                 {item.thumbnailUrl ? (
-                  <div className="aspect-[4/3] overflow-hidden relative">
+                  <div className="aspect-[4/3] img-fit-wrap relative bg-secondary/30">
                     <img
                       src={item.thumbnailUrl}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="img-fit"
                     />
                     <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest font-bold bg-card px-2.5 py-1 rounded-full border border-border">
                       {item.fileType}

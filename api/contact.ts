@@ -21,11 +21,13 @@ interface ContactBody {
   name: string;
   email: string;
   message: string;
+  company?: string;
+  intent?: "general" | "dummy-book";
 }
 
 function parseBody(body: unknown): ContactBody | null {
   if (typeof body !== "object" || body === null) return null;
-  const { name, email, message } = body as Record<string, unknown>;
+  const { name, email, message, company, intent } = body as Record<string, unknown>;
   if (typeof name !== "string" || typeof email !== "string" || typeof message !== "string") {
     return null;
   }
@@ -35,7 +37,16 @@ function parseBody(body: unknown): ContactBody | null {
   if (trimmedName.length < 2 || trimmedName.length > 200) return null;
   if (!EMAIL_RE.test(trimmedEmail) || trimmedEmail.length > 320) return null;
   if (trimmedMessage.length < 10 || trimmedMessage.length > 5000) return null;
-  return { name: trimmedName, email: trimmedEmail, message: trimmedMessage };
+  const parsed: ContactBody = { name: trimmedName, email: trimmedEmail, message: trimmedMessage };
+  if (typeof company === "string" && company.trim()) {
+    const trimmedCompany = company.trim();
+    if (trimmedCompany.length > 200) return null;
+    parsed.company = trimmedCompany;
+  }
+  if (intent === "dummy-book" || intent === "general") {
+    parsed.intent = intent;
+  }
+  return parsed;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -66,10 +77,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from,
       to,
       replyTo: parsed.email,
-      subject: `New contact form message from ${parsed.name}`,
+      subject:
+        parsed.intent === "dummy-book"
+          ? `Publisher dummy book request from ${parsed.name}`
+          : `New contact form message from ${parsed.name}`,
       text: [
         `Name: ${parsed.name}`,
         `Email: ${parsed.email}`,
+        ...(parsed.company ? [`Company: ${parsed.company}`] : []),
+        ...(parsed.intent === "dummy-book"
+          ? ["Request: 30-page picture-book dummy (Lheeloo & Luna)"]
+          : []),
         "",
         parsed.message,
       ].join("\n"),

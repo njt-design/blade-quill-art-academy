@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="40" y="35" width="90" height="70" rx="3" fill="#776562"/>
+  <rect x="140" y="35" width="90" height="110" rx="3" fill="#A96A6A"/>
+  <rect x="240" y="35" width="90" height="55" rx="3" fill="#D9B783"/>
+  <rect x="40" y="115" width="90" height="55" rx="3" fill="#9A5151"/>
+  <rect x="240" y="100" width="90" height="70" rx="3" fill="#714B4B"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="1" fill="#fbf6ec">IMAGE  MASONRY</text>
+</svg>

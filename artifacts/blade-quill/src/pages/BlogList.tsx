@@ -64,11 +64,11 @@ export default function BlogList() {
                 onClick={() => setLocation(`/blog/${post.slug}`)}
               >
                 {post.coverImage && (
-                  <div className="aspect-[16/9] overflow-hidden bg-muted">
+                  <div className="aspect-[16/9] img-fit-wrap bg-muted">
                     <img
                       src={post.coverImage}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="img-fit"
                       onError={(e) => {
                         // Broken cover URL: hide the image area instead of showing alt text.
                         e.currentTarget.parentElement!.style.display = "none";

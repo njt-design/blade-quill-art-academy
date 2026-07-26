@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@workspace/api-zod": "workspace:*",
+    "@workspace/checkout": "workspace:*",
     "@workspace/db": "workspace:*",
+    "@workspace/insights": "workspace:*",
     "cookie-parser": "^1.4.7",
     "cors": "^2",
     "express": "^5",

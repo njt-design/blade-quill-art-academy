@@ -37,6 +37,9 @@ export default defineConfig({
       process.env.TINA_PUBLIC_READONLY_TOKEN ?? process.env.TINA_TOKEN ?? ""
     ),
     __TINA_BRANCH__: JSON.stringify(process.env.TINA_BRANCH ?? "main"),
+    __GA_MEASUREMENT_ID__: JSON.stringify(
+      process.env.VITE_GA_MEASUREMENT_ID?.trim() || "G-50YS8RZ7HL"
+    ),
   },
   plugins: [
     react(),

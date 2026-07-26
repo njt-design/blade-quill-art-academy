@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTurnOverlay } from "@/components/site/PageTurnOverlay";
 import { ScrollToTop } from "@/components/site/ScrollToTop";
+import { Analytics } from "@/components/Analytics";
 
 // Pages
 import Page from "@/pages/Page";
@@ -19,6 +20,7 @@ import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
 import MockupHomePreview from "@/pages/MockupHomePreview";
 import DesignSystem from "@/pages/DesignSystem";
+import Insights from "@/pages/Insights";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -50,6 +52,9 @@ function MainLayout() {
           </Route>
           <Route path="/downloads">
             <Page slug="downloads" />
+          </Route>
+          <Route path="/publishers">
+            <Page slug="publishers" />
           </Route>
           <Route path="/about">
             <Page slug="about" />
@@ -87,6 +92,7 @@ function Router() {
       </Route>
       <Route path="/preview/:slug" component={MockupHomePreview} />
       <Route path="/design-system" component={DesignSystem} />
+      <Route path="/insights" component={Insights} />
       <Route component={MainLayout} />
     </Switch>
   );
@@ -99,6 +105,7 @@ function App() {
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <ScrollToTop />
+            <Analytics />
             <Router />
             <PageTurnOverlay />
           </WouterRouter>

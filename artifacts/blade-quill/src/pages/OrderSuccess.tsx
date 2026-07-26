@@ -3,9 +3,12 @@ import { useLocation } from "wouter";
 import { CheckCircle, Download, ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
+import { useCart } from "@/hooks/useCart";
+import { trackPurchase } from "@/lib/analytics";
 
 export default function OrderSuccess() {
   const [, setLocation] = useLocation();
+  const { clearCart } = useCart();
   const [sessionId, setSessionId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -17,6 +20,19 @@ export default function OrderSuccess() {
   const { data: order, isLoading, error } = useGetOrderSuccess(params!, {
     query: { queryKey: getGetOrderSuccessQueryKey(params), enabled: !!sessionId },
   });
+
+  useEffect(() => {
+    if (order) clearCart();
+  }, [order, clearCart]);
+
+  useEffect(() => {
+    if (!order || !sessionId) return;
+    trackPurchase({
+      transactionId: sessionId,
+      productName: order.productName,
+      productCategory: order.productCategory,
+    });
+  }, [order, sessionId]);
 
   if (!sessionId) {
     return (

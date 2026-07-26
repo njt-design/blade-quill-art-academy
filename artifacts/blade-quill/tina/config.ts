@@ -1,5 +1,39 @@
+import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
 import { ALL_BLOCKS } from "./blocks";
+
+/** Tina sidebar screen that sends Corinne to the Owner Insights page. */
+function InsightsRedirectScreen(_props: { close: () => void }) {
+  useEffect(() => {
+    window.location.assign("/insights");
+  }, []);
+  return React.createElement(
+    "div",
+    { style: { padding: 32, fontFamily: "system-ui, sans-serif" } },
+    "Opening Owner Insights…"
+  );
+}
+
+function InsightsScreenIcon() {
+  return React.createElement(
+    "svg",
+    {
+      width: 20,
+      height: 20,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": true,
+    },
+    React.createElement("path", { d: "M3 3v18h18" }),
+    React.createElement("path", { d: "M7 14v4" }),
+    React.createElement("path", { d: "M12 10v8" }),
+    React.createElement("path", { d: "M17 6v12" })
+  );
+}
 
 const INLINE_RICH_TEXT = {
   toolbar: ["bold", "italic", "link", "ul", "ol"] as Array<
@@ -32,6 +66,7 @@ const CORE_PAGE_SLUGS = [
   "shop",
   "gallery",
   "downloads",
+  "publishers",
   "important-links",
 ];
 
@@ -296,6 +331,17 @@ export default defineConfig({
       publicFolder: "public",
     },
   },
+  cmsCallback: (cms) => {
+    cms.plugins.add({
+      __type: "screen",
+      name: "Insights",
+      Component: InsightsRedirectScreen,
+      Icon: InsightsScreenIcon,
+      layout: "fullscreen",
+      navCategory: "Dashboard",
+    });
+    return cms;
+  },
   schema: {
     collections: [
       // ---------------------------------------------------------------
@@ -451,7 +497,7 @@ export default defineConfig({
             required: true,
             ui: {
               description:
-                "Stable numeric ID for cart and checkout. Use a unique number for each product (e.g. 1, 2, 3).",
+                "Stable numeric ID for cart and Stripe checkout. Keep unique and do not renumber existing products (e.g. 1, 2, 3).",
             },
           },
           {
@@ -476,7 +522,10 @@ export default defineConfig({
             name: "price",
             label: "Price (USD)",
             required: true,
-            ui: { description: "Price in US dollars (e.g. 24.99)." },
+            ui: {
+              description:
+                "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here — no Stripe dashboard needed.",
+            },
           },
           {
             type: "string",
@@ -502,14 +551,17 @@ export default defineConfig({
             label: "Gumroad URL",
             ui: {
               description:
-                "Optional external purchase link. Leave blank to use site cart/checkout only.",
+                "Optional post-purchase fallback link shown after Stripe payment if no Download URL is set. Not used for checkout.",
             },
           },
           {
             type: "string",
             name: "downloadUrl",
             label: "Download URL",
-            ui: { description: "Optional direct download link for digital products." },
+            ui: {
+              description:
+                "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf).",
+            },
           },
           {
             type: "boolean",
@@ -524,7 +576,10 @@ export default defineConfig({
             type: "boolean",
             name: "inStock",
             label: "In Stock",
-            ui: { description: "When off, the product still appears but checkout may be disabled." },
+            ui: {
+              description:
+                "When off, the product still appears in the shop but Buy now / cart checkout are blocked.",
+            },
           },
           {
             type: "datetime",

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="40" y="50" width="150" height="110" rx="4" fill="#776562" stroke="#714B4B" stroke-width="6" transform="rotate(-3 115 105)"/>
+  <rect x="210" y="50" width="150" height="110" rx="4" fill="#A96A6A" stroke="#714B4B" stroke-width="6" transform="rotate(3 285 105)"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="1" fill="#fbf6ec">IMAGE  SIDE BY SIDE</text>
+</svg>

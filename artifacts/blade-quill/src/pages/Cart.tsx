@@ -17,9 +17,13 @@ export default function Cart() {
     },
   });
 
-  const handleCheckoutItem = (itemId: number, quantity: number) => {
+  const handleCheckoutItem = (
+    itemId: number,
+    quantity: number,
+    productSlug?: string
+  ) => {
     setCheckingOutId(itemId);
-    checkout({ data: { productId: itemId, quantity } });
+    checkout({ data: { productId: itemId, quantity, productSlug } });
   };
 
   if (items.length === 0) {
@@ -109,7 +113,9 @@ export default function Cart() {
                 className="w-full bg-maroon hover:bg-maroon-deep text-white text-sm"
                 size="sm"
                 disabled={checkingOutId !== null}
-                onClick={() => handleCheckoutItem(item.id, item.quantity)}
+                onClick={() =>
+                  handleCheckoutItem(item.id, item.quantity, item.slug)
+                }
               >
                 {checkingOutId === item.id
                   ? <><div className="animate-spin rounded-full h-3 w-3 border-2 border-white/30 border-t-white mr-2" />Processing…</>

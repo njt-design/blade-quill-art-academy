@@ -10,4 +10,6 @@ export interface CheckoutRequest {
   productId: number;
   /** @minimum 1 */
   quantity: number;
+  /** Optional Tina product filename slug for O(1) catalog lookup */
+  productSlug?: string;
 }

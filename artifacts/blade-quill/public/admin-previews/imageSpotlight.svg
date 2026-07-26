@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="60" y="30" width="280" height="8" rx="4" fill="#1f1a14"/>
+  <rect x="80" y="55" width="240" height="120" rx="4" fill="#D9B783" stroke="#714B4B" stroke-width="6"/>
+  <rect x="140" y="185" width="120" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="1" fill="#fbf6ec">IMAGE  SPOTLIGHT</text>
+</svg>

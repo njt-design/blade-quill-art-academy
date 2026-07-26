@@ -1,4 +1,5 @@
 // tina/config.ts
+import React, { useEffect } from "react";
 import { defineConfig } from "tinacms";
 
 // tina/blocks.ts
@@ -11,6 +12,20 @@ var rt = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
 });
+var IMAGE_ITEM_FIELDS = [
+  { type: "image", name: "src", label: "Image" },
+  { type: "string", name: "alt", label: "Alt Text" },
+  {
+    type: "string",
+    name: "caption",
+    label: "Caption (optional)"
+  }
+];
+var IMAGE_LIST_UI = {
+  itemProps: (item) => ({
+    label: item?.caption || item?.alt || "Image"
+  })
+};
 function blockUi(name, label, titleField, defaultItem) {
   return {
     previewSrc: `/admin-previews/${name}.svg`,
@@ -1095,6 +1110,59 @@ var contactInfoBlock = {
     }
   ]
 };
+var dummyBookRequestBlock = {
+  name: "dummyBookRequest",
+  label: "Dummy Book Request",
+  ui: blockUi("dummyBookRequest", "Dummy Book Request", "heading", {
+    heading: "Request the 30-page PDF",
+    description: rt(
+      "Fill in your details and the complete 30-page PDF unlocks instantly. Corinne is notified of every request."
+    ),
+    pdfUrl: "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
+    submitLabel: "Request the 30-page PDF",
+    successHeading: "Thank you \u2014 the PDF is ready",
+    successNote: "Your request has been sent to Corinne. In the meantime, the full 30-page PDF is available below.",
+    downloadLabel: "Download the 30-page PDF"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { description: "Heading above the request form." }
+    },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Short text below the heading explaining the request." }
+    },
+    {
+      type: "string",
+      name: "pdfUrl",
+      label: "Dummy PDF",
+      ui: {
+        description: "Path or URL to the dummy-book PDF revealed after a successful request."
+      }
+    },
+    { type: "string", name: "submitLabel", label: "Submit Button Label" },
+    {
+      type: "string",
+      name: "successHeading",
+      label: "Success Heading",
+      ui: { description: "Shown after the request is sent." }
+    },
+    {
+      type: "string",
+      name: "successNote",
+      label: "Success Note",
+      ui: { component: "textarea", description: "Short note above the download button." }
+    },
+    { type: "string", name: "downloadLabel", label: "Download Button Label" }
+  ]
+};
 var contactFormBlock = {
   name: "contactForm",
   label: "Contact Form",
@@ -1218,6 +1286,22 @@ var socialLinksBlock = {
   }),
   fields: [
     {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: {
+        description: "When set, the links show inside a centered panel with this heading (like the Ko-fi support section). Leave blank for a simple icon row."
+      }
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body Text (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      ui: { description: "Short text under the heading (panel style only)." }
+    },
+    {
       type: "object",
       name: "links",
       label: "Links",
@@ -1235,6 +1319,7 @@ var socialLinksBlock = {
           options: [
             { value: "youtube", label: "YouTube" },
             { value: "instagram", label: "Instagram" },
+            { value: "pinterest", label: "Pinterest" },
             { value: "amazon", label: "Amazon" },
             { value: "kofi", label: "Ko-fi" }
           ],
@@ -1303,11 +1388,352 @@ var reviewLinksBlock = {
     }
   ]
 };
+var heroSplitImageBlock = {
+  name: "heroSplitImage",
+  label: "Hero (Split Image)",
+  ui: blockUi("heroSplitImage", "Hero (Split Image)", "heading", {
+    eyebrow: "Featured Work",
+    heading: "Showcase your\nbest piece",
+    subheading: rt("Pair a bold headline with one large image \u2014 great for book launches, class promos, or portfolio highlights."),
+    imagePosition: "right",
+    ctaPrimary: "Learn More",
+    ctaPrimaryLink: "/contact"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "eyebrow",
+      label: "Eyebrow (optional)",
+      ui: { description: "Small label above the heading." }
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea", description: "Use a line break for a two-line headline." }
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "image",
+      name: "featuredImage",
+      label: "Featured Image",
+      ui: { description: "Large image shown beside the headline." }
+    },
+    {
+      type: "string",
+      name: "imageAlt",
+      label: "Image Alt Text"
+    },
+    {
+      type: "string",
+      name: "imageCaption",
+      label: "Image Caption (optional)"
+    },
+    {
+      type: "string",
+      name: "imagePosition",
+      label: "Image Position",
+      options: [
+        { value: "right", label: "Image on right" },
+        { value: "left", label: "Image on left" }
+      ]
+    },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label" },
+    { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
+  ]
+};
+var heroFullBleedBlock = {
+  name: "heroFullBleed",
+  label: "Hero (Full Bleed)",
+  ui: blockUi("heroFullBleed", "Hero (Full Bleed)", "heading", {
+    heading: "A cinematic\nfull-width moment",
+    subheading: rt("Edge-to-edge artwork with text overlay \u2014 perfect for dramatic portfolio pieces or event banners."),
+    overlay: "medium",
+    textAlign: "center",
+    minHeight: "tall",
+    ctaLabel: "Explore",
+    ctaLink: "/gallery"
+  }),
+  fields: [
+    {
+      type: "image",
+      name: "backgroundImage",
+      label: "Background Image",
+      ui: { description: "Full-width image behind the text." }
+    },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "string",
+      name: "overlay",
+      label: "Overlay Darkness",
+      options: [
+        { value: "light", label: "Light" },
+        { value: "medium", label: "Medium" },
+        { value: "dark", label: "Dark" }
+      ]
+    },
+    {
+      type: "string",
+      name: "textAlign",
+      label: "Text Alignment",
+      options: [
+        { value: "center", label: "Center" },
+        { value: "left", label: "Bottom left" }
+      ]
+    },
+    {
+      type: "string",
+      name: "minHeight",
+      label: "Section Height",
+      options: [
+        { value: "medium", label: "Medium (60vh)" },
+        { value: "tall", label: "Tall (80vh)" },
+        { value: "short", label: "Short (45vh)" }
+      ]
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLink", label: "Button Link" }
+  ]
+};
+var heroFloatingImagesBlock = {
+  name: "heroFloatingImages",
+  label: "Hero (Floating Images)",
+  ui: blockUi("heroFloatingImages", "Hero (Floating Images)", "heading", {
+    eyebrow: "Portfolio",
+    heading: "Art that floats\noff the page",
+    subheading: rt("Scatter up to six images around the headline \u2014 like the homepage hero, but fully editable."),
+    images: [],
+    ctaPrimary: "View Gallery",
+    ctaPrimaryLink: "/gallery"
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Floating Images",
+      list: true,
+      ui: {
+        ...IMAGE_LIST_UI,
+        description: "Add 2\u20136 images. They auto-position around the headline on desktop."
+      },
+      fields: IMAGE_ITEM_FIELDS
+    },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)" },
+    { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
+  ]
+};
+var heroImageGridBlock = {
+  name: "heroImageGrid",
+  label: "Hero (Image Mosaic)",
+  ui: blockUi("heroImageGrid", "Hero (Image Mosaic)", "heading", {
+    eyebrow: "Gallery",
+    heading: "A mosaic\nof your work",
+    layout: "trio",
+    images: []
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "rich-text",
+      name: "subheading",
+      label: "Subheading (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Grid Layout",
+      options: [
+        { value: "duo", label: "2 images" },
+        { value: "trio", label: "3 images" },
+        { value: "quad", label: "4 images" }
+      ]
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Images",
+      list: true,
+      ui: IMAGE_LIST_UI,
+      fields: IMAGE_ITEM_FIELDS
+    },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLink", label: "Button Link" }
+  ]
+};
+var imageSpotlightBlock = {
+  name: "imageSpotlight",
+  label: "Image (Spotlight)",
+  ui: blockUi("imageSpotlight", "Image (Spotlight)", "heading", {
+    eyebrow: "Featured",
+    heading: "One piece,\nfront and center",
+    caption: "A single large image with room to breathe.",
+    aspect: "landscape"
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: { component: "textarea" }
+    },
+    {
+      type: "image",
+      name: "image",
+      label: "Image"
+    },
+    { type: "string", name: "alt", label: "Alt Text" },
+    { type: "string", name: "caption", label: "Caption (optional)" },
+    {
+      type: "string",
+      name: "aspect",
+      label: "Aspect Ratio",
+      options: [
+        { value: "landscape", label: "Landscape (16:10)" },
+        { value: "square", label: "Square (1:1)" },
+        { value: "portrait", label: "Portrait (3:4)" },
+        { value: "wide", label: "Wide banner (21:9)" }
+      ]
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body Text (optional)",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER
+    }
+  ]
+};
+var imageSideBySideBlock = {
+  name: "imageSideBySide",
+  label: "Image (Side by Side)",
+  ui: blockUi("imageSideBySide", "Image (Side by Side)", "heading", {
+    heading: "Compare or contrast",
+    leftImage: {},
+    rightImage: {},
+    style: "polaroid"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)"
+    },
+    {
+      type: "object",
+      name: "leftImage",
+      label: "Left Image",
+      fields: IMAGE_ITEM_FIELDS
+    },
+    {
+      type: "object",
+      name: "rightImage",
+      label: "Right Image",
+      fields: IMAGE_ITEM_FIELDS
+    },
+    {
+      type: "string",
+      name: "style",
+      label: "Frame Style",
+      options: [
+        { value: "polaroid", label: "Polaroid frames" },
+        { value: "clean", label: "Clean (no frame)" },
+        { value: "rounded", label: "Rounded corners" }
+      ]
+    }
+  ]
+};
+var imageMasonryBlock = {
+  name: "imageMasonry",
+  label: "Image (Masonry)",
+  ui: blockUi("imageMasonry", "Image (Masonry)", "heading", {
+    heading: "A wall of work",
+    images: []
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)"
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Images",
+      list: true,
+      ui: {
+        ...IMAGE_LIST_UI,
+        description: "Add 3\u20136 images for an asymmetric masonry layout."
+      },
+      fields: [
+        ...IMAGE_ITEM_FIELDS,
+        {
+          type: "string",
+          name: "size",
+          label: "Tile Size",
+          options: [
+            { value: "auto", label: "Auto" },
+            { value: "tall", label: "Tall" },
+            { value: "wide", label: "Wide" }
+          ]
+        }
+      ]
+    }
+  ]
+};
 var ALL_BLOCKS = [
   // Heroes & headers
   homeHeroBlock,
   aboutHeroBlock,
   heroBlock,
+  heroSplitImageBlock,
+  heroFullBleedBlock,
+  heroFloatingImagesBlock,
+  heroImageGridBlock,
   pageHeaderBlock,
   // Content
   textBlock,
@@ -1318,6 +1744,9 @@ var ALL_BLOCKS = [
   cardRowBlock,
   pillarsBlock,
   imageGalleryBlock,
+  imageSpotlightBlock,
+  imageSideBySideBlock,
+  imageMasonryBlock,
   videoEmbedBlock,
   // Commerce & media
   featuredBookBlock,
@@ -1335,6 +1764,7 @@ var ALL_BLOCKS = [
   newsletterSignupBlock,
   contactInfoBlock,
   contactFormBlock,
+  dummyBookRequestBlock,
   kofiSupportBlock,
   reviewLinksBlock,
   // Standalone page extras
@@ -1343,6 +1773,36 @@ var ALL_BLOCKS = [
 ];
 
 // tina/config.ts
+function InsightsRedirectScreen(_props) {
+  useEffect(() => {
+    window.location.assign("/insights");
+  }, []);
+  return React.createElement(
+    "div",
+    { style: { padding: 32, fontFamily: "system-ui, sans-serif" } },
+    "Opening Owner Insights\u2026"
+  );
+}
+function InsightsScreenIcon() {
+  return React.createElement(
+    "svg",
+    {
+      width: 20,
+      height: 20,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": true
+    },
+    React.createElement("path", { d: "M3 3v18h18" }),
+    React.createElement("path", { d: "M7 14v4" }),
+    React.createElement("path", { d: "M12 10v8" }),
+    React.createElement("path", { d: "M17 6v12" })
+  );
+}
 var INLINE_RICH_TEXT2 = {
   toolbar: ["bold", "italic", "link", "ul", "ol"],
   showFloatingToolbar: true
@@ -1359,6 +1819,7 @@ var CORE_PAGE_SLUGS = [
   "shop",
   "gallery",
   "downloads",
+  "publishers",
   "important-links"
 ];
 var CORE_PAGE_GLOB = `{${CORE_PAGE_SLUGS.join(",")}}`;
@@ -1585,6 +2046,17 @@ var config_default = defineConfig({
       publicFolder: "public"
     }
   },
+  cmsCallback: (cms) => {
+    cms.plugins.add({
+      __type: "screen",
+      name: "Insights",
+      Component: InsightsRedirectScreen,
+      Icon: InsightsScreenIcon,
+      layout: "fullscreen",
+      navCategory: "Dashboard"
+    });
+    return cms;
+  },
   schema: {
     collections: [
       // ---------------------------------------------------------------
@@ -1721,7 +2193,7 @@ var config_default = defineConfig({
             label: "Product ID",
             required: true,
             ui: {
-              description: "Stable numeric ID for cart and checkout. Use a unique number for each product (e.g. 1, 2, 3)."
+              description: "Stable numeric ID for cart and Stripe checkout. Keep unique and do not renumber existing products (e.g. 1, 2, 3)."
             }
           },
           {
@@ -1746,7 +2218,9 @@ var config_default = defineConfig({
             name: "price",
             label: "Price (USD)",
             required: true,
-            ui: { description: "Price in US dollars (e.g. 24.99)." }
+            ui: {
+              description: "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here \u2014 no Stripe dashboard needed."
+            }
           },
           {
             type: "string",
@@ -1771,14 +2245,16 @@ var config_default = defineConfig({
             name: "gumroadUrl",
             label: "Gumroad URL",
             ui: {
-              description: "Optional external purchase link. Leave blank to use site cart/checkout only."
+              description: "Optional post-purchase fallback link shown after Stripe payment if no Download URL is set. Not used for checkout."
             }
           },
           {
             type: "string",
             name: "downloadUrl",
             label: "Download URL",
-            ui: { description: "Optional direct download link for digital products." }
+            ui: {
+              description: "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf)."
+            }
           },
           {
             type: "boolean",
@@ -1792,7 +2268,9 @@ var config_default = defineConfig({
             type: "boolean",
             name: "inStock",
             label: "In Stock",
-            ui: { description: "When off, the product still appears but checkout may be disabled." }
+            ui: {
+              description: "When off, the product still appears in the shop but Buy now / cart checkout are blocked."
+            }
           },
           {
             type: "datetime",

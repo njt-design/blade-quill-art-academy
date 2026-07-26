@@ -10,6 +10,7 @@ export * from "./category";
 export * from "./checkoutRequest";
 export * from "./checkoutResponse";
 export * from "./contactRequest";
+export * from "./contactRequestIntent";
 export * from "./contactResponse";
 export * from "./download";
 export * from "./errorResponse";

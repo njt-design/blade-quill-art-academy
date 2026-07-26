@@ -5,9 +5,14 @@
  * Blade & Quill Art Academy API
  * OpenAPI spec version: 0.1.0
  */
+import type { ContactRequestIntent } from "./contactRequestIntent";
 
 export interface ContactRequest {
   name: string;
   email: string;
   message: string;
+  /** Publisher or company name (dummy-book requests). */
+  company?: string;
+  /** Why the form was submitted; defaults to general. */
+  intent?: ContactRequestIntent;
 }

@@ -5,6 +5,7 @@ import {
   ReactNode,
 } from "react";
 import { cn } from "@/lib/utils";
+import { maybeTrackAmazonClick } from "@/lib/analytics";
 
 type BtnKind = "primary" | "outline" | "ghost" | "light";
 type BtnSize = "sm" | "md" | "lg";
@@ -20,6 +21,8 @@ interface BtnProps
   href?: string;
   /** Open href in a new tab. */
   external?: boolean;
+  /** Analytics placement label when the href is an Amazon outbound link. */
+  analyticsPlacement?: string;
   /** Generic click handler that works for both anchor and button elements. */
   onClick?: (
     e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>
@@ -59,10 +62,18 @@ export function Btn({
   iconRight,
   href,
   external,
+  analyticsPlacement,
   className,
   style,
+  onClick,
   ...rest
 }: BtnProps) {
+  const handleClick = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (href) {
+      maybeTrackAmazonClick(href, analyticsPlacement || "btn");
+    }
+    onClick?.(e);
+  };
   const classes = cn(
     "relative inline-flex items-center justify-center gap-2.5 rounded-full whitespace-nowrap select-none overflow-hidden",
     "font-sans font-semibold tracking-[0.01em]",
@@ -94,7 +105,7 @@ export function Btn({
         rel={external ? "noopener noreferrer" : undefined}
         className={classes}
         style={sharedStyle}
-        onClick={rest.onClick}
+        onClick={handleClick}
       >
         {inner}
       </a>
@@ -106,7 +117,7 @@ export function Btn({
       className={classes}
       style={sharedStyle}
       {...rest}
-      onClick={rest.onClick}
+      onClick={handleClick}
     >
       {inner}
     </button>

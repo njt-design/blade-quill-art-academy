@@ -7,6 +7,7 @@ import { useLiveNavigation } from "@/hooks/use-live-navigation";
 import { type ResolvedNavLink } from "@/lib/navigation-content";
 import { InkUnderline } from "@/components/site/InkUnderline";
 import { QuillMark } from "@/components/site/QuillMark";
+import { maybeTrackAmazonClick } from "@/lib/analytics";
 
 /**
  * Sticky reveal navigation.
@@ -45,7 +46,10 @@ function NavAnchor({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
-        onClick={onClick}
+        onClick={() => {
+          maybeTrackAmazonClick(link.href, "navbar");
+          onClick?.();
+        }}
       >
         {children}
       </a>

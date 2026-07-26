@@ -5,6 +5,7 @@ import { FaAmazon } from "react-icons/fa";
 import { QuillMark } from "@/components/site/QuillMark";
 import { useLiveNavigation } from "@/hooks/use-live-navigation";
 import { useNewsletterSignup } from "@/hooks/use-newsletter";
+import { maybeTrackAmazonClick } from "@/lib/analytics";
 
 const AMAZON_BOOK_URL = "https://www.amazon.com/dp/1733168451";
 const YOUTUBE_URL = "https://www.youtube.com/c/BladeQuillartacademy";
@@ -77,6 +78,9 @@ export function Footer() {
                         rel="noopener noreferrer"
                         className="link-ink text-sm self-start"
                         style={{ color: "var(--paper-2)" }}
+                        onClick={() =>
+                          maybeTrackAmazonClick(item.href, "footer_nav")
+                        }
                       >
                         {item.label}
                       </a>
@@ -181,6 +185,9 @@ export function Footer() {
                 aria-label="Lheeloo & Luna on Amazon"
                 className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                 style={{ color: "var(--paper-3)" }}
+                onClick={() =>
+                  maybeTrackAmazonClick(AMAZON_BOOK_URL, "footer_social")
+                }
               >
                 <FaAmazon className="w-5 h-5" />
               </a>
