@@ -50,13 +50,17 @@ export function WordReveal({
       style={style}
     >
       {words.map((w, i) => (
-        <span key={`${w}-${i}`} className="word-reveal__mask">
-          <span
-            className="word-reveal__word"
-            style={{ transitionDelay: `${i * stepMs}ms` }}
-          >
-            {w}
-            {i < words.length - 1 ? "\u00A0" : ""}
+        // Real spaces between masks give the browser wrap points, so long
+        // headlines break onto new lines instead of overflowing the hero.
+        <span key={`${w}-${i}`}>
+          {i > 0 ? " " : ""}
+          <span className="word-reveal__mask">
+            <span
+              className="word-reveal__word"
+              style={{ transitionDelay: `${i * stepMs}ms` }}
+            >
+              {w}
+            </span>
           </span>
         </span>
       ))}

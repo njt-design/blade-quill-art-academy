@@ -8,17 +8,32 @@ var INLINE_RICH_TEXT = {
   showFloatingToolbar: true
 };
 var SLATE_JSON_PARSER = { type: "slatejson" };
+var charLimit = (max, description) => ({
+  description: [description, `Max ${max} characters.`].filter(Boolean).join(" "),
+  validate: (value) => {
+    if (value && value.length > max) {
+      return `Too long \u2014 ${value.length}/${max} characters. Please shorten so it fits nicely on the page.`;
+    }
+    return void 0;
+  }
+});
 var rt = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
 });
 var IMAGE_ITEM_FIELDS = [
   { type: "image", name: "src", label: "Image" },
-  { type: "string", name: "alt", label: "Alt Text" },
+  {
+    type: "string",
+    name: "alt",
+    label: "Alt Text",
+    ui: charLimit(125, "Short image description for screen readers.")
+  },
   {
     type: "string",
     name: "caption",
-    label: "Caption (optional)"
+    label: "Caption (optional)",
+    ui: charLimit(80)
   }
 ];
 var IMAGE_LIST_UI = {
@@ -51,7 +66,7 @@ var heroBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "Large heading text for this hero section." }
+      ui: charLimit(70, "Large heading text for this hero section.")
     },
     {
       type: "rich-text",
@@ -71,7 +86,7 @@ var heroBlock = {
       type: "string",
       name: "ctaLabel",
       label: "Button Label",
-      ui: { description: 'Text on the call-to-action button (e.g. "Get Started").' }
+      ui: charLimit(24, 'Text on the call-to-action button (e.g. "Get Started").')
     },
     {
       type: "string",
@@ -93,7 +108,7 @@ var textBlock = {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: { description: "Optional heading above the text content." }
+      ui: charLimit(70, "Optional heading above the text content.")
     },
     {
       type: "rich-text",
@@ -116,7 +131,7 @@ var imageGalleryBlock = {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: { description: "Optional heading above the image grid." }
+      ui: charLimit(70, "Optional heading above the image grid.")
     },
     {
       type: "object",
@@ -130,8 +145,8 @@ var imageGalleryBlock = {
       },
       fields: [
         { type: "image", name: "src", label: "Image" },
-        { type: "string", name: "alt", label: "Alt Text" },
-        { type: "string", name: "caption", label: "Caption (optional)" }
+        { type: "string", name: "alt", label: "Alt Text", ui: charLimit(125, "Short image description for screen readers.") },
+        { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) }
       ]
     }
   ]
@@ -151,7 +166,7 @@ var ctaBandBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "Bold heading for the call-to-action strip." }
+      ui: charLimit(70, "Bold heading for the call-to-action strip.")
     },
     {
       type: "rich-text",
@@ -161,7 +176,7 @@ var ctaBandBlock = {
       parser: SLATE_JSON_PARSER,
       ui: { description: "Supporting line below the heading." }
     },
-    { type: "string", name: "ctaLabel", label: "Button Label" },
+    { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "ctaLink",
@@ -189,7 +204,7 @@ var videoEmbedBlock = {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: { description: "Optional heading above the video." }
+      ui: charLimit(70, "Optional heading above the video.")
     },
     {
       type: "string",
@@ -223,7 +238,7 @@ var featureGridBlock = {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: { description: "Optional heading above the feature cards." }
+      ui: charLimit(70, "Optional heading above the feature cards.")
     },
     {
       type: "object",
@@ -242,7 +257,7 @@ var featureGridBlock = {
           label: "Icon Name",
           ui: { description: 'Lucide icon name (e.g. "Brush", "Star", "BookOpen"). Leave blank for no icon.' }
         },
-        { type: "string", name: "title", label: "Title" },
+        { type: "string", name: "title", label: "Title", ui: charLimit(48) },
         {
           type: "rich-text",
           name: "description",
@@ -269,7 +284,7 @@ var bigCtaBlock = {
       type: "string",
       name: "eyebrow",
       label: "Eyebrow",
-      ui: { description: "Small label above the heading." }
+      ui: charLimit(40, "Small label above the heading.")
     },
     {
       type: "string",
@@ -277,23 +292,23 @@ var bigCtaBlock = {
       label: "Heading",
       ui: {
         component: "textarea",
-        description: "Large centered heading. Press Enter to create a line break."
+        ...charLimit(90, "Large centered heading. Press Enter to create a line break.")
       }
     },
     {
       type: "string",
       name: "highlightText",
       label: "Highlighted Word",
-      ui: { description: "A word or phrase from the heading to show in gradient color. Must match the heading text exactly." }
+      ui: charLimit(40, "A word or phrase from the heading to show in gradient color. Must match the heading text exactly.")
     },
-    { type: "string", name: "primaryLabel", label: "Primary Button Label" },
+    { type: "string", name: "primaryLabel", label: "Primary Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "primaryLink",
       label: "Primary Button Link",
       ui: { description: 'Relative URL (e.g. "/contact").' }
     },
-    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "secondaryLink",
@@ -314,7 +329,7 @@ var pageHeaderBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "The main page title shown at the top." }
+      ui: charLimit(60, "The main page title shown at the top.")
     },
     {
       type: "rich-text",
@@ -345,7 +360,7 @@ var homeHeroBlock = {
       type: "string",
       name: "eyebrow",
       label: "Eyebrow",
-      ui: { description: "Small label above the big heading." }
+      ui: charLimit(40, "Small label above the big heading.")
     },
     {
       type: "string",
@@ -353,7 +368,7 @@ var homeHeroBlock = {
       label: "Heading",
       ui: {
         component: "textarea",
-        description: "The giant homepage heading. Press Enter once to split it into two lines \u2014 the second line shows in gradient color."
+        ...charLimit(80, "The giant homepage heading. Press Enter once to split it into two lines \u2014 the second line shows in gradient color.")
       }
     },
     {
@@ -368,7 +383,7 @@ var homeHeroBlock = {
       type: "string",
       name: "ctaPrimary",
       label: "Primary Button Label",
-      ui: { description: 'Text on the orange button (e.g. "Explore the Shop").' }
+      ui: charLimit(24, 'Text on the orange button (e.g. "Explore the Shop").')
     },
     {
       type: "string",
@@ -380,7 +395,7 @@ var homeHeroBlock = {
       type: "string",
       name: "ctaSecondary",
       label: "Secondary Button Label",
-      ui: { description: "Text on the outline button next to the primary one." }
+      ui: charLimit(24, "Text on the outline button next to the primary one.")
     },
     {
       type: "string",
@@ -392,14 +407,14 @@ var homeHeroBlock = {
       type: "string",
       name: "metaLine",
       label: "Meta Line",
-      ui: { description: 'Small line between the quill marks (e.g. "EST. 2018 \xB7 NANTES, FR").' }
+      ui: charLimit(60, 'Small line between the quill marks (e.g. "EST. 2018 \xB7 NANTES, FR").')
     },
     {
       type: "string",
       name: "marqueeItems",
       label: "Scrolling Words",
       list: true,
-      ui: { description: "Words that scroll across the bottom of the hero (e.g. Author, Illustrator)." }
+      ui: { description: "Words that scroll across the bottom of the hero (e.g. Author, Illustrator). Keep each under 20 characters." }
     }
   ]
 };
@@ -416,8 +431,8 @@ var pillarsBlock = {
     ]
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "object",
       name: "items",
@@ -434,16 +449,16 @@ var pillarsBlock = {
           type: "string",
           name: "tag",
           label: "Tag",
-          ui: { description: 'Small label above the card title (e.g. "NEW BOOK").' }
+          ui: charLimit(16, 'Small label above the card title (e.g. "NEW BOOK").')
         },
-        { type: "string", name: "title", label: "Title" },
-        { type: "string", name: "sub", label: "Subtitle" },
-        { type: "string", name: "cta", label: "Link Text" },
+        { type: "string", name: "title", label: "Title", ui: charLimit(48) },
+        { type: "string", name: "sub", label: "Subtitle", ui: charLimit(60) },
+        { type: "string", name: "cta", label: "Link Text", ui: charLimit(24) },
         {
           type: "string",
           name: "badge",
           label: "Corner Badge",
-          ui: { description: 'Small pill in the top-right corner of the image (e.g. "LATEST").' }
+          ui: charLimit(16, 'Small pill in the top-right corner of the image (e.g. "LATEST").')
         },
         {
           type: "string",
@@ -479,8 +494,8 @@ var featuredBookBlock = {
     secondaryLink: "/shop"
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "description",
@@ -500,18 +515,18 @@ var featuredBookBlock = {
         })
       },
       fields: [
-        { type: "string", name: "value", label: "Value" },
-        { type: "string", name: "label", label: "Label" }
+        { type: "string", name: "value", label: "Value", ui: charLimit(12, 'Short figure (e.g. "100K+").') },
+        { type: "string", name: "label", label: "Label", ui: charLimit(24) }
       ]
     },
-    { type: "string", name: "ctaLabel", label: "Primary Button Label" },
+    { type: "string", name: "ctaLabel", label: "Primary Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "ctaLink",
       label: "Primary Button Link",
       ui: { description: 'Relative URL (e.g. "/shop/lheeloo-luna-cartoon-book").' }
     },
-    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
     { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
   ]
 };
@@ -534,9 +549,9 @@ var classesPitchBlock = {
       type: "string",
       name: "eyebrow",
       label: "Eyebrow",
-      ui: { description: 'Small label above the heading (e.g. "Now Enrolling").' }
+      ui: charLimit(40, 'Small label above the heading (e.g. "Now Enrolling").')
     },
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "subheading",
@@ -550,22 +565,22 @@ var classesPitchBlock = {
       name: "bullets",
       label: "Bullet Points",
       list: true,
-      ui: { description: "Numbered benefit bullets." }
+      ui: { description: "Numbered benefit bullets. Keep each under 60 characters." }
     },
     {
       type: "string",
       name: "metaTags",
       label: "Meta Line",
-      ui: { description: 'Small line below the bullets (e.g. "Self-paced \xB7 Krita 5.2"). Separate items with "\xB7".' }
+      ui: charLimit(80, 'Small line below the bullets (e.g. "Self-paced \xB7 Krita 5.2"). Separate items with "\xB7".')
     },
-    { type: "string", name: "ctaLabel", label: "Primary Button Label" },
+    { type: "string", name: "ctaLabel", label: "Primary Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "ctaLink",
       label: "Primary Button Link",
       ui: { description: 'Relative URL (e.g. "/classes").' }
     },
-    { type: "string", name: "secondaryLabel", label: "Secondary Button Label" },
+    { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
     { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
   ]
 };
@@ -587,26 +602,26 @@ var tutorialsStripBlock = {
     ]
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
       name: "headingPrefix",
       label: "Heading \u2014 Start",
-      ui: { description: 'First words of the heading (e.g. "Join ").' }
+      ui: charLimit(30, 'First words of the heading (e.g. "Join ").')
     },
     {
       type: "string",
       name: "headingHighlight",
       label: "Heading \u2014 Highlighted Part",
-      ui: { description: 'Shown in warm gradient color (e.g. "100,000+ artists").' }
+      ui: charLimit(40, 'Shown in warm gradient color (e.g. "100,000+ artists").')
     },
     {
       type: "string",
       name: "headingSuffix",
       label: "Heading \u2014 Second Line",
-      ui: { description: 'Rest of the heading on the next line (e.g. "learning with me.").' }
+      ui: charLimit(40, 'Rest of the heading on the next line (e.g. "learning with me.").')
     },
-    { type: "string", name: "buttonLabel", label: "Button Label" },
+    { type: "string", name: "buttonLabel", label: "Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "youtubeUrl",
@@ -624,8 +639,8 @@ var tutorialsStripBlock = {
         })
       },
       fields: [
-        { type: "string", name: "value", label: "Value" },
-        { type: "string", name: "label", label: "Label" }
+        { type: "string", name: "value", label: "Value", ui: charLimit(12, 'Short figure (e.g. "100K+").') },
+        { type: "string", name: "label", label: "Label", ui: charLimit(24) }
       ]
     }
   ]
@@ -640,9 +655,9 @@ var productStripBlock = {
     viewAllLink: "/shop"
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
-    { type: "string", name: "heading", label: "Heading" },
-    { type: "string", name: "viewAllLabel", label: "View All Label" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
+    { type: "string", name: "viewAllLabel", label: "View All Label", ui: charLimit(24) },
     {
       type: "string",
       name: "viewAllLink",
@@ -671,7 +686,7 @@ var blogFeedBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "Heading above the list of recent blog posts (posts appear automatically)." }
+      ui: charLimit(60, "Heading above the list of recent blog posts (posts appear automatically).")
     },
     {
       type: "boolean",
@@ -684,8 +699,8 @@ var blogFeedBlock = {
       name: "newsletter",
       label: "Newsletter Panel",
       fields: [
-        { type: "string", name: "eyebrow", label: "Eyebrow" },
-        { type: "string", name: "heading", label: "Heading" },
+        { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+        { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
         {
           type: "rich-text",
           name: "subheading",
@@ -693,9 +708,9 @@ var blogFeedBlock = {
           overrides: INLINE_RICH_TEXT,
           parser: SLATE_JSON_PARSER
         },
-        { type: "string", name: "placeholderText", label: "Email Placeholder" },
-        { type: "string", name: "ctaLabel", label: "Submit Button Label" },
-        { type: "string", name: "privacyNote", label: "Privacy Note" }
+        { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
+        { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
+        { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) }
       ]
     }
   ]
@@ -712,8 +727,8 @@ var newsletterSignupBlock = {
     privacyNote: "No spam. Unsubscribe anytime."
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "subheading",
@@ -721,9 +736,9 @@ var newsletterSignupBlock = {
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER
     },
-    { type: "string", name: "placeholderText", label: "Email Placeholder" },
-    { type: "string", name: "ctaLabel", label: "Submit Button Label" },
-    { type: "string", name: "privacyNote", label: "Privacy Note" }
+    { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
+    { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
+    { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) }
   ]
 };
 var aboutHeroBlock = {
@@ -741,14 +756,14 @@ var aboutHeroBlock = {
     portraitCaption: "in the studio"
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow" },
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
       name: "heading",
       label: "Heading",
       ui: {
         component: "textarea",
-        description: "Up to three lines (press Enter to break). The middle line shows in gradient color."
+        ...charLimit(90, "Up to three lines (press Enter to break). The middle line shows in gradient color.")
       }
     },
     {
@@ -759,15 +774,15 @@ var aboutHeroBlock = {
       parser: SLATE_JSON_PARSER,
       ui: { description: "The introductory sentence below the heading. Keep it to 1-2 sentences." }
     },
-    { type: "string", name: "ctaPrimary", label: "Primary Button Label" },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
-    { type: "string", name: "ctaSecondary", label: "Secondary Button Label" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label", ui: charLimit(24) },
     { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
     {
       type: "string",
       name: "metaLine",
       label: "Meta Line",
-      ui: { description: 'Small line under the buttons (e.g. "NANTES, FRANCE \xB7 EST. 2018"). Separate items with "\xB7".' }
+      ui: charLimit(60, 'Small line under the buttons (e.g. "NANTES, FRANCE \xB7 EST. 2018"). Separate items with "\xB7".')
     },
     {
       type: "image",
@@ -779,7 +794,7 @@ var aboutHeroBlock = {
       type: "string",
       name: "portraitCaption",
       label: "Portrait Caption",
-      ui: { description: "Handwritten-style caption under the portrait." }
+      ui: charLimit(48, "Handwritten-style caption under the portrait.")
     },
     {
       type: "image",
@@ -793,7 +808,7 @@ var aboutHeroBlock = {
       type: "string",
       name: "deskCaption",
       label: "Desk Accent Caption",
-      ui: { description: 'Small label on the desk polaroid (e.g. "from the desk").' }
+      ui: charLimit(32, 'Small label on the desk polaroid (e.g. "from the desk").')
     },
     {
       type: "image",
@@ -807,7 +822,7 @@ var aboutHeroBlock = {
       type: "string",
       name: "screenCaption",
       label: "Screen Accent Caption",
-      ui: { description: 'Small label on the screen polaroid (e.g. "krita screen").' }
+      ui: charLimit(32, 'Small label on the screen polaroid (e.g. "krita screen").')
     }
   ]
 };
@@ -834,8 +849,8 @@ var statsRowBlock = {
         })
       },
       fields: [
-        { type: "string", name: "value", label: "Value" },
-        { type: "string", name: "label", label: "Label" }
+        { type: "string", name: "value", label: "Value", ui: charLimit(12, 'Short figure (e.g. "100K+").') },
+        { type: "string", name: "label", label: "Label", ui: charLimit(24) }
       ]
     }
   ]
@@ -857,19 +872,19 @@ var storyBlock = {
       type: "string",
       name: "number",
       label: "Section Number",
-      ui: { description: 'The small orange number in the left margin (e.g. "01").' }
+      ui: charLimit(4, 'The small orange number in the left margin (e.g. "01").')
     },
     {
       type: "string",
       name: "label",
       label: "Section Label",
-      ui: { description: 'The small label in the left margin (e.g. "STORY").' }
+      ui: charLimit(24, 'The small label in the left margin (e.g. "STORY").')
     },
     {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { component: "textarea", description: "Press Enter to create a line break." }
+      ui: { component: "textarea", ...charLimit(80, "Press Enter to create a line break.") }
     },
     {
       type: "rich-text",
@@ -903,7 +918,7 @@ var storyBlock = {
       type: "string",
       name: "sideCaption",
       label: "Side Photo Caption",
-      ui: { description: "Caption under the small polaroid on the right." }
+      ui: charLimit(48, "Caption under the small polaroid on the right.")
     }
   ]
 };
@@ -919,8 +934,8 @@ var timelineBlock = {
     ]
   }),
   fields: [
-    { type: "string", name: "number", label: "Section Number" },
-    { type: "string", name: "label", label: "Section Label" },
+    { type: "string", name: "number", label: "Section Number", ui: charLimit(4, 'e.g. "02".') },
+    { type: "string", name: "label", label: "Section Label", ui: charLimit(24) },
     {
       type: "object",
       name: "events",
@@ -932,9 +947,9 @@ var timelineBlock = {
         })
       },
       fields: [
-        { type: "string", name: "year", label: "Year" },
-        { type: "string", name: "title", label: "Title" },
-        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+        { type: "string", name: "year", label: "Year", ui: charLimit(12) },
+        { type: "string", name: "title", label: "Title", ui: charLimit(48) },
+        { type: "string", name: "description", label: "Description", ui: { component: "textarea", ...charLimit(220) } },
         {
           type: "image",
           name: "image",
@@ -958,8 +973,8 @@ var cardRowBlock = {
     ]
   }),
   fields: [
-    { type: "string", name: "number", label: "Section Number" },
-    { type: "string", name: "label", label: "Section Label" },
+    { type: "string", name: "number", label: "Section Number", ui: charLimit(4, 'e.g. "02".') },
+    { type: "string", name: "label", label: "Section Label", ui: charLimit(24) },
     {
       type: "object",
       name: "cards",
@@ -975,17 +990,17 @@ var cardRowBlock = {
           type: "string",
           name: "tag",
           label: "Tag",
-          ui: { description: 'Small label above the title (e.g. "BOOKS").' }
+          ui: charLimit(16, 'Small label above the title (e.g. "BOOKS").')
         },
-        { type: "string", name: "title", label: "Title" },
-        { type: "string", name: "body", label: "Body", ui: { component: "textarea" } },
+        { type: "string", name: "title", label: "Title", ui: charLimit(48) },
+        { type: "string", name: "body", label: "Body", ui: { component: "textarea", ...charLimit(220) } },
         {
           type: "image",
           name: "image",
           label: "Image",
           ui: { description: "Card thumbnail. Leave blank to use the default fallback art." }
         },
-        { type: "string", name: "ctaLabel", label: "Link Text" },
+        { type: "string", name: "ctaLabel", label: "Link Text", ui: charLimit(24) },
         {
           type: "string",
           name: "link",
@@ -1012,13 +1027,13 @@ var shopCatalogBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "The big shop heading. Products themselves are managed under Shop Products." }
+      ui: charLimit(48, "The big shop heading. Products themselves are managed under Shop Products.")
     },
     {
       type: "string",
       name: "highlightText",
       label: "Highlighted Word",
-      ui: { description: "A word from the heading to show in gradient color. Must match the heading text exactly." }
+      ui: charLimit(40, "A word from the heading to show in gradient color. Must match the heading text exactly.")
     },
     {
       type: "rich-text",
@@ -1037,12 +1052,13 @@ var shopCatalogBlock = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: { description: "Heading shown when no products match the filter." }
+      ui: charLimit(60, "Heading shown when no products match the filter.")
     },
     {
       type: "string",
       name: "emptyDescription",
-      label: "Empty State Description"
+      label: "Empty State Description",
+      ui: charLimit(120)
     }
   ]
 };
@@ -1058,12 +1074,13 @@ var galleryGridBlock = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: { description: "Images load automatically from the gallery database. This heading only shows if the gallery is empty." }
+      ui: charLimit(60, "Images load automatically from the gallery database. This heading only shows if the gallery is empty.")
     },
     {
       type: "string",
       name: "emptyDescription",
-      label: "Empty State Description"
+      label: "Empty State Description",
+      ui: charLimit(120)
     }
   ]
 };
@@ -1079,12 +1096,13 @@ var downloadsGridBlock = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: { description: "Downloads load automatically. This heading only shows when there are none." }
+      ui: charLimit(60, "Downloads load automatically. This heading only shows when there are none.")
     },
     {
       type: "string",
       name: "emptyDescription",
-      label: "Empty State Description"
+      label: "Empty State Description",
+      ui: charLimit(120)
     }
   ]
 };
@@ -1106,7 +1124,7 @@ var contactInfoBlock = {
       type: "string",
       name: "location",
       label: "Location",
-      ui: { description: 'General location (e.g. "Des Moines, IA").' }
+      ui: charLimit(48, 'General location (e.g. "Des Moines, IA").')
     }
   ]
 };
@@ -1129,7 +1147,7 @@ var dummyBookRequestBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { description: "Heading above the request form." }
+      ui: charLimit(60, "Heading above the request form.")
     },
     {
       type: "rich-text",
@@ -1147,20 +1165,20 @@ var dummyBookRequestBlock = {
         description: "Path or URL to the dummy-book PDF revealed after a successful request."
       }
     },
-    { type: "string", name: "submitLabel", label: "Submit Button Label" },
+    { type: "string", name: "submitLabel", label: "Submit Button Label", ui: charLimit(32) },
     {
       type: "string",
       name: "successHeading",
       label: "Success Heading",
-      ui: { description: "Shown after the request is sent." }
+      ui: charLimit(60, "Shown after the request is sent.")
     },
     {
       type: "string",
       name: "successNote",
       label: "Success Note",
-      ui: { component: "textarea", description: "Short note above the download button." }
+      ui: { component: "textarea", ...charLimit(220, "Short note above the download button.") }
     },
-    { type: "string", name: "downloadLabel", label: "Download Button Label" }
+    { type: "string", name: "downloadLabel", label: "Download Button Label", ui: charLimit(32) }
   ]
 };
 var contactFormBlock = {
@@ -1174,7 +1192,7 @@ var contactFormBlock = {
       type: "string",
       name: "submitLabel",
       label: "Submit Button Label",
-      ui: { description: "Messages are delivered to the studio inbox automatically." }
+      ui: charLimit(24, "Messages are delivered to the studio inbox automatically.")
     }
   ]
 };
@@ -1190,13 +1208,13 @@ var marqueeBlock = {
       type: "string",
       name: "highlightText",
       label: "Highlighted Text",
-      ui: { description: "The first part of the announcement, shown in orange." }
+      ui: charLimit(40, "The first part of the announcement, shown in orange.")
     },
     {
       type: "string",
       name: "text",
       label: "Text",
-      ui: { description: "The rest of the announcement, shown in muted color." }
+      ui: charLimit(80, "The rest of the announcement, shown in muted color.")
     }
   ]
 };
@@ -1215,9 +1233,9 @@ var featuredReleaseBlock = {
       type: "string",
       name: "eyebrow",
       label: "Eyebrow Label",
-      ui: { description: 'Small label above the title (e.g. "New Featured Release").' }
+      ui: charLimit(40, 'Small label above the title (e.g. "New Featured Release").')
     },
-    { type: "string", name: "title", label: "Title", required: true },
+    { type: "string", name: "title", label: "Title", required: true, ui: charLimit(60) },
     {
       type: "rich-text",
       name: "description",
@@ -1236,7 +1254,7 @@ var featuredReleaseBlock = {
       label: "Back Cover Image",
       ui: { description: "Optional second cover (shown alongside the front)." }
     },
-    { type: "string", name: "ctaLabel", label: "Button Label" },
+    { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     {
       type: "string",
       name: "ctaHref",
@@ -1263,7 +1281,7 @@ var kofiSupportBlock = {
     href: "https://ko-fi.com/bladeandquill"
   }),
   fields: [
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "body",
@@ -1271,7 +1289,7 @@ var kofiSupportBlock = {
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER
     },
-    { type: "string", name: "ctaLabel", label: "Button Label" },
+    { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     { type: "string", name: "href", label: "Ko-fi URL" }
   ]
 };
@@ -1289,9 +1307,10 @@ var socialLinksBlock = {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: {
-        description: "When set, the links show inside a centered panel with this heading (like the Ko-fi support section). Leave blank for a simple icon row."
-      }
+      ui: charLimit(
+        60,
+        "When set, the links show inside a centered panel with this heading (like the Ko-fi support section). Leave blank for a simple icon row."
+      )
     },
     {
       type: "rich-text",
@@ -1330,7 +1349,7 @@ var socialLinksBlock = {
           type: "string",
           name: "label",
           label: "Label",
-          ui: { description: "Accessible name for the link (read by screen readers)." }
+          ui: charLimit(32, "Accessible name for the link (read by screen readers).")
         }
       ]
     }
@@ -1349,7 +1368,7 @@ var reviewLinksBlock = {
     ]
   }),
   fields: [
-    { type: "string", name: "heading", label: "Heading" },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "intro",
@@ -1357,8 +1376,8 @@ var reviewLinksBlock = {
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER
     },
-    { type: "string", name: "thankYou", label: "Thank You Message" },
-    { type: "string", name: "ctaHeading", label: "Buttons Heading" },
+    { type: "string", name: "thankYou", label: "Thank You Message", ui: charLimit(80) },
+    { type: "string", name: "ctaHeading", label: "Buttons Heading", ui: charLimit(80) },
     {
       type: "object",
       name: "links",
@@ -1371,7 +1390,7 @@ var reviewLinksBlock = {
         })
       },
       fields: [
-        { type: "string", name: "label", label: "Button Label" },
+        { type: "string", name: "label", label: "Button Label", ui: charLimit(32) },
         {
           type: "string",
           name: "href",
@@ -1410,7 +1429,7 @@ var heroSplitImageBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { component: "textarea", description: "Use a line break for a two-line headline." }
+      ui: { component: "textarea", ...charLimit(80, "Use a line break for a two-line headline.") }
     },
     {
       type: "rich-text",
@@ -1428,12 +1447,14 @@ var heroSplitImageBlock = {
     {
       type: "string",
       name: "imageAlt",
-      label: "Image Alt Text"
+      label: "Image Alt Text",
+      ui: charLimit(125, "Short image description for screen readers.")
     },
     {
       type: "string",
       name: "imageCaption",
-      label: "Image Caption (optional)"
+      label: "Image Caption (optional)",
+      ui: charLimit(80)
     },
     {
       type: "string",
@@ -1444,9 +1465,9 @@ var heroSplitImageBlock = {
         { value: "left", label: "Image on left" }
       ]
     },
-    { type: "string", name: "ctaPrimary", label: "Primary Button Label" },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
-    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
   ]
 };
@@ -1473,7 +1494,7 @@ var heroFullBleedBlock = {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { component: "textarea" }
+      ui: { component: "textarea", ...charLimit(70, "Press Enter to create a line break.") }
     },
     {
       type: "rich-text",
@@ -1511,7 +1532,7 @@ var heroFullBleedBlock = {
         { value: "short", label: "Short (45vh)" }
       ]
     },
-    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaLink", label: "Button Link" }
   ]
 };
@@ -1527,12 +1548,12 @@ var heroFloatingImagesBlock = {
     ctaPrimaryLink: "/gallery"
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { component: "textarea" }
+      ui: { component: "textarea", ...charLimit(70, "Press Enter to create a line break.") }
     },
     {
       type: "rich-text",
@@ -1552,9 +1573,9 @@ var heroFloatingImagesBlock = {
       },
       fields: IMAGE_ITEM_FIELDS
     },
-    { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)" },
+    { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
-    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)" },
+    { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
   ]
 };
@@ -1568,12 +1589,12 @@ var heroImageGridBlock = {
     images: []
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
       name: "heading",
       label: "Heading",
-      ui: { component: "textarea" }
+      ui: { component: "textarea", ...charLimit(70, "Press Enter to create a line break.") }
     },
     {
       type: "rich-text",
@@ -1600,7 +1621,7 @@ var heroImageGridBlock = {
       ui: IMAGE_LIST_UI,
       fields: IMAGE_ITEM_FIELDS
     },
-    { type: "string", name: "ctaLabel", label: "Button Label (optional)" },
+    { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaLink", label: "Button Link" }
   ]
 };
@@ -1614,20 +1635,20 @@ var imageSpotlightBlock = {
     aspect: "landscape"
   }),
   fields: [
-    { type: "string", name: "eyebrow", label: "Eyebrow (optional)" },
+    { type: "string", name: "eyebrow", label: "Eyebrow (optional)", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
       name: "heading",
       label: "Heading (optional)",
-      ui: { component: "textarea" }
+      ui: { component: "textarea", ...charLimit(70, "Press Enter to create a line break.") }
     },
     {
       type: "image",
       name: "image",
       label: "Image"
     },
-    { type: "string", name: "alt", label: "Alt Text" },
-    { type: "string", name: "caption", label: "Caption (optional)" },
+    { type: "string", name: "alt", label: "Alt Text", ui: charLimit(125, "Short image description for screen readers.") },
+    { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) },
     {
       type: "string",
       name: "aspect",
@@ -1661,7 +1682,8 @@ var imageSideBySideBlock = {
     {
       type: "string",
       name: "heading",
-      label: "Heading (optional)"
+      label: "Heading (optional)",
+      ui: charLimit(60)
     },
     {
       type: "object",
@@ -1698,7 +1720,8 @@ var imageMasonryBlock = {
     {
       type: "string",
       name: "heading",
-      label: "Heading (optional)"
+      label: "Heading (optional)",
+      ui: charLimit(60)
     },
     {
       type: "object",
@@ -1830,7 +1853,7 @@ var pageFields = [
     label: "Page Title",
     required: true,
     isTitle: true,
-    ui: { description: "Shown in the browser tab and used to name the page in this list." }
+    ui: charLimit(60, "Shown in the browser tab and used to name the page in this list.")
   },
   {
     type: "string",
@@ -1869,7 +1892,7 @@ function navLinkFields() {
       name: "label",
       label: "Label",
       required: true,
-      ui: { description: "The text shown in the menu." }
+      ui: charLimit(24, "The text shown in the menu.")
     },
     {
       type: "string",
@@ -2158,7 +2181,8 @@ var config_default = defineConfig({
                 type: "string",
                 name: "heading",
                 label: "Column Heading",
-                required: true
+                required: true,
+                ui: charLimit(32)
               },
               {
                 type: "object",
@@ -2201,7 +2225,7 @@ var config_default = defineConfig({
             name: "name",
             label: "Name",
             required: true,
-            ui: { description: "Product title shown on cards and the detail page." }
+            ui: charLimit(80, "Product title shown on cards and the detail page.")
           },
           {
             type: "rich-text",
@@ -2306,7 +2330,7 @@ var config_default = defineConfig({
             label: "Title",
             required: true,
             isTitle: true,
-            ui: { description: "The post headline. Shows in the blog list and at the top of the post." }
+            ui: charLimit(90, "The post headline. Shows in the blog list and at the top of the post.")
           },
           {
             type: "rich-text",
@@ -2333,7 +2357,7 @@ var config_default = defineConfig({
             name: "tags",
             label: "Tags",
             list: true,
-            ui: { description: "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes')." }
+            ui: { description: "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes'). Keep each under 24 characters." }
           },
           {
             type: "rich-text",

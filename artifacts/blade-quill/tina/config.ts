@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
-import { ALL_BLOCKS } from "./blocks";
+import { ALL_BLOCKS, charLimit } from "./blocks";
 
 /** Tina sidebar screen that sends Corinne to the Owner Insights page. */
 function InsightsRedirectScreen(_props: { close: () => void }) {
@@ -79,7 +79,7 @@ const pageFields: TinaField[] = [
     label: "Page Title",
     required: true,
     isTitle: true,
-    ui: { description: "Shown in the browser tab and used to name the page in this list." },
+    ui: charLimit(60, "Shown in the browser tab and used to name the page in this list."),
   },
   {
     type: "string",
@@ -132,7 +132,7 @@ function navLinkFields(): TinaField[] {
       name: "label",
       label: "Label",
       required: true,
-      ui: { description: "The text shown in the menu." },
+      ui: charLimit(24, "The text shown in the menu."),
     },
     {
       type: "string",
@@ -458,6 +458,7 @@ export default defineConfig({
                 name: "heading",
                 label: "Column Heading",
                 required: true,
+                ui: charLimit(32),
               },
               {
                 type: "object",
@@ -505,7 +506,7 @@ export default defineConfig({
             name: "name",
             label: "Name",
             required: true,
-            ui: { description: "Product title shown on cards and the detail page." },
+            ui: charLimit(80, "Product title shown on cards and the detail page."),
           },
           {
             type: "rich-text",
@@ -624,7 +625,7 @@ export default defineConfig({
             label: "Title",
             required: true,
             isTitle: true,
-            ui: { description: "The post headline. Shows in the blog list and at the top of the post." },
+            ui: charLimit(90, "The post headline. Shows in the blog list and at the top of the post."),
           },
           {
             type: "rich-text",
@@ -651,7 +652,7 @@ export default defineConfig({
             name: "tags",
             label: "Tags",
             list: true,
-            ui: { description: "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes')." },
+            ui: { description: "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes'). Keep each under 24 characters." },
           },
           {
             type: "rich-text",
