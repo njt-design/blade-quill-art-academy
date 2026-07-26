@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Blade & Quill Art Academy — a new website is on the way."
+    />
+    <meta name="robots" content="noindex" />
+    <title>Coming Soon · Blade & Quill Art Academy</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #2e2222;
+        --ink-soft: #4a3838;
+        --ink-mute: #776562;
+        --paper: #dfd2cc;
+        --paper-2: #d6c6bf;
+        --gold: #d9b783;
+        --gold-deep: #c29e63;
+        --maroon: #9a5151;
+        --maroon-deep: #7e3e3e;
+        --g-cta: linear-gradient(135deg, #9a5151 0%, #7e3e3e 100%);
+        --g-warm: linear-gradient(135deg, #d9b783 0%, #c29e63 100%);
+        --f-serif: "Young Serif", Georgia, "Times New Roman", serif;
+        --f-sans: "Quicksand", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        font-family: var(--f-sans);
+        color: var(--ink);
+        background: var(--paper);
+        background-image:
+          radial-gradient(
+            ellipse 80% 50% at 50% -10%,
+            rgba(217, 183, 131, 0.35),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 100% 100%,
+            rgba(154, 81, 81, 0.12),
+            transparent 55%
+          );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1.25rem 3rem;
+      }
+
+      .card {
+        width: min(36rem, 100%);
+        text-align: center;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 2.25rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .mark {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 10px;
+        background: var(--g-cta);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .brand-name {
+        font-family: var(--f-serif);
+        font-size: 1.5rem;
+        letter-spacing: 0.01em;
+        line-height: 1.15;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--maroon);
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-family: var(--f-serif);
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .rule {
+        width: 4rem;
+        height: 3px;
+        margin: 0 auto 1.25rem;
+        border-radius: 999px;
+        background: var(--g-warm);
+      }
+
+      p {
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        max-width: 28rem;
+        margin: 0 auto 2rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 2.75rem;
+        padding: 0.65rem 1.25rem;
+        border-radius: 999px;
+        font-family: var(--f-sans);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: var(--paper);
+        background: var(--g-cta);
+        box-shadow: 0 8px 20px rgba(126, 62, 62, 0.25);
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 10px 24px rgba(126, 62, 62, 0.32);
+      }
+
+      .btn-secondary {
+        color: var(--ink);
+        background: transparent;
+        border: 1.5px solid var(--ink-mute);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--ink);
+        background: rgba(46, 34, 34, 0.04);
+      }
+
+      .foot {
+        margin-top: 3rem;
+        font-size: 0.8125rem;
+        color: var(--ink-mute);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="brand" aria-label="Blade & Quill Art Academy">
+        <span class="mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M3 21 Q 10 14, 18 6 Q 19 5, 20 4.5"
+              stroke="#DFD2CC"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+            <path
+              d="M14 8 Q 18 7, 21 4 L 20 8 Q 17 10, 14 10 Z"
+              fill="#DFD2CC"
+              opacity="0.85"
+            />
+            <path
+              d="M3 21 L 6 19"
+              stroke="#DFD2CC"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <span class="brand-name">Blade &amp; Quill</span>
+      </div>
+
+      <span class="eyebrow">Under construction</span>
+      <h1>We’re building something new</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p>
+        A fresh Blade &amp; Quill Art Academy website is almost ready. In the
+        meantime, catch tutorials on YouTube or browse the latest book release
+        links.
+      </p>
+
+      <div class="actions">
+        <a
+          class="btn btn-primary"
+          href="https://www.youtube.com/c/BladeQuillartacademy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch on YouTube
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="https://newrelease.bladeandquillartacademy.com"
+        >
+          New release links
+        </a>
+      </div>
+
+      <p class="foot">Blade &amp; Quill Art Academy · Coming soon</p>
+    </main>
+  </body>
+</html>

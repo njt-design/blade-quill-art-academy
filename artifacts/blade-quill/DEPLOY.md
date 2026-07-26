@@ -204,3 +204,56 @@ The host-specific rewrite in `vercel.json` only affects the temp domain. The mai
 2. Keep `/important-links-page` on the same path (book QR codes and social links may reference it).
 3. Add a 301 redirect from the temp domain to the official URL (Vercel Dashboard → Domains → redirect).
 4. Remove the temp domain from the project and delete the host rewrite from `vercel.json`.
+
+## Official domain migration (Squarespace → Vercel)
+
+`bladeandquillartacademy.com` moves from Squarespace hosting to this Vercel project. Apex is canonical (`www` redirects to apex). There are no MX records to preserve.
+
+While cutover is in progress, a host-scoped rewrite in repo-root [`vercel.json`](../../vercel.json) serves [`public/under-construction.html`](./public/under-construction.html) for `(www.)?bladeandquillartacademy.com`. The full site stays available on `blade-quill-art-academy.vercel.app`. `newrelease.bladeandquillartacademy.com` is unchanged.
+
+### Phase A — DNS cutover (domain shows Under Construction)
+
+1. Vercel Dashboard → **blade-quill-art-academy** → **Settings → Domains**.
+2. Add `bladeandquillartacademy.com` as the primary production domain.
+3. Add `www.bladeandquillartacademy.com` and set it to **redirect to** `bladeandquillartacademy.com` (301).
+4. Copy the DNS values Vercel shows (typically apex **A** → `76.76.21.21`, and `www` **CNAME** → `cname.vercel-dns.com`). Confirm against the dashboard — values can change.
+5. Squarespace → **Domains** → `bladeandquillartacademy.com` → **DNS settings**:
+   - Delete the Squarespace preset apex **A** records (`198.185.159.144/145`, `198.49.23.144/145`).
+   - Delete the `www` **CNAME** to `ext-sq.squarespace.com`.
+   - Add the Vercel apex **A** record and `www` **CNAME**.
+   - Leave the existing `newrelease` **CNAME** → `blade-quill-art-academy.vercel.app` alone.
+6. Wait for propagation (apex TTL was ~4h). Verify:
+   - Vercel shows a valid SSL cert for apex + www.
+   - `https://bladeandquillartacademy.com` and `https://www.bladeandquillartacademy.com` show the Under Construction page.
+   - `https://blade-quill-art-academy.vercel.app` still serves the full site.
+   - `https://newrelease.bladeandquillartacademy.com` still serves Important Links.
+
+Squarespace keeps answering until each resolver’s cache expires — no hard downtime window.
+
+### Phase B — Transfer registration to Vercel
+
+Do this only after Phase A is stable. Transferring the registrar does not change resolution if DNS records are recreated correctly.
+
+1. Squarespace → Domains → domain → **Transfer**: unlock the domain and copy the EPP/auth code. Transfers are blocked within 60 days of registration/prior transfer — check the panel.
+2. Vercel Dashboard → **Domains → Transfer In**: enter the domain + auth code and pay the 1-year renewal (~$20 for `.com`).
+3. In the transfer / Vercel DNS setup, recreate:
+   - Apex **A** → Vercel (per dashboard)
+   - `www` **CNAME** → Vercel (or keep as redirect hostname on the project)
+   - `newrelease` **CNAME** → `blade-quill-art-academy.vercel.app`
+4. Approve the outbound transfer in Squarespace so it finishes in minutes instead of 5–7 days. Do **not** cancel Squarespace website/domain services before the transfer completes.
+5. After transfer succeeds: cancel the Squarespace **website** subscription (the domain leaves Squarespace automatically).
+
+### Phase C — Launch flip (remove Under Construction)
+
+When ready for the real homepage:
+
+1. Remove the host-scoped under-construction rewrite from repo-root [`vercel.json`](../../vercel.json) (the HTML file can stay harmlessly or be deleted).
+2. Push to `main` (or `vercel deploy --prod`). Production build ~30s; the domain serves the real site with no DNS change.
+
+### Phase D — Post-migration checklist
+
+- **Stripe**: Point the webhook endpoint at `https://bladeandquillartacademy.com/api/stripe/webhook` (events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`). If this is a new endpoint, update Vercel env `STRIPE_WEBHOOK_SECRET`.
+- **Resend**: Verify `bladeandquillartacademy.com` in Resend (add DKIM/SPF TXT records in Vercel DNS). Then set `CONTACT_FROM_EMAIL` to something like `Blade & Quill <contact@bladeandquillartacademy.com>`.
+- **Tina Cloud**: At [app.tina.io](https://app.tina.io), add `https://bladeandquillartacademy.com` to the project Site URLs so `/admin` login works on the production domain.
+- **GA4**: No change — the site already uses measurement ID `G-50YS8RZ7HL`.
+- **newrelease teardown** (optional, later): 301 the temp subdomain to the main site and remove its host rewrite/redirect from `vercel.json` (see Temporary domain teardown above).

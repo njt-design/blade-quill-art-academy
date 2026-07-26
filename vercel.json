@@ -82,6 +82,11 @@
   ],
   "rewrites": [
     {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "(www\\.)?bladeandquillartacademy\\.com" }],
+      "destination": "/under-construction.html"
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
       "destination": "/important-links-page"
