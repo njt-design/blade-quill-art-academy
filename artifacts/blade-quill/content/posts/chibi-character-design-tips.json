@@ -10,7 +10,8 @@
             "type": "text",
             "text": "This is a test."
           }
-        ]
+        ],
+        "id": "FlFTBsKTyh"
       }
     ]
   },
@@ -24,11 +25,272 @@
     "type": "root",
     "children": [
       {
+        "children": [
+          {
+            "text": "Hello,"
+          }
+        ],
+        "id": "n1pNVqnp0L",
+        "type": "p"
+      },
+      {
+        "id": "LBRosABSSE",
         "type": "p",
         "children": [
           {
-            "type": "text",
-            "text": "Lorem ipsum dolor sit amet"
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "fpc_vhF2Gh",
+        "type": "p",
+        "children": [
+          {
+            "text": "My name is Corinne Hadaway, and I'm the creator of Blade & Quill, a YouTube channel dedicated to helping beginner and intermediate artists learn digital art with Krita."
+          }
+        ]
+      },
+      {
+        "id": "_4XACrInya",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "ZoyHaR7NAd",
+        "type": "p",
+        "children": [
+          {
+            "text": "One of the most common questions I receive from my audience is, \"Which drawing tablet should I buy?\" Many of my viewers are looking for reliable tools to help them grow their artistic skills, whether they create for enjoyment or are building creative businesses selling digital products online."
+          }
+        ]
+      },
+      {
+        "id": "MSMm8F9Yeb",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "KhX2PD5tj6",
+        "type": "p",
+        "children": [
+          {
+            "text": "I've been using Huion tablets for several years, and I'd love the opportunity to discuss a collaboration with Huion. I believe your products are a natural fit for my audience, and I would enjoy creating educational content such as tutorials, workflow demonstrations, beginner buying guides, and honest product reviews that help artists choose the right tablet for their needs."
+          }
+        ]
+      },
+      {
+        "id": "vlgK03DtBy",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "Y82xJmBhlr",
+        "type": "p",
+        "children": [
+          {
+            "text": "If you're interested, I'd be happy to send you my creator media kit, which includes information about my audience, channel statistics, and partnership ideas."
+          }
+        ]
+      },
+      {
+        "id": "RXYe_XLVxG",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "1XE1I7XrrJ",
+        "type": "p",
+        "children": [
+          {
+            "text": "Thank you for your time and consideration. I look forward to hearing from you."
+          }
+        ]
+      },
+      {
+        "id": "_6M1tJEd8d",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "BMVgEwgao2",
+        "type": "p",
+        "children": [
+          {
+            "text": "Kind regards,"
+          }
+        ]
+      },
+      {
+        "id": "n13OK-IMpT",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "Y92dysl0at",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "b0_W5e11HQ",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "1bKm6b-9ag",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "xoNfP4Lby7",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "ezys1PpzRA",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "Azs8Ufsa59",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "AbcydB8BmG",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "VVf5zWDRs1",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "E1uEqoEvVu",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "K908CSrEEU",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "XC3tU8HSnR",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "9ZfqfMuncR",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "y8pJEDYoCG",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "7lEdSIDPIN",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "flATQG6Nf6",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "o0IbmZwxnR",
+        "type": "p",
+        "children": [
+          {
+            "text": ""
           }
         ]
       }
