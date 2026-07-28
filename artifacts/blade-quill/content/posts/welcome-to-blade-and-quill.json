@@ -38,19 +38,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Here’s the website you’ll need to visit to access the latest updates."
-          }
-        ],
-        "id": "_6YPEAGzuc"
-      },
-      {
-        "type": "p",
-        "id": "HWGXotb3P2",
-        "children": [
-          {
-            "type": "text",
-            "id": "7eT6QK-4C2",
-            "text": ""
+            "text": "Click on the website to access the latest updates: "
           },
           {
             "children": [
@@ -70,7 +58,8 @@
           {
             "text": ""
           }
-        ]
+        ],
+        "id": "_6YPEAGzuc"
       },
       {
         "type": "h1",
