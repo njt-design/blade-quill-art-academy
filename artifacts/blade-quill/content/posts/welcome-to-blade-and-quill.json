@@ -24,7 +24,7 @@
     "type": "root",
     "children": [
       {
-        "type": "h2",
+        "type": "h1",
         "children": [
           {
             "type": "text",
@@ -73,7 +73,7 @@
         ]
       },
       {
-        "type": "h2",
+        "type": "h1",
         "children": [
           {
             "type": "text",
