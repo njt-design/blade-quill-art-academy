@@ -101,9 +101,6 @@ export function ArtTile({
     boxShadow: "0 4px 12px rgba(46,34,34,0.12)",
     transform: interactive || !rotate ? undefined : `rotate(${rot})`,
     "--rot": interactive ? undefined : rot,
-    ...(src
-      ? { display: "flex", alignItems: "center", justifyContent: "center" }
-      : {}),
   };
 
   const { wrap: wrapLayout, inner: innerLayout } = splitHeroLayoutStyle(style);
@@ -115,7 +112,7 @@ export function ArtTile({
           src={src}
           alt={alt ?? label ?? ""}
           loading="lazy"
-          className="art-tile-media max-w-full max-h-full w-auto h-auto object-contain"
+          className="art-tile-media w-full h-full object-cover"
         />
       )}
       {label && (
