@@ -57,7 +57,10 @@
               {
                 "type": "text",
                 "text": "https://www.huion.com/download",
-                "id": "iIqzgotIYX"
+                "id": "iIqzgotIYX",
+                "bold": true,
+                "highlight": true,
+                "highlightColor": "#FEF08A"
               }
             ],
             "type": "a",
