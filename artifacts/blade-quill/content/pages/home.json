@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "✦ WELCOME ✦",
-      "heading": "Author, illustrator, and digital art educator.",
+      "heading": "Author, illustrator, and digital art educator.\n",
       "subheading": {
         "type": "root",
         "children": [
@@ -81,7 +81,7 @@
     },
     {
       "eyebrow": "FEATURED RELEASE",
-      "heading": "Lheeloo & Luna — Order your book today!",
+      "heading": "Lheeloo & Luna Order your book today!",
       "description": {
         "type": "root",
         "children": [
