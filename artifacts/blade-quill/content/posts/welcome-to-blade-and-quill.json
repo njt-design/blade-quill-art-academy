@@ -1,5 +1,5 @@
 {
-  "title": "Welcome to the New Blade & Quill Website",
+  "title": "How to create a ____ Test___ ",
   "excerpt": {
     "type": "root",
     "children": [
@@ -10,7 +10,8 @@
             "type": "text",
             "text": "The site has had a complete makeover! Here's what's new, what's coming, and how you can get the most out of your creative journey with us."
           }
-        ]
+        ],
+        "id": "mHAHIHdwiV"
       }
     ]
   },
@@ -30,7 +31,8 @@
             "type": "text",
             "text": "A Fresh Start"
           }
-        ]
+        ],
+        "id": "5NEMStZ9S_"
       },
       {
         "type": "p",
@@ -39,7 +41,8 @@
             "type": "text",
             "text": "After months of work, the new Blade & Quill Art Academy website is finally live! The site has been rebuilt from the ground up with a cleaner design, faster loading times, and a much better experience on mobile devices."
           }
-        ]
+        ],
+        "id": "_6YPEAGzuc"
       },
       {
         "type": "h2",
@@ -48,7 +51,8 @@
             "type": "text",
             "text": "What's New"
           }
-        ]
+        ],
+        "id": "0a3dFh_ym-"
       },
       {
         "type": "ul",
@@ -63,9 +67,11 @@
                     "type": "text",
                     "text": "A full gallery of my artwork with a lightbox viewer"
                   }
-                ]
+                ],
+                "id": "S9QBDj8JMT"
               }
-            ]
+            ],
+            "id": "ag17fSyiOY"
           },
           {
             "type": "li",
@@ -77,9 +83,11 @@
                     "type": "text",
                     "text": "Embedded YouTube tutorials so you can watch right on the site"
                   }
-                ]
+                ],
+                "id": "RVJmzJUFLX"
               }
-            ]
+            ],
+            "id": "cAlY4nZOFc"
           },
           {
             "type": "li",
@@ -91,9 +99,11 @@
                     "type": "text",
                     "text": "Free downloadable resources — coloring pages, reference sheets, and more"
                   }
-                ]
+                ],
+                "id": "CXLpyDiCoX"
               }
-            ]
+            ],
+            "id": "xK6AVlwI6R"
           },
           {
             "type": "li",
@@ -105,11 +115,14 @@
                     "type": "text",
                     "text": "A proper shop for books, guides, and digital products"
                   }
-                ]
+                ],
+                "id": "FBPhB2ZI0a"
               }
-            ]
+            ],
+            "id": "6nRkXzxds8"
           }
-        ]
+        ],
+        "id": "l6x1Y7Tw7P"
       },
       {
         "type": "p",
@@ -118,7 +131,8 @@
             "type": "text",
             "text": "I'm so excited to share this with you. Stay tuned for more updates, and don't forget to subscribe to the YouTube channel for new tutorials every other week!"
           }
-        ]
+        ],
+        "id": "_l8eEZ8peG"
       }
     ]
   }
