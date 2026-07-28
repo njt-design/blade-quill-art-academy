@@ -1,16 +1,21 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation, useRoute } from "wouter";
+import { tinaField } from "tinacms/react";
 import {
   useCreateCheckoutSession,
   useGetProduct,
   useListProducts,
 } from "@workspace/api-client-react";
 import { useLiveProducts } from "@/hooks/use-live-content";
+import { useLiveTina } from "@/hooks/use-live-tina";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
+import { shopProductQuery } from "@/lib/product-query";
 import {
   findCatalogProduct,
+  getCatalogProduct,
   hasCatalogProducts,
   resolveCatalogProducts,
+  toCatalogProduct,
   type CatalogProduct,
 } from "@/lib/products";
 import { useCart } from "@/hooks/useCart";
@@ -23,6 +28,7 @@ import {
 } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
 import { Btn } from "@/components/site/Btn";
+import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
 import { InkUnderline } from "@/components/site/InkUnderline";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -92,14 +98,60 @@ export default function ProductDetail() {
   const [, setLocation] = useLocation();
   const routeParam = params?.id ?? "";
 
+  // Prefer slug from the catalog so Tina visual editing binds to the right file.
   const catalog = useLiveProducts();
-  const catalogProduct = useMemo(
+  const catalogMatch = useMemo(
     () => findCatalogProduct(catalog, routeParam),
     [catalog, routeParam]
   );
+  const productSlug =
+    catalogMatch?.slug ||
+    getCatalogProduct(routeParam)?.slug ||
+    (routeParam && Number.isNaN(Number(routeParam)) ? routeParam : "");
+
+  const seedRaw = productSlug
+    ? (getCatalogProduct(productSlug) as unknown as Record<string, unknown> | undefined)
+    : undefined;
+  // Seed shape matches the GraphQL document (image, not imageUrl).
+  const seedDoc = seedRaw
+    ? {
+        __typename: "ShopProduct" as const,
+        productId: seedRaw.id,
+        name: seedRaw.name,
+        description: seedRaw.description,
+        price: seedRaw.price,
+        category: seedRaw.category,
+        image: seedRaw.imageUrl,
+        gumroadUrl: seedRaw.gumroadUrl,
+        downloadUrl: seedRaw.downloadUrl,
+        featured: seedRaw.featured,
+        inStock: seedRaw.inStock,
+        createdAt: seedRaw.createdAt,
+      }
+    : {};
+
+  const { data: tinaData, freshness } = useLiveTina({
+    query: shopProductQuery,
+    variables: { relativePath: productSlug ? `${productSlug}.json` : "__missing__.json" },
+    data: { shopProduct: seedDoc },
+  });
+
+  const tinaProduct = useMemo(() => {
+    const doc = tinaData.shopProduct as Record<string, unknown> | undefined;
+    if (!doc || !productSlug || !doc.name) return null;
+    return toCatalogProduct(productSlug, {
+      ...doc,
+      // GraphQL uses `image`; catalog mapper accepts image or imageUrl.
+      image: doc.image ?? doc.imageUrl,
+    });
+  }, [tinaData, productSlug]);
+
   const numericId = Number(routeParam);
   const useApi =
-    !catalogProduct && routeParam !== "" && !Number.isNaN(numericId);
+    !tinaProduct &&
+    !catalogMatch &&
+    routeParam !== "" &&
+    !Number.isNaN(numericId);
 
   const {
     data: apiProduct,
@@ -118,12 +170,16 @@ export default function ProductDetail() {
   );
 
   const product = useMemo((): CatalogProduct | undefined => {
-    if (catalogProduct) return catalogProduct;
+    if (tinaProduct) return tinaProduct;
+    if (catalogMatch) return catalogMatch;
     if (apiProduct) {
       return { ...apiProduct, slug: String(apiProduct.id) };
     }
     return findCatalogProduct(catalog, routeParam);
-  }, [catalogProduct, apiProduct, catalog, routeParam]);
+  }, [tinaProduct, catalogMatch, apiProduct, catalog, routeParam]);
+
+  /** Tina document used for data-tina-field bindings (visual editing). */
+  const tinaDoc = (tinaData.shopProduct ?? null) as Record<string, unknown> | null;
 
   const isLoading = useApi && apiLoading && !product;
   const error = useApi ? apiError : undefined;
@@ -186,6 +242,7 @@ export default function ProductDetail() {
 
   return (
     <div className="page pt-12 pb-24">
+      <CmsStatusPill freshness={freshness} />
       <div className="bq-container py-5">
         <div className="eyebrow" style={{ color: "var(--ink-mute)" }}>
           <Link href="/" className="link-ink">
@@ -209,6 +266,7 @@ export default function ProductDetail() {
               <Reveal>
                 <div
                   className="relative flex items-center justify-center overflow-hidden h-[min(60vh,560px)] sm:h-[560px]"
+                  data-tina-field={tinaDoc ? tinaField(tinaDoc, "image") : undefined}
                   style={{
                     borderRadius: 20,
                     background: isBook
@@ -298,6 +356,7 @@ export default function ProductDetail() {
               <Reveal>
                 <h1
                   className="mb-4"
+                  data-tina-field={tinaDoc ? tinaField(tinaDoc, "name") : undefined}
                   style={{
                     fontSize: "clamp(36px, 4.5vw, 52px)",
                     lineHeight: 1.05,
@@ -309,6 +368,9 @@ export default function ProductDetail() {
               <Reveal>
                 <div
                   className="mb-7"
+                  data-tina-field={
+                    tinaDoc ? tinaField(tinaDoc, "description") : undefined
+                  }
                   style={{ color: "var(--ink-mute)", fontSize: 15 }}
                 >
                   <RichText value={product.description} />
@@ -319,6 +381,9 @@ export default function ProductDetail() {
                 <div className="flex flex-wrap items-baseline gap-4 mb-8">
                   <span
                     className="grad-text-warm"
+                    data-tina-field={
+                      tinaDoc ? tinaField(tinaDoc, "price") : undefined
+                    }
                     style={{
                       fontFamily: "var(--f-serif)",
                       fontSize: 48,

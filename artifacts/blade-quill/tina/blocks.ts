@@ -112,7 +112,10 @@ export const heroBlock: Template = {
       type: "image",
       name: "backgroundImage",
       label: "Background Image",
-      ui: { description: "Optional background image behind the hero." },
+      ui: {
+        description:
+          "Optional background image behind the hero. Prefer ~1920×1080 landscape. Upload into images/pages/.",
+      },
     },
     {
       type: "string",

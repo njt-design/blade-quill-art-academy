@@ -161,7 +161,7 @@ function navLinkFields(): TinaField[] {
       label: "URL / Path",
       ui: {
         description:
-          'Used for "Site link" (e.g. /blog) or "External URL" (e.g. https://youtube.com/...).',
+          'For "Site link" use a path like /blog, /cart, /shop, /gallery, /downloads, /contact, /about, or /. For "External URL" paste the full https://… address. Prefer Link Type "Site page" whenever you can — that picks from your pages and cannot typo.',
       },
     },
   ];
@@ -343,10 +343,10 @@ export default defineConfig({
     return cms;
   },
   schema: {
+    // Order = sidebar order for Corinne (most-used first).
     collections: [
       // ---------------------------------------------------------------
-      // Site Pages — the core pages of the site. Protected from
-      // creation/deletion so Home, Shop, etc. can't disappear.
+      // Site Pages — core pages. Protected from create/delete.
       // ---------------------------------------------------------------
       {
         name: "page",
@@ -363,8 +363,7 @@ export default defineConfig({
       },
 
       // ---------------------------------------------------------------
-      // New Pages — pages the client creates herself, starting from a
-      // template (Blank, Event, Promo, Info, Link-in-Bio).
+      // New Pages — client-created from templates.
       // ---------------------------------------------------------------
       {
         name: "landingPage",
@@ -400,75 +399,83 @@ export default defineConfig({
       },
 
       // ---------------------------------------------------------------
-      // Navigation — a single document controlling the site menu and
-      // footer link columns. Protected so it can't be deleted.
+      // Blog Posts
       // ---------------------------------------------------------------
       {
-        name: "navigation",
-        label: "Navigation",
-        path: "content/navigation",
+        name: "post",
+        label: "Blog Posts",
+        path: "content/posts",
         format: "json",
         ui: {
-          allowedActions: { create: false, delete: false },
-          // Preview nav edits live on the homepage.
-          router: () => "/",
+          filename: {
+            readonly: true,
+            slugify: (values) =>
+              String(values?.title ?? "new-post")
+                .toLowerCase()
+                .replace(/['’]/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "") || "new-post",
+          },
+          router: ({ document }) => {
+            const base =
+              document._sys.basename?.replace(/\.json$/i, "") ??
+              document._sys.filename?.replace(/\.json$/i, "") ??
+              "";
+            return `/blog/${base}`;
+          },
         },
         fields: [
           {
-            type: "object",
-            name: "items",
-            label: "Menu Items",
-            list: true,
+            type: "string",
+            name: "title",
+            label: "Title",
+            required: true,
+            isTitle: true,
             ui: {
-              itemProps: navItemProps,
-              description:
-                "The links in the site header, left to right. Drag to reorder. Add Dropdown Items to a link to group pages under it.",
+              ...charLimit(90, "The post headline. Shows in the blog list and at the top of the post."),
+              // Seed sensible defaults when Corinne clicks Create.
+              defaultValue: "New blog post",
             },
-            fields: [
-              ...navLinkFields(),
-              {
-                type: "object",
-                name: "children",
-                label: "Dropdown Items",
-                list: true,
-                ui: {
-                  itemProps: navItemProps,
-                  description:
-                    "Optional links shown in a dropdown under this menu item.",
-                },
-                fields: navLinkFields(),
-              },
-            ],
           },
           {
-            type: "object",
-            name: "footerColumns",
-            label: "Footer Columns",
+            type: "rich-text",
+            name: "excerpt",
+            label: "Excerpt",
+            overrides: INLINE_RICH_TEXT,
+            parser: SLATE_JSON_PARSER,
+            ui: { description: "A 1-2 sentence summary shown on blog list cards." },
+          },
+          {
+            type: "image",
+            name: "coverImage",
+            label: "Cover Image",
+            ui: {
+              description:
+                "Featured image for the post and list cards. Prefer ~1600×900 (16:9). Upload into images/blog/.",
+            },
+          },
+          {
+            type: "datetime",
+            name: "publishedAt",
+            label: "Publish Date",
+            ui: { description: "Controls sort order on the blog list. Newest posts appear first." },
+          },
+          {
+            type: "string",
+            name: "tags",
+            label: "Tags",
             list: true,
             ui: {
-              itemProps: (item?: Record<string, unknown>) => ({
-                label: (item?.heading as string) || "Footer column",
-              }),
               description:
-                "The link columns in the site footer, left to right. Drag to reorder.",
+                "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes'). Keep each under 24 characters.",
             },
-            fields: [
-              {
-                type: "string",
-                name: "heading",
-                label: "Column Heading",
-                required: true,
-                ui: charLimit(32),
-              },
-              {
-                type: "object",
-                name: "links",
-                label: "Links",
-                list: true,
-                ui: { itemProps: navItemProps },
-                fields: navLinkFields(),
-              },
-            ],
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            parser: SLATE_JSON_PARSER,
+            ui: { description: "The full post content. Supports headings, images, links, and embeds." },
           },
         ],
       },
@@ -492,21 +499,15 @@ export default defineConfig({
         },
         fields: [
           {
-            type: "number",
-            name: "productId",
-            label: "Product ID",
-            required: true,
-            ui: {
-              description:
-                "Stable numeric ID for cart and Stripe checkout. Keep unique and do not renumber existing products (e.g. 1, 2, 3).",
-            },
-          },
-          {
             type: "string",
             name: "name",
             label: "Name",
             required: true,
-            ui: charLimit(80, "Product title shown on cards and the detail page."),
+            isTitle: true,
+            ui: {
+              ...charLimit(80, "Product title shown on cards and the detail page."),
+              defaultValue: "New product",
+            },
           },
           {
             type: "rich-text",
@@ -544,24 +545,9 @@ export default defineConfig({
             type: "image",
             name: "image",
             label: "Cover Image",
-            ui: { description: "Product image for shop grid and detail gallery." },
-          },
-          {
-            type: "string",
-            name: "gumroadUrl",
-            label: "Gumroad URL",
             ui: {
               description:
-                "Optional post-purchase fallback link shown after Stripe payment if no Download URL is set. Not used for checkout.",
-            },
-          },
-          {
-            type: "string",
-            name: "downloadUrl",
-            label: "Download URL",
-            ui: {
-              description:
-                "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf).",
+                "Product image for the shop grid and detail page. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/.",
             },
           },
           {
@@ -583,6 +569,34 @@ export default defineConfig({
             },
           },
           {
+            type: "string",
+            name: "downloadUrl",
+            label: "Download URL",
+            ui: {
+              description:
+                "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf).",
+            },
+          },
+          {
+            type: "string",
+            name: "gumroadUrl",
+            label: "Gumroad URL (optional)",
+            ui: {
+              description:
+                "Optional post-purchase fallback if no Download URL is set. Not used for checkout.",
+            },
+          },
+          {
+            type: "number",
+            name: "productId",
+            label: "Product ID (advanced)",
+            required: true,
+            ui: {
+              description:
+                "Stable numeric ID for cart and Stripe. Must be unique. Do not change existing products — only set this when creating a brand-new product (pick the next free number).",
+            },
+          },
+          {
             type: "datetime",
             name: "createdAt",
             label: "Created Date",
@@ -592,74 +606,94 @@ export default defineConfig({
       },
 
       // ---------------------------------------------------------------
-      // Blog Posts
+      // Menu & Footer — single document; protected from delete.
       // ---------------------------------------------------------------
       {
-        name: "post",
-        label: "Blog Posts",
-        path: "content/posts",
+        name: "navigation",
+        label: "Menu & Footer",
+        path: "content/navigation",
         format: "json",
         ui: {
-          filename: {
-            readonly: true,
-            slugify: (values) =>
-              String(values?.title ?? "new-post")
-                .toLowerCase()
-                .replace(/['’]/g, "")
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/(^-|-$)/g, "") || "new-post",
-          },
-          // Use basename without extension so the URL matches /blog/:slug (wouter route)
-          router: ({ document }) => {
-            const base =
-              document._sys.basename?.replace(/\.json$/i, "") ??
-              document._sys.filename?.replace(/\.json$/i, "") ??
-              "";
-            return `/blog/${base}`;
-          },
+          allowedActions: { create: false, delete: false },
+          router: () => "/",
         },
         fields: [
           {
-            type: "string",
-            name: "title",
-            label: "Title",
-            required: true,
-            isTitle: true,
-            ui: charLimit(90, "The post headline. Shows in the blog list and at the top of the post."),
-          },
-          {
-            type: "rich-text",
-            name: "excerpt",
-            label: "Excerpt",
-            overrides: INLINE_RICH_TEXT,
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "A 1-2 sentence summary shown on blog list cards." },
-          },
-          {
-            type: "image",
-            name: "coverImage",
-            label: "Cover Image",
-            ui: { description: "Featured image shown at the top of the post and on list cards." },
-          },
-          {
-            type: "datetime",
-            name: "publishedAt",
-            label: "Publish Date",
-            ui: { description: "Controls sort order on the blog list. Newest posts appear first." },
-          },
-          {
-            type: "string",
-            name: "tags",
-            label: "Tags",
+            type: "object",
+            name: "items",
+            label: "Menu Items",
             list: true,
-            ui: { description: "Topic tags for filtering (e.g. 'Krita', 'Behind the Scenes'). Keep each under 24 characters." },
+            ui: {
+              itemProps: navItemProps,
+              defaultItem: {
+                label: "New link",
+                linkType: "path",
+                href: "/",
+              },
+              description:
+                "The links in the site header, left to right. Drag to reorder. Add Dropdown Items to a link to group pages under it.",
+            },
+            fields: [
+              ...navLinkFields(),
+              {
+                type: "object",
+                name: "children",
+                label: "Dropdown Items",
+                list: true,
+                ui: {
+                  itemProps: navItemProps,
+                  defaultItem: {
+                    label: "New dropdown link",
+                    linkType: "path",
+                    href: "/",
+                  },
+                  description:
+                    "Optional links shown in a dropdown under this menu item.",
+                },
+                fields: navLinkFields(),
+              },
+            ],
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The full post content. Supports headings, images, links, and embeds." },
+            type: "object",
+            name: "footerColumns",
+            label: "Footer Columns",
+            list: true,
+            ui: {
+              itemProps: (item?: Record<string, unknown>) => ({
+                label: (item?.heading as string) || "Footer column",
+              }),
+              defaultItem: {
+                heading: "Explore",
+                links: [{ label: "Home", linkType: "path", href: "/" }],
+              },
+              description:
+                "The link columns in the site footer, left to right. Drag to reorder.",
+            },
+            fields: [
+              {
+                type: "string",
+                name: "heading",
+                label: "Column Heading",
+                required: true,
+                ui: charLimit(32),
+              },
+              {
+                type: "object",
+                name: "links",
+                label: "Links",
+                list: true,
+                ui: {
+                  itemProps: navItemProps,
+                  defaultItem: {
+                    label: "New link",
+                    linkType: "path",
+                    href: "/",
+                  },
+                },
+                fields: navLinkFields(),
+              },
+            ],
           },
         ],
       },

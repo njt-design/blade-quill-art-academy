@@ -1,0 +1,5 @@
+#!/bin/sh
+# Block commits that would break production /admin (dev-clobber or lock drift).
+set -e
+cd "$(git rev-parse --show-toplevel)"
+node scripts/check-tina-admin.mjs --staged

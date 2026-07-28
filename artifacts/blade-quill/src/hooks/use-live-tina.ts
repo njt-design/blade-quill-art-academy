@@ -6,10 +6,18 @@ import {
   isLiveContentEnabled,
 } from "@/lib/tina-live";
 
+export type LiveTinaFreshness = "bundled" | "loading" | "live" | "unavailable";
+
 interface UseLiveTinaArgs<T extends object> {
   query: string;
   variables: Record<string, unknown>;
   data: T;
+}
+
+interface UseLiveTinaResult<T extends object> {
+  data: T;
+  /** How the public site resolved content (ignored inside the editor iframe). */
+  freshness: LiveTinaFreshness;
 }
 
 /**
@@ -23,19 +31,30 @@ export function useLiveTina<T extends object>({
   query,
   variables,
   data,
-}: UseLiveTinaArgs<T>): { data: T } {
+}: UseLiveTinaArgs<T>): UseLiveTinaResult<T> {
   const tina = useTina({ query, variables, data });
   // Keyed by query+variables so stale live data never shows after the
   // component re-renders for a different document (e.g. /p/a -> /p/b).
   const [live, setLive] = useState<{ key: string; data: T } | null>(null);
+  const [freshness, setFreshness] = useState<LiveTinaFreshness>("bundled");
   const variablesKey = JSON.stringify(variables);
   const liveKey = query + variablesKey;
 
   useEffect(() => {
-    if (!isLiveContentEnabled() || isInTinaEditor()) return;
+    if (!isLiveContentEnabled() || isInTinaEditor()) {
+      setFreshness("bundled");
+      return;
+    }
     let cancelled = false;
+    setFreshness("loading");
     fetchTinaData<T>(query, JSON.parse(variablesKey)).then((fresh) => {
-      if (!cancelled && fresh) setLive({ key: query + variablesKey, data: fresh });
+      if (cancelled) return;
+      if (fresh) {
+        setLive({ key: query + variablesKey, data: fresh });
+        setFreshness("live");
+      } else {
+        setFreshness("unavailable");
+      }
     });
     return () => {
       cancelled = true;
@@ -44,6 +63,9 @@ export function useLiveTina<T extends object>({
 
   // Inside the editor the useTina live data always wins; on the public site
   // the runtime fetch (when it lands) supersedes the bundled seed.
-  if (isInTinaEditor()) return { data: tina.data };
-  return { data: live && live.key === liveKey ? live.data : tina.data };
+  if (isInTinaEditor()) return { data: tina.data, freshness: "bundled" };
+  return {
+    data: live && live.key === liveKey ? live.data : tina.data,
+    freshness,
+  };
 }

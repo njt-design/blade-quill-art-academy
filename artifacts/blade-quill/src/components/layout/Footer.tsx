@@ -229,12 +229,13 @@ export function Footer() {
               Contact
             </Link>
             <a
-              href={`${import.meta.env.BASE_URL}admin/index.html`}
+              href="https://blade-quill-art-academy.vercel.app/admin"
               className="link-ink"
               style={{ color: "rgba(223,210,204,0.25)" }}
-              aria-label="Admin"
+              aria-label="Edit this site"
+              title="Open the content editor"
             >
-              Admin
+              Edit site
             </a>
           </div>
         </div>

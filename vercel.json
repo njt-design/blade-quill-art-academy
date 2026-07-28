@@ -12,6 +12,28 @@
       "permanent": false
     },
     {
+      "source": "/admin",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?bladeandquillartacademy\\.com"
+        }
+      ],
+      "destination": "https://blade-quill-art-academy.vercel.app/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(www\\.)?bladeandquillartacademy\\.com"
+        }
+      ],
+      "destination": "https://blade-quill-art-academy.vercel.app/admin/:path*",
+      "permanent": false
+    },
+    {
       "source": "/admin/:path*",
       "has": [
         { "type": "host", "value": "blade-quill-art-academy-.+\\.vercel\\.app" }

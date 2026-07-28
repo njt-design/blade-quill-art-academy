@@ -2206,6 +2206,31 @@ fragment LandingPageParts on LandingPage {
   }
 }
 
+fragment PostParts on Post {
+  __typename
+  title
+  excerpt
+  coverImage
+  publishedAt
+  tags
+  body
+}
+
+fragment ShopProductParts on ShopProduct {
+  __typename
+  name
+  description
+  price
+  category
+  image
+  featured
+  inStock
+  downloadUrl
+  gumroadUrl
+  productId
+  createdAt
+}
+
 fragment NavigationParts on Navigation {
   __typename
   items {
@@ -8890,29 +8915,4 @@ fragment NavigationParts on Navigation {
       href
     }
   }
-}
-
-fragment ShopProductParts on ShopProduct {
-  __typename
-  productId
-  name
-  description
-  price
-  category
-  image
-  gumroadUrl
-  downloadUrl
-  featured
-  inStock
-  createdAt
-}
-
-fragment PostParts on Post {
-  __typename
-  title
-  excerpt
-  coverImage
-  publishedAt
-  tags
-  body
 }

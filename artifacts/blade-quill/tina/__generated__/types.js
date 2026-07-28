@@ -2215,6 +2215,33 @@ export const LandingPagePartsFragmentDoc = gql`
   }
 }
     `;
+export const PostPartsFragmentDoc = gql`
+    fragment PostParts on Post {
+  __typename
+  title
+  excerpt
+  coverImage
+  publishedAt
+  tags
+  body
+}
+    `;
+export const ShopProductPartsFragmentDoc = gql`
+    fragment ShopProductParts on ShopProduct {
+  __typename
+  name
+  description
+  price
+  category
+  image
+  featured
+  inStock
+  downloadUrl
+  gumroadUrl
+  productId
+  createdAt
+}
+    `;
 export const NavigationPartsFragmentDoc = gql`
     fragment NavigationParts on Navigation {
   __typename
@@ -8902,33 +8929,6 @@ export const NavigationPartsFragmentDoc = gql`
   }
 }
     `;
-export const ShopProductPartsFragmentDoc = gql`
-    fragment ShopProductParts on ShopProduct {
-  __typename
-  productId
-  name
-  description
-  price
-  category
-  image
-  gumroadUrl
-  downloadUrl
-  featured
-  inStock
-  createdAt
-}
-    `;
-export const PostPartsFragmentDoc = gql`
-    fragment PostParts on Post {
-  __typename
-  title
-  excerpt
-  coverImage
-  publishedAt
-  tags
-  body
-}
-    `;
 export const PageDocument = gql`
     query page($relativePath: String!) {
   page(relativePath: $relativePath) {
@@ -9043,120 +9043,6 @@ export const LandingPageConnectionDocument = gql`
   }
 }
     ${LandingPagePartsFragmentDoc}`;
-export const NavigationDocument = gql`
-    query navigation($relativePath: String!) {
-  navigation(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...NavigationParts
-  }
-}
-    ${NavigationPartsFragmentDoc}`;
-export const NavigationConnectionDocument = gql`
-    query navigationConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: NavigationFilter) {
-  navigationConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...NavigationParts
-      }
-    }
-  }
-}
-    ${NavigationPartsFragmentDoc}`;
-export const ShopProductDocument = gql`
-    query shopProduct($relativePath: String!) {
-  shopProduct(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...ShopProductParts
-  }
-}
-    ${ShopProductPartsFragmentDoc}`;
-export const ShopProductConnectionDocument = gql`
-    query shopProductConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ShopProductFilter) {
-  shopProductConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...ShopProductParts
-      }
-    }
-  }
-}
-    ${ShopProductPartsFragmentDoc}`;
 export const PostDocument = gql`
     query post($relativePath: String!) {
   post(relativePath: $relativePath) {
@@ -9214,6 +9100,120 @@ export const PostConnectionDocument = gql`
   }
 }
     ${PostPartsFragmentDoc}`;
+export const ShopProductDocument = gql`
+    query shopProduct($relativePath: String!) {
+  shopProduct(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ShopProductParts
+  }
+}
+    ${ShopProductPartsFragmentDoc}`;
+export const ShopProductConnectionDocument = gql`
+    query shopProductConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ShopProductFilter) {
+  shopProductConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ShopProductParts
+      }
+    }
+  }
+}
+    ${ShopProductPartsFragmentDoc}`;
+export const NavigationDocument = gql`
+    query navigation($relativePath: String!) {
+  navigation(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...NavigationParts
+  }
+}
+    ${NavigationPartsFragmentDoc}`;
+export const NavigationConnectionDocument = gql`
+    query navigationConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: NavigationFilter) {
+  navigationConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...NavigationParts
+      }
+    }
+  }
+}
+    ${NavigationPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     page(variables, options) {
@@ -9228,11 +9228,11 @@ export function getSdk(requester) {
     landingPageConnection(variables, options) {
       return requester(LandingPageConnectionDocument, variables, options);
     },
-    navigation(variables, options) {
-      return requester(NavigationDocument, variables, options);
+    post(variables, options) {
+      return requester(PostDocument, variables, options);
     },
-    navigationConnection(variables, options) {
-      return requester(NavigationConnectionDocument, variables, options);
+    postConnection(variables, options) {
+      return requester(PostConnectionDocument, variables, options);
     },
     shopProduct(variables, options) {
       return requester(ShopProductDocument, variables, options);
@@ -9240,11 +9240,11 @@ export function getSdk(requester) {
     shopProductConnection(variables, options) {
       return requester(ShopProductConnectionDocument, variables, options);
     },
-    post(variables, options) {
-      return requester(PostDocument, variables, options);
+    navigation(variables, options) {
+      return requester(NavigationDocument, variables, options);
     },
-    postConnection(variables, options) {
-      return requester(PostConnectionDocument, variables, options);
+    navigationConnection(variables, options) {
+      return requester(NavigationConnectionDocument, variables, options);
     }
   };
 }
@@ -9268,7 +9268,7 @@ const generateRequester = (client) => {
 export const ExperimentalGetTinaClient = () => getSdk(
   generateRequester(
     createClient({
-      url: "http://localhost:4001/graphql",
+      url: "https://content.tinajs.io/2.4/content/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/github/main",
       queries
     })
   )

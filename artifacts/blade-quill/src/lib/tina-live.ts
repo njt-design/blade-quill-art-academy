@@ -74,13 +74,26 @@ export async function fetchTinaData<T>(
       },
       body: JSON.stringify({ query, variables: variables ?? {} }),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.warn(
+        `[tina-live] Content API HTTP ${res.status} — falling back to bundled content.`
+      );
+      return null;
+    }
     const json = (await res.json()) as { data?: T; errors?: unknown[] };
     if (!json.data || (Array.isArray(json.errors) && json.errors.length > 0)) {
+      console.warn(
+        "[tina-live] Content API returned errors — falling back to bundled content.",
+        json.errors
+      );
       return null;
     }
     return json.data;
-  } catch {
+  } catch (err) {
+    console.warn(
+      "[tina-live] Content API fetch failed — falling back to bundled content.",
+      err
+    );
     return null;
   }
 }

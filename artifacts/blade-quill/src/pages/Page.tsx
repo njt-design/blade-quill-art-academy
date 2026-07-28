@@ -5,6 +5,7 @@ import { useLiveTina } from "@/hooks/use-live-tina";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { QuillMark } from "@/components/site/QuillMark";
 import {
   getPageData,
@@ -83,7 +84,7 @@ export default function Page({ slug: rawSlug, chrome = "none" }: PageProps) {
       }
     : {};
 
-  const { data } = useLiveTina({
+  const { data, freshness } = useLiveTina({
     query: isCore ? sitePageQuery : landingPageQuery,
     variables: { relativePath: `${slug}.json` },
     data: isCore ? { page: seed } : { landingPage: seed },
@@ -118,6 +119,7 @@ export default function Page({ slug: rawSlug, chrome = "none" }: PageProps) {
   const blocks = (page.blocks as Block[] | null | undefined) ?? [];
   const content = (
     <div className="page min-h-screen">
+      <CmsStatusPill freshness={freshness} />
       {blocks.map((block, i) => (
         <BlockRenderer key={i} block={block} />
       ))}

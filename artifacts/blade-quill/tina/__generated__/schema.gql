@@ -58,20 +58,20 @@ type Query {
   pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
   landingPage(relativePath: String): LandingPage!
   landingPageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LandingPageFilter): LandingPageConnection!
-  navigation(relativePath: String): Navigation!
-  navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
-  shopProduct(relativePath: String): ShopProduct!
-  shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
   post(relativePath: String): Post!
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
+  shopProduct(relativePath: String): ShopProduct!
+  shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
+  navigation(relativePath: String): Navigation!
+  navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
 }
 
 input DocumentFilter {
   page: PageFilter
   landingPage: LandingPageFilter
-  navigation: NavigationFilter
-  shopProduct: ShopProductFilter
   post: PostFilter
+  shopProduct: ShopProductFilter
+  navigation: NavigationFilter
 }
 
 type DocumentConnectionEdges {
@@ -97,7 +97,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Navigation | ShopProduct | Post | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Navigation | Folder
 
 type PageBlocksHomeHero {
   eyebrow: String
@@ -5490,6 +5490,98 @@ type LandingPageConnection implements Connection {
   edges: [LandingPageConnectionEdges]
 }
 
+type Post implements Node & Document {
+  title: String!
+  excerpt: JSON
+  coverImage: String
+  publishedAt: String
+  tags: [String]
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input PostFilter {
+  title: StringFilter
+  excerpt: RichTextFilter
+  coverImage: ImageFilter
+  publishedAt: DatetimeFilter
+  tags: StringFilter
+  body: RichTextFilter
+}
+
+type PostConnectionEdges {
+  cursor: String!
+  node: Post
+}
+
+type PostConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PostConnectionEdges]
+}
+
+type ShopProduct implements Node & Document {
+  name: String!
+  description: JSON
+  price: Float!
+  category: String!
+  image: String
+  featured: Boolean
+  inStock: Boolean
+  downloadUrl: String
+  gumroadUrl: String
+  productId: Float!
+  createdAt: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input ShopProductFilter {
+  name: StringFilter
+  description: RichTextFilter
+  price: NumberFilter
+  category: StringFilter
+  image: ImageFilter
+  featured: BooleanFilter
+  inStock: BooleanFilter
+  downloadUrl: StringFilter
+  gumroadUrl: StringFilter
+  productId: NumberFilter
+  createdAt: DatetimeFilter
+}
+
+type ShopProductConnectionEdges {
+  cursor: String!
+  node: ShopProduct
+}
+
+type ShopProductConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ShopProductConnectionEdges]
+}
+
 union NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
 union NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
@@ -5589,98 +5681,6 @@ type NavigationConnection implements Connection {
   edges: [NavigationConnectionEdges]
 }
 
-type ShopProduct implements Node & Document {
-  productId: Float!
-  name: String!
-  description: JSON
-  price: Float!
-  category: String!
-  image: String
-  gumroadUrl: String
-  downloadUrl: String
-  featured: Boolean
-  inStock: Boolean
-  createdAt: String
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
-  exists: Boolean
-  in: [Float]
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input ShopProductFilter {
-  productId: NumberFilter
-  name: StringFilter
-  description: RichTextFilter
-  price: NumberFilter
-  category: StringFilter
-  image: ImageFilter
-  gumroadUrl: StringFilter
-  downloadUrl: StringFilter
-  featured: BooleanFilter
-  inStock: BooleanFilter
-  createdAt: DatetimeFilter
-}
-
-type ShopProductConnectionEdges {
-  cursor: String!
-  node: ShopProduct
-}
-
-type ShopProductConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [ShopProductConnectionEdges]
-}
-
-type Post implements Node & Document {
-  title: String!
-  excerpt: JSON
-  coverImage: String
-  publishedAt: String
-  tags: [String]
-  body: JSON
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input PostFilter {
-  title: StringFilter
-  excerpt: RichTextFilter
-  coverImage: ImageFilter
-  publishedAt: DatetimeFilter
-  tags: StringFilter
-  body: RichTextFilter
-}
-
-type PostConnectionEdges {
-  cursor: String!
-  node: Post
-}
-
-type PostConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [PostConnectionEdges]
-}
-
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -5691,29 +5691,29 @@ type Mutation {
   createPage(relativePath: String!, params: PageMutation!): Page!
   updateLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
   createLandingPage(relativePath: String!, params: LandingPageMutation!): LandingPage!
-  updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
-  createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
-  updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
-  createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   updatePost(relativePath: String!, params: PostMutation!): Post!
   createPost(relativePath: String!, params: PostMutation!): Post!
+  updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
+  createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
+  updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
+  createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
 }
 
 input DocumentUpdateMutation {
   page: PageMutation
   landingPage: LandingPageMutation
-  navigation: NavigationMutation
-  shopProduct: ShopProductMutation
   post: PostMutation
+  shopProduct: ShopProductMutation
+  navigation: NavigationMutation
   relativePath: String
 }
 
 input DocumentMutation {
   page: PageMutation
   landingPage: LandingPageMutation
-  navigation: NavigationMutation
-  shopProduct: ShopProductMutation
   post: PostMutation
+  shopProduct: ShopProductMutation
+  navigation: NavigationMutation
 }
 
 input PageBlocksHomeHeroMutation {
@@ -8502,6 +8502,29 @@ input LandingPageMutation {
   linkInBio: LandingPageLinkInBioMutation
 }
 
+input PostMutation {
+  title: String
+  excerpt: JSON
+  coverImage: String
+  publishedAt: String
+  tags: [String]
+  body: JSON
+}
+
+input ShopProductMutation {
+  name: String
+  description: JSON
+  price: Float
+  category: String
+  image: String
+  featured: Boolean
+  inStock: Boolean
+  downloadUrl: String
+  gumroadUrl: String
+  productId: Float
+  createdAt: String
+}
+
 input NavigationItemsChildrenMutation {
   label: String
   linkType: String
@@ -8532,29 +8555,6 @@ input NavigationFooterColumnsMutation {
 input NavigationMutation {
   items: [NavigationItemsMutation]
   footerColumns: [NavigationFooterColumnsMutation]
-}
-
-input ShopProductMutation {
-  productId: Float
-  name: String
-  description: JSON
-  price: Float
-  category: String
-  image: String
-  gumroadUrl: String
-  downloadUrl: String
-  featured: Boolean
-  inStock: Boolean
-  createdAt: String
-}
-
-input PostMutation {
-  title: String
-  excerpt: JSON
-  coverImage: String
-  publishedAt: String
-  tags: [String]
-  body: JSON
 }
 
 schema {

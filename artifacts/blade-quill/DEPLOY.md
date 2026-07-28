@@ -156,6 +156,33 @@ Products / prices stay in Tina (**Shop Products**). Insights is the glanceable a
 
 Note: Squarespace used Consent Mode (analytics denied until cookies accepted). This site loads gtag without a consent banner, so absolute counts may differ slightly from the old site even with the same Measurement ID.
 
+## Editing guide (for Corinne)
+
+See [docs/EDITING-GUIDE.md](../../docs/EDITING-GUIDE.md) — bookmark, sidebar map, save feedback, and troubleshooting.
+
+**Canonical editor URL (while the real domain is under construction):**  
+https://blade-quill-art-academy.vercel.app/admin  
+
+`bladeandquillartacademy.com/admin` redirects there. Do not send Corinne to per-deployment `*.vercel.app` preview URLs for editing.
+
+## Tina admin guardrails
+
+Repo scripts keep `/admin` from drifting after schema changes:
+
+| Command | Purpose |
+|---------|---------|
+| `pnpm run check:tina` | Fail if admin points at localhost or schema changed without lock/admin regen |
+| `pnpm run check:tina:staged` | Same, for staged files (wired via `.githooks/pre-commit`) |
+| `pnpm postinstall` | Symlink `artifacts/blade-quill/.env` → repo-root `.env` + install git hooks |
+
+After any change to `tina/config.ts` or `tina/blocks.ts`:
+
+```bash
+cd artifacts/blade-quill
+pnpm run build:deploy
+git add tina/__generated__/ tina/tina-lock.json public/admin/
+```
+
 ## Pre-building the Tina admin
 
 `tinacms build` fails on Vercel's Linux build environment due to an esbuild platform bug (`Unterminated string literal`). The admin SPA and generated types are **pre-built locally** and committed to the repo.

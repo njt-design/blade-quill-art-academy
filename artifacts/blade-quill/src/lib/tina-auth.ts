@@ -37,10 +37,13 @@ export function hasTinaSession(): boolean {
   return Boolean(getTinaIdToken());
 }
 
+/** Canonical admin while the production domain is under construction. */
+export const CANONICAL_ADMIN_URL =
+  "https://blade-quill-art-academy.vercel.app/admin";
+
 export function adminLoginUrl(returnPath = "/insights"): string {
-  const base = import.meta.env.BASE_URL || "/";
-  const admin = `${base}admin/index.html`.replace(/\/{2,}/g, "/");
-  // Admin login is separate; after login Corinne returns via the Insights link.
+  // Always send editors to the working host — the real domain may still
+  // serve the under-construction page for non-/admin routes.
   void returnPath;
-  return admin.startsWith("/") ? admin : `/${admin}`;
+  return CANONICAL_ADMIN_URL;
 }

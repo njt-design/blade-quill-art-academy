@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { tinaField } from "tinacms/react";
 import { useLiveTina } from "@/hooks/use-live-tina";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
 
 const postModules = import.meta.glob("../../content/posts/*.json", { eager: true }) as Record<
@@ -67,7 +68,7 @@ export default function BlogPost() {
 
   const staticData = getPostData(slug);
 
-  const { data } = useLiveTina({
+  const { data, freshness } = useLiveTina({
     query: postQuery,
     variables: { relativePath: `${slug}.json` },
     data: {
@@ -94,6 +95,7 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen py-10">
+      <CmsStatusPill freshness={freshness} />
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <button
           onClick={() => setLocation("/blog")}
