@@ -6,9 +6,15 @@
   "framework": null,
   "redirects": [
     {
-      "source": "/((?!assets/|images/|admin|favicon\\.svg|opengraph\\.jpg).+)",
-      "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
-      "destination": "/",
+      "source": "/",
+      "has": [{ "type": "host", "value": "bladeandquillartacademy.com" }],
+      "destination": "/under-construction.html",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.bladeandquillartacademy.com" }],
+      "destination": "/under-construction.html",
       "permanent": false
     },
     {
@@ -39,6 +45,24 @@
         { "type": "host", "value": "blade-quill-art-academy-.+\\.vercel\\.app" }
       ],
       "destination": "https://blade-quill-art-academy.vercel.app/admin/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/((?!under-construction\\.html(?:$|\\?)|assets/|admin(?:$|/)|favicon\\.svg|opengraph\\.jpg).*)",
+      "has": [{ "type": "host", "value": "bladeandquillartacademy.com" }],
+      "destination": "/under-construction.html",
+      "permanent": false
+    },
+    {
+      "source": "/((?!under-construction\\.html(?:$|\\?)|assets/|admin(?:$|/)|favicon\\.svg|opengraph\\.jpg).*)",
+      "has": [{ "type": "host", "value": "www.bladeandquillartacademy.com" }],
+      "destination": "/under-construction.html",
+      "permanent": false
+    },
+    {
+      "source": "/((?!assets/|images/|admin|favicon\\.svg|opengraph\\.jpg).+)",
+      "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
+      "destination": "/",
       "permanent": false
     },
     {
@@ -103,11 +127,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "(www\\.)?bladeandquillartacademy\\.com" }],
-      "destination": "/under-construction.html"
-    },
     {
       "source": "/",
       "has": [{ "type": "host", "value": "newrelease.bladeandquillartacademy.com" }],
