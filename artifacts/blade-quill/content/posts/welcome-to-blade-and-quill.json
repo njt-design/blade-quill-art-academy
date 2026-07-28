@@ -88,6 +88,18 @@
           {
             "type": "text",
             "text": "Once the page opens, scroll down until you find the search bar shown below, then type in the name of your tablet."
+          }
+        ],
+        "id": "_l8eEZ8peG"
+      },
+      {
+        "type": "p",
+        "id": "SdQnpsMmsY",
+        "children": [
+          {
+            "type": "text",
+            "id": "owfV0ics5l",
+            "text": ""
           },
           {
             "type": "img",
@@ -102,7 +114,25 @@
             "id": "w3QQ_VG5Y0"
           },
           {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "id": "voQgQrcrH3",
+        "children": [
+          {
             "text": "As you enter your tablet's name, the website will search for matching devices. Once your tablet appears in blue below the search bar, click on it."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "id": "kkC-jUbqsH",
+        "children": [
+          {
+            "text": ""
           },
           {
             "type": "img",
@@ -117,7 +147,25 @@
             "id": "1bY08K1XnR"
           },
           {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "id": "Rbf3_Kvjc9",
+        "children": [
+          {
             "text": "Now, simply select your operating system to download the latest driver."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "id": "0b537MQ2Il",
+        "children": [
+          {
+            "text": ""
           },
           {
             "type": "img",
@@ -132,6 +180,15 @@
             "id": "yu2iuDAFBD"
           },
           {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "id": "MsQhiTsPo2",
+        "children": [
+          {
             "text": "Since I use Windows, I'll choose the "
           },
           {
@@ -141,8 +198,7 @@
           {
             "text": ". "
           }
-        ],
-        "id": "_l8eEZ8peG"
+        ]
       },
       {
         "children": [
