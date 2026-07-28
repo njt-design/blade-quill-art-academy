@@ -1,5 +1,5 @@
 {
-  "title": "Updating your Huion tablet driver",
+  "title": "How to Update Your Huion Tablet Driver",
   "excerpt": {
     "type": "root",
     "children": [
@@ -7,7 +7,7 @@
         "type": "p",
         "children": [
           {
-            "text": "In this example, I will be updating the driver of  my pen display tablet, the Kamvas Pro 16 (4K). I acquired this tablet I believe in 2022.  "
+            "text": "In this example, I'll be updating the driver for my Kamvas Pro 16 (4K) pen display. I believe I bought this tablet in 2022."
           }
         ],
         "id": "mHAHIHdwiV"
