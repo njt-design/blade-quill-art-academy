@@ -1,10 +1,14 @@
 import "./load-env.js";
 import { createClient } from "@supabase/supabase-js";
-import {
-  CheckoutError,
-  createCheckoutSession,
-  findTinaProductById,
-} from "@workspace/checkout";
+import { createRequire } from "node:module";
+
+// @workspace/checkout has no "type": "module", so tsx transpiles it to CJS and
+// Node >=25 cannot statically detect its named exports from an ESM import.
+// Load it via require() interop instead; types still come from the package.
+const { CheckoutError, createCheckoutSession, findTinaProductById } =
+  createRequire(import.meta.url)(
+    "@workspace/checkout"
+  ) as typeof import("@workspace/checkout");
 
 async function main() {
   const product = await findTinaProductById(2, "https://example.com");

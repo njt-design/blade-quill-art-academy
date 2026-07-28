@@ -3,7 +3,7 @@
     "target": "es2022",
     "lib": ["es2022", "DOM"],
     "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "types": ["node"],
     "strict": true,
     "skipLibCheck": true,

@@ -1,0 +1,16 @@
+---
+description: Stripe integration plan and setup checklist for Corinne — read when the user asks about Stripe, checkout, webhooks, or going live
+alwaysApply: false
+---
+
+# Stripe Integration (saved plan)
+
+When the user asks about Stripe, checkout setup, Corinne's payment keys, webhooks, or going live, **read and summarize** [docs/stripe-integration-plan.md](../../docs/stripe-integration-plan.md).
+
+## Quick reminder
+
+- **Keys needed:** `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET` only (no publishable key)
+- **Test setup:** Done — webhook on `blade-quill-art-academy.vercel.app`, vars on Vercel Production
+- **Still todo:** End-to-end test purchase (4242 card), then go live with `sk_live_` + live webhook
+- **Testing URL:** `blade-quill-art-academy.vercel.app` — custom domain blocks `/api/*` until launch
+- **Prices:** Edited in Tina Shop Products, not Stripe Dashboard
