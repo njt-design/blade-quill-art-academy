@@ -38,7 +38,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Here is the website address you will need to go to, in order to get your updates. "
+            "text": "Here’s the website you’ll need to visit to access the latest updates."
           }
         ],
         "id": "_6YPEAGzuc"
@@ -84,7 +84,59 @@
         "children": [
           {
             "type": "text",
-            "text": ""
+            "text": "Once the page opens, scroll down until you find the search bar shown below, then type in the name of your tablet."
+          },
+          {
+            "type": "img",
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Finding-your-tablet-on-the-driver-update-website-of-Huion.png",
+            "caption": "",
+            "alt": "",
+            "id": "1bY08K1XnR"
+          },
+          {
+            "text": "As you enter your tablet's name, the website will search for matching devices. Once your tablet appears in blue below the search bar, click on it."
+          },
+          {
+            "type": "img",
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Searching-your-tablet-on-the-driver-update-website-of-Huion.png",
+            "caption": "",
+            "alt": "",
+            "id": "w3QQ_VG5Y0"
+          },
+          {
+            "text": "Now, simply select your operating system to download the latest driver."
+          },
+          {
+            "type": "img",
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/choices-of-operating-system.png",
+            "caption": "",
+            "alt": "",
+            "id": "yu2iuDAFBD"
+          },
+          {
+            "text": "Since I use Windows, I'll choose the "
+          },
+          {
+            "text": "Windows Driver",
+            "bold": true
+          },
+          {
+            "text": ". "
           }
         ],
         "id": "_l8eEZ8peG"
