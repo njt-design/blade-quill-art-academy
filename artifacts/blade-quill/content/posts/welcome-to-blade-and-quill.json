@@ -28,7 +28,7 @@
         "children": [
           {
             "type": "text",
-            "text": "A Fresh Start"
+            "text": "Website"
           }
         ],
         "id": "5NEMStZ9S_"
@@ -38,100 +38,65 @@
         "children": [
           {
             "type": "text",
-            "text": "After months of work, the new Blade & Quill Art Academy website is finally live! The site has been rebuilt from the ground up with a cleaner design, faster loading times, and a much better experience on mobile devices."
+            "text": "Here is the website address you will need to go to, in order to get your updates. "
           }
         ],
         "id": "_6YPEAGzuc"
+      },
+      {
+        "type": "p",
+        "id": "HWGXotb3P2",
+        "children": [
+          {
+            "type": "text",
+            "id": "7eT6QK-4C2",
+            "text": ""
+          },
+          {
+            "children": [
+              {
+                "type": "text",
+                "text": "https://www.huion.com/download",
+                "id": "iIqzgotIYX"
+              }
+            ],
+            "type": "a",
+            "url": "https://www.huion.com/download",
+            "id": "uaE5m3m0OX"
+          },
+          {
+            "text": ""
+          }
+        ]
       },
       {
         "type": "h2",
         "children": [
           {
             "type": "text",
-            "text": "What's New"
+            "text": "Starting"
           }
         ],
         "id": "0a3dFh_ym-"
-      },
-      {
-        "type": "ul",
-        "children": [
-          {
-            "type": "li",
-            "children": [
-              {
-                "type": "lic",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "A full gallery of my artwork with a lightbox viewer"
-                  }
-                ],
-                "id": "S9QBDj8JMT"
-              }
-            ],
-            "id": "ag17fSyiOY"
-          },
-          {
-            "type": "li",
-            "children": [
-              {
-                "type": "lic",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "Embedded YouTube tutorials so you can watch right on the site"
-                  }
-                ],
-                "id": "RVJmzJUFLX"
-              }
-            ],
-            "id": "cAlY4nZOFc"
-          },
-          {
-            "type": "li",
-            "children": [
-              {
-                "type": "lic",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "Free downloadable resources — coloring pages, reference sheets, and more"
-                  }
-                ],
-                "id": "CXLpyDiCoX"
-              }
-            ],
-            "id": "xK6AVlwI6R"
-          },
-          {
-            "type": "li",
-            "children": [
-              {
-                "type": "lic",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "A proper shop for books, guides, and digital products"
-                  }
-                ],
-                "id": "FBPhB2ZI0a"
-              }
-            ],
-            "id": "6nRkXzxds8"
-          }
-        ],
-        "id": "l6x1Y7Tw7P"
       },
       {
         "type": "p",
         "children": [
           {
             "type": "text",
-            "text": "I'm so excited to share this with you. Stay tuned for more updates, and don't forget to subscribe to the YouTube channel for new tutorials every other week!"
+            "text": ""
           }
         ],
         "id": "_l8eEZ8peG"
+      },
+      {
+        "children": [
+          {
+            "text": ""
+          }
+        ],
+        "type": "p",
+        "id": "28oVeCRzr0"
       }
     ]
   }
