@@ -9,10 +9,10 @@ The Vercel project is connected to the GitHub repo (`njt-design/blade-quill-art-
 **CMS save → live flow:**
 
 1. Client saves in `/admin` → Tina Cloud commits to GitHub `main` ("TinaCMS content update").
-2. **Immediately:** the live site re-fetches the saved content from the Tina Cloud content API (runtime GraphQL, read-only token). A page refresh shows the change in seconds — no rebuild wait.
+2. **Immediately:** the live site re-fetches the saved content from the Tina Cloud content API (runtime GraphQL, read-only token). Focusing or switching to an already-open public tab (or a soft refresh) shows the change in seconds — no rebuild wait. Signed-in editors also get ~2 minutes of background polling so saves land without a hard refresh.
 3. **In parallel:** GitHub push triggers a Vercel production build (`build:static`, ~30s build + propagation). This refreshes the bundled JSON fallback in the JS bundle.
 
-The bundled content (`import.meta.glob` in `src/lib/page-content.ts`) still renders first for an instant, flash-free load. The runtime fetch (`src/lib/tina-live.ts`) swaps in fresh data silently. If Tina Cloud is unreachable, visitors still see the last bundled version from the most recent deploy.
+The bundled content (`import.meta.glob` in `src/lib/page-content.ts`) still renders first for an instant, flash-free load. The runtime fetch (`src/lib/tina-live.ts` + `use-live-tina` / `use-live-content` / `use-live-refresh`) swaps in fresh data silently and re-runs on focus/visibility. If Tina Cloud is unreachable, visitors still see the last bundled version from the most recent deploy.
 
 **Important:** because Tina Cloud commits directly to `main`, run `git pull` before starting local work, and expect `content/` to change out from under you while the client is editing.
 

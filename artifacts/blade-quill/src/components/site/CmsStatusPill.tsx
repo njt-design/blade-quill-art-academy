@@ -19,8 +19,13 @@ export function CmsStatusPill({ freshness }: { freshness: LiveTinaFreshness }) {
     if (freshness === "live") {
       setMessage("Showing your latest saved content");
       setVisible(true);
+    } else if (freshness === "publishing") {
+      setMessage("Waiting for your save to finish publishing…");
+      setVisible(true);
     } else if (freshness === "unavailable") {
-      setMessage("Live refresh unavailable — showing last deployed version (~50s after save)");
+      setMessage(
+        "Live refresh unavailable — showing last deployed version (~50s after save)"
+      );
       setVisible(true);
     } else if (freshness === "loading") {
       setMessage("Checking for saved updates…");
@@ -31,7 +36,10 @@ export function CmsStatusPill({ freshness }: { freshness: LiveTinaFreshness }) {
   }, [freshness]);
 
   useEffect(() => {
-    if (!visible || freshness === "loading") return;
+    // Keep the publishing / loading messages up while work is in progress.
+    if (!visible || freshness === "loading" || freshness === "publishing") {
+      return;
+    }
     const t = window.setTimeout(() => setVisible(false), 5000);
     return () => window.clearTimeout(t);
   }, [visible, freshness, message]);

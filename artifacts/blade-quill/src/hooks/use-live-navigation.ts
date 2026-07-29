@@ -19,8 +19,8 @@ const NAV_VARIABLES = { relativePath: "main.json" };
 /**
  * The CMS-managed navigation document, with links resolved to public URLs.
  * Seeds from the JSON bundled at build time, stays editable live inside the
- * Tina editor, and refreshes from Tina Cloud on the public site (same
- * pattern as pages — see use-live-tina.ts).
+ * Tina editor, and refreshes from Tina Cloud on the public site via
+ * useLiveTina (focus / visibility refetch + editor polling included).
  */
 export function useLiveNavigation(): {
   items: ResolvedNavLink[];

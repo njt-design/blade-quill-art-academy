@@ -3,8 +3,8 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "✦ WELCOME ✦",
-      "heading": "Author, illustrator, and digital art educator.\n",
+      "eyebrow": "✦ WELCOME TO BLADE & QUILL ✦",
+      "heading": "Author, illustrator, and digital art educator.",
       "subheading": {
         "type": "root",
         "children": [
@@ -13,28 +13,17 @@
             "children": [
               {
                 "type": "text",
-                "text": "Welcome! I'm Corinne, creator of Leeloo and Luna"
+                "text": "Hi, I'm Corinne - author of Lheeloo & Luna. Helping others materialize their dreams with Krita."
               }
             ],
             "id": "0Kw8dR5xeL"
-          },
-          {
-            "type": "p",
-            "id": "d0M2NoB3Js",
-            "children": [
-              {
-                "type": "text",
-                "id": "swjnV5bKC6",
-                "text": "Master Krita and digital artwork with my books, guides, free coloring pages, and video tutorials."
-              }
-            ]
           }
         ]
       },
       "ctaPrimary": "Explore the Shop",
       "ctaPrimaryLink": "/shop",
-      "ctaSecondary": "Watch Tutorials",
-      "ctaSecondaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
+      "ctaSecondary": "Free downloads",
+      "ctaSecondaryLink": "/downloads",
       "metaLine": "CREATOR OF LHEELOO & LUNA",
       "marqueeItems": [
         "Author",

@@ -21,21 +21,27 @@ Sign in with the Tina Cloud account Nick set up for you.
 | **Menu & Footer** | Header menu + footer link columns |
 | **Insights** (Dashboard) | Traffic & sales glance (not for editing pages) |
 
-## Everyday editing (click-to-edit)
+## Everyday editing (click → sidebar)
+
+Tina works a little differently from Squarespace:
 
 1. Open the bookmark and sign in.
 2. Click a page, post, or product in the sidebar.
-3. The right side shows a live preview of the site. **Click the text or image** you want to change.
-4. Edit in the form (or inline). Watch the preview update.
+3. The right side shows a live preview of the site. **Click the text or image** you want to change — that **selects** it and opens the matching fields in the Tina sidebar (you usually type in the sidebar, not directly on the page).
+4. As you edit in the sidebar, the **preview updates live**.
 5. Click **Save**.
 
 ### Did it save?
 
 - Yes — Tina writes a commit to GitHub. You should see a brief confirmation in the editor.
-- On the public preview site (same Vercel host), a small status pill appears **if you’re still signed into the editor in that browser**: “Showing your latest saved content” within a few seconds.
-- A full site rebuild also runs (~50 seconds). Even if live refresh hiccups, the save is in GitHub and will appear after that deploy.
+- Keep a second browser tab open on the **public** site (`blade-quill-art-academy.vercel.app`, not the under-construction domain). After Save, switch to that tab (or click it) — a small status pill appears **if you’re still signed into the editor in that browser**, and the page refreshes the content within a few seconds without waiting for a full deploy.
+- Pill messages you might see:
+  - “Checking for saved updates…” / “Waiting for your save to finish publishing…” — still catching up (usually seconds).
+  - “Showing your latest saved content” — you’re looking at the saved version.
+  - “Live refresh unavailable…” — rare; wait ~50s for the automatic rebuild, or hard-refresh later.
+- A full site rebuild also runs in the background (~50 seconds). Even if live refresh hiccups, the save is in GitHub and will appear after that deploy.
 
-If you’re unsure: refresh the public page. If the change is there, you’re done.
+If you’re unsure: focus or refresh the public tab. If the change is there, you’re done.
 
 ## Common tasks
 
@@ -104,4 +110,4 @@ Tina login / password reset: Nick (or Tina Cloud account email).
 
 ---
 
-*Tip: keep one browser tab on `/admin` and another on the public site. After Save, refresh the public tab — you should see the change within seconds.*
+*Tip: keep one browser tab on `/admin` and another on the public site (`blade-quill-art-academy.vercel.app`). After Save, switch to the public tab — it should pick up the change within a few seconds (no hard refresh required). Do not check `bladeandquillartacademy.com` until the Under Construction gate is removed.*

@@ -1,9 +1,7 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { galleryImageUrl } from "@/lib/artwork";
-import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
-import { QuillMark } from "@/components/site/QuillMark";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
@@ -18,11 +16,23 @@ const MARQUEE_COLORS = [
 ];
 
 const HERO_STEAMPUNK_CAT = galleryImageUrl("Steampunk Cat");
-const HERO_CHIBI_ELEPHANT = galleryImageUrl("Chibi Elephant");
-const HERO_SILA = galleryImageUrl("Sila");
-const HERO_CHILD_AND_BEAR = galleryImageUrl("Child and Bear");
 const HERO_BABY_DRAGON = galleryImageUrl("Baby Dragon");
-const HERO_CHIBI_DRAGON = galleryImageUrl("Chibi Dragon");
+const HERO_CHILD_AND_BEAR = galleryImageUrl("Child and Bear");
+
+function DownloadIcon() {
+  return (
+    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden>
+      <path
+        d="M7 1v9M3.5 7.5 7 11l3.5-3.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M1 14.5h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 interface Props {
   block: Block;
@@ -31,218 +41,186 @@ interface Props {
 export default function HomeHeroBlock({ block }: Props) {
   const [, setLocation] = useLocation();
 
-  const headingLines = ((block.heading as string) || "I write books and teach\ndigital painting.")
-    .split("\n")
-    .filter(Boolean);
+  const heading =
+    ((block.heading as string) || "Author, illustrator, and digital art educator.").trim();
   const marqueeItems = (block.marqueeItems as string[] | undefined)?.filter(Boolean) ?? [];
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
+  const primaryLink = block.ctaPrimaryLink as string | undefined;
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 lg:min-h-[92vh]">
-      <div aria-hidden className="absolute inset-0 hidden md:block">
-        <ArtTile
-          palette="lavender"
-          className="art-tile-grain"
-          width={170}
-          height={220}
-          src={HERO_SILA}
-          alt="Sila — original character portrait"
-          drift
-          rotate={-7}
-          interactive
-          style={{ position: "absolute", top: 120, left: "4%" }}
-        />
-        <ArtTile
-          palette="violet"
-          width={140}
-          height={180}
-          src={HERO_STEAMPUNK_CAT}
-          alt="Steampunk Cat"
-          drift
-          rotate={5}
-          interactive
-          style={{
-            position: "absolute",
-            top: 380,
-            left: 70,
-            animationDelay: "1.2s",
-          }}
-        />
-        <ArtTile
-          palette="rose"
-          width={120}
-          height={160}
-          src={HERO_CHILD_AND_BEAR}
-          alt="Child and Bear"
-          drift
-          rotate={-4}
-          interactive
-          style={{
-            position: "absolute",
-            top: 640,
-            left: "6%",
-            animationDelay: "2.4s",
-          }}
-        />
-        <ArtTile
-          palette="twilight"
-          width={160}
-          height={210}
-          src={HERO_CHIBI_ELEPHANT}
-          alt="Chibi Elephant"
-          drift
-          rotate={6}
-          interactive
-          style={{ position: "absolute", top: 100, right: "5%" }}
-        />
-        <ArtTile
-          palette="moss"
-          width={140}
-          height={180}
-          src={HERO_BABY_DRAGON}
-          alt="Baby Dragon"
-          drift
-          rotate={-5}
-          interactive
-          style={{
-            position: "absolute",
-            top: 360,
-            right: 60,
-            animationDelay: "1.8s",
-          }}
-        />
-        <ArtTile
-          palette="warm"
-          width={130}
-          height={170}
-          src={HERO_CHIBI_DRAGON}
-          alt="Chibi Dragon sketch"
-          drift
-          rotate={4}
-          interactive
-          style={{
-            position: "absolute",
-            top: 620,
-            right: "4%",
-            animationDelay: "0.6s",
-          }}
-        />
-      </div>
-
-      <div
-        className="bq-container relative max-w-[820px] mx-auto text-center"
-        style={sectionAlignStyle(block)}
-      >
-        {block.eyebrow ? (
-          <Reveal>
-            <div
-              className="eyebrow-grad inline-block mb-7"
-              data-tina-field={tinaField(block, "eyebrow")}
-            >
-              {block.eyebrow as string}
-            </div>
-          </Reveal>
-        ) : null}
-
-        <SectionHeading
-          block={block}
-          defaultTag="h1"
-          baseSize="clamp(38px, 7vw, 88px)"
-          className="mb-7"
-          style={{
-            lineHeight: 1.1,
-            letterSpacing: "-0.025em",
-          }}
+    <section className="relative overflow-hidden">
+      <div className="w-full px-4 pt-6 pb-0 md:px-8 md:pt-8 md:pb-8 lg:px-16 lg:pt-16 lg:pb-16">
+        <div
+          className={[
+            "relative overflow-hidden",
+            /* Mobile: open on page paper. md+: taupe rounded stage (Figma tablet/desktop). */
+            "min-h-[680px] md:min-h-[720px] lg:min-h-[860px]",
+            "md:rounded-2xl lg:rounded-[32px] md:bg-[var(--taupe)]",
+          ].join(" ")}
         >
-          <WordReveal text={headingLines[0] ?? ""} />
-          {headingLines.length > 1 && (
-            <>
-              <br />
-              <span className="grad-text">
-                <WordReveal text={headingLines.slice(1).join(" ")} />
-              </span>
-            </>
-          )}
-        </SectionHeading>
-
-        {block.subheading ? (
-          <Reveal>
-            <div
-              className="text-lg max-w-[560px] mx-auto mb-9 leading-[1.55]"
-              style={{ color: "var(--ink-soft)", ...bodyTextStyle(block) }}
-              data-tina-field={tinaField(block, "subheading")}
-            >
-              <RichText value={block.subheading} />
-            </div>
-          </Reveal>
-        ) : null}
-
-        <Reveal>
-          <div className="flex flex-wrap justify-center gap-3.5">
-            {block.ctaPrimary ? (
-              <Btn
-                kind="primary"
-                size="lg"
-                iconRight="→"
-                onClick={() =>
-                  followLink(setLocation, block.ctaPrimaryLink as string | undefined, "/shop")
-                }
-              >
-                <span data-tina-field={tinaField(block, "ctaPrimary")}>
-                  {block.ctaPrimary as string}
-                </span>
-              </Btn>
-            ) : null}
-            {block.ctaSecondary ? (
-              isExternalLink(secondaryLink) ? (
-                <Btn kind="outline" size="lg" iconRight="↗" href={secondaryLink} external>
-                  <span data-tina-field={tinaField(block, "ctaSecondary")}>
-                    {block.ctaSecondary as string}
-                  </span>
-                </Btn>
-              ) : (
-                <Btn
-                  kind="outline"
-                  size="lg"
-                  iconRight="→"
-                  onClick={() => followLink(setLocation, secondaryLink, "/")}
-                >
-                  <span data-tina-field={tinaField(block, "ctaSecondary")}>
-                    {block.ctaSecondary as string}
-                  </span>
-                </Btn>
-              )
-            ) : null}
+          {/* Character stage — cutouts, not ArtTiles (matches Figma). */}
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            {/* Steampunk Cat — right, large */}
+            <img
+              src={HERO_STEAMPUNK_CAT}
+              alt=""
+              className={[
+                "absolute object-contain object-bottom",
+                "right-[-8%] top-[38%] h-[48%] w-[72%]",
+                "md:right-[-4%] md:top-[8%] md:h-[95%] md:w-[55%]",
+                "lg:right-[-2%] lg:top-[2%] lg:h-[106%] lg:w-[42%]",
+                "rotate-[-0.3deg] md:rotate-[2deg]",
+              ].join(" ")}
+            />
+            {/* Baby Dragon — lower left/center */}
+            <img
+              src={HERO_BABY_DRAGON}
+              alt=""
+              className={[
+                "absolute object-contain object-bottom",
+                "left-0 top-[58%] h-[28%] w-[56%]",
+                "md:left-[28%] md:top-[68%] md:h-[32%] md:w-[36%]",
+                "lg:left-[48%] lg:top-[56%] lg:h-[48%] lg:w-[26%]",
+              ].join(" ")}
+            />
+            {/* Child & Bear — tablet/desktop only */}
+            <img
+              src={HERO_CHILD_AND_BEAR}
+              alt=""
+              className={[
+                "absolute object-contain object-bottom hidden md:block",
+                "md:left-[8%] md:top-[78%] md:h-[26%] md:w-[22%]",
+                "lg:left-[34%] lg:top-[69%] lg:h-[40%] lg:w-[16%]",
+                "-rotate-4",
+              ].join(" ")}
+            />
           </div>
-        </Reveal>
 
-        {block.metaLine ? (
-          <Reveal>
-            <div
-              className="flex justify-center items-center gap-7 mt-14"
-              style={{ color: "var(--ink-mute)" }}
+          {/* Copy + CTAs — mobile pins CTAs to the stage bottom over the art */}
+          <div
+            className={[
+              "relative z-10 flex h-full min-h-[680px] flex-col md:min-h-[720px] lg:min-h-[860px]",
+              "px-4 pt-2 pb-6",
+              "md:px-10 md:pt-12 md:pb-10 md:max-w-[560px]",
+              "lg:px-[136px] lg:pt-[100px] lg:pb-16 lg:max-w-[920px]",
+            ].join(" ")}
+            style={sectionAlignStyle(block)}
+          >
+            {block.eyebrow ? (
+              <Reveal>
+                <div
+                  className="mb-5 hidden font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white md:block lg:mb-7"
+                  data-tina-field={tinaField(block, "eyebrow")}
+                >
+                  {block.eyebrow as string}
+                </div>
+              </Reveal>
+            ) : null}
+
+            <SectionHeading
+              block={block}
+              defaultTag="h1"
+              baseSize="clamp(36px, 5.5vw, 88px)"
+              className="mb-5 text-[var(--ink)] md:mb-7 md:text-white lg:mb-11"
+              style={{
+                lineHeight: 1.1,
+                letterSpacing: "-0.025em",
+                fontFamily: "var(--f-serif)",
+              }}
             >
-              <QuillMark size={22} />
-              <span
-                className="self-center"
-                style={{
-                  fontFamily: "var(--f-mono)",
-                  fontSize: 11,
-                  letterSpacing: "0.18em",
-                }}
-                data-tina-field={tinaField(block, "metaLine")}
-              >
-                {block.metaLine as string}
-              </span>
-              <QuillMark size={22} style={{ transform: "scaleX(-1)" }} />
-            </div>
-          </Reveal>
-        ) : null}
+              <WordReveal text={heading} />
+            </SectionHeading>
+
+            {block.subheading ? (
+              <Reveal>
+                <div
+                  className="mb-8 max-w-[540px] text-lg leading-[1.45] text-[var(--ink-soft)] md:mb-10 md:text-white md:text-[19px] lg:mb-0 lg:text-[28px] lg:leading-[1.15]"
+                  style={bodyTextStyle(block)}
+                  data-tina-field={tinaField(block, "subheading")}
+                >
+                  <RichText value={block.subheading} />
+                </div>
+              </Reveal>
+            ) : null}
+
+            <div className="flex-1 min-h-[220px] md:min-h-[80px] lg:min-h-[120px]" aria-hidden />
+
+            <Reveal>
+              <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center md:gap-3 lg:gap-4">
+                {block.ctaSecondary ? (
+                  isExternalLink(secondaryLink) ? (
+                    <Btn
+                      kind="outline"
+                      size="lg"
+                      iconRight={<DownloadIcon />}
+                      href={secondaryLink}
+                      external
+                      className={[
+                        "w-full md:w-auto",
+                        "border-[var(--maroon)] text-[var(--maroon)] bg-[#ebe1d7] hover:bg-[var(--maroon)] hover:text-[var(--paper)]",
+                        "md:border-white md:bg-transparent md:text-white md:hover:bg-white md:hover:text-[var(--taupe)]",
+                      ].join(" ")}
+                    >
+                      <span data-tina-field={tinaField(block, "ctaSecondary")}>
+                        {block.ctaSecondary as string}
+                      </span>
+                    </Btn>
+                  ) : (
+                    <Btn
+                      kind="outline"
+                      size="lg"
+                      iconRight={<DownloadIcon />}
+                      className={[
+                        "w-full md:w-auto",
+                        "border-[var(--maroon)] text-[var(--maroon)] bg-[#ebe1d7] hover:bg-[var(--maroon)] hover:text-[var(--paper)]",
+                        "md:border-white md:bg-transparent md:text-white md:hover:bg-white md:hover:text-[var(--taupe)]",
+                      ].join(" ")}
+                      onClick={() => followLink(setLocation, secondaryLink, "/downloads")}
+                    >
+                      <span data-tina-field={tinaField(block, "ctaSecondary")}>
+                        {block.ctaSecondary as string}
+                      </span>
+                    </Btn>
+                  )
+                ) : null}
+
+                {block.ctaPrimary ? (
+                  isExternalLink(primaryLink) ? (
+                    <Btn
+                      kind="primary"
+                      size="lg"
+                      iconRight="→"
+                      href={primaryLink}
+                      external
+                      className="w-full md:w-auto"
+                    >
+                      <span data-tina-field={tinaField(block, "ctaPrimary")}>
+                        {block.ctaPrimary as string}
+                      </span>
+                    </Btn>
+                  ) : (
+                    <Btn
+                      kind="primary"
+                      size="lg"
+                      iconRight="→"
+                      className="w-full md:w-auto"
+                      onClick={() => followLink(setLocation, primaryLink, "/shop")}
+                    >
+                      <span data-tina-field={tinaField(block, "ctaPrimary")}>
+                        {block.ctaPrimary as string}
+                      </span>
+                    </Btn>
+                  )
+                ) : null}
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </div>
 
       {marqueeItems.length > 0 && (
         <div
-          className="absolute left-0 right-0 bottom-0 overflow-hidden py-5"
+          className="relative overflow-hidden py-5"
           style={{
             borderTop: "1px solid rgba(46,34,34,0.08)",
             borderBottom: "1px solid rgba(46,34,34,0.08)",
@@ -251,7 +229,7 @@ export default function HomeHeroBlock({ block }: Props) {
           data-tina-field={tinaField(block, "marqueeItems")}
         >
           <div
-            className="flex gap-12 whitespace-nowrap w-max"
+            className="flex w-max gap-12 whitespace-nowrap"
             style={{
               fontFamily: "var(--f-serif)",
               fontSize: 26,

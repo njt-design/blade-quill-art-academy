@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTina } from "tinacms/react";
+import { useLiveRefresh } from "@/hooks/use-live-refresh";
+import { hasTinaSession } from "@/lib/tina-auth";
 import {
   fetchTinaData,
   isInTinaEditor,
   isLiveContentEnabled,
 } from "@/lib/tina-live";
 
-export type LiveTinaFreshness = "bundled" | "loading" | "live" | "unavailable";
+export type LiveTinaFreshness =
+  | "bundled"
+  | "loading"
+  | "live"
+  | "publishing"
+  | "unavailable";
 
 interface UseLiveTinaArgs<T extends object> {
   query: string;
@@ -26,6 +33,10 @@ interface UseLiveTinaResult<T extends object> {
  * so CMS saves appear on the live site in seconds instead of waiting for a
  * rebuild. The passed `data` (bundled at build time) renders first and stays
  * as the fallback when the live fetch fails.
+ *
+ * Refetches on tab focus / visibility, and polls for ~2 minutes while a Tina
+ * session is present so an already-open public tab picks up saves without a
+ * hard refresh.
  */
 export function useLiveTina<T extends object>({
   query,
@@ -39,27 +50,52 @@ export function useLiveTina<T extends object>({
   const [freshness, setFreshness] = useState<LiveTinaFreshness>("bundled");
   const variablesKey = JSON.stringify(variables);
   const liveKey = query + variablesKey;
+  const liveEnabled = isLiveContentEnabled() && !isInTinaEditor();
+  const requestId = useRef(0);
+
+  const refresh = useCallback(
+    (mode: "initial" | "silent" = "silent") => {
+      if (!isLiveContentEnabled() || isInTinaEditor()) return;
+
+      if (mode === "initial") {
+        setFreshness("loading");
+      } else if (hasTinaSession()) {
+        // Signed-in editor waiting on a save — keep the pill informative
+        // without blanking the page.
+        setFreshness((prev) => (prev === "live" ? "publishing" : prev));
+      }
+
+      const id = ++requestId.current;
+      fetchTinaData<T>(query, JSON.parse(variablesKey)).then((fresh) => {
+        if (id !== requestId.current) return;
+        if (fresh) {
+          setLive({ key: query + variablesKey, data: fresh });
+          setFreshness("live");
+        } else if (mode === "initial") {
+          setFreshness("unavailable");
+        } else {
+          setFreshness((prev) =>
+            prev === "publishing"
+              ? "live"
+              : prev === "loading"
+                ? "unavailable"
+                : prev
+          );
+        }
+      });
+    },
+    [query, variablesKey]
+  );
 
   useEffect(() => {
-    if (!isLiveContentEnabled() || isInTinaEditor()) {
+    if (!liveEnabled) {
       setFreshness("bundled");
       return;
     }
-    let cancelled = false;
-    setFreshness("loading");
-    fetchTinaData<T>(query, JSON.parse(variablesKey)).then((fresh) => {
-      if (cancelled) return;
-      if (fresh) {
-        setLive({ key: query + variablesKey, data: fresh });
-        setFreshness("live");
-      } else {
-        setFreshness("unavailable");
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [query, variablesKey]);
+    refresh("initial");
+  }, [liveEnabled, refresh]);
+
+  useLiveRefresh(() => refresh("silent"), liveEnabled);
 
   // Inside the editor the useTina live data always wins; on the public site
   // the runtime fetch (when it lands) supersedes the bundled seed.

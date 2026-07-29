@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   loadBlogPosts,
   sortBlogPosts,
   toBlogPostMeta,
   type BlogPostMeta,
 } from "@/lib/blog-posts";
+import { useLiveRefresh } from "@/hooks/use-live-refresh";
+import { hasTinaSession } from "@/lib/tina-auth";
 import {
   loadCatalogProducts,
   sortCatalogProducts,
@@ -20,11 +22,14 @@ import {
 /**
  * Live (runtime-fetched) blog and product lists. These seed from the JSON
  * bundled at build time — so first paint is instant and identical to the old
- * behavior — then refresh once from the Tina Cloud content API so CMS saves
+ * behavior — then refresh from the Tina Cloud content API so CMS saves
  * show up in seconds instead of waiting for a rebuild.
  *
  * Connections are paginated so catalogs of 30–100+ products stay within Tina
  * page limits without truncating the shop.
+ *
+ * Refetches on tab focus / visibility, and polls while a Tina session is
+ * present (same pattern as use-live-tina.ts).
  */
 
 interface PageInfo {
@@ -116,13 +121,14 @@ async function fetchAllConnectionPages(
   let after: string | null = null;
 
   for (let page = 0; page < MAX_PAGES; page++) {
-    const data = await fetchTinaData<Record<string, ConnectionData | undefined>>(
-      query,
-      { first: PAGE_SIZE, after }
-    );
+    const data: Record<string, ConnectionData | undefined> | null =
+      await fetchTinaData<Record<string, ConnectionData | undefined>>(query, {
+        first: PAGE_SIZE,
+        after,
+      });
     if (!data) return nodes.length > 0 ? nodes : null;
 
-    const connection = data[connectionKey];
+    const connection: ConnectionData | undefined = data[connectionKey];
     nodes.push(...connectionNodes(connection));
 
     if (!connection?.pageInfo?.hasNextPage || !connection.pageInfo.endCursor) {
@@ -137,18 +143,34 @@ async function fetchAllConnectionPages(
 /**
  * Several blocks on one page consume the same list (e.g. homepage product
  * strips), so live fetches are deduped through a short-lived shared cache.
+ * Editors with a Tina session bypass the cache so saves aren't held back.
  */
 const CACHE_TTL_MS = 10_000;
 const cache = new Map<string, { at: number; promise: Promise<unknown> }>();
 
-function cachedFetch<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
-  const hit = cache.get(key);
-  if (hit && Date.now() - hit.at < CACHE_TTL_MS) {
-    return hit.promise as Promise<T>;
+function cachedFetch<T>(
+  key: string,
+  fetcher: () => Promise<T>,
+  bypassCache: boolean
+): Promise<T> {
+  if (!bypassCache) {
+    const hit = cache.get(key);
+    if (hit && Date.now() - hit.at < CACHE_TTL_MS) {
+      return hit.promise as Promise<T>;
+    }
   }
   const promise = fetcher();
   cache.set(key, { at: Date.now(), promise });
   return promise;
+}
+
+/** Drop a list cache entry so the next refresh hits Tina Cloud. */
+export function invalidateLiveContentCache(key?: string): void {
+  if (key) {
+    cache.delete(key);
+  } else {
+    cache.clear();
+  }
 }
 
 function useLiveList<T>(
@@ -157,18 +179,28 @@ function useLiveList<T>(
   fetchLive: () => Promise<T[] | null>
 ): T[] {
   const [items, setItems] = useState<T[]>(seed);
+  const liveEnabled = isLiveContentEnabled() && !isInTinaEditor();
+  const fetchLiveRef = useRef(fetchLive);
+  fetchLiveRef.current = fetchLive;
+  const requestId = useRef(0);
+
+  const refresh = useCallback(() => {
+    if (!isLiveContentEnabled() || isInTinaEditor()) return;
+    const bypass = hasTinaSession();
+    if (bypass) invalidateLiveContentCache(key);
+    const id = ++requestId.current;
+    cachedFetch(key, () => fetchLiveRef.current(), bypass).then((live) => {
+      if (id !== requestId.current) return;
+      if (live && live.length > 0) setItems(live);
+    });
+  }, [key]);
 
   useEffect(() => {
-    if (!isLiveContentEnabled() || isInTinaEditor()) return;
-    let cancelled = false;
-    cachedFetch(key, fetchLive).then((live) => {
-      if (!cancelled && live && live.length > 0) setItems(live);
-    });
-    return () => {
-      cancelled = true;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
+    if (!liveEnabled) return;
+    refresh();
+  }, [liveEnabled, refresh]);
+
+  useLiveRefresh(refresh, liveEnabled);
 
   return items;
 }
