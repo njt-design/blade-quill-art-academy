@@ -49,8 +49,8 @@ export default function HomeHeroBlock({ block }: Props) {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Same max-width + gutters as the rest of the site (bq-container = 1280). */}
-      <div className="bq-container pt-6 pb-0 md:pt-8 md:pb-8 lg:pt-12 lg:pb-12">
+      {/* Match navbar: max-w-[1440px] + px-6/md:px-8 (logo → cart). */}
+      <div className="mx-auto max-w-[1440px] px-6 md:px-8 pt-6 pb-0 md:pt-8 md:pb-8 lg:pt-12 lg:pb-12">
         <div
           className={[
             "relative overflow-hidden",
