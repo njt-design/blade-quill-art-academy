@@ -1,6 +1,5 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
-import { galleryImageUrl } from "@/lib/artwork";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -15,9 +14,10 @@ const MARQUEE_COLORS = [
   "var(--gold)",
 ];
 
-const HERO_STEAMPUNK_CAT = galleryImageUrl("Steampunk Cat");
-const HERO_BABY_DRAGON = galleryImageUrl("Baby Dragon");
-const HERO_CHILD_AND_BEAR = galleryImageUrl("Child and Bear");
+/** Transparent Figma cutouts (not gallery JPGs — those have opaque boxes that clip neighbors). */
+const HERO_STEAMPUNK_CAT = "/images/hero/steampunk-cat.webp";
+const HERO_BABY_DRAGON = "/images/hero/baby-dragon.webp";
+const HERO_CHILD_AND_BEAR = "/images/hero/child-and-bear.webp";
 
 function DownloadIcon() {
   return (
@@ -49,7 +49,8 @@ export default function HomeHeroBlock({ block }: Props) {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="w-full px-4 pt-6 pb-0 md:px-8 md:pt-8 md:pb-8 lg:px-16 lg:pt-16 lg:pb-16">
+      {/* Same max-width + gutters as the rest of the site (bq-container = 1280). */}
+      <div className="bq-container pt-6 pb-0 md:pt-8 md:pb-8 lg:pt-12 lg:pb-12">
         <div
           className={[
             "relative overflow-hidden",
@@ -58,39 +59,39 @@ export default function HomeHeroBlock({ block }: Props) {
             "md:rounded-2xl lg:rounded-[32px] md:bg-[var(--taupe)]",
           ].join(" ")}
         >
-          {/* Character stage — cutouts, not ArtTiles (matches Figma). */}
+          {/* Character stage — transparent cutouts so limbs can overlap cleanly. */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
-            {/* Steampunk Cat — right, large */}
+            {/* Steampunk Cat — back layer, right side */}
             <img
               src={HERO_STEAMPUNK_CAT}
               alt=""
               className={[
-                "absolute object-contain object-bottom",
-                "right-[-8%] top-[38%] h-[48%] w-[72%]",
-                "md:right-[-4%] md:top-[8%] md:h-[95%] md:w-[55%]",
-                "lg:right-[-2%] lg:top-[2%] lg:h-[106%] lg:w-[42%]",
+                "absolute z-[1] h-auto max-w-none object-contain",
+                "right-[-6%] bottom-[-4%] w-[70%]",
+                "md:right-[-2%] md:bottom-[-8%] md:w-[58%]",
+                "lg:right-[-1%] lg:bottom-[-10%] lg:w-[48%]",
                 "rotate-[-0.3deg] md:rotate-[2deg]",
               ].join(" ")}
             />
-            {/* Baby Dragon — lower left/center */}
+            {/* Baby Dragon — mid/front, lower center */}
             <img
               src={HERO_BABY_DRAGON}
               alt=""
               className={[
-                "absolute object-contain object-bottom",
-                "left-0 top-[58%] h-[28%] w-[56%]",
-                "md:left-[28%] md:top-[68%] md:h-[32%] md:w-[36%]",
-                "lg:left-[48%] lg:top-[56%] lg:h-[48%] lg:w-[26%]",
+                "absolute z-[2] h-auto max-w-none object-contain",
+                "left-[-4%] bottom-[-2%] w-[58%]",
+                "md:left-[26%] md:bottom-[-4%] md:w-[38%]",
+                "lg:left-[46%] lg:bottom-[-6%] lg:w-[30%]",
               ].join(" ")}
             />
-            {/* Child & Bear — tablet/desktop only */}
+            {/* Child & Bear — front, tablet/desktop only */}
             <img
               src={HERO_CHILD_AND_BEAR}
               alt=""
               className={[
-                "absolute object-contain object-bottom hidden md:block",
-                "md:left-[8%] md:top-[78%] md:h-[26%] md:w-[22%]",
-                "lg:left-[34%] lg:top-[69%] lg:h-[40%] lg:w-[16%]",
+                "absolute z-[3] hidden h-auto max-w-none object-contain md:block",
+                "md:left-[6%] md:bottom-[-6%] md:w-[24%]",
+                "lg:left-[32%] lg:bottom-[-8%] lg:w-[20%]",
                 "-rotate-4",
               ].join(" ")}
             />
@@ -100,9 +101,9 @@ export default function HomeHeroBlock({ block }: Props) {
           <div
             className={[
               "relative z-10 flex h-full min-h-[680px] flex-col md:min-h-[720px] lg:min-h-[860px]",
-              "px-4 pt-2 pb-6",
-              "md:px-10 md:pt-12 md:pb-10 md:max-w-[560px]",
-              "lg:px-[136px] lg:pt-[100px] lg:pb-16 lg:max-w-[920px]",
+              "px-1 pt-2 pb-6",
+              "md:px-10 md:pt-12 md:pb-10 md:max-w-[520px]",
+              "lg:px-16 lg:pt-20 lg:pb-16 lg:max-w-[640px]",
             ].join(" ")}
             style={sectionAlignStyle(block)}
           >
