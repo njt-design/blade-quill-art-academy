@@ -3,7 +3,7 @@
   "layout": "standard",
   "blocks": [
     {
-      "heading": "Page Title",
+      "heading": "LIVE-EDIT-PROBE-1785339051",
       "description": {
         "type": "root",
         "children": [
@@ -38,8 +38,8 @@
       "_template": "text"
     },
     {
-      "eyebrow": "ABOUT · A STUDIO VISIT",
-      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "eyebrow": "ABOUT \u00b7 A STUDIO VISIT",
+      "heading": "I'm Corinne \u2014\nand I draw\nfor a living.",
       "leadText": {
         "type": "root",
         "children": [
@@ -58,7 +58,7 @@
       "ctaPrimaryLink": "/contact",
       "ctaSecondary": "Visit the Shop",
       "ctaSecondaryLink": "/shop",
-      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "metaLine": "NANTES, FRANCE \u00b7 EST. 2018",
       "portraitCaption": "in the studio",
       "_template": "aboutHero"
     },
