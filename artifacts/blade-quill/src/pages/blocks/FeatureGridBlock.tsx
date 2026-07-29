@@ -1,6 +1,7 @@
 import { tinaField } from "tinacms/react";
 import { RichText } from "@/components/site/RichText";
 import * as LucideIcons from "lucide-react";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface FeatureItem {
   icon?: string;
@@ -22,15 +23,17 @@ export default function FeatureGridBlock({ block }: Props) {
   const items = (block.items as FeatureItem[]) ?? [];
 
   return (
-    <section className="py-12">
+    <section className="py-12" style={sectionAlignStyle(block)}>
       <div className="container mx-auto px-4 md:px-6">
         {block.heading && (
-          <h2
-            className="text-2xl md:text-3xl font-heading mb-8 text-center"
-            data-tina-field={tinaField(block, "heading")}
+          <SectionHeading
+            block={block}
+            defaultTag="h2"
+            baseSize="clamp(24px, 3vw, 30px)"
+            className="font-heading mb-8 text-center"
           >
             {block.heading as string}
-          </h2>
+          </SectionHeading>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {items.map((item, i) => {

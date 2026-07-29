@@ -8,6 +8,7 @@ import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { TutorialThumb } from "@/components/site/TutorialThumb";
 import { type Block } from "./block-utils";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 const STAT_COLORS = ["gold", "paper", "gold-deep", "paper-3"];
 
@@ -47,7 +48,7 @@ export default function TutorialsStripBlock({ block }: Props) {
     >
       <div className="bq-container relative">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
-          <div>
+          <div style={sectionAlignStyle(block)}>
             {block.eyebrow ? (
               <Reveal>
                 <div className="eyebrow-grad-gold mb-4" data-tina-field={tinaField(block, "eyebrow")}>
@@ -56,13 +57,15 @@ export default function TutorialsStripBlock({ block }: Props) {
               </Reveal>
             ) : null}
             <Reveal>
-              <h2
+              <SectionHeading
+                block={block}
+                field="headingHighlight"
+                defaultTag="h2"
+                baseSize="clamp(40px, 5.5vw, 64px)"
                 style={{
-                  fontSize: "clamp(40px, 5.5vw, 64px)",
                   lineHeight: 1.05,
                   color: "var(--paper)",
                 }}
-                data-tina-field={tinaField(block, "headingHighlight")}
               >
                 {(block.headingPrefix as string) ?? ""}
                 {block.headingHighlight ? (
@@ -74,7 +77,7 @@ export default function TutorialsStripBlock({ block }: Props) {
                     {block.headingSuffix as string}
                   </>
                 ) : null}
-              </h2>
+              </SectionHeading>
             </Reveal>
           </div>
           {block.buttonLabel ? (

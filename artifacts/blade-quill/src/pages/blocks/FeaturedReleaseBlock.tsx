@@ -4,6 +4,7 @@ import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -65,7 +66,7 @@ export default function FeaturedReleaseBlock({ block }: Props) {
                 ) : null}
               </div>
 
-              <div className="text-center md:text-left">
+              <div className="text-center md:text-left" style={sectionAlignStyle(block)}>
                 {block.eyebrow ? (
                   <p
                     className="eyebrow text-maroon mb-3"
@@ -74,15 +75,18 @@ export default function FeaturedReleaseBlock({ block }: Props) {
                     {block.eyebrow as string}
                   </p>
                 ) : null}
-                <h2
+                <SectionHeading
+                  block={block}
+                  field="title"
                   id="featured-release-heading"
-                  className="font-display text-2xl md:text-3xl text-foreground mb-3 leading-tight"
-                  data-tina-field={tinaField(block, "title")}
+                  defaultTag="h2"
+                  baseSize="clamp(24px, 3vw, 30px)"
+                  className="font-display text-foreground mb-3 leading-tight"
                 >
                   {title}
-                </h2>
+                </SectionHeading>
                 {block.description ? (
-                  <div data-tina-field={tinaField(block, "description")}>
+                  <div style={bodyTextStyle(block)} data-tina-field={tinaField(block, "description")}>
                     <RichText
                       value={block.description}
                       className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed"

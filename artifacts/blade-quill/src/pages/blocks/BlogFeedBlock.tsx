@@ -1,11 +1,11 @@
 import { Link } from "wouter";
-import { tinaField } from "tinacms/react";
 import { useLiveBlogPosts } from "@/hooks/use-live-content";
 import { formatBlogDate } from "@/lib/blog-posts";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block } from "./block-utils";
 import { NewsletterPanel, type NewsletterContent } from "./NewsletterPanel";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -17,15 +17,16 @@ export default function BlogFeedBlock({ block }: Props) {
   const newsletter = (block.newsletter as NewsletterContent | undefined) ?? {};
 
   const postsList = (
-    <div>
+    <div style={sectionAlignStyle(block)}>
       <Reveal>
-        <h2
+        <SectionHeading
+          block={block}
+          defaultTag="h2"
+          baseSize="clamp(32px, 4vw, 44px)"
           className="mb-7"
-          style={{ fontSize: "clamp(32px, 4vw, 44px)" }}
-          data-tina-field={tinaField(block, "heading")}
         >
           {(block.heading as string) || "Recent writing."}
-        </h2>
+        </SectionHeading>
       </Reveal>
       <Reveal stagger>
         <div className="flex flex-col">

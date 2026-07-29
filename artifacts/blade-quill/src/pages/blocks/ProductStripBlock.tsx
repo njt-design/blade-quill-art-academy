@@ -9,6 +9,7 @@ import { Btn } from "@/components/site/Btn";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, followLink } from "./block-utils";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -30,7 +31,7 @@ export default function ProductStripBlock({ block }: Props) {
     <section className="py-24 lg:py-28" style={{ background: "var(--paper)" }}>
       <div className="bq-container">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-9">
-          <div>
+          <div style={sectionAlignStyle(block)}>
             {block.eyebrow ? (
               <Reveal>
                 <div className="eyebrow-grad mb-3.5" data-tina-field={tinaField(block, "eyebrow")}>
@@ -39,12 +40,13 @@ export default function ProductStripBlock({ block }: Props) {
               </Reveal>
             ) : null}
             <Reveal>
-              <h2
-                style={{ fontSize: "clamp(32px, 4vw, 48px)" }}
-                data-tina-field={tinaField(block, "heading")}
+              <SectionHeading
+                block={block}
+                defaultTag="h2"
+                baseSize="clamp(32px, 4vw, 48px)"
               >
                 {(block.heading as string) || "From the shop."}
-              </h2>
+              </SectionHeading>
             </Reveal>
           </div>
           {block.viewAllLabel ? (

@@ -3,6 +3,7 @@ import { tinaField } from "tinacms/react";
 import { Btn } from "@/components/site/Btn";
 import { RichText } from "@/components/site/RichText";
 import { useNewsletterSignup } from "@/hooks/use-newsletter";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 export type NewsletterContent = Record<string, unknown> & {
   eyebrow?: string;
@@ -35,7 +36,7 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
         boxShadow: "var(--sh-lg)",
       }}
     >
-      <div className="relative">
+      <div className="relative" style={sectionAlignStyle(content)}>
         <div
           className="eyebrow mb-4"
           style={{ color: "var(--gold)" }}
@@ -43,16 +44,18 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
         >
           {content.eyebrow || "STUDIO NEWSLETTER"}
         </div>
-        <h3
+        <SectionHeading
+          block={content}
+          defaultTag="h3"
+          baseSize="32px"
           className="mb-3.5"
-          style={{ fontSize: 32, lineHeight: 1.1, color: "var(--paper)" }}
-          data-tina-field={tinaField(content, "heading")}
+          style={{ lineHeight: 1.1, color: "var(--paper)" }}
         >
           {content.heading || "Stay in the loop."}
-        </h3>
+        </SectionHeading>
         <div
           className="mb-7"
-          style={{ fontSize: 14, color: "var(--paper-3)", lineHeight: 1.6 }}
+          style={{ fontSize: 14, color: "var(--paper-3)", lineHeight: 1.6, ...bodyTextStyle(content) }}
           data-tina-field={tinaField(content, "subheading")}
         >
           <RichText value={content.subheading} />

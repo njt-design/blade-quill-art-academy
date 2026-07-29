@@ -2,15 +2,91 @@ import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
 import { ALL_BLOCKS, charLimit } from "./blocks";
 
-/** Tina sidebar screen that sends Corinne to the Owner Insights page. */
+/**
+ * Tina sidebar screen for Owner Insights.
+ * Embeds /insights in-frame (same-origin → Tina localStorage auth works).
+ * Auto-redirect was unreliable inside Tina's fullscreen modal.
+ */
 function InsightsRedirectScreen(_props: { close: () => void }) {
+  const insightsUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/insights`
+      : "/insights";
+
   useEffect(() => {
-    window.location.assign("/insights");
-  }, []);
+    // Prefer leaving the admin SPA entirely when possible (top window).
+    // If that is blocked (modal / nested frame), the iframe below still works.
+    try {
+      if (window.top && window.top !== window) {
+        window.top.location.href = insightsUrl;
+      }
+    } catch {
+      // Cross-origin frame access can throw; iframe fallback handles it.
+    }
+  }, [insightsUrl]);
+
   return React.createElement(
     "div",
-    { style: { padding: 32, fontFamily: "system-ui, sans-serif" } },
-    "Opening Owner Insights…"
+    {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: "70vh",
+        fontFamily: "system-ui, sans-serif",
+      },
+    },
+    React.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          padding: "12px 16px",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          flexShrink: 0,
+        },
+      },
+      React.createElement(
+        "div",
+        { style: { fontSize: 14, color: "#4A3838" } },
+        "Owner Insights — analytics & Stripe orders"
+      ),
+      React.createElement(
+        "a",
+        {
+          href: insightsUrl,
+          target: "_top",
+          rel: "noopener noreferrer",
+          style: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "8px 14px",
+            borderRadius: 999,
+            background: "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none",
+          },
+        },
+        "Open full page"
+      )
+    ),
+    React.createElement("iframe", {
+      src: insightsUrl,
+      title: "Owner Insights",
+      style: {
+        flex: 1,
+        width: "100%",
+        minHeight: 0,
+        border: "none",
+        background: "#F7F1EA",
+      },
+    })
   );
 }
 

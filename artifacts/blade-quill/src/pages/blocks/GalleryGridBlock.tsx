@@ -6,6 +6,7 @@ import { useListGallery, type GalleryItem } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
 import { FALLBACK_GALLERY } from "@/lib/fallback-data";
 import { type Block } from "./block-utils";
+import { SectionHeading } from "./text-style";
 
 function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
   useEffect(() => {
@@ -125,12 +126,15 @@ export default function GalleryGridBlock({ block }: Props) {
           </div>
         ) : (
           <div className="text-center py-20 border border-dashed border-border rounded-lg">
-            <h3
-              className="text-xl font-sans text-muted-foreground mb-2"
-              data-tina-field={tinaField(block, "emptyHeading")}
+            <SectionHeading
+              block={block}
+              field="emptyHeading"
+              defaultTag="h3"
+              baseSize="clamp(20px, 2vw, 20px)"
+              className="font-sans text-muted-foreground mb-2"
             >
               {(block.emptyHeading as string) || "Gallery is empty"}
-            </h3>
+            </SectionHeading>
             <p
               className="text-sm text-muted-foreground"
               data-tina-field={tinaField(block, "emptyDescription")}

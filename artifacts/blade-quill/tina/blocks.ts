@@ -1,4 +1,4 @@
-import type { Template } from "tinacms";
+import type { Template, TinaField } from "tinacms";
 
 const INLINE_RICH_TEXT = {
   toolbar: ["bold", "italic", "link", "ul", "ol"] as Array<
@@ -26,6 +26,90 @@ export const charLimit = (max: number, description?: string) => ({
     return undefined;
   },
 });
+
+/**
+ * Curated typography presets for section headings/body. Appended to every
+ * heading-bearing block so Corinne can restyle a section without breaking
+ * the responsive design. "default" keeps each block's existing look.
+ */
+export function textStyleFields(): TinaField[] {
+  return [
+    {
+      type: "object",
+      name: "textStyle",
+      label: "Text Style",
+      ui: {
+        description:
+          "Optional size, heading type, font, and alignment for this section. Leave everything on Default to keep the design as-is.",
+      },
+      fields: [
+        {
+          type: "string",
+          name: "headingSize",
+          label: "Heading Size",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "smaller", label: "Smaller" },
+            { value: "larger", label: "Larger" },
+            { value: "xl", label: "Extra Large" },
+          ],
+          ui: {
+            description:
+              "Scales this section's heading up or down. Mobile stays readable.",
+          },
+        },
+        {
+          type: "string",
+          name: "headingType",
+          label: "Heading Type",
+          options: [
+            { value: "default", label: "Default (keep this section's style)" },
+            { value: "h1", label: "Page Title (H1)" },
+            { value: "h2", label: "Section Heading (H2)" },
+            { value: "h3", label: "Sub-heading (H3)" },
+          ],
+          ui: {
+            description:
+              "Changes the HTML heading tag (for structure/SEO). Size is controlled separately above.",
+          },
+        },
+        {
+          type: "string",
+          name: "headingFont",
+          label: "Heading Font",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "serif", label: "Serif (Young Serif)" },
+            { value: "sans", label: "Sans (Quicksand)" },
+          ],
+        },
+        {
+          type: "string",
+          name: "align",
+          label: "Text Alignment",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "left", label: "Left" },
+            { value: "center", label: "Center" },
+          ],
+        },
+        {
+          type: "string",
+          name: "bodySize",
+          label: "Body Text Size",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "large", label: "Large" },
+          ],
+          ui: {
+            description:
+              "Applies to supporting text under the heading (descriptions, body copy).",
+          },
+        },
+      ],
+    },
+  ];
+}
 
 /** Build a Slate rich-text value from a plain sentence (for defaultItem seeds). */
 const rt = (text: string) => ({
@@ -129,6 +213,7 @@ export const heroBlock: Template = {
       label: "Button Link",
       ui: { description: 'Relative URL the button links to (e.g. "/shop").' },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -153,6 +238,7 @@ export const textBlock: Template = {
       parser: SLATE_JSON_PARSER,
       ui: { description: "Rich text content. Supports headings, bold, links, images, and more." },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -186,6 +272,7 @@ export const imageGalleryBlock: Template = {
         { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -228,6 +315,7 @@ export const ctaBandBlock: Template = {
       options: ["light", "dark"],
       ui: { description: 'Choose "dark" for a dark background with white text, or "light" for the default.' },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -260,6 +348,7 @@ export const videoEmbedBlock: Template = {
         },
       },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -308,6 +397,7 @@ export const featureGridBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -357,6 +447,7 @@ export const bigCtaBlock: Template = {
       label: "Secondary Button Link",
       ui: { description: "Relative URL or full https:// link." },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -382,6 +473,7 @@ export const pageHeaderBlock: Template = {
       parser: SLATE_JSON_PARSER,
       ui: { description: "Introductory text shown below the heading." },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -464,6 +556,7 @@ export const homeHeroBlock: Template = {
       list: true,
       ui: { description: "Words that scroll across the bottom of the hero (e.g. Author, Illustrator). Keep each under 20 characters." },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -523,6 +616,7 @@ export const pillarsBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -578,6 +672,7 @@ export const featuredBookBlock: Template = {
     },
     { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
     { type: "string", name: "secondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -633,6 +728,7 @@ export const classesPitchBlock: Template = {
     },
     { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
     { type: "string", name: "secondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -695,6 +791,7 @@ export const tutorialsStripBlock: Template = {
         { type: "string", name: "label", label: "Label", ui: charLimit(24) },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -717,6 +814,7 @@ export const productStripBlock: Template = {
       label: "View All Link",
       ui: { description: 'Where the "view all" button goes (usually "/shop").' },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -767,6 +865,7 @@ export const blogFeedBlock: Template = {
         { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -794,6 +893,7 @@ export const newsletterSignupBlock: Template = {
     { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
     { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
     { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) },
+    ...textStyleFields(),
   ],
 };
 
@@ -886,6 +986,7 @@ export const aboutHeroBlock: Template = {
       label: "Screen Accent Caption",
       ui: charLimit(32, 'Small label on the screen polaroid (e.g. "krita screen").'),
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -984,6 +1085,7 @@ export const storyBlock: Template = {
       label: "Side Photo Caption",
       ui: charLimit(48, "Caption under the small polaroid on the right."),
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1023,6 +1125,7 @@ export const timelineBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1075,6 +1178,7 @@ export const cardRowBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1131,6 +1235,7 @@ export const shopCatalogBlock: Template = {
       label: "Empty State Description",
       ui: charLimit(120),
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1154,6 +1259,7 @@ export const galleryGridBlock: Template = {
       label: "Empty State Description",
       ui: charLimit(120),
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1177,6 +1283,7 @@ export const downloadsGridBlock: Template = {
       label: "Empty State Description",
       ui: charLimit(120),
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1256,6 +1363,7 @@ export const dummyBookRequestBlock: Template = {
       ui: { component: "textarea", ...charLimit(220, "Short note above the download button.") },
     },
     { type: "string", name: "downloadLabel", label: "Download Button Label", ui: charLimit(32) },
+    ...textStyleFields(),
   ],
 };
 
@@ -1353,6 +1461,7 @@ export const featuredReleaseBlock: Template = {
         },
       },
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1376,6 +1485,7 @@ export const kofiSupportBlock: Template = {
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     { type: "string", name: "href", label: "Ko-fi URL" },
+    ...textStyleFields(),
   ],
 };
 
@@ -1439,6 +1549,7 @@ export const socialLinksBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1492,6 +1603,7 @@ export const reviewLinksBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1561,6 +1673,7 @@ export const heroSplitImageBlock: Template = {
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
     { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -1627,6 +1740,7 @@ export const heroFullBleedBlock: Template = {
     },
     { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaLink", label: "Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -1671,6 +1785,7 @@ export const heroFloatingImagesBlock: Template = {
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
     { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -1718,6 +1833,7 @@ export const heroImageGridBlock: Template = {
     },
     { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaLink", label: "Button Link" },
+    ...textStyleFields(),
   ],
 };
 
@@ -1767,6 +1883,7 @@ export const imageSpotlightBlock: Template = {
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1808,6 +1925,7 @@ export const imageSideBySideBlock: Template = {
         { value: "rounded", label: "Rounded corners" },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 
@@ -1848,6 +1966,7 @@ export const imageMasonryBlock: Template = {
         },
       ],
     },
+    ...textStyleFields(),
   ],
 };
 

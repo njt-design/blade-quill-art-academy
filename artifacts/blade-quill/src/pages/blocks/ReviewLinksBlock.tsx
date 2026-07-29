@@ -4,6 +4,7 @@ import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface ReviewLink {
   label?: string;
@@ -23,17 +24,22 @@ export default function ReviewLinksBlock({ block }: Props) {
     <div className="px-6 md:px-8 py-6">
       <div className="mx-auto max-w-5xl">
         <Reveal className="w-full">
-          <section className="home-panel p-6 md:p-8 text-center w-full">
+          <section
+            className="home-panel p-6 md:p-8 text-center w-full"
+            style={sectionAlignStyle(block)}
+          >
             {block.heading ? (
-              <h2
-                className="font-display text-2xl md:text-3xl text-foreground mb-3 leading-tight"
-                data-tina-field={tinaField(block, "heading")}
+              <SectionHeading
+                block={block}
+                defaultTag="h2"
+                baseSize="clamp(24px, 3vw, 30px)"
+                className="font-display text-foreground mb-3 leading-tight"
               >
                 {block.heading as string}
-              </h2>
+              </SectionHeading>
             ) : null}
             {block.intro ? (
-              <div data-tina-field={tinaField(block, "intro")}>
+              <div style={bodyTextStyle(block)} data-tina-field={tinaField(block, "intro")}>
                 <RichText
                   value={block.intro}
                   className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-4 leading-relaxed"

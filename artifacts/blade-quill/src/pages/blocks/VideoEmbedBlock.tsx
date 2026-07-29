@@ -1,4 +1,5 @@
 import { tinaField } from "tinacms/react";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Record<string, unknown>;
@@ -16,14 +17,19 @@ export default function VideoEmbedBlock({ block }: Props) {
 
   return (
     <section className="py-12">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+      <div
+        className="container mx-auto px-4 md:px-6 max-w-4xl"
+        style={sectionAlignStyle(block)}
+      >
         {block.heading && (
-          <h2
-            className="text-2xl md:text-3xl font-heading mb-6"
-            data-tina-field={tinaField(block, "heading")}
+          <SectionHeading
+            block={block}
+            defaultTag="h2"
+            baseSize="clamp(24px, 3vw, 30px)"
+            className="font-heading mb-6"
           >
             {block.heading as string}
-          </h2>
+          </SectionHeading>
         )}
         {videoId ? (
           <div className="aspect-video rounded-lg overflow-hidden gumroad-card">

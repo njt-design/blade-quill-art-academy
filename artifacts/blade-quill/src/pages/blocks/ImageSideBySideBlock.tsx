@@ -4,6 +4,7 @@ import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block } from "./block-utils";
 import { captionStyle, type ShowcaseImage } from "./image-showcase-utils";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -59,17 +60,19 @@ export default function ImageSideBySideBlock({ block }: Props) {
   const right = (block.rightImage as ShowcaseImage) ?? {};
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24" style={sectionAlignStyle(block)}>
       <div className="bq-container">
         {block.heading ? (
           <Reveal>
-            <h2
+            <SectionHeading
+              block={block}
+              defaultTag="h2"
+              baseSize="clamp(26px, 3.5vw, 38px)"
               className="mb-10 text-center"
-              style={{ fontSize: "clamp(26px, 3.5vw, 38px)", lineHeight: 1.2 }}
-              data-tina-field={tinaField(block, "heading")}
+              style={{ lineHeight: 1.2 }}
             >
               {block.heading as string}
-            </h2>
+            </SectionHeading>
           </Reveal>
         ) : null}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start max-w-5xl mx-auto">

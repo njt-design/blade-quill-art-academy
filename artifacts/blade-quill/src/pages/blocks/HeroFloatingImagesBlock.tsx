@@ -7,6 +7,7 @@ import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { FLOAT_SLOTS, type ShowcaseImage, splitHeading } from "./image-showcase-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -50,7 +51,7 @@ export default function HeroFloatingImagesBlock({ block }: Props) {
       </div>
 
       <div className="bq-container relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center" style={sectionAlignStyle(block)}>
           {block.eyebrow ? (
             <Reveal>
               <div className="eyebrow-grad mb-5" data-tina-field={tinaField(block, "eyebrow")}>
@@ -58,10 +59,12 @@ export default function HeroFloatingImagesBlock({ block }: Props) {
               </div>
             </Reveal>
           ) : null}
-          <h1
+          <SectionHeading
+            block={block}
+            defaultTag="h1"
+            baseSize="clamp(40px, 6.5vw, 84px)"
             className="mb-7"
-            style={{ fontSize: "clamp(40px, 6.5vw, 84px)", lineHeight: 1.05 }}
-            data-tina-field={tinaField(block, "heading")}
+            style={{ lineHeight: 1.05 }}
           >
             {headingLines.map((line, i) => (
               <span key={`${line}-${i}`}>
@@ -75,12 +78,12 @@ export default function HeroFloatingImagesBlock({ block }: Props) {
                 )}
               </span>
             ))}
-          </h1>
+          </SectionHeading>
           {block.subheading ? (
             <Reveal>
               <div
                 className="mb-8 mx-auto max-w-lg"
-                style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7 }}
+                style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7, ...bodyTextStyle(block) }}
                 data-tina-field={tinaField(block, "subheading")}
               >
                 <RichText value={block.subheading} />

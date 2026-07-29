@@ -6,6 +6,7 @@ import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block, followLink } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const MODULE_TILES: Array<{ p: ArtTilePalette; l: string; src?: string; alt: string }> = [
   { p: "warm", l: "M1 · LINES", src: galleryImageUrl("Chibi Hippo"), alt: "Chibi Hippo line art" },
@@ -33,7 +34,7 @@ export default function ClassesPitchBlock({ block }: Props) {
   return (
     <section className="py-24 lg:py-28 relative">
       <div className="bq-container">
-        <div className="text-center mb-14">
+        <div className="text-center mb-14" style={sectionAlignStyle(block)}>
           {block.eyebrow ? (
             <Reveal>
               <div className="eyebrow-grad mb-4" data-tina-field={tinaField(block, "eyebrow")}>
@@ -42,12 +43,13 @@ export default function ClassesPitchBlock({ block }: Props) {
             </Reveal>
           ) : null}
           <Reveal>
-            <h2
-              style={{ fontSize: "clamp(38px, 5vw, 60px)" }}
-              data-tina-field={tinaField(block, "heading")}
+            <SectionHeading
+              block={block}
+              defaultTag="h2"
+              baseSize="clamp(38px, 5vw, 60px)"
             >
               {(block.heading as string) || "Step inside the classroom."}
-            </h2>
+            </SectionHeading>
           </Reveal>
         </div>
 
@@ -84,7 +86,7 @@ export default function ClassesPitchBlock({ block }: Props) {
               <div className="eyebrow mb-3.5">WHAT YOU'LL MAKE</div>
               <div
                 className="mb-7"
-                style={{ fontSize: 28, lineHeight: 1.2 }}
+                style={{ fontSize: 28, lineHeight: 1.2, ...bodyTextStyle(block) }}
                 data-tina-field={tinaField(block, "subheading")}
               >
                 <RichText value={block.subheading} />

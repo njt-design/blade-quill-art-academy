@@ -6,6 +6,7 @@ import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink } from "./block-utils";
 import { type ShowcaseImage, splitHeading } from "./image-showcase-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -37,7 +38,7 @@ export default function HeroImageGridBlock({ block }: Props) {
     <section className="py-14 lg:py-24">
       <div className="bq-container">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
-          <div>
+          <div style={sectionAlignStyle(block)}>
             {block.eyebrow ? (
               <Reveal>
                 <div className="eyebrow-grad mb-5" data-tina-field={tinaField(block, "eyebrow")}>
@@ -45,10 +46,12 @@ export default function HeroImageGridBlock({ block }: Props) {
                 </div>
               </Reveal>
             ) : null}
-            <h1
+            <SectionHeading
+              block={block}
+              defaultTag="h1"
+              baseSize="clamp(36px, 5vw, 68px)"
               className="mb-7"
-              style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 1.05 }}
-              data-tina-field={tinaField(block, "heading")}
+              style={{ lineHeight: 1.05 }}
             >
               {headingLines.map((line, i) => (
                 <span key={`${line}-${i}`}>
@@ -62,12 +65,12 @@ export default function HeroImageGridBlock({ block }: Props) {
                   )}
                 </span>
               ))}
-            </h1>
+            </SectionHeading>
             {block.subheading ? (
               <Reveal>
                 <div
                   className="mb-8 max-w-md"
-                  style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7 }}
+                  style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7, ...bodyTextStyle(block) }}
                   data-tina-field={tinaField(block, "subheading")}
                 >
                   <RichText value={block.subheading} />

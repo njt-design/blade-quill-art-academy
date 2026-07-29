@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { maybeTrackAmazonClick } from "@/lib/analytics";
 import { type Block } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const PLATFORM_ICONS: Record<string, ReactNode> = {
   youtube: <SiYoutube className="w-5 h-5" />,
@@ -68,16 +69,19 @@ function Panel({ block, links }: { block: Block; links: SocialLink[] }) {
         <section
           className="home-panel p-6 md:p-8 text-center bg-secondary/50 w-full"
           aria-labelledby="social-links-heading"
+          style={sectionAlignStyle(block)}
         >
-          <h2
+          <SectionHeading
+            block={block}
             id="social-links-heading"
-            className="font-sans font-medium text-xl md:text-2xl text-foreground mb-3 leading-tight"
-            data-tina-field={tinaField(block, "heading")}
+            defaultTag="h2"
+            baseSize="clamp(20px, 2.5vw, 24px)"
+            className="font-sans font-medium text-foreground mb-3 leading-tight"
           >
             {block.heading as string}
-          </h2>
+          </SectionHeading>
           {block.body ? (
-            <div data-tina-field={tinaField(block, "body")}>
+            <div style={bodyTextStyle(block)} data-tina-field={tinaField(block, "body")}>
               <RichText
                 value={block.body}
                 className="font-sans text-sm md:text-base text-muted-foreground reading-width mx-auto mb-5 leading-relaxed"

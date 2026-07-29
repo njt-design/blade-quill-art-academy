@@ -6,6 +6,7 @@ import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink } from "./block-utils";
 import { overlayOpacity, splitHeading } from "./image-showcase-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -41,16 +42,18 @@ export default function HeroFullBleedBlock({ block }: Props) {
       />
       <div
         className={`relative z-10 w-full py-16 lg:py-24 ${centered ? "text-center" : ""}`}
+        style={sectionAlignStyle(block)}
       >
         <div className={`bq-container ${centered ? "max-w-3xl mx-auto" : ""}`}>
-          <h1
+          <SectionHeading
+            block={block}
+            defaultTag="h1"
+            baseSize="clamp(36px, 6vw, 80px)"
             className="mb-6"
             style={{
-              fontSize: "clamp(36px, 6vw, 80px)",
               lineHeight: 1.05,
               color: "var(--paper)",
             }}
-            data-tina-field={tinaField(block, "heading")}
           >
             {headingLines.map((line, i) => (
               <span key={`${line}-${i}`}>
@@ -64,12 +67,12 @@ export default function HeroFullBleedBlock({ block }: Props) {
                 )}
               </span>
             ))}
-          </h1>
+          </SectionHeading>
           {block.subheading ? (
             <Reveal>
               <div
                 className={`mb-8 ${centered ? "mx-auto max-w-xl" : "max-w-lg"}`}
-                style={{ fontSize: 18, color: "rgba(251,246,236,0.85)", lineHeight: 1.65 }}
+                style={{ fontSize: 18, color: "rgba(251,246,236,0.85)", lineHeight: 1.65, ...bodyTextStyle(block) }}
                 data-tina-field={tinaField(block, "subheading")}
               >
                 <RichText value={block.subheading} />

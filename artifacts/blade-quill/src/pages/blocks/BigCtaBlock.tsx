@@ -4,6 +4,7 @@ import { tinaField } from "tinacms/react";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 /** Render a heading line, wrapping the highlighted phrase in gradient text. */
 function highlightLine(line: string, highlight?: string) {
@@ -29,7 +30,10 @@ export default function BigCtaBlock({ block }: Props) {
   const secondaryLink = block.secondaryLink as string | undefined;
 
   return (
-    <section className="py-24 lg:py-28 relative overflow-hidden text-center">
+    <section
+      className="py-24 lg:py-28 relative overflow-hidden text-center"
+      style={sectionAlignStyle(block)}
+    >
       <div className="bq-container relative">
         {block.eyebrow ? (
           <Reveal>
@@ -40,10 +44,12 @@ export default function BigCtaBlock({ block }: Props) {
         ) : null}
         {headingLines.length > 0 && (
           <Reveal>
-            <h2
+            <SectionHeading
+              block={block}
+              defaultTag="h2"
+              baseSize="clamp(42px, 6vw, 72px)"
               className="mb-7"
-              style={{ fontSize: "clamp(42px, 6vw, 72px)", lineHeight: 1.05 }}
-              data-tina-field={tinaField(block, "heading")}
+              style={{ lineHeight: 1.05 }}
             >
               {headingLines.map((line, i) => (
                 <Fragment key={`${line}-${i}`}>
@@ -51,7 +57,7 @@ export default function BigCtaBlock({ block }: Props) {
                   {highlightLine(line, highlight)}
                 </Fragment>
               ))}
-            </h2>
+            </SectionHeading>
           </Reveal>
         )}
         <Reveal>

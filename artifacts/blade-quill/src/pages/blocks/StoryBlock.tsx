@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
 import { SidebarLabel } from "./SidebarLabel";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 const STUDIO_ART = galleryImageUrl("Landscape");
 
@@ -26,13 +27,15 @@ export default function StoryBlock({ block }: Props) {
             numberField={tinaField(block, "number")}
             labelField={tinaField(block, "label")}
           />
-          <div className="max-w-[640px]">
+          <div className="max-w-[640px]" style={sectionAlignStyle(block)}>
             {headingLines.length > 0 && (
               <Reveal>
-                <h2
+                <SectionHeading
+                  block={block}
+                  defaultTag="h2"
+                  baseSize="clamp(32px, 4vw, 44px)"
                   className="mb-7"
-                  style={{ fontSize: "clamp(32px, 4vw, 44px)", lineHeight: 1.2 }}
-                  data-tina-field={tinaField(block, "heading")}
+                  style={{ lineHeight: 1.2 }}
                 >
                   {headingLines.map((line, i) => (
                     <span key={`${line}-${i}`}>
@@ -40,7 +43,7 @@ export default function StoryBlock({ block }: Props) {
                       {line}
                     </span>
                   ))}
-                </h2>
+                </SectionHeading>
               </Reveal>
             )}
             {block.paragraph1 ? (

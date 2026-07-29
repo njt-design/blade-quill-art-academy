@@ -13,6 +13,7 @@ import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block, followLink } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const STAT_COLORS = ["var(--maroon)", "var(--taupe)", "var(--ink)"];
 
@@ -97,7 +98,7 @@ export default function FeaturedBookBlock({ block }: Props) {
             </div>
           </Reveal>
 
-          <div>
+          <div style={sectionAlignStyle(block)}>
             {block.eyebrow ? (
               <Reveal>
                 <div className="eyebrow-grad mb-4" data-tina-field={tinaField(block, "eyebrow")}>
@@ -106,18 +107,20 @@ export default function FeaturedBookBlock({ block }: Props) {
               </Reveal>
             ) : null}
             <Reveal>
-              <h2
+              <SectionHeading
+                block={block}
+                defaultTag="h2"
+                baseSize="clamp(38px, 4.5vw, 58px)"
                 className="mb-5"
-                style={{ fontSize: "clamp(38px, 4.5vw, 58px)", lineHeight: 1.05 }}
-                data-tina-field={tinaField(block, "heading")}
+                style={{ lineHeight: 1.05 }}
               >
                 {(block.heading as string) || "The new book."}
-              </h2>
+              </SectionHeading>
             </Reveal>
             <Reveal>
               <div
                 className="mb-7 max-w-[480px]"
-                style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7 }}
+                style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7, ...bodyTextStyle(block) }}
                 data-tina-field={tinaField(block, "description")}
               >
                 <RichText value={block.description} />

@@ -4,6 +4,7 @@ import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block } from "./block-utils";
 import { SidebarLabel } from "./SidebarLabel";
+import { sectionAlignStyle } from "./text-style";
 
 const EVENT_PALETTES: ArtTilePalette[] = ["warm", "rose", "warm", "violet", "twilight"];
 
@@ -36,7 +37,7 @@ export default function TimelineBlock({ block }: Props) {
 
   return (
     <section className="py-20 lg:py-28 relative" style={{ background: "var(--paper-2)" }}>
-      <div className="bq-container">
+      <div className="bq-container" style={sectionAlignStyle(block)}>
         <div className="grid lg:grid-cols-[180px_1fr] gap-10 lg:gap-14">
           <SidebarLabel
             number={block.number as string | undefined}

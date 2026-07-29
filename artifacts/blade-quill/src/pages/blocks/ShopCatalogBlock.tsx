@@ -16,6 +16,7 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const SORT_OPTIONS = ["Newest", "Price ↑", "Price ↓", "Best sellers"] as const;
 type SortOption = (typeof SORT_OPTIONS)[number];
@@ -114,20 +115,22 @@ export default function ShopCatalogBlock({ block }: Props) {
           </div>
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <h1
+              <div style={sectionAlignStyle(block)}>
+                <SectionHeading
+                  block={block}
+                  defaultTag="h1"
+                  baseSize="clamp(48px, 6vw, 76px)"
                   className="mb-3.5"
-                  style={{ fontSize: "clamp(48px, 6vw, 76px)", lineHeight: 1.05 }}
-                  data-tina-field={tinaField(block, "heading")}
+                  style={{ lineHeight: 1.05 }}
                 >
                   {shopHeading(
                     (block.heading as string) || "The studio shop.",
                     block.highlightText as string | undefined
                   )}
-                </h1>
+                </SectionHeading>
                 <div
                   className="max-w-[540px]"
-                  style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.6 }}
+                  style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.6, ...bodyTextStyle(block) }}
                   data-tina-field={tinaField(block, "description")}
                 >
                   <RichText value={block.description} />
@@ -390,13 +393,16 @@ export default function ShopCatalogBlock({ block }: Props) {
                     background: "var(--paper-2)",
                   }}
                 >
-                  <h3
-                    className="text-xl mb-2"
+                  <SectionHeading
+                    block={block}
+                    field="emptyHeading"
+                    defaultTag="h3"
+                    baseSize="clamp(20px, 2vw, 20px)"
+                    className="mb-2"
                     style={{ color: "var(--ink-mute)" }}
-                    data-tina-field={tinaField(block, "emptyHeading")}
                   >
                     {(block.emptyHeading as string) || "No products found"}
-                  </h3>
+                  </SectionHeading>
                   <p
                     className="text-sm"
                     style={{ color: "var(--ink-faint)" }}

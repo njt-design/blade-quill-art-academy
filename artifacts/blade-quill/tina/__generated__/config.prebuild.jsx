@@ -17,6 +17,80 @@ var charLimit = (max, description) => ({
     return void 0;
   }
 });
+function textStyleFields() {
+  return [
+    {
+      type: "object",
+      name: "textStyle",
+      label: "Text Style",
+      ui: {
+        description: "Optional size, heading type, font, and alignment for this section. Leave everything on Default to keep the design as-is."
+      },
+      fields: [
+        {
+          type: "string",
+          name: "headingSize",
+          label: "Heading Size",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "smaller", label: "Smaller" },
+            { value: "larger", label: "Larger" },
+            { value: "xl", label: "Extra Large" }
+          ],
+          ui: {
+            description: "Scales this section's heading up or down. Mobile stays readable."
+          }
+        },
+        {
+          type: "string",
+          name: "headingType",
+          label: "Heading Type",
+          options: [
+            { value: "default", label: "Default (keep this section's style)" },
+            { value: "h1", label: "Page Title (H1)" },
+            { value: "h2", label: "Section Heading (H2)" },
+            { value: "h3", label: "Sub-heading (H3)" }
+          ],
+          ui: {
+            description: "Changes the HTML heading tag (for structure/SEO). Size is controlled separately above."
+          }
+        },
+        {
+          type: "string",
+          name: "headingFont",
+          label: "Heading Font",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "serif", label: "Serif (Young Serif)" },
+            { value: "sans", label: "Sans (Quicksand)" }
+          ]
+        },
+        {
+          type: "string",
+          name: "align",
+          label: "Text Alignment",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "left", label: "Left" },
+            { value: "center", label: "Center" }
+          ]
+        },
+        {
+          type: "string",
+          name: "bodySize",
+          label: "Body Text Size",
+          options: [
+            { value: "default", label: "Default" },
+            { value: "large", label: "Large" }
+          ],
+          ui: {
+            description: "Applies to supporting text under the heading (descriptions, body copy)."
+          }
+        }
+      ]
+    }
+  ];
+}
 var rt = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
@@ -95,7 +169,8 @@ var heroBlock = {
       name: "ctaLink",
       label: "Button Link",
       ui: { description: 'Relative URL the button links to (e.g. "/shop").' }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var textBlock = {
@@ -118,7 +193,8 @@ var textBlock = {
       label: "Body",
       parser: SLATE_JSON_PARSER,
       ui: { description: "Rich text content. Supports headings, bold, links, images, and more." }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var imageGalleryBlock = {
@@ -150,7 +226,8 @@ var imageGalleryBlock = {
         { type: "string", name: "alt", label: "Alt Text", ui: charLimit(125, "Short image description for screen readers.") },
         { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var ctaBandBlock = {
@@ -191,7 +268,8 @@ var ctaBandBlock = {
       label: "Style Variant",
       options: ["light", "dark"],
       ui: { description: 'Choose "dark" for a dark background with white text, or "light" for the default.' }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var videoEmbedBlock = {
@@ -221,7 +299,8 @@ var videoEmbedBlock = {
           return void 0;
         }
       }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var featureGridBlock = {
@@ -268,7 +347,8 @@ var featureGridBlock = {
           parser: SLATE_JSON_PARSER
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var bigCtaBlock = {
@@ -316,7 +396,8 @@ var bigCtaBlock = {
       name: "secondaryLink",
       label: "Secondary Button Link",
       ui: { description: "Relative URL or full https:// link." }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var pageHeaderBlock = {
@@ -340,7 +421,8 @@ var pageHeaderBlock = {
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
       ui: { description: "Introductory text shown below the heading." }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var homeHeroBlock = {
@@ -417,7 +499,8 @@ var homeHeroBlock = {
       label: "Scrolling Words",
       list: true,
       ui: { description: "Words that scroll across the bottom of the hero (e.g. Author, Illustrator). Keep each under 20 characters." }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var pillarsBlock = {
@@ -475,7 +558,8 @@ var pillarsBlock = {
           ui: { description: "Leave empty to automatically show a product/video preview." }
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var featuredBookBlock = {
@@ -529,7 +613,8 @@ var featuredBookBlock = {
       ui: { description: 'Relative URL (e.g. "/shop/lheeloo-luna-cartoon-book").' }
     },
     { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
-    { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
+    { type: "string", name: "secondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields()
   ]
 };
 var classesPitchBlock = {
@@ -583,7 +668,8 @@ var classesPitchBlock = {
       ui: { description: 'Relative URL (e.g. "/classes").' }
     },
     { type: "string", name: "secondaryLabel", label: "Secondary Button Label", ui: charLimit(24) },
-    { type: "string", name: "secondaryLink", label: "Secondary Button Link" }
+    { type: "string", name: "secondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields()
   ]
 };
 var tutorialsStripBlock = {
@@ -644,7 +730,8 @@ var tutorialsStripBlock = {
         { type: "string", name: "value", label: "Value", ui: charLimit(12, 'Short figure (e.g. "100K+").') },
         { type: "string", name: "label", label: "Label", ui: charLimit(24) }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var productStripBlock = {
@@ -665,7 +752,8 @@ var productStripBlock = {
       name: "viewAllLink",
       label: "View All Link",
       ui: { description: 'Where the "view all" button goes (usually "/shop").' }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var blogFeedBlock = {
@@ -714,7 +802,8 @@ var blogFeedBlock = {
         { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
         { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var newsletterSignupBlock = {
@@ -740,7 +829,8 @@ var newsletterSignupBlock = {
     },
     { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
     { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
-    { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) }
+    { type: "string", name: "privacyNote", label: "Privacy Note", ui: charLimit(80) },
+    ...textStyleFields()
   ]
 };
 var aboutHeroBlock = {
@@ -825,7 +915,8 @@ var aboutHeroBlock = {
       name: "screenCaption",
       label: "Screen Accent Caption",
       ui: charLimit(32, 'Small label on the screen polaroid (e.g. "krita screen").')
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var statsRowBlock = {
@@ -921,7 +1012,8 @@ var storyBlock = {
       name: "sideCaption",
       label: "Side Photo Caption",
       ui: charLimit(48, "Caption under the small polaroid on the right.")
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var timelineBlock = {
@@ -959,7 +1051,8 @@ var timelineBlock = {
           ui: { description: "Optional artwork shown beside this timeline event." }
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var cardRowBlock = {
@@ -1010,7 +1103,8 @@ var cardRowBlock = {
           ui: { description: "Relative URL or full https:// link (https links open in a new tab)." }
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var shopCatalogBlock = {
@@ -1061,7 +1155,8 @@ var shopCatalogBlock = {
       name: "emptyDescription",
       label: "Empty State Description",
       ui: charLimit(120)
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var galleryGridBlock = {
@@ -1083,7 +1178,8 @@ var galleryGridBlock = {
       name: "emptyDescription",
       label: "Empty State Description",
       ui: charLimit(120)
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var downloadsGridBlock = {
@@ -1105,7 +1201,8 @@ var downloadsGridBlock = {
       name: "emptyDescription",
       label: "Empty State Description",
       ui: charLimit(120)
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var contactInfoBlock = {
@@ -1180,7 +1277,8 @@ var dummyBookRequestBlock = {
       label: "Success Note",
       ui: { component: "textarea", ...charLimit(220, "Short note above the download button.") }
     },
-    { type: "string", name: "downloadLabel", label: "Download Button Label", ui: charLimit(32) }
+    { type: "string", name: "downloadLabel", label: "Download Button Label", ui: charLimit(32) },
+    ...textStyleFields()
   ]
 };
 var contactFormBlock = {
@@ -1270,7 +1368,8 @@ var featuredReleaseBlock = {
           return void 0;
         }
       }
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var kofiSupportBlock = {
@@ -1292,7 +1391,8 @@ var kofiSupportBlock = {
       parser: SLATE_JSON_PARSER
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
-    { type: "string", name: "href", label: "Ko-fi URL" }
+    { type: "string", name: "href", label: "Ko-fi URL" },
+    ...textStyleFields()
   ]
 };
 var socialLinksBlock = {
@@ -1354,7 +1454,8 @@ var socialLinksBlock = {
           ui: charLimit(32, "Accessible name for the link (read by screen readers).")
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var reviewLinksBlock = {
@@ -1406,7 +1507,8 @@ var reviewLinksBlock = {
           ui: { description: "Short region code for reference (e.g. US, UK, AU)." }
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var heroSplitImageBlock = {
@@ -1470,7 +1572,8 @@ var heroSplitImageBlock = {
     { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
     { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
-    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields()
   ]
 };
 var heroFullBleedBlock = {
@@ -1535,7 +1638,8 @@ var heroFullBleedBlock = {
       ]
     },
     { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
-    { type: "string", name: "ctaLink", label: "Button Link" }
+    { type: "string", name: "ctaLink", label: "Button Link" },
+    ...textStyleFields()
   ]
 };
 var heroFloatingImagesBlock = {
@@ -1578,7 +1682,8 @@ var heroFloatingImagesBlock = {
     { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
     { type: "string", name: "ctaSecondary", label: "Secondary Button Label (optional)", ui: charLimit(24) },
-    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" }
+    { type: "string", name: "ctaSecondaryLink", label: "Secondary Button Link" },
+    ...textStyleFields()
   ]
 };
 var heroImageGridBlock = {
@@ -1624,7 +1729,8 @@ var heroImageGridBlock = {
       fields: IMAGE_ITEM_FIELDS
     },
     { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
-    { type: "string", name: "ctaLink", label: "Button Link" }
+    { type: "string", name: "ctaLink", label: "Button Link" },
+    ...textStyleFields()
   ]
 };
 var imageSpotlightBlock = {
@@ -1668,7 +1774,8 @@ var imageSpotlightBlock = {
       label: "Body Text (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var imageSideBySideBlock = {
@@ -1708,7 +1815,8 @@ var imageSideBySideBlock = {
         { value: "clean", label: "Clean (no frame)" },
         { value: "rounded", label: "Rounded corners" }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var imageMasonryBlock = {
@@ -1747,7 +1855,8 @@ var imageMasonryBlock = {
           ]
         }
       ]
-    }
+    },
+    ...textStyleFields()
   ]
 };
 var ALL_BLOCKS = [
@@ -1799,13 +1908,77 @@ var ALL_BLOCKS = [
 
 // tina/config.ts
 function InsightsRedirectScreen(_props) {
+  const insightsUrl = typeof window !== "undefined" ? `${window.location.origin}/insights` : "/insights";
   useEffect(() => {
-    window.location.assign("/insights");
-  }, []);
+    try {
+      if (window.top && window.top !== window) {
+        window.top.location.href = insightsUrl;
+      }
+    } catch {
+    }
+  }, [insightsUrl]);
   return React.createElement(
     "div",
-    { style: { padding: 32, fontFamily: "system-ui, sans-serif" } },
-    "Opening Owner Insights\u2026"
+    {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: "70vh",
+        fontFamily: "system-ui, sans-serif"
+      }
+    },
+    React.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          padding: "12px 16px",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          flexShrink: 0
+        }
+      },
+      React.createElement(
+        "div",
+        { style: { fontSize: 14, color: "#4A3838" } },
+        "Owner Insights \u2014 analytics & Stripe orders"
+      ),
+      React.createElement(
+        "a",
+        {
+          href: insightsUrl,
+          target: "_top",
+          rel: "noopener noreferrer",
+          style: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "8px 14px",
+            borderRadius: 999,
+            background: "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none"
+          }
+        },
+        "Open full page"
+      )
+    ),
+    React.createElement("iframe", {
+      src: insightsUrl,
+      title: "Owner Insights",
+      style: {
+        flex: 1,
+        width: "100%",
+        minHeight: 0,
+        border: "none",
+        background: "#F7F1EA"
+      }
+    })
   );
 }
 function InsightsScreenIcon() {

@@ -10,6 +10,7 @@ import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { TutorialThumb } from "@/components/site/TutorialThumb";
 import { type Block, followLink, isExternalLink } from "./block-utils";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 const PILLAR_STYLES: Array<{
   palette: ArtTilePalette;
@@ -78,7 +79,7 @@ export default function PillarsBlock({ block }: Props) {
   return (
     <section className="py-24 lg:py-28">
       <div className="bq-container">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" style={sectionAlignStyle(block)}>
           {block.eyebrow ? (
             <Reveal>
               <div className="eyebrow mb-3.5" data-tina-field={tinaField(block, "eyebrow")}>
@@ -88,12 +89,13 @@ export default function PillarsBlock({ block }: Props) {
           ) : null}
           {block.heading ? (
             <Reveal>
-              <h2
-                style={{ fontSize: "clamp(34px, 4.5vw, 52px)" }}
-                data-tina-field={tinaField(block, "heading")}
+              <SectionHeading
+                block={block}
+                defaultTag="h2"
+                baseSize="clamp(34px, 4.5vw, 52px)"
               >
                 {block.heading as string}
-              </h2>
+              </SectionHeading>
             </Reveal>
           ) : null}
         </div>

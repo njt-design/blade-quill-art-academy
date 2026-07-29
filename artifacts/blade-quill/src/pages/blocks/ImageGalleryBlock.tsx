@@ -1,4 +1,4 @@
-import { tinaField } from "tinacms/react";
+import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 interface GalleryImage {
   src?: string;
@@ -15,14 +15,19 @@ export default function ImageGalleryBlock({ block }: Props) {
 
   return (
     <section className="py-12">
-      <div className="container mx-auto px-4 md:px-6">
+      <div
+        className="container mx-auto px-4 md:px-6"
+        style={sectionAlignStyle(block)}
+      >
         {block.heading && (
-          <h2
-            className="text-2xl md:text-3xl font-heading mb-8"
-            data-tina-field={tinaField(block, "heading")}
+          <SectionHeading
+            block={block}
+            defaultTag="h2"
+            baseSize="clamp(24px, 3vw, 30px)"
+            className="font-heading mb-8"
           >
             {block.heading as string}
-          </h2>
+          </SectionHeading>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {images.map((img, i) => (

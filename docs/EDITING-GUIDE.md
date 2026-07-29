@@ -46,6 +46,20 @@ If you’re unsure: refresh the public page. If the change is there, you’re do
 3. Edit headings/buttons/images. Drag sections to reorder.
 4. Save.
 
+### Changing text size and style
+
+Most page sections have a **Text Style** group near the bottom of the form. Leave everything on **Default** to keep the design as-is. Or pick:
+
+| Control | What it does |
+|---------|----------------|
+| **Heading Size** | Smaller / Larger / Extra Large — scales that section’s heading (mobile stays readable) |
+| **Heading Type** | Page Title (H1) / Section Heading (H2) / Sub-heading (H3) — for structure/SEO; size is separate |
+| **Heading Font** | Serif (Young Serif) or Sans (Quicksand) |
+| **Text Alignment** | Left or Center |
+| **Body Text Size** | Large — for the supporting text under the heading |
+
+Changes show live in the preview. Save when you’re happy. If a section looks wrong, set the controls back to Default.
+
 ### Add a blog post
 
 1. **Blog Posts →** create new.

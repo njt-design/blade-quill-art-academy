@@ -5,6 +5,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
 import { captionStyle, splitHeading } from "./image-showcase-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
   block: Block;
@@ -22,7 +23,7 @@ export default function ImageSpotlightBlock({ block }: Props) {
   const headingLines = block.heading ? splitHeading(block.heading as string) : [];
 
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24" style={sectionAlignStyle(block)}>
       <div className="bq-container max-w-4xl mx-auto">
         {block.eyebrow ? (
           <Reveal>
@@ -33,10 +34,12 @@ export default function ImageSpotlightBlock({ block }: Props) {
         ) : null}
         {headingLines.length > 0 && (
           <Reveal>
-            <h2
+            <SectionHeading
+              block={block}
+              defaultTag="h2"
+              baseSize="clamp(28px, 4vw, 44px)"
               className="mb-10 text-center"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)", lineHeight: 1.15 }}
-              data-tina-field={tinaField(block, "heading")}
+              style={{ lineHeight: 1.15 }}
             >
               {headingLines.map((line, i) => (
                 <span key={`${line}-${i}`}>
@@ -44,7 +47,7 @@ export default function ImageSpotlightBlock({ block }: Props) {
                   {line}
                 </span>
               ))}
-            </h2>
+            </SectionHeading>
           </Reveal>
         )}
         <Reveal>
@@ -74,7 +77,7 @@ export default function ImageSpotlightBlock({ block }: Props) {
           <Reveal>
             <div
               className="mt-8 max-w-2xl mx-auto text-center"
-              style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.75 }}
+              style={{ fontSize: 16, color: "var(--ink-soft)", lineHeight: 1.75, ...bodyTextStyle(block) }}
               data-tina-field={tinaField(block, "body")}
             >
               <RichText value={block.body} />

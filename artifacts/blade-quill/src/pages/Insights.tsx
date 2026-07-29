@@ -154,7 +154,15 @@ export default function Insights() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setAuthed(hasTinaSession());
+    const syncAuth = () => setAuthed(hasTinaSession());
+    syncAuth();
+    // Re-check when returning from /admin in another tab/frame.
+    window.addEventListener("focus", syncAuth);
+    window.addEventListener("storage", syncAuth);
+    return () => {
+      window.removeEventListener("focus", syncAuth);
+      window.removeEventListener("storage", syncAuth);
+    };
   }, []);
 
   useEffect(() => {
@@ -216,6 +224,8 @@ export default function Insights() {
           </p>
           <a
             href={adminLoginUrl("/insights")}
+            target="_top"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
             style={{
               background: "var(--g-cta)",
@@ -230,7 +240,8 @@ export default function Insights() {
             className="text-xs mt-5"
             style={{ color: "var(--ink-faint)", fontFamily: "var(--f-sans)" }}
           >
-            After logging in at /admin, return here — your session stays on this
+            After logging in at /admin, open Insights again from the Tina
+            sidebar — or visit /insights directly. Your session stays on this
             site.
           </p>
         </div>

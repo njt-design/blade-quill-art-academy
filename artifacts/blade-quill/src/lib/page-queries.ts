@@ -34,63 +34,98 @@ export function corePageRoute(slug: string): string {
   return `/${slug}`;
 }
 
+/** Shared CMS typography presets — must stay in sync with textStyleFields() in tina/blocks.ts. */
+const TEXT_STYLE_SELECTION =
+  "textStyle { headingSize headingType headingFont align bodySize }";
+
+/** Append textStyle selection to a block field list. */
+function withTextStyle(fields: string): string {
+  return `${fields} ${TEXT_STYLE_SELECTION}`;
+}
+
 /** GraphQL field selection for each block template (keyed by template name). */
 const BLOCK_FIELDS: Record<string, string> = {
-  hero: "heading subheading backgroundImage ctaLabel ctaLink",
-  text: "heading body",
-  imageGallery: "heading images { src alt caption }",
-  ctaBand: "heading description ctaLabel ctaLink variant",
-  videoEmbed: "heading youtubeUrl",
-  featureGrid: "heading items { icon title description }",
-  bigCta:
-    "eyebrow heading highlightText primaryLabel primaryLink secondaryLabel secondaryLink",
-  pageHeader: "heading description",
-  homeHero:
-    "eyebrow heading subheading ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine marqueeItems",
-  pillars: "eyebrow heading items { tag title sub cta badge link image }",
-  featuredBook:
-    "eyebrow heading description stats { value label } ctaLabel ctaLink secondaryLabel secondaryLink",
-  classesPitch:
-    "eyebrow heading subheading bullets metaTags ctaLabel ctaLink secondaryLabel secondaryLink",
-  tutorialsStrip:
-    "eyebrow headingPrefix headingHighlight headingSuffix buttonLabel youtubeUrl stats { value label }",
-  productStrip: "eyebrow heading viewAllLabel viewAllLink",
-  blogFeed:
-    "heading showNewsletter newsletter { eyebrow heading subheading placeholderText ctaLabel privacyNote }",
-  newsletterSignup:
-    "eyebrow heading subheading placeholderText ctaLabel privacyNote",
-  aboutHero:
-    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitCaption deskImage deskCaption screenImage screenCaption",
+  hero: withTextStyle("heading subheading backgroundImage ctaLabel ctaLink"),
+  text: withTextStyle("heading body"),
+  imageGallery: withTextStyle("heading images { src alt caption }"),
+  ctaBand: withTextStyle("heading description ctaLabel ctaLink variant"),
+  videoEmbed: withTextStyle("heading youtubeUrl"),
+  featureGrid: withTextStyle("heading items { icon title description }"),
+  bigCta: withTextStyle(
+    "eyebrow heading highlightText primaryLabel primaryLink secondaryLabel secondaryLink"
+  ),
+  pageHeader: withTextStyle("heading description"),
+  homeHero: withTextStyle(
+    "eyebrow heading subheading ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine marqueeItems"
+  ),
+  pillars: withTextStyle(
+    "eyebrow heading items { tag title sub cta badge link image }"
+  ),
+  featuredBook: withTextStyle(
+    "eyebrow heading description stats { value label } ctaLabel ctaLink secondaryLabel secondaryLink"
+  ),
+  classesPitch: withTextStyle(
+    "eyebrow heading subheading bullets metaTags ctaLabel ctaLink secondaryLabel secondaryLink"
+  ),
+  tutorialsStrip: withTextStyle(
+    "eyebrow headingPrefix headingHighlight headingSuffix buttonLabel youtubeUrl stats { value label }"
+  ),
+  productStrip: withTextStyle("eyebrow heading viewAllLabel viewAllLink"),
+  blogFeed: withTextStyle(
+    "heading showNewsletter newsletter { eyebrow heading subheading placeholderText ctaLabel privacyNote }"
+  ),
+  newsletterSignup: withTextStyle(
+    "eyebrow heading subheading placeholderText ctaLabel privacyNote"
+  ),
+  aboutHero: withTextStyle(
+    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitCaption deskImage deskCaption screenImage screenCaption"
+  ),
   statsRow: "stats { value label }",
-  story: "number label heading paragraph1 quote paragraph2 sideImage sideCaption",
-  timeline: "number label events { year title description image }",
-  cardRow: "number label cards { tag title body image ctaLabel link }",
-  shopCatalog:
-    "heading highlightText description showFeaturedBanner emptyHeading emptyDescription",
-  galleryGrid: "emptyHeading emptyDescription",
-  downloadsGrid: "emptyHeading emptyDescription",
+  story: withTextStyle(
+    "number label heading paragraph1 quote paragraph2 sideImage sideCaption"
+  ),
+  timeline: withTextStyle(
+    "number label events { year title description image }"
+  ),
+  cardRow: withTextStyle(
+    "number label cards { tag title body image ctaLabel link }"
+  ),
+  shopCatalog: withTextStyle(
+    "heading highlightText description showFeaturedBanner emptyHeading emptyDescription"
+  ),
+  galleryGrid: withTextStyle("emptyHeading emptyDescription"),
+  downloadsGrid: withTextStyle("emptyHeading emptyDescription"),
   contactInfo: "email location",
   contactForm: "submitLabel",
-  dummyBookRequest:
-    "heading description pdfUrl submitLabel successHeading successNote downloadLabel",
+  dummyBookRequest: withTextStyle(
+    "heading description pdfUrl submitLabel successHeading successNote downloadLabel"
+  ),
   marquee: "highlightText text",
-  featuredRelease:
-    "eyebrow title description coverImage backCoverImage ctaLabel ctaHref",
-  kofiSupport: "heading body ctaLabel href",
-  socialLinks: "heading body links { platform url label }",
-  reviewLinks: "heading intro thankYou ctaHeading links { label href region }",
-  heroSplitImage:
-    "eyebrow heading subheading featuredImage imageAlt imageCaption imagePosition ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink",
-  heroFullBleed:
-    "backgroundImage heading subheading overlay textAlign minHeight ctaLabel ctaLink",
-  heroFloatingImages:
-    "eyebrow heading subheading images { src alt caption } ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink",
-  heroImageGrid:
-    "eyebrow heading subheading layout images { src alt caption } ctaLabel ctaLink",
-  imageSpotlight: "eyebrow heading image alt caption aspect body",
-  imageSideBySide:
-    "heading leftImage { src alt caption } rightImage { src alt caption } style",
-  imageMasonry: "heading images { src alt caption size }",
+  featuredRelease: withTextStyle(
+    "eyebrow title description coverImage backCoverImage ctaLabel ctaHref"
+  ),
+  kofiSupport: withTextStyle("heading body ctaLabel href"),
+  socialLinks: withTextStyle("heading body links { platform url label }"),
+  reviewLinks: withTextStyle(
+    "heading intro thankYou ctaHeading links { label href region }"
+  ),
+  heroSplitImage: withTextStyle(
+    "eyebrow heading subheading featuredImage imageAlt imageCaption imagePosition ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink"
+  ),
+  heroFullBleed: withTextStyle(
+    "backgroundImage heading subheading overlay textAlign minHeight ctaLabel ctaLink"
+  ),
+  heroFloatingImages: withTextStyle(
+    "eyebrow heading subheading images { src alt caption } ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink"
+  ),
+  heroImageGrid: withTextStyle(
+    "eyebrow heading subheading layout images { src alt caption } ctaLabel ctaLink"
+  ),
+  imageSpotlight: withTextStyle("eyebrow heading image alt caption aspect body"),
+  imageSideBySide: withTextStyle(
+    "heading leftImage { src alt caption } rightImage { src alt caption } style"
+  ),
+  imageMasonry: withTextStyle("heading images { src alt caption size }"),
 };
 
 export function pascalCase(name: string): string {

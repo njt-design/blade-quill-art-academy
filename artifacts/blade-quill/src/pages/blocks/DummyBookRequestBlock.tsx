@@ -12,6 +12,7 @@ import { useSubmitContact } from "@workspace/api-client-react";
 import { RichText } from "@/components/site/RichText";
 import { trackDummyBookRequest } from "@/lib/analytics";
 import { type Block } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const DEFAULT_PDF_URL =
   "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf";
@@ -91,16 +92,19 @@ export default function DummyBookRequestBlock({ block }: Props) {
   return (
     <section className="py-12 lg:py-16" id="request-dummy">
       <div className="container mx-auto px-4 md:px-6 max-w-2xl">
-        <div className="text-center mb-8">
-          <h2
-            className="text-2xl md:text-3xl font-display mb-3"
-            data-tina-field={tinaField(block, "heading")}
+        <div className="text-center mb-8" style={sectionAlignStyle(block)}>
+          <SectionHeading
+            block={block}
+            defaultTag="h2"
+            baseSize="clamp(24px, 3vw, 30px)"
+            className="font-display mb-3"
           >
             {heading}
-          </h2>
+          </SectionHeading>
           {block.description ? (
             <div
               className="text-muted-foreground"
+              style={bodyTextStyle(block)}
               data-tina-field={tinaField(block, "description")}
             >
               <RichText value={block.description} />

@@ -149,8 +149,9 @@ The public site loads **GA4 Measurement ID `G-50YS8RZ7HL`** (same as the live Sq
 **Owner Studio (`/insights`)**
 
 - Tina-authenticated page showing sessions, bounce rate, Stripe paid sales, Amazon clicks, dummy-book requests, a sessions sparkline, and recent orders.
-- Corinne workflow: sign in at `/admin` (Tina Cloud) → open **Insights** in the Tina sidebar (Dashboard), or visit `/insights` directly while the Tina session is still in localStorage.
+- Corinne workflow: sign in at `/admin` (Tina Cloud) → open **Insights** in the Tina sidebar (Dashboard). That screen embeds `/insights` in-frame (with an **Open full page** link). Or visit `/insights` directly while the Tina session is still in localStorage.
 - API: `GET /api/insights?clientID=…&range=7|28|90` with `Authorization: Bearer <tina id_token>` ([`api/insights.ts`](../../api/insights.ts)). Shared logic lives in [`lib/insights`](../../lib/insights).
+- After changing the Insights Tina screen in `tina/config.ts`, regenerate admin (`tinacms build …`) and deploy so `/admin` picks up the new UI.
 
 Products / prices stay in Tina (**Shop Products**). Insights is the glanceable analytics + Stripe orders surface — not a second product editor.
 

@@ -22,6 +22,14 @@ export const PagePartsFragmentDoc = gql`
       ctaSecondaryLink
       metaLine
       marqueeItems
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksAboutHero {
       eyebrow
@@ -38,6 +46,14 @@ export const PagePartsFragmentDoc = gql`
       deskCaption
       screenImage
       screenCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksHero {
       heading
@@ -45,6 +61,14 @@ export const PagePartsFragmentDoc = gql`
       backgroundImage
       ctaLabel
       ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksHeroSplitImage {
       eyebrow
@@ -58,6 +82,14 @@ export const PagePartsFragmentDoc = gql`
       ctaPrimaryLink
       ctaSecondary
       ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksHeroFullBleed {
       backgroundImage
@@ -68,6 +100,14 @@ export const PagePartsFragmentDoc = gql`
       minHeight
       ctaLabel
       ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksHeroFloatingImages {
       eyebrow
@@ -83,6 +123,14 @@ export const PagePartsFragmentDoc = gql`
       ctaPrimaryLink
       ctaSecondary
       ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksHeroImageGrid {
       eyebrow
@@ -97,14 +145,38 @@ export const PagePartsFragmentDoc = gql`
       }
       ctaLabel
       ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksPageHeader {
       heading
       description
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksText {
       heading
       body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksStory {
       number
@@ -115,6 +187,14 @@ export const PagePartsFragmentDoc = gql`
       paragraph2
       sideImage
       sideCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksTimeline {
       number
@@ -125,6 +205,14 @@ export const PagePartsFragmentDoc = gql`
         title
         description
         image
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
       }
     }
     ... on PageBlocksStatsRow {
@@ -142,6 +230,14 @@ export const PagePartsFragmentDoc = gql`
         title
         description
       }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksCardRow {
       number
@@ -154,6 +250,14 @@ export const PagePartsFragmentDoc = gql`
         image
         ctaLabel
         link
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
       }
     }
     ... on PageBlocksPillars {
@@ -169,6 +273,14 @@ export const PagePartsFragmentDoc = gql`
         link
         image
       }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksImageGallery {
       heading
@@ -177,6 +289,14 @@ export const PagePartsFragmentDoc = gql`
         src
         alt
         caption
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
       }
     }
     ... on PageBlocksImageSpotlight {
@@ -187,6 +307,14 @@ export const PagePartsFragmentDoc = gql`
       caption
       aspect
       body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksImageSideBySide {
       heading
@@ -203,6 +331,14 @@ export const PagePartsFragmentDoc = gql`
         caption
       }
       style
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksImageMasonry {
       heading
@@ -213,10 +349,26 @@ export const PagePartsFragmentDoc = gql`
         caption
         size
       }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksVideoEmbed {
       heading
       youtubeUrl
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksFeaturedBook {
       eyebrow
@@ -231,6 +383,14 @@ export const PagePartsFragmentDoc = gql`
       ctaLink
       secondaryLabel
       secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksFeaturedRelease {
       eyebrow
@@ -240,12 +400,28 @@ export const PagePartsFragmentDoc = gql`
       backCoverImage
       ctaLabel
       ctaHref
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksProductStrip {
       eyebrow
       heading
       viewAllLabel
       viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksShopCatalog {
       heading
@@ -254,14 +430,38 @@ export const PagePartsFragmentDoc = gql`
       showFeaturedBanner
       emptyHeading
       emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksGalleryGrid {
       emptyHeading
       emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksDownloadsGrid {
       emptyHeading
       emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksTutorialsStrip {
       eyebrow
@@ -275,6 +475,14 @@ export const PagePartsFragmentDoc = gql`
         value
         label
       }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksClassesPitch {
       eyebrow
@@ -286,6 +494,14 @@ export const PagePartsFragmentDoc = gql`
       ctaLink
       secondaryLabel
       secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksBlogFeed {
       heading
@@ -299,6 +515,14 @@ export const PagePartsFragmentDoc = gql`
         ctaLabel
         privacyNote
       }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksCtaBand {
       heading
@@ -306,6 +530,14 @@ export const PagePartsFragmentDoc = gql`
       ctaLabel
       ctaLink
       variant
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksBigCta {
       eyebrow
@@ -315,6 +547,14 @@ export const PagePartsFragmentDoc = gql`
       primaryLink
       secondaryLabel
       secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksNewsletterSignup {
       eyebrow
@@ -323,6 +563,14 @@ export const PagePartsFragmentDoc = gql`
       placeholderText
       ctaLabel
       privacyNote
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksContactInfo {
       email
@@ -339,12 +587,28 @@ export const PagePartsFragmentDoc = gql`
       successHeading
       successNote
       downloadLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksKofiSupport {
       heading
       body
       ctaLabel
       href
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
     }
     ... on PageBlocksReviewLinks {
       heading
@@ -356,6 +620,14 @@ export const PagePartsFragmentDoc = gql`
         label
         href
         region
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
       }
     }
     ... on PageBlocksMarquee {
@@ -370,6 +642,14 @@ export const PagePartsFragmentDoc = gql`
         platform
         url
         label
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
       }
     }
   }
@@ -393,6 +673,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaSecondaryLink
         metaLine
         marqueeItems
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksAboutHero {
         eyebrow
@@ -409,6 +697,14 @@ export const LandingPagePartsFragmentDoc = gql`
         deskCaption
         screenImage
         screenCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksHero {
         heading
@@ -416,6 +712,14 @@ export const LandingPagePartsFragmentDoc = gql`
         backgroundImage
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksHeroSplitImage {
         eyebrow
@@ -429,6 +733,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksHeroFullBleed {
         backgroundImage
@@ -439,6 +751,14 @@ export const LandingPagePartsFragmentDoc = gql`
         minHeight
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksHeroFloatingImages {
         eyebrow
@@ -454,6 +774,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksHeroImageGrid {
         eyebrow
@@ -468,14 +796,38 @@ export const LandingPagePartsFragmentDoc = gql`
         }
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksPageHeader {
         heading
         description
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksText {
         heading
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksStory {
         number
@@ -486,6 +838,14 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph2
         sideImage
         sideCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksTimeline {
         number
@@ -496,6 +856,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
           image
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageBlankBlocksStatsRow {
@@ -513,6 +881,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksCardRow {
         number
@@ -525,6 +901,14 @@ export const LandingPagePartsFragmentDoc = gql`
           image
           ctaLabel
           link
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageBlankBlocksPillars {
@@ -540,6 +924,14 @@ export const LandingPagePartsFragmentDoc = gql`
           link
           image
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksImageGallery {
         heading
@@ -548,6 +940,14 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageBlankBlocksImageSpotlight {
@@ -558,6 +958,14 @@ export const LandingPagePartsFragmentDoc = gql`
         caption
         aspect
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksImageSideBySide {
         heading
@@ -574,6 +982,14 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
         }
         style
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksImageMasonry {
         heading
@@ -584,10 +1000,26 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
           size
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksVideoEmbed {
         heading
         youtubeUrl
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksFeaturedBook {
         eyebrow
@@ -602,6 +1034,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksFeaturedRelease {
         eyebrow
@@ -611,12 +1051,28 @@ export const LandingPagePartsFragmentDoc = gql`
         backCoverImage
         ctaLabel
         ctaHref
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksShopCatalog {
         heading
@@ -625,14 +1081,38 @@ export const LandingPagePartsFragmentDoc = gql`
         showFeaturedBanner
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksGalleryGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksTutorialsStrip {
         eyebrow
@@ -646,6 +1126,14 @@ export const LandingPagePartsFragmentDoc = gql`
           value
           label
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksClassesPitch {
         eyebrow
@@ -657,6 +1145,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksBlogFeed {
         heading
@@ -670,6 +1166,14 @@ export const LandingPagePartsFragmentDoc = gql`
           ctaLabel
           privacyNote
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksCtaBand {
         heading
@@ -677,6 +1181,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLabel
         ctaLink
         variant
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksBigCta {
         eyebrow
@@ -686,6 +1198,14 @@ export const LandingPagePartsFragmentDoc = gql`
         primaryLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksNewsletterSignup {
         eyebrow
@@ -694,6 +1214,14 @@ export const LandingPagePartsFragmentDoc = gql`
         placeholderText
         ctaLabel
         privacyNote
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksContactInfo {
         email
@@ -710,12 +1238,28 @@ export const LandingPagePartsFragmentDoc = gql`
         successHeading
         successNote
         downloadLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksKofiSupport {
         heading
         body
         ctaLabel
         href
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageBlankBlocksReviewLinks {
         heading
@@ -727,6 +1271,14 @@ export const LandingPagePartsFragmentDoc = gql`
           label
           href
           region
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageBlankBlocksMarquee {
@@ -741,6 +1293,14 @@ export const LandingPagePartsFragmentDoc = gql`
           platform
           url
           label
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
     }
@@ -760,6 +1320,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaSecondaryLink
         metaLine
         marqueeItems
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksAboutHero {
         eyebrow
@@ -776,6 +1344,14 @@ export const LandingPagePartsFragmentDoc = gql`
         deskCaption
         screenImage
         screenCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksHero {
         heading
@@ -783,6 +1359,14 @@ export const LandingPagePartsFragmentDoc = gql`
         backgroundImage
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksHeroSplitImage {
         eyebrow
@@ -796,6 +1380,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksHeroFullBleed {
         backgroundImage
@@ -806,6 +1398,14 @@ export const LandingPagePartsFragmentDoc = gql`
         minHeight
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksHeroFloatingImages {
         eyebrow
@@ -821,6 +1421,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksHeroImageGrid {
         eyebrow
@@ -835,14 +1443,38 @@ export const LandingPagePartsFragmentDoc = gql`
         }
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksPageHeader {
         heading
         description
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksText {
         heading
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksStory {
         number
@@ -853,6 +1485,14 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph2
         sideImage
         sideCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksTimeline {
         number
@@ -863,6 +1503,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
           image
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageEventBlocksStatsRow {
@@ -880,6 +1528,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksCardRow {
         number
@@ -892,6 +1548,14 @@ export const LandingPagePartsFragmentDoc = gql`
           image
           ctaLabel
           link
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageEventBlocksPillars {
@@ -907,6 +1571,14 @@ export const LandingPagePartsFragmentDoc = gql`
           link
           image
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksImageGallery {
         heading
@@ -915,6 +1587,14 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageEventBlocksImageSpotlight {
@@ -925,6 +1605,14 @@ export const LandingPagePartsFragmentDoc = gql`
         caption
         aspect
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksImageSideBySide {
         heading
@@ -941,6 +1629,14 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
         }
         style
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksImageMasonry {
         heading
@@ -951,10 +1647,26 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
           size
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksVideoEmbed {
         heading
         youtubeUrl
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksFeaturedBook {
         eyebrow
@@ -969,6 +1681,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksFeaturedRelease {
         eyebrow
@@ -978,12 +1698,28 @@ export const LandingPagePartsFragmentDoc = gql`
         backCoverImage
         ctaLabel
         ctaHref
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksShopCatalog {
         heading
@@ -992,14 +1728,38 @@ export const LandingPagePartsFragmentDoc = gql`
         showFeaturedBanner
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksGalleryGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksTutorialsStrip {
         eyebrow
@@ -1013,6 +1773,14 @@ export const LandingPagePartsFragmentDoc = gql`
           value
           label
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksClassesPitch {
         eyebrow
@@ -1024,6 +1792,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksBlogFeed {
         heading
@@ -1037,6 +1813,14 @@ export const LandingPagePartsFragmentDoc = gql`
           ctaLabel
           privacyNote
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksCtaBand {
         heading
@@ -1044,6 +1828,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLabel
         ctaLink
         variant
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksBigCta {
         eyebrow
@@ -1053,6 +1845,14 @@ export const LandingPagePartsFragmentDoc = gql`
         primaryLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksNewsletterSignup {
         eyebrow
@@ -1061,6 +1861,14 @@ export const LandingPagePartsFragmentDoc = gql`
         placeholderText
         ctaLabel
         privacyNote
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksContactInfo {
         email
@@ -1077,12 +1885,28 @@ export const LandingPagePartsFragmentDoc = gql`
         successHeading
         successNote
         downloadLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksKofiSupport {
         heading
         body
         ctaLabel
         href
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageEventBlocksReviewLinks {
         heading
@@ -1094,6 +1918,14 @@ export const LandingPagePartsFragmentDoc = gql`
           label
           href
           region
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageEventBlocksMarquee {
@@ -1108,6 +1940,14 @@ export const LandingPagePartsFragmentDoc = gql`
           platform
           url
           label
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
     }
@@ -1127,6 +1967,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaSecondaryLink
         metaLine
         marqueeItems
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksAboutHero {
         eyebrow
@@ -1143,6 +1991,14 @@ export const LandingPagePartsFragmentDoc = gql`
         deskCaption
         screenImage
         screenCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksHero {
         heading
@@ -1150,6 +2006,14 @@ export const LandingPagePartsFragmentDoc = gql`
         backgroundImage
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksHeroSplitImage {
         eyebrow
@@ -1163,6 +2027,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksHeroFullBleed {
         backgroundImage
@@ -1173,6 +2045,14 @@ export const LandingPagePartsFragmentDoc = gql`
         minHeight
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksHeroFloatingImages {
         eyebrow
@@ -1188,6 +2068,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksHeroImageGrid {
         eyebrow
@@ -1202,14 +2090,38 @@ export const LandingPagePartsFragmentDoc = gql`
         }
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksPageHeader {
         heading
         description
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksText {
         heading
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksStory {
         number
@@ -1220,6 +2132,14 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph2
         sideImage
         sideCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksTimeline {
         number
@@ -1230,6 +2150,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
           image
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPagePromoBlocksStatsRow {
@@ -1247,6 +2175,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksCardRow {
         number
@@ -1259,6 +2195,14 @@ export const LandingPagePartsFragmentDoc = gql`
           image
           ctaLabel
           link
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPagePromoBlocksPillars {
@@ -1274,6 +2218,14 @@ export const LandingPagePartsFragmentDoc = gql`
           link
           image
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksImageGallery {
         heading
@@ -1282,6 +2234,14 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPagePromoBlocksImageSpotlight {
@@ -1292,6 +2252,14 @@ export const LandingPagePartsFragmentDoc = gql`
         caption
         aspect
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksImageSideBySide {
         heading
@@ -1308,6 +2276,14 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
         }
         style
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksImageMasonry {
         heading
@@ -1318,10 +2294,26 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
           size
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksVideoEmbed {
         heading
         youtubeUrl
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksFeaturedBook {
         eyebrow
@@ -1336,6 +2328,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksFeaturedRelease {
         eyebrow
@@ -1345,12 +2345,28 @@ export const LandingPagePartsFragmentDoc = gql`
         backCoverImage
         ctaLabel
         ctaHref
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksShopCatalog {
         heading
@@ -1359,14 +2375,38 @@ export const LandingPagePartsFragmentDoc = gql`
         showFeaturedBanner
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksGalleryGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksTutorialsStrip {
         eyebrow
@@ -1380,6 +2420,14 @@ export const LandingPagePartsFragmentDoc = gql`
           value
           label
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksClassesPitch {
         eyebrow
@@ -1391,6 +2439,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksBlogFeed {
         heading
@@ -1404,6 +2460,14 @@ export const LandingPagePartsFragmentDoc = gql`
           ctaLabel
           privacyNote
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksCtaBand {
         heading
@@ -1411,6 +2475,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLabel
         ctaLink
         variant
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksBigCta {
         eyebrow
@@ -1420,6 +2492,14 @@ export const LandingPagePartsFragmentDoc = gql`
         primaryLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksNewsletterSignup {
         eyebrow
@@ -1428,6 +2508,14 @@ export const LandingPagePartsFragmentDoc = gql`
         placeholderText
         ctaLabel
         privacyNote
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksContactInfo {
         email
@@ -1444,12 +2532,28 @@ export const LandingPagePartsFragmentDoc = gql`
         successHeading
         successNote
         downloadLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksKofiSupport {
         heading
         body
         ctaLabel
         href
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPagePromoBlocksReviewLinks {
         heading
@@ -1461,6 +2565,14 @@ export const LandingPagePartsFragmentDoc = gql`
           label
           href
           region
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPagePromoBlocksMarquee {
@@ -1475,6 +2587,14 @@ export const LandingPagePartsFragmentDoc = gql`
           platform
           url
           label
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
     }
@@ -1494,6 +2614,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaSecondaryLink
         metaLine
         marqueeItems
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksAboutHero {
         eyebrow
@@ -1510,6 +2638,14 @@ export const LandingPagePartsFragmentDoc = gql`
         deskCaption
         screenImage
         screenCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksHero {
         heading
@@ -1517,6 +2653,14 @@ export const LandingPagePartsFragmentDoc = gql`
         backgroundImage
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksHeroSplitImage {
         eyebrow
@@ -1530,6 +2674,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksHeroFullBleed {
         backgroundImage
@@ -1540,6 +2692,14 @@ export const LandingPagePartsFragmentDoc = gql`
         minHeight
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksHeroFloatingImages {
         eyebrow
@@ -1555,6 +2715,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksHeroImageGrid {
         eyebrow
@@ -1569,14 +2737,38 @@ export const LandingPagePartsFragmentDoc = gql`
         }
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksPageHeader {
         heading
         description
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksText {
         heading
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksStory {
         number
@@ -1587,6 +2779,14 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph2
         sideImage
         sideCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksTimeline {
         number
@@ -1597,6 +2797,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
           image
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageInfoBlocksStatsRow {
@@ -1614,6 +2822,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksCardRow {
         number
@@ -1626,6 +2842,14 @@ export const LandingPagePartsFragmentDoc = gql`
           image
           ctaLabel
           link
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageInfoBlocksPillars {
@@ -1641,6 +2865,14 @@ export const LandingPagePartsFragmentDoc = gql`
           link
           image
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksImageGallery {
         heading
@@ -1649,6 +2881,14 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageInfoBlocksImageSpotlight {
@@ -1659,6 +2899,14 @@ export const LandingPagePartsFragmentDoc = gql`
         caption
         aspect
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksImageSideBySide {
         heading
@@ -1675,6 +2923,14 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
         }
         style
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksImageMasonry {
         heading
@@ -1685,10 +2941,26 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
           size
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksVideoEmbed {
         heading
         youtubeUrl
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksFeaturedBook {
         eyebrow
@@ -1703,6 +2975,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksFeaturedRelease {
         eyebrow
@@ -1712,12 +2992,28 @@ export const LandingPagePartsFragmentDoc = gql`
         backCoverImage
         ctaLabel
         ctaHref
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksShopCatalog {
         heading
@@ -1726,14 +3022,38 @@ export const LandingPagePartsFragmentDoc = gql`
         showFeaturedBanner
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksGalleryGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksTutorialsStrip {
         eyebrow
@@ -1747,6 +3067,14 @@ export const LandingPagePartsFragmentDoc = gql`
           value
           label
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksClassesPitch {
         eyebrow
@@ -1758,6 +3086,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksBlogFeed {
         heading
@@ -1771,6 +3107,14 @@ export const LandingPagePartsFragmentDoc = gql`
           ctaLabel
           privacyNote
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksCtaBand {
         heading
@@ -1778,6 +3122,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLabel
         ctaLink
         variant
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksBigCta {
         eyebrow
@@ -1787,6 +3139,14 @@ export const LandingPagePartsFragmentDoc = gql`
         primaryLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksNewsletterSignup {
         eyebrow
@@ -1795,6 +3155,14 @@ export const LandingPagePartsFragmentDoc = gql`
         placeholderText
         ctaLabel
         privacyNote
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksContactInfo {
         email
@@ -1811,12 +3179,28 @@ export const LandingPagePartsFragmentDoc = gql`
         successHeading
         successNote
         downloadLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksKofiSupport {
         heading
         body
         ctaLabel
         href
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageInfoBlocksReviewLinks {
         heading
@@ -1828,6 +3212,14 @@ export const LandingPagePartsFragmentDoc = gql`
           label
           href
           region
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageInfoBlocksMarquee {
@@ -1842,6 +3234,14 @@ export const LandingPagePartsFragmentDoc = gql`
           platform
           url
           label
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
     }
@@ -1861,6 +3261,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaSecondaryLink
         metaLine
         marqueeItems
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksAboutHero {
         eyebrow
@@ -1877,6 +3285,14 @@ export const LandingPagePartsFragmentDoc = gql`
         deskCaption
         screenImage
         screenCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksHero {
         heading
@@ -1884,6 +3300,14 @@ export const LandingPagePartsFragmentDoc = gql`
         backgroundImage
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksHeroSplitImage {
         eyebrow
@@ -1897,6 +3321,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksHeroFullBleed {
         backgroundImage
@@ -1907,6 +3339,14 @@ export const LandingPagePartsFragmentDoc = gql`
         minHeight
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksHeroFloatingImages {
         eyebrow
@@ -1922,6 +3362,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaPrimaryLink
         ctaSecondary
         ctaSecondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksHeroImageGrid {
         eyebrow
@@ -1936,14 +3384,38 @@ export const LandingPagePartsFragmentDoc = gql`
         }
         ctaLabel
         ctaLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksPageHeader {
         heading
         description
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksText {
         heading
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksStory {
         number
@@ -1954,6 +3426,14 @@ export const LandingPagePartsFragmentDoc = gql`
         paragraph2
         sideImage
         sideCaption
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksTimeline {
         number
@@ -1964,6 +3444,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
           image
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageLinkInBioBlocksStatsRow {
@@ -1981,6 +3469,14 @@ export const LandingPagePartsFragmentDoc = gql`
           title
           description
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksCardRow {
         number
@@ -1993,6 +3489,14 @@ export const LandingPagePartsFragmentDoc = gql`
           image
           ctaLabel
           link
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageLinkInBioBlocksPillars {
@@ -2008,6 +3512,14 @@ export const LandingPagePartsFragmentDoc = gql`
           link
           image
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksImageGallery {
         heading
@@ -2016,6 +3528,14 @@ export const LandingPagePartsFragmentDoc = gql`
           src
           alt
           caption
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageLinkInBioBlocksImageSpotlight {
@@ -2026,6 +3546,14 @@ export const LandingPagePartsFragmentDoc = gql`
         caption
         aspect
         body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksImageSideBySide {
         heading
@@ -2042,6 +3570,14 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
         }
         style
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksImageMasonry {
         heading
@@ -2052,10 +3588,26 @@ export const LandingPagePartsFragmentDoc = gql`
           caption
           size
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksVideoEmbed {
         heading
         youtubeUrl
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksFeaturedBook {
         eyebrow
@@ -2070,6 +3622,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksFeaturedRelease {
         eyebrow
@@ -2079,12 +3639,28 @@ export const LandingPagePartsFragmentDoc = gql`
         backCoverImage
         ctaLabel
         ctaHref
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksShopCatalog {
         heading
@@ -2093,14 +3669,38 @@ export const LandingPagePartsFragmentDoc = gql`
         showFeaturedBanner
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksGalleryGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksTutorialsStrip {
         eyebrow
@@ -2114,6 +3714,14 @@ export const LandingPagePartsFragmentDoc = gql`
           value
           label
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksClassesPitch {
         eyebrow
@@ -2125,6 +3733,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksBlogFeed {
         heading
@@ -2138,6 +3754,14 @@ export const LandingPagePartsFragmentDoc = gql`
           ctaLabel
           privacyNote
         }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksCtaBand {
         heading
@@ -2145,6 +3769,14 @@ export const LandingPagePartsFragmentDoc = gql`
         ctaLabel
         ctaLink
         variant
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksBigCta {
         eyebrow
@@ -2154,6 +3786,14 @@ export const LandingPagePartsFragmentDoc = gql`
         primaryLink
         secondaryLabel
         secondaryLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksNewsletterSignup {
         eyebrow
@@ -2162,6 +3802,14 @@ export const LandingPagePartsFragmentDoc = gql`
         placeholderText
         ctaLabel
         privacyNote
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksContactInfo {
         email
@@ -2178,12 +3826,28 @@ export const LandingPagePartsFragmentDoc = gql`
         successHeading
         successNote
         downloadLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksKofiSupport {
         heading
         body
         ctaLabel
         href
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
       }
       ... on LandingPageLinkInBioBlocksReviewLinks {
         heading
@@ -2195,6 +3859,14 @@ export const LandingPagePartsFragmentDoc = gql`
           label
           href
           region
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
       ... on LandingPageLinkInBioBlocksMarquee {
@@ -2209,6 +3881,14 @@ export const LandingPagePartsFragmentDoc = gql`
           platform
           url
           label
+        }
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
         }
       }
     }
@@ -2266,6 +3946,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaSecondaryLink
             metaLine
             marqueeItems
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksAboutHero {
             eyebrow
@@ -2282,6 +3970,14 @@ export const NavigationPartsFragmentDoc = gql`
             deskCaption
             screenImage
             screenCaption
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksHero {
             heading
@@ -2289,6 +3985,14 @@ export const NavigationPartsFragmentDoc = gql`
             backgroundImage
             ctaLabel
             ctaLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksHeroSplitImage {
             eyebrow
@@ -2302,6 +4006,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaPrimaryLink
             ctaSecondary
             ctaSecondaryLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksHeroFullBleed {
             backgroundImage
@@ -2312,6 +4024,14 @@ export const NavigationPartsFragmentDoc = gql`
             minHeight
             ctaLabel
             ctaLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksHeroFloatingImages {
             eyebrow
@@ -2327,6 +4047,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaPrimaryLink
             ctaSecondary
             ctaSecondaryLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksHeroImageGrid {
             eyebrow
@@ -2341,14 +4069,38 @@ export const NavigationPartsFragmentDoc = gql`
             }
             ctaLabel
             ctaLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksPageHeader {
             heading
             description
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksText {
             heading
             body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksStory {
             number
@@ -2359,6 +4111,14 @@ export const NavigationPartsFragmentDoc = gql`
             paragraph2
             sideImage
             sideCaption
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksTimeline {
             number
@@ -2369,6 +4129,14 @@ export const NavigationPartsFragmentDoc = gql`
               title
               description
               image
+            }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
             }
           }
           ... on PageBlocksStatsRow {
@@ -2386,6 +4154,14 @@ export const NavigationPartsFragmentDoc = gql`
               title
               description
             }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksCardRow {
             number
@@ -2398,6 +4174,14 @@ export const NavigationPartsFragmentDoc = gql`
               image
               ctaLabel
               link
+            }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
             }
           }
           ... on PageBlocksPillars {
@@ -2413,6 +4197,14 @@ export const NavigationPartsFragmentDoc = gql`
               link
               image
             }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksImageGallery {
             heading
@@ -2421,6 +4213,14 @@ export const NavigationPartsFragmentDoc = gql`
               src
               alt
               caption
+            }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
             }
           }
           ... on PageBlocksImageSpotlight {
@@ -2431,6 +4231,14 @@ export const NavigationPartsFragmentDoc = gql`
             caption
             aspect
             body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksImageSideBySide {
             heading
@@ -2447,6 +4255,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
             }
             style
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksImageMasonry {
             heading
@@ -2457,10 +4273,26 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               size
             }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksVideoEmbed {
             heading
             youtubeUrl
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksFeaturedBook {
             eyebrow
@@ -2475,6 +4307,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaLink
             secondaryLabel
             secondaryLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksFeaturedRelease {
             eyebrow
@@ -2484,12 +4324,28 @@ export const NavigationPartsFragmentDoc = gql`
             backCoverImage
             ctaLabel
             ctaHref
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksProductStrip {
             eyebrow
             heading
             viewAllLabel
             viewAllLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksShopCatalog {
             heading
@@ -2498,14 +4354,38 @@ export const NavigationPartsFragmentDoc = gql`
             showFeaturedBanner
             emptyHeading
             emptyDescription
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksGalleryGrid {
             emptyHeading
             emptyDescription
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksDownloadsGrid {
             emptyHeading
             emptyDescription
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksTutorialsStrip {
             eyebrow
@@ -2519,6 +4399,14 @@ export const NavigationPartsFragmentDoc = gql`
               value
               label
             }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksClassesPitch {
             eyebrow
@@ -2530,6 +4418,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaLink
             secondaryLabel
             secondaryLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksBlogFeed {
             heading
@@ -2543,6 +4439,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               privacyNote
             }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksCtaBand {
             heading
@@ -2550,6 +4454,14 @@ export const NavigationPartsFragmentDoc = gql`
             ctaLabel
             ctaLink
             variant
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksBigCta {
             eyebrow
@@ -2559,6 +4471,14 @@ export const NavigationPartsFragmentDoc = gql`
             primaryLink
             secondaryLabel
             secondaryLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksNewsletterSignup {
             eyebrow
@@ -2567,6 +4487,14 @@ export const NavigationPartsFragmentDoc = gql`
             placeholderText
             ctaLabel
             privacyNote
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksContactInfo {
             email
@@ -2583,12 +4511,28 @@ export const NavigationPartsFragmentDoc = gql`
             successHeading
             successNote
             downloadLabel
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksKofiSupport {
             heading
             body
             ctaLabel
             href
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
           }
           ... on PageBlocksReviewLinks {
             heading
@@ -2600,6 +4544,14 @@ export const NavigationPartsFragmentDoc = gql`
               label
               href
               region
+            }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
             }
           }
           ... on PageBlocksMarquee {
@@ -2614,6 +4566,14 @@ export const NavigationPartsFragmentDoc = gql`
               platform
               url
               label
+            }
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
             }
           }
         }
@@ -2635,6 +4595,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksAboutHero {
               eyebrow
@@ -2651,6 +4619,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksHero {
               heading
@@ -2658,6 +4634,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksHeroSplitImage {
               eyebrow
@@ -2671,6 +4655,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksHeroFullBleed {
               backgroundImage
@@ -2681,6 +4673,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksHeroFloatingImages {
               eyebrow
@@ -2696,6 +4696,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksHeroImageGrid {
               eyebrow
@@ -2710,14 +4718,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksStory {
               number
@@ -2728,6 +4760,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksTimeline {
               number
@@ -2738,6 +4778,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageBlankBlocksStatsRow {
@@ -2755,6 +4803,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksCardRow {
               number
@@ -2767,6 +4823,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageBlankBlocksPillars {
@@ -2782,6 +4846,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksImageGallery {
               heading
@@ -2790,6 +4862,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageBlankBlocksImageSpotlight {
@@ -2800,6 +4880,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksImageSideBySide {
               heading
@@ -2816,6 +4904,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksImageMasonry {
               heading
@@ -2826,10 +4922,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksFeaturedBook {
               eyebrow
@@ -2844,6 +4956,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksFeaturedRelease {
               eyebrow
@@ -2853,12 +4973,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksShopCatalog {
               heading
@@ -2867,14 +5003,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksTutorialsStrip {
               eyebrow
@@ -2888,6 +5048,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksClassesPitch {
               eyebrow
@@ -2899,6 +5067,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksBlogFeed {
               heading
@@ -2912,6 +5088,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksCtaBand {
               heading
@@ -2919,6 +5103,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksBigCta {
               eyebrow
@@ -2928,6 +5120,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksNewsletterSignup {
               eyebrow
@@ -2936,6 +5136,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksContactInfo {
               email
@@ -2952,12 +5160,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageBlankBlocksReviewLinks {
               heading
@@ -2969,6 +5193,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageBlankBlocksMarquee {
@@ -2983,6 +5215,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -3002,6 +5242,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksAboutHero {
               eyebrow
@@ -3018,6 +5266,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksHero {
               heading
@@ -3025,6 +5281,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksHeroSplitImage {
               eyebrow
@@ -3038,6 +5302,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksHeroFullBleed {
               backgroundImage
@@ -3048,6 +5320,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksHeroFloatingImages {
               eyebrow
@@ -3063,6 +5343,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksHeroImageGrid {
               eyebrow
@@ -3077,14 +5365,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksStory {
               number
@@ -3095,6 +5407,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksTimeline {
               number
@@ -3105,6 +5425,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageEventBlocksStatsRow {
@@ -3122,6 +5450,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksCardRow {
               number
@@ -3134,6 +5470,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageEventBlocksPillars {
@@ -3149,6 +5493,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksImageGallery {
               heading
@@ -3157,6 +5509,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageEventBlocksImageSpotlight {
@@ -3167,6 +5527,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksImageSideBySide {
               heading
@@ -3183,6 +5551,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksImageMasonry {
               heading
@@ -3193,10 +5569,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksFeaturedBook {
               eyebrow
@@ -3211,6 +5603,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksFeaturedRelease {
               eyebrow
@@ -3220,12 +5620,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksShopCatalog {
               heading
@@ -3234,14 +5650,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksTutorialsStrip {
               eyebrow
@@ -3255,6 +5695,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksClassesPitch {
               eyebrow
@@ -3266,6 +5714,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksBlogFeed {
               heading
@@ -3279,6 +5735,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksCtaBand {
               heading
@@ -3286,6 +5750,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksBigCta {
               eyebrow
@@ -3295,6 +5767,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksNewsletterSignup {
               eyebrow
@@ -3303,6 +5783,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksContactInfo {
               email
@@ -3319,12 +5807,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageEventBlocksReviewLinks {
               heading
@@ -3336,6 +5840,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageEventBlocksMarquee {
@@ -3350,6 +5862,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -3369,6 +5889,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksAboutHero {
               eyebrow
@@ -3385,6 +5913,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksHero {
               heading
@@ -3392,6 +5928,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksHeroSplitImage {
               eyebrow
@@ -3405,6 +5949,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksHeroFullBleed {
               backgroundImage
@@ -3415,6 +5967,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksHeroFloatingImages {
               eyebrow
@@ -3430,6 +5990,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksHeroImageGrid {
               eyebrow
@@ -3444,14 +6012,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksStory {
               number
@@ -3462,6 +6054,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksTimeline {
               number
@@ -3472,6 +6072,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPagePromoBlocksStatsRow {
@@ -3489,6 +6097,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksCardRow {
               number
@@ -3501,6 +6117,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPagePromoBlocksPillars {
@@ -3516,6 +6140,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksImageGallery {
               heading
@@ -3524,6 +6156,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPagePromoBlocksImageSpotlight {
@@ -3534,6 +6174,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksImageSideBySide {
               heading
@@ -3550,6 +6198,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksImageMasonry {
               heading
@@ -3560,10 +6216,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksFeaturedBook {
               eyebrow
@@ -3578,6 +6250,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksFeaturedRelease {
               eyebrow
@@ -3587,12 +6267,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksShopCatalog {
               heading
@@ -3601,14 +6297,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksTutorialsStrip {
               eyebrow
@@ -3622,6 +6342,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksClassesPitch {
               eyebrow
@@ -3633,6 +6361,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksBlogFeed {
               heading
@@ -3646,6 +6382,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksCtaBand {
               heading
@@ -3653,6 +6397,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksBigCta {
               eyebrow
@@ -3662,6 +6414,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksNewsletterSignup {
               eyebrow
@@ -3670,6 +6430,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksContactInfo {
               email
@@ -3686,12 +6454,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPagePromoBlocksReviewLinks {
               heading
@@ -3703,6 +6487,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPagePromoBlocksMarquee {
@@ -3717,6 +6509,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -3736,6 +6536,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksAboutHero {
               eyebrow
@@ -3752,6 +6560,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksHero {
               heading
@@ -3759,6 +6575,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksHeroSplitImage {
               eyebrow
@@ -3772,6 +6596,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksHeroFullBleed {
               backgroundImage
@@ -3782,6 +6614,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksHeroFloatingImages {
               eyebrow
@@ -3797,6 +6637,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksHeroImageGrid {
               eyebrow
@@ -3811,14 +6659,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksStory {
               number
@@ -3829,6 +6701,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksTimeline {
               number
@@ -3839,6 +6719,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageInfoBlocksStatsRow {
@@ -3856,6 +6744,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksCardRow {
               number
@@ -3868,6 +6764,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageInfoBlocksPillars {
@@ -3883,6 +6787,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksImageGallery {
               heading
@@ -3891,6 +6803,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageInfoBlocksImageSpotlight {
@@ -3901,6 +6821,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksImageSideBySide {
               heading
@@ -3917,6 +6845,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksImageMasonry {
               heading
@@ -3927,10 +6863,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksFeaturedBook {
               eyebrow
@@ -3945,6 +6897,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksFeaturedRelease {
               eyebrow
@@ -3954,12 +6914,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksShopCatalog {
               heading
@@ -3968,14 +6944,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksTutorialsStrip {
               eyebrow
@@ -3989,6 +6989,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksClassesPitch {
               eyebrow
@@ -4000,6 +7008,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksBlogFeed {
               heading
@@ -4013,6 +7029,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksCtaBand {
               heading
@@ -4020,6 +7044,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksBigCta {
               eyebrow
@@ -4029,6 +7061,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksNewsletterSignup {
               eyebrow
@@ -4037,6 +7077,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksContactInfo {
               email
@@ -4053,12 +7101,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageInfoBlocksReviewLinks {
               heading
@@ -4070,6 +7134,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageInfoBlocksMarquee {
@@ -4084,6 +7156,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -4103,6 +7183,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksAboutHero {
               eyebrow
@@ -4119,6 +7207,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksHero {
               heading
@@ -4126,6 +7222,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksHeroSplitImage {
               eyebrow
@@ -4139,6 +7243,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksHeroFullBleed {
               backgroundImage
@@ -4149,6 +7261,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksHeroFloatingImages {
               eyebrow
@@ -4164,6 +7284,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksHeroImageGrid {
               eyebrow
@@ -4178,14 +7306,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksStory {
               number
@@ -4196,6 +7348,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksTimeline {
               number
@@ -4206,6 +7366,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageLinkInBioBlocksStatsRow {
@@ -4223,6 +7391,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksCardRow {
               number
@@ -4235,6 +7411,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageLinkInBioBlocksPillars {
@@ -4250,6 +7434,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksImageGallery {
               heading
@@ -4258,6 +7450,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageLinkInBioBlocksImageSpotlight {
@@ -4268,6 +7468,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksImageSideBySide {
               heading
@@ -4284,6 +7492,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksImageMasonry {
               heading
@@ -4294,10 +7510,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksFeaturedBook {
               eyebrow
@@ -4312,6 +7544,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksFeaturedRelease {
               eyebrow
@@ -4321,12 +7561,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksShopCatalog {
               heading
@@ -4335,14 +7591,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksTutorialsStrip {
               eyebrow
@@ -4356,6 +7636,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksClassesPitch {
               eyebrow
@@ -4367,6 +7655,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksBlogFeed {
               heading
@@ -4380,6 +7676,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksCtaBand {
               heading
@@ -4387,6 +7691,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksBigCta {
               eyebrow
@@ -4396,6 +7708,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksNewsletterSignup {
               eyebrow
@@ -4404,6 +7724,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksContactInfo {
               email
@@ -4420,12 +7748,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on LandingPageLinkInBioBlocksReviewLinks {
               heading
@@ -4437,6 +7781,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on LandingPageLinkInBioBlocksMarquee {
@@ -4451,6 +7803,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -4491,6 +7851,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksAboutHero {
               eyebrow
@@ -4507,6 +7875,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHero {
               heading
@@ -4514,6 +7890,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroSplitImage {
               eyebrow
@@ -4527,6 +7911,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroFullBleed {
               backgroundImage
@@ -4537,6 +7929,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroFloatingImages {
               eyebrow
@@ -4552,6 +7952,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroImageGrid {
               eyebrow
@@ -4566,14 +7974,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksStory {
               number
@@ -4584,6 +8016,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksTimeline {
               number
@@ -4594,6 +8034,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksStatsRow {
@@ -4611,6 +8059,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksCardRow {
               number
@@ -4623,6 +8079,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksPillars {
@@ -4638,6 +8102,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageGallery {
               heading
@@ -4646,6 +8118,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksImageSpotlight {
@@ -4656,6 +8136,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageSideBySide {
               heading
@@ -4672,6 +8160,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageMasonry {
               heading
@@ -4682,10 +8178,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksFeaturedBook {
               eyebrow
@@ -4700,6 +8212,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksFeaturedRelease {
               eyebrow
@@ -4709,12 +8229,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksShopCatalog {
               heading
@@ -4723,14 +8259,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksTutorialsStrip {
               eyebrow
@@ -4744,6 +8304,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksClassesPitch {
               eyebrow
@@ -4755,6 +8323,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksBlogFeed {
               heading
@@ -4768,6 +8344,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksCtaBand {
               heading
@@ -4775,6 +8359,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksBigCta {
               eyebrow
@@ -4784,6 +8376,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksNewsletterSignup {
               eyebrow
@@ -4792,6 +8392,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksContactInfo {
               email
@@ -4808,12 +8416,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksReviewLinks {
               heading
@@ -4825,6 +8449,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksMarquee {
@@ -4839,6 +8471,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -4860,6 +8500,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksAboutHero {
                 eyebrow
@@ -4876,6 +8524,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHero {
                 heading
@@ -4883,6 +8539,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroSplitImage {
                 eyebrow
@@ -4896,6 +8560,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroFullBleed {
                 backgroundImage
@@ -4906,6 +8578,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroFloatingImages {
                 eyebrow
@@ -4921,6 +8601,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroImageGrid {
                 eyebrow
@@ -4935,14 +8623,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksStory {
                 number
@@ -4953,6 +8665,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksTimeline {
                 number
@@ -4963,6 +8683,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksStatsRow {
@@ -4980,6 +8708,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksCardRow {
                 number
@@ -4992,6 +8728,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksPillars {
@@ -5007,6 +8751,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageGallery {
                 heading
@@ -5015,6 +8767,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksImageSpotlight {
@@ -5025,6 +8785,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageSideBySide {
                 heading
@@ -5041,6 +8809,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageMasonry {
                 heading
@@ -5051,10 +8827,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksFeaturedBook {
                 eyebrow
@@ -5069,6 +8861,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksFeaturedRelease {
                 eyebrow
@@ -5078,12 +8878,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksShopCatalog {
                 heading
@@ -5092,14 +8908,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
                 eyebrow
@@ -5113,6 +8953,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksClassesPitch {
                 eyebrow
@@ -5124,6 +8972,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksBlogFeed {
                 heading
@@ -5137,6 +8993,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksCtaBand {
                 heading
@@ -5144,6 +9008,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksBigCta {
                 eyebrow
@@ -5153,6 +9025,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksNewsletterSignup {
                 eyebrow
@@ -5161,6 +9041,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksContactInfo {
                 email
@@ -5177,12 +9065,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksReviewLinks {
                 heading
@@ -5194,6 +9098,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksMarquee {
@@ -5208,6 +9120,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -5227,6 +9147,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksAboutHero {
                 eyebrow
@@ -5243,6 +9171,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHero {
                 heading
@@ -5250,6 +9186,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroSplitImage {
                 eyebrow
@@ -5263,6 +9207,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroFullBleed {
                 backgroundImage
@@ -5273,6 +9225,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroFloatingImages {
                 eyebrow
@@ -5288,6 +9248,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroImageGrid {
                 eyebrow
@@ -5302,14 +9270,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksStory {
                 number
@@ -5320,6 +9312,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksTimeline {
                 number
@@ -5330,6 +9330,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksStatsRow {
@@ -5347,6 +9355,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksCardRow {
                 number
@@ -5359,6 +9375,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksPillars {
@@ -5374,6 +9398,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageGallery {
                 heading
@@ -5382,6 +9414,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksImageSpotlight {
@@ -5392,6 +9432,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageSideBySide {
                 heading
@@ -5408,6 +9456,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageMasonry {
                 heading
@@ -5418,10 +9474,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksFeaturedBook {
                 eyebrow
@@ -5436,6 +9508,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksFeaturedRelease {
                 eyebrow
@@ -5445,12 +9525,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksShopCatalog {
                 heading
@@ -5459,14 +9555,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
                 eyebrow
@@ -5480,6 +9600,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksClassesPitch {
                 eyebrow
@@ -5491,6 +9619,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksBlogFeed {
                 heading
@@ -5504,6 +9640,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksCtaBand {
                 heading
@@ -5511,6 +9655,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksBigCta {
                 eyebrow
@@ -5520,6 +9672,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksNewsletterSignup {
                 eyebrow
@@ -5528,6 +9688,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksContactInfo {
                 email
@@ -5544,12 +9712,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksReviewLinks {
                 heading
@@ -5561,6 +9745,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksMarquee {
@@ -5575,6 +9767,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -5594,6 +9794,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksAboutHero {
                 eyebrow
@@ -5610,6 +9818,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHero {
                 heading
@@ -5617,6 +9833,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroSplitImage {
                 eyebrow
@@ -5630,6 +9854,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroFullBleed {
                 backgroundImage
@@ -5640,6 +9872,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroFloatingImages {
                 eyebrow
@@ -5655,6 +9895,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroImageGrid {
                 eyebrow
@@ -5669,14 +9917,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksStory {
                 number
@@ -5687,6 +9959,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksTimeline {
                 number
@@ -5697,6 +9977,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksStatsRow {
@@ -5714,6 +10002,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksCardRow {
                 number
@@ -5726,6 +10022,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksPillars {
@@ -5741,6 +10045,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageGallery {
                 heading
@@ -5749,6 +10061,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksImageSpotlight {
@@ -5759,6 +10079,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageSideBySide {
                 heading
@@ -5775,6 +10103,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageMasonry {
                 heading
@@ -5785,10 +10121,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksFeaturedBook {
                 eyebrow
@@ -5803,6 +10155,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksFeaturedRelease {
                 eyebrow
@@ -5812,12 +10172,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksShopCatalog {
                 heading
@@ -5826,14 +10202,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
                 eyebrow
@@ -5847,6 +10247,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksClassesPitch {
                 eyebrow
@@ -5858,6 +10266,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksBlogFeed {
                 heading
@@ -5871,6 +10287,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksCtaBand {
                 heading
@@ -5878,6 +10302,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksBigCta {
                 eyebrow
@@ -5887,6 +10319,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksNewsletterSignup {
                 eyebrow
@@ -5895,6 +10335,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksContactInfo {
                 email
@@ -5911,12 +10359,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksReviewLinks {
                 heading
@@ -5928,6 +10392,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksMarquee {
@@ -5942,6 +10414,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -5961,6 +10441,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksAboutHero {
                 eyebrow
@@ -5977,6 +10465,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHero {
                 heading
@@ -5984,6 +10480,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroSplitImage {
                 eyebrow
@@ -5997,6 +10501,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroFullBleed {
                 backgroundImage
@@ -6007,6 +10519,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroFloatingImages {
                 eyebrow
@@ -6022,6 +10542,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroImageGrid {
                 eyebrow
@@ -6036,14 +10564,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksStory {
                 number
@@ -6054,6 +10606,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksTimeline {
                 number
@@ -6064,6 +10624,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksStatsRow {
@@ -6081,6 +10649,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksCardRow {
                 number
@@ -6093,6 +10669,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksPillars {
@@ -6108,6 +10692,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageGallery {
                 heading
@@ -6116,6 +10708,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksImageSpotlight {
@@ -6126,6 +10726,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageSideBySide {
                 heading
@@ -6142,6 +10750,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageMasonry {
                 heading
@@ -6152,10 +10768,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksFeaturedBook {
                 eyebrow
@@ -6170,6 +10802,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksFeaturedRelease {
                 eyebrow
@@ -6179,12 +10819,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksShopCatalog {
                 heading
@@ -6193,14 +10849,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
                 eyebrow
@@ -6214,6 +10894,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksClassesPitch {
                 eyebrow
@@ -6225,6 +10913,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksBlogFeed {
                 heading
@@ -6238,6 +10934,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksCtaBand {
                 heading
@@ -6245,6 +10949,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksBigCta {
                 eyebrow
@@ -6254,6 +10966,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksNewsletterSignup {
                 eyebrow
@@ -6262,6 +10982,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksContactInfo {
                 email
@@ -6278,12 +11006,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksReviewLinks {
                 heading
@@ -6295,6 +11039,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksMarquee {
@@ -6309,6 +11061,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -6328,6 +11088,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksAboutHero {
                 eyebrow
@@ -6344,6 +11112,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHero {
                 heading
@@ -6351,6 +11127,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroSplitImage {
                 eyebrow
@@ -6364,6 +11148,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroFullBleed {
                 backgroundImage
@@ -6374,6 +11166,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroFloatingImages {
                 eyebrow
@@ -6389,6 +11189,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroImageGrid {
                 eyebrow
@@ -6403,14 +11211,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksStory {
                 number
@@ -6421,6 +11253,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksTimeline {
                 number
@@ -6431,6 +11271,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksStatsRow {
@@ -6448,6 +11296,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksCardRow {
                 number
@@ -6460,6 +11316,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksPillars {
@@ -6475,6 +11339,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageGallery {
                 heading
@@ -6483,6 +11355,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksImageSpotlight {
@@ -6493,6 +11373,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageSideBySide {
                 heading
@@ -6509,6 +11397,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageMasonry {
                 heading
@@ -6519,10 +11415,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksFeaturedBook {
                 eyebrow
@@ -6537,6 +11449,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksFeaturedRelease {
                 eyebrow
@@ -6546,12 +11466,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksShopCatalog {
                 heading
@@ -6560,14 +11496,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
                 eyebrow
@@ -6581,6 +11541,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksClassesPitch {
                 eyebrow
@@ -6592,6 +11560,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksBlogFeed {
                 heading
@@ -6605,6 +11581,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksCtaBand {
                 heading
@@ -6612,6 +11596,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksBigCta {
                 eyebrow
@@ -6621,6 +11613,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksNewsletterSignup {
                 eyebrow
@@ -6629,6 +11629,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksContactInfo {
                 email
@@ -6645,12 +11653,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksReviewLinks {
                 heading
@@ -6662,6 +11686,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksMarquee {
@@ -6676,6 +11708,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -6721,6 +11761,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaSecondaryLink
               metaLine
               marqueeItems
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksAboutHero {
               eyebrow
@@ -6737,6 +11785,14 @@ export const NavigationPartsFragmentDoc = gql`
               deskCaption
               screenImage
               screenCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHero {
               heading
@@ -6744,6 +11800,14 @@ export const NavigationPartsFragmentDoc = gql`
               backgroundImage
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroSplitImage {
               eyebrow
@@ -6757,6 +11821,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroFullBleed {
               backgroundImage
@@ -6767,6 +11839,14 @@ export const NavigationPartsFragmentDoc = gql`
               minHeight
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroFloatingImages {
               eyebrow
@@ -6782,6 +11862,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaPrimaryLink
               ctaSecondary
               ctaSecondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksHeroImageGrid {
               eyebrow
@@ -6796,14 +11884,38 @@ export const NavigationPartsFragmentDoc = gql`
               }
               ctaLabel
               ctaLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksPageHeader {
               heading
               description
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksText {
               heading
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksStory {
               number
@@ -6814,6 +11926,14 @@ export const NavigationPartsFragmentDoc = gql`
               paragraph2
               sideImage
               sideCaption
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksTimeline {
               number
@@ -6824,6 +11944,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
                 image
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksStatsRow {
@@ -6841,6 +11969,14 @@ export const NavigationPartsFragmentDoc = gql`
                 title
                 description
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksCardRow {
               number
@@ -6853,6 +11989,14 @@ export const NavigationPartsFragmentDoc = gql`
                 image
                 ctaLabel
                 link
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksPillars {
@@ -6868,6 +12012,14 @@ export const NavigationPartsFragmentDoc = gql`
                 link
                 image
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageGallery {
               heading
@@ -6876,6 +12028,14 @@ export const NavigationPartsFragmentDoc = gql`
                 src
                 alt
                 caption
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksImageSpotlight {
@@ -6886,6 +12046,14 @@ export const NavigationPartsFragmentDoc = gql`
               caption
               aspect
               body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageSideBySide {
               heading
@@ -6902,6 +12070,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
               }
               style
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksImageMasonry {
               heading
@@ -6912,10 +12088,26 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 size
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksVideoEmbed {
               heading
               youtubeUrl
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksFeaturedBook {
               eyebrow
@@ -6930,6 +12122,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksFeaturedRelease {
               eyebrow
@@ -6939,12 +12139,28 @@ export const NavigationPartsFragmentDoc = gql`
               backCoverImage
               ctaLabel
               ctaHref
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksShopCatalog {
               heading
@@ -6953,14 +12169,38 @@ export const NavigationPartsFragmentDoc = gql`
               showFeaturedBanner
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksGalleryGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksTutorialsStrip {
               eyebrow
@@ -6974,6 +12214,14 @@ export const NavigationPartsFragmentDoc = gql`
                 value
                 label
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksClassesPitch {
               eyebrow
@@ -6985,6 +12233,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksBlogFeed {
               heading
@@ -6998,6 +12254,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 privacyNote
               }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksCtaBand {
               heading
@@ -7005,6 +12269,14 @@ export const NavigationPartsFragmentDoc = gql`
               ctaLabel
               ctaLink
               variant
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksBigCta {
               eyebrow
@@ -7014,6 +12286,14 @@ export const NavigationPartsFragmentDoc = gql`
               primaryLink
               secondaryLabel
               secondaryLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksNewsletterSignup {
               eyebrow
@@ -7022,6 +12302,14 @@ export const NavigationPartsFragmentDoc = gql`
               placeholderText
               ctaLabel
               privacyNote
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksContactInfo {
               email
@@ -7038,12 +12326,28 @@ export const NavigationPartsFragmentDoc = gql`
               successHeading
               successNote
               downloadLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksKofiSupport {
               heading
               body
               ctaLabel
               href
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
             }
             ... on PageBlocksReviewLinks {
               heading
@@ -7055,6 +12359,14 @@ export const NavigationPartsFragmentDoc = gql`
                 label
                 href
                 region
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
             ... on PageBlocksMarquee {
@@ -7069,6 +12381,14 @@ export const NavigationPartsFragmentDoc = gql`
                 platform
                 url
                 label
+              }
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
               }
             }
           }
@@ -7090,6 +12410,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksAboutHero {
                 eyebrow
@@ -7106,6 +12434,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHero {
                 heading
@@ -7113,6 +12449,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroSplitImage {
                 eyebrow
@@ -7126,6 +12470,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroFullBleed {
                 backgroundImage
@@ -7136,6 +12488,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroFloatingImages {
                 eyebrow
@@ -7151,6 +12511,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksHeroImageGrid {
                 eyebrow
@@ -7165,14 +12533,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksStory {
                 number
@@ -7183,6 +12575,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksTimeline {
                 number
@@ -7193,6 +12593,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksStatsRow {
@@ -7210,6 +12618,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksCardRow {
                 number
@@ -7222,6 +12638,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksPillars {
@@ -7237,6 +12661,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageGallery {
                 heading
@@ -7245,6 +12677,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksImageSpotlight {
@@ -7255,6 +12695,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageSideBySide {
                 heading
@@ -7271,6 +12719,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksImageMasonry {
                 heading
@@ -7281,10 +12737,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksFeaturedBook {
                 eyebrow
@@ -7299,6 +12771,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksFeaturedRelease {
                 eyebrow
@@ -7308,12 +12788,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksShopCatalog {
                 heading
@@ -7322,14 +12818,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
                 eyebrow
@@ -7343,6 +12863,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksClassesPitch {
                 eyebrow
@@ -7354,6 +12882,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksBlogFeed {
                 heading
@@ -7367,6 +12903,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksCtaBand {
                 heading
@@ -7374,6 +12918,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksBigCta {
                 eyebrow
@@ -7383,6 +12935,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksNewsletterSignup {
                 eyebrow
@@ -7391,6 +12951,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksContactInfo {
                 email
@@ -7407,12 +12975,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageBlankBlocksReviewLinks {
                 heading
@@ -7424,6 +13008,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageBlankBlocksMarquee {
@@ -7438,6 +13030,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -7457,6 +13057,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksAboutHero {
                 eyebrow
@@ -7473,6 +13081,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHero {
                 heading
@@ -7480,6 +13096,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroSplitImage {
                 eyebrow
@@ -7493,6 +13117,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroFullBleed {
                 backgroundImage
@@ -7503,6 +13135,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroFloatingImages {
                 eyebrow
@@ -7518,6 +13158,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksHeroImageGrid {
                 eyebrow
@@ -7532,14 +13180,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksStory {
                 number
@@ -7550,6 +13222,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksTimeline {
                 number
@@ -7560,6 +13240,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksStatsRow {
@@ -7577,6 +13265,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksCardRow {
                 number
@@ -7589,6 +13285,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksPillars {
@@ -7604,6 +13308,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageGallery {
                 heading
@@ -7612,6 +13324,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksImageSpotlight {
@@ -7622,6 +13342,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageSideBySide {
                 heading
@@ -7638,6 +13366,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksImageMasonry {
                 heading
@@ -7648,10 +13384,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksFeaturedBook {
                 eyebrow
@@ -7666,6 +13418,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksFeaturedRelease {
                 eyebrow
@@ -7675,12 +13435,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksShopCatalog {
                 heading
@@ -7689,14 +13465,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
                 eyebrow
@@ -7710,6 +13510,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksClassesPitch {
                 eyebrow
@@ -7721,6 +13529,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksBlogFeed {
                 heading
@@ -7734,6 +13550,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksCtaBand {
                 heading
@@ -7741,6 +13565,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksBigCta {
                 eyebrow
@@ -7750,6 +13582,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksNewsletterSignup {
                 eyebrow
@@ -7758,6 +13598,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksContactInfo {
                 email
@@ -7774,12 +13622,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageEventBlocksReviewLinks {
                 heading
@@ -7791,6 +13655,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageEventBlocksMarquee {
@@ -7805,6 +13677,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -7824,6 +13704,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksAboutHero {
                 eyebrow
@@ -7840,6 +13728,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHero {
                 heading
@@ -7847,6 +13743,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroSplitImage {
                 eyebrow
@@ -7860,6 +13764,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroFullBleed {
                 backgroundImage
@@ -7870,6 +13782,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroFloatingImages {
                 eyebrow
@@ -7885,6 +13805,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksHeroImageGrid {
                 eyebrow
@@ -7899,14 +13827,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksStory {
                 number
@@ -7917,6 +13869,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksTimeline {
                 number
@@ -7927,6 +13887,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksStatsRow {
@@ -7944,6 +13912,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksCardRow {
                 number
@@ -7956,6 +13932,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksPillars {
@@ -7971,6 +13955,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageGallery {
                 heading
@@ -7979,6 +13971,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksImageSpotlight {
@@ -7989,6 +13989,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageSideBySide {
                 heading
@@ -8005,6 +14013,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksImageMasonry {
                 heading
@@ -8015,10 +14031,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksFeaturedBook {
                 eyebrow
@@ -8033,6 +14065,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksFeaturedRelease {
                 eyebrow
@@ -8042,12 +14082,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksShopCatalog {
                 heading
@@ -8056,14 +14112,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
                 eyebrow
@@ -8077,6 +14157,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksClassesPitch {
                 eyebrow
@@ -8088,6 +14176,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksBlogFeed {
                 heading
@@ -8101,6 +14197,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksCtaBand {
                 heading
@@ -8108,6 +14212,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksBigCta {
                 eyebrow
@@ -8117,6 +14229,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksNewsletterSignup {
                 eyebrow
@@ -8125,6 +14245,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksContactInfo {
                 email
@@ -8141,12 +14269,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPagePromoBlocksReviewLinks {
                 heading
@@ -8158,6 +14302,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPagePromoBlocksMarquee {
@@ -8172,6 +14324,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -8191,6 +14351,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksAboutHero {
                 eyebrow
@@ -8207,6 +14375,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHero {
                 heading
@@ -8214,6 +14390,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroSplitImage {
                 eyebrow
@@ -8227,6 +14411,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroFullBleed {
                 backgroundImage
@@ -8237,6 +14429,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroFloatingImages {
                 eyebrow
@@ -8252,6 +14452,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksHeroImageGrid {
                 eyebrow
@@ -8266,14 +14474,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksStory {
                 number
@@ -8284,6 +14516,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksTimeline {
                 number
@@ -8294,6 +14534,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksStatsRow {
@@ -8311,6 +14559,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksCardRow {
                 number
@@ -8323,6 +14579,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksPillars {
@@ -8338,6 +14602,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageGallery {
                 heading
@@ -8346,6 +14618,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksImageSpotlight {
@@ -8356,6 +14636,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageSideBySide {
                 heading
@@ -8372,6 +14660,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksImageMasonry {
                 heading
@@ -8382,10 +14678,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksFeaturedBook {
                 eyebrow
@@ -8400,6 +14712,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksFeaturedRelease {
                 eyebrow
@@ -8409,12 +14729,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksShopCatalog {
                 heading
@@ -8423,14 +14759,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
                 eyebrow
@@ -8444,6 +14804,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksClassesPitch {
                 eyebrow
@@ -8455,6 +14823,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksBlogFeed {
                 heading
@@ -8468,6 +14844,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksCtaBand {
                 heading
@@ -8475,6 +14859,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksBigCta {
                 eyebrow
@@ -8484,6 +14876,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksNewsletterSignup {
                 eyebrow
@@ -8492,6 +14892,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksContactInfo {
                 email
@@ -8508,12 +14916,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageInfoBlocksReviewLinks {
                 heading
@@ -8525,6 +14949,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageInfoBlocksMarquee {
@@ -8539,6 +14971,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -8558,6 +14998,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaSecondaryLink
                 metaLine
                 marqueeItems
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksAboutHero {
                 eyebrow
@@ -8574,6 +15022,14 @@ export const NavigationPartsFragmentDoc = gql`
                 deskCaption
                 screenImage
                 screenCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHero {
                 heading
@@ -8581,6 +15037,14 @@ export const NavigationPartsFragmentDoc = gql`
                 backgroundImage
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroSplitImage {
                 eyebrow
@@ -8594,6 +15058,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroFullBleed {
                 backgroundImage
@@ -8604,6 +15076,14 @@ export const NavigationPartsFragmentDoc = gql`
                 minHeight
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroFloatingImages {
                 eyebrow
@@ -8619,6 +15099,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaPrimaryLink
                 ctaSecondary
                 ctaSecondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksHeroImageGrid {
                 eyebrow
@@ -8633,14 +15121,38 @@ export const NavigationPartsFragmentDoc = gql`
                 }
                 ctaLabel
                 ctaLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksPageHeader {
                 heading
                 description
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksText {
                 heading
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksStory {
                 number
@@ -8651,6 +15163,14 @@ export const NavigationPartsFragmentDoc = gql`
                 paragraph2
                 sideImage
                 sideCaption
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksTimeline {
                 number
@@ -8661,6 +15181,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                   image
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksStatsRow {
@@ -8678,6 +15206,14 @@ export const NavigationPartsFragmentDoc = gql`
                   title
                   description
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksCardRow {
                 number
@@ -8690,6 +15226,14 @@ export const NavigationPartsFragmentDoc = gql`
                   image
                   ctaLabel
                   link
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksPillars {
@@ -8705,6 +15249,14 @@ export const NavigationPartsFragmentDoc = gql`
                   link
                   image
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageGallery {
                 heading
@@ -8713,6 +15265,14 @@ export const NavigationPartsFragmentDoc = gql`
                   src
                   alt
                   caption
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksImageSpotlight {
@@ -8723,6 +15283,14 @@ export const NavigationPartsFragmentDoc = gql`
                 caption
                 aspect
                 body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageSideBySide {
                 heading
@@ -8739,6 +15307,14 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                 }
                 style
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksImageMasonry {
                 heading
@@ -8749,10 +15325,26 @@ export const NavigationPartsFragmentDoc = gql`
                   caption
                   size
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksVideoEmbed {
                 heading
                 youtubeUrl
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksFeaturedBook {
                 eyebrow
@@ -8767,6 +15359,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksFeaturedRelease {
                 eyebrow
@@ -8776,12 +15376,28 @@ export const NavigationPartsFragmentDoc = gql`
                 backCoverImage
                 ctaLabel
                 ctaHref
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksShopCatalog {
                 heading
@@ -8790,14 +15406,38 @@ export const NavigationPartsFragmentDoc = gql`
                 showFeaturedBanner
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
                 eyebrow
@@ -8811,6 +15451,14 @@ export const NavigationPartsFragmentDoc = gql`
                   value
                   label
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksClassesPitch {
                 eyebrow
@@ -8822,6 +15470,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksBlogFeed {
                 heading
@@ -8835,6 +15491,14 @@ export const NavigationPartsFragmentDoc = gql`
                   ctaLabel
                   privacyNote
                 }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksCtaBand {
                 heading
@@ -8842,6 +15506,14 @@ export const NavigationPartsFragmentDoc = gql`
                 ctaLabel
                 ctaLink
                 variant
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksBigCta {
                 eyebrow
@@ -8851,6 +15523,14 @@ export const NavigationPartsFragmentDoc = gql`
                 primaryLink
                 secondaryLabel
                 secondaryLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksNewsletterSignup {
                 eyebrow
@@ -8859,6 +15539,14 @@ export const NavigationPartsFragmentDoc = gql`
                 placeholderText
                 ctaLabel
                 privacyNote
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksContactInfo {
                 email
@@ -8875,12 +15563,28 @@ export const NavigationPartsFragmentDoc = gql`
                 successHeading
                 successNote
                 downloadLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksKofiSupport {
                 heading
                 body
                 ctaLabel
                 href
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
               }
               ... on LandingPageLinkInBioBlocksReviewLinks {
                 heading
@@ -8892,6 +15596,14 @@ export const NavigationPartsFragmentDoc = gql`
                   label
                   href
                   region
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
               ... on LandingPageLinkInBioBlocksMarquee {
@@ -8906,6 +15618,14 @@ export const NavigationPartsFragmentDoc = gql`
                   platform
                   url
                   label
+                }
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
                 }
               }
             }
@@ -9268,7 +15988,7 @@ const generateRequester = (client) => {
 export const ExperimentalGetTinaClient = () => getSdk(
   generateRequester(
     createClient({
-      url: "https://content.tinajs.io/2.4/content/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/github/main",
+      url: "http://localhost:4001/graphql",
       queries
     })
   )

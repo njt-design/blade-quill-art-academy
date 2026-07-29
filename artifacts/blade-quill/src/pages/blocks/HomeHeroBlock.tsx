@@ -8,6 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
+import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const MARQUEE_COLORS = [
   "var(--maroon)",
@@ -128,7 +129,10 @@ export default function HomeHeroBlock({ block }: Props) {
         />
       </div>
 
-      <div className="bq-container relative max-w-[820px] mx-auto text-center">
+      <div
+        className="bq-container relative max-w-[820px] mx-auto text-center"
+        style={sectionAlignStyle(block)}
+      >
         {block.eyebrow ? (
           <Reveal>
             <div
@@ -140,14 +144,15 @@ export default function HomeHeroBlock({ block }: Props) {
           </Reveal>
         ) : null}
 
-        <h1
+        <SectionHeading
+          block={block}
+          defaultTag="h1"
+          baseSize="clamp(38px, 7vw, 88px)"
           className="mb-7"
           style={{
-            fontSize: "clamp(38px, 7vw, 88px)",
             lineHeight: 1.1,
             letterSpacing: "-0.025em",
           }}
-          data-tina-field={tinaField(block, "heading")}
         >
           <WordReveal text={headingLines[0] ?? ""} />
           {headingLines.length > 1 && (
@@ -158,13 +163,13 @@ export default function HomeHeroBlock({ block }: Props) {
               </span>
             </>
           )}
-        </h1>
+        </SectionHeading>
 
         {block.subheading ? (
           <Reveal>
             <div
               className="text-lg max-w-[560px] mx-auto mb-9 leading-[1.55]"
-              style={{ color: "var(--ink-soft)" }}
+              style={{ color: "var(--ink-soft)", ...bodyTextStyle(block) }}
               data-tina-field={tinaField(block, "subheading")}
             >
               <RichText value={block.subheading} />
