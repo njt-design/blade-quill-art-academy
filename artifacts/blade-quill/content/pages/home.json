@@ -13,10 +13,20 @@
             "children": [
               {
                 "type": "text",
-                "text": "Hi, I'm Corinne - author of Lheeloo & Luna. Helping others materialize their dreams with Krita."
+                "text": "Helping others materialize their dreams with Krita."
               }
             ],
             "id": "0Kw8dR5xeL"
+          },
+          {
+            "type": "p",
+            "id": "heroSubP2",
+            "children": [
+              {
+                "type": "text",
+                "text": "Hi, I'm Corinne - author of Lheeloo & Luna."
+              }
+            ]
           }
         ]
       },
