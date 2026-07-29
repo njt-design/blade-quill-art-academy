@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "ABOUT ME",
-      "heading": "I'm Corinne —\nFrench author\nand illustrator.",
+      "heading": "I'm Corinne, French author and illustrator. ",
       "leadText": {
         "type": "root",
         "children": [
@@ -15,7 +15,8 @@
                 "type": "text",
                 "text": "I am delighted to welcome you! This website is about digital art — I offer advice and complementary materials to assist you in your creative journey."
               }
-            ]
+            ],
+            "id": "CHs9cXwqIa"
           }
         ]
       },
