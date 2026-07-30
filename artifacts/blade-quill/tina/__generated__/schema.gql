@@ -9320,6 +9320,8 @@ type ShopProduct implements Node & Document {
   inStock: Boolean
   downloadUrl: String
   gumroadUrl: String
+  amazonUrl: String
+  googlePlayUrl: String
   productId: Float!
   createdAt: String
   id: ID!
@@ -9347,6 +9349,8 @@ input ShopProductFilter {
   inStock: BooleanFilter
   downloadUrl: StringFilter
   gumroadUrl: StringFilter
+  amazonUrl: StringFilter
+  googlePlayUrl: StringFilter
   productId: NumberFilter
   createdAt: DatetimeFilter
 }
@@ -14191,6 +14195,8 @@ input ShopProductMutation {
   inStock: Boolean
   downloadUrl: String
   gumroadUrl: String
+  amazonUrl: String
+  googlePlayUrl: String
   productId: Float
   createdAt: String
 }

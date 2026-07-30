@@ -48,27 +48,32 @@ function HeroCtas({
   variant: "mobile" | "desktop";
 }) {
   const desktop = variant === "desktop";
+  const btnSize = desktop ? "lg" : "md";
   const outlineClass = desktop
     ? "border-white bg-transparent text-white hover:bg-white hover:text-[var(--taupe)] h-[60px]"
     : [
-        "w-full md:w-auto",
-        "border-[var(--maroon)] text-[var(--maroon)] bg-[#ebe1d7] hover:bg-[var(--maroon)] hover:text-[var(--paper)]",
+        "w-full h-11 min-h-11 max-h-11 px-5 py-0 text-sm",
+        "border-[var(--maroon)] text-[var(--maroon)] bg-transparent hover:bg-[var(--maroon)] hover:text-[var(--paper)]",
+        "md:w-auto md:h-auto md:max-h-none md:px-7 md:py-[17px] md:text-[15px]",
         "md:border-white md:bg-transparent md:text-white md:hover:bg-white md:hover:text-[var(--taupe)]",
       ].join(" ");
+  const primaryClass = desktop
+    ? "h-[60px]"
+    : "w-full h-11 min-h-11 max-h-11 px-5 py-0 text-sm md:w-auto md:h-auto md:max-h-none md:px-7 md:py-[17px] md:text-[15px]";
 
   return (
     <div
       className={
         desktop
           ? "flex items-center gap-4"
-          : "flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center md:gap-3"
+          : "flex w-full shrink-0 flex-col gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
       }
     >
       {block.ctaSecondary ? (
         isExternalLink(secondaryLink) ? (
           <Btn
             kind="outline"
-            size="lg"
+            size={btnSize}
             iconRight={<DownloadIcon />}
             href={secondaryLink}
             external
@@ -81,7 +86,7 @@ function HeroCtas({
         ) : (
           <Btn
             kind="outline"
-            size="lg"
+            size={btnSize}
             iconRight={<DownloadIcon />}
             className={outlineClass}
             onClick={() => followLink(setLocation, secondaryLink, "/downloads")}
@@ -97,11 +102,11 @@ function HeroCtas({
         isExternalLink(primaryLink) ? (
           <Btn
             kind="primary"
-            size="lg"
+            size={btnSize}
             iconRight="→"
             href={primaryLink}
             external
-            className={desktop ? "h-[60px]" : "w-full md:w-auto"}
+            className={primaryClass}
           >
             <span data-tina-field={tinaField(block, "ctaPrimary")}>
               {block.ctaPrimary as string}
@@ -110,9 +115,9 @@ function HeroCtas({
         ) : (
           <Btn
             kind="primary"
-            size="lg"
+            size={btnSize}
             iconRight="→"
-            className={desktop ? "h-[60px]" : "w-full md:w-auto"}
+            className={primaryClass}
             onClick={() => followLink(setLocation, primaryLink, "/shop")}
           >
             <span data-tina-field={tinaField(block, "ctaPrimary")}>
@@ -144,7 +149,7 @@ export default function HomeHeroBlock({ block }: Props) {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="w-full px-4 pt-6 pb-0 md:px-8 md:pt-8 md:pb-8 lg:px-16 lg:pt-16 lg:pb-16">
+      <div className="w-full px-12 pt-6 pb-0 md:px-16 md:pt-8 md:pb-8 lg:px-24 lg:pt-16 lg:pb-16">
         <div
           className={[
             "@container/hero relative overflow-hidden",
@@ -188,7 +193,7 @@ export default function HomeHeroBlock({ block }: Props) {
           </div>
 
           {/* ── Mobile / tablet copy ── */}
-          <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-10 lg:hidden">
+          <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-4 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-10 lg:hidden">
             {block.eyebrow ? (
               <Reveal>
                 <div
@@ -218,7 +223,7 @@ export default function HomeHeroBlock({ block }: Props) {
             {block.subheading ? (
               <Reveal>
                 <div
-                  className="mb-8 max-w-[540px] space-y-4 text-lg leading-[1.45] text-[var(--ink-soft)] md:mb-0 md:text-[19px] md:text-white [&_p]:m-0"
+                  className="mb-12 max-w-[540px] space-y-4 text-lg leading-[1.45] text-[var(--ink-soft)] md:mb-14 md:text-[19px] md:text-white [&_p]:m-0"
                   style={{ ...bodyTextStyle(block), textAlign: "left" }}
                   data-tina-field={tinaField(block, "subheading")}
                 >
@@ -227,7 +232,7 @@ export default function HomeHeroBlock({ block }: Props) {
               </Reveal>
             ) : null}
 
-            <div className="flex-1 min-h-[220px] md:min-h-[80px]" aria-hidden />
+            <div className="flex-1 min-h-[160px] md:min-h-[48px]" aria-hidden />
 
             <Reveal>
               <HeroCtas
@@ -290,18 +295,16 @@ export default function HomeHeroBlock({ block }: Props) {
                     fontSize: "1.56cqw",
                     lineHeight: 1,
                     fontWeight: 400,
+                    marginBottom: "4.5cqw",
                   }}
                   data-tina-field={tinaField(block, "subheading")}
                 >
                   <RichText value={block.subheading} />
                 </div>
-              ) : null}
-            </div>
+              ) : (
+                <div style={{ marginBottom: "4.5cqw" }} aria-hidden />
+              )}
 
-            <div
-              className="pointer-events-auto absolute"
-              style={{ left: "7.59%", top: "70.95%" }}
-            >
               <HeroCtas
                 block={block}
                 secondaryLink={secondaryLink}

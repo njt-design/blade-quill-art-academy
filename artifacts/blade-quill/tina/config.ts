@@ -659,7 +659,25 @@ export default defineConfig({
             label: "Gumroad URL (optional)",
             ui: {
               description:
-                "Optional post-purchase fallback if no Download URL is set. Not used for checkout.",
+                "eBook or printable download on Gumroad. Shown as a buy button on book product pages.",
+            },
+          },
+          {
+            type: "string",
+            name: "amazonUrl",
+            label: "Amazon URL (optional)",
+            ui: {
+              description:
+                "Paperback listing on Amazon. Shown as a buy button on book product pages.",
+            },
+          },
+          {
+            type: "string",
+            name: "googlePlayUrl",
+            label: "Google Play URL (optional)",
+            ui: {
+              description:
+                "eBook listing on Google Play. Shown as a buy button on book product pages.",
             },
           },
           {

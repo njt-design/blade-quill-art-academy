@@ -584,7 +584,7 @@ export const pillarsBlock: Template = {
         itemProps: (item: Record<string, unknown> | undefined) => ({
           label: (item?.title as string) || "Card",
         }),
-        description: "Three polaroid-style cards. Each links somewhere on (or off) the site.",
+        description: "Three destination cards (media + wavy content panel). Each links somewhere on (or off) the site.",
       },
       fields: [
         {

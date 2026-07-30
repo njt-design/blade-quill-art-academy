@@ -124,6 +124,8 @@ export default function ProductDetail() {
         image: seedRaw.imageUrl,
         gumroadUrl: seedRaw.gumroadUrl,
         downloadUrl: seedRaw.downloadUrl,
+        amazonUrl: seedRaw.amazonUrl,
+        googlePlayUrl: seedRaw.googlePlayUrl,
         featured: seedRaw.featured,
         inStock: seedRaw.inStock,
         createdAt: seedRaw.createdAt,
@@ -377,227 +379,304 @@ export default function ProductDetail() {
                 </div>
               </Reveal>
 
-              <Reveal>
-                <div className="flex flex-wrap items-baseline gap-4 mb-8">
-                  <span
-                    className="grad-text-warm"
-                    data-tina-field={
-                      tinaDoc ? tinaField(tinaDoc, "price") : undefined
-                    }
-                    style={{
-                      fontFamily: "var(--f-serif)",
-                      fontSize: 48,
-                    }}
+              {isBook ? (
+                <Reveal>
+                  <div
+                    className="flex flex-wrap gap-9 mb-8 pb-6"
+                    style={{ borderBottom: "1px solid rgba(46,34,34,0.1)" }}
                   >
-                    ${product.price.toFixed(2)}
-                  </span>
-                  {!product.inStock && (
+                    <div>
+                      <div
+                        data-tina-field={
+                          tinaDoc ? tinaField(tinaDoc, "price") : undefined
+                        }
+                        style={{
+                          fontFamily: "var(--f-serif)",
+                          fontSize: 36,
+                          color: "var(--maroon)",
+                        }}
+                      >
+                        ${product.price.toFixed(2)}
+                      </div>
+                      <div className="eyebrow">PAPERBACK</div>
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: "var(--f-serif)",
+                          fontSize: 36,
+                          color: "var(--ink)",
+                        }}
+                      >
+                        eBook
+                      </div>
+                      <div className="eyebrow">GUMROAD · GOOGLE PLAY</div>
+                    </div>
+                  </div>
+                </Reveal>
+              ) : (
+                <Reveal>
+                  <div className="flex flex-wrap items-baseline gap-4 mb-8">
                     <span
+                      className="grad-text-warm"
+                      data-tina-field={
+                        tinaDoc ? tinaField(tinaDoc, "price") : undefined
+                      }
                       style={{
-                        fontFamily: "var(--f-mono)",
-                        fontSize: 11,
-                        background: "rgba(184,74,94,0.12)",
-                        color: "var(--maroon-deep)",
-                        padding: "5px 10px",
-                        borderRadius: 999,
-                        letterSpacing: "0.08em",
+                        fontFamily: "var(--f-serif)",
+                        fontSize: 48,
                       }}
                     >
-                      OUT OF STOCK
+                      ${product.price.toFixed(2)}
                     </span>
-                  )}
-                </div>
-              </Reveal>
+                    {!product.inStock && (
+                      <span
+                        style={{
+                          fontFamily: "var(--f-mono)",
+                          fontSize: 11,
+                          background: "rgba(184,74,94,0.12)",
+                          color: "var(--maroon-deep)",
+                          padding: "5px 10px",
+                          borderRadius: 999,
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        OUT OF STOCK
+                      </span>
+                    )}
+                  </div>
+                </Reveal>
+              )}
 
-              <Reveal>
-                <div className="mb-7">
-                  <div className="eyebrow mb-3">{formats.label}</div>
-                  <div className="flex gap-2.5 flex-wrap">
-                    {formats.options.map((f, i) => {
-                      const selected = i === formatIdx;
-                      return (
+              {isBook ? (
+                <Reveal>
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {product.gumroadUrl ? (
+                      <Btn
+                        kind="primary"
+                        size="lg"
+                        iconRight="→"
+                        href={product.gumroadUrl}
+                        external
+                      >
+                        Get eBook on Gumroad
+                      </Btn>
+                    ) : null}
+                    {product.googlePlayUrl ? (
+                      <Btn
+                        kind="outline"
+                        size="lg"
+                        href={product.googlePlayUrl}
+                        external
+                      >
+                        Get eBook on Google Play
+                      </Btn>
+                    ) : null}
+                    {product.amazonUrl ? (
+                      <Btn
+                        kind={product.gumroadUrl ? "outline" : "primary"}
+                        size="lg"
+                        iconRight="→"
+                        href={product.amazonUrl}
+                        external
+                        analyticsPlacement="product_detail"
+                      >
+                        Buy paperback on Amazon
+                      </Btn>
+                    ) : null}
+                  </div>
+                </Reveal>
+              ) : (
+                <>
+                  <Reveal>
+                    <div className="mb-7">
+                      <div className="eyebrow mb-3">{formats.label}</div>
+                      <div className="flex gap-2.5 flex-wrap">
+                        {formats.options.map((f, i) => {
+                          const selected = i === formatIdx;
+                          return (
+                            <button
+                              key={f.name}
+                              type="button"
+                              onClick={() => setFormatIdx(i)}
+                              className={cn(
+                                "relative text-left transition-all duration-300",
+                                "format-tile"
+                              )}
+                              style={{
+                                flex: "1 1 0",
+                                minWidth: 140,
+                                padding: "14px 16px",
+                                background: selected
+                                  ? "var(--paper)"
+                                  : "transparent",
+                                border: `1.5px solid ${
+                                  selected
+                                    ? "var(--ink)"
+                                    : "rgba(46,34,34,0.15)"
+                                }`,
+                                borderRadius: 14,
+                                transform: selected
+                                  ? "translateY(-2px)"
+                                  : "translateY(0)",
+                                boxShadow: selected
+                                  ? "var(--sh-md)"
+                                  : "none",
+                                fontFamily: "var(--f-sans)",
+                                transitionTimingFunction: "var(--e-out)",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  fontSize: 14,
+                                  fontWeight: 600,
+                                  color: "var(--ink)",
+                                }}
+                              >
+                                {f.name}
+                              </div>
+                              <div
+                                className="mt-1"
+                                style={{
+                                  fontFamily: "var(--f-mono)",
+                                  fontSize: 11,
+                                  color: "var(--ink-mute)",
+                                  letterSpacing: "0.04em",
+                                }}
+                              >
+                                {f.meta}
+                              </div>
+                              {selected && (
+                                <span
+                                  aria-hidden
+                                  className="absolute top-2 right-2.5 block w-2 h-2 rounded-full"
+                                  style={{ background: "var(--maroon)" }}
+                                />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </Reveal>
+
+                  <Reveal>
+                    <div className="flex items-stretch gap-3 mb-3.5">
+                      <div
+                        className="inline-flex items-center overflow-hidden"
+                        style={{
+                          border: "1.5px solid var(--ink)",
+                          borderRadius: 999,
+                        }}
+                      >
                         <button
-                          key={f.name}
                           type="button"
-                          onClick={() => setFormatIdx(i)}
-                          className={cn(
-                            "relative text-left transition-all duration-300",
-                            "format-tile"
-                          )}
+                          onClick={() => setQty(Math.max(1, qty - 1))}
+                          className="w-11 h-[52px] text-lg cursor-pointer bg-transparent"
+                          style={{ color: "var(--ink)" }}
+                          aria-label="Decrease quantity"
+                        >
+                          −
+                        </button>
+                        <div
+                          className="w-8 text-center"
                           style={{
-                            flex: "1 1 0",
-                            minWidth: 140,
-                            padding: "14px 16px",
-                            background: selected
-                              ? "var(--paper)"
-                              : "transparent",
-                            border: `1.5px solid ${
-                              selected
-                                ? "var(--ink)"
-                                : "rgba(46,34,34,0.15)"
-                            }`,
-                            borderRadius: 14,
-                            transform: selected
-                              ? "translateY(-2px)"
-                              : "translateY(0)",
-                            boxShadow: selected
-                              ? "var(--sh-md)"
-                              : "none",
                             fontFamily: "var(--f-sans)",
-                            transitionTimingFunction: "var(--e-out)",
+                            fontWeight: 600,
+                            fontSize: 15,
                           }}
                         >
-                          <div
-                            style={{
-                              fontSize: 14,
-                              fontWeight: 600,
-                              color: "var(--ink)",
-                            }}
-                          >
-                            {f.name}
-                          </div>
-                          <div
-                            className="mt-1"
-                            style={{
-                              fontFamily: "var(--f-mono)",
-                              fontSize: 11,
-                              color: "var(--ink-mute)",
-                              letterSpacing: "0.04em",
-                            }}
-                          >
-                            {f.meta}
-                          </div>
-                          {selected && (
-                            <span
-                              aria-hidden
-                              className="absolute top-2 right-2.5 block w-2 h-2 rounded-full"
-                              style={{ background: "var(--maroon)" }}
-                            />
-                          )}
+                          {qty}
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setQty(qty + 1)}
+                          className="w-11 h-[52px] text-lg cursor-pointer bg-transparent"
+                          style={{ color: "var(--ink)" }}
+                          aria-label="Increase quantity"
+                        >
+                          +
                         </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Reveal>
+                      </div>
+                      <Btn
+                        kind="outline"
+                        size="lg"
+                        className="flex-1 h-[52px]"
+                        disabled={!product.inStock}
+                        onClick={(e) => {
+                          addItem(
+                            {
+                              id: product.id,
+                              slug: product.slug,
+                              name: product.name,
+                              price: product.price,
+                              imageUrl: product.imageUrl,
+                              category: product.category,
+                            },
+                            qty
+                          );
+                          flyToCart(e.currentTarget);
+                        }}
+                      >
+                        {!product.inStock ? "Out of stock" : "Add to cart"}
+                      </Btn>
+                      <Btn
+                        kind="primary"
+                        size="lg"
+                        iconRight="→"
+                        className="flex-1 h-[52px]"
+                        disabled={isCheckingOut || !product.inStock}
+                        onClick={() => {
+                          if (!product.inStock) return;
+                          checkout({
+                            data: {
+                              productId: product.id,
+                              quantity: qty,
+                              productSlug: product.slug,
+                            },
+                          });
+                        }}
+                      >
+                        {isCheckingOut ? "Redirecting…" : "Buy now"}
+                      </Btn>
+                    </div>
+                  </Reveal>
 
-              <Reveal>
-                <div className="flex items-stretch gap-3 mb-3.5">
-                  <div
-                    className="inline-flex items-center overflow-hidden"
-                    style={{
-                      border: "1.5px solid var(--ink)",
-                      borderRadius: 999,
-                    }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setQty(Math.max(1, qty - 1))}
-                      className="w-11 h-[52px] text-lg cursor-pointer bg-transparent"
-                      style={{ color: "var(--ink)" }}
-                      aria-label="Decrease quantity"
-                    >
-                      −
-                    </button>
+                  <Reveal>
                     <div
-                      className="w-8 text-center"
+                      className="flex flex-wrap gap-x-7 gap-y-3 py-5"
                       style={{
-                        fontFamily: "var(--f-sans)",
-                        fontWeight: 600,
-                        fontSize: 15,
+                        borderTop: "1px solid rgba(46,34,34,0.1)",
+                        borderBottom: "1px solid rgba(46,34,34,0.1)",
                       }}
                     >
-                      {qty}
+                      {[
+                        "Instant download",
+                        "Stripe secure checkout",
+                        "30-day returns",
+                      ].map((label, i) => (
+                        <div
+                          key={label}
+                          className="flex items-center gap-2.5"
+                        >
+                          <span
+                            aria-hidden
+                            className="block w-2 h-2 rounded-full"
+                            style={{
+                              background: [
+                                "var(--maroon)",
+                                "var(--gold)",
+                                "var(--taupe)",
+                              ][i % 3],
+                            }}
+                          />
+                          <span className="eyebrow">{label}</span>
+                        </div>
+                      ))}
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setQty(qty + 1)}
-                      className="w-11 h-[52px] text-lg cursor-pointer bg-transparent"
-                      style={{ color: "var(--ink)" }}
-                      aria-label="Increase quantity"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <Btn
-                    kind="outline"
-                    size="lg"
-                    className="flex-1 h-[52px]"
-                    disabled={!product.inStock}
-                    onClick={(e) => {
-                      addItem(
-                        {
-                          id: product.id,
-                          slug: product.slug,
-                          name: product.name,
-                          price: product.price,
-                          imageUrl: product.imageUrl,
-                          category: product.category,
-                        },
-                        qty
-                      );
-                      flyToCart(e.currentTarget);
-                    }}
-                  >
-                    {!product.inStock ? "Out of stock" : "Add to cart"}
-                  </Btn>
-                  <Btn
-                    kind="primary"
-                    size="lg"
-                    iconRight="→"
-                    className="flex-1 h-[52px]"
-                    disabled={isCheckingOut || !product.inStock}
-                    onClick={() => {
-                      if (!product.inStock) return;
-                      checkout({
-                        data: {
-                          productId: product.id,
-                          quantity: qty,
-                          productSlug: product.slug,
-                        },
-                      });
-                    }}
-                  >
-                    {isCheckingOut ? "Redirecting…" : "Buy now"}
-                  </Btn>
-                </div>
-              </Reveal>
-
-              <Reveal>
-                <div
-                  className="flex flex-wrap gap-x-7 gap-y-3 py-5"
-                  style={{
-                    borderTop: "1px solid rgba(46,34,34,0.1)",
-                    borderBottom: "1px solid rgba(46,34,34,0.1)",
-                  }}
-                >
-                  {[
-                    isBook
-                      ? "Ships from Nantes"
-                      : "Instant download",
-                    "Stripe secure checkout",
-                    "30-day returns",
-                  ].map((label, i) => (
-                    <div
-                      key={label}
-                      className="flex items-center gap-2.5"
-                    >
-                      <span
-                        aria-hidden
-                        className="block w-2 h-2 rounded-full"
-                        style={{
-                          background: [
-                            "var(--maroon)",
-                            "var(--gold)",
-                            "var(--taupe)",
-                          ][i % 3],
-                        }}
-                      />
-                      <span className="eyebrow">{label}</span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+                  </Reveal>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -659,16 +738,16 @@ export default function ProductDetail() {
                 >
                   <RichText value={product.description} className="mb-4" />
                   <p className="mb-4">
-                    Every page in the studio gets made in Krita from
-                    sketch to final color. Includes process notes,
-                    character studies, and a short epilogue from the
-                    author.
+                    {isBook
+                      ? "Paperback copies are available on Amazon. eBooks are on Gumroad and Google Play — choose whichever store works best for you."
+                      : "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author."}
                   </p>
-                  <p>
-                    Signed copies ship in a custom envelope with a
-                    thank-you card. Digital editions are delivered by
-                    email immediately after checkout.
-                  </p>
+                  {!isBook && (
+                    <p>
+                      Digital editions are delivered by email immediately after
+                      checkout.
+                    </p>
+                  )}
                 </div>
                 <div
                   className="self-start p-7"
@@ -679,9 +758,11 @@ export default function ProductDetail() {
                 >
                   <div className="eyebrow mb-4">DETAILS</div>
                   {[
-                    ["Format", formats.options[formatIdx].name],
+                    ["Format", isBook ? "Paperback & eBook" : formats.options[formatIdx].name],
                     ["Category", product.category],
-                    ["In stock", product.inStock ? "Yes" : "No"],
+                    ...(isBook
+                      ? []
+                      : [["In stock", product.inStock ? "Yes" : "No"] as const]),
                     ["Studio", "Nantes, France"],
                   ].map(([k, v]) => (
                     <div
@@ -808,7 +889,7 @@ export default function ProductDetail() {
               >
                 <p className="mb-4">
                   {isBook
-                    ? "Hardcover copies ship from the studio in Nantes, France via tracked international post. Most orders arrive in 5–10 business days. Free shipping on orders over $50."
+                    ? "Paperback copies are sold on Amazon. eBooks are available on Gumroad and Google Play — instant delivery, no shipping."
                     : "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."}
                 </p>
                 <p>

@@ -11,6 +11,8 @@ const productModules = import.meta.glob("../../content/products/*.json", {
 export type CatalogProduct = Omit<Product, "description"> & {
   slug: string;
   description: string | RichTextValue;
+  amazonUrl?: string | null;
+  googlePlayUrl?: string | null;
 };
 
 /** Build a CatalogProduct from raw Tina document data (bundled JSON or GraphQL node). */
@@ -44,6 +46,8 @@ export function toCatalogProduct(
     imageUrl: image,
     gumroadUrl: (data.gumroadUrl as string | null) ?? null,
     downloadUrl: (data.downloadUrl as string | null) ?? null,
+    amazonUrl: (data.amazonUrl as string | null) ?? null,
+    googlePlayUrl: (data.googlePlayUrl as string | null) ?? null,
     featured: Boolean(data.featured),
     inStock: data.inStock !== false,
     createdAt:

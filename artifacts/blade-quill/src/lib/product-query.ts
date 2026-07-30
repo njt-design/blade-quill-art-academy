@@ -26,6 +26,8 @@ export const shopProductQuery = `
       image
       gumroadUrl
       downloadUrl
+      amazonUrl
+      googlePlayUrl
       featured
       inStock
       createdAt

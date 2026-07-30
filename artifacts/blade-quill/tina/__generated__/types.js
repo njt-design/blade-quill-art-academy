@@ -3918,6 +3918,8 @@ export const ShopProductPartsFragmentDoc = gql`
   inStock
   downloadUrl
   gumroadUrl
+  amazonUrl
+  googlePlayUrl
   productId
   createdAt
 }

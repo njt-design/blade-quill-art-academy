@@ -87,6 +87,8 @@ const PRODUCTS_PAGE_QUERY = `
           image
           gumroadUrl
           downloadUrl
+          amazonUrl
+          googlePlayUrl
           featured
           inStock
           createdAt
