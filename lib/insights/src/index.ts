@@ -1,10 +1,21 @@
 import { assertTinaAuthorized, InsightsAuthError } from "./auth";
+import {
+  buildInsightsSessionCookie,
+  clearInsightsSessionCookie,
+  resolveAuthorization,
+} from "./cookie";
 import { fetchGaMetrics } from "./ga";
 import { fetchOrderInsights } from "./orders";
 import type { InsightsRange, InsightsResponse } from "./types";
 
 export type { InsightsRange, InsightsResponse, InsightsOrder, InsightsDayPoint } from "./types";
-export { InsightsAuthError, assertTinaAuthorized };
+export {
+  InsightsAuthError,
+  assertTinaAuthorized,
+  buildInsightsSessionCookie,
+  clearInsightsSessionCookie,
+  resolveAuthorization,
+};
 
 const CACHE_TTL_MS = 5 * 60 * 1000;
 

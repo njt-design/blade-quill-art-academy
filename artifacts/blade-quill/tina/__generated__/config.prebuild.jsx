@@ -1907,16 +1907,68 @@ var ALL_BLOCKS = [
 ];
 
 // tina/config.ts
+var INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
+function readTinaIdTokenFromStorage() {
+  try {
+    const raw = localStorage.getItem("tinacms-auth");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    const token = parsed?.id_token?.trim();
+    return token && token !== "null" ? token : null;
+  } catch {
+    return null;
+  }
+}
 function InsightsRedirectScreen(_props) {
+  const [iframeSrc, setIframeSrc] = React.useState(null);
+  const [status, setStatus] = React.useState("Preparing Insights\u2026");
+  const iframeRef = React.useRef(null);
   const insightsUrl = typeof window !== "undefined" ? `${window.location.origin}/insights` : "/insights";
+  const postTokenToIframe = React.useCallback((token) => {
+    const frame = iframeRef.current?.contentWindow;
+    if (!frame) return;
+    frame.postMessage(
+      { type: INSIGHTS_AUTH_MESSAGE, idToken: token },
+      window.location.origin
+    );
+  }, []);
   useEffect(() => {
-    try {
-      if (window.top && window.top !== window) {
-        window.top.location.href = insightsUrl;
+    let cancelled = false;
+    const token = readTinaIdTokenFromStorage();
+    const boot = async () => {
+      if (!token) {
+        setStatus("No Tina session found. Sign in to Tina, then reopen Insights.");
+        setIframeSrc(insightsUrl);
+        return;
       }
-    } catch {
-    }
-  }, [insightsUrl]);
+      setStatus("Connecting your Tina session\u2026");
+      try {
+        await fetch("/api/insights/session", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ idToken: token })
+        });
+      } catch {
+      }
+      if (cancelled) return;
+      setStatus("Loading dashboard\u2026");
+      setIframeSrc(insightsUrl);
+    };
+    void boot();
+    const onMessage = (event) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (data?.type === `${INSIGHTS_AUTH_MESSAGE}-request` && token) {
+        postTokenToIframe(token);
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("message", onMessage);
+    };
+  }, [insightsUrl, postTokenToIframe]);
   return React.createElement(
     "div",
     {
@@ -1944,7 +1996,7 @@ function InsightsRedirectScreen(_props) {
       React.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
-        "Owner Insights \u2014 analytics & Stripe orders"
+        status
       ),
       React.createElement(
         "a",
@@ -1952,6 +2004,16 @@ function InsightsRedirectScreen(_props) {
           href: insightsUrl,
           target: "_top",
           rel: "noopener noreferrer",
+          onClick: () => {
+            const token = readTinaIdTokenFromStorage();
+            if (!token) return;
+            void fetch("/api/insights/session", {
+              method: "POST",
+              credentials: "include",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ idToken: token })
+            });
+          },
           style: {
             display: "inline-flex",
             alignItems: "center",
@@ -1968,9 +2030,15 @@ function InsightsRedirectScreen(_props) {
         "Open full page"
       )
     ),
-    React.createElement("iframe", {
-      src: insightsUrl,
+    iframeSrc ? React.createElement("iframe", {
+      ref: iframeRef,
+      src: iframeSrc,
       title: "Owner Insights",
+      onLoad: () => {
+        const token = readTinaIdTokenFromStorage();
+        if (token) postTokenToIframe(token);
+        setStatus("Owner Insights");
+      },
       style: {
         flex: 1,
         width: "100%",
@@ -1978,7 +2046,19 @@ function InsightsRedirectScreen(_props) {
         border: "none",
         background: "#F7F1EA"
       }
-    })
+    }) : React.createElement(
+      "div",
+      {
+        style: {
+          flex: 1,
+          display: "grid",
+          placeItems: "center",
+          color: "#776562",
+          fontSize: 14
+        }
+      },
+      status
+    )
   );
 }
 function InsightsScreenIcon() {

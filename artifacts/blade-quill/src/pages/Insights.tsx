@@ -18,9 +18,11 @@ import {
 import { QuillMark } from "@/components/site/QuillMark";
 import {
   adminLoginUrl,
+  establishInsightsSession,
   getTinaClientId,
   getTinaIdToken,
   hasTinaSession,
+  subscribeTinaAuthHandoff,
 } from "@/lib/tina-auth";
 
 type RangeDays = 7 | 28 | 90;
@@ -85,18 +87,23 @@ function shortDay(date: string): string {
 async function fetchInsights(range: RangeDays): Promise<InsightsPayload> {
   const token = getTinaIdToken();
   const clientId = getTinaClientId();
-  if (!token) {
-    throw new Error("Sign in with Tina to view Insights");
-  }
   const params = new URLSearchParams({
     range: String(range),
     ...(clientId ? { clientID: clientId } : {}),
   });
+  const headers: Record<string, string> = {};
+  if (token) headers.Authorization = `Bearer ${token}`;
+
   const res = await fetch(`/api/insights?${params}`, {
-    headers: { Authorization: `Bearer ${token}` },
+    credentials: "include",
+    headers,
   });
   if (res.status === 401) {
-    throw new Error("Sign in with Tina to view Insights");
+    throw new Error(
+      token
+        ? "Tina session expired or was rejected. Sign in again at /admin, then reopen Insights."
+        : "Sign in with Tina to view Insights"
+    );
   }
   if (!res.ok) {
     const body = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -147,39 +154,73 @@ function Kpi({
 }
 
 export default function Insights() {
-  const [authed, setAuthed] = useState(false);
+  const [authed, setAuthed] = useState(() => hasTinaSession());
   const [range, setRange] = useState<RangeDays>(28);
   const [data, setData] = useState<InsightsPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
     const syncAuth = () => setAuthed(hasTinaSession());
     syncAuth();
-    // Re-check when returning from /admin in another tab/frame.
+
+    const unsub = subscribeTinaAuthHandoff((token) => {
+      setAuthed(Boolean(token) || hasTinaSession());
+      if (token) void establishInsightsSession(token);
+    });
+
+    const existing = getTinaIdToken();
+    let timer: number | undefined;
+
+    if (existing) {
+      void establishInsightsSession(existing).finally(() => {
+        syncAuth();
+        setAuthReady(true);
+      });
+    } else {
+      // Wait briefly for Tina parent frame to postMessage a token.
+      timer = window.setTimeout(() => {
+        syncAuth();
+        setAuthReady(true);
+      }, 500);
+    }
+
     window.addEventListener("focus", syncAuth);
     window.addEventListener("storage", syncAuth);
     return () => {
+      if (timer) window.clearTimeout(timer);
+      unsub();
       window.removeEventListener("focus", syncAuth);
       window.removeEventListener("storage", syncAuth);
     };
   }, []);
 
   useEffect(() => {
-    if (!authed) return;
+    if (!authReady) return;
+
     let cancelled = false;
     setLoading(true);
     setError(null);
+
+    // Always attempt the API once ready — cookie alone may authenticate
+    // even when localStorage looks empty.
     fetchInsights(range)
       .then((payload) => {
-        if (!cancelled) setData(payload);
+        if (cancelled) return;
+        setData(payload);
+        setAuthed(true);
       })
       .catch((err: unknown) => {
         if (cancelled) return;
         const message =
           err instanceof Error ? err.message : "Failed to load insights";
         setError(message);
-        if (/sign in with tina/i.test(message)) setAuthed(false);
+        // Only show the login gate when we truly have no client token
+        // AND the server rejected us. Keep the dashboard chrome otherwise.
+        if (!getTinaIdToken() && /sign in with tina/i.test(message)) {
+          setAuthed(false);
+        }
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -187,9 +228,25 @@ export default function Insights() {
     return () => {
       cancelled = true;
     };
-  }, [authed, range]);
+  }, [authReady, range]);
 
-  if (!authed) {
+  if (!authReady || (loading && !data)) {
+    return (
+      <div
+        className="min-h-screen flex items-center justify-center gap-3"
+        style={{
+          background: "var(--paper)",
+          color: "var(--ink-mute)",
+          fontFamily: "var(--f-sans)",
+        }}
+      >
+        <Loader2 className="w-5 h-5 animate-spin" />
+        Loading Insights…
+      </div>
+    );
+  }
+
+  if (!authed && !data) {
     return (
       <div
         className="min-h-screen flex items-center justify-center px-6"

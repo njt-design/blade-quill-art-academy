@@ -2,10 +2,15 @@
  * GET /api/insights — Tina-authenticated Owner Studio metrics.
  *
  * Query: clientID (Tina), range (7|28|90)
- * Header: Authorization: Bearer <tina id_token>
+ * Auth: Authorization: Bearer <tina id_token> OR bq_insights cookie
+ *       from POST /api/insights/session
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getInsights, InsightsAuthError } from "../lib/insights/src/index";
+import {
+  getInsights,
+  InsightsAuthError,
+  resolveAuthorization,
+} from "../lib/insights/src/index";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "GET") {
@@ -20,8 +25,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       (typeof clientIdParam === "string" ? clientIdParam : undefined) ||
       process.env.TINA_PUBLIC_CLIENT_ID;
 
-    const authHeader = req.headers.authorization;
-    const authorization = Array.isArray(authHeader) ? authHeader[0] : authHeader;
+    const authorization = resolveAuthorization({
+      authorization: req.headers.authorization,
+      cookie: req.headers.cookie,
+    });
 
     const data = await getInsights({
       clientId,

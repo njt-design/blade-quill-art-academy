@@ -83,13 +83,19 @@ if (existsSync(adminIndex)) {
 const changed = new Set(changedPaths());
 const schemaChanged = schemaFiles.some((f) => changed.has(f));
 if (schemaChanged) {
-  const missing = regenFiles.filter((f) => !changed.has(f));
   // Also accept any change under public/admin/assets/
   const adminAssetsTouched = [...changed].some((f) =>
     f.startsWith("artifacts/blade-quill/public/admin/")
   );
   const lockTouched = changed.has("artifacts/blade-quill/tina/tina-lock.json");
-  if (!lockTouched || !adminAssetsTouched) {
+  const lockPath = join(app, "tina/tina-lock.json");
+  const lockExists = existsSync(lockPath);
+
+  // Admin SPA must be regenerated whenever config/blocks change.
+  // tina-lock.json only mutates when the GraphQL content schema changes —
+  // cmsCallback / UI-only edits in config.ts leave the lock byte-identical,
+  // so requiring it in the diff would block valid commits.
+  if (!adminAssetsTouched || !lockExists) {
     console.error(`
 ✖ Tina schema changed without regenerating the admin + lock.
 
@@ -97,12 +103,13 @@ if (schemaChanged) {
 ${schemaFiles.filter((f) => changed.has(f)).map((f) => `    - ${f}`).join("\n")}
 
   Missing regenerations:
-${!lockTouched ? "    - artifacts/blade-quill/tina/tina-lock.json\n" : ""}${
+${!lockExists ? "    - artifacts/blade-quill/tina/tina-lock.json (file missing)\n" : ""}${
       !adminAssetsTouched
         ? "    - artifacts/blade-quill/public/admin/ (index.html + assets)\n"
         : ""
     }
-  A stale lock breaks /admin login after sign-in (Tina Cloud indexes the lock).
+  A stale admin breaks /admin in production. When collections/fields change,
+  tina-lock.json must be regenerated too (Tina Cloud indexes the lock).
 
   Fix (from repo root, with artifacts/blade-quill/.env symlinked):
     cd artifacts/blade-quill
@@ -111,9 +118,10 @@ ${!lockTouched ? "    - artifacts/blade-quill/tina/tina-lock.json\n" : ""}${
     git add tina/__generated__/ tina/tina-lock.json public/admin/
 `);
     failed = true;
-  } else if (missing.length && !adminAssetsTouched) {
-    // unreachable helper — kept for clarity
-    void missing;
+  } else if (!lockTouched) {
+    console.log(
+      "✓ Tina admin regenerated (tina-lock.json unchanged — OK for cmsCallback/UI-only config edits)"
+    );
   }
 }
 

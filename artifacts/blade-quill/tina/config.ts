@@ -2,28 +2,88 @@ import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
 import { ALL_BLOCKS, charLimit } from "./blocks";
 
+const INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
+
+function readTinaIdTokenFromStorage(): string | null {
+  try {
+    const raw = localStorage.getItem("tinacms-auth");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { id_token?: string };
+    const token = parsed?.id_token?.trim();
+    return token && token !== "null" ? token : null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Tina sidebar screen for Owner Insights.
- * Embeds /insights in-frame (same-origin → Tina localStorage auth works).
- * Auto-redirect was unreliable inside Tina's fullscreen modal.
+ * 1) Reads the Tina session from admin localStorage
+ * 2) Sets an httpOnly cookie via /api/insights/session
+ * 3) Embeds /insights and postMessages the token into the iframe
  */
 function InsightsRedirectScreen(_props: { close: () => void }) {
+  const [iframeSrc, setIframeSrc] = React.useState<string | null>(null);
+  const [status, setStatus] = React.useState("Preparing Insights…");
+  const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
+
   const insightsUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/insights`
       : "/insights";
 
+  const postTokenToIframe = React.useCallback((token: string) => {
+    const frame = iframeRef.current?.contentWindow;
+    if (!frame) return;
+    frame.postMessage(
+      { type: INSIGHTS_AUTH_MESSAGE, idToken: token },
+      window.location.origin
+    );
+  }, []);
+
   useEffect(() => {
-    // Prefer leaving the admin SPA entirely when possible (top window).
-    // If that is blocked (modal / nested frame), the iframe below still works.
-    try {
-      if (window.top && window.top !== window) {
-        window.top.location.href = insightsUrl;
+    let cancelled = false;
+    const token = readTinaIdTokenFromStorage();
+
+    const boot = async () => {
+      if (!token) {
+        setStatus("No Tina session found. Sign in to Tina, then reopen Insights.");
+        setIframeSrc(insightsUrl);
+        return;
       }
-    } catch {
-      // Cross-origin frame access can throw; iframe fallback handles it.
-    }
-  }, [insightsUrl]);
+
+      setStatus("Connecting your Tina session…");
+      try {
+        await fetch("/api/insights/session", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ idToken: token }),
+        });
+      } catch {
+        // Cookie is best-effort; postMessage + Bearer still work.
+      }
+
+      if (cancelled) return;
+      setStatus("Loading dashboard…");
+      setIframeSrc(insightsUrl);
+    };
+
+    void boot();
+
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data as { type?: string } | null;
+      if (data?.type === `${INSIGHTS_AUTH_MESSAGE}-request` && token) {
+        postTokenToIframe(token);
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("message", onMessage);
+    };
+  }, [insightsUrl, postTokenToIframe]);
 
   return React.createElement(
     "div",
@@ -52,7 +112,7 @@ function InsightsRedirectScreen(_props: { close: () => void }) {
       React.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
-        "Owner Insights — analytics & Stripe orders"
+        status
       ),
       React.createElement(
         "a",
@@ -60,6 +120,17 @@ function InsightsRedirectScreen(_props: { close: () => void }) {
           href: insightsUrl,
           target: "_top",
           rel: "noopener noreferrer",
+          onClick: () => {
+            const token = readTinaIdTokenFromStorage();
+            if (!token) return;
+            // Best-effort: cookie should already be set; fire again before leave.
+            void fetch("/api/insights/session", {
+              method: "POST",
+              credentials: "include",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ idToken: token }),
+            });
+          },
           style: {
             display: "inline-flex",
             alignItems: "center",
@@ -76,17 +147,37 @@ function InsightsRedirectScreen(_props: { close: () => void }) {
         "Open full page"
       )
     ),
-    React.createElement("iframe", {
-      src: insightsUrl,
-      title: "Owner Insights",
-      style: {
-        flex: 1,
-        width: "100%",
-        minHeight: 0,
-        border: "none",
-        background: "#F7F1EA",
-      },
-    })
+    iframeSrc
+      ? React.createElement("iframe", {
+          ref: iframeRef,
+          src: iframeSrc,
+          title: "Owner Insights",
+          onLoad: () => {
+            const token = readTinaIdTokenFromStorage();
+            if (token) postTokenToIframe(token);
+            setStatus("Owner Insights");
+          },
+          style: {
+            flex: 1,
+            width: "100%",
+            minHeight: 0,
+            border: "none",
+            background: "#F7F1EA",
+          },
+        })
+      : React.createElement(
+          "div",
+          {
+            style: {
+              flex: 1,
+              display: "grid",
+              placeItems: "center",
+              color: "#776562",
+              fontSize: 14,
+            },
+          },
+          status
+        )
   );
 }
 
