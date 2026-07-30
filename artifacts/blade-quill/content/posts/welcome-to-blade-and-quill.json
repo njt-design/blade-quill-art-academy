@@ -61,6 +61,77 @@
         "id": "yu2kBlS2CG"
       },
       {
+        "type": "code_block",
+        "lang": "mermaid",
+        "children": [
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "%% This won't render without implementing a rendering engine (e.g. mermaid on npm)"
+              }
+            ],
+            "id": "03P4MtkHSO"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "flowchart TD"
+              }
+            ],
+            "id": "dkPyppa5ZG"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "    id1(this is an example flow diagram)"
+              }
+            ],
+            "id": "7rj0hIcfix"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "    --> id2(modify me to see changes!)"
+              }
+            ],
+            "id": "pjIYMvjSCt"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "    id2"
+              }
+            ],
+            "id": "5FVQ2PTgaN"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "    --> id3(Click the top button to preview the changes)"
+              }
+            ],
+            "id": "3WSrKabW-B"
+          },
+          {
+            "type": "code_line",
+            "children": [
+              {
+                "text": "    --> id4(Learn about mermaid diagrams - mermaid.js.org)"
+              }
+            ],
+            "id": "Pq0VJsd8DC"
+          }
+        ],
+        "value": "%% This won't render without implementing a rendering engine (e.g. mermaid on npm)\nflowchart TD\n    id1(this is an example flow diagram)\n    --> id2(modify me to see changes!)\n    id2\n    --> id3(Click the top button to preview the changes)\n    --> id4(Learn about mermaid diagrams - mermaid.js.org)",
+        "id": "B5CqP_qfc-"
+      },
+      {
         "type": "p",
         "children": [
           {
