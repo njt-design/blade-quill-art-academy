@@ -80,7 +80,7 @@
     },
     {
       "eyebrow": "FEATURED RELEASE",
-      "heading": "Lheeloo & Luna  Soon out for purchase!",
+      "heading": "Lheeloo & Luna  Activity book Soon out for purchase!",
       "description": {
         "type": "root",
         "children": [
@@ -89,7 +89,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "A pure delite for both children and adults! The paperback is currently out of print on Amazon — the eBook is available on Gumroad and Google Play, whichever is best for you."
+                "text": "Super Fun Puzzle Games for Kids Ages 8–12 is packed with entertaining activities designed to keep curious kids engaged, thinking, laughing, and learning. Paperback and e-book available."
               }
             ],
             "id": "NkBpUnCk2O"
@@ -98,7 +98,7 @@
       },
       "stats": [
         {
-          "value": "$24.99",
+          "value": "$11.99",
           "label": "PAPERBACK"
         },
         {
