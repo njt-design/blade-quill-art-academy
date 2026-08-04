@@ -20,202 +20,211 @@
     "How to",
     "Step-by-Step"
   ],
-  "body": {
-    "type": "root",
-    "children": [
-      {
-        "type": "h1",
+  "sections": [
+    {
+      "_template": "heading",
+      "number": "",
+      "text": "Websites",
+      "level": "h2"
+    },
+    {
+      "_template": "text",
+      "heading": "",
+      "body": {
+        "type": "root",
         "children": [
           {
-            "type": "text",
-            "text": "Websites"
-          }
-        ],
-        "id": "5NEMStZ9S_"
-      },
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": "Click on the website to access the latest updates: ",
-            "id": "RsincSff2E"
-          },
-          {
+            "type": "p",
             "children": [
               {
                 "type": "text",
-                "text": "https://www.huion.com/download",
-                "id": "iIqzgotIYX",
-                "bold": true,
-                "highlight": true,
-                "highlightColor": "#FEF08A"
-              }
-            ],
-            "type": "a",
-            "url": "https://www.huion.com/download",
-            "id": "uaE5m3m0OX"
-          },
-          {
-            "text": ""
-          }
-        ],
-        "id": "_6YPEAGzuc"
-      },
-      {
-        "type": "h1",
-        "children": [
-          {
-            "text": "Starting"
-          }
-        ],
-        "id": "03P4MtkHSO"
-      },
-      {
-        "type": "p",
-        "children": [
-          {
-            "type": "text",
-            "text": "Once the page opens, scroll down until you find the search bar shown below, then type in the name of your tablet."
-          }
-        ],
-        "id": "_l8eEZ8peG"
-      },
-      {
-        "type": "p",
-        "id": "SdQnpsMmsY",
-        "children": [
-          {
-            "type": "text",
-            "id": "owfV0ics5l",
-            "text": ""
-          },
-          {
-            "type": "img",
-            "children": [
+                "text": "Click on the website to access the latest updates: ",
+                "id": "RsincSff2E"
+              },
+              {
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "https://www.huion.com/download",
+                    "id": "iIqzgotIYX",
+                    "bold": true,
+                    "highlight": true,
+                    "highlightColor": "#FEF08A"
+                  }
+                ],
+                "type": "a",
+                "url": "https://www.huion.com/download",
+                "id": "uaE5m3m0OX"
+              },
               {
                 "text": ""
               }
             ],
-            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Searching-your-tablet-on-the-driver-update-website-of-Huion.png",
-            "caption": "",
-            "alt": "",
-            "id": "w3QQ_VG5Y0"
-          },
-          {
-            "text": ""
+            "id": "_6YPEAGzuc"
           }
         ]
-      },
-      {
-        "type": "p",
-        "id": "voQgQrcrH3",
-        "children": [
-          {
-            "text": "As you enter your tablet's name, the website will search for matching devices. Once your tablet appears in blue below the search bar, click on it."
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "kkC-jUbqsH",
-        "children": [
-          {
-            "text": ""
-          },
-          {
-            "type": "img",
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Finding-your-tablet-on-the-driver-update-website-of-Huion.png",
-            "caption": "",
-            "alt": "",
-            "id": "1bY08K1XnR"
-          },
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "Rbf3_Kvjc9",
-        "children": [
-          {
-            "text": "Now, select your computer's operating system to download the latest driver."
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "0b537MQ2Il",
-        "children": [
-          {
-            "text": ""
-          },
-          {
-            "type": "img",
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/choices-of-operating-system.png",
-            "caption": "",
-            "alt": "",
-            "id": "yu2iuDAFBD"
-          },
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "MsQhiTsPo2",
-        "children": [
-          {
-            "text": "Since I use Windows, I'll choose the "
-          },
-          {
-            "text": "Windows Driver",
-            "bold": true
-          },
-          {
-            "text": ". "
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "6saG8pE2m2",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "zDG89jhnSI",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "children": [
-          {
-            "text": ""
-          }
-        ],
-        "type": "p",
-        "id": "28oVeCRzr0"
       }
-    ]
-  }
+    },
+    {
+      "_template": "heading",
+      "number": "",
+      "text": "Starting",
+      "level": "h2"
+    },
+    {
+      "_template": "text",
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Once the page opens, scroll down until you find the search bar shown below, then type in the name of your tablet."
+              }
+            ],
+            "id": "_l8eEZ8peG"
+          },
+          {
+            "type": "p",
+            "id": "SdQnpsMmsY",
+            "children": [
+              {
+                "type": "text",
+                "id": "owfV0ics5l",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Searching-your-tablet-on-the-driver-update-website-of-Huion.png",
+                "caption": "",
+                "alt": "",
+                "id": "w3QQ_VG5Y0"
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "voQgQrcrH3",
+            "children": [
+              {
+                "text": "As you enter your tablet's name, the website will search for matching devices. Once your tablet appears in blue below the search bar, click on it."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "kkC-jUbqsH",
+            "children": [
+              {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Finding-your-tablet-on-the-driver-update-website-of-Huion.png",
+                "caption": "",
+                "alt": "",
+                "id": "1bY08K1XnR"
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "Rbf3_Kvjc9",
+            "children": [
+              {
+                "text": "Now, select your computer's operating system to download the latest driver."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "0b537MQ2Il",
+            "children": [
+              {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/choices-of-operating-system.png",
+                "caption": "",
+                "alt": "",
+                "id": "yu2iuDAFBD"
+              },
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "MsQhiTsPo2",
+            "children": [
+              {
+                "text": "Since I use Windows, I'll choose the "
+              },
+              {
+                "text": "Windows Driver",
+                "bold": true
+              },
+              {
+                "text": ". "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "6saG8pE2m2",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "zDG89jhnSI",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "28oVeCRzr0"
+          }
+        ]
+      }
+    }
+  ],
+  "showTableOfContents": true
 }

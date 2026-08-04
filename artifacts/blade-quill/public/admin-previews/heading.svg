@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <text x="40" y="88" font-family="Georgia, serif" font-size="28" fill="#1f1a14">1. Section heading</text>
+  <rect x="40" y="112" width="260" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="40" y="128" width="200" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">HEADING</text>
+</svg>

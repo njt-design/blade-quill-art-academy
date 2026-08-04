@@ -7,6 +7,11 @@ import { useLiveTina } from "@/hooks/use-live-tina";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
+import { postQuery } from "@/lib/post-queries";
+import type { Block } from "@/pages/blocks/block-utils";
+import ArticleSectionRenderer from "@/pages/blog/ArticleSectionRenderer";
+import ArticleToc from "@/pages/blog/ArticleToc";
+import { collectTocItems } from "@/pages/blog/article-utils";
 
 const postModules = import.meta.glob("../../content/posts/*.json", { eager: true }) as Record<
   string,
@@ -34,33 +39,6 @@ function formatDate(iso?: string): string {
   });
 }
 
-// Must match generated Post query: Document _sys + id are required for Tina to bind edits (including rich-text body).
-const postQuery = `
-  query post($relativePath: String!) {
-    post(relativePath: $relativePath) {
-      ... on Document {
-        _sys {
-          filename
-          basename
-          hasReferences
-          breadcrumbs
-          path
-          relativePath
-          extension
-        }
-        id
-      }
-      __typename
-      title
-      excerpt
-      coverImage
-      publishedAt
-      tags
-      body
-    }
-  }
-`;
-
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
   const [, setLocation] = useLocation();
@@ -79,6 +57,19 @@ export default function BlogPost() {
   });
 
   const post = data.post as Record<string, unknown> | null;
+
+  const sections = useMemo(() => {
+    const raw = post?.sections;
+    return Array.isArray(raw) ? (raw as Block[]) : [];
+  }, [post?.sections]);
+
+  const tocItems = useMemo(() => {
+    if (!post?.showTableOfContents) return [];
+    return collectTocItems(sections);
+  }, [post?.showTableOfContents, sections]);
+
+  // Temporary fallback for posts not yet migrated off legacy `body`.
+  const legacyBody = post?.body;
 
   if (!post || !post.title) {
     return (
@@ -104,28 +95,28 @@ export default function BlogPost() {
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Blog
         </button>
 
-        {post.coverImage && (
+        {typeof post.coverImage === "string" && post.coverImage ? (
           <div className="aspect-[16/9] overflow-hidden rounded-lg mb-8">
             <img
-              src={post.coverImage as string}
+              src={post.coverImage}
               alt={post.title as string}
               className="w-full h-full object-cover"
               data-tina-field={tinaField(post, "coverImage")}
             />
           </div>
-        )}
+        ) : null}
 
         <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-muted-foreground">
-          {post.publishedAt && (
+          {typeof post.publishedAt === "string" && post.publishedAt ? (
             <span
               className="flex items-center gap-1"
               data-tina-field={tinaField(post, "publishedAt")}
             >
               <Calendar className="w-3.5 h-3.5" />
-              {formatDate(post.publishedAt as string)}
+              {formatDate(post.publishedAt)}
             </span>
-          )}
-          {Array.isArray(post.tags) && post.tags.length > 0 && (
+          ) : null}
+          {Array.isArray(post.tags) && post.tags.length > 0 ? (
             <div className="flex flex-wrap gap-1.5" data-tina-field={tinaField(post, "tags")}>
               {(post.tags as string[]).map((tag) => (
                 <span
@@ -136,7 +127,7 @@ export default function BlogPost() {
                 </span>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
 
         <h1
@@ -146,23 +137,26 @@ export default function BlogPost() {
           {post.title as string}
         </h1>
 
-        {post.excerpt && (
+        {post.excerpt ? (
           <div
             className="text-lg font-sans text-muted-foreground mb-8 leading-relaxed"
             data-tina-field={tinaField(post, "excerpt")}
           >
             <RichText value={post.excerpt} />
           </div>
-        )}
+        ) : null}
 
-        <div
-          className="prose prose-neutral max-w-none"
-          data-tina-field={tinaField(post, "body")}
-        >
-          {post.body ? (
-            <TinaMarkdown content={post.body} />
+        {tocItems.length > 0 ? <ArticleToc items={tocItems} /> : null}
+
+        <div data-tina-field={tinaField(post, "sections")}>
+          {sections.length > 0 ? (
+            <ArticleSectionRenderer sections={sections} />
+          ) : legacyBody ? (
+            <div className="prose prose-neutral max-w-none">
+              <TinaMarkdown content={legacyBody as any} />
+            </div>
           ) : (
-            <p className="text-muted-foreground">No content yet.</p>
+            <p className="text-muted-foreground">No content yet. Add Post Sections in the editor.</p>
           )}
         </div>
       </div>

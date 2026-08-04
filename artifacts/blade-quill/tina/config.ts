@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
 import { ALL_BLOCKS, charLimit } from "./blocks";
+import { BLOG_BLOCKS } from "./blog-blocks";
 
 const INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
 
@@ -638,11 +639,25 @@ export default defineConfig({
             },
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            parser: SLATE_JSON_PARSER,
-            ui: { description: "The full post content. Supports headings, images, links, and embeds." },
+            type: "boolean",
+            name: "showTableOfContents",
+            label: "Show Table of Contents",
+            ui: {
+              description:
+                "When on, a jump-link list is built automatically from Heading sections under the excerpt.",
+            },
+          },
+          {
+            type: "object",
+            name: "sections",
+            label: "Post Sections",
+            list: true,
+            ui: {
+              visualSelector: true,
+              description:
+                "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add Heading, Text, Spacer, Image, and more.",
+            },
+            templates: BLOG_BLOCKS,
           },
         ],
       },

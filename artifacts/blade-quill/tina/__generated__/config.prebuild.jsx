@@ -1906,6 +1906,248 @@ var ALL_BLOCKS = [
   socialLinksBlock
 ];
 
+// tina/blog-blocks.ts
+var INLINE_RICH_TEXT2 = {
+  toolbar: ["bold", "italic", "link", "ul", "ol"],
+  showFloatingToolbar: true
+};
+var SLATE_JSON_PARSER2 = { type: "slatejson" };
+var rt2 = (text) => ({
+  type: "root",
+  children: [{ type: "p", children: [{ type: "text", text }] }]
+});
+function blogUi(previewName, label, titleField, defaultItem) {
+  return {
+    previewSrc: `/admin-previews/${previewName}.svg`,
+    ...defaultItem ? { defaultItem } : {},
+    itemProps: (item) => {
+      const raw = titleField ? item?.[titleField] : void 0;
+      const text = typeof raw === "string" && raw.trim() ? raw.split("\n")[0].trim() : "";
+      return { label: text ? `${label} \u2014 ${text}` : label };
+    }
+  };
+}
+var blogHeadingBlock = {
+  name: "heading",
+  label: "Heading",
+  ui: blogUi("heading", "Heading", "text", {
+    number: "",
+    text: "Section heading",
+    level: "h2"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "number",
+      label: "Section Number (optional)",
+      ui: charLimit(4, 'Optional number shown before the heading (e.g. "1" or "01").')
+    },
+    {
+      type: "string",
+      name: "text",
+      label: "Heading",
+      required: true,
+      ui: charLimit(90, "The section title.")
+    },
+    {
+      type: "string",
+      name: "level",
+      label: "Heading Level",
+      options: [
+        { value: "h2", label: "Section Heading (H2)" },
+        { value: "h3", label: "Sub-heading (H3)" }
+      ],
+      ui: {
+        description: "H2 for main sections, H3 for subsections. The post title is already H1."
+      }
+    }
+  ]
+};
+var blogTextBlock = {
+  ...textBlock,
+  label: "Text",
+  ui: blogUi("text", "Text", "heading", {
+    heading: "",
+    body: rt2("Write your paragraph here. You can add lists, links, and inline images.")
+  })
+};
+var blogSpacerBlock = {
+  name: "spacer",
+  label: "Spacer",
+  ui: blogUi("spacer", "Spacer", "size", {
+    size: "medium"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "size",
+      label: "Size",
+      options: [
+        { value: "small", label: "Small" },
+        { value: "medium", label: "Medium" },
+        { value: "large", label: "Large" }
+      ],
+      ui: {
+        description: "Adds vertical breathing room between sections. This is spacing only \u2014 not a page break."
+      }
+    }
+  ]
+};
+var blogDividerBlock = {
+  name: "divider",
+  label: "Divider",
+  ui: blogUi("divider", "Divider", null, {}),
+  fields: [
+    {
+      type: "string",
+      name: "style",
+      label: "Style",
+      options: [
+        { value: "line", label: "Simple line" },
+        { value: "dots", label: "Dots" }
+      ],
+      ui: { description: "Soft visual break between topics." }
+    }
+  ]
+};
+var blogImageBlock = {
+  name: "image",
+  label: "Image",
+  ui: blogUi("imageSpotlight", "Image", "caption", {
+    alt: "",
+    caption: "",
+    width: "content",
+    aspect: "auto"
+  }),
+  fields: [
+    {
+      type: "image",
+      name: "src",
+      label: "Image",
+      ui: {
+        description: "Upload into images/blog/ when possible."
+      }
+    },
+    {
+      type: "string",
+      name: "alt",
+      label: "Alt Text",
+      ui: charLimit(125, "Short image description for screen readers.")
+    },
+    {
+      type: "string",
+      name: "caption",
+      label: "Caption (optional)",
+      ui: charLimit(120)
+    },
+    {
+      type: "string",
+      name: "width",
+      label: "Width",
+      options: [
+        { value: "content", label: "Content width (matches text)" },
+        { value: "wide", label: "Wide (slightly wider than text)" }
+      ],
+      ui: { description: "How wide the image sits in the article column." }
+    },
+    {
+      type: "string",
+      name: "aspect",
+      label: "Aspect Ratio",
+      options: [
+        { value: "auto", label: "Natural (use image\u2019s own ratio)" },
+        { value: "landscape", label: "Landscape (16:10)" },
+        { value: "square", label: "Square (1:1)" },
+        { value: "portrait", label: "Portrait (3:4)" }
+      ]
+    }
+  ]
+};
+var blogCalloutBlock = {
+  name: "callout",
+  label: "Callout / Tip",
+  ui: blogUi("callout", "Callout", "title", {
+    title: "Tip",
+    body: rt2("A short tip, note, or warning for the reader."),
+    tone: "tip"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+      ui: charLimit(40, 'e.g. "Tip", "Note", or "Remember".')
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      overrides: INLINE_RICH_TEXT2,
+      parser: SLATE_JSON_PARSER2,
+      ui: { description: "The callout content. Keep it short." }
+    },
+    {
+      type: "string",
+      name: "tone",
+      label: "Tone",
+      options: [
+        { value: "tip", label: "Tip (warm highlight)" },
+        { value: "note", label: "Note (neutral)" },
+        { value: "warning", label: "Warning (stronger)" }
+      ]
+    }
+  ]
+};
+var blogImagePairBlock = {
+  ...imageSideBySideBlock,
+  label: "Image Pair",
+  ui: blogUi("imageSideBySide", "Image Pair", "heading", {
+    heading: "",
+    leftImage: {},
+    rightImage: {},
+    style: "clean"
+  })
+};
+var blogGalleryBlock = {
+  ...imageGalleryBlock,
+  label: "Gallery",
+  ui: blogUi("imageGallery", "Gallery", "heading", {
+    heading: "",
+    images: []
+  })
+};
+var blogVideoBlock = {
+  ...videoEmbedBlock,
+  label: "Video",
+  ui: blogUi("videoEmbed", "Video", "heading", {
+    heading: "",
+    youtubeUrl: ""
+  })
+};
+var blogCtaBlock = {
+  ...ctaBandBlock,
+  label: "End CTA",
+  ui: blogUi("ctaBand", "End CTA", "heading", {
+    heading: "Ready for the next step?",
+    description: rt2("One short supporting line goes here."),
+    ctaLabel: "Get Started",
+    ctaLink: "/contact",
+    variant: "light"
+  })
+};
+var BLOG_BLOCKS = [
+  blogHeadingBlock,
+  blogTextBlock,
+  blogSpacerBlock,
+  blogDividerBlock,
+  blogImageBlock,
+  blogImagePairBlock,
+  blogGalleryBlock,
+  blogVideoBlock,
+  blogCalloutBlock,
+  blogCtaBlock
+];
+
 // tina/config.ts
 var INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
 function readTinaIdTokenFromStorage() {
@@ -2081,12 +2323,12 @@ function InsightsScreenIcon() {
     React.createElement("path", { d: "M17 6v12" })
   );
 }
-var INLINE_RICH_TEXT2 = {
+var INLINE_RICH_TEXT3 = {
   toolbar: ["bold", "italic", "link", "ul", "ol"],
   showFloatingToolbar: true
 };
-var SLATE_JSON_PARSER2 = { type: "slatejson" };
-var rt2 = (text) => ({
+var SLATE_JSON_PARSER3 = { type: "slatejson" };
+var rt3 = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
 });
@@ -2197,7 +2439,7 @@ var eventPageTemplate = newPageTemplate("event", "Event / Workshop", {
     {
       _template: "hero",
       heading: "Your Event Name",
-      subheading: rt2("When it happens, who it's for, and why it's exciting \u2014 one or two sentences."),
+      subheading: rt3("When it happens, who it's for, and why it's exciting \u2014 one or two sentences."),
       ctaLabel: "Register Now",
       ctaLink: "/contact"
     },
@@ -2205,20 +2447,20 @@ var eventPageTemplate = newPageTemplate("event", "Event / Workshop", {
       _template: "featureGrid",
       heading: "What You'll Learn",
       items: [
-        { icon: "Brush", title: "First topic", description: rt2("Describe the first topic.") },
-        { icon: "Palette", title: "Second topic", description: rt2("Describe the second topic.") },
-        { icon: "Star", title: "Third topic", description: rt2("Describe the third topic.") }
+        { icon: "Brush", title: "First topic", description: rt3("Describe the first topic.") },
+        { icon: "Palette", title: "Second topic", description: rt3("Describe the second topic.") },
+        { icon: "Star", title: "Third topic", description: rt3("Describe the third topic.") }
       ]
     },
     {
       _template: "text",
       heading: "About the Event",
-      body: rt2("Tell visitors everything they need to know \u2014 schedule, format, what to bring, and how to prepare.")
+      body: rt3("Tell visitors everything they need to know \u2014 schedule, format, what to bring, and how to prepare.")
     },
     {
       _template: "ctaBand",
       heading: "Ready to join?",
-      description: rt2("Limited spots available."),
+      description: rt3("Limited spots available."),
       ctaLabel: "Sign Up Today",
       ctaLink: "/contact",
       variant: "dark"
@@ -2232,7 +2474,7 @@ var promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
     {
       _template: "hero",
       heading: "Something special is here",
-      subheading: rt2("Announce the promotion and what makes it a great deal."),
+      subheading: rt3("Announce the promotion and what makes it a great deal."),
       ctaLabel: "Shop Now",
       ctaLink: "/shop"
     },
@@ -2240,7 +2482,7 @@ var promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
       _template: "featuredRelease",
       eyebrow: "Featured",
       title: "The featured item",
-      description: rt2("Describe the featured product or offer."),
+      description: rt3("Describe the featured product or offer."),
       ctaLabel: "Get It Now",
       ctaHref: "/shop"
     },
@@ -2254,7 +2496,7 @@ var promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
     {
       _template: "ctaBand",
       heading: "Don't miss out",
-      description: rt2("This offer won't last forever."),
+      description: rt3("This offer won't last forever."),
       ctaLabel: "Shop the Sale",
       ctaLink: "/shop",
       variant: "dark"
@@ -2268,11 +2510,11 @@ var infoPageTemplate = newPageTemplate("info", "Info Page", {
     {
       _template: "pageHeader",
       heading: "Page Title",
-      description: rt2("A short introduction to what this page covers.")
+      description: rt3("A short introduction to what this page covers.")
     },
     {
       _template: "text",
-      body: rt2("Write the main content here. You can add headings, lists, links, and images.")
+      body: rt3("Write the main content here. You can add headings, lists, links, and images.")
     }
   ]
 });
@@ -2289,14 +2531,14 @@ var linkInBioPageTemplate = newPageTemplate("linkInBio", "Link-in-Bio / Landing"
       _template: "featuredRelease",
       eyebrow: "New Featured Release",
       title: "The featured item",
-      description: rt2("Describe what you're featuring."),
+      description: rt3("Describe what you're featuring."),
       ctaLabel: "Check It Out",
       ctaHref: "https://"
     },
     {
       _template: "kofiSupport",
       heading: "Support the Studio",
-      body: rt2("If you enjoy the tutorials, books, and free resources, consider buying a coffee on Ko-fi."),
+      body: rt3("If you enjoy the tutorials, books, and free resources, consider buying a coffee on Ko-fi."),
       ctaLabel: "Support on Ko-fi",
       href: "https://ko-fi.com/bladeandquill"
     },
@@ -2415,8 +2657,8 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "excerpt",
             label: "Excerpt",
-            overrides: INLINE_RICH_TEXT2,
-            parser: SLATE_JSON_PARSER2,
+            overrides: INLINE_RICH_TEXT3,
+            parser: SLATE_JSON_PARSER3,
             ui: { description: "A 1-2 sentence summary shown on blog list cards." }
           },
           {
@@ -2443,11 +2685,23 @@ var config_default = defineConfig({
             }
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            parser: SLATE_JSON_PARSER2,
-            ui: { description: "The full post content. Supports headings, images, links, and embeds." }
+            type: "boolean",
+            name: "showTableOfContents",
+            label: "Show Table of Contents",
+            ui: {
+              description: "When on, a jump-link list is built automatically from Heading sections under the excerpt."
+            }
+          },
+          {
+            type: "object",
+            name: "sections",
+            label: "Post Sections",
+            list: true,
+            ui: {
+              visualSelector: true,
+              description: "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add Heading, Text, Spacer, Image, and more."
+            },
+            templates: BLOG_BLOCKS
           }
         ]
       },
@@ -2481,8 +2735,8 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "description",
             label: "Description",
-            overrides: INLINE_RICH_TEXT2,
-            parser: SLATE_JSON_PARSER2,
+            overrides: INLINE_RICH_TEXT3,
+            parser: SLATE_JSON_PARSER3,
             ui: {
               description: "Short description for shop cards and the product detail tab."
             }

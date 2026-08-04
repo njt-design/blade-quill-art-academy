@@ -69,9 +69,18 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 ### Add a blog post
 
 1. **Blog Posts →** create new.
-2. Fill Title, Excerpt, Cover Image (upload into `images/blog/` when possible), Body.
-3. Set Publish Date.
-4. Save. It appears at `/blog/your-title`.
+2. Fill Title, Excerpt, Cover Image (upload into `images/blog/` when possible), and Publish Date.
+3. Build the article with **Post Sections** (same idea as page sections):
+   - **Heading** — section title (optional number for “1. …”)
+   - **Text** — paragraphs, lists, links, inline images
+   - **Spacer** — breathing room between sections (not a page break)
+   - **Divider** — a soft line or dots between topics
+   - **Image** / **Image Pair** / **Gallery** — captioned photos
+   - **Video** — YouTube embed
+   - **Callout / Tip** — highlighted tip box
+   - **End CTA** — soft call-to-action at the end
+4. Drag sections to reorder. Optionally turn on **Show Table of Contents** to auto-list your Heading sections under the excerpt.
+5. Save. It appears at `/blog/your-title`.
 
 ### Add or edit a shop product
 

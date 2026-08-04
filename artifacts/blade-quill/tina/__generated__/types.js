@@ -3903,7 +3903,113 @@ export const PostPartsFragmentDoc = gql`
   coverImage
   publishedAt
   tags
-  body
+  showTableOfContents
+  sections {
+    __typename
+    ... on PostSectionsHeading {
+      number
+      text
+      level
+    }
+    ... on PostSectionsText {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsSpacer {
+      size
+    }
+    ... on PostSectionsDivider {
+      style
+    }
+    ... on PostSectionsImage {
+      src
+      alt
+      caption
+      width
+      aspect
+    }
+    ... on PostSectionsImageSideBySide {
+      heading
+      leftImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      rightImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      style
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsVideoEmbed {
+      heading
+      youtubeUrl
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsCallout {
+      title
+      body
+      tone
+    }
+    ... on PostSectionsCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+  }
 }
     `;
 export const ShopProductPartsFragmentDoc = gql`

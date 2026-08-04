@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fbf6ec"/>
+  <rect x="40" y="48" width="240" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="40" y="64" width="180" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="180" y="96" width="2" height="48" fill="#8a6a4a" opacity="0.45"/>
+  <circle cx="181" cy="120" r="4" fill="#8a6a4a"/>
+  <rect x="40" y="160" width="220" height="6" rx="3" fill="#c9bfa9"/>
+  <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">SPACER</text>
+</svg>

@@ -20,18 +20,24 @@
     "Krita",
     "Tutorials"
   ],
-  "body": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
+  "sections": [
+    {
+      "_template": "text",
+      "heading": "",
+      "body": {
+        "type": "root",
         "children": [
           {
-            "type": "text",
-            "text": "this is a test"
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "this is a test"
+              }
+            ]
           }
         ]
       }
-    ]
-  }
+    }
+  ]
 }

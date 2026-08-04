@@ -21,279 +21,285 @@
     "Character Design",
     "Tips"
   ],
-  "body": {
-    "type": "root",
-    "children": [
-      {
+  "sections": [
+    {
+      "_template": "text",
+      "heading": "",
+      "body": {
+        "type": "root",
         "children": [
           {
-            "text": "Hello,"
-          }
-        ],
-        "id": "n1pNVqnp0L",
-        "type": "p"
-      },
-      {
-        "id": "LBRosABSSE",
-        "type": "p",
-        "children": [
+            "children": [
+              {
+                "text": "Hello,"
+              }
+            ],
+            "id": "n1pNVqnp0L",
+            "type": "p"
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "fpc_vhF2Gh",
-        "type": "p",
-        "children": [
+            "id": "LBRosABSSE",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "My name is Corinne Hadaway, and I'm the creator of Blade & Quill, a YouTube channel dedicated to helping beginner and intermediate artists learn digital art with Krita."
-          }
-        ]
-      },
-      {
-        "id": "_4XACrInya",
-        "type": "p",
-        "children": [
+            "id": "fpc_vhF2Gh",
+            "type": "p",
+            "children": [
+              {
+                "text": "My name is Corinne Hadaway, and I'm the creator of Blade & Quill, a YouTube channel dedicated to helping beginner and intermediate artists learn digital art with Krita."
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "ZoyHaR7NAd",
-        "type": "p",
-        "children": [
+            "id": "_4XACrInya",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "One of the most common questions I receive from my audience is, \"Which drawing tablet should I buy?\" Many of my viewers are looking for reliable tools to help them grow their artistic skills, whether they create for enjoyment or are building creative businesses selling digital products online."
-          }
-        ]
-      },
-      {
-        "id": "MSMm8F9Yeb",
-        "type": "p",
-        "children": [
+            "id": "ZoyHaR7NAd",
+            "type": "p",
+            "children": [
+              {
+                "text": "One of the most common questions I receive from my audience is, \"Which drawing tablet should I buy?\" Many of my viewers are looking for reliable tools to help them grow their artistic skills, whether they create for enjoyment or are building creative businesses selling digital products online."
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "KhX2PD5tj6",
-        "type": "p",
-        "children": [
+            "id": "MSMm8F9Yeb",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "I've been using Huion tablets for several years, and I'd love the opportunity to discuss a collaboration with Huion. I believe your products are a natural fit for my audience, and I would enjoy creating educational content such as tutorials, workflow demonstrations, beginner buying guides, and honest product reviews that help artists choose the right tablet for their needs."
-          }
-        ]
-      },
-      {
-        "id": "vlgK03DtBy",
-        "type": "p",
-        "children": [
+            "id": "KhX2PD5tj6",
+            "type": "p",
+            "children": [
+              {
+                "text": "I've been using Huion tablets for several years, and I'd love the opportunity to discuss a collaboration with Huion. I believe your products are a natural fit for my audience, and I would enjoy creating educational content such as tutorials, workflow demonstrations, beginner buying guides, and honest product reviews that help artists choose the right tablet for their needs."
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "Y82xJmBhlr",
-        "type": "p",
-        "children": [
+            "id": "vlgK03DtBy",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "If you're interested, I'd be happy to send you my creator media kit, which includes information about my audience, channel statistics, and partnership ideas."
-          }
-        ]
-      },
-      {
-        "id": "RXYe_XLVxG",
-        "type": "p",
-        "children": [
+            "id": "Y82xJmBhlr",
+            "type": "p",
+            "children": [
+              {
+                "text": "If you're interested, I'd be happy to send you my creator media kit, which includes information about my audience, channel statistics, and partnership ideas."
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "1XE1I7XrrJ",
-        "type": "p",
-        "children": [
+            "id": "RXYe_XLVxG",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "Thank you for your time and consideration. I look forward to hearing from you."
-          }
-        ]
-      },
-      {
-        "id": "_6M1tJEd8d",
-        "type": "p",
-        "children": [
+            "id": "1XE1I7XrrJ",
+            "type": "p",
+            "children": [
+              {
+                "text": "Thank you for your time and consideration. I look forward to hearing from you."
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "BMVgEwgao2",
-        "type": "p",
-        "children": [
+            "id": "_6M1tJEd8d",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": "Kind regards,"
-          }
-        ]
-      },
-      {
-        "id": "n13OK-IMpT",
-        "type": "p",
-        "children": [
+            "id": "BMVgEwgao2",
+            "type": "p",
+            "children": [
+              {
+                "text": "Kind regards,"
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "Y92dysl0at",
-        "type": "p",
-        "children": [
+            "id": "n13OK-IMpT",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "b0_W5e11HQ",
-        "type": "p",
-        "children": [
+            "id": "Y92dysl0at",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "1bKm6b-9ag",
-        "type": "p",
-        "children": [
+            "id": "b0_W5e11HQ",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "xoNfP4Lby7",
-        "type": "p",
-        "children": [
+            "id": "1bKm6b-9ag",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "ezys1PpzRA",
-        "type": "p",
-        "children": [
+            "id": "xoNfP4Lby7",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "Azs8Ufsa59",
-        "type": "p",
-        "children": [
+            "id": "ezys1PpzRA",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "AbcydB8BmG",
-        "type": "p",
-        "children": [
+            "id": "Azs8Ufsa59",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "VVf5zWDRs1",
-        "type": "p",
-        "children": [
+            "id": "AbcydB8BmG",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "E1uEqoEvVu",
-        "type": "p",
-        "children": [
+            "id": "VVf5zWDRs1",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "K908CSrEEU",
-        "type": "p",
-        "children": [
+            "id": "E1uEqoEvVu",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "XC3tU8HSnR",
-        "type": "p",
-        "children": [
+            "id": "K908CSrEEU",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "9ZfqfMuncR",
-        "type": "p",
-        "children": [
+            "id": "XC3tU8HSnR",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "y8pJEDYoCG",
-        "type": "p",
-        "children": [
+            "id": "9ZfqfMuncR",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "7lEdSIDPIN",
-        "type": "p",
-        "children": [
+            "id": "y8pJEDYoCG",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "flATQG6Nf6",
-        "type": "p",
-        "children": [
+            "id": "7lEdSIDPIN",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "id": "o0IbmZwxnR",
-        "type": "p",
-        "children": [
+            "id": "flATQG6Nf6",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
           {
-            "text": ""
+            "id": "o0IbmZwxnR",
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
           }
         ]
       }
-    ]
-  }
+    }
+  ]
 }

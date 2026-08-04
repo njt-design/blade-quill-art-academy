@@ -9270,13 +9270,137 @@ type LandingPageConnection implements Connection {
   edges: [LandingPageConnectionEdges]
 }
 
+type PostSectionsHeading {
+  number: String
+  text: String!
+  level: String
+}
+
+type PostSectionsTextTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsText {
+  heading: String
+  body: JSON
+  textStyle: PostSectionsTextTextStyle
+}
+
+type PostSectionsSpacer {
+  size: String
+}
+
+type PostSectionsDivider {
+  style: String
+}
+
+type PostSectionsImage {
+  src: String
+  alt: String
+  caption: String
+  width: String
+  aspect: String
+}
+
+type PostSectionsImageSideBySideLeftImage {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PostSectionsImageSideBySideRightImage {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PostSectionsImageSideBySideTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsImageSideBySide {
+  heading: String
+  leftImage: PostSectionsImageSideBySideLeftImage
+  rightImage: PostSectionsImageSideBySideRightImage
+  style: String
+  textStyle: PostSectionsImageSideBySideTextStyle
+}
+
+type PostSectionsImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PostSectionsImageGalleryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsImageGallery {
+  heading: String
+  images: [PostSectionsImageGalleryImages]
+  textStyle: PostSectionsImageGalleryTextStyle
+}
+
+type PostSectionsVideoEmbedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsVideoEmbed {
+  heading: String
+  youtubeUrl: String
+  textStyle: PostSectionsVideoEmbedTextStyle
+}
+
+type PostSectionsCallout {
+  title: String
+  body: JSON
+  tone: String
+}
+
+type PostSectionsCtaBandTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+  textStyle: PostSectionsCtaBandTextStyle
+}
+
+union PostSections = PostSectionsHeading | PostSectionsText | PostSectionsSpacer | PostSectionsDivider | PostSectionsImage | PostSectionsImageSideBySide | PostSectionsImageGallery | PostSectionsVideoEmbed | PostSectionsCallout | PostSectionsCtaBand
+
 type Post implements Node & Document {
   title: String!
   excerpt: JSON
   coverImage: String
   publishedAt: String
   tags: [String]
-  body: JSON
+  showTableOfContents: Boolean
+  sections: [PostSections]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -9290,13 +9414,148 @@ input DatetimeFilter {
   in: [String]
 }
 
+input PostSectionsHeadingFilter {
+  number: StringFilter
+  text: StringFilter
+  level: StringFilter
+}
+
+input PostSectionsTextTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsTextFilter {
+  heading: StringFilter
+  body: RichTextFilter
+  textStyle: PostSectionsTextTextStyleFilter
+}
+
+input PostSectionsSpacerFilter {
+  size: StringFilter
+}
+
+input PostSectionsDividerFilter {
+  style: StringFilter
+}
+
+input PostSectionsImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  width: StringFilter
+  aspect: StringFilter
+}
+
+input PostSectionsImageSideBySideLeftImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PostSectionsImageSideBySideRightImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PostSectionsImageSideBySideTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsImageSideBySideFilter {
+  heading: StringFilter
+  leftImage: PostSectionsImageSideBySideLeftImageFilter
+  rightImage: PostSectionsImageSideBySideRightImageFilter
+  style: StringFilter
+  textStyle: PostSectionsImageSideBySideTextStyleFilter
+}
+
+input PostSectionsImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PostSectionsImageGalleryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsImageGalleryFilter {
+  heading: StringFilter
+  images: PostSectionsImageGalleryImagesFilter
+  textStyle: PostSectionsImageGalleryTextStyleFilter
+}
+
+input PostSectionsVideoEmbedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+  textStyle: PostSectionsVideoEmbedTextStyleFilter
+}
+
+input PostSectionsCalloutFilter {
+  title: StringFilter
+  body: RichTextFilter
+  tone: StringFilter
+}
+
+input PostSectionsCtaBandTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsCtaBandFilter {
+  heading: StringFilter
+  description: RichTextFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+  textStyle: PostSectionsCtaBandTextStyleFilter
+}
+
+input PostSectionsFilter {
+  heading: PostSectionsHeadingFilter
+  text: PostSectionsTextFilter
+  spacer: PostSectionsSpacerFilter
+  divider: PostSectionsDividerFilter
+  image: PostSectionsImageFilter
+  imageSideBySide: PostSectionsImageSideBySideFilter
+  imageGallery: PostSectionsImageGalleryFilter
+  videoEmbed: PostSectionsVideoEmbedFilter
+  callout: PostSectionsCalloutFilter
+  ctaBand: PostSectionsCtaBandFilter
+}
+
 input PostFilter {
   title: StringFilter
   excerpt: RichTextFilter
   coverImage: ImageFilter
   publishedAt: DatetimeFilter
   tags: StringFilter
-  body: RichTextFilter
+  showTableOfContents: BooleanFilter
+  sections: PostSectionsFilter
 }
 
 type PostConnectionEdges {
@@ -14176,13 +14435,148 @@ input LandingPageMutation {
   linkInBio: LandingPageLinkInBioMutation
 }
 
+input PostSectionsHeadingMutation {
+  number: String
+  text: String
+  level: String
+}
+
+input PostSectionsTextTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsTextMutation {
+  heading: String
+  body: JSON
+  textStyle: PostSectionsTextTextStyleMutation
+}
+
+input PostSectionsSpacerMutation {
+  size: String
+}
+
+input PostSectionsDividerMutation {
+  style: String
+}
+
+input PostSectionsImageMutation {
+  src: String
+  alt: String
+  caption: String
+  width: String
+  aspect: String
+}
+
+input PostSectionsImageSideBySideLeftImageMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PostSectionsImageSideBySideRightImageMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PostSectionsImageSideBySideTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsImageSideBySideMutation {
+  heading: String
+  leftImage: PostSectionsImageSideBySideLeftImageMutation
+  rightImage: PostSectionsImageSideBySideRightImageMutation
+  style: String
+  textStyle: PostSectionsImageSideBySideTextStyleMutation
+}
+
+input PostSectionsImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PostSectionsImageGalleryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsImageGalleryMutation {
+  heading: String
+  images: [PostSectionsImageGalleryImagesMutation]
+  textStyle: PostSectionsImageGalleryTextStyleMutation
+}
+
+input PostSectionsVideoEmbedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+  textStyle: PostSectionsVideoEmbedTextStyleMutation
+}
+
+input PostSectionsCalloutMutation {
+  title: String
+  body: JSON
+  tone: String
+}
+
+input PostSectionsCtaBandTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+  textStyle: PostSectionsCtaBandTextStyleMutation
+}
+
+input PostSectionsMutation {
+  heading: PostSectionsHeadingMutation
+  text: PostSectionsTextMutation
+  spacer: PostSectionsSpacerMutation
+  divider: PostSectionsDividerMutation
+  image: PostSectionsImageMutation
+  imageSideBySide: PostSectionsImageSideBySideMutation
+  imageGallery: PostSectionsImageGalleryMutation
+  videoEmbed: PostSectionsVideoEmbedMutation
+  callout: PostSectionsCalloutMutation
+  ctaBand: PostSectionsCtaBandMutation
+}
+
 input PostMutation {
   title: String
   excerpt: JSON
   coverImage: String
   publishedAt: String
   tags: [String]
-  body: JSON
+  showTableOfContents: Boolean
+  sections: [PostSectionsMutation]
 }
 
 input ShopProductMutation {

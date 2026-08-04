@@ -9958,6 +9958,147 @@ export type LandingPageConnection = Connection & {
   edges?: Maybe<Array<Maybe<LandingPageConnectionEdges>>>;
 };
 
+export type PostSectionsHeading = {
+  __typename?: 'PostSectionsHeading';
+  number?: Maybe<Scalars['String']['output']>;
+  text: Scalars['String']['output'];
+  level?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsTextTextStyle = {
+  __typename?: 'PostSectionsTextTextStyle';
+  headingSize?: Maybe<Scalars['String']['output']>;
+  headingType?: Maybe<Scalars['String']['output']>;
+  headingFont?: Maybe<Scalars['String']['output']>;
+  align?: Maybe<Scalars['String']['output']>;
+  bodySize?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsText = {
+  __typename?: 'PostSectionsText';
+  heading?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  textStyle?: Maybe<PostSectionsTextTextStyle>;
+};
+
+export type PostSectionsSpacer = {
+  __typename?: 'PostSectionsSpacer';
+  size?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsDivider = {
+  __typename?: 'PostSectionsDivider';
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImage = {
+  __typename?: 'PostSectionsImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+  aspect?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageSideBySideLeftImage = {
+  __typename?: 'PostSectionsImageSideBySideLeftImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageSideBySideRightImage = {
+  __typename?: 'PostSectionsImageSideBySideRightImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageSideBySideTextStyle = {
+  __typename?: 'PostSectionsImageSideBySideTextStyle';
+  headingSize?: Maybe<Scalars['String']['output']>;
+  headingType?: Maybe<Scalars['String']['output']>;
+  headingFont?: Maybe<Scalars['String']['output']>;
+  align?: Maybe<Scalars['String']['output']>;
+  bodySize?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageSideBySide = {
+  __typename?: 'PostSectionsImageSideBySide';
+  heading?: Maybe<Scalars['String']['output']>;
+  leftImage?: Maybe<PostSectionsImageSideBySideLeftImage>;
+  rightImage?: Maybe<PostSectionsImageSideBySideRightImage>;
+  style?: Maybe<Scalars['String']['output']>;
+  textStyle?: Maybe<PostSectionsImageSideBySideTextStyle>;
+};
+
+export type PostSectionsImageGalleryImages = {
+  __typename?: 'PostSectionsImageGalleryImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+  caption?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageGalleryTextStyle = {
+  __typename?: 'PostSectionsImageGalleryTextStyle';
+  headingSize?: Maybe<Scalars['String']['output']>;
+  headingType?: Maybe<Scalars['String']['output']>;
+  headingFont?: Maybe<Scalars['String']['output']>;
+  align?: Maybe<Scalars['String']['output']>;
+  bodySize?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsImageGallery = {
+  __typename?: 'PostSectionsImageGallery';
+  heading?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<PostSectionsImageGalleryImages>>>;
+  textStyle?: Maybe<PostSectionsImageGalleryTextStyle>;
+};
+
+export type PostSectionsVideoEmbedTextStyle = {
+  __typename?: 'PostSectionsVideoEmbedTextStyle';
+  headingSize?: Maybe<Scalars['String']['output']>;
+  headingType?: Maybe<Scalars['String']['output']>;
+  headingFont?: Maybe<Scalars['String']['output']>;
+  align?: Maybe<Scalars['String']['output']>;
+  bodySize?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsVideoEmbed = {
+  __typename?: 'PostSectionsVideoEmbed';
+  heading?: Maybe<Scalars['String']['output']>;
+  youtubeUrl?: Maybe<Scalars['String']['output']>;
+  textStyle?: Maybe<PostSectionsVideoEmbedTextStyle>;
+};
+
+export type PostSectionsCallout = {
+  __typename?: 'PostSectionsCallout';
+  title?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  tone?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsCtaBandTextStyle = {
+  __typename?: 'PostSectionsCtaBandTextStyle';
+  headingSize?: Maybe<Scalars['String']['output']>;
+  headingType?: Maybe<Scalars['String']['output']>;
+  headingFont?: Maybe<Scalars['String']['output']>;
+  align?: Maybe<Scalars['String']['output']>;
+  bodySize?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostSectionsCtaBand = {
+  __typename?: 'PostSectionsCtaBand';
+  heading?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  ctaLink?: Maybe<Scalars['String']['output']>;
+  variant?: Maybe<Scalars['String']['output']>;
+  textStyle?: Maybe<PostSectionsCtaBandTextStyle>;
+};
+
+export type PostSections = PostSectionsHeading | PostSectionsText | PostSectionsSpacer | PostSectionsDivider | PostSectionsImage | PostSectionsImageSideBySide | PostSectionsImageGallery | PostSectionsVideoEmbed | PostSectionsCallout | PostSectionsCtaBand;
+
 export type Post = Node & Document & {
   __typename?: 'Post';
   title: Scalars['String']['output'];
@@ -9965,7 +10106,8 @@ export type Post = Node & Document & {
   coverImage?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['String']['output']>;
   tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  body?: Maybe<Scalars['JSON']['output']>;
+  showTableOfContents?: Maybe<Scalars['Boolean']['output']>;
+  sections?: Maybe<Array<Maybe<PostSections>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -9979,13 +10121,148 @@ export type DatetimeFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type PostSectionsHeadingFilter = {
+  number?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  level?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsTextTextStyleFilter = {
+  headingSize?: InputMaybe<StringFilter>;
+  headingType?: InputMaybe<StringFilter>;
+  headingFont?: InputMaybe<StringFilter>;
+  align?: InputMaybe<StringFilter>;
+  bodySize?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsTextFilter = {
+  heading?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  textStyle?: InputMaybe<PostSectionsTextTextStyleFilter>;
+};
+
+export type PostSectionsSpacerFilter = {
+  size?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsDividerFilter = {
+  style?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+  width?: InputMaybe<StringFilter>;
+  aspect?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageSideBySideLeftImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageSideBySideRightImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageSideBySideTextStyleFilter = {
+  headingSize?: InputMaybe<StringFilter>;
+  headingType?: InputMaybe<StringFilter>;
+  headingFont?: InputMaybe<StringFilter>;
+  align?: InputMaybe<StringFilter>;
+  bodySize?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageSideBySideFilter = {
+  heading?: InputMaybe<StringFilter>;
+  leftImage?: InputMaybe<PostSectionsImageSideBySideLeftImageFilter>;
+  rightImage?: InputMaybe<PostSectionsImageSideBySideRightImageFilter>;
+  style?: InputMaybe<StringFilter>;
+  textStyle?: InputMaybe<PostSectionsImageSideBySideTextStyleFilter>;
+};
+
+export type PostSectionsImageGalleryImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  caption?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageGalleryTextStyleFilter = {
+  headingSize?: InputMaybe<StringFilter>;
+  headingType?: InputMaybe<StringFilter>;
+  headingFont?: InputMaybe<StringFilter>;
+  align?: InputMaybe<StringFilter>;
+  bodySize?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsImageGalleryFilter = {
+  heading?: InputMaybe<StringFilter>;
+  images?: InputMaybe<PostSectionsImageGalleryImagesFilter>;
+  textStyle?: InputMaybe<PostSectionsImageGalleryTextStyleFilter>;
+};
+
+export type PostSectionsVideoEmbedTextStyleFilter = {
+  headingSize?: InputMaybe<StringFilter>;
+  headingType?: InputMaybe<StringFilter>;
+  headingFont?: InputMaybe<StringFilter>;
+  align?: InputMaybe<StringFilter>;
+  bodySize?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsVideoEmbedFilter = {
+  heading?: InputMaybe<StringFilter>;
+  youtubeUrl?: InputMaybe<StringFilter>;
+  textStyle?: InputMaybe<PostSectionsVideoEmbedTextStyleFilter>;
+};
+
+export type PostSectionsCalloutFilter = {
+  title?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  tone?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsCtaBandTextStyleFilter = {
+  headingSize?: InputMaybe<StringFilter>;
+  headingType?: InputMaybe<StringFilter>;
+  headingFont?: InputMaybe<StringFilter>;
+  align?: InputMaybe<StringFilter>;
+  bodySize?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsCtaBandFilter = {
+  heading?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  ctaLink?: InputMaybe<StringFilter>;
+  variant?: InputMaybe<StringFilter>;
+  textStyle?: InputMaybe<PostSectionsCtaBandTextStyleFilter>;
+};
+
+export type PostSectionsFilter = {
+  heading?: InputMaybe<PostSectionsHeadingFilter>;
+  text?: InputMaybe<PostSectionsTextFilter>;
+  spacer?: InputMaybe<PostSectionsSpacerFilter>;
+  divider?: InputMaybe<PostSectionsDividerFilter>;
+  image?: InputMaybe<PostSectionsImageFilter>;
+  imageSideBySide?: InputMaybe<PostSectionsImageSideBySideFilter>;
+  imageGallery?: InputMaybe<PostSectionsImageGalleryFilter>;
+  videoEmbed?: InputMaybe<PostSectionsVideoEmbedFilter>;
+  callout?: InputMaybe<PostSectionsCalloutFilter>;
+  ctaBand?: InputMaybe<PostSectionsCtaBandFilter>;
+};
+
 export type PostFilter = {
   title?: InputMaybe<StringFilter>;
   excerpt?: InputMaybe<RichTextFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   publishedAt?: InputMaybe<DatetimeFilter>;
   tags?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  showTableOfContents?: InputMaybe<BooleanFilter>;
+  sections?: InputMaybe<PostSectionsFilter>;
 };
 
 export type PostConnectionEdges = {
@@ -14971,13 +15248,148 @@ export type LandingPageMutation = {
   linkInBio?: InputMaybe<LandingPageLinkInBioMutation>;
 };
 
+export type PostSectionsHeadingMutation = {
+  number?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  level?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsTextTextStyleMutation = {
+  headingSize?: InputMaybe<Scalars['String']['input']>;
+  headingType?: InputMaybe<Scalars['String']['input']>;
+  headingFont?: InputMaybe<Scalars['String']['input']>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  bodySize?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsTextMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  textStyle?: InputMaybe<PostSectionsTextTextStyleMutation>;
+};
+
+export type PostSectionsSpacerMutation = {
+  size?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsDividerMutation = {
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+  width?: InputMaybe<Scalars['String']['input']>;
+  aspect?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageSideBySideLeftImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageSideBySideRightImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageSideBySideTextStyleMutation = {
+  headingSize?: InputMaybe<Scalars['String']['input']>;
+  headingType?: InputMaybe<Scalars['String']['input']>;
+  headingFont?: InputMaybe<Scalars['String']['input']>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  bodySize?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageSideBySideMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  leftImage?: InputMaybe<PostSectionsImageSideBySideLeftImageMutation>;
+  rightImage?: InputMaybe<PostSectionsImageSideBySideRightImageMutation>;
+  style?: InputMaybe<Scalars['String']['input']>;
+  textStyle?: InputMaybe<PostSectionsImageSideBySideTextStyleMutation>;
+};
+
+export type PostSectionsImageGalleryImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  caption?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageGalleryTextStyleMutation = {
+  headingSize?: InputMaybe<Scalars['String']['input']>;
+  headingType?: InputMaybe<Scalars['String']['input']>;
+  headingFont?: InputMaybe<Scalars['String']['input']>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  bodySize?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsImageGalleryMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<PostSectionsImageGalleryImagesMutation>>>;
+  textStyle?: InputMaybe<PostSectionsImageGalleryTextStyleMutation>;
+};
+
+export type PostSectionsVideoEmbedTextStyleMutation = {
+  headingSize?: InputMaybe<Scalars['String']['input']>;
+  headingType?: InputMaybe<Scalars['String']['input']>;
+  headingFont?: InputMaybe<Scalars['String']['input']>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  bodySize?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsVideoEmbedMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>;
+  textStyle?: InputMaybe<PostSectionsVideoEmbedTextStyleMutation>;
+};
+
+export type PostSectionsCalloutMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  tone?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsCtaBandTextStyleMutation = {
+  headingSize?: InputMaybe<Scalars['String']['input']>;
+  headingType?: InputMaybe<Scalars['String']['input']>;
+  headingFont?: InputMaybe<Scalars['String']['input']>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  bodySize?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PostSectionsCtaBandMutation = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  ctaLink?: InputMaybe<Scalars['String']['input']>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+  textStyle?: InputMaybe<PostSectionsCtaBandTextStyleMutation>;
+};
+
+export type PostSectionsMutation = {
+  heading?: InputMaybe<PostSectionsHeadingMutation>;
+  text?: InputMaybe<PostSectionsTextMutation>;
+  spacer?: InputMaybe<PostSectionsSpacerMutation>;
+  divider?: InputMaybe<PostSectionsDividerMutation>;
+  image?: InputMaybe<PostSectionsImageMutation>;
+  imageSideBySide?: InputMaybe<PostSectionsImageSideBySideMutation>;
+  imageGallery?: InputMaybe<PostSectionsImageGalleryMutation>;
+  videoEmbed?: InputMaybe<PostSectionsVideoEmbedMutation>;
+  callout?: InputMaybe<PostSectionsCalloutMutation>;
+  ctaBand?: InputMaybe<PostSectionsCtaBandMutation>;
+};
+
 export type PostMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   excerpt?: InputMaybe<Scalars['JSON']['input']>;
   coverImage?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  body?: InputMaybe<Scalars['JSON']['input']>;
+  showTableOfContents?: InputMaybe<Scalars['Boolean']['input']>;
+  sections?: InputMaybe<Array<InputMaybe<PostSectionsMutation>>>;
 };
 
 export type ShopProductMutation = {
@@ -15042,7 +15454,7 @@ type LandingPageParts_LandingPageLinkInBio_Fragment = { __typename: 'LandingPage
 
 export type LandingPagePartsFragment = LandingPageParts_LandingPageBlank_Fragment | LandingPageParts_LandingPageEvent_Fragment | LandingPageParts_LandingPagePromo_Fragment | LandingPageParts_LandingPageInfo_Fragment | LandingPageParts_LandingPageLinkInBio_Fragment;
 
-export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null };
+export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, showTableOfContents?: boolean | null, sections?: Array<{ __typename: 'PostSectionsHeading', number?: string | null, text: string, level?: string | null } | { __typename: 'PostSectionsText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PostSectionsTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsSpacer', size?: string | null } | { __typename: 'PostSectionsDivider', style?: string | null } | { __typename: 'PostSectionsImage', src?: string | null, alt?: string | null, caption?: string | null, width?: string | null, aspect?: string | null } | { __typename: 'PostSectionsImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PostSectionsImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PostSectionsImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PostSectionsImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsImageGallery', heading?: string | null, images?: Array<{ __typename: 'PostSectionsImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PostSectionsImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PostSectionsVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsCallout', title?: string | null, body?: any | null, tone?: string | null } | { __typename: 'PostSectionsCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PostSectionsCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null };
 
 export type ShopProductPartsFragment = { __typename: 'ShopProduct', name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null };
 
@@ -15091,7 +15503,7 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post: { __typename: 'Post', id: string, title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PostQuery = { __typename?: 'Query', post: { __typename: 'Post', id: string, title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, showTableOfContents?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'PostSectionsHeading', number?: string | null, text: string, level?: string | null } | { __typename: 'PostSectionsText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PostSectionsTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsSpacer', size?: string | null } | { __typename: 'PostSectionsDivider', style?: string | null } | { __typename: 'PostSectionsImage', src?: string | null, alt?: string | null, caption?: string | null, width?: string | null, aspect?: string | null } | { __typename: 'PostSectionsImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PostSectionsImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PostSectionsImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PostSectionsImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsImageGallery', heading?: string | null, images?: Array<{ __typename: 'PostSectionsImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PostSectionsImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PostSectionsVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsCallout', title?: string | null, body?: any | null, tone?: string | null } | { __typename: 'PostSectionsCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PostSectionsCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null } };
 
 export type PostConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -15103,7 +15515,7 @@ export type PostConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', cursor: string, node?: { __typename: 'Post', id: string, title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', cursor: string, node?: { __typename: 'Post', id: string, title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, showTableOfContents?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, sections?: Array<{ __typename: 'PostSectionsHeading', number?: string | null, text: string, level?: string | null } | { __typename: 'PostSectionsText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PostSectionsTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsSpacer', size?: string | null } | { __typename: 'PostSectionsDivider', style?: string | null } | { __typename: 'PostSectionsImage', src?: string | null, alt?: string | null, caption?: string | null, width?: string | null, aspect?: string | null } | { __typename: 'PostSectionsImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PostSectionsImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PostSectionsImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PostSectionsImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsImageGallery', heading?: string | null, images?: Array<{ __typename: 'PostSectionsImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PostSectionsImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PostSectionsVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsCallout', title?: string | null, body?: any | null, tone?: string | null } | { __typename: 'PostSectionsCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PostSectionsCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null } | null } | null> | null } };
 
 export type ShopProductQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -19041,7 +19453,113 @@ export const PostPartsFragmentDoc = gql`
   coverImage
   publishedAt
   tags
-  body
+  showTableOfContents
+  sections {
+    __typename
+    ... on PostSectionsHeading {
+      number
+      text
+      level
+    }
+    ... on PostSectionsText {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsSpacer {
+      size
+    }
+    ... on PostSectionsDivider {
+      style
+    }
+    ... on PostSectionsImage {
+      src
+      alt
+      caption
+      width
+      aspect
+    }
+    ... on PostSectionsImageSideBySide {
+      heading
+      leftImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      rightImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      style
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsVideoEmbed {
+      heading
+      youtubeUrl
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsCallout {
+      title
+      body
+      tone
+    }
+    ... on PostSectionsCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+  }
 }
     `;
 export const ShopProductPartsFragmentDoc = gql`
