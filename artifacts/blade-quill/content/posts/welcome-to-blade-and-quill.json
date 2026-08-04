@@ -20,15 +20,15 @@
     "How to",
     "Step-by-Step"
   ],
+  "showTableOfContents": true,
   "sections": [
     {
-      "_template": "heading",
       "number": "",
       "text": "Websites",
-      "level": "h2"
+      "level": "h2",
+      "_template": "heading"
     },
     {
-      "_template": "text",
       "heading": "",
       "body": {
         "type": "root",
@@ -63,16 +63,16 @@
             "id": "_6YPEAGzuc"
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "heading",
       "number": "",
       "text": "Starting",
-      "level": "h2"
+      "level": "h2",
+      "_template": "heading"
     },
     {
-      "_template": "text",
       "heading": "",
       "body": {
         "type": "root",
@@ -223,8 +223,15 @@
             "id": "28oVeCRzr0"
           }
         ]
-      }
+      },
+      "_template": "text"
+    },
+    {
+      "alt": "",
+      "caption": "",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
     }
-  ],
-  "showTableOfContents": true
+  ]
 }
