@@ -9569,12 +9569,18 @@ type PostConnection implements Connection {
   edges: [PostConnectionEdges]
 }
 
+type ShopProductGalleryImages {
+  src: String
+  alt: String
+}
+
 type ShopProduct implements Node & Document {
   name: String!
   description: JSON
   price: Float!
   category: String!
   image: String
+  galleryImages: [ShopProductGalleryImages]
   featured: Boolean
   inStock: Boolean
   downloadUrl: String
@@ -9598,12 +9604,18 @@ input NumberFilter {
   in: [Float]
 }
 
+input ShopProductGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
 input ShopProductFilter {
   name: StringFilter
   description: RichTextFilter
   price: NumberFilter
   category: StringFilter
   image: ImageFilter
+  galleryImages: ShopProductGalleryImagesFilter
   featured: BooleanFilter
   inStock: BooleanFilter
   downloadUrl: StringFilter
@@ -14579,12 +14591,18 @@ input PostMutation {
   sections: [PostSectionsMutation]
 }
 
+input ShopProductGalleryImagesMutation {
+  src: String
+  alt: String
+}
+
 input ShopProductMutation {
   name: String
   description: JSON
   price: Float
   category: String
   image: String
+  galleryImages: [ShopProductGalleryImagesMutation]
   featured: Boolean
   inStock: Boolean
   downloadUrl: String

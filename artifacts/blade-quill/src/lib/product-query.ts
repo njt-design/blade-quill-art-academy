@@ -24,6 +24,10 @@ export const shopProductQuery = `
       price
       category
       image
+      galleryImages {
+        src
+        alt
+      }
       gumroadUrl
       downloadUrl
       amazonUrl

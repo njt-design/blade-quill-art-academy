@@ -8,12 +8,68 @@ const productModules = import.meta.glob("../../content/products/*.json", {
   { default?: Record<string, unknown> } & Record<string, unknown>
 >;
 
+export type ProductGalleryImage = {
+  src: string;
+  alt?: string;
+};
+
 export type CatalogProduct = Omit<Product, "description"> & {
   slug: string;
   description: string | RichTextValue;
   amazonUrl?: string | null;
   googlePlayUrl?: string | null;
+  /** Extra images for the product detail thumbnail strip (up to 5). */
+  galleryImages: ProductGalleryImage[];
 };
+
+const THUMBNAIL_SLOT_COUNT = 5;
+
+function parseGalleryImages(raw: unknown): ProductGalleryImage[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((item) => {
+      if (!item || typeof item !== "object") return null;
+      const src = String((item as { src?: unknown }).src ?? "").trim();
+      if (!src) return null;
+      const alt = String((item as { alt?: unknown }).alt ?? "").trim();
+      return { src, ...(alt ? { alt } : {}) };
+    })
+    .filter((item): item is ProductGalleryImage => item !== null)
+    .slice(0, THUMBNAIL_SLOT_COUNT);
+}
+
+/**
+ * Resolve the 5 detail-page thumbnail slots.
+ * Uses uploaded gallery images when present; otherwise slot 1 falls back to Cover Image.
+ */
+export function resolveProductThumbnails(product: {
+  imageUrl?: string | null;
+  galleryImages?: ProductGalleryImage[] | null;
+  name?: string | null;
+}): Array<ProductGalleryImage | null> {
+  const gallery = (product.galleryImages ?? []).filter((img) =>
+    Boolean(img.src)
+  );
+  const slots: Array<ProductGalleryImage | null> = Array.from(
+    { length: THUMBNAIL_SLOT_COUNT },
+    () => null
+  );
+
+  if (gallery.length > 0) {
+    gallery.forEach((img, i) => {
+      if (i < THUMBNAIL_SLOT_COUNT) slots[i] = img;
+    });
+    return slots;
+  }
+
+  if (product.imageUrl) {
+    slots[0] = {
+      src: product.imageUrl,
+      alt: product.name ?? undefined,
+    };
+  }
+  return slots;
+}
 
 /** Build a CatalogProduct from raw Tina document data (bundled JSON or GraphQL node). */
 export function toCatalogProduct(
@@ -44,6 +100,7 @@ export function toCatalogProduct(
     price,
     category,
     imageUrl: image,
+    galleryImages: parseGalleryImages(data.galleryImages),
     gumroadUrl: (data.gumroadUrl as string | null) ?? null,
     downloadUrl: (data.downloadUrl as string | null) ?? null,
     amazonUrl: (data.amazonUrl as string | null) ?? null,
@@ -136,11 +193,13 @@ export function resolveCatalogProducts(
     return api.map((p) => ({
       ...p,
       slug: String(p.id),
+      galleryImages: [],
     }));
   }
 
   return fallback.map((p) => ({
     ...p,
     slug: String(p.id),
+    galleryImages: [],
   }));
 }

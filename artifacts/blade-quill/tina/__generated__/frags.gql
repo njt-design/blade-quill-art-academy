@@ -4009,6 +4009,11 @@ fragment ShopProductParts on ShopProduct {
   price
   category
   image
+  galleryImages {
+    __typename
+    src
+    alt
+  }
   featured
   inStock
   downloadUrl

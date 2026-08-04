@@ -15,6 +15,7 @@ import {
   getCatalogProduct,
   hasCatalogProducts,
   resolveCatalogProducts,
+  resolveProductThumbnails,
   toCatalogProduct,
   type CatalogProduct,
 } from "@/lib/products";
@@ -122,6 +123,9 @@ export default function ProductDetail() {
         price: seedRaw.price,
         category: seedRaw.category,
         image: seedRaw.imageUrl,
+        galleryImages: Array.isArray(seedRaw.galleryImages)
+          ? seedRaw.galleryImages
+          : [],
         gumroadUrl: seedRaw.gumroadUrl,
         downloadUrl: seedRaw.downloadUrl,
         amazonUrl: seedRaw.amazonUrl,
@@ -175,7 +179,11 @@ export default function ProductDetail() {
     if (tinaProduct) return tinaProduct;
     if (catalogMatch) return catalogMatch;
     if (apiProduct) {
-      return { ...apiProduct, slug: String(apiProduct.id) };
+      return {
+        ...apiProduct,
+        slug: String(apiProduct.id),
+        galleryImages: [],
+      };
     }
     return findCatalogProduct(catalog, routeParam);
   }, [tinaProduct, catalogMatch, apiProduct, catalog, routeParam]);
@@ -241,6 +249,12 @@ export default function ProductDetail() {
   const isBook = product.category === "physical";
   const palette: ArtTilePalette =
     PALETTE_BY_INDEX[product.id % PALETTE_BY_INDEX.length];
+  const thumbnails = resolveProductThumbnails(product);
+  const activeThumb = thumbnails[thumb] ?? thumbnails[0] ?? null;
+  const activeSrc = activeThumb?.src || product.imageUrl;
+  const activeAlt = activeThumb?.alt || product.name;
+  const showBookCover =
+    isBook && (!activeSrc || activeSrc === product.imageUrl);
 
   return (
     <div className="page pt-12 pb-24">
@@ -268,22 +282,31 @@ export default function ProductDetail() {
               <Reveal>
                 <div
                   className="relative flex items-center justify-center overflow-hidden h-[min(60vh,560px)] sm:h-[560px]"
-                  data-tina-field={tinaDoc ? tinaField(tinaDoc, "image") : undefined}
+                  data-tina-field={
+                    tinaDoc
+                      ? tinaField(
+                          tinaDoc,
+                          product.galleryImages.length > 0
+                            ? "galleryImages"
+                            : "image"
+                        )
+                      : undefined
+                  }
                   style={{
                     borderRadius: 20,
-                    background: isBook
+                    background: showBookCover
                       ? "var(--paper-2)"
                       : "transparent",
                     boxShadow: "var(--sh-paper)",
                   }}
                 >
-                  {isBook ? (
+                  {showBookCover ? (
                     <BookCover
                       title={product.name}
                       subtitle="C. HADAWAY"
                       palette="warm"
-                      src={product.imageUrl}
-                      alt={product.name}
+                      src={activeSrc}
+                      alt={activeAlt}
                       width={300}
                       height={420}
                       style={{
@@ -298,8 +321,8 @@ export default function ProductDetail() {
                       palette={palette}
                       width="100%"
                       height="100%"
-                      src={product.imageUrl}
-                      alt={product.name}
+                      src={activeSrc || undefined}
+                      alt={activeAlt}
                       label={product.name}
                       radius={20}
                     />
@@ -307,8 +330,13 @@ export default function ProductDetail() {
                 </div>
               </Reveal>
 
-              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 mt-4">
-                {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                className="grid grid-cols-4 sm:grid-cols-5 gap-3 mt-4"
+                data-tina-field={
+                  tinaDoc ? tinaField(tinaDoc, "galleryImages") : undefined
+                }
+              >
+                {thumbnails.map((slot, i) => (
                   <button
                     key={i}
                     type="button"
@@ -323,13 +351,18 @@ export default function ProductDetail() {
                         i === thumb ? "scale(1.04)" : "scale(1)",
                       transition: "transform .2s var(--e-out)",
                     }}
-                    aria-label={`Thumbnail ${i + 1}`}
+                    aria-label={
+                      slot?.alt
+                        ? `Thumbnail ${i + 1}: ${slot.alt}`
+                        : `Thumbnail ${i + 1}`
+                    }
                   >
                     <ArtTile
                       palette={PALETTE_BY_INDEX[i]}
                       width="100%"
                       height={84}
-                      src={i === 0 ? product.imageUrl : undefined}
+                      src={slot?.src}
+                      alt={slot?.alt || `${product.name} thumbnail ${i + 1}`}
                       label={`${i + 1}`}
                       radius={10}
                       style={{ opacity: i === thumb ? 1 : 0.7 }}

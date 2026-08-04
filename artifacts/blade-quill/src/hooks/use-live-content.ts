@@ -85,6 +85,10 @@ const PRODUCTS_PAGE_QUERY = `
           price
           category
           image
+          galleryImages {
+            src
+            alt
+          }
           gumroadUrl
           downloadUrl
           amazonUrl

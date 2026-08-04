@@ -4020,6 +4020,11 @@ export const ShopProductPartsFragmentDoc = gql`
   price
   category
   image
+  galleryImages {
+    __typename
+    src
+    alt
+  }
   featured
   inStock
   downloadUrl

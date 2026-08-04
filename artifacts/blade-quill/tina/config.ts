@@ -733,6 +733,46 @@ export default defineConfig({
             },
           },
           {
+            type: "object",
+            name: "galleryImages",
+            label: "Detail Page Thumbnails",
+            list: true,
+            ui: {
+              description:
+                "Up to 5 images for the thumbnail strip under the large preview on the product detail page. Slot 1 falls back to Cover Image when this list is empty. Upload into images/products/.",
+              itemProps: (item: Record<string, unknown> | undefined) => ({
+                label:
+                  (item?.alt as string) ||
+                  (item?.src as string)?.split("/").pop() ||
+                  "Thumbnail",
+              }),
+              defaultItem: {
+                src: "",
+                alt: "",
+              },
+            },
+            fields: [
+              {
+                type: "image",
+                name: "src",
+                label: "Image",
+                ui: {
+                  description:
+                    "Square or 3:4 portrait works best. At least 800px wide.",
+                },
+              },
+              {
+                type: "string",
+                name: "alt",
+                label: "Alt Text",
+                ui: charLimit(
+                  125,
+                  "Short description for screen readers (e.g. “Back cover” or “Interior page”)."
+                ),
+              },
+            ],
+          },
+          {
             type: "boolean",
             name: "featured",
             label: "Featured",
