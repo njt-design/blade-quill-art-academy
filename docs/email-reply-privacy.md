@@ -42,12 +42,27 @@ Do **not** use `bladeandquillartacademy.com` for API routes until launch — `ve
 
 ## Gmail "Send mail as" setup (step 6)
 
+> **The alias address must be on the branded domain.** Resend only sends from
+> domains verified in the account, so a "Send mail as" alias for a Yahoo,
+> Gmail, or any other third-party address bounces with
+> `550 The <domain> is not verified`. The alias is
+> `Corinne@bladeandquillartacademy.com` — never her personal address.
+
 1. In Resend, create a **second API key** named e.g. "Gmail SMTP" with **Sending access** only (don't reuse the server key; this one lives in Gmail).
 2. Gmail → Settings (gear) → **See all settings** → **Accounts and Import** → "Send mail as" → **Add another email address**.
 3. Name: `Corinne — Blade & Quill Art Academy`. Email: `Corinne@bladeandquillartacademy.com`. Uncheck "Treat as an alias".
 4. SMTP server: `smtp.resend.com`, port `465`, username: the literal word `resend`, password: the Gmail SMTP API key, secured with SSL.
 5. Gmail emails a verification code to the branded address — it arrives in her inbox via the inbound forwarder (steps 1–5 must be done first).
 6. Back in "Send mail as", set **"When replying to a message: Reply from the same address the message was sent to"**. Because contact notifications are addressed to the branded alias (step 7), replies then default to the branded From with no manual dropdown selection.
+
+## Troubleshooting
+
+| Symptom                                                                                | Cause                                                                                                                                                                            | Fix                                                                                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bounce: `550 The yahoo.com domain is not verified. Please, add and verify your domain` | The "Send mail as" alias was created for a personal address (Yahoo/Gmail/etc.) instead of the branded one. Resend refuses to send from domains the account doesn't own.          | Delete that alias in Gmail → Accounts and Import → "Send mail as", and create it again with `Corinne@bladeandquillartacademy.com`. (A bounce like this also confirms the SMTP server/username/password are correct — Gmail reached Resend.) |
+| Bounce: `550 The bladeandquillartacademy.com domain is not verified`                   | The branded domain itself isn't verified in Resend yet (checklist step 1).                                                                                                       | Resend → Domains → add `bladeandquillartacademy.com` and add the DKIM/SPF records it shows to Vercel DNS; wait for "Verified".                                                                                                              |
+| Gmail's alias verification code never arrives                                          | Inbound forwarding isn't live yet — the branded address has no way to receive mail until checklist steps 2–5 are done and the `/api/inbound` function is deployed to production. | Finish steps 1–5 first (this is why Gmail setup is step 6).                                                                                                                                                                                 |
+| Corinne has to manually pick the branded From on every reply                           | Contact notifications are still addressed to her personal inbox, and/or the reply-from setting is off.                                                                           | Complete step 7 (`CONTACT_TO_EMAIL` → branded address) and enable "When replying to a message: Reply from the same address the message was sent to" in Gmail → Accounts and Import. Both are needed for automatic branded replies.          |
 
 ## Caveats
 
