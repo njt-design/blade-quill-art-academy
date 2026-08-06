@@ -25,7 +25,14 @@ const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Valid email is required"),
   company: z.string().min(2, "Publisher or agency name is required"),
-  message: z.string().max(5000).optional(),
+  // Optional, but if filled must meet the API's 10-char minimum (empty → DEFAULT_MESSAGE).
+  message: z
+    .string()
+    .max(5000)
+    .optional()
+    .refine((value) => !value?.trim() || value.trim().length >= 10, {
+      message: "Note must be at least 10 characters, or leave it blank",
+    }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -198,7 +205,11 @@ export default function DummyBookRequestBlock({ block }: Props) {
                   {...register("message")}
                   placeholder="Anything you'd like Corinne to know about your interest"
                   rows={4}
+                  className={errors.message ? "border-destructive" : ""}
                 />
+                {errors.message && (
+                  <p className="text-xs text-destructive">{errors.message.message}</p>
+                )}
               </div>
               <Button type="submit" size="lg" className="w-full" disabled={isPending}>
                 <Send className="w-4 h-4 mr-2" />
