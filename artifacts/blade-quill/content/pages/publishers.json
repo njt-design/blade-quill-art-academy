@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "pageHeader",
       "heading": "For Publishers & Literary Agents",
       "description": {
         "type": "root",
@@ -18,10 +17,10 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "pageHeader"
     },
     {
-      "_template": "dummyBookRequest",
       "heading": "Request the 30-page PDF",
       "description": {
         "type": "root",
@@ -33,18 +32,19 @@
                 "type": "text",
                 "text": "Fill in your details and the complete 30-page PDF unlocks instantly. Corinne is notified of every request and will follow up personally."
               }
-            ]
+            ],
+            "id": "Zj8nlOfAyO"
           }
         ]
       },
       "pdfUrl": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
-      "submitLabel": "Request the 30-page PDF",
+      "submitLabel": "Download the 30-page PDF",
       "successHeading": "Thank you — the PDF is ready",
-      "successNote": "Your request has been sent to Corinne. In the meantime, the full 30-page PDF is available below.",
-      "downloadLabel": "Download the 30-page PDF"
+      "successNote": "Success. Reach out if you have questions.",
+      "downloadLabel": "Download the 30-page PDF",
+      "_template": "dummyBookRequest"
     },
     {
-      "_template": "socialLinks",
       "heading": "An audience that's already following along",
       "body": {
         "type": "root",
@@ -86,10 +86,10 @@
           "url": "https://ko-fi.com/bladeandquill",
           "label": "Ko-fi"
         }
-      ]
+      ],
+      "_template": "socialLinks"
     },
     {
-      "_template": "cardRow",
       "number": "01",
       "label": "THE WORK",
       "cards": [
@@ -117,10 +117,10 @@
           "ctaLabel": "Read the story",
           "link": "/p/the-making-of-lheeloo-and-luna"
         }
-      ]
+      ],
+      "_template": "cardRow"
     },
     {
-      "_template": "imageGallery",
       "heading": "From the sketchbook",
       "images": [
         {
@@ -147,10 +147,10 @@
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/smiling-luna.png",
           "alt": "Smiling Luna character art"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "text",
       "heading": "About the author",
       "body": {
         "type": "root",
@@ -174,7 +174,8 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     }
   ]
 }
