@@ -45,16 +45,13 @@
                 "children": [
                   {
                     "type": "text",
-                    "text": "https://www.huion.com/download",
-                    "id": "iIqzgotIYX",
-                    "bold": true,
-                    "highlight": true,
-                    "highlightColor": "#FEF08A"
+                    "id": "MpR1mKFaZ0",
+                    "text": "Google"
                   }
                 ],
                 "type": "a",
-                "url": "https://www.huion.com/download",
-                "id": "XNh9KNSB59"
+                "url": "https://www.google.com",
+                "id": "BAEPIubvsc"
               },
               {
                 "text": ""
