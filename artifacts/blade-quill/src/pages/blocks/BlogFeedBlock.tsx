@@ -83,9 +83,9 @@ export default function BlogFeedBlock({ block }: Props) {
     <section className="py-24 lg:py-28" style={{ background: "var(--paper-2)" }}>
       <div className="bq-container">
         {showNewsletter ? (
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-14">
+          <div className="grid items-stretch gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
             {postsList}
-            <Reveal>
+            <Reveal className="h-full min-h-0">
               <NewsletterPanel content={newsletter} />
             </Reveal>
           </div>

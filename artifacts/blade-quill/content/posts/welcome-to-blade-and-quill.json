@@ -42,15 +42,14 @@
                 "id": "RsincSff2E"
               },
               {
-                "children": [
-                  {
-                    "type": "text",
-                    "id": "MpR1mKFaZ0",
-                    "text": "Google"
-                  }
-                ],
-                "type": "a",
-                "url": "https://www.google.com",
+                "type": "mdxJsxTextElement",
+                "name": "ContentLink",
+                "children": [{ "type": "text", "text": "" }],
+                "props": {
+                  "url": "https://www.google.com",
+                  "text": "Google",
+                  "openInNewTab": true
+                },
                 "id": "BAEPIubvsc"
               },
               {

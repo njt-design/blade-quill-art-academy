@@ -42,14 +42,14 @@
                 "text": "For professional review purposes, a complete picture-book dummy for Lheeloo & Luna is available: "
               },
               {
-                "type": "a",
-                "url": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "PDF 30-page dummy"
-                  }
-                ]
+                "type": "mdxJsxTextElement",
+                "name": "ContentLink",
+                "children": [{ "type": "text", "text": "" }],
+                "props": {
+                  "url": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
+                  "text": "PDF 30-page dummy",
+                  "openInNewTab": true
+                }
               },
               {
                 "type": "text",

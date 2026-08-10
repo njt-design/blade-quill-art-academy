@@ -1076,10 +1076,19 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PageBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHomeHeroSubheadingContentLinkFilter>;
 };
 
 export type PageBlocksHomeHeroTextStyleFilter = {
@@ -1093,7 +1102,7 @@ export type PageBlocksHomeHeroTextStyleFilter = {
 export type PageBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -1101,6 +1110,16 @@ export type PageBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHomeHeroTextStyleFilter>;
+};
+
+export type PageBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<PageBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type ImageFilter = {
@@ -1121,7 +1140,7 @@ export type PageBlocksAboutHeroTextStyleFilter = {
 export type PageBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<PageBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -1136,6 +1155,16 @@ export type PageBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<PageBlocksAboutHeroTextStyleFilter>;
 };
 
+export type PageBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type PageBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1146,11 +1175,21 @@ export type PageBlocksHeroTextStyleFilter = {
 
 export type PageBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHeroTextStyleFilter>;
+};
+
+export type PageBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type PageBlocksHeroSplitImageTextStyleFilter = {
@@ -1164,7 +1203,7 @@ export type PageBlocksHeroSplitImageTextStyleFilter = {
 export type PageBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -1174,6 +1213,16 @@ export type PageBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type PageBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type PageBlocksHeroFullBleedTextStyleFilter = {
@@ -1187,13 +1236,23 @@ export type PageBlocksHeroFullBleedTextStyleFilter = {
 export type PageBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type PageBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type PageBlocksHeroFloatingImagesImagesFilter = {
@@ -1213,13 +1272,23 @@ export type PageBlocksHeroFloatingImagesTextStyleFilter = {
 export type PageBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<PageBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type PageBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type PageBlocksHeroImageGridImagesFilter = {
@@ -1239,12 +1308,22 @@ export type PageBlocksHeroImageGridTextStyleFilter = {
 export type PageBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<PageBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type PageBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type PageBlocksPageHeaderTextStyleFilter = {
@@ -1257,8 +1336,18 @@ export type PageBlocksPageHeaderTextStyleFilter = {
 
 export type PageBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<PageBlocksPageHeaderTextStyleFilter>;
+};
+
+export type PageBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<PageBlocksTextBodyContentLinkFilter>;
 };
 
 export type PageBlocksTextTextStyleFilter = {
@@ -1271,8 +1360,38 @@ export type PageBlocksTextTextStyleFilter = {
 
 export type PageBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PageBlocksTextBodyFilter>;
   textStyle?: InputMaybe<PageBlocksTextTextStyleFilter>;
+};
+
+export type PageBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<PageBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type PageBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<PageBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type PageBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<PageBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type PageBlocksStoryTextStyleFilter = {
@@ -1287,9 +1406,9 @@ export type PageBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<PageBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<PageBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<PageBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksStoryTextStyleFilter>;
@@ -1326,10 +1445,20 @@ export type PageBlocksStatsRowFilter = {
   stats?: InputMaybe<PageBlocksStatsRowStatsFilter>;
 };
 
+export type PageBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type PageBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type PageBlocksFeatureGridTextStyleFilter = {
@@ -1415,6 +1544,16 @@ export type PageBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<PageBlocksImageGalleryTextStyleFilter>;
 };
 
+export type PageBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<PageBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type PageBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1430,7 +1569,7 @@ export type PageBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PageBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<PageBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -1497,6 +1636,16 @@ export type PageBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<PageBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type PageBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type PageBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -1513,13 +1662,23 @@ export type PageBlocksFeaturedBookTextStyleFilter = {
 export type PageBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<PageBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type PageBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type PageBlocksFeaturedReleaseTextStyleFilter = {
@@ -1533,7 +1692,7 @@ export type PageBlocksFeaturedReleaseTextStyleFilter = {
 export type PageBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -1557,9 +1716,14 @@ export type PageBlocksProductStripFilter = {
   textStyle?: InputMaybe<PageBlocksProductStripTextStyleFilter>;
 };
 
-export type BooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
+export type PageBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksShopCatalogDescriptionContentLinkFilter>;
 };
 
 export type PageBlocksShopCatalogTextStyleFilter = {
@@ -1573,7 +1737,7 @@ export type PageBlocksShopCatalogTextStyleFilter = {
 export type PageBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -1632,6 +1796,16 @@ export type PageBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<PageBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type PageBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type PageBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1643,7 +1817,7 @@ export type PageBlocksClassesPitchTextStyleFilter = {
 export type PageBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -1653,10 +1827,20 @@ export type PageBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<PageBlocksClassesPitchTextStyleFilter>;
 };
 
+export type PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type PageBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -1677,6 +1861,16 @@ export type PageBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<PageBlocksBlogFeedTextStyleFilter>;
 };
 
+export type PageBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type PageBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1687,7 +1881,7 @@ export type PageBlocksCtaBandTextStyleFilter = {
 
 export type PageBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -1713,6 +1907,16 @@ export type PageBlocksBigCtaFilter = {
   textStyle?: InputMaybe<PageBlocksBigCtaTextStyleFilter>;
 };
 
+export type PageBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<PageBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type PageBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1724,7 +1928,7 @@ export type PageBlocksNewsletterSignupTextStyleFilter = {
 export type PageBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<PageBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -1740,6 +1944,16 @@ export type PageBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type PageBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<PageBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type PageBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -1750,13 +1964,23 @@ export type PageBlocksDummyBookRequestTextStyleFilter = {
 
 export type PageBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PageBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type PageBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<PageBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type PageBlocksKofiSupportTextStyleFilter = {
@@ -1769,10 +1993,20 @@ export type PageBlocksKofiSupportTextStyleFilter = {
 
 export type PageBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PageBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<PageBlocksKofiSupportTextStyleFilter>;
+};
+
+export type PageBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<PageBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type PageBlocksReviewLinksLinksFilter = {
@@ -1791,7 +2025,7 @@ export type PageBlocksReviewLinksTextStyleFilter = {
 
 export type PageBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<PageBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<PageBlocksReviewLinksLinksFilter>;
@@ -1801,6 +2035,16 @@ export type PageBlocksReviewLinksFilter = {
 export type PageBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type PageBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PageBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<PageBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type PageBlocksSocialLinksLinksFilter = {
@@ -1819,7 +2063,7 @@ export type PageBlocksSocialLinksTextStyleFilter = {
 
 export type PageBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PageBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<PageBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<PageBlocksSocialLinksTextStyleFilter>;
 };
@@ -6047,6 +6291,16 @@ export type LandingPageLinkInBio = Node & Document & {
 
 export type LandingPage = LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio;
 
+export type LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksHomeHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6058,7 +6312,7 @@ export type LandingPageBlankBlocksHomeHeroTextStyleFilter = {
 export type LandingPageBlankBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -6066,6 +6320,16 @@ export type LandingPageBlankBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHomeHeroTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksAboutHeroTextStyleFilter = {
@@ -6079,7 +6343,7 @@ export type LandingPageBlankBlocksAboutHeroTextStyleFilter = {
 export type LandingPageBlankBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<LandingPageBlankBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -6094,6 +6358,16 @@ export type LandingPageBlankBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksAboutHeroTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6104,11 +6378,21 @@ export type LandingPageBlankBlocksHeroTextStyleFilter = {
 
 export type LandingPageBlankBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHeroTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksHeroSplitImageTextStyleFilter = {
@@ -6122,7 +6406,7 @@ export type LandingPageBlankBlocksHeroSplitImageTextStyleFilter = {
 export type LandingPageBlankBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -6132,6 +6416,16 @@ export type LandingPageBlankBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksHeroFullBleedTextStyleFilter = {
@@ -6145,13 +6439,23 @@ export type LandingPageBlankBlocksHeroFullBleedTextStyleFilter = {
 export type LandingPageBlankBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksHeroFloatingImagesImagesFilter = {
@@ -6171,13 +6475,23 @@ export type LandingPageBlankBlocksHeroFloatingImagesTextStyleFilter = {
 export type LandingPageBlankBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksHeroImageGridImagesFilter = {
@@ -6197,12 +6511,22 @@ export type LandingPageBlankBlocksHeroImageGridTextStyleFilter = {
 export type LandingPageBlankBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageBlankBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksPageHeaderTextStyleFilter = {
@@ -6215,8 +6539,18 @@ export type LandingPageBlankBlocksPageHeaderTextStyleFilter = {
 
 export type LandingPageBlankBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksPageHeaderTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksTextBodyContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksTextTextStyleFilter = {
@@ -6229,8 +6563,38 @@ export type LandingPageBlankBlocksTextTextStyleFilter = {
 
 export type LandingPageBlankBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageBlankBlocksTextBodyFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksTextTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type LandingPageBlankBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type LandingPageBlankBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksStoryTextStyleFilter = {
@@ -6245,9 +6609,9 @@ export type LandingPageBlankBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<LandingPageBlankBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<LandingPageBlankBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<LandingPageBlankBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksStoryTextStyleFilter>;
@@ -6284,10 +6648,20 @@ export type LandingPageBlankBlocksStatsRowFilter = {
   stats?: InputMaybe<LandingPageBlankBlocksStatsRowStatsFilter>;
 };
 
+export type LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type LandingPageBlankBlocksFeatureGridTextStyleFilter = {
@@ -6373,6 +6747,16 @@ export type LandingPageBlankBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksImageGalleryTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6388,7 +6772,7 @@ export type LandingPageBlankBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageBlankBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -6455,6 +6839,16 @@ export type LandingPageBlankBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -6471,13 +6865,23 @@ export type LandingPageBlankBlocksFeaturedBookTextStyleFilter = {
 export type LandingPageBlankBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<LandingPageBlankBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksFeaturedReleaseTextStyleFilter = {
@@ -6491,7 +6895,7 @@ export type LandingPageBlankBlocksFeaturedReleaseTextStyleFilter = {
 export type LandingPageBlankBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -6515,6 +6919,16 @@ export type LandingPageBlankBlocksProductStripFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksProductStripTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksShopCatalogTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6526,7 +6940,7 @@ export type LandingPageBlankBlocksShopCatalogTextStyleFilter = {
 export type LandingPageBlankBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -6585,6 +6999,16 @@ export type LandingPageBlankBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6596,7 +7020,7 @@ export type LandingPageBlankBlocksClassesPitchTextStyleFilter = {
 export type LandingPageBlankBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -6606,10 +7030,20 @@ export type LandingPageBlankBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksClassesPitchTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -6630,6 +7064,16 @@ export type LandingPageBlankBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksBlogFeedTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6640,7 +7084,7 @@ export type LandingPageBlankBlocksCtaBandTextStyleFilter = {
 
 export type LandingPageBlankBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -6666,6 +7110,16 @@ export type LandingPageBlankBlocksBigCtaFilter = {
   textStyle?: InputMaybe<LandingPageBlankBlocksBigCtaTextStyleFilter>;
 };
 
+export type LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6677,7 +7131,7 @@ export type LandingPageBlankBlocksNewsletterSignupTextStyleFilter = {
 export type LandingPageBlankBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageBlankBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -6693,6 +7147,16 @@ export type LandingPageBlankBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type LandingPageBlankBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6703,13 +7167,23 @@ export type LandingPageBlankBlocksDummyBookRequestTextStyleFilter = {
 
 export type LandingPageBlankBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageBlankBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksKofiSupportTextStyleFilter = {
@@ -6722,10 +7196,20 @@ export type LandingPageBlankBlocksKofiSupportTextStyleFilter = {
 
 export type LandingPageBlankBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageBlankBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksKofiSupportTextStyleFilter>;
+};
+
+export type LandingPageBlankBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksReviewLinksLinksFilter = {
@@ -6744,7 +7228,7 @@ export type LandingPageBlankBlocksReviewLinksTextStyleFilter = {
 
 export type LandingPageBlankBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<LandingPageBlankBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<LandingPageBlankBlocksReviewLinksLinksFilter>;
@@ -6754,6 +7238,16 @@ export type LandingPageBlankBlocksReviewLinksFilter = {
 export type LandingPageBlankBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageBlankBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageBlankBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageBlankBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type LandingPageBlankBlocksSocialLinksLinksFilter = {
@@ -6772,7 +7266,7 @@ export type LandingPageBlankBlocksSocialLinksTextStyleFilter = {
 
 export type LandingPageBlankBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageBlankBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<LandingPageBlankBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<LandingPageBlankBlocksSocialLinksTextStyleFilter>;
 };
@@ -6825,6 +7319,16 @@ export type LandingPageBlankFilter = {
   blocks?: InputMaybe<LandingPageBlankBlocksFilter>;
 };
 
+export type LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksHomeHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6836,7 +7340,7 @@ export type LandingPageEventBlocksHomeHeroTextStyleFilter = {
 export type LandingPageEventBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -6844,6 +7348,16 @@ export type LandingPageEventBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHomeHeroTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksAboutHeroTextStyleFilter = {
@@ -6857,7 +7371,7 @@ export type LandingPageEventBlocksAboutHeroTextStyleFilter = {
 export type LandingPageEventBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<LandingPageEventBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -6872,6 +7386,16 @@ export type LandingPageEventBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksAboutHeroTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -6882,11 +7406,21 @@ export type LandingPageEventBlocksHeroTextStyleFilter = {
 
 export type LandingPageEventBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHeroTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksHeroSplitImageTextStyleFilter = {
@@ -6900,7 +7434,7 @@ export type LandingPageEventBlocksHeroSplitImageTextStyleFilter = {
 export type LandingPageEventBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -6910,6 +7444,16 @@ export type LandingPageEventBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksHeroFullBleedTextStyleFilter = {
@@ -6923,13 +7467,23 @@ export type LandingPageEventBlocksHeroFullBleedTextStyleFilter = {
 export type LandingPageEventBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksHeroFloatingImagesImagesFilter = {
@@ -6949,13 +7503,23 @@ export type LandingPageEventBlocksHeroFloatingImagesTextStyleFilter = {
 export type LandingPageEventBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksHeroImageGridImagesFilter = {
@@ -6975,12 +7539,22 @@ export type LandingPageEventBlocksHeroImageGridTextStyleFilter = {
 export type LandingPageEventBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageEventBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksPageHeaderTextStyleFilter = {
@@ -6993,8 +7567,18 @@ export type LandingPageEventBlocksPageHeaderTextStyleFilter = {
 
 export type LandingPageEventBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksPageHeaderTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksTextBodyContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksTextTextStyleFilter = {
@@ -7007,8 +7591,38 @@ export type LandingPageEventBlocksTextTextStyleFilter = {
 
 export type LandingPageEventBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageEventBlocksTextBodyFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksTextTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type LandingPageEventBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type LandingPageEventBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksStoryTextStyleFilter = {
@@ -7023,9 +7637,9 @@ export type LandingPageEventBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<LandingPageEventBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<LandingPageEventBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<LandingPageEventBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksStoryTextStyleFilter>;
@@ -7062,10 +7676,20 @@ export type LandingPageEventBlocksStatsRowFilter = {
   stats?: InputMaybe<LandingPageEventBlocksStatsRowStatsFilter>;
 };
 
+export type LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type LandingPageEventBlocksFeatureGridTextStyleFilter = {
@@ -7151,6 +7775,16 @@ export type LandingPageEventBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksImageGalleryTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7166,7 +7800,7 @@ export type LandingPageEventBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageEventBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -7233,6 +7867,16 @@ export type LandingPageEventBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -7249,13 +7893,23 @@ export type LandingPageEventBlocksFeaturedBookTextStyleFilter = {
 export type LandingPageEventBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<LandingPageEventBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksFeaturedReleaseTextStyleFilter = {
@@ -7269,7 +7923,7 @@ export type LandingPageEventBlocksFeaturedReleaseTextStyleFilter = {
 export type LandingPageEventBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -7293,6 +7947,16 @@ export type LandingPageEventBlocksProductStripFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksProductStripTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksShopCatalogTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7304,7 +7968,7 @@ export type LandingPageEventBlocksShopCatalogTextStyleFilter = {
 export type LandingPageEventBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -7363,6 +8027,16 @@ export type LandingPageEventBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7374,7 +8048,7 @@ export type LandingPageEventBlocksClassesPitchTextStyleFilter = {
 export type LandingPageEventBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -7384,10 +8058,20 @@ export type LandingPageEventBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksClassesPitchTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -7408,6 +8092,16 @@ export type LandingPageEventBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksBlogFeedTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7418,7 +8112,7 @@ export type LandingPageEventBlocksCtaBandTextStyleFilter = {
 
 export type LandingPageEventBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -7444,6 +8138,16 @@ export type LandingPageEventBlocksBigCtaFilter = {
   textStyle?: InputMaybe<LandingPageEventBlocksBigCtaTextStyleFilter>;
 };
 
+export type LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7455,7 +8159,7 @@ export type LandingPageEventBlocksNewsletterSignupTextStyleFilter = {
 export type LandingPageEventBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageEventBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -7471,6 +8175,16 @@ export type LandingPageEventBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type LandingPageEventBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7481,13 +8195,23 @@ export type LandingPageEventBlocksDummyBookRequestTextStyleFilter = {
 
 export type LandingPageEventBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageEventBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksKofiSupportTextStyleFilter = {
@@ -7500,10 +8224,20 @@ export type LandingPageEventBlocksKofiSupportTextStyleFilter = {
 
 export type LandingPageEventBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageEventBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksKofiSupportTextStyleFilter>;
+};
+
+export type LandingPageEventBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksReviewLinksLinksFilter = {
@@ -7522,7 +8256,7 @@ export type LandingPageEventBlocksReviewLinksTextStyleFilter = {
 
 export type LandingPageEventBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<LandingPageEventBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<LandingPageEventBlocksReviewLinksLinksFilter>;
@@ -7532,6 +8266,16 @@ export type LandingPageEventBlocksReviewLinksFilter = {
 export type LandingPageEventBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageEventBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageEventBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageEventBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type LandingPageEventBlocksSocialLinksLinksFilter = {
@@ -7550,7 +8294,7 @@ export type LandingPageEventBlocksSocialLinksTextStyleFilter = {
 
 export type LandingPageEventBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageEventBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<LandingPageEventBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<LandingPageEventBlocksSocialLinksTextStyleFilter>;
 };
@@ -7603,6 +8347,16 @@ export type LandingPageEventFilter = {
   blocks?: InputMaybe<LandingPageEventBlocksFilter>;
 };
 
+export type LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksHomeHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7614,7 +8368,7 @@ export type LandingPagePromoBlocksHomeHeroTextStyleFilter = {
 export type LandingPagePromoBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -7622,6 +8376,16 @@ export type LandingPagePromoBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHomeHeroTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksAboutHeroTextStyleFilter = {
@@ -7635,7 +8399,7 @@ export type LandingPagePromoBlocksAboutHeroTextStyleFilter = {
 export type LandingPagePromoBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<LandingPagePromoBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -7650,6 +8414,16 @@ export type LandingPagePromoBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksAboutHeroTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7660,11 +8434,21 @@ export type LandingPagePromoBlocksHeroTextStyleFilter = {
 
 export type LandingPagePromoBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHeroTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksHeroSplitImageTextStyleFilter = {
@@ -7678,7 +8462,7 @@ export type LandingPagePromoBlocksHeroSplitImageTextStyleFilter = {
 export type LandingPagePromoBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -7688,6 +8472,16 @@ export type LandingPagePromoBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksHeroFullBleedTextStyleFilter = {
@@ -7701,13 +8495,23 @@ export type LandingPagePromoBlocksHeroFullBleedTextStyleFilter = {
 export type LandingPagePromoBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksHeroFloatingImagesImagesFilter = {
@@ -7727,13 +8531,23 @@ export type LandingPagePromoBlocksHeroFloatingImagesTextStyleFilter = {
 export type LandingPagePromoBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksHeroImageGridImagesFilter = {
@@ -7753,12 +8567,22 @@ export type LandingPagePromoBlocksHeroImageGridTextStyleFilter = {
 export type LandingPagePromoBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPagePromoBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksPageHeaderTextStyleFilter = {
@@ -7771,8 +8595,18 @@ export type LandingPagePromoBlocksPageHeaderTextStyleFilter = {
 
 export type LandingPagePromoBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksPageHeaderTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksTextBodyContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksTextTextStyleFilter = {
@@ -7785,8 +8619,38 @@ export type LandingPagePromoBlocksTextTextStyleFilter = {
 
 export type LandingPagePromoBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPagePromoBlocksTextBodyFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksTextTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type LandingPagePromoBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type LandingPagePromoBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksStoryTextStyleFilter = {
@@ -7801,9 +8665,9 @@ export type LandingPagePromoBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<LandingPagePromoBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<LandingPagePromoBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<LandingPagePromoBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksStoryTextStyleFilter>;
@@ -7840,10 +8704,20 @@ export type LandingPagePromoBlocksStatsRowFilter = {
   stats?: InputMaybe<LandingPagePromoBlocksStatsRowStatsFilter>;
 };
 
+export type LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type LandingPagePromoBlocksFeatureGridTextStyleFilter = {
@@ -7929,6 +8803,16 @@ export type LandingPagePromoBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksImageGalleryTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -7944,7 +8828,7 @@ export type LandingPagePromoBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPagePromoBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -8011,6 +8895,16 @@ export type LandingPagePromoBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -8027,13 +8921,23 @@ export type LandingPagePromoBlocksFeaturedBookTextStyleFilter = {
 export type LandingPagePromoBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<LandingPagePromoBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksFeaturedReleaseTextStyleFilter = {
@@ -8047,7 +8951,7 @@ export type LandingPagePromoBlocksFeaturedReleaseTextStyleFilter = {
 export type LandingPagePromoBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -8071,6 +8975,16 @@ export type LandingPagePromoBlocksProductStripFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksProductStripTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksShopCatalogTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8082,7 +8996,7 @@ export type LandingPagePromoBlocksShopCatalogTextStyleFilter = {
 export type LandingPagePromoBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -8141,6 +9055,16 @@ export type LandingPagePromoBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8152,7 +9076,7 @@ export type LandingPagePromoBlocksClassesPitchTextStyleFilter = {
 export type LandingPagePromoBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -8162,10 +9086,20 @@ export type LandingPagePromoBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksClassesPitchTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -8186,6 +9120,16 @@ export type LandingPagePromoBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksBlogFeedTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8196,7 +9140,7 @@ export type LandingPagePromoBlocksCtaBandTextStyleFilter = {
 
 export type LandingPagePromoBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -8222,6 +9166,16 @@ export type LandingPagePromoBlocksBigCtaFilter = {
   textStyle?: InputMaybe<LandingPagePromoBlocksBigCtaTextStyleFilter>;
 };
 
+export type LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8233,7 +9187,7 @@ export type LandingPagePromoBlocksNewsletterSignupTextStyleFilter = {
 export type LandingPagePromoBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPagePromoBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -8249,6 +9203,16 @@ export type LandingPagePromoBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type LandingPagePromoBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8259,13 +9223,23 @@ export type LandingPagePromoBlocksDummyBookRequestTextStyleFilter = {
 
 export type LandingPagePromoBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPagePromoBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksKofiSupportTextStyleFilter = {
@@ -8278,10 +9252,20 @@ export type LandingPagePromoBlocksKofiSupportTextStyleFilter = {
 
 export type LandingPagePromoBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPagePromoBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksKofiSupportTextStyleFilter>;
+};
+
+export type LandingPagePromoBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksReviewLinksLinksFilter = {
@@ -8300,7 +9284,7 @@ export type LandingPagePromoBlocksReviewLinksTextStyleFilter = {
 
 export type LandingPagePromoBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<LandingPagePromoBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<LandingPagePromoBlocksReviewLinksLinksFilter>;
@@ -8310,6 +9294,16 @@ export type LandingPagePromoBlocksReviewLinksFilter = {
 export type LandingPagePromoBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPagePromoBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPagePromoBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<LandingPagePromoBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type LandingPagePromoBlocksSocialLinksLinksFilter = {
@@ -8328,7 +9322,7 @@ export type LandingPagePromoBlocksSocialLinksTextStyleFilter = {
 
 export type LandingPagePromoBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPagePromoBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<LandingPagePromoBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<LandingPagePromoBlocksSocialLinksTextStyleFilter>;
 };
@@ -8381,6 +9375,16 @@ export type LandingPagePromoFilter = {
   blocks?: InputMaybe<LandingPagePromoBlocksFilter>;
 };
 
+export type LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksHomeHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8392,7 +9396,7 @@ export type LandingPageInfoBlocksHomeHeroTextStyleFilter = {
 export type LandingPageInfoBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -8400,6 +9404,16 @@ export type LandingPageInfoBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHomeHeroTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksAboutHeroTextStyleFilter = {
@@ -8413,7 +9427,7 @@ export type LandingPageInfoBlocksAboutHeroTextStyleFilter = {
 export type LandingPageInfoBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<LandingPageInfoBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -8428,6 +9442,16 @@ export type LandingPageInfoBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksAboutHeroTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8438,11 +9462,21 @@ export type LandingPageInfoBlocksHeroTextStyleFilter = {
 
 export type LandingPageInfoBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHeroTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksHeroSplitImageTextStyleFilter = {
@@ -8456,7 +9490,7 @@ export type LandingPageInfoBlocksHeroSplitImageTextStyleFilter = {
 export type LandingPageInfoBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -8466,6 +9500,16 @@ export type LandingPageInfoBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksHeroFullBleedTextStyleFilter = {
@@ -8479,13 +9523,23 @@ export type LandingPageInfoBlocksHeroFullBleedTextStyleFilter = {
 export type LandingPageInfoBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksHeroFloatingImagesImagesFilter = {
@@ -8505,13 +9559,23 @@ export type LandingPageInfoBlocksHeroFloatingImagesTextStyleFilter = {
 export type LandingPageInfoBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksHeroImageGridImagesFilter = {
@@ -8531,12 +9595,22 @@ export type LandingPageInfoBlocksHeroImageGridTextStyleFilter = {
 export type LandingPageInfoBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageInfoBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksPageHeaderTextStyleFilter = {
@@ -8549,8 +9623,18 @@ export type LandingPageInfoBlocksPageHeaderTextStyleFilter = {
 
 export type LandingPageInfoBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksPageHeaderTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksTextBodyContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksTextTextStyleFilter = {
@@ -8563,8 +9647,38 @@ export type LandingPageInfoBlocksTextTextStyleFilter = {
 
 export type LandingPageInfoBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageInfoBlocksTextBodyFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksTextTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type LandingPageInfoBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type LandingPageInfoBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksStoryTextStyleFilter = {
@@ -8579,9 +9693,9 @@ export type LandingPageInfoBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<LandingPageInfoBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<LandingPageInfoBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<LandingPageInfoBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksStoryTextStyleFilter>;
@@ -8618,10 +9732,20 @@ export type LandingPageInfoBlocksStatsRowFilter = {
   stats?: InputMaybe<LandingPageInfoBlocksStatsRowStatsFilter>;
 };
 
+export type LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type LandingPageInfoBlocksFeatureGridTextStyleFilter = {
@@ -8707,6 +9831,16 @@ export type LandingPageInfoBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksImageGalleryTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8722,7 +9856,7 @@ export type LandingPageInfoBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageInfoBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -8789,6 +9923,16 @@ export type LandingPageInfoBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -8805,13 +9949,23 @@ export type LandingPageInfoBlocksFeaturedBookTextStyleFilter = {
 export type LandingPageInfoBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<LandingPageInfoBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksFeaturedReleaseTextStyleFilter = {
@@ -8825,7 +9979,7 @@ export type LandingPageInfoBlocksFeaturedReleaseTextStyleFilter = {
 export type LandingPageInfoBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -8849,6 +10003,16 @@ export type LandingPageInfoBlocksProductStripFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksProductStripTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksShopCatalogTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8860,7 +10024,7 @@ export type LandingPageInfoBlocksShopCatalogTextStyleFilter = {
 export type LandingPageInfoBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -8919,6 +10083,16 @@ export type LandingPageInfoBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8930,7 +10104,7 @@ export type LandingPageInfoBlocksClassesPitchTextStyleFilter = {
 export type LandingPageInfoBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -8940,10 +10114,20 @@ export type LandingPageInfoBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksClassesPitchTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -8964,6 +10148,16 @@ export type LandingPageInfoBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksBlogFeedTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -8974,7 +10168,7 @@ export type LandingPageInfoBlocksCtaBandTextStyleFilter = {
 
 export type LandingPageInfoBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -9000,6 +10194,16 @@ export type LandingPageInfoBlocksBigCtaFilter = {
   textStyle?: InputMaybe<LandingPageInfoBlocksBigCtaTextStyleFilter>;
 };
 
+export type LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9011,7 +10215,7 @@ export type LandingPageInfoBlocksNewsletterSignupTextStyleFilter = {
 export type LandingPageInfoBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageInfoBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -9027,6 +10231,16 @@ export type LandingPageInfoBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type LandingPageInfoBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9037,13 +10251,23 @@ export type LandingPageInfoBlocksDummyBookRequestTextStyleFilter = {
 
 export type LandingPageInfoBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageInfoBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksKofiSupportTextStyleFilter = {
@@ -9056,10 +10280,20 @@ export type LandingPageInfoBlocksKofiSupportTextStyleFilter = {
 
 export type LandingPageInfoBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageInfoBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksKofiSupportTextStyleFilter>;
+};
+
+export type LandingPageInfoBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksReviewLinksLinksFilter = {
@@ -9078,7 +10312,7 @@ export type LandingPageInfoBlocksReviewLinksTextStyleFilter = {
 
 export type LandingPageInfoBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<LandingPageInfoBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<LandingPageInfoBlocksReviewLinksLinksFilter>;
@@ -9088,6 +10322,16 @@ export type LandingPageInfoBlocksReviewLinksFilter = {
 export type LandingPageInfoBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageInfoBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageInfoBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageInfoBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type LandingPageInfoBlocksSocialLinksLinksFilter = {
@@ -9106,7 +10350,7 @@ export type LandingPageInfoBlocksSocialLinksTextStyleFilter = {
 
 export type LandingPageInfoBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageInfoBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<LandingPageInfoBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<LandingPageInfoBlocksSocialLinksTextStyleFilter>;
 };
@@ -9159,6 +10403,16 @@ export type LandingPageInfoFilter = {
   blocks?: InputMaybe<LandingPageInfoBlocksFilter>;
 };
 
+export type LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHomeHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksHomeHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9170,7 +10424,7 @@ export type LandingPageLinkInBioBlocksHomeHeroTextStyleFilter = {
 export type LandingPageLinkInBioBlocksHomeHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroSubheadingFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -9178,6 +10432,16 @@ export type LandingPageLinkInBioBlocksHomeHeroFilter = {
   metaLine?: InputMaybe<StringFilter>;
   marqueeItems?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHomeHeroTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksAboutHeroLeadTextFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksAboutHeroTextStyleFilter = {
@@ -9191,7 +10455,7 @@ export type LandingPageLinkInBioBlocksAboutHeroTextStyleFilter = {
 export type LandingPageLinkInBioBlocksAboutHeroFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  leadText?: InputMaybe<RichTextFilter>;
+  leadText?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroLeadTextFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
@@ -9206,6 +10470,16 @@ export type LandingPageLinkInBioBlocksAboutHeroFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksAboutHeroTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksHeroTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9216,11 +10490,21 @@ export type LandingPageLinkInBioBlocksHeroTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksHeroFilter = {
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHeroSubheadingFilter>;
   backgroundImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHeroTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroSplitImageSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter = {
@@ -9234,7 +10518,7 @@ export type LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter = {
 export type LandingPageLinkInBioBlocksHeroSplitImageFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHeroSplitImageSubheadingFilter>;
   featuredImage?: InputMaybe<ImageFilter>;
   imageAlt?: InputMaybe<StringFilter>;
   imageCaption?: InputMaybe<StringFilter>;
@@ -9244,6 +10528,16 @@ export type LandingPageLinkInBioBlocksHeroSplitImageFilter = {
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFullBleedSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter = {
@@ -9257,13 +10551,23 @@ export type LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter = {
 export type LandingPageLinkInBioBlocksHeroFullBleedFilter = {
   backgroundImage?: InputMaybe<ImageFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHeroFullBleedSubheadingFilter>;
   overlay?: InputMaybe<StringFilter>;
   textAlign?: InputMaybe<StringFilter>;
   minHeight?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter = {
@@ -9283,13 +10587,23 @@ export type LandingPageLinkInBioBlocksHeroFloatingImagesTextStyleFilter = {
 export type LandingPageLinkInBioBlocksHeroFloatingImagesFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingFilter>;
   images?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter>;
   ctaPrimary?: InputMaybe<StringFilter>;
   ctaPrimaryLink?: InputMaybe<StringFilter>;
   ctaSecondary?: InputMaybe<StringFilter>;
   ctaSecondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHeroFloatingImagesTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksHeroImageGridSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksHeroImageGridImagesFilter = {
@@ -9309,12 +10623,22 @@ export type LandingPageLinkInBioBlocksHeroImageGridTextStyleFilter = {
 export type LandingPageLinkInBioBlocksHeroImageGridFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridSubheadingFilter>;
   layout?: InputMaybe<StringFilter>;
   images?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridImagesFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksHeroImageGridTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksPageHeaderDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksPageHeaderTextStyleFilter = {
@@ -9327,8 +10651,18 @@ export type LandingPageLinkInBioBlocksPageHeaderTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksPageHeaderFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderDescriptionFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksPageHeaderTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksTextBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksTextBodyContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksTextTextStyleFilter = {
@@ -9341,8 +10675,38 @@ export type LandingPageLinkInBioBlocksTextTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageLinkInBioBlocksTextBodyFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksTextTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryParagraph1Filter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryQuoteFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksStoryParagraph2Filter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksStoryTextStyleFilter = {
@@ -9357,9 +10721,9 @@ export type LandingPageLinkInBioBlocksStoryFilter = {
   number?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  paragraph1?: InputMaybe<RichTextFilter>;
-  quote?: InputMaybe<RichTextFilter>;
-  paragraph2?: InputMaybe<RichTextFilter>;
+  paragraph1?: InputMaybe<LandingPageLinkInBioBlocksStoryParagraph1Filter>;
+  quote?: InputMaybe<LandingPageLinkInBioBlocksStoryQuoteFilter>;
+  paragraph2?: InputMaybe<LandingPageLinkInBioBlocksStoryParagraph2Filter>;
   sideImage?: InputMaybe<ImageFilter>;
   sideCaption?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksStoryTextStyleFilter>;
@@ -9396,10 +10760,20 @@ export type LandingPageLinkInBioBlocksStatsRowFilter = {
   stats?: InputMaybe<LandingPageLinkInBioBlocksStatsRowStatsFilter>;
 };
 
+export type LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeatureGridItemsDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksFeatureGridItemsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksFeatureGridItemsDescriptionFilter>;
 };
 
 export type LandingPageLinkInBioBlocksFeatureGridTextStyleFilter = {
@@ -9485,6 +10859,16 @@ export type LandingPageLinkInBioBlocksImageGalleryFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksImageGalleryTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksImageSpotlightBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksImageSpotlightTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9500,7 +10884,7 @@ export type LandingPageLinkInBioBlocksImageSpotlightFilter = {
   alt?: InputMaybe<StringFilter>;
   caption?: InputMaybe<StringFilter>;
   aspect?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageLinkInBioBlocksImageSpotlightBodyFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksImageSpotlightTextStyleFilter>;
 };
 
@@ -9567,6 +10951,16 @@ export type LandingPageLinkInBioBlocksVideoEmbedFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksVideoEmbedTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedBookDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksFeaturedBookStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -9583,13 +10977,23 @@ export type LandingPageLinkInBioBlocksFeaturedBookTextStyleFilter = {
 export type LandingPageLinkInBioBlocksFeaturedBookFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookDescriptionFilter>;
   stats?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookStatsFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   secondaryLabel?: InputMaybe<StringFilter>;
   secondaryLink?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksFeaturedBookTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksFeaturedReleaseDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksFeaturedReleaseTextStyleFilter = {
@@ -9603,7 +11007,7 @@ export type LandingPageLinkInBioBlocksFeaturedReleaseTextStyleFilter = {
 export type LandingPageLinkInBioBlocksFeaturedReleaseFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksFeaturedReleaseDescriptionFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   backCoverImage?: InputMaybe<ImageFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -9627,6 +11031,16 @@ export type LandingPageLinkInBioBlocksProductStripFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksProductStripTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksShopCatalogDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksShopCatalogTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9638,7 +11052,7 @@ export type LandingPageLinkInBioBlocksShopCatalogTextStyleFilter = {
 export type LandingPageLinkInBioBlocksShopCatalogFilter = {
   heading?: InputMaybe<StringFilter>;
   highlightText?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksShopCatalogDescriptionFilter>;
   showFeaturedBanner?: InputMaybe<BooleanFilter>;
   emptyHeading?: InputMaybe<StringFilter>;
   emptyDescription?: InputMaybe<StringFilter>;
@@ -9697,6 +11111,16 @@ export type LandingPageLinkInBioBlocksTutorialsStripFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksClassesPitchSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksClassesPitchTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9708,7 +11132,7 @@ export type LandingPageLinkInBioBlocksClassesPitchTextStyleFilter = {
 export type LandingPageLinkInBioBlocksClassesPitchFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksClassesPitchSubheadingFilter>;
   bullets?: InputMaybe<StringFilter>;
   metaTags?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
@@ -9718,10 +11142,20 @@ export type LandingPageLinkInBioBlocksClassesPitchFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksClassesPitchTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksBlogFeedNewsletterFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -9742,6 +11176,16 @@ export type LandingPageLinkInBioBlocksBlogFeedFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksBlogFeedTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksCtaBandTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9752,7 +11196,7 @@ export type LandingPageLinkInBioBlocksCtaBandTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -9778,6 +11222,16 @@ export type LandingPageLinkInBioBlocksBigCtaFilter = {
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksBigCtaTextStyleFilter>;
 };
 
+export type LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksNewsletterSignupSubheadingFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksNewsletterSignupTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9789,7 +11243,7 @@ export type LandingPageLinkInBioBlocksNewsletterSignupTextStyleFilter = {
 export type LandingPageLinkInBioBlocksNewsletterSignupFilter = {
   eyebrow?: InputMaybe<StringFilter>;
   heading?: InputMaybe<StringFilter>;
-  subheading?: InputMaybe<RichTextFilter>;
+  subheading?: InputMaybe<LandingPageLinkInBioBlocksNewsletterSignupSubheadingFilter>;
   placeholderText?: InputMaybe<StringFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   privacyNote?: InputMaybe<StringFilter>;
@@ -9805,6 +11259,16 @@ export type LandingPageLinkInBioBlocksContactFormFilter = {
   submitLabel?: InputMaybe<StringFilter>;
 };
 
+export type LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksDummyBookRequestDescriptionFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter>;
+};
+
 export type LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -9815,13 +11279,23 @@ export type LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksDummyBookRequestFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<LandingPageLinkInBioBlocksDummyBookRequestDescriptionFilter>;
   pdfUrl?: InputMaybe<StringFilter>;
   submitLabel?: InputMaybe<StringFilter>;
   successHeading?: InputMaybe<StringFilter>;
   successNote?: InputMaybe<StringFilter>;
   downloadLabel?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksKofiSupportBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksKofiSupportTextStyleFilter = {
@@ -9834,10 +11308,20 @@ export type LandingPageLinkInBioBlocksKofiSupportTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksKofiSupportFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportBodyFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksKofiSupportTextStyleFilter>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksReviewLinksIntroFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksReviewLinksLinksFilter = {
@@ -9856,7 +11340,7 @@ export type LandingPageLinkInBioBlocksReviewLinksTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksReviewLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  intro?: InputMaybe<RichTextFilter>;
+  intro?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksIntroFilter>;
   thankYou?: InputMaybe<StringFilter>;
   ctaHeading?: InputMaybe<StringFilter>;
   links?: InputMaybe<LandingPageLinkInBioBlocksReviewLinksLinksFilter>;
@@ -9866,6 +11350,16 @@ export type LandingPageLinkInBioBlocksReviewLinksFilter = {
 export type LandingPageLinkInBioBlocksMarqueeFilter = {
   highlightText?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type LandingPageLinkInBioBlocksSocialLinksBodyFilter = {
+  ContentLink?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter>;
 };
 
 export type LandingPageLinkInBioBlocksSocialLinksLinksFilter = {
@@ -9884,7 +11378,7 @@ export type LandingPageLinkInBioBlocksSocialLinksTextStyleFilter = {
 
 export type LandingPageLinkInBioBlocksSocialLinksFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksBodyFilter>;
   links?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksLinksFilter>;
   textStyle?: InputMaybe<LandingPageLinkInBioBlocksSocialLinksTextStyleFilter>;
 };
@@ -10113,6 +11607,16 @@ export type Post = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
+export type PostExcerptContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PostExcerptFilter = {
+  ContentLink?: InputMaybe<PostExcerptContentLinkFilter>;
+};
+
 export type DatetimeFilter = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -10127,6 +11631,16 @@ export type PostSectionsHeadingFilter = {
   level?: InputMaybe<StringFilter>;
 };
 
+export type PostSectionsTextBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PostSectionsTextBodyFilter = {
+  ContentLink?: InputMaybe<PostSectionsTextBodyContentLinkFilter>;
+};
+
 export type PostSectionsTextTextStyleFilter = {
   headingSize?: InputMaybe<StringFilter>;
   headingType?: InputMaybe<StringFilter>;
@@ -10137,7 +11651,7 @@ export type PostSectionsTextTextStyleFilter = {
 
 export type PostSectionsTextFilter = {
   heading?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PostSectionsTextBodyFilter>;
   textStyle?: InputMaybe<PostSectionsTextTextStyleFilter>;
 };
 
@@ -10219,10 +11733,30 @@ export type PostSectionsVideoEmbedFilter = {
   textStyle?: InputMaybe<PostSectionsVideoEmbedTextStyleFilter>;
 };
 
+export type PostSectionsCalloutBodyContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PostSectionsCalloutBodyFilter = {
+  ContentLink?: InputMaybe<PostSectionsCalloutBodyContentLinkFilter>;
+};
+
 export type PostSectionsCalloutFilter = {
   title?: InputMaybe<StringFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<PostSectionsCalloutBodyFilter>;
   tone?: InputMaybe<StringFilter>;
+};
+
+export type PostSectionsCtaBandDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type PostSectionsCtaBandDescriptionFilter = {
+  ContentLink?: InputMaybe<PostSectionsCtaBandDescriptionContentLinkFilter>;
 };
 
 export type PostSectionsCtaBandTextStyleFilter = {
@@ -10235,7 +11769,7 @@ export type PostSectionsCtaBandTextStyleFilter = {
 
 export type PostSectionsCtaBandFilter = {
   heading?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<PostSectionsCtaBandDescriptionFilter>;
   ctaLabel?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
   variant?: InputMaybe<StringFilter>;
@@ -10257,7 +11791,7 @@ export type PostSectionsFilter = {
 
 export type PostFilter = {
   title?: InputMaybe<StringFilter>;
-  excerpt?: InputMaybe<RichTextFilter>;
+  excerpt?: InputMaybe<PostExcerptFilter>;
   coverImage?: InputMaybe<ImageFilter>;
   publishedAt?: InputMaybe<DatetimeFilter>;
   tags?: InputMaybe<StringFilter>;
@@ -10305,6 +11839,16 @@ export type ShopProduct = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
+export type ShopProductDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type ShopProductDescriptionFilter = {
+  ContentLink?: InputMaybe<ShopProductDescriptionContentLinkFilter>;
+};
+
 export type NumberFilter = {
   lt?: InputMaybe<Scalars['Float']['input']>;
   lte?: InputMaybe<Scalars['Float']['input']>;
@@ -10322,7 +11866,7 @@ export type ShopProductGalleryImagesFilter = {
 
 export type ShopProductFilter = {
   name?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
+  description?: InputMaybe<ShopProductDescriptionFilter>;
   price?: InputMaybe<NumberFilter>;
   category?: InputMaybe<StringFilter>;
   image?: InputMaybe<ImageFilter>;

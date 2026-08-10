@@ -4,7 +4,6 @@ import { productImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile, type ArtTilePalette } from "@/components/site/ArtTile";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, isExternalLink } from "./block-utils";
-import { SidebarLabel } from "./SidebarLabel";
 import { sectionAlignStyle } from "./text-style";
 
 const CARD_PALETTES: ArtTilePalette[] = ["warm", "violet", "twilight"];
@@ -37,15 +36,8 @@ export default function CardRowBlock({ block }: Props) {
   return (
     <section className="py-20 lg:py-28">
       <div className="bq-container" style={sectionAlignStyle(block)}>
-        <div className="grid lg:grid-cols-[180px_1fr] gap-10 lg:gap-14">
-          <SidebarLabel
-            number={block.number as string | undefined}
-            label={(block.label as string) || ""}
-            numberField={tinaField(block, "number")}
-            labelField={tinaField(block, "label")}
-          />
-          <Reveal stagger>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Reveal stagger>
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {cards.map((card, i) => {
                 const palette = CARD_PALETTES[i % CARD_PALETTES.length];
                 const fallback = CARD_ART_FALLBACK[i % CARD_ART_FALLBACK.length];
@@ -138,7 +130,6 @@ export default function CardRowBlock({ block }: Props) {
               })}
             </div>
           </Reveal>
-        </div>
       </div>
     </section>
   );

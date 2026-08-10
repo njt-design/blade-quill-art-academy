@@ -1,14 +1,62 @@
 import type { Template, TinaField } from "tinacms";
 
-const INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"] as Array<
-    "bold" | "italic" | "link" | "ul" | "ol"
+/**
+ * Inline "Link" embed — Corinne inserts via Embed → Link, then toggles
+ * "Open in new tab". New-tab links render with a ↗ arrow on the site.
+ * (Tina's built-in link control has no target/_blank option.)
+ */
+export const RICH_TEXT_TEMPLATES = [
+  {
+    name: "ContentLink",
+    label: "Link",
+    inline: true,
+    fields: [
+      {
+        type: "string" as const,
+        name: "url",
+        label: "URL",
+        required: true,
+        ui: {
+          description:
+            "Site path (e.g. /shop) or full URL (e.g. https://…).",
+        },
+      },
+      {
+        type: "string" as const,
+        name: "text",
+        label: "Link Text",
+        required: true,
+        ui: { description: "The clickable words visitors see." },
+      },
+      {
+        type: "boolean" as const,
+        name: "openInNewTab",
+        label: "Open in new tab",
+        ui: {
+          description:
+            "Turn on for external sites or PDFs. Shows a small ↗ after the link text.",
+        },
+      },
+    ],
+    ui: {
+      defaultItem: {
+        url: "https://",
+        text: "Link text",
+        openInNewTab: false,
+      },
+    },
+  },
+];
+
+export const INLINE_RICH_TEXT = {
+  toolbar: ["bold", "italic", "embed", "ul", "ol"] as Array<
+    "bold" | "italic" | "embed" | "ul" | "ol"
   >,
   showFloatingToolbar: true,
 };
 
 /** JSON collections store Slate AST directly — skip markdown re-parsing. */
-const SLATE_JSON_PARSER = { type: "slatejson" as const };
+export const SLATE_JSON_PARSER = { type: "slatejson" as const };
 
 /**
  * Character-limit helper for text fields: shows "Max N characters" in the
@@ -190,6 +238,7 @@ export const heroBlock: Template = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Supporting text shown below the heading." },
     },
     {
@@ -236,7 +285,25 @@ export const textBlock: Template = {
       name: "body",
       label: "Body",
       parser: SLATE_JSON_PARSER,
-      ui: { description: "Rich text content. Supports headings, bold, links, images, and more." },
+      templates: RICH_TEXT_TEMPLATES,
+      overrides: {
+        toolbar: [
+          "heading",
+          "bold",
+          "italic",
+          "embed",
+          "ul",
+          "ol",
+          "quote",
+          "code",
+          "image",
+        ],
+        showFloatingToolbar: true,
+      },
+      ui: {
+        description:
+          "Rich text content. To add a link: Embed → Link. Toggle Open in new tab for external sites (shows ↗).",
+      },
     },
     ...textStyleFields(),
   ],
@@ -299,6 +366,7 @@ export const ctaBandBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Supporting line below the heading." },
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
@@ -394,6 +462,7 @@ export const featureGridBlock: Template = {
           label: "Description",
           overrides: INLINE_RICH_TEXT,
           parser: SLATE_JSON_PARSER,
+          templates: RICH_TEXT_TEMPLATES,
         },
       ],
     },
@@ -471,6 +540,7 @@ export const pageHeaderBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Introductory text shown below the heading." },
     },
     ...textStyleFields(),
@@ -517,6 +587,7 @@ export const homeHeroBlock: Template = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The sentence below the main heading." },
     },
     {
@@ -646,6 +717,7 @@ export const featuredBookBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "object",
@@ -704,6 +776,7 @@ export const classesPitchBlock: Template = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Shown inside the left panel of the classroom card." },
     },
     {
@@ -859,6 +932,7 @@ export const blogFeedBlock: Template = {
           label: "Description",
           overrides: INLINE_RICH_TEXT,
           parser: SLATE_JSON_PARSER,
+          templates: RICH_TEXT_TEMPLATES,
         },
         { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
         { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
@@ -889,6 +963,7 @@ export const newsletterSignupBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
     { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
@@ -932,6 +1007,7 @@ export const aboutHeroBlock: Template = {
       label: "Lead Text",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The introductory sentence below the heading. Keep it to 1-2 sentences." },
     },
     { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
@@ -1057,6 +1133,7 @@ export const storyBlock: Template = {
       label: "First Paragraph",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "rich-text",
@@ -1064,6 +1141,7 @@ export const storyBlock: Template = {
       label: "Pull Quote",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Shown as a large quote in a dark rounded panel between the paragraphs." },
     },
     {
@@ -1072,6 +1150,7 @@ export const storyBlock: Template = {
       label: "Second Paragraph",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "image",
@@ -1216,6 +1295,7 @@ export const shopCatalogBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "boolean",
@@ -1338,6 +1418,7 @@ export const dummyBookRequestBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Short text below the heading explaining the request." },
     },
     {
@@ -1434,6 +1515,7 @@ export const featuredReleaseBlock: Template = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "image",
@@ -1482,6 +1564,7 @@ export const kofiSupportBlock: Template = {
       label: "Body Text",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     { type: "string", name: "href", label: "Ko-fi URL" },
@@ -1514,6 +1597,7 @@ export const socialLinksBlock: Template = {
       label: "Body Text (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Short text under the heading (panel style only)." },
     },
     {
@@ -1573,6 +1657,7 @@ export const reviewLinksBlock: Template = {
       label: "Intro Text",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     { type: "string", name: "thankYou", label: "Thank You Message", ui: charLimit(80) },
     { type: "string", name: "ctaHeading", label: "Buttons Heading", ui: charLimit(80) },
@@ -1641,6 +1726,7 @@ export const heroSplitImageBlock: Template = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "image",
@@ -1708,6 +1794,7 @@ export const heroFullBleedBlock: Template = {
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "string",
@@ -1769,6 +1856,7 @@ export const heroFloatingImagesBlock: Template = {
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "object",
@@ -1812,6 +1900,7 @@ export const heroImageGridBlock: Template = {
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     {
       type: "string",
@@ -1882,6 +1971,7 @@ export const imageSpotlightBlock: Template = {
       label: "Body Text (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
     },
     ...textStyleFields(),
   ],

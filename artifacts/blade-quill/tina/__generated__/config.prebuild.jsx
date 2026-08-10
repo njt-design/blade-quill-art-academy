@@ -3,8 +3,48 @@ import React, { useEffect } from "react";
 import { defineConfig } from "tinacms";
 
 // tina/blocks.ts
+var RICH_TEXT_TEMPLATES = [
+  {
+    name: "ContentLink",
+    label: "Link",
+    inline: true,
+    fields: [
+      {
+        type: "string",
+        name: "url",
+        label: "URL",
+        required: true,
+        ui: {
+          description: "Site path (e.g. /shop) or full URL (e.g. https://\u2026)."
+        }
+      },
+      {
+        type: "string",
+        name: "text",
+        label: "Link Text",
+        required: true,
+        ui: { description: "The clickable words visitors see." }
+      },
+      {
+        type: "boolean",
+        name: "openInNewTab",
+        label: "Open in new tab",
+        ui: {
+          description: "Turn on for external sites or PDFs. Shows a small \u2197 after the link text."
+        }
+      }
+    ],
+    ui: {
+      defaultItem: {
+        url: "https://",
+        text: "Link text",
+        openInNewTab: false
+      }
+    }
+  }
+];
 var INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"],
+  toolbar: ["bold", "italic", "embed", "ul", "ol"],
   showFloatingToolbar: true
 };
 var SLATE_JSON_PARSER = { type: "slatejson" };
@@ -148,6 +188,7 @@ var heroBlock = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Supporting text shown below the heading." }
     },
     {
@@ -192,7 +233,24 @@ var textBlock = {
       name: "body",
       label: "Body",
       parser: SLATE_JSON_PARSER,
-      ui: { description: "Rich text content. Supports headings, bold, links, images, and more." }
+      templates: RICH_TEXT_TEMPLATES,
+      overrides: {
+        toolbar: [
+          "heading",
+          "bold",
+          "italic",
+          "embed",
+          "ul",
+          "ol",
+          "quote",
+          "code",
+          "image"
+        ],
+        showFloatingToolbar: true
+      },
+      ui: {
+        description: "Rich text content. To add a link: Embed \u2192 Link. Toggle Open in new tab for external sites (shows \u2197)."
+      }
     },
     ...textStyleFields()
   ]
@@ -253,6 +311,7 @@ var ctaBandBlock = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Supporting line below the heading." }
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
@@ -344,7 +403,8 @@ var featureGridBlock = {
           name: "description",
           label: "Description",
           overrides: INLINE_RICH_TEXT,
-          parser: SLATE_JSON_PARSER
+          parser: SLATE_JSON_PARSER,
+          templates: RICH_TEXT_TEMPLATES
         }
       ]
     },
@@ -420,6 +480,7 @@ var pageHeaderBlock = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Introductory text shown below the heading." }
     },
     ...textStyleFields()
@@ -461,6 +522,7 @@ var homeHeroBlock = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The sentence below the main heading." }
     },
     {
@@ -587,7 +649,8 @@ var featuredBookBlock = {
       name: "description",
       label: "Description",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "object",
@@ -645,6 +708,7 @@ var classesPitchBlock = {
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Shown inside the left panel of the classroom card." }
     },
     {
@@ -796,7 +860,8 @@ var blogFeedBlock = {
           name: "subheading",
           label: "Description",
           overrides: INLINE_RICH_TEXT,
-          parser: SLATE_JSON_PARSER
+          parser: SLATE_JSON_PARSER,
+          templates: RICH_TEXT_TEMPLATES
         },
         { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
         { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
@@ -825,7 +890,8 @@ var newsletterSignupBlock = {
       name: "subheading",
       label: "Description",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     { type: "string", name: "placeholderText", label: "Email Placeholder", ui: charLimit(32) },
     { type: "string", name: "ctaLabel", label: "Submit Button Label", ui: charLimit(24) },
@@ -864,6 +930,7 @@ var aboutHeroBlock = {
       label: "Lead Text",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The introductory sentence below the heading. Keep it to 1-2 sentences." }
     },
     { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
@@ -984,7 +1051,8 @@ var storyBlock = {
       name: "paragraph1",
       label: "First Paragraph",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "rich-text",
@@ -992,6 +1060,7 @@ var storyBlock = {
       label: "Pull Quote",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Shown as a large quote in a dark rounded panel between the paragraphs." }
     },
     {
@@ -999,7 +1068,8 @@ var storyBlock = {
       name: "paragraph2",
       label: "Second Paragraph",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "image",
@@ -1136,7 +1206,8 @@ var shopCatalogBlock = {
       name: "description",
       label: "Description",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "boolean",
@@ -1254,6 +1325,7 @@ var dummyBookRequestBlock = {
       label: "Description",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Short text below the heading explaining the request." }
     },
     {
@@ -1341,7 +1413,8 @@ var featuredReleaseBlock = {
       name: "description",
       label: "Description",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "image",
@@ -1388,7 +1461,8 @@ var kofiSupportBlock = {
       name: "body",
       label: "Body Text",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     { type: "string", name: "href", label: "Ko-fi URL" },
@@ -1420,6 +1494,7 @@ var socialLinksBlock = {
       label: "Body Text (optional)",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "Short text under the heading (panel style only)." }
     },
     {
@@ -1477,7 +1552,8 @@ var reviewLinksBlock = {
       name: "intro",
       label: "Intro Text",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     { type: "string", name: "thankYou", label: "Thank You Message", ui: charLimit(80) },
     { type: "string", name: "ctaHeading", label: "Buttons Heading", ui: charLimit(80) },
@@ -1540,7 +1616,8 @@ var heroSplitImageBlock = {
       name: "subheading",
       label: "Subheading",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "image",
@@ -1606,7 +1683,8 @@ var heroFullBleedBlock = {
       name: "subheading",
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "string",
@@ -1666,7 +1744,8 @@ var heroFloatingImagesBlock = {
       name: "subheading",
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "object",
@@ -1708,7 +1787,8 @@ var heroImageGridBlock = {
       name: "subheading",
       label: "Subheading (optional)",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     {
       type: "string",
@@ -1773,7 +1853,8 @@ var imageSpotlightBlock = {
       name: "body",
       label: "Body Text (optional)",
       overrides: INLINE_RICH_TEXT,
-      parser: SLATE_JSON_PARSER
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES
     },
     ...textStyleFields()
   ]
@@ -1907,11 +1988,6 @@ var ALL_BLOCKS = [
 ];
 
 // tina/blog-blocks.ts
-var INLINE_RICH_TEXT2 = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"],
-  showFloatingToolbar: true
-};
-var SLATE_JSON_PARSER2 = { type: "slatejson" };
 var rt2 = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
@@ -2082,8 +2158,9 @@ var blogCalloutBlock = {
       type: "rich-text",
       name: "body",
       label: "Body",
-      overrides: INLINE_RICH_TEXT2,
-      parser: SLATE_JSON_PARSER2,
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The callout content. Keep it short." }
     },
     {
@@ -2323,11 +2400,6 @@ function InsightsScreenIcon() {
     React.createElement("path", { d: "M17 6v12" })
   );
 }
-var INLINE_RICH_TEXT3 = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"],
-  showFloatingToolbar: true
-};
-var SLATE_JSON_PARSER3 = { type: "slatejson" };
 var rt3 = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
@@ -2657,8 +2729,9 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "excerpt",
             label: "Excerpt",
-            overrides: INLINE_RICH_TEXT3,
-            parser: SLATE_JSON_PARSER3,
+            overrides: INLINE_RICH_TEXT,
+            parser: SLATE_JSON_PARSER,
+            templates: RICH_TEXT_TEMPLATES,
             ui: { description: "A 1-2 sentence summary shown on blog list cards." }
           },
           {
@@ -2735,8 +2808,9 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "description",
             label: "Description",
-            overrides: INLINE_RICH_TEXT3,
-            parser: SLATE_JSON_PARSER3,
+            overrides: INLINE_RICH_TEXT,
+            parser: SLATE_JSON_PARSER,
+            templates: RICH_TEXT_TEMPLATES,
             ui: {
               description: "Short description for shop cards and the product detail tab."
             }
@@ -2776,7 +2850,8 @@ var config_default = defineConfig({
             label: "Detail Page Thumbnails",
             list: true,
             ui: {
-              description: "Up to 5 images for the thumbnail strip under the large preview on the product detail page. Slot 1 falls back to Cover Image when this list is empty. Upload into images/products/.",
+              description: "Up to 4 extra images for the thumbnail strip under the large preview. Slot 1 is always the Cover Image; the first upload here becomes thumbnail 2. Upload into images/products/.",
+              max: 4,
               itemProps: (item) => ({
                 label: item?.alt || item?.src?.split("/").pop() || "Thumbnail"
               }),

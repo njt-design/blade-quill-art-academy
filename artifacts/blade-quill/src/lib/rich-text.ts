@@ -5,9 +5,11 @@ export type RichTextValue = {
 
 type RichTextNode = {
   type?: string;
+  name?: string;
   text?: string;
   bold?: boolean;
   italic?: boolean;
+  props?: { text?: string; url?: string; openInNewTab?: boolean };
   children?: RichTextNode[];
 };
 
@@ -25,6 +27,13 @@ function flattenInline(nodes: RichTextNode[] | undefined): string {
     .map((node) => {
       if (node.type === "text") return node.text ?? "";
       if (node.type === "break") return "\n";
+      if (
+        (node.type === "mdxJsxTextElement" ||
+          node.type === "mdxJsxFlowElement") &&
+        node.name === "ContentLink"
+      ) {
+        return node.props?.text ?? "";
+      }
       if (node.children?.length) return flattenInline(node.children);
       return "";
     })

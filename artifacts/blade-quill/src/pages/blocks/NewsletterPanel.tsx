@@ -28,7 +28,7 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
 
   return (
     <div
-      className="relative overflow-hidden p-6 sm:px-9 sm:py-10"
+      className="relative flex h-full min-h-0 flex-col overflow-hidden p-6 sm:px-9 sm:py-10"
       style={{
         background: "var(--g-ink)",
         color: "var(--paper)",
@@ -36,7 +36,10 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
         boxShadow: "var(--sh-lg)",
       }}
     >
-      <div className="relative" style={sectionAlignStyle(content)}>
+      <div
+        className="relative flex h-full min-h-0 flex-1 flex-col"
+        style={sectionAlignStyle(content)}
+      >
         <div
           className="eyebrow mb-4"
           style={{ color: "var(--gold)" }}
@@ -101,7 +104,7 @@ export function NewsletterPanel({ content }: { content: NewsletterContent }) {
         ) : null}
         {content.privacyNote ? (
           <div
-            className="mt-5"
+            className="mt-auto pt-8"
             style={{
               fontFamily: "var(--f-mono)",
               fontSize: 10,

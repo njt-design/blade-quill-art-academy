@@ -286,9 +286,9 @@ export default function ProductDetail() {
                     tinaDoc
                       ? tinaField(
                           tinaDoc,
-                          product.galleryImages.length > 0
-                            ? "galleryImages"
-                            : "image"
+                          thumb === 0 || !product.galleryImages[thumb - 1]
+                            ? "image"
+                            : "galleryImages"
                         )
                       : undefined
                   }

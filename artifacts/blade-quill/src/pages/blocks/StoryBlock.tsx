@@ -5,7 +5,6 @@ import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
-import { SidebarLabel } from "./SidebarLabel";
 import { SectionHeading, sectionAlignStyle } from "./text-style";
 
 const STUDIO_ART = galleryImageUrl("Landscape");
@@ -20,14 +19,8 @@ export default function StoryBlock({ block }: Props) {
   return (
     <section className="py-20 lg:py-28">
       <div className="bq-container">
-        <div className="grid lg:grid-cols-[180px_1fr_240px] gap-10 lg:gap-14 items-start">
-          <SidebarLabel
-            number={block.number as string | undefined}
-            label={(block.label as string) || "STORY"}
-            numberField={tinaField(block, "number")}
-            labelField={tinaField(block, "label")}
-          />
-          <div className="max-w-[640px]" style={sectionAlignStyle(block)}>
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 lg:flex-row lg:items-start lg:justify-center lg:gap-14">
+          <div className="w-full max-w-[640px]" style={sectionAlignStyle(block)}>
             {headingLines.length > 0 && (
               <Reveal>
                 <SectionHeading
@@ -109,7 +102,7 @@ export default function StoryBlock({ block }: Props) {
           </div>
 
           <div
-            className="hidden lg:block lg:sticky lg:top-28"
+            className="hidden w-full max-w-[240px] shrink-0 lg:block lg:sticky lg:top-28"
             data-tina-field={tinaField(block, "sideImage")}
           >
             <Polaroid rotate={3} washiColor="var(--gold-deep)" hoverStraighten>

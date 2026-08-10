@@ -1,5 +1,6 @@
 import { tinaField } from "tinacms/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { richTextComponents } from "@/components/site/rich-text-components";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 interface Props {
@@ -29,7 +30,10 @@ export default function TextBlock({ block }: Props) {
             style={bodyTextStyle(block)}
             data-tina-field={tinaField(block, "body")}
           >
-            <TinaMarkdown content={block.body} />
+            <TinaMarkdown
+              content={block.body as any}
+              components={richTextComponents}
+            />
           </div>
         )}
       </div>

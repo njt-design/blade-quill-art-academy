@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { defineConfig, type Template, type TinaField } from "tinacms";
-import { ALL_BLOCKS, charLimit } from "./blocks";
+import {
+  ALL_BLOCKS,
+  INLINE_RICH_TEXT,
+  RICH_TEXT_TEMPLATES,
+  SLATE_JSON_PARSER,
+  charLimit,
+} from "./blocks";
 import { BLOG_BLOCKS } from "./blog-blocks";
 
 const INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
@@ -202,16 +208,6 @@ function InsightsScreenIcon() {
     React.createElement("path", { d: "M17 6v12" })
   );
 }
-
-const INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"] as Array<
-    "bold" | "italic" | "link" | "ul" | "ol"
-  >,
-  showFloatingToolbar: true,
-};
-
-/** JSON collections store Slate AST directly — skip markdown re-parsing. */
-const SLATE_JSON_PARSER = { type: "slatejson" as const };
 
 /** Build a Slate rich-text value from a plain sentence (for starter content). */
 const rt = (text: string) => ({
@@ -611,6 +607,7 @@ export default defineConfig({
             label: "Excerpt",
             overrides: INLINE_RICH_TEXT,
             parser: SLATE_JSON_PARSER,
+            templates: RICH_TEXT_TEMPLATES,
             ui: { description: "A 1-2 sentence summary shown on blog list cards." },
           },
           {
@@ -697,6 +694,7 @@ export default defineConfig({
             label: "Description",
             overrides: INLINE_RICH_TEXT,
             parser: SLATE_JSON_PARSER,
+            templates: RICH_TEXT_TEMPLATES,
             ui: {
               description: "Short description for shop cards and the product detail tab.",
             },
@@ -739,7 +737,8 @@ export default defineConfig({
             list: true,
             ui: {
               description:
-                "Up to 5 images for the thumbnail strip under the large preview on the product detail page. Slot 1 falls back to Cover Image when this list is empty. Upload into images/products/.",
+                "Up to 4 extra images for the thumbnail strip under the large preview. Slot 1 is always the Cover Image; the first upload here becomes thumbnail 2. Upload into images/products/.",
+              max: 4,
               itemProps: (item: Record<string, unknown> | undefined) => ({
                 label:
                   (item?.alt as string) ||

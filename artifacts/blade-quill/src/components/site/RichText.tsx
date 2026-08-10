@@ -1,42 +1,9 @@
-import { TinaMarkdown, type Components } from "tinacms/dist/rich-text";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
 import { isRichText } from "@/lib/rich-text";
+import { richTextComponents } from "@/components/site/rich-text-components";
 
 type Props = { value: unknown; className?: string };
-
-const components: Components<{}> = {
-  p: (props) => <p {...props} />,
-  break: () => <br />,
-  a: (props) => (
-    <a
-      {...props}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        "underline decoration-maroon/60 underline-offset-2 hover:text-maroon transition-colors",
-        (props as { className?: string }).className,
-      )}
-    />
-  ),
-  ul: (props) => (
-    <ul
-      {...props}
-      className={cn(
-        "list-disc list-inside space-y-1",
-        (props as { className?: string }).className,
-      )}
-    />
-  ),
-  ol: (props) => (
-    <ol
-      {...props}
-      className={cn(
-        "list-decimal list-inside space-y-1",
-        (props as { className?: string }).className,
-      )}
-    />
-  ),
-};
 
 export function RichText({ value, className }: Props) {
   if (!value) return null;
@@ -62,7 +29,7 @@ export function RichText({ value, className }: Props) {
 
   return (
     <div className={wrapperClass}>
-      <TinaMarkdown content={value as any} components={components} />
+      <TinaMarkdown content={value as any} components={richTextComponents} />
     </div>
   );
 }

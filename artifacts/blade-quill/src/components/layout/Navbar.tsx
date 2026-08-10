@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, Search, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/hooks/useCart";
 import { useLiveNavigation } from "@/hooks/use-live-navigation";
@@ -227,13 +227,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Search"
-            className="hidden md:grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors"
-          >
-            <Search className="w-[18px] h-[18px]" strokeWidth={1.8} />
-          </button>
           <button
             id="cart-icon"
             type="button"

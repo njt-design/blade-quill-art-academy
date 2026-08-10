@@ -18,11 +18,13 @@ export type CatalogProduct = Omit<Product, "description"> & {
   description: string | RichTextValue;
   amazonUrl?: string | null;
   googlePlayUrl?: string | null;
-  /** Extra images for the product detail thumbnail strip (up to 5). */
+  /** Extra images for thumbnail slots 2–5 (slot 1 is always Cover Image). */
   galleryImages: ProductGalleryImage[];
 };
 
 const THUMBNAIL_SLOT_COUNT = 5;
+/** Extra gallery uploads fill slots 2–5; slot 1 is always the Cover Image. */
+const GALLERY_IMAGE_LIMIT = THUMBNAIL_SLOT_COUNT - 1;
 
 function parseGalleryImages(raw: unknown): ProductGalleryImage[] {
   if (!Array.isArray(raw)) return [];
@@ -35,12 +37,12 @@ function parseGalleryImages(raw: unknown): ProductGalleryImage[] {
       return { src, ...(alt ? { alt } : {}) };
     })
     .filter((item): item is ProductGalleryImage => item !== null)
-    .slice(0, THUMBNAIL_SLOT_COUNT);
+    .slice(0, GALLERY_IMAGE_LIMIT);
 }
 
 /**
  * Resolve the 5 detail-page thumbnail slots.
- * Uses uploaded gallery images when present; otherwise slot 1 falls back to Cover Image.
+ * Slot 1 is always the Cover Image; uploaded gallery images fill slots 2–5.
  */
 export function resolveProductThumbnails(product: {
   imageUrl?: string | null;
@@ -55,19 +57,17 @@ export function resolveProductThumbnails(product: {
     () => null
   );
 
-  if (gallery.length > 0) {
-    gallery.forEach((img, i) => {
-      if (i < THUMBNAIL_SLOT_COUNT) slots[i] = img;
-    });
-    return slots;
-  }
-
   if (product.imageUrl) {
     slots[0] = {
       src: product.imageUrl,
       alt: product.name ?? undefined,
     };
   }
+
+  gallery.slice(0, GALLERY_IMAGE_LIMIT).forEach((img, i) => {
+    slots[i + 1] = img;
+  });
+
   return slots;
 }
 

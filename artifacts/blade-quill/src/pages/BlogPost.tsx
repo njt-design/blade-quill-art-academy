@@ -7,6 +7,7 @@ import { useLiveTina } from "@/hooks/use-live-tina";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
+import { richTextComponents } from "@/components/site/rich-text-components";
 import { postQuery } from "@/lib/post-queries";
 import type { Block } from "@/pages/blocks/block-utils";
 import ArticleSectionRenderer from "@/pages/blog/ArticleSectionRenderer";
@@ -153,7 +154,10 @@ export default function BlogPost() {
             <ArticleSectionRenderer sections={sections} />
           ) : legacyBody ? (
             <div className="prose prose-neutral max-w-none">
-              <TinaMarkdown content={legacyBody as any} />
+              <TinaMarkdown
+                content={legacyBody as any}
+                components={richTextComponents}
+              />
             </div>
           ) : (
             <p className="text-muted-foreground">No content yet. Add Post Sections in the editor.</p>

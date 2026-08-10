@@ -6,16 +6,10 @@ import {
   imageSideBySideBlock,
   videoEmbedBlock,
   ctaBandBlock,
+  INLINE_RICH_TEXT,
+  RICH_TEXT_TEMPLATES,
+  SLATE_JSON_PARSER,
 } from "./blocks";
-
-const INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "link", "ul", "ol"] as Array<
-    "bold" | "italic" | "link" | "ul" | "ol"
-  >,
-  showFloatingToolbar: true,
-};
-
-const SLATE_JSON_PARSER = { type: "slatejson" as const };
 
 const rt = (text: string) => ({
   type: "root",
@@ -214,6 +208,7 @@ export const blogCalloutBlock: Template = {
       label: "Body",
       overrides: INLINE_RICH_TEXT,
       parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
       ui: { description: "The callout content. Keep it short." },
     },
     {

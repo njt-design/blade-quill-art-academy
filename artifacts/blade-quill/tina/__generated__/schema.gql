@@ -847,10 +847,19 @@ input StringFilter {
   in: [String]
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
+input BooleanFilter {
+  eq: Boolean
   exists: Boolean
+}
+
+input PageBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHomeHeroSubheadingFilter {
+  ContentLink: PageBlocksHomeHeroSubheadingContentLinkFilter
 }
 
 input PageBlocksHomeHeroTextStyleFilter {
@@ -864,7 +873,7 @@ input PageBlocksHomeHeroTextStyleFilter {
 input PageBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -872,6 +881,16 @@ input PageBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: PageBlocksHomeHeroTextStyleFilter
+}
+
+input PageBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksAboutHeroLeadTextFilter {
+  ContentLink: PageBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input ImageFilter {
@@ -892,7 +911,7 @@ input PageBlocksAboutHeroTextStyleFilter {
 input PageBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: PageBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -907,6 +926,16 @@ input PageBlocksAboutHeroFilter {
   textStyle: PageBlocksAboutHeroTextStyleFilter
 }
 
+input PageBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHeroSubheadingFilter {
+  ContentLink: PageBlocksHeroSubheadingContentLinkFilter
+}
+
 input PageBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -917,11 +946,21 @@ input PageBlocksHeroTextStyleFilter {
 
 input PageBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: PageBlocksHeroTextStyleFilter
+}
+
+input PageBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: PageBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input PageBlocksHeroSplitImageTextStyleFilter {
@@ -935,7 +974,7 @@ input PageBlocksHeroSplitImageTextStyleFilter {
 input PageBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -945,6 +984,16 @@ input PageBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: PageBlocksHeroSplitImageTextStyleFilter
+}
+
+input PageBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: PageBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input PageBlocksHeroFullBleedTextStyleFilter {
@@ -958,13 +1007,23 @@ input PageBlocksHeroFullBleedTextStyleFilter {
 input PageBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: PageBlocksHeroFullBleedTextStyleFilter
+}
+
+input PageBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: PageBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input PageBlocksHeroFloatingImagesImagesFilter {
@@ -984,13 +1043,23 @@ input PageBlocksHeroFloatingImagesTextStyleFilter {
 input PageBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHeroFloatingImagesSubheadingFilter
   images: PageBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: PageBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input PageBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksHeroImageGridSubheadingFilter {
+  ContentLink: PageBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input PageBlocksHeroImageGridImagesFilter {
@@ -1010,12 +1079,22 @@ input PageBlocksHeroImageGridTextStyleFilter {
 input PageBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: PageBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: PageBlocksHeroImageGridTextStyleFilter
+}
+
+input PageBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksPageHeaderDescriptionFilter {
+  ContentLink: PageBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input PageBlocksPageHeaderTextStyleFilter {
@@ -1028,8 +1107,18 @@ input PageBlocksPageHeaderTextStyleFilter {
 
 input PageBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: PageBlocksPageHeaderDescriptionFilter
   textStyle: PageBlocksPageHeaderTextStyleFilter
+}
+
+input PageBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksTextBodyFilter {
+  ContentLink: PageBlocksTextBodyContentLinkFilter
 }
 
 input PageBlocksTextTextStyleFilter {
@@ -1042,8 +1131,38 @@ input PageBlocksTextTextStyleFilter {
 
 input PageBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: PageBlocksTextBodyFilter
   textStyle: PageBlocksTextTextStyleFilter
+}
+
+input PageBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksStoryParagraph1Filter {
+  ContentLink: PageBlocksStoryParagraph1ContentLinkFilter
+}
+
+input PageBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksStoryQuoteFilter {
+  ContentLink: PageBlocksStoryQuoteContentLinkFilter
+}
+
+input PageBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksStoryParagraph2Filter {
+  ContentLink: PageBlocksStoryParagraph2ContentLinkFilter
 }
 
 input PageBlocksStoryTextStyleFilter {
@@ -1058,9 +1177,9 @@ input PageBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: PageBlocksStoryParagraph1Filter
+  quote: PageBlocksStoryQuoteFilter
+  paragraph2: PageBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: PageBlocksStoryTextStyleFilter
@@ -1097,10 +1216,20 @@ input PageBlocksStatsRowFilter {
   stats: PageBlocksStatsRowStatsFilter
 }
 
+input PageBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: PageBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input PageBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: PageBlocksFeatureGridItemsDescriptionFilter
 }
 
 input PageBlocksFeatureGridTextStyleFilter {
@@ -1186,6 +1315,16 @@ input PageBlocksImageGalleryFilter {
   textStyle: PageBlocksImageGalleryTextStyleFilter
 }
 
+input PageBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksImageSpotlightBodyFilter {
+  ContentLink: PageBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input PageBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1201,7 +1340,7 @@ input PageBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: PageBlocksImageSpotlightBodyFilter
   textStyle: PageBlocksImageSpotlightTextStyleFilter
 }
 
@@ -1268,6 +1407,16 @@ input PageBlocksVideoEmbedFilter {
   textStyle: PageBlocksVideoEmbedTextStyleFilter
 }
 
+input PageBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksFeaturedBookDescriptionFilter {
+  ContentLink: PageBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input PageBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -1284,13 +1433,23 @@ input PageBlocksFeaturedBookTextStyleFilter {
 input PageBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: PageBlocksFeaturedBookDescriptionFilter
   stats: PageBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: PageBlocksFeaturedBookTextStyleFilter
+}
+
+input PageBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: PageBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input PageBlocksFeaturedReleaseTextStyleFilter {
@@ -1304,7 +1463,7 @@ input PageBlocksFeaturedReleaseTextStyleFilter {
 input PageBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: PageBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -1328,9 +1487,14 @@ input PageBlocksProductStripFilter {
   textStyle: PageBlocksProductStripTextStyleFilter
 }
 
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
+input PageBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksShopCatalogDescriptionFilter {
+  ContentLink: PageBlocksShopCatalogDescriptionContentLinkFilter
 }
 
 input PageBlocksShopCatalogTextStyleFilter {
@@ -1344,7 +1508,7 @@ input PageBlocksShopCatalogTextStyleFilter {
 input PageBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: PageBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -1403,6 +1567,16 @@ input PageBlocksTutorialsStripFilter {
   textStyle: PageBlocksTutorialsStripTextStyleFilter
 }
 
+input PageBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksClassesPitchSubheadingFilter {
+  ContentLink: PageBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input PageBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1414,7 +1588,7 @@ input PageBlocksClassesPitchTextStyleFilter {
 input PageBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -1424,10 +1598,20 @@ input PageBlocksClassesPitchFilter {
   textStyle: PageBlocksClassesPitchTextStyleFilter
 }
 
+input PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input PageBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -1448,6 +1632,16 @@ input PageBlocksBlogFeedFilter {
   textStyle: PageBlocksBlogFeedTextStyleFilter
 }
 
+input PageBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksCtaBandDescriptionFilter {
+  ContentLink: PageBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input PageBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1458,7 +1652,7 @@ input PageBlocksCtaBandTextStyleFilter {
 
 input PageBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: PageBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -1484,6 +1678,16 @@ input PageBlocksBigCtaFilter {
   textStyle: PageBlocksBigCtaTextStyleFilter
 }
 
+input PageBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: PageBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input PageBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1495,7 +1699,7 @@ input PageBlocksNewsletterSignupTextStyleFilter {
 input PageBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: PageBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -1511,6 +1715,16 @@ input PageBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input PageBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: PageBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input PageBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1521,13 +1735,23 @@ input PageBlocksDummyBookRequestTextStyleFilter {
 
 input PageBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: PageBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: PageBlocksDummyBookRequestTextStyleFilter
+}
+
+input PageBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksKofiSupportBodyFilter {
+  ContentLink: PageBlocksKofiSupportBodyContentLinkFilter
 }
 
 input PageBlocksKofiSupportTextStyleFilter {
@@ -1540,10 +1764,20 @@ input PageBlocksKofiSupportTextStyleFilter {
 
 input PageBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: PageBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: PageBlocksKofiSupportTextStyleFilter
+}
+
+input PageBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksReviewLinksIntroFilter {
+  ContentLink: PageBlocksReviewLinksIntroContentLinkFilter
 }
 
 input PageBlocksReviewLinksLinksFilter {
@@ -1562,7 +1796,7 @@ input PageBlocksReviewLinksTextStyleFilter {
 
 input PageBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: PageBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: PageBlocksReviewLinksLinksFilter
@@ -1572,6 +1806,16 @@ input PageBlocksReviewLinksFilter {
 input PageBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input PageBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksSocialLinksBodyFilter {
+  ContentLink: PageBlocksSocialLinksBodyContentLinkFilter
 }
 
 input PageBlocksSocialLinksLinksFilter {
@@ -1590,7 +1834,7 @@ input PageBlocksSocialLinksTextStyleFilter {
 
 input PageBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: PageBlocksSocialLinksBodyFilter
   links: PageBlocksSocialLinksLinksFilter
   textStyle: PageBlocksSocialLinksTextStyleFilter
 }
@@ -5361,6 +5605,16 @@ type LandingPageLinkInBio implements Node & Document {
 
 union LandingPage = LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
+input LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHomeHeroSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter
+}
+
 input LandingPageBlankBlocksHomeHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5372,7 +5626,7 @@ input LandingPageBlankBlocksHomeHeroTextStyleFilter {
 input LandingPageBlankBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -5380,6 +5634,16 @@ input LandingPageBlankBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: LandingPageBlankBlocksHomeHeroTextStyleFilter
+}
+
+input LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksAboutHeroLeadTextFilter {
+  ContentLink: LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input LandingPageBlankBlocksAboutHeroTextStyleFilter {
@@ -5393,7 +5657,7 @@ input LandingPageBlankBlocksAboutHeroTextStyleFilter {
 input LandingPageBlankBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: LandingPageBlankBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -5408,6 +5672,16 @@ input LandingPageBlankBlocksAboutHeroFilter {
   textStyle: LandingPageBlankBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHeroSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHeroSubheadingContentLinkFilter
+}
+
 input LandingPageBlankBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5418,11 +5692,21 @@ input LandingPageBlankBlocksHeroTextStyleFilter {
 
 input LandingPageBlankBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageBlankBlocksHeroTextStyleFilter
+}
+
+input LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input LandingPageBlankBlocksHeroSplitImageTextStyleFilter {
@@ -5436,7 +5720,7 @@ input LandingPageBlankBlocksHeroSplitImageTextStyleFilter {
 input LandingPageBlankBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -5446,6 +5730,16 @@ input LandingPageBlankBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageBlankBlocksHeroSplitImageTextStyleFilter
+}
+
+input LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input LandingPageBlankBlocksHeroFullBleedTextStyleFilter {
@@ -5459,13 +5753,23 @@ input LandingPageBlankBlocksHeroFullBleedTextStyleFilter {
 input LandingPageBlankBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageBlankBlocksHeroFullBleedTextStyleFilter
+}
+
+input LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input LandingPageBlankBlocksHeroFloatingImagesImagesFilter {
@@ -5485,13 +5789,23 @@ input LandingPageBlankBlocksHeroFloatingImagesTextStyleFilter {
 input LandingPageBlankBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHeroFloatingImagesSubheadingFilter
   images: LandingPageBlankBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageBlankBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksHeroImageGridSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input LandingPageBlankBlocksHeroImageGridImagesFilter {
@@ -5511,12 +5825,22 @@ input LandingPageBlankBlocksHeroImageGridTextStyleFilter {
 input LandingPageBlankBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: LandingPageBlankBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageBlankBlocksHeroImageGridTextStyleFilter
+}
+
+input LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksPageHeaderDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input LandingPageBlankBlocksPageHeaderTextStyleFilter {
@@ -5529,8 +5853,18 @@ input LandingPageBlankBlocksPageHeaderTextStyleFilter {
 
 input LandingPageBlankBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksPageHeaderDescriptionFilter
   textStyle: LandingPageBlankBlocksPageHeaderTextStyleFilter
+}
+
+input LandingPageBlankBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksTextBodyFilter {
+  ContentLink: LandingPageBlankBlocksTextBodyContentLinkFilter
 }
 
 input LandingPageBlankBlocksTextTextStyleFilter {
@@ -5543,8 +5877,38 @@ input LandingPageBlankBlocksTextTextStyleFilter {
 
 input LandingPageBlankBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageBlankBlocksTextBodyFilter
   textStyle: LandingPageBlankBlocksTextTextStyleFilter
+}
+
+input LandingPageBlankBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksStoryParagraph1Filter {
+  ContentLink: LandingPageBlankBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageBlankBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksStoryQuoteFilter {
+  ContentLink: LandingPageBlankBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageBlankBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksStoryParagraph2Filter {
+  ContentLink: LandingPageBlankBlocksStoryParagraph2ContentLinkFilter
 }
 
 input LandingPageBlankBlocksStoryTextStyleFilter {
@@ -5559,9 +5923,9 @@ input LandingPageBlankBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: LandingPageBlankBlocksStoryParagraph1Filter
+  quote: LandingPageBlankBlocksStoryQuoteFilter
+  paragraph2: LandingPageBlankBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: LandingPageBlankBlocksStoryTextStyleFilter
@@ -5598,10 +5962,20 @@ input LandingPageBlankBlocksStatsRowFilter {
   stats: LandingPageBlankBlocksStatsRowStatsFilter
 }
 
+input LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input LandingPageBlankBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksFeatureGridItemsDescriptionFilter
 }
 
 input LandingPageBlankBlocksFeatureGridTextStyleFilter {
@@ -5687,6 +6061,16 @@ input LandingPageBlankBlocksImageGalleryFilter {
   textStyle: LandingPageBlankBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksImageSpotlightBodyFilter {
+  ContentLink: LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input LandingPageBlankBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5702,7 +6086,7 @@ input LandingPageBlankBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: LandingPageBlankBlocksImageSpotlightBodyFilter
   textStyle: LandingPageBlankBlocksImageSpotlightTextStyleFilter
 }
 
@@ -5769,6 +6153,16 @@ input LandingPageBlankBlocksVideoEmbedFilter {
   textStyle: LandingPageBlankBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksFeaturedBookDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input LandingPageBlankBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -5785,13 +6179,23 @@ input LandingPageBlankBlocksFeaturedBookTextStyleFilter {
 input LandingPageBlankBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksFeaturedBookDescriptionFilter
   stats: LandingPageBlankBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: LandingPageBlankBlocksFeaturedBookTextStyleFilter
+}
+
+input LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input LandingPageBlankBlocksFeaturedReleaseTextStyleFilter {
@@ -5805,7 +6209,7 @@ input LandingPageBlankBlocksFeaturedReleaseTextStyleFilter {
 input LandingPageBlankBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -5829,6 +6233,16 @@ input LandingPageBlankBlocksProductStripFilter {
   textStyle: LandingPageBlankBlocksProductStripTextStyleFilter
 }
 
+input LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksShopCatalogDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter
+}
+
 input LandingPageBlankBlocksShopCatalogTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5840,7 +6254,7 @@ input LandingPageBlankBlocksShopCatalogTextStyleFilter {
 input LandingPageBlankBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -5899,6 +6313,16 @@ input LandingPageBlankBlocksTutorialsStripFilter {
   textStyle: LandingPageBlankBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksClassesPitchSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input LandingPageBlankBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5910,7 +6334,7 @@ input LandingPageBlankBlocksClassesPitchTextStyleFilter {
 input LandingPageBlankBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -5920,10 +6344,20 @@ input LandingPageBlankBlocksClassesPitchFilter {
   textStyle: LandingPageBlankBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input LandingPageBlankBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -5944,6 +6378,16 @@ input LandingPageBlankBlocksBlogFeedFilter {
   textStyle: LandingPageBlankBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksCtaBandDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input LandingPageBlankBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5954,7 +6398,7 @@ input LandingPageBlankBlocksCtaBandTextStyleFilter {
 
 input LandingPageBlankBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -5980,6 +6424,16 @@ input LandingPageBlankBlocksBigCtaFilter {
   textStyle: LandingPageBlankBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input LandingPageBlankBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -5991,7 +6445,7 @@ input LandingPageBlankBlocksNewsletterSignupTextStyleFilter {
 input LandingPageBlankBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageBlankBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -6007,6 +6461,16 @@ input LandingPageBlankBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input LandingPageBlankBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6017,13 +6481,23 @@ input LandingPageBlankBlocksDummyBookRequestTextStyleFilter {
 
 input LandingPageBlankBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageBlankBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: LandingPageBlankBlocksDummyBookRequestTextStyleFilter
+}
+
+input LandingPageBlankBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksKofiSupportBodyFilter {
+  ContentLink: LandingPageBlankBlocksKofiSupportBodyContentLinkFilter
 }
 
 input LandingPageBlankBlocksKofiSupportTextStyleFilter {
@@ -6036,10 +6510,20 @@ input LandingPageBlankBlocksKofiSupportTextStyleFilter {
 
 input LandingPageBlankBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageBlankBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: LandingPageBlankBlocksKofiSupportTextStyleFilter
+}
+
+input LandingPageBlankBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksReviewLinksIntroFilter {
+  ContentLink: LandingPageBlankBlocksReviewLinksIntroContentLinkFilter
 }
 
 input LandingPageBlankBlocksReviewLinksLinksFilter {
@@ -6058,7 +6542,7 @@ input LandingPageBlankBlocksReviewLinksTextStyleFilter {
 
 input LandingPageBlankBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: LandingPageBlankBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: LandingPageBlankBlocksReviewLinksLinksFilter
@@ -6068,6 +6552,16 @@ input LandingPageBlankBlocksReviewLinksFilter {
 input LandingPageBlankBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input LandingPageBlankBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksSocialLinksBodyFilter {
+  ContentLink: LandingPageBlankBlocksSocialLinksBodyContentLinkFilter
 }
 
 input LandingPageBlankBlocksSocialLinksLinksFilter {
@@ -6086,7 +6580,7 @@ input LandingPageBlankBlocksSocialLinksTextStyleFilter {
 
 input LandingPageBlankBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageBlankBlocksSocialLinksBodyFilter
   links: LandingPageBlankBlocksSocialLinksLinksFilter
   textStyle: LandingPageBlankBlocksSocialLinksTextStyleFilter
 }
@@ -6139,6 +6633,16 @@ input LandingPageBlankFilter {
   blocks: LandingPageBlankBlocksFilter
 }
 
+input LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHomeHeroSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter
+}
+
 input LandingPageEventBlocksHomeHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6150,7 +6654,7 @@ input LandingPageEventBlocksHomeHeroTextStyleFilter {
 input LandingPageEventBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -6158,6 +6662,16 @@ input LandingPageEventBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: LandingPageEventBlocksHomeHeroTextStyleFilter
+}
+
+input LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksAboutHeroLeadTextFilter {
+  ContentLink: LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input LandingPageEventBlocksAboutHeroTextStyleFilter {
@@ -6171,7 +6685,7 @@ input LandingPageEventBlocksAboutHeroTextStyleFilter {
 input LandingPageEventBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: LandingPageEventBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -6186,6 +6700,16 @@ input LandingPageEventBlocksAboutHeroFilter {
   textStyle: LandingPageEventBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHeroSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHeroSubheadingContentLinkFilter
+}
+
 input LandingPageEventBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6196,11 +6720,21 @@ input LandingPageEventBlocksHeroTextStyleFilter {
 
 input LandingPageEventBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageEventBlocksHeroTextStyleFilter
+}
+
+input LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input LandingPageEventBlocksHeroSplitImageTextStyleFilter {
@@ -6214,7 +6748,7 @@ input LandingPageEventBlocksHeroSplitImageTextStyleFilter {
 input LandingPageEventBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -6224,6 +6758,16 @@ input LandingPageEventBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageEventBlocksHeroSplitImageTextStyleFilter
+}
+
+input LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input LandingPageEventBlocksHeroFullBleedTextStyleFilter {
@@ -6237,13 +6781,23 @@ input LandingPageEventBlocksHeroFullBleedTextStyleFilter {
 input LandingPageEventBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageEventBlocksHeroFullBleedTextStyleFilter
+}
+
+input LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input LandingPageEventBlocksHeroFloatingImagesImagesFilter {
@@ -6263,13 +6817,23 @@ input LandingPageEventBlocksHeroFloatingImagesTextStyleFilter {
 input LandingPageEventBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHeroFloatingImagesSubheadingFilter
   images: LandingPageEventBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageEventBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksHeroImageGridSubheadingFilter {
+  ContentLink: LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input LandingPageEventBlocksHeroImageGridImagesFilter {
@@ -6289,12 +6853,22 @@ input LandingPageEventBlocksHeroImageGridTextStyleFilter {
 input LandingPageEventBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: LandingPageEventBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageEventBlocksHeroImageGridTextStyleFilter
+}
+
+input LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksPageHeaderDescriptionFilter {
+  ContentLink: LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input LandingPageEventBlocksPageHeaderTextStyleFilter {
@@ -6307,8 +6881,18 @@ input LandingPageEventBlocksPageHeaderTextStyleFilter {
 
 input LandingPageEventBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksPageHeaderDescriptionFilter
   textStyle: LandingPageEventBlocksPageHeaderTextStyleFilter
+}
+
+input LandingPageEventBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksTextBodyFilter {
+  ContentLink: LandingPageEventBlocksTextBodyContentLinkFilter
 }
 
 input LandingPageEventBlocksTextTextStyleFilter {
@@ -6321,8 +6905,38 @@ input LandingPageEventBlocksTextTextStyleFilter {
 
 input LandingPageEventBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageEventBlocksTextBodyFilter
   textStyle: LandingPageEventBlocksTextTextStyleFilter
+}
+
+input LandingPageEventBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksStoryParagraph1Filter {
+  ContentLink: LandingPageEventBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageEventBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksStoryQuoteFilter {
+  ContentLink: LandingPageEventBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageEventBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksStoryParagraph2Filter {
+  ContentLink: LandingPageEventBlocksStoryParagraph2ContentLinkFilter
 }
 
 input LandingPageEventBlocksStoryTextStyleFilter {
@@ -6337,9 +6951,9 @@ input LandingPageEventBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: LandingPageEventBlocksStoryParagraph1Filter
+  quote: LandingPageEventBlocksStoryQuoteFilter
+  paragraph2: LandingPageEventBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: LandingPageEventBlocksStoryTextStyleFilter
@@ -6376,10 +6990,20 @@ input LandingPageEventBlocksStatsRowFilter {
   stats: LandingPageEventBlocksStatsRowStatsFilter
 }
 
+input LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input LandingPageEventBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksFeatureGridItemsDescriptionFilter
 }
 
 input LandingPageEventBlocksFeatureGridTextStyleFilter {
@@ -6465,6 +7089,16 @@ input LandingPageEventBlocksImageGalleryFilter {
   textStyle: LandingPageEventBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageEventBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksImageSpotlightBodyFilter {
+  ContentLink: LandingPageEventBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input LandingPageEventBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6480,7 +7114,7 @@ input LandingPageEventBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: LandingPageEventBlocksImageSpotlightBodyFilter
   textStyle: LandingPageEventBlocksImageSpotlightTextStyleFilter
 }
 
@@ -6547,6 +7181,16 @@ input LandingPageEventBlocksVideoEmbedFilter {
   textStyle: LandingPageEventBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksFeaturedBookDescriptionFilter {
+  ContentLink: LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input LandingPageEventBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -6563,13 +7207,23 @@ input LandingPageEventBlocksFeaturedBookTextStyleFilter {
 input LandingPageEventBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksFeaturedBookDescriptionFilter
   stats: LandingPageEventBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: LandingPageEventBlocksFeaturedBookTextStyleFilter
+}
+
+input LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input LandingPageEventBlocksFeaturedReleaseTextStyleFilter {
@@ -6583,7 +7237,7 @@ input LandingPageEventBlocksFeaturedReleaseTextStyleFilter {
 input LandingPageEventBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -6607,6 +7261,16 @@ input LandingPageEventBlocksProductStripFilter {
   textStyle: LandingPageEventBlocksProductStripTextStyleFilter
 }
 
+input LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksShopCatalogDescriptionFilter {
+  ContentLink: LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter
+}
+
 input LandingPageEventBlocksShopCatalogTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6618,7 +7282,7 @@ input LandingPageEventBlocksShopCatalogTextStyleFilter {
 input LandingPageEventBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -6677,6 +7341,16 @@ input LandingPageEventBlocksTutorialsStripFilter {
   textStyle: LandingPageEventBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksClassesPitchSubheadingFilter {
+  ContentLink: LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input LandingPageEventBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6688,7 +7362,7 @@ input LandingPageEventBlocksClassesPitchTextStyleFilter {
 input LandingPageEventBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -6698,10 +7372,20 @@ input LandingPageEventBlocksClassesPitchFilter {
   textStyle: LandingPageEventBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input LandingPageEventBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -6722,6 +7406,16 @@ input LandingPageEventBlocksBlogFeedFilter {
   textStyle: LandingPageEventBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageEventBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksCtaBandDescriptionFilter {
+  ContentLink: LandingPageEventBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input LandingPageEventBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6732,7 +7426,7 @@ input LandingPageEventBlocksCtaBandTextStyleFilter {
 
 input LandingPageEventBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -6758,6 +7452,16 @@ input LandingPageEventBlocksBigCtaFilter {
   textStyle: LandingPageEventBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input LandingPageEventBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6769,7 +7473,7 @@ input LandingPageEventBlocksNewsletterSignupTextStyleFilter {
 input LandingPageEventBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageEventBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -6785,6 +7489,16 @@ input LandingPageEventBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input LandingPageEventBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6795,13 +7509,23 @@ input LandingPageEventBlocksDummyBookRequestTextStyleFilter {
 
 input LandingPageEventBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageEventBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: LandingPageEventBlocksDummyBookRequestTextStyleFilter
+}
+
+input LandingPageEventBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksKofiSupportBodyFilter {
+  ContentLink: LandingPageEventBlocksKofiSupportBodyContentLinkFilter
 }
 
 input LandingPageEventBlocksKofiSupportTextStyleFilter {
@@ -6814,10 +7538,20 @@ input LandingPageEventBlocksKofiSupportTextStyleFilter {
 
 input LandingPageEventBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageEventBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: LandingPageEventBlocksKofiSupportTextStyleFilter
+}
+
+input LandingPageEventBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksReviewLinksIntroFilter {
+  ContentLink: LandingPageEventBlocksReviewLinksIntroContentLinkFilter
 }
 
 input LandingPageEventBlocksReviewLinksLinksFilter {
@@ -6836,7 +7570,7 @@ input LandingPageEventBlocksReviewLinksTextStyleFilter {
 
 input LandingPageEventBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: LandingPageEventBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: LandingPageEventBlocksReviewLinksLinksFilter
@@ -6846,6 +7580,16 @@ input LandingPageEventBlocksReviewLinksFilter {
 input LandingPageEventBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input LandingPageEventBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksSocialLinksBodyFilter {
+  ContentLink: LandingPageEventBlocksSocialLinksBodyContentLinkFilter
 }
 
 input LandingPageEventBlocksSocialLinksLinksFilter {
@@ -6864,7 +7608,7 @@ input LandingPageEventBlocksSocialLinksTextStyleFilter {
 
 input LandingPageEventBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageEventBlocksSocialLinksBodyFilter
   links: LandingPageEventBlocksSocialLinksLinksFilter
   textStyle: LandingPageEventBlocksSocialLinksTextStyleFilter
 }
@@ -6917,6 +7661,16 @@ input LandingPageEventFilter {
   blocks: LandingPageEventBlocksFilter
 }
 
+input LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHomeHeroSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter
+}
+
 input LandingPagePromoBlocksHomeHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6928,7 +7682,7 @@ input LandingPagePromoBlocksHomeHeroTextStyleFilter {
 input LandingPagePromoBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -6936,6 +7690,16 @@ input LandingPagePromoBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: LandingPagePromoBlocksHomeHeroTextStyleFilter
+}
+
+input LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksAboutHeroLeadTextFilter {
+  ContentLink: LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input LandingPagePromoBlocksAboutHeroTextStyleFilter {
@@ -6949,7 +7713,7 @@ input LandingPagePromoBlocksAboutHeroTextStyleFilter {
 input LandingPagePromoBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: LandingPagePromoBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -6964,6 +7728,16 @@ input LandingPagePromoBlocksAboutHeroFilter {
   textStyle: LandingPagePromoBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHeroSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHeroSubheadingContentLinkFilter
+}
+
 input LandingPagePromoBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6974,11 +7748,21 @@ input LandingPagePromoBlocksHeroTextStyleFilter {
 
 input LandingPagePromoBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPagePromoBlocksHeroTextStyleFilter
+}
+
+input LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input LandingPagePromoBlocksHeroSplitImageTextStyleFilter {
@@ -6992,7 +7776,7 @@ input LandingPagePromoBlocksHeroSplitImageTextStyleFilter {
 input LandingPagePromoBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -7002,6 +7786,16 @@ input LandingPagePromoBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPagePromoBlocksHeroSplitImageTextStyleFilter
+}
+
+input LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input LandingPagePromoBlocksHeroFullBleedTextStyleFilter {
@@ -7015,13 +7809,23 @@ input LandingPagePromoBlocksHeroFullBleedTextStyleFilter {
 input LandingPagePromoBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPagePromoBlocksHeroFullBleedTextStyleFilter
+}
+
+input LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input LandingPagePromoBlocksHeroFloatingImagesImagesFilter {
@@ -7041,13 +7845,23 @@ input LandingPagePromoBlocksHeroFloatingImagesTextStyleFilter {
 input LandingPagePromoBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHeroFloatingImagesSubheadingFilter
   images: LandingPagePromoBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPagePromoBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksHeroImageGridSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input LandingPagePromoBlocksHeroImageGridImagesFilter {
@@ -7067,12 +7881,22 @@ input LandingPagePromoBlocksHeroImageGridTextStyleFilter {
 input LandingPagePromoBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: LandingPagePromoBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPagePromoBlocksHeroImageGridTextStyleFilter
+}
+
+input LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksPageHeaderDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input LandingPagePromoBlocksPageHeaderTextStyleFilter {
@@ -7085,8 +7909,18 @@ input LandingPagePromoBlocksPageHeaderTextStyleFilter {
 
 input LandingPagePromoBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksPageHeaderDescriptionFilter
   textStyle: LandingPagePromoBlocksPageHeaderTextStyleFilter
+}
+
+input LandingPagePromoBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksTextBodyFilter {
+  ContentLink: LandingPagePromoBlocksTextBodyContentLinkFilter
 }
 
 input LandingPagePromoBlocksTextTextStyleFilter {
@@ -7099,8 +7933,38 @@ input LandingPagePromoBlocksTextTextStyleFilter {
 
 input LandingPagePromoBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPagePromoBlocksTextBodyFilter
   textStyle: LandingPagePromoBlocksTextTextStyleFilter
+}
+
+input LandingPagePromoBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksStoryParagraph1Filter {
+  ContentLink: LandingPagePromoBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPagePromoBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksStoryQuoteFilter {
+  ContentLink: LandingPagePromoBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPagePromoBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksStoryParagraph2Filter {
+  ContentLink: LandingPagePromoBlocksStoryParagraph2ContentLinkFilter
 }
 
 input LandingPagePromoBlocksStoryTextStyleFilter {
@@ -7115,9 +7979,9 @@ input LandingPagePromoBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: LandingPagePromoBlocksStoryParagraph1Filter
+  quote: LandingPagePromoBlocksStoryQuoteFilter
+  paragraph2: LandingPagePromoBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: LandingPagePromoBlocksStoryTextStyleFilter
@@ -7154,10 +8018,20 @@ input LandingPagePromoBlocksStatsRowFilter {
   stats: LandingPagePromoBlocksStatsRowStatsFilter
 }
 
+input LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input LandingPagePromoBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksFeatureGridItemsDescriptionFilter
 }
 
 input LandingPagePromoBlocksFeatureGridTextStyleFilter {
@@ -7243,6 +8117,16 @@ input LandingPagePromoBlocksImageGalleryFilter {
   textStyle: LandingPagePromoBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksImageSpotlightBodyFilter {
+  ContentLink: LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input LandingPagePromoBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7258,7 +8142,7 @@ input LandingPagePromoBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: LandingPagePromoBlocksImageSpotlightBodyFilter
   textStyle: LandingPagePromoBlocksImageSpotlightTextStyleFilter
 }
 
@@ -7325,6 +8209,16 @@ input LandingPagePromoBlocksVideoEmbedFilter {
   textStyle: LandingPagePromoBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksFeaturedBookDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input LandingPagePromoBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -7341,13 +8235,23 @@ input LandingPagePromoBlocksFeaturedBookTextStyleFilter {
 input LandingPagePromoBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksFeaturedBookDescriptionFilter
   stats: LandingPagePromoBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: LandingPagePromoBlocksFeaturedBookTextStyleFilter
+}
+
+input LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input LandingPagePromoBlocksFeaturedReleaseTextStyleFilter {
@@ -7361,7 +8265,7 @@ input LandingPagePromoBlocksFeaturedReleaseTextStyleFilter {
 input LandingPagePromoBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -7385,6 +8289,16 @@ input LandingPagePromoBlocksProductStripFilter {
   textStyle: LandingPagePromoBlocksProductStripTextStyleFilter
 }
 
+input LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksShopCatalogDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter
+}
+
 input LandingPagePromoBlocksShopCatalogTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7396,7 +8310,7 @@ input LandingPagePromoBlocksShopCatalogTextStyleFilter {
 input LandingPagePromoBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -7455,6 +8369,16 @@ input LandingPagePromoBlocksTutorialsStripFilter {
   textStyle: LandingPagePromoBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksClassesPitchSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input LandingPagePromoBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7466,7 +8390,7 @@ input LandingPagePromoBlocksClassesPitchTextStyleFilter {
 input LandingPagePromoBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -7476,10 +8400,20 @@ input LandingPagePromoBlocksClassesPitchFilter {
   textStyle: LandingPagePromoBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input LandingPagePromoBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -7500,6 +8434,16 @@ input LandingPagePromoBlocksBlogFeedFilter {
   textStyle: LandingPagePromoBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksCtaBandDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input LandingPagePromoBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7510,7 +8454,7 @@ input LandingPagePromoBlocksCtaBandTextStyleFilter {
 
 input LandingPagePromoBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -7536,6 +8480,16 @@ input LandingPagePromoBlocksBigCtaFilter {
   textStyle: LandingPagePromoBlocksBigCtaTextStyleFilter
 }
 
+input LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input LandingPagePromoBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7547,7 +8501,7 @@ input LandingPagePromoBlocksNewsletterSignupTextStyleFilter {
 input LandingPagePromoBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPagePromoBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -7563,6 +8517,16 @@ input LandingPagePromoBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input LandingPagePromoBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7573,13 +8537,23 @@ input LandingPagePromoBlocksDummyBookRequestTextStyleFilter {
 
 input LandingPagePromoBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPagePromoBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: LandingPagePromoBlocksDummyBookRequestTextStyleFilter
+}
+
+input LandingPagePromoBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksKofiSupportBodyFilter {
+  ContentLink: LandingPagePromoBlocksKofiSupportBodyContentLinkFilter
 }
 
 input LandingPagePromoBlocksKofiSupportTextStyleFilter {
@@ -7592,10 +8566,20 @@ input LandingPagePromoBlocksKofiSupportTextStyleFilter {
 
 input LandingPagePromoBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPagePromoBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: LandingPagePromoBlocksKofiSupportTextStyleFilter
+}
+
+input LandingPagePromoBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksReviewLinksIntroFilter {
+  ContentLink: LandingPagePromoBlocksReviewLinksIntroContentLinkFilter
 }
 
 input LandingPagePromoBlocksReviewLinksLinksFilter {
@@ -7614,7 +8598,7 @@ input LandingPagePromoBlocksReviewLinksTextStyleFilter {
 
 input LandingPagePromoBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: LandingPagePromoBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: LandingPagePromoBlocksReviewLinksLinksFilter
@@ -7624,6 +8608,16 @@ input LandingPagePromoBlocksReviewLinksFilter {
 input LandingPagePromoBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input LandingPagePromoBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksSocialLinksBodyFilter {
+  ContentLink: LandingPagePromoBlocksSocialLinksBodyContentLinkFilter
 }
 
 input LandingPagePromoBlocksSocialLinksLinksFilter {
@@ -7642,7 +8636,7 @@ input LandingPagePromoBlocksSocialLinksTextStyleFilter {
 
 input LandingPagePromoBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPagePromoBlocksSocialLinksBodyFilter
   links: LandingPagePromoBlocksSocialLinksLinksFilter
   textStyle: LandingPagePromoBlocksSocialLinksTextStyleFilter
 }
@@ -7695,6 +8689,16 @@ input LandingPagePromoFilter {
   blocks: LandingPagePromoBlocksFilter
 }
 
+input LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHomeHeroSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter
+}
+
 input LandingPageInfoBlocksHomeHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7706,7 +8710,7 @@ input LandingPageInfoBlocksHomeHeroTextStyleFilter {
 input LandingPageInfoBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -7714,6 +8718,16 @@ input LandingPageInfoBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: LandingPageInfoBlocksHomeHeroTextStyleFilter
+}
+
+input LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksAboutHeroLeadTextFilter {
+  ContentLink: LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input LandingPageInfoBlocksAboutHeroTextStyleFilter {
@@ -7727,7 +8741,7 @@ input LandingPageInfoBlocksAboutHeroTextStyleFilter {
 input LandingPageInfoBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: LandingPageInfoBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -7742,6 +8756,16 @@ input LandingPageInfoBlocksAboutHeroFilter {
   textStyle: LandingPageInfoBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHeroSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHeroSubheadingContentLinkFilter
+}
+
 input LandingPageInfoBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7752,11 +8776,21 @@ input LandingPageInfoBlocksHeroTextStyleFilter {
 
 input LandingPageInfoBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageInfoBlocksHeroTextStyleFilter
+}
+
+input LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input LandingPageInfoBlocksHeroSplitImageTextStyleFilter {
@@ -7770,7 +8804,7 @@ input LandingPageInfoBlocksHeroSplitImageTextStyleFilter {
 input LandingPageInfoBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -7780,6 +8814,16 @@ input LandingPageInfoBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageInfoBlocksHeroSplitImageTextStyleFilter
+}
+
+input LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input LandingPageInfoBlocksHeroFullBleedTextStyleFilter {
@@ -7793,13 +8837,23 @@ input LandingPageInfoBlocksHeroFullBleedTextStyleFilter {
 input LandingPageInfoBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageInfoBlocksHeroFullBleedTextStyleFilter
+}
+
+input LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input LandingPageInfoBlocksHeroFloatingImagesImagesFilter {
@@ -7819,13 +8873,23 @@ input LandingPageInfoBlocksHeroFloatingImagesTextStyleFilter {
 input LandingPageInfoBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHeroFloatingImagesSubheadingFilter
   images: LandingPageInfoBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageInfoBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksHeroImageGridSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input LandingPageInfoBlocksHeroImageGridImagesFilter {
@@ -7845,12 +8909,22 @@ input LandingPageInfoBlocksHeroImageGridTextStyleFilter {
 input LandingPageInfoBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: LandingPageInfoBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageInfoBlocksHeroImageGridTextStyleFilter
+}
+
+input LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksPageHeaderDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input LandingPageInfoBlocksPageHeaderTextStyleFilter {
@@ -7863,8 +8937,18 @@ input LandingPageInfoBlocksPageHeaderTextStyleFilter {
 
 input LandingPageInfoBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksPageHeaderDescriptionFilter
   textStyle: LandingPageInfoBlocksPageHeaderTextStyleFilter
+}
+
+input LandingPageInfoBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksTextBodyFilter {
+  ContentLink: LandingPageInfoBlocksTextBodyContentLinkFilter
 }
 
 input LandingPageInfoBlocksTextTextStyleFilter {
@@ -7877,8 +8961,38 @@ input LandingPageInfoBlocksTextTextStyleFilter {
 
 input LandingPageInfoBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageInfoBlocksTextBodyFilter
   textStyle: LandingPageInfoBlocksTextTextStyleFilter
+}
+
+input LandingPageInfoBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksStoryParagraph1Filter {
+  ContentLink: LandingPageInfoBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageInfoBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksStoryQuoteFilter {
+  ContentLink: LandingPageInfoBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageInfoBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksStoryParagraph2Filter {
+  ContentLink: LandingPageInfoBlocksStoryParagraph2ContentLinkFilter
 }
 
 input LandingPageInfoBlocksStoryTextStyleFilter {
@@ -7893,9 +9007,9 @@ input LandingPageInfoBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: LandingPageInfoBlocksStoryParagraph1Filter
+  quote: LandingPageInfoBlocksStoryQuoteFilter
+  paragraph2: LandingPageInfoBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: LandingPageInfoBlocksStoryTextStyleFilter
@@ -7932,10 +9046,20 @@ input LandingPageInfoBlocksStatsRowFilter {
   stats: LandingPageInfoBlocksStatsRowStatsFilter
 }
 
+input LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input LandingPageInfoBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksFeatureGridItemsDescriptionFilter
 }
 
 input LandingPageInfoBlocksFeatureGridTextStyleFilter {
@@ -8021,6 +9145,16 @@ input LandingPageInfoBlocksImageGalleryFilter {
   textStyle: LandingPageInfoBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksImageSpotlightBodyFilter {
+  ContentLink: LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input LandingPageInfoBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8036,7 +9170,7 @@ input LandingPageInfoBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: LandingPageInfoBlocksImageSpotlightBodyFilter
   textStyle: LandingPageInfoBlocksImageSpotlightTextStyleFilter
 }
 
@@ -8103,6 +9237,16 @@ input LandingPageInfoBlocksVideoEmbedFilter {
   textStyle: LandingPageInfoBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksFeaturedBookDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input LandingPageInfoBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -8119,13 +9263,23 @@ input LandingPageInfoBlocksFeaturedBookTextStyleFilter {
 input LandingPageInfoBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksFeaturedBookDescriptionFilter
   stats: LandingPageInfoBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: LandingPageInfoBlocksFeaturedBookTextStyleFilter
+}
+
+input LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input LandingPageInfoBlocksFeaturedReleaseTextStyleFilter {
@@ -8139,7 +9293,7 @@ input LandingPageInfoBlocksFeaturedReleaseTextStyleFilter {
 input LandingPageInfoBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -8163,6 +9317,16 @@ input LandingPageInfoBlocksProductStripFilter {
   textStyle: LandingPageInfoBlocksProductStripTextStyleFilter
 }
 
+input LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksShopCatalogDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter
+}
+
 input LandingPageInfoBlocksShopCatalogTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8174,7 +9338,7 @@ input LandingPageInfoBlocksShopCatalogTextStyleFilter {
 input LandingPageInfoBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -8233,6 +9397,16 @@ input LandingPageInfoBlocksTutorialsStripFilter {
   textStyle: LandingPageInfoBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksClassesPitchSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input LandingPageInfoBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8244,7 +9418,7 @@ input LandingPageInfoBlocksClassesPitchTextStyleFilter {
 input LandingPageInfoBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -8254,10 +9428,20 @@ input LandingPageInfoBlocksClassesPitchFilter {
   textStyle: LandingPageInfoBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input LandingPageInfoBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -8278,6 +9462,16 @@ input LandingPageInfoBlocksBlogFeedFilter {
   textStyle: LandingPageInfoBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksCtaBandDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input LandingPageInfoBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8288,7 +9482,7 @@ input LandingPageInfoBlocksCtaBandTextStyleFilter {
 
 input LandingPageInfoBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -8314,6 +9508,16 @@ input LandingPageInfoBlocksBigCtaFilter {
   textStyle: LandingPageInfoBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input LandingPageInfoBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8325,7 +9529,7 @@ input LandingPageInfoBlocksNewsletterSignupTextStyleFilter {
 input LandingPageInfoBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageInfoBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -8341,6 +9545,16 @@ input LandingPageInfoBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input LandingPageInfoBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8351,13 +9565,23 @@ input LandingPageInfoBlocksDummyBookRequestTextStyleFilter {
 
 input LandingPageInfoBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageInfoBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: LandingPageInfoBlocksDummyBookRequestTextStyleFilter
+}
+
+input LandingPageInfoBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksKofiSupportBodyFilter {
+  ContentLink: LandingPageInfoBlocksKofiSupportBodyContentLinkFilter
 }
 
 input LandingPageInfoBlocksKofiSupportTextStyleFilter {
@@ -8370,10 +9594,20 @@ input LandingPageInfoBlocksKofiSupportTextStyleFilter {
 
 input LandingPageInfoBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageInfoBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: LandingPageInfoBlocksKofiSupportTextStyleFilter
+}
+
+input LandingPageInfoBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksReviewLinksIntroFilter {
+  ContentLink: LandingPageInfoBlocksReviewLinksIntroContentLinkFilter
 }
 
 input LandingPageInfoBlocksReviewLinksLinksFilter {
@@ -8392,7 +9626,7 @@ input LandingPageInfoBlocksReviewLinksTextStyleFilter {
 
 input LandingPageInfoBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: LandingPageInfoBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: LandingPageInfoBlocksReviewLinksLinksFilter
@@ -8402,6 +9636,16 @@ input LandingPageInfoBlocksReviewLinksFilter {
 input LandingPageInfoBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input LandingPageInfoBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksSocialLinksBodyFilter {
+  ContentLink: LandingPageInfoBlocksSocialLinksBodyContentLinkFilter
 }
 
 input LandingPageInfoBlocksSocialLinksLinksFilter {
@@ -8420,7 +9664,7 @@ input LandingPageInfoBlocksSocialLinksTextStyleFilter {
 
 input LandingPageInfoBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageInfoBlocksSocialLinksBodyFilter
   links: LandingPageInfoBlocksSocialLinksLinksFilter
   textStyle: LandingPageInfoBlocksSocialLinksTextStyleFilter
 }
@@ -8473,6 +9717,16 @@ input LandingPageInfoFilter {
   blocks: LandingPageInfoBlocksFilter
 }
 
+input LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHomeHeroSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksHomeHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8484,7 +9738,7 @@ input LandingPageLinkInBioBlocksHomeHeroTextStyleFilter {
 input LandingPageLinkInBioBlocksHomeHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHomeHeroSubheadingFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -8492,6 +9746,16 @@ input LandingPageLinkInBioBlocksHomeHeroFilter {
   metaLine: StringFilter
   marqueeItems: StringFilter
   textStyle: LandingPageLinkInBioBlocksHomeHeroTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksAboutHeroLeadTextFilter {
+  ContentLink: LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksAboutHeroTextStyleFilter {
@@ -8505,7 +9769,7 @@ input LandingPageLinkInBioBlocksAboutHeroTextStyleFilter {
 input LandingPageLinkInBioBlocksAboutHeroFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  leadText: RichTextFilter
+  leadText: LandingPageLinkInBioBlocksAboutHeroLeadTextFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
@@ -8520,6 +9784,16 @@ input LandingPageLinkInBioBlocksAboutHeroFilter {
   textStyle: LandingPageLinkInBioBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHeroSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksHeroTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8530,11 +9804,21 @@ input LandingPageLinkInBioBlocksHeroTextStyleFilter {
 
 input LandingPageLinkInBioBlocksHeroFilter {
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHeroSubheadingFilter
   backgroundImage: ImageFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksHeroTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter {
@@ -8548,7 +9832,7 @@ input LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter {
 input LandingPageLinkInBioBlocksHeroSplitImageFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHeroSplitImageSubheadingFilter
   featuredImage: ImageFilter
   imageAlt: StringFilter
   imageCaption: StringFilter
@@ -8558,6 +9842,16 @@ input LandingPageLinkInBioBlocksHeroSplitImageFilter {
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter {
@@ -8571,13 +9865,23 @@ input LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter {
 input LandingPageLinkInBioBlocksHeroFullBleedFilter {
   backgroundImage: ImageFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHeroFullBleedSubheadingFilter
   overlay: StringFilter
   textAlign: StringFilter
   minHeight: StringFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter {
@@ -8597,13 +9901,23 @@ input LandingPageLinkInBioBlocksHeroFloatingImagesTextStyleFilter {
 input LandingPageLinkInBioBlocksHeroFloatingImagesFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingFilter
   images: LandingPageLinkInBioBlocksHeroFloatingImagesImagesFilter
   ctaPrimary: StringFilter
   ctaPrimaryLink: StringFilter
   ctaSecondary: StringFilter
   ctaSecondaryLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksHeroImageGridSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksHeroImageGridImagesFilter {
@@ -8623,12 +9937,22 @@ input LandingPageLinkInBioBlocksHeroImageGridTextStyleFilter {
 input LandingPageLinkInBioBlocksHeroImageGridFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksHeroImageGridSubheadingFilter
   layout: StringFilter
   images: LandingPageLinkInBioBlocksHeroImageGridImagesFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksHeroImageGridTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksPageHeaderDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksPageHeaderTextStyleFilter {
@@ -8641,8 +9965,18 @@ input LandingPageLinkInBioBlocksPageHeaderTextStyleFilter {
 
 input LandingPageLinkInBioBlocksPageHeaderFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksPageHeaderDescriptionFilter
   textStyle: LandingPageLinkInBioBlocksPageHeaderTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksTextBodyFilter {
+  ContentLink: LandingPageLinkInBioBlocksTextBodyContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksTextTextStyleFilter {
@@ -8655,8 +9989,38 @@ input LandingPageLinkInBioBlocksTextTextStyleFilter {
 
 input LandingPageLinkInBioBlocksTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageLinkInBioBlocksTextBodyFilter
   textStyle: LandingPageLinkInBioBlocksTextTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksStoryParagraph1Filter {
+  ContentLink: LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksStoryQuoteFilter {
+  ContentLink: LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksStoryParagraph2Filter {
+  ContentLink: LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksStoryTextStyleFilter {
@@ -8671,9 +10035,9 @@ input LandingPageLinkInBioBlocksStoryFilter {
   number: StringFilter
   label: StringFilter
   heading: StringFilter
-  paragraph1: RichTextFilter
-  quote: RichTextFilter
-  paragraph2: RichTextFilter
+  paragraph1: LandingPageLinkInBioBlocksStoryParagraph1Filter
+  quote: LandingPageLinkInBioBlocksStoryQuoteFilter
+  paragraph2: LandingPageLinkInBioBlocksStoryParagraph2Filter
   sideImage: ImageFilter
   sideCaption: StringFilter
   textStyle: LandingPageLinkInBioBlocksStoryTextStyleFilter
@@ -8710,10 +10074,20 @@ input LandingPageLinkInBioBlocksStatsRowFilter {
   stats: LandingPageLinkInBioBlocksStatsRowStatsFilter
 }
 
+input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksFeatureGridItemsFilter {
   icon: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksFeatureGridItemsDescriptionFilter
 }
 
 input LandingPageLinkInBioBlocksFeatureGridTextStyleFilter {
@@ -8799,6 +10173,16 @@ input LandingPageLinkInBioBlocksImageGalleryFilter {
   textStyle: LandingPageLinkInBioBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksImageSpotlightBodyFilter {
+  ContentLink: LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksImageSpotlightTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8814,7 +10198,7 @@ input LandingPageLinkInBioBlocksImageSpotlightFilter {
   alt: StringFilter
   caption: StringFilter
   aspect: StringFilter
-  body: RichTextFilter
+  body: LandingPageLinkInBioBlocksImageSpotlightBodyFilter
   textStyle: LandingPageLinkInBioBlocksImageSpotlightTextStyleFilter
 }
 
@@ -8881,6 +10265,16 @@ input LandingPageLinkInBioBlocksVideoEmbedFilter {
   textStyle: LandingPageLinkInBioBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedBookDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksFeaturedBookStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -8897,13 +10291,23 @@ input LandingPageLinkInBioBlocksFeaturedBookTextStyleFilter {
 input LandingPageLinkInBioBlocksFeaturedBookFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksFeaturedBookDescriptionFilter
   stats: LandingPageLinkInBioBlocksFeaturedBookStatsFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   secondaryLabel: StringFilter
   secondaryLink: StringFilter
   textStyle: LandingPageLinkInBioBlocksFeaturedBookTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksFeaturedReleaseTextStyleFilter {
@@ -8917,7 +10321,7 @@ input LandingPageLinkInBioBlocksFeaturedReleaseTextStyleFilter {
 input LandingPageLinkInBioBlocksFeaturedReleaseFilter {
   eyebrow: StringFilter
   title: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksFeaturedReleaseDescriptionFilter
   coverImage: ImageFilter
   backCoverImage: ImageFilter
   ctaLabel: StringFilter
@@ -8941,6 +10345,16 @@ input LandingPageLinkInBioBlocksProductStripFilter {
   textStyle: LandingPageLinkInBioBlocksProductStripTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksShopCatalogDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksShopCatalogTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -8952,7 +10366,7 @@ input LandingPageLinkInBioBlocksShopCatalogTextStyleFilter {
 input LandingPageLinkInBioBlocksShopCatalogFilter {
   heading: StringFilter
   highlightText: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksShopCatalogDescriptionFilter
   showFeaturedBanner: BooleanFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
@@ -9011,6 +10425,16 @@ input LandingPageLinkInBioBlocksTutorialsStripFilter {
   textStyle: LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksClassesPitchSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksClassesPitchTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9022,7 +10446,7 @@ input LandingPageLinkInBioBlocksClassesPitchTextStyleFilter {
 input LandingPageLinkInBioBlocksClassesPitchFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksClassesPitchSubheadingFilter
   bullets: StringFilter
   metaTags: StringFilter
   ctaLabel: StringFilter
@@ -9032,10 +10456,20 @@ input LandingPageLinkInBioBlocksClassesPitchFilter {
   textStyle: LandingPageLinkInBioBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksBlogFeedNewsletterFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -9056,6 +10490,16 @@ input LandingPageLinkInBioBlocksBlogFeedFilter {
   textStyle: LandingPageLinkInBioBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksCtaBandDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksCtaBandTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9066,7 +10510,7 @@ input LandingPageLinkInBioBlocksCtaBandTextStyleFilter {
 
 input LandingPageLinkInBioBlocksCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -9092,6 +10536,16 @@ input LandingPageLinkInBioBlocksBigCtaFilter {
   textStyle: LandingPageLinkInBioBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksNewsletterSignupTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9103,7 +10557,7 @@ input LandingPageLinkInBioBlocksNewsletterSignupTextStyleFilter {
 input LandingPageLinkInBioBlocksNewsletterSignupFilter {
   eyebrow: StringFilter
   heading: StringFilter
-  subheading: RichTextFilter
+  subheading: LandingPageLinkInBioBlocksNewsletterSignupSubheadingFilter
   placeholderText: StringFilter
   ctaLabel: StringFilter
   privacyNote: StringFilter
@@ -9119,6 +10573,16 @@ input LandingPageLinkInBioBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
 input LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9129,13 +10593,23 @@ input LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter {
 
 input LandingPageLinkInBioBlocksDummyBookRequestFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: LandingPageLinkInBioBlocksDummyBookRequestDescriptionFilter
   pdfUrl: StringFilter
   submitLabel: StringFilter
   successHeading: StringFilter
   successNote: StringFilter
   downloadLabel: StringFilter
   textStyle: LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksKofiSupportBodyFilter {
+  ContentLink: LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksKofiSupportTextStyleFilter {
@@ -9148,10 +10622,20 @@ input LandingPageLinkInBioBlocksKofiSupportTextStyleFilter {
 
 input LandingPageLinkInBioBlocksKofiSupportFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageLinkInBioBlocksKofiSupportBodyFilter
   ctaLabel: StringFilter
   href: StringFilter
   textStyle: LandingPageLinkInBioBlocksKofiSupportTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksReviewLinksIntroFilter {
+  ContentLink: LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksReviewLinksLinksFilter {
@@ -9170,7 +10654,7 @@ input LandingPageLinkInBioBlocksReviewLinksTextStyleFilter {
 
 input LandingPageLinkInBioBlocksReviewLinksFilter {
   heading: StringFilter
-  intro: RichTextFilter
+  intro: LandingPageLinkInBioBlocksReviewLinksIntroFilter
   thankYou: StringFilter
   ctaHeading: StringFilter
   links: LandingPageLinkInBioBlocksReviewLinksLinksFilter
@@ -9180,6 +10664,16 @@ input LandingPageLinkInBioBlocksReviewLinksFilter {
 input LandingPageLinkInBioBlocksMarqueeFilter {
   highlightText: StringFilter
   text: StringFilter
+}
+
+input LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksSocialLinksBodyFilter {
+  ContentLink: LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter
 }
 
 input LandingPageLinkInBioBlocksSocialLinksLinksFilter {
@@ -9198,7 +10692,7 @@ input LandingPageLinkInBioBlocksSocialLinksTextStyleFilter {
 
 input LandingPageLinkInBioBlocksSocialLinksFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: LandingPageLinkInBioBlocksSocialLinksBodyFilter
   links: LandingPageLinkInBioBlocksSocialLinksLinksFilter
   textStyle: LandingPageLinkInBioBlocksSocialLinksTextStyleFilter
 }
@@ -9406,6 +10900,16 @@ type Post implements Node & Document {
   _values: JSON!
 }
 
+input PostExcerptContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostExcerptFilter {
+  ContentLink: PostExcerptContentLinkFilter
+}
+
 input DatetimeFilter {
   after: String
   before: String
@@ -9420,6 +10924,16 @@ input PostSectionsHeadingFilter {
   level: StringFilter
 }
 
+input PostSectionsTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsTextBodyFilter {
+  ContentLink: PostSectionsTextBodyContentLinkFilter
+}
+
 input PostSectionsTextTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9430,7 +10944,7 @@ input PostSectionsTextTextStyleFilter {
 
 input PostSectionsTextFilter {
   heading: StringFilter
-  body: RichTextFilter
+  body: PostSectionsTextBodyFilter
   textStyle: PostSectionsTextTextStyleFilter
 }
 
@@ -9512,10 +11026,30 @@ input PostSectionsVideoEmbedFilter {
   textStyle: PostSectionsVideoEmbedTextStyleFilter
 }
 
+input PostSectionsCalloutBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsCalloutBodyFilter {
+  ContentLink: PostSectionsCalloutBodyContentLinkFilter
+}
+
 input PostSectionsCalloutFilter {
   title: StringFilter
-  body: RichTextFilter
+  body: PostSectionsCalloutBodyFilter
   tone: StringFilter
+}
+
+input PostSectionsCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsCtaBandDescriptionFilter {
+  ContentLink: PostSectionsCtaBandDescriptionContentLinkFilter
 }
 
 input PostSectionsCtaBandTextStyleFilter {
@@ -9528,7 +11062,7 @@ input PostSectionsCtaBandTextStyleFilter {
 
 input PostSectionsCtaBandFilter {
   heading: StringFilter
-  description: RichTextFilter
+  description: PostSectionsCtaBandDescriptionFilter
   ctaLabel: StringFilter
   ctaLink: StringFilter
   variant: StringFilter
@@ -9550,7 +11084,7 @@ input PostSectionsFilter {
 
 input PostFilter {
   title: StringFilter
-  excerpt: RichTextFilter
+  excerpt: PostExcerptFilter
   coverImage: ImageFilter
   publishedAt: DatetimeFilter
   tags: StringFilter
@@ -9594,6 +11128,16 @@ type ShopProduct implements Node & Document {
   _values: JSON!
 }
 
+input ShopProductDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductDescriptionFilter {
+  ContentLink: ShopProductDescriptionContentLinkFilter
+}
+
 input NumberFilter {
   lt: Float
   lte: Float
@@ -9611,7 +11155,7 @@ input ShopProductGalleryImagesFilter {
 
 input ShopProductFilter {
   name: StringFilter
-  description: RichTextFilter
+  description: ShopProductDescriptionFilter
   price: NumberFilter
   category: StringFilter
   image: ImageFilter

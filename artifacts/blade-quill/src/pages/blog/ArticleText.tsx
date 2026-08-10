@@ -1,6 +1,7 @@
 import { tinaField } from "tinacms/react";
 import { TinaMarkdown, type Components } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
+import { richTextComponents } from "@/components/site/rich-text-components";
 import type { Block } from "@/pages/blocks/block-utils";
 import { SectionHeading, bodyTextStyle } from "@/pages/blocks/text-style";
 
@@ -9,21 +10,15 @@ interface Props {
 }
 
 const proseComponents: Components<{
+  ContentLink: {
+    url?: string;
+    text?: string;
+    openInNewTab?: boolean;
+    children?: React.ReactNode;
+  };
   img: { url: string; alt?: string; caption?: string };
 }> = {
-  p: (props) => <p {...props} />,
-  break: () => <br />,
-  a: (props) => (
-    <a
-      {...props}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        "underline decoration-maroon/60 underline-offset-2 hover:text-maroon transition-colors",
-        (props as { className?: string }).className,
-      )}
-    />
-  ),
+  ...richTextComponents,
   ul: (props) => (
     <ul
       {...props}
