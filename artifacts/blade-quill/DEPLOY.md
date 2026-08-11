@@ -142,9 +142,17 @@ The public site loads **GA4 Measurement ID `G-50YS8RZ7HL`** (same as the live Sq
 
 1. Open [Google Analytics](https://analytics.google.com/) for Corinne's property.
 2. Admin → Events → mark `purchase`, `amazon_click`, and `dummy_book_request` as **key events**.
-3. Create a GCP service account, download its JSON key, and add the service account email as a **Viewer** on the GA4 property (Admin → Property access management).
-4. Copy the numeric **Property ID** (Admin → Property settings) into Vercel as `GA_PROPERTY_ID`.
+3. In [Google Cloud Console](https://console.cloud.google.com/): create (or reuse) a project, enable the **Google Analytics Data API**, create a service account, and download its JSON key. Add the service account email as a **Viewer** on the GA4 property (GA Admin → Property access management).
+4. Copy the numeric **Property ID** (Admin → Property settings) into Vercel as `GA_PROPERTY_ID`. This is the number, not the `G-…` measurement ID.
 5. Paste the service account JSON (or base64 of it) into Vercel as `GA_SERVICE_ACCOUNT_JSON`.
+
+Smoke test the credentials locally before (or after) setting them on Vercel — put the same two vars in the repo-root `.env` and run:
+
+```bash
+pnpm --filter @workspace/scripts run test:insights
+```
+
+Expect `GA_CONFIG_OK` (parsed property ID + service account email) followed by `GA_OK` with real session/event counts for the last 28 days. `GA_SKIPPED` means the vars are unset; `GA_CONFIG_ERROR` / `GA_ERROR` output explains what to fix (wrong property ID format, missing Viewer grant, Data API not enabled, malformed JSON).
 
 **Owner Studio (`/insights`)**
 

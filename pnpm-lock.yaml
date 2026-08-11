@@ -667,6 +667,9 @@ importers:
       '@workspace/db':
         specifier: workspace:*
         version: link:../lib/db
+      '@workspace/insights':
+        specifier: workspace:*
+        version: link:../lib/insights
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

@@ -9,11 +9,13 @@ import { fetchOrderInsights } from "./orders";
 import type { InsightsRange, InsightsResponse } from "./types";
 
 export type { InsightsRange, InsightsResponse, InsightsOrder, InsightsDayPoint } from "./types";
+export type { GaMetrics } from "./ga";
 export {
   InsightsAuthError,
   assertTinaAuthorized,
   buildInsightsSessionCookie,
   clearInsightsSessionCookie,
+  fetchGaMetrics,
   resolveAuthorization,
 };
 
