@@ -7,12 +7,14 @@
     "hello": "tsx ./src/hello.ts",
     "seed": "tsx ./src/seed.ts",
     "test:checkout": "tsx ./src/test-checkout.ts",
+    "test:insights": "tsx ./src/test-insights.ts",
     "migrate:squarespace": "tsx ./src/migrate-squarespace.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@workspace/checkout": "workspace:*",
-    "@workspace/db": "workspace:*"
+    "@workspace/db": "workspace:*",
+    "@workspace/insights": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
