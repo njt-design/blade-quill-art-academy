@@ -1,0 +1,580 @@
+{
+  "title": "How to Color Your Line Art in Krita: Layers, Alpha Lock & Inherit Alpha",
+  "excerpt": {
+    "type": "root",
+    "children": [
+      {
+        "type": "p",
+        "children": [
+          {
+            "type": "text",
+            "text": "A step-by-step tutorial on turning clean line art into a fully colored illustration in Krita, using layers, the Fill tool, Alpha Lock, and Inherit Alpha."
+          }
+        ]
+      }
+    ]
+  },
+  "coverImage": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=1600&q=80",
+  "publishedAt": "2026-08-11T12:00:00.000Z",
+  "tags": [
+    "Krita",
+    "Tutorials",
+    "Step-by-Step"
+  ],
+  "showTableOfContents": true,
+  "sections": [
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Bonjour, my friends! One of the questions I receive most often from my students at the Art Academy is: \"Corinne, my line art looks fine, but the moment I start coloring, everything turns into a mess. The color goes over my lines, I can't fix mistakes, and I give up.\" I understand completely — I made every one of these mistakes when I first switched to digital painting."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "The good news? Coloring in Krita becomes almost relaxing once you understand three little tools: "
+              },
+              {
+                "text": "layers",
+                "bold": true
+              },
+              {
+                "text": ", "
+              },
+              {
+                "text": "Alpha Lock",
+                "bold": true
+              },
+              {
+                "text": ", and "
+              },
+              {
+                "text": "Inherit Alpha",
+                "bold": true
+              },
+              {
+                "text": ". In this tutorial, I will walk you through my complete coloring process, from a finished sketch to a shaded illustration. I will be coloring one of my chibi characters, but this workflow works for any style of art. Let's begin!"
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "number": "",
+      "text": "What You'll Need",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Very little, I promise! You will need Krita (it is completely free — I am using version 5.2), a graphics tablet or pen display, and a piece of finished line art on its own layer. If your lines and your sketch are still on the same layer, take a moment to ink your drawing on a fresh layer first. Clean, closed line art will make the Fill tool much happier later on."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "number": "1",
+      "text": "Organize Your Layers",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Before a single drop of color touches the canvas, we prepare our layer stack. Open the Layers docker (if you do not see it, go to "
+              },
+              {
+                "text": "Settings → Dockers → Layers",
+                "bold": true
+              },
+              {
+                "text": ") and set things up from top to bottom like this:"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "text": "Line art",
+                "bold": true
+              },
+              {
+                "text": " on top, a new layer called "
+              },
+              {
+                "text": "Colors",
+                "bold": true
+              },
+              {
+                "text": " underneath it (press the "
+              },
+              {
+                "text": "Insert",
+                "bold": true
+              },
+              {
+                "text": " key to create a new paint layer quickly), and your white "
+              },
+              {
+                "text": "Background",
+                "bold": true
+              },
+              {
+                "text": " at the very bottom. Because the Colors layer sits below the line art, nothing you paint can ever cover your beautiful lines. This one habit alone will save you hours of frustration."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "While you are here, click the padlock icon on your line art layer to lock it. This prevents you from accidentally painting on it — something I still do if I am not careful!"
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=1200&q=80",
+      "alt": "Krita workspace with the Layers docker showing line art, colors, and background layers stacked in order",
+      "caption": "My layer stack before coloring: line art on top (locked), the Colors layer below it, background at the bottom.",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
+    },
+    {
+      "title": "Tip",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Name your layers as you create them! Double-click a layer's name in the docker to rename it. \"Layer 14\" tells you nothing at midnight when you are hunting for the skin tones."
+              }
+            ]
+          }
+        ]
+      },
+      "tone": "tip",
+      "_template": "callout"
+    },
+    {
+      "number": "2",
+      "text": "Lay Down Your Flat Colors with the Fill Tool",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "\"Flats\" are the base colors of your illustration — no shading yet, just simple, solid shapes of color. Select your Colors layer, pick the Fill tool from the toolbox (or press "
+              },
+              {
+                "text": "F",
+                "bold": true
+              },
+              {
+                "text": "), and click inside an area of your line art to fill it with the current foreground color."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Here is the secret most beginners miss: in the "
+              },
+              {
+                "text": "Tool Options",
+                "bold": true
+              },
+              {
+                "text": " docker, set "
+              },
+              {
+                "text": "Sample",
+                "bold": true
+              },
+              {
+                "text": " to "
+              },
+              {
+                "text": "All Layers",
+                "bold": true
+              },
+              {
+                "text": ". This tells the Fill tool to look at your line art layer for boundaries, even though you are painting on the layer below it. Then increase "
+              },
+              {
+                "text": "Grow Selection",
+                "bold": true
+              },
+              {
+                "text": " to about 2 pixels so the color creeps slightly underneath your lines — no more ugly white gaps between the color and the line art!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Work through your character one area at a time: skin, hair, clothing, accessories. If a fill leaks out and floods the whole canvas, do not panic — press "
+              },
+              {
+                "text": "Ctrl+Z",
+                "bold": true
+              },
+              {
+                "text": ", find the little gap in your line art, close it with a small brush stroke, and try again."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&q=80",
+      "alt": "Flat base colors filled into line art in Krita using the Fill tool",
+      "caption": "Flats in progress — the Fill tool with \"Sample: All Layers\" and \"Grow Selection: 2px\" keeps color tucked neatly under the lines.",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
+    },
+    {
+      "number": "3",
+      "text": "Pick a Palette That Works Together",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A quick pause before we shade, because color choice matters more than any tool. My advice for beginners: limit yourself to 4 or 5 main colors, and make sure they share a little of each other. For my chibi characters I often mix a touch of the hair color into the skin shadows, and a touch of the clothing color into the hair highlights. It is a small thing, but it makes the whole illustration feel harmonious."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "In Krita, open the "
+              },
+              {
+                "text": "Palette docker",
+                "bold": true
+              },
+              {
+                "text": " and save your chosen colors before you start shading. You can also hold "
+              },
+              {
+                "text": "Ctrl",
+                "bold": true
+              },
+              {
+                "text": " at any time to temporarily switch your brush to the color sampler and pick a color straight from your canvas — I use this constantly."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
+      "alt": "A limited color palette of coordinated swatches prepared before shading",
+      "caption": "My saved palette for this piece — five colors that share undertones, saved in the Palette docker before shading begins.",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
+    },
+    {
+      "number": "4",
+      "text": "Shade with Inherit Alpha (Krita's Clipping Mask)",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Now for my favorite part. If you come from Photoshop or Procreate, you may know \"clipping masks.\" Krita's version is called "
+              },
+              {
+                "text": "Inherit Alpha",
+                "bold": true
+              },
+              {
+                "text": ", and it is the small icon shaped like the Greek letter alpha (α) on each layer in the Layers docker."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Create a new layer directly above your Colors layer, name it "
+              },
+              {
+                "text": "Shadows",
+                "bold": true
+              },
+              {
+                "text": ", and click its alpha icon. Like magic, anything you paint on this layer will only appear where your flat colors already exist — you can shade with big, loose brush strokes and never spill outside your character. Set the Shadows layer's blending mode to "
+              },
+              {
+                "text": "Multiply",
+                "bold": true
+              },
+              {
+                "text": ", choose a soft violet or blue (never plain grey — it makes colors look muddy!), and paint your shadows where the light does not reach."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "One important note: Inherit Alpha looks at every layer below it inside the same group. If it seems to \"clip\" to the wrong thing, select your Colors and Shadows layers and press "
+              },
+              {
+                "text": "Ctrl+G",
+                "bold": true
+              },
+              {
+                "text": " to put them in a group together — then it behaves exactly like a clipping mask."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "And what about "
+              },
+              {
+                "text": "Alpha Lock",
+                "bold": true
+              },
+              {
+                "text": "? That is the little checkerboard icon next to it. It locks the transparency of the layer itself, so you can only repaint pixels that already have color. I use it to change the color of something I have already painted — for example, warming up the edge of a shadow — without touching the empty areas around it."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80",
+      "alt": "Shading painted on a Multiply layer with Inherit Alpha enabled so strokes stay inside the flat colors",
+      "caption": "The Shadows layer set to Multiply with Inherit Alpha on — broad strokes stay perfectly inside the character.",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
+    },
+    {
+      "title": "Remember",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Alpha Lock protects the transparency of one layer; Inherit Alpha clips a whole layer to the layers below it. If you only memorize one thing from this tutorial, let it be this difference!"
+              }
+            ]
+          }
+        ]
+      },
+      "tone": "note",
+      "_template": "callout"
+    },
+    {
+      "number": "5",
+      "text": "Finishing Touches: Highlights and a Final Polish",
+      "level": "h2",
+      "_template": "heading"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Almost there! Add one more layer above your Shadows layer, enable Inherit Alpha on it too, and set its blending mode to "
+              },
+              {
+                "text": "Screen",
+                "bold": true
+              },
+              {
+                "text": " or "
+              },
+              {
+                "text": "Overlay",
+                "bold": true
+              },
+              {
+                "text": ". With a warm, light color, dab small highlights where the light hits: the top of the hair, the tip of the nose, the edges of the shoulders. For chibi characters, a single shiny dot in each eye brings the whole face to life."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Finally, step back and look at the whole piece. If the colors feel slightly flat, try "
+              },
+              {
+                "text": "Filter → Adjust → HSV/HSL Adjustment",
+                "bold": true
+              },
+              {
+                "text": " ("
+              },
+              {
+                "text": "Ctrl+U",
+                "bold": true
+              },
+              {
+                "text": ") and nudge the saturation up just a few points. Small adjustments, always — it is much easier to add than to take away."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&q=80",
+      "alt": "Finished colored illustration with flats, shadows, and highlights complete",
+      "caption": "The finished piece — flats, Multiply shadows, and Screen highlights, all kept tidy with Inherit Alpha.",
+      "width": "content",
+      "aspect": "auto",
+      "_template": "image"
+    },
+    {
+      "style": "line",
+      "_template": "divider"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "And voilà — a fully colored illustration, with every stage safely on its own layer so you can change your mind at any moment. That, to me, is the real magic of digital painting: nothing is ever permanent, so you are free to experiment."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Practice this workflow on two or three drawings and it will become second nature, I promise. If you get stuck, come say hello in the comments of my YouTube tutorials — I read everything. Happy painting!"
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    },
+    {
+      "heading": "Want to go deeper with Krita?",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "My Krita Quick Start Guide covers brushes, shortcuts, and my full setup — updated for Krita 5.2 with links to video tutorials."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Get the Guide",
+      "ctaLink": "/shop/krita-quick-start-guide",
+      "variant": "light",
+      "_template": "ctaBand"
+    }
+  ]
+}
