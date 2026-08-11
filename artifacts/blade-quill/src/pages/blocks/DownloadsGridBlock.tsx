@@ -11,6 +11,17 @@ interface Props {
   block: Block;
 }
 
+/** Prefer a real filename so browsers save JPGs/PNGs instead of opening them. */
+function filenameFromUrl(url: string): string {
+  try {
+    const path = new URL(url, "https://example.invalid").pathname;
+    const name = path.split("/").pop();
+    return name && name.includes(".") ? decodeURIComponent(name) : "download";
+  } catch {
+    return "download";
+  }
+}
+
 export default function DownloadsGridBlock({ block }: Props) {
   const { data: downloadsRaw, isLoading } = useListDownloads();
   const downloads = asArray<Download>(downloadsRaw, FALLBACK_DOWNLOADS);
@@ -56,13 +67,10 @@ export default function DownloadsGridBlock({ block }: Props) {
                       {item.description}
                     </p>
                   )}
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="dl-btn text-xs"
-                    onClick={() => window.open(item.fileUrl, "_blank")}
-                  >
-                    <DownloadIcon className="w-3.5 h-3.5 mr-1.5" /> Free Download
+                  <Button asChild variant="outline" size="sm" className="dl-btn text-xs">
+                    <a href={item.fileUrl} download={filenameFromUrl(item.fileUrl)}>
+                      <DownloadIcon className="w-3.5 h-3.5 mr-1.5" /> Free Download
+                    </a>
                   </Button>
                 </div>
               </div>
