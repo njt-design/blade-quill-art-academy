@@ -9,7 +9,11 @@
  *
  * Required env vars (Vercel project settings):
  *   RESEND_API_KEY     — Resend API key
- *   CONTACT_TO_EMAIL   — destination inbox
+ *   CONTACT_TO_EMAIL   — destination inbox. Once Resend inbound forwarding is
+ *                        live (see api/inbound.ts), point this at the branded
+ *                        address (e.g. Corinne@bladeandquillartacademy.com) so
+ *                        replies default to the branded From in Gmail instead
+ *                        of exposing the personal inbox.
  *   CONTACT_FROM_EMAIL — verified sender, e.g. "Blade & Quill <contact@example.com>"
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
@@ -27,8 +31,15 @@ interface ContactBody {
 
 function parseBody(body: unknown): ContactBody | null {
   if (typeof body !== "object" || body === null) return null;
-  const { name, email, message, company, intent } = body as Record<string, unknown>;
-  if (typeof name !== "string" || typeof email !== "string" || typeof message !== "string") {
+  const { name, email, message, company, intent } = body as Record<
+    string,
+    unknown
+  >;
+  if (
+    typeof name !== "string" ||
+    typeof email !== "string" ||
+    typeof message !== "string"
+  ) {
     return null;
   }
   const trimmedName = name.trim();
@@ -37,7 +48,11 @@ function parseBody(body: unknown): ContactBody | null {
   if (trimmedName.length < 2 || trimmedName.length > 200) return null;
   if (!EMAIL_RE.test(trimmedEmail) || trimmedEmail.length > 320) return null;
   if (trimmedMessage.length < 10 || trimmedMessage.length > 5000) return null;
-  const parsed: ContactBody = { name: trimmedName, email: trimmedEmail, message: trimmedMessage };
+  const parsed: ContactBody = {
+    name: trimmedName,
+    email: trimmedEmail,
+    message: trimmedMessage,
+  };
   if (typeof company === "string" && company.trim()) {
     const trimmedCompany = company.trim();
     if (trimmedCompany.length > 200) return null;
@@ -66,7 +81,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL;
   if (!apiKey || !to || !from) {
-    console.error("Contact form misconfigured: missing RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL");
+    console.error(
+      "Contact form misconfigured: missing RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL",
+    );
     res.status(500).json({ error: "Failed to submit contact form" });
     return;
   }

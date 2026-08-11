@@ -1,0 +1,16 @@
+---
+description: Branded email / reply privacy plan for Corinne — read when the user asks about contact form email, Resend, replying to guests, or hiding her personal address
+alwaysApply: false
+---
+
+# Email reply privacy (saved plan)
+
+When the user asks about contact form email, Resend inbound, Gmail "Send mail as", or Corinne's personal address showing up in replies, **read and summarize** [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md).
+
+## Quick reminder
+
+- **Problem:** replies from her personal mailbox expose her personal address; Resend only sends the notification.
+- **Fix:** Resend Inbound (MX record) + `api/inbound.ts` webhook forwards branded mail to her private inbox; Gmail "Send mail as" over `smtp.resend.com` sends replies as the branded address.
+- **Env vars:** `RESEND_WEBHOOK_SECRET`, `INBOUND_FORWARD_TO_EMAIL` (new); `CONTACT_TO_EMAIL` switches to the branded address once forwarding works.
+- **Webhook URL:** `https://blade-quill-art-academy.vercel.app/api/inbound` — custom domain blocks `/api/*` until launch.
+- **Caveat:** Gmail retires third-party "Send mail as" January 2027; long-term answer is Google Workspace.

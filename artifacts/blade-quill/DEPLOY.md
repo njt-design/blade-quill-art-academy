@@ -42,25 +42,27 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 
 ## Environment variables (Vercel project)
 
-| Variable | Where to set | Required |
-|----------|--------------|----------|
-| `TINA_PUBLIC_CLIENT_ID` | Vercel Dashboard | Yes — from [app.tina.io](https://app.tina.io) project settings |
-| `TINA_TOKEN` | Vercel Dashboard | Yes — read-only token from Tina Cloud (used by Tina admin build) |
-| `TINA_PUBLIC_READONLY_TOKEN` | Vercel Dashboard | Yes — same read-only token as `TINA_TOKEN`; injected into the browser bundle for runtime content fetches |
-| `TINA_BRANCH` | Vercel Dashboard | No — defaults to `main` in `tina/config.ts` |
-| `RESEND_API_KEY` | Vercel Dashboard | Yes — API key from [resend.com](https://resend.com); used by `api/contact.ts` to send contact form email |
-| `CONTACT_TO_EMAIL` | Vercel Dashboard | Yes — inbox that receives contact form messages (Corinne's email) |
-| `CONTACT_FROM_EMAIL` | Vercel Dashboard | Yes — verified Resend sender, e.g. `Blade & Quill <contact@bladeandquillartacademy.com>` (use `onboarding@resend.dev` until the domain is verified) |
-| `RESEND_AUDIENCE_ID` | Vercel Dashboard | Yes — id of the Resend Audience that stores newsletter subscribers (Resend dashboard → Audiences) |
-| `STRIPE_SECRET_KEY` | Vercel Dashboard | Yes — from Stripe Developers → API keys (test or live) |
-| `STRIPE_WEBHOOK_SECRET` | Vercel Dashboard | Yes — from Stripe webhook endpoint for `/api/stripe/webhook` |
-| `SUPABASE_URL` | Vercel Dashboard | Yes — orders storage for checkout |
-| `SUPABASE_SERVICE_ROLE_KEY` | Vercel Dashboard | Yes — server-side Supabase key (never expose to the browser) |
-| `VITE_GA_MEASUREMENT_ID` | Vercel Dashboard | No — defaults to Corinne's existing `G-50YS8RZ7HL` (Squarespace property) |
-| `GA_PROPERTY_ID` | Vercel Dashboard | Yes for Insights — numeric GA4 property ID (Admin → Property settings) |
-| `GA_SERVICE_ACCOUNT_JSON` | Vercel Dashboard | Yes for Insights — GCP service account JSON (raw or base64) with Viewer on that property |
-| `PORT` | Hardcoded in `build:static` | No — set to `3001` in the script |
-| `BASE_PATH` | Hardcoded in `build:static` | No — set to `/` in the script |
+| Variable                     | Where to set                | Required                                                                                                                                                                                                                                                                  |
+| ---------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TINA_PUBLIC_CLIENT_ID`      | Vercel Dashboard            | Yes — from [app.tina.io](https://app.tina.io) project settings                                                                                                                                                                                                            |
+| `TINA_TOKEN`                 | Vercel Dashboard            | Yes — read-only token from Tina Cloud (used by Tina admin build)                                                                                                                                                                                                          |
+| `TINA_PUBLIC_READONLY_TOKEN` | Vercel Dashboard            | Yes — same read-only token as `TINA_TOKEN`; injected into the browser bundle for runtime content fetches                                                                                                                                                                  |
+| `TINA_BRANCH`                | Vercel Dashboard            | No — defaults to `main` in `tina/config.ts`                                                                                                                                                                                                                               |
+| `RESEND_API_KEY`             | Vercel Dashboard            | Yes — API key from [resend.com](https://resend.com); used by `api/contact.ts` to send contact form email                                                                                                                                                                  |
+| `CONTACT_TO_EMAIL`           | Vercel Dashboard            | Yes — inbox that receives contact form messages. Use the branded address (e.g. `Corinne@bladeandquillartacademy.com`) once inbound forwarding is live so Gmail replies default to the branded From (see [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md)) |
+| `CONTACT_FROM_EMAIL`         | Vercel Dashboard            | Yes — verified Resend sender, e.g. `Blade & Quill <contact@bladeandquillartacademy.com>` (use `onboarding@resend.dev` until the domain is verified)                                                                                                                       |
+| `RESEND_AUDIENCE_ID`         | Vercel Dashboard            | Yes — id of the Resend Audience that stores newsletter subscribers (Resend dashboard → Audiences)                                                                                                                                                                         |
+| `RESEND_WEBHOOK_SECRET`      | Vercel Dashboard            | Yes for inbound email — signing secret of the Resend `email.received` webhook used by `api/inbound.ts`                                                                                                                                                                    |
+| `INBOUND_FORWARD_TO_EMAIL`   | Vercel Dashboard            | Yes for inbound email — private inbox that receives mail forwarded from the branded domain addresses                                                                                                                                                                      |
+| `STRIPE_SECRET_KEY`          | Vercel Dashboard            | Yes — from Stripe Developers → API keys (test or live)                                                                                                                                                                                                                    |
+| `STRIPE_WEBHOOK_SECRET`      | Vercel Dashboard            | Yes — from Stripe webhook endpoint for `/api/stripe/webhook`                                                                                                                                                                                                              |
+| `SUPABASE_URL`               | Vercel Dashboard            | Yes — orders storage for checkout                                                                                                                                                                                                                                         |
+| `SUPABASE_SERVICE_ROLE_KEY`  | Vercel Dashboard            | Yes — server-side Supabase key (never expose to the browser)                                                                                                                                                                                                              |
+| `VITE_GA_MEASUREMENT_ID`     | Vercel Dashboard            | No — defaults to Corinne's existing `G-50YS8RZ7HL` (Squarespace property)                                                                                                                                                                                                 |
+| `GA_PROPERTY_ID`             | Vercel Dashboard            | Yes for Insights — numeric GA4 property ID (Admin → Property settings)                                                                                                                                                                                                    |
+| `GA_SERVICE_ACCOUNT_JSON`    | Vercel Dashboard            | Yes for Insights — GCP service account JSON (raw or base64) with Viewer on that property                                                                                                                                                                                  |
+| `PORT`                       | Hardcoded in `build:static` | No — set to `3001` in the script                                                                                                                                                                                                                                          |
+| `BASE_PATH`                  | Hardcoded in `build:static` | No — set to `/` in the script                                                                                                                                                                                                                                             |
 
 ## Contact form email (Resend)
 
@@ -73,6 +75,12 @@ Setup (one time):
 3. Add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in Vercel project settings.
 
 Local dev is unchanged: Vite proxies `/api` to the Express api-server, which stores submissions in Supabase.
+
+## Branded inbox & reply privacy (Resend Inbound)
+
+When Corinne replies to a contact form email from her personal mailbox, the guest sees her personal address. To keep replies branded, the domain receives mail through **Resend Inbound**: an MX record routes `@bladeandquillartacademy.com` mail to Resend, which fires an `email.received` webhook served by [`api/inbound.ts`](../../api/inbound.ts). That function verifies the webhook signature (`RESEND_WEBHOOK_SECRET`) and forwards the full message to `INBOUND_FORWARD_TO_EMAIL` (her private inbox). She replies from Gmail using "Send mail as" over Resend SMTP, so the guest only ever sees the branded address.
+
+Full setup checklist (MX record, webhook, Gmail SMTP, env switches, caveats): [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md). The webhook endpoint is `https://blade-quill-art-academy.vercel.app/api/inbound` — the custom domain blocks `/api/*` until launch.
 
 ## Newsletter signups (Resend Audience)
 
@@ -94,12 +102,12 @@ Note: the newsletter routes only exist as Vercel functions — in local dev the 
 
 Guests pay through **Stripe Checkout Sessions**. Product **name, price, stock, and download URL are edited in Tina** (`/admin` → Shop Products). Checkout reads the live Tina Cloud catalog and charges that price with inline `price_data` — Corinne never creates Products/Prices in the Stripe dashboard.
 
-| Route | Function |
-|-------|----------|
-| `POST /api/checkout` | [`api/checkout.ts`](../../api/checkout.ts) |
+| Route                       | Function                                                   |
+| --------------------------- | ---------------------------------------------------------- |
+| `POST /api/checkout`        | [`api/checkout.ts`](../../api/checkout.ts)                 |
 | `GET /api/checkout/success` | [`api/checkout/success.ts`](../../api/checkout/success.ts) |
-| `POST /api/stripe/webhook` | [`api/stripe/webhook.ts`](../../api/stripe/webhook.ts) |
-| `GET /api/download/:token` | [`api/download/[token].ts`](../../api/download/[token].ts) |
+| `POST /api/stripe/webhook`  | [`api/stripe/webhook.ts`](../../api/stripe/webhook.ts)     |
+| `GET /api/download/:token`  | [`api/download/[token].ts`](../../api/download/[token].ts) |
 
 Shared logic lives in [`lib/checkout`](../../lib/checkout). Local Express uses the same package via Vite’s `/api` proxy.
 
@@ -131,12 +139,12 @@ Local: put the same Stripe + Supabase + Tina vars in `.env`, run Express (`pnpm 
 
 The public site loads **GA4 Measurement ID `G-50YS8RZ7HL`** (same as the live Squarespace site) so engagement history stays continuous through cutover. SPA page views and conversion events fire from the browser:
 
-| Event | When |
-|-------|------|
-| `page_view` | Every client-side route change |
-| `purchase` | Stripe order success page |
-| `amazon_click` | Outbound Amazon book / review links |
-| `dummy_book_request` | Publisher dummy-book form success |
+| Event                | When                                |
+| -------------------- | ----------------------------------- |
+| `page_view`          | Every client-side route change      |
+| `purchase`           | Stripe order success page           |
+| `amazon_click`       | Outbound Amazon book / review links |
+| `dummy_book_request` | Publisher dummy-book form success   |
 
 **One-time GA4 console setup**
 
@@ -162,7 +170,7 @@ Note: Squarespace used Consent Mode (analytics denied until cookies accepted). T
 See [docs/EDITING-GUIDE.md](../../docs/EDITING-GUIDE.md) — bookmark, sidebar map, save feedback, and troubleshooting.
 
 **Canonical editor URL (while the real domain is under construction):**  
-https://blade-quill-art-academy.vercel.app/admin  
+https://blade-quill-art-academy.vercel.app/admin
 
 `bladeandquillartacademy.com/admin` redirects there. Do not send Corinne to per-deployment `*.vercel.app` preview URLs for editing.
 
@@ -170,11 +178,11 @@ https://blade-quill-art-academy.vercel.app/admin
 
 Repo scripts keep `/admin` from drifting after schema changes:
 
-| Command | Purpose |
-|---------|---------|
-| `pnpm run check:tina` | Fail if admin points at localhost or schema changed without lock/admin regen |
-| `pnpm run check:tina:staged` | Same, for staged files (wired via `.githooks/pre-commit`) |
-| `pnpm postinstall` | Symlink `artifacts/blade-quill/.env` → repo-root `.env` + install git hooks |
+| Command                      | Purpose                                                                      |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| `pnpm run check:tina`        | Fail if admin points at localhost or schema changed without lock/admin regen |
+| `pnpm run check:tina:staged` | Same, for staged files (wired via `.githooks/pre-commit`)                    |
+| `pnpm postinstall`           | Symlink `artifacts/blade-quill/.env` → repo-root `.env` + install git hooks  |
 
 After any change to `tina/config.ts` or `tina/blocks.ts`:
 
@@ -289,7 +297,7 @@ When ready for the real homepage:
 ### Phase D — Post-migration checklist
 
 - **Stripe**: Point the webhook endpoint at `https://bladeandquillartacademy.com/api/stripe/webhook` (events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`). If this is a new endpoint, update Vercel env `STRIPE_WEBHOOK_SECRET`.
-- **Resend**: Verify `bladeandquillartacademy.com` in Resend (add DKIM/SPF TXT records in Vercel DNS). Then set `CONTACT_FROM_EMAIL` to something like `Blade & Quill <contact@bladeandquillartacademy.com>`.
+- **Resend**: Verify `bladeandquillartacademy.com` in Resend (add DKIM/SPF TXT records in Vercel DNS). Then set `CONTACT_FROM_EMAIL` to something like `Blade & Quill <contact@bladeandquillartacademy.com>`. Also enable **Receiving** on the domain and add the inbound MX record so branded addresses receive mail (safe — the domain has no other MX records); full steps in [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md).
 - **Tina Cloud**: At [app.tina.io](https://app.tina.io), add `https://bladeandquillartacademy.com` to the project Site URLs so `/admin` login works on the production domain.
 - **GA4**: No change — the site already uses measurement ID `G-50YS8RZ7HL`.
 - **newrelease teardown** (optional, later): 301 the temp subdomain to the main site and remove its host rewrite/redirect from `vercel.json` (see Temporary domain teardown above).
