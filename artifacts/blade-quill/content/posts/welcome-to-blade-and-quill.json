@@ -44,13 +44,36 @@
               {
                 "type": "mdxJsxTextElement",
                 "name": "ContentLink",
-                "children": [{ "type": "text", "text": "" }],
+                "children": [
+                  {
+                    "type": "text",
+                    "text": ""
+                  }
+                ],
                 "props": {
                   "url": "https://www.google.com",
                   "text": "Google",
                   "openInNewTab": true
                 },
                 "id": "BAEPIubvsc"
+              },
+              {
+                "text": " and click here to go to "
+              },
+              {
+                "type": "mdxJsxTextElement",
+                "name": "ContentLink",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "props": {
+                  "url": "https://facebook.com",
+                  "text": "Facebook Website",
+                  "openInNewTab": true
+                },
+                "id": "kJDEJ0sYHu"
               },
               {
                 "text": ""
