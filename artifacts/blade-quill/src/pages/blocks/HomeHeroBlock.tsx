@@ -135,8 +135,8 @@ interface Props {
 }
 
 /**
- * Desktop stage matches Figma node 185:3261 — 1792×902, radius 32, #776563.
- * Copy uses the Figma absolute layout (not a flex column that drifts).
+ * Desktop stage matches Figma node 185:3261 — radius 32, #776563.
+ * Height hugs the copy/CTAs (no fixed aspect ratio) so buttons never clip.
  */
 export default function HomeHeroBlock({ block }: Props) {
   const [, setLocation] = useLocation();
@@ -153,7 +153,7 @@ export default function HomeHeroBlock({ block }: Props) {
         <div
           className={[
             "@container/hero relative overflow-hidden",
-            "min-h-[680px] md:min-h-[720px] lg:min-h-0 lg:aspect-[1792/902]",
+            "min-h-[680px] md:min-h-[720px] lg:min-h-[min(560px,50cqw)]",
             "md:rounded-2xl lg:rounded-[32px] md:bg-[var(--taupe)]",
           ].join(" ")}
         >
@@ -193,7 +193,7 @@ export default function HomeHeroBlock({ block }: Props) {
           </div>
 
           {/* ── Mobile / tablet copy ── */}
-          <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-4 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-10 lg:hidden">
+          <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-12 lg:hidden">
             {block.eyebrow ? (
               <Reveal>
                 <div
@@ -245,74 +245,71 @@ export default function HomeHeroBlock({ block }: Props) {
             </Reveal>
           </div>
 
-          {/* ── Desktop copy — Figma 185:3261 absolute layout ──
-              Card coords: left 136, text top 172, width 796, CTAs top 640 on 1792×902.
-              Sizes scale with container width (cqw) so the ratio holds. */}
-          <div className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
-            <div
-              className="pointer-events-auto absolute text-left text-white"
-              style={{
-                left: "7.59%",
-                top: "15.52%",
-                width: "44.42%",
-              }}
-            >
-              {block.eyebrow ? (
-                <div
-                  className="font-mono font-bold uppercase text-white"
-                  style={{
-                    fontSize: "0.614cqw",
-                    letterSpacing: "0.11cqw",
-                    lineHeight: 1.6,
-                    marginBottom: "1.0cqw",
-                  }}
-                  data-tina-field={tinaField(block, "eyebrow")}
-                >
-                  {block.eyebrow as string}
-                </div>
-              ) : null}
-
-              <h1
-                className="m-0 text-white"
+          {/* ── Desktop copy — in-flow so the card height hugs CTAs ── */}
+          <div
+            className="relative z-10 hidden text-left text-white lg:block"
+            style={{
+              paddingLeft: "7.59%",
+              paddingRight: "48%",
+              paddingTop: "8cqw",
+              paddingBottom: "5cqw",
+            }}
+          >
+            {block.eyebrow ? (
+              <div
+                className="font-mono font-bold uppercase text-white"
                 style={{
-                  fontFamily: "var(--f-serif)",
-                  fontSize: "4.91cqw",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.123cqw",
-                  fontWeight: 400,
-                  marginBottom: "2.455cqw",
+                  fontSize: "0.614cqw",
+                  letterSpacing: "0.11cqw",
+                  lineHeight: 1.6,
+                  marginBottom: "1.0cqw",
                 }}
-                data-tina-field={tinaField(block, "heading")}
+                data-tina-field={tinaField(block, "eyebrow")}
               >
-                <WordReveal text={heading} />
-              </h1>
+                {block.eyebrow as string}
+              </div>
+            ) : null}
 
-              {block.subheading ? (
-                <div
-                  className="text-white [&_p]:m-0 [&_p+p]:mt-[1.56cqw]"
-                  style={{
-                    fontFamily: "var(--f-sans)",
-                    fontSize: "1.56cqw",
-                    lineHeight: 1,
-                    fontWeight: 400,
-                    marginBottom: "4.5cqw",
-                  }}
-                  data-tina-field={tinaField(block, "subheading")}
-                >
-                  <RichText value={block.subheading} />
-                </div>
-              ) : (
-                <div style={{ marginBottom: "4.5cqw" }} aria-hidden />
-              )}
+            <h1
+              className="m-0 text-white"
+              style={{
+                fontFamily: "var(--f-serif)",
+                fontSize: "4.91cqw",
+                lineHeight: 1.1,
+                letterSpacing: "-0.123cqw",
+                fontWeight: 400,
+                marginBottom: "2.455cqw",
+              }}
+              data-tina-field={tinaField(block, "heading")}
+            >
+              <WordReveal text={heading} />
+            </h1>
 
-              <HeroCtas
-                block={block}
-                secondaryLink={secondaryLink}
-                primaryLink={primaryLink}
-                setLocation={setLocation}
-                variant="desktop"
-              />
-            </div>
+            {block.subheading ? (
+              <div
+                className="text-white [&_p]:m-0 [&_p+p]:mt-[1.56cqw]"
+                style={{
+                  fontFamily: "var(--f-sans)",
+                  fontSize: "1.56cqw",
+                  lineHeight: 1.35,
+                  fontWeight: 400,
+                  marginBottom: "4.5cqw",
+                }}
+                data-tina-field={tinaField(block, "subheading")}
+              >
+                <RichText value={block.subheading} />
+              </div>
+            ) : (
+              <div style={{ marginBottom: "4.5cqw" }} aria-hidden />
+            )}
+
+            <HeroCtas
+              block={block}
+              secondaryLink={secondaryLink}
+              primaryLink={primaryLink}
+              setLocation={setLocation}
+              variant="desktop"
+            />
           </div>
         </div>
       </div>
