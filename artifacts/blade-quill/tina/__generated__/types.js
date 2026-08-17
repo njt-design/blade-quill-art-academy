@@ -4025,6 +4025,11 @@ export const ShopProductPartsFragmentDoc = gql`
     src
     alt
   }
+  spreadImages {
+    __typename
+    src
+    alt
+  }
   featured
   inStock
   downloadUrl

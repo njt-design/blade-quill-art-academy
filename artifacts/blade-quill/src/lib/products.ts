@@ -20,13 +20,19 @@ export type CatalogProduct = Omit<Product, "description"> & {
   googlePlayUrl?: string | null;
   /** Extra images for thumbnail slots 2–5 (slot 1 is always Cover Image). */
   galleryImages: ProductGalleryImage[];
+  /** Up to 6 Look Inside tab images (book spreads or digital previews). */
+  spreadImages: ProductGalleryImage[];
 };
 
 const THUMBNAIL_SLOT_COUNT = 5;
 /** Extra gallery uploads fill slots 2–5; slot 1 is always the Cover Image. */
 const GALLERY_IMAGE_LIMIT = THUMBNAIL_SLOT_COUNT - 1;
+const SPREAD_IMAGE_LIMIT = 6;
 
-function parseGalleryImages(raw: unknown): ProductGalleryImage[] {
+function parseGalleryImages(
+  raw: unknown,
+  limit = GALLERY_IMAGE_LIMIT
+): ProductGalleryImage[] {
   if (!Array.isArray(raw)) return [];
   return raw
     .map((item) => {
@@ -37,7 +43,7 @@ function parseGalleryImages(raw: unknown): ProductGalleryImage[] {
       return { src, ...(alt ? { alt } : {}) };
     })
     .filter((item): item is ProductGalleryImage => item !== null)
-    .slice(0, GALLERY_IMAGE_LIMIT);
+    .slice(0, limit);
 }
 
 /**
@@ -101,6 +107,7 @@ export function toCatalogProduct(
     category,
     imageUrl: image,
     galleryImages: parseGalleryImages(data.galleryImages),
+    spreadImages: parseGalleryImages(data.spreadImages, SPREAD_IMAGE_LIMIT),
     gumroadUrl: (data.gumroadUrl as string | null) ?? null,
     downloadUrl: (data.downloadUrl as string | null) ?? null,
     amazonUrl: (data.amazonUrl as string | null) ?? null,
@@ -194,6 +201,7 @@ export function resolveCatalogProducts(
       ...p,
       slug: String(p.id),
       galleryImages: [],
+      spreadImages: [],
     }));
   }
 
@@ -201,5 +209,6 @@ export function resolveCatalogProducts(
     ...p,
     slug: String(p.id),
     galleryImages: [],
+    spreadImages: [],
   }));
 }

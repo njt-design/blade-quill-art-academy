@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { BookOpen, Download, Send } from "lucide-react";
 import { tinaField } from "tinacms/react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -139,14 +139,20 @@ export default function DummyBookRequestBlock({ block }: Props) {
             >
               {successNote}
             </p>
-            <Button asChild size="lg">
-              <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-                <Download className="w-4 h-4 mr-2" />
-                <span data-tina-field={tinaField(block, "downloadLabel")}>
-                  {downloadLabel}
-                </span>
-              </a>
-            </Button>
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({
+                size: "lg",
+                className: "inline-flex items-center justify-center gap-2",
+              })}
+            >
+              <Download className="h-4 w-4 shrink-0" aria-hidden />
+              <span data-tina-field={tinaField(block, "downloadLabel")}>
+                {downloadLabel}
+              </span>
+            </a>
           </div>
         ) : (
           <div className="border border-border rounded-lg bg-card p-6 md:p-8">

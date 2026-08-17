@@ -11108,6 +11108,11 @@ type ShopProductGalleryImages {
   alt: String
 }
 
+type ShopProductSpreadImages {
+  src: String
+  alt: String
+}
+
 type ShopProduct implements Node & Document {
   name: String!
   description: JSON
@@ -11115,6 +11120,7 @@ type ShopProduct implements Node & Document {
   category: String!
   image: String
   galleryImages: [ShopProductGalleryImages]
+  spreadImages: [ShopProductSpreadImages]
   featured: Boolean
   inStock: Boolean
   downloadUrl: String
@@ -11153,6 +11159,11 @@ input ShopProductGalleryImagesFilter {
   alt: StringFilter
 }
 
+input ShopProductSpreadImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
 input ShopProductFilter {
   name: StringFilter
   description: ShopProductDescriptionFilter
@@ -11160,6 +11171,7 @@ input ShopProductFilter {
   category: StringFilter
   image: ImageFilter
   galleryImages: ShopProductGalleryImagesFilter
+  spreadImages: ShopProductSpreadImagesFilter
   featured: BooleanFilter
   inStock: BooleanFilter
   downloadUrl: StringFilter
@@ -16140,6 +16152,11 @@ input ShopProductGalleryImagesMutation {
   alt: String
 }
 
+input ShopProductSpreadImagesMutation {
+  src: String
+  alt: String
+}
+
 input ShopProductMutation {
   name: String
   description: JSON
@@ -16147,6 +16164,7 @@ input ShopProductMutation {
   category: String
   image: String
   galleryImages: [ShopProductGalleryImagesMutation]
+  spreadImages: [ShopProductSpreadImagesMutation]
   featured: Boolean
   inStock: Boolean
   downloadUrl: String

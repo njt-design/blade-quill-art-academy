@@ -126,6 +126,9 @@ export default function ProductDetail() {
         galleryImages: Array.isArray(seedRaw.galleryImages)
           ? seedRaw.galleryImages
           : [],
+        spreadImages: Array.isArray(seedRaw.spreadImages)
+          ? seedRaw.spreadImages
+          : [],
         gumroadUrl: seedRaw.gumroadUrl,
         downloadUrl: seedRaw.downloadUrl,
         amazonUrl: seedRaw.amazonUrl,
@@ -183,6 +186,7 @@ export default function ProductDetail() {
         ...apiProduct,
         slug: String(apiProduct.id),
         galleryImages: [],
+        spreadImages: [],
       };
     }
     return findCatalogProduct(catalog, routeParam);
@@ -820,15 +824,29 @@ export default function ProductDetail() {
 
             {tab === "inside" && (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <ArtTile
-                    key={i}
-                    palette={PALETTE_BY_INDEX[i % 5]}
-                    width="100%"
-                    height={220}
-                    label={isBook ? `SPREAD ${i}` : `PREVIEW ${i}`}
-                  />
-                ))}
+                {Array.from({ length: 6 }, (_, i) => {
+                  const spread = product.spreadImages[i];
+                  const label = isBook ? `SPREAD ${i + 1}` : `PREVIEW ${i + 1}`;
+                  return (
+                    <div
+                      key={i}
+                      data-tina-field={
+                        tinaDoc
+                          ? tinaField(tinaDoc, "spreadImages", i)
+                          : undefined
+                      }
+                    >
+                      <ArtTile
+                        palette={PALETTE_BY_INDEX[i % 5]}
+                        width="100%"
+                        height={220}
+                        label={label}
+                        src={spread?.src}
+                        alt={spread?.alt || label}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             )}
 

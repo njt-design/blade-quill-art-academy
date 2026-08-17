@@ -28,6 +28,10 @@ export const shopProductQuery = `
         src
         alt
       }
+      spreadImages {
+        src
+        alt
+      }
       gumroadUrl
       downloadUrl
       amazonUrl

@@ -2881,6 +2881,42 @@ var config_default = defineConfig({
             ]
           },
           {
+            type: "object",
+            name: "spreadImages",
+            label: "Interior Spreads / Previews",
+            list: true,
+            ui: {
+              description: "Up to 6 images for the Look Inside tab (books show as Spreads, digital as Previews). Upload page spreads or sample pages into images/products/.",
+              max: 6,
+              itemProps: (item) => ({
+                label: item?.alt?.trim() || item?.src?.split("/").pop() || "Spread"
+              }),
+              defaultItem: {
+                src: "",
+                alt: ""
+              }
+            },
+            fields: [
+              {
+                type: "image",
+                name: "src",
+                label: "Image",
+                ui: {
+                  description: "Landscape page spread or preview works best. At least 1200px wide."
+                }
+              },
+              {
+                type: "string",
+                name: "alt",
+                label: "Alt Text",
+                ui: charLimit(
+                  125,
+                  "Short description for screen readers (e.g. \u201CPages 4\u20135\u201D or \u201CCharacter lineup\u201D)."
+                )
+              }
+            ]
+          },
+          {
             type: "boolean",
             name: "featured",
             label: "Featured",

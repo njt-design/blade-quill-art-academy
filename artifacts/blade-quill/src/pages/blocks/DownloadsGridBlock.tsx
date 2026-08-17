@@ -1,6 +1,6 @@
 import { Download as DownloadIcon, FileText } from "lucide-react";
 import { tinaField } from "tinacms/react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { useListDownloads, type Download } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
@@ -67,11 +67,19 @@ export default function DownloadsGridBlock({ block }: Props) {
                       {item.description}
                     </p>
                   )}
-                  <Button asChild variant="outline" size="sm" className="dl-btn text-xs">
-                    <a href={item.fileUrl} download={filenameFromUrl(item.fileUrl)}>
-                      <DownloadIcon className="w-3.5 h-3.5 mr-1.5" /> Free Download
-                    </a>
-                  </Button>
+                  <a
+                    href={item.fileUrl}
+                    download={filenameFromUrl(item.fileUrl)}
+                    className={buttonVariants({
+                      variant: "outline",
+                      size: "sm",
+                      className:
+                        "dl-btn inline-flex items-center justify-center gap-1.5 text-xs",
+                    })}
+                  >
+                    <DownloadIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                    Free Download
+                  </a>
                 </div>
               </div>
             ))}
