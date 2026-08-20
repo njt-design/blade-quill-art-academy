@@ -835,10 +835,17 @@ type PageBlocksSocialLinks {
 
 union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
 
+type PageSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type Page implements Node & Document {
   title: String!
   layout: String
   blocks: [PageBlocks]
+  seoAssistant: String
+  seo: PageSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -1886,10 +1893,17 @@ input PageBlocksFilter {
   socialLinks: PageBlocksSocialLinksFilter
 }
 
+input PageSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input PageFilter {
   title: StringFilter
   layout: StringFilter
   blocks: PageBlocksFilter
+  seoAssistant: StringFilter
+  seo: PageSeoFilter
 }
 
 type PageConnectionEdges {
@@ -2636,10 +2650,17 @@ type LandingPageBlankBlocksSocialLinks {
 
 union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
 
+type LandingPageBlankSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type LandingPageBlank implements Node & Document {
   title: String!
   layout: String
   blocks: [LandingPageBlankBlocks]
+  seoAssistant: String
+  seo: LandingPageBlankSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -3378,10 +3399,17 @@ type LandingPageEventBlocksSocialLinks {
 
 union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
 
+type LandingPageEventSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type LandingPageEvent implements Node & Document {
   title: String!
   layout: String
   blocks: [LandingPageEventBlocks]
+  seoAssistant: String
+  seo: LandingPageEventSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -4120,10 +4148,17 @@ type LandingPagePromoBlocksSocialLinks {
 
 union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
 
+type LandingPagePromoSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type LandingPagePromo implements Node & Document {
   title: String!
   layout: String
   blocks: [LandingPagePromoBlocks]
+  seoAssistant: String
+  seo: LandingPagePromoSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -4862,10 +4897,17 @@ type LandingPageInfoBlocksSocialLinks {
 
 union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
 
+type LandingPageInfoSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type LandingPageInfo implements Node & Document {
   title: String!
   layout: String
   blocks: [LandingPageInfoBlocks]
+  seoAssistant: String
+  seo: LandingPageInfoSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -5604,10 +5646,17 @@ type LandingPageLinkInBioBlocksSocialLinks {
 
 union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
 
+type LandingPageLinkInBioSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type LandingPageLinkInBio implements Node & Document {
   title: String!
   layout: String
   blocks: [LandingPageLinkInBioBlocks]
+  seoAssistant: String
+  seo: LandingPageLinkInBioSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -6638,10 +6687,17 @@ input LandingPageBlankBlocksFilter {
   socialLinks: LandingPageBlankBlocksSocialLinksFilter
 }
 
+input LandingPageBlankSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input LandingPageBlankFilter {
   title: StringFilter
   layout: StringFilter
   blocks: LandingPageBlankBlocksFilter
+  seoAssistant: StringFilter
+  seo: LandingPageBlankSeoFilter
 }
 
 input LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter {
@@ -7667,10 +7723,17 @@ input LandingPageEventBlocksFilter {
   socialLinks: LandingPageEventBlocksSocialLinksFilter
 }
 
+input LandingPageEventSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input LandingPageEventFilter {
   title: StringFilter
   layout: StringFilter
   blocks: LandingPageEventBlocksFilter
+  seoAssistant: StringFilter
+  seo: LandingPageEventSeoFilter
 }
 
 input LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter {
@@ -8696,10 +8759,17 @@ input LandingPagePromoBlocksFilter {
   socialLinks: LandingPagePromoBlocksSocialLinksFilter
 }
 
+input LandingPagePromoSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input LandingPagePromoFilter {
   title: StringFilter
   layout: StringFilter
   blocks: LandingPagePromoBlocksFilter
+  seoAssistant: StringFilter
+  seo: LandingPagePromoSeoFilter
 }
 
 input LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter {
@@ -9725,10 +9795,17 @@ input LandingPageInfoBlocksFilter {
   socialLinks: LandingPageInfoBlocksSocialLinksFilter
 }
 
+input LandingPageInfoSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input LandingPageInfoFilter {
   title: StringFilter
   layout: StringFilter
   blocks: LandingPageInfoBlocksFilter
+  seoAssistant: StringFilter
+  seo: LandingPageInfoSeoFilter
 }
 
 input LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter {
@@ -10754,10 +10831,17 @@ input LandingPageLinkInBioBlocksFilter {
   socialLinks: LandingPageLinkInBioBlocksSocialLinksFilter
 }
 
+input LandingPageLinkInBioSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input LandingPageLinkInBioFilter {
   title: StringFilter
   layout: StringFilter
   blocks: LandingPageLinkInBioBlocksFilter
+  seoAssistant: StringFilter
+  seo: LandingPageLinkInBioSeoFilter
 }
 
 input LandingPageFilter {
@@ -10902,6 +10986,11 @@ type PostSectionsCtaBand {
 
 union PostSections = PostSectionsHeading | PostSectionsText | PostSectionsSpacer | PostSectionsDivider | PostSectionsImage | PostSectionsImageSideBySide | PostSectionsImageGallery | PostSectionsVideoEmbed | PostSectionsCallout | PostSectionsCtaBand
 
+type PostSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type Post implements Node & Document {
   title: String!
   excerpt: JSON
@@ -10910,6 +10999,8 @@ type Post implements Node & Document {
   tags: [String]
   showTableOfContents: Boolean
   sections: [PostSections]
+  seoAssistant: String
+  seo: PostSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -11097,6 +11188,11 @@ input PostSectionsFilter {
   ctaBand: PostSectionsCtaBandFilter
 }
 
+input PostSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input PostFilter {
   title: StringFilter
   excerpt: PostExcerptFilter
@@ -11105,6 +11201,8 @@ input PostFilter {
   tags: StringFilter
   showTableOfContents: BooleanFilter
   sections: PostSectionsFilter
+  seoAssistant: StringFilter
+  seo: PostSeoFilter
 }
 
 type PostConnectionEdges {
@@ -11128,6 +11226,11 @@ type ShopProductSpreadImages {
   alt: String
 }
 
+type ShopProductSeo {
+  metaTitle: String
+  metaDescription: String
+}
+
 type ShopProduct implements Node & Document {
   name: String!
   description: JSON
@@ -11144,6 +11247,8 @@ type ShopProduct implements Node & Document {
   googlePlayUrl: String
   productId: Float!
   createdAt: String
+  seoAssistant: String
+  seo: ShopProductSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -11179,6 +11284,11 @@ input ShopProductSpreadImagesFilter {
   alt: StringFilter
 }
 
+input ShopProductSeoFilter {
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
 input ShopProductFilter {
   name: StringFilter
   description: ShopProductDescriptionFilter
@@ -11195,6 +11305,8 @@ input ShopProductFilter {
   googlePlayUrl: StringFilter
   productId: NumberFilter
   createdAt: DatetimeFilter
+  seoAssistant: StringFilter
+  seo: ShopProductSeoFilter
 }
 
 type ShopProductConnectionEdges {
@@ -12155,10 +12267,17 @@ input PageBlocksMutation {
   socialLinks: PageBlocksSocialLinksMutation
 }
 
+input PageSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input PageMutation {
   title: String
   layout: String
   blocks: [PageBlocksMutation]
+  seoAssistant: String
+  seo: PageSeoMutation
 }
 
 input LandingPageBlankBlocksHomeHeroTextStyleMutation {
@@ -12934,10 +13053,17 @@ input LandingPageBlankBlocksMutation {
   socialLinks: LandingPageBlankBlocksSocialLinksMutation
 }
 
+input LandingPageBlankSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input LandingPageBlankMutation {
   title: String
   layout: String
   blocks: [LandingPageBlankBlocksMutation]
+  seoAssistant: String
+  seo: LandingPageBlankSeoMutation
 }
 
 input LandingPageEventBlocksHomeHeroTextStyleMutation {
@@ -13713,10 +13839,17 @@ input LandingPageEventBlocksMutation {
   socialLinks: LandingPageEventBlocksSocialLinksMutation
 }
 
+input LandingPageEventSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input LandingPageEventMutation {
   title: String
   layout: String
   blocks: [LandingPageEventBlocksMutation]
+  seoAssistant: String
+  seo: LandingPageEventSeoMutation
 }
 
 input LandingPagePromoBlocksHomeHeroTextStyleMutation {
@@ -14492,10 +14625,17 @@ input LandingPagePromoBlocksMutation {
   socialLinks: LandingPagePromoBlocksSocialLinksMutation
 }
 
+input LandingPagePromoSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input LandingPagePromoMutation {
   title: String
   layout: String
   blocks: [LandingPagePromoBlocksMutation]
+  seoAssistant: String
+  seo: LandingPagePromoSeoMutation
 }
 
 input LandingPageInfoBlocksHomeHeroTextStyleMutation {
@@ -15271,10 +15411,17 @@ input LandingPageInfoBlocksMutation {
   socialLinks: LandingPageInfoBlocksSocialLinksMutation
 }
 
+input LandingPageInfoSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input LandingPageInfoMutation {
   title: String
   layout: String
   blocks: [LandingPageInfoBlocksMutation]
+  seoAssistant: String
+  seo: LandingPageInfoSeoMutation
 }
 
 input LandingPageLinkInBioBlocksHomeHeroTextStyleMutation {
@@ -16050,10 +16197,17 @@ input LandingPageLinkInBioBlocksMutation {
   socialLinks: LandingPageLinkInBioBlocksSocialLinksMutation
 }
 
+input LandingPageLinkInBioSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input LandingPageLinkInBioMutation {
   title: String
   layout: String
   blocks: [LandingPageLinkInBioBlocksMutation]
+  seoAssistant: String
+  seo: LandingPageLinkInBioSeoMutation
 }
 
 input LandingPageMutation {
@@ -16198,6 +16352,11 @@ input PostSectionsMutation {
   ctaBand: PostSectionsCtaBandMutation
 }
 
+input PostSeoMutation {
+  metaTitle: String
+  metaDescription: String
+}
+
 input PostMutation {
   title: String
   excerpt: JSON
@@ -16206,6 +16365,8 @@ input PostMutation {
   tags: [String]
   showTableOfContents: Boolean
   sections: [PostSectionsMutation]
+  seoAssistant: String
+  seo: PostSeoMutation
 }
 
 input ShopProductGalleryImagesMutation {
@@ -16216,6 +16377,11 @@ input ShopProductGalleryImagesMutation {
 input ShopProductSpreadImagesMutation {
   src: String
   alt: String
+}
+
+input ShopProductSeoMutation {
+  metaTitle: String
+  metaDescription: String
 }
 
 input ShopProductMutation {
@@ -16234,6 +16400,8 @@ input ShopProductMutation {
   googlePlayUrl: String
   productId: Float
   createdAt: String
+  seoAssistant: String
+  seo: ShopProductSeoMutation
 }
 
 input GalleryItemsMutation {

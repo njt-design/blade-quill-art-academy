@@ -646,6 +646,12 @@ fragment PageParts on Page {
       }
     }
   }
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
 
 fragment LandingPageParts on LandingPage {
@@ -1297,6 +1303,12 @@ fragment LandingPageParts on LandingPage {
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
   ... on LandingPageEvent {
     title
@@ -1944,6 +1956,12 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
+    }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
     }
   }
   ... on LandingPagePromo {
@@ -2593,6 +2611,12 @@ fragment LandingPageParts on LandingPage {
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
   ... on LandingPageInfo {
     title
@@ -3240,6 +3264,12 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
+    }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
     }
   }
   ... on LandingPageLinkInBio {
@@ -3889,6 +3919,12 @@ fragment LandingPageParts on LandingPage {
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
 }
 
@@ -4006,6 +4042,12 @@ fragment PostParts on Post {
       }
     }
   }
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
 
 fragment ShopProductParts on ShopProduct {
@@ -4033,6 +4075,12 @@ fragment ShopProductParts on ShopProduct {
   googlePlayUrl
   productId
   createdAt
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
 
 fragment GalleryParts on Gallery {
@@ -4701,6 +4749,12 @@ fragment NavigationParts on Navigation {
             }
           }
         }
+        seoAssistant
+        seo {
+          __typename
+          metaTitle
+          metaDescription
+        }
       }
       ... on LandingPage {
         __typename
@@ -5351,6 +5405,12 @@ fragment NavigationParts on Navigation {
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageEvent {
           title
@@ -5998,6 +6058,12 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+          }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
           }
         }
         ... on LandingPagePromo {
@@ -6647,6 +6713,12 @@ fragment NavigationParts on Navigation {
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageInfo {
           title
@@ -7295,6 +7367,12 @@ fragment NavigationParts on Navigation {
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageLinkInBio {
           title
@@ -7942,6 +8020,12 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+          }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
           }
         }
       }
@@ -8612,6 +8696,12 @@ fragment NavigationParts on Navigation {
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPage {
           __typename
@@ -9262,6 +9352,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageEvent {
             title
@@ -9909,6 +10005,12 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
           ... on LandingPagePromo {
@@ -10558,6 +10660,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageInfo {
             title
@@ -11206,6 +11314,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageLinkInBio {
             title
@@ -11853,6 +11967,12 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
         }
@@ -12528,6 +12648,12 @@ fragment NavigationParts on Navigation {
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPage {
           __typename
@@ -13178,6 +13304,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageEvent {
             title
@@ -13825,6 +13957,12 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
           ... on LandingPagePromo {
@@ -14474,6 +14612,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageInfo {
             title
@@ -15122,6 +15266,12 @@ fragment NavigationParts on Navigation {
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageLinkInBio {
             title
@@ -15769,6 +15919,12 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
         }

@@ -1,5 +1,5 @@
 // tina/config.ts
-import React, { useEffect } from "react";
+import React2, { useEffect } from "react";
 import { defineConfig } from "tinacms";
 
 // tina/blocks.ts
@@ -2236,6 +2236,322 @@ var BLOG_BLOCKS = [
   blogCtaBlock
 ];
 
+// tina/seo.ts
+import React from "react";
+var h = React.createElement;
+var CORE_PAGE_SLUGS = [
+  "home",
+  "about",
+  "contact",
+  "shop",
+  "gallery",
+  "downloads",
+  "publishers",
+  "important-links"
+];
+function corePageRoute(basename) {
+  const base = basename.replace(/\.json$/i, "");
+  if (base === "home") return "/";
+  if (base === "important-links") return "/important-links-page";
+  return `/${base}`;
+}
+function liveUrlPath(folder, slug) {
+  if (!slug) return null;
+  if (folder === "posts") return `/blog/${slug}`;
+  if (folder === "products") return `/shop/${slug}`;
+  if (folder === "pages") {
+    return CORE_PAGE_SLUGS.includes(slug) ? corePageRoute(slug) : `/p/${slug}`;
+  }
+  return null;
+}
+function docUrlPath(formId) {
+  const match = /content\/(pages|posts|products)\/(.+?)\.json$/i.exec(formId);
+  if (!match) return null;
+  return liveUrlPath(match[1], match[2]);
+}
+var SKIP_KEYS = /* @__PURE__ */ new Set([
+  "id",
+  "type",
+  "_template",
+  "__typename",
+  "icon",
+  "variant",
+  "layout",
+  "align",
+  "platform",
+  "tone",
+  "level",
+  "size",
+  "style",
+  "width",
+  "aspect",
+  "category",
+  "linkType",
+  "page",
+  "productId",
+  "price",
+  "createdAt",
+  "publishedAt",
+  "region",
+  "textStyle",
+  "seo",
+  "seoAssistant"
+]);
+var SKIP_KEY_SUFFIX = /(link|url|href|image|src|file)$/i;
+var SKIP_VALUE = /^(\/|https?:|data:|mailto:|#)/i;
+var ISO_DATE = /^\d{4}-\d{2}-\d{2}/;
+function extractContentText(value, budget = 6e3) {
+  const out = [];
+  let used = 0;
+  const visit = (node) => {
+    if (used >= budget || node == null) return;
+    if (typeof node === "string") {
+      const text = node.trim();
+      if (text.length < 2 || SKIP_VALUE.test(text) || ISO_DATE.test(text)) {
+        return;
+      }
+      out.push(text);
+      used += text.length + 1;
+      return;
+    }
+    if (Array.isArray(node)) {
+      for (const item of node) visit(item);
+      return;
+    }
+    if (typeof node === "object") {
+      for (const [key, val] of Object.entries(node)) {
+        if (SKIP_KEYS.has(key) || SKIP_KEY_SUFFIX.test(key)) continue;
+        visit(val);
+      }
+    }
+  };
+  visit(value);
+  return out.join(" ").replace(/\s+/g, " ").trim();
+}
+var AUTO_FILL_MIN_CONTENT = 80;
+function readTinaIdToken() {
+  try {
+    const raw = localStorage.getItem("tinacms-auth");
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      const token = parsed?.id_token?.trim();
+      if (token && token !== "null") return token;
+    }
+  } catch {
+  }
+  return "LOCAL";
+}
+function makeSeoAssistant(kind) {
+  const contentNoun = kind === "product" ? "product details" : kind === "post" ? "post" : "page";
+  return function SeoAssistant(props) {
+    const finalForm = props?.form && typeof props.form.change === "function" ? props.form : props?.tinaForm?.finalForm;
+    const formId = typeof props?.tinaForm?.id === "string" ? props.tinaForm.id : "";
+    const urlPath = docUrlPath(formId);
+    const [status, setStatus] = React.useState("idle");
+    const [message, setMessage] = React.useState("");
+    const autoRanRef = React.useRef(false);
+    const getValues = React.useCallback(
+      () => finalForm?.getState?.()?.values ?? {},
+      [finalForm]
+    );
+    const generate = React.useCallback(async () => {
+      const values = getValues();
+      const title = String(
+        values?.title ?? values?.name ?? ""
+      ).trim();
+      const contentText = extractContentText(values);
+      if (!title && contentText.length < 40) {
+        setStatus("error");
+        setMessage(`Write some ${contentNoun} content first, then try again.`);
+        return;
+      }
+      setStatus("working");
+      setMessage("Writing suggestions\u2026");
+      try {
+        const res = await fetch("/api/seo-suggest", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${readTinaIdToken()}`
+          },
+          body: JSON.stringify({
+            kind,
+            title,
+            contentText,
+            ...urlPath ? { url: urlPath } : {}
+          })
+        });
+        const body = await res.json().catch(() => null);
+        if (!res.ok || !body) {
+          throw new Error(body?.error || "Could not generate suggestions.");
+        }
+        if (body.metaTitle) finalForm?.change?.("seo.metaTitle", body.metaTitle);
+        if (body.metaDescription) {
+          finalForm?.change?.("seo.metaDescription", body.metaDescription);
+        }
+        setStatus("done");
+        setMessage(
+          "Suggestions added below \u2014 edit anything you like, then save."
+        );
+      } catch (err) {
+        setStatus("error");
+        setMessage(
+          err instanceof Error ? err.message : "Could not generate suggestions."
+        );
+      }
+    }, [getValues, urlPath, contentNoun]);
+    React.useEffect(() => {
+      if (autoRanRef.current) return;
+      autoRanRef.current = true;
+      const values = getValues();
+      const seo = values?.seo ?? {};
+      if ((seo.metaTitle ?? "").trim() || (seo.metaDescription ?? "").trim()) {
+        return;
+      }
+      const title = String(
+        values?.title ?? values?.name ?? ""
+      ).trim();
+      const contentText = extractContentText(values);
+      if (`${title} ${contentText}`.trim().length < AUTO_FILL_MIN_CONTENT) {
+        return;
+      }
+      const guardKey = `bq-seo-autofill:${formId || kind}`;
+      try {
+        if (sessionStorage.getItem(guardKey)) return;
+        sessionStorage.setItem(guardKey, "1");
+      } catch {
+      }
+      void generate();
+    }, []);
+    const statusColor = status === "error" ? "#B3261E" : status === "done" ? "#3A6B3A" : "#776562";
+    return h(
+      "div",
+      {
+        style: {
+          border: "1px solid rgba(0,0,0,0.12)",
+          borderRadius: 8,
+          background: "#FBF7F1",
+          padding: "12px 14px",
+          margin: "4px 0 8px",
+          fontFamily: "system-ui, sans-serif"
+        }
+      },
+      h(
+        "div",
+        { style: { fontSize: 13, fontWeight: 700, color: "#4A3838" } },
+        "SEO Assistant"
+      ),
+      h(
+        "div",
+        {
+          style: {
+            fontSize: 12,
+            color: "#776562",
+            margin: "4px 0 8px",
+            lineHeight: 1.45
+          }
+        },
+        "Fills the Search Listing fields below with suggestions written from this " + contentNoun + ". You can edit everything afterwards."
+      ),
+      h(
+        "div",
+        { style: { fontSize: 12, color: "#4A3838", marginBottom: 10 } },
+        h("span", { style: { fontWeight: 600 } }, "Web address: "),
+        urlPath ? h(
+          "code",
+          {
+            style: {
+              background: "rgba(0,0,0,0.06)",
+              borderRadius: 4,
+              padding: "1px 6px",
+              fontSize: 11.5
+            }
+          },
+          urlPath
+        ) : h(
+          "span",
+          { style: { color: "#776562" } },
+          "set from the file name when this is first saved"
+        )
+      ),
+      h(
+        "div",
+        { style: { display: "flex", alignItems: "center", gap: 10 } },
+        h(
+          "button",
+          {
+            type: "button",
+            onClick: () => void generate(),
+            disabled: status === "working",
+            style: {
+              border: "none",
+              borderRadius: 999,
+              background: "#9A5151",
+              color: "#fff",
+              fontSize: 12.5,
+              fontWeight: 600,
+              padding: "7px 14px",
+              cursor: status === "working" ? "wait" : "pointer",
+              opacity: status === "working" ? 0.7 : 1
+            }
+          },
+          status === "working" ? "Writing\u2026" : "Suggest with AI"
+        ),
+        message ? h(
+          "span",
+          { style: { fontSize: 12, color: statusColor, lineHeight: 1.4 } },
+          message
+        ) : null
+      )
+    );
+  };
+}
+function seoFields(kind) {
+  const thing = kind === "product" ? "product" : kind === "post" ? "post" : "page";
+  return [
+    {
+      type: "string",
+      name: "seoAssistant",
+      label: "SEO Assistant",
+      ui: {
+        // Display-only panel — never writes its own value.
+        component: makeSeoAssistant(kind)
+      }
+    },
+    {
+      type: "object",
+      name: "seo",
+      label: "Search Listing (SEO)",
+      ui: {
+        description: `Optional. How this ${thing} appears in Google and other search engines. Leave empty to use the regular title, or use the SEO Assistant above for a head start.`
+      },
+      fields: [
+        {
+          type: "string",
+          name: "metaTitle",
+          label: "Search Title",
+          ui: charLimit(
+            60,
+            "The clickable headline in search results. The site name is added automatically."
+          )
+        },
+        {
+          type: "string",
+          name: "metaDescription",
+          label: "Search Description",
+          ui: {
+            component: "textarea",
+            ...charLimit(
+              160,
+              "The short blurb under the headline in search results. Aim for 120\u2013155 characters."
+            )
+          }
+        }
+      ]
+    }
+  ];
+}
+
 // tina/config.ts
 var INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
 function readTinaIdTokenFromStorage() {
@@ -2250,11 +2566,11 @@ function readTinaIdTokenFromStorage() {
   }
 }
 function InsightsRedirectScreen(_props) {
-  const [iframeSrc, setIframeSrc] = React.useState(null);
-  const [status, setStatus] = React.useState("Preparing Insights\u2026");
-  const iframeRef = React.useRef(null);
+  const [iframeSrc, setIframeSrc] = React2.useState(null);
+  const [status, setStatus] = React2.useState("Preparing Insights\u2026");
+  const iframeRef = React2.useRef(null);
   const insightsUrl = typeof window !== "undefined" ? `${window.location.origin}/insights` : "/insights";
-  const postTokenToIframe = React.useCallback((token) => {
+  const postTokenToIframe = React2.useCallback((token) => {
     const frame = iframeRef.current?.contentWindow;
     if (!frame) return;
     frame.postMessage(
@@ -2299,7 +2615,7 @@ function InsightsRedirectScreen(_props) {
       window.removeEventListener("message", onMessage);
     };
   }, [insightsUrl, postTokenToIframe]);
-  return React.createElement(
+  return React2.createElement(
     "div",
     {
       style: {
@@ -2310,7 +2626,7 @@ function InsightsRedirectScreen(_props) {
         fontFamily: "system-ui, sans-serif"
       }
     },
-    React.createElement(
+    React2.createElement(
       "div",
       {
         style: {
@@ -2323,12 +2639,12 @@ function InsightsRedirectScreen(_props) {
           flexShrink: 0
         }
       },
-      React.createElement(
+      React2.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
         status
       ),
-      React.createElement(
+      React2.createElement(
         "a",
         {
           href: insightsUrl,
@@ -2360,7 +2676,7 @@ function InsightsRedirectScreen(_props) {
         "Open full page"
       )
     ),
-    iframeSrc ? React.createElement("iframe", {
+    iframeSrc ? React2.createElement("iframe", {
       ref: iframeRef,
       src: iframeSrc,
       title: "Owner Insights",
@@ -2376,7 +2692,7 @@ function InsightsRedirectScreen(_props) {
         border: "none",
         background: "#F7F1EA"
       }
-    }) : React.createElement(
+    }) : React2.createElement(
       "div",
       {
         style: {
@@ -2392,7 +2708,7 @@ function InsightsRedirectScreen(_props) {
   );
 }
 function InsightsScreenIcon() {
-  return React.createElement(
+  return React2.createElement(
     "svg",
     {
       width: 20,
@@ -2405,26 +2721,16 @@ function InsightsScreenIcon() {
       strokeLinejoin: "round",
       "aria-hidden": true
     },
-    React.createElement("path", { d: "M3 3v18h18" }),
-    React.createElement("path", { d: "M7 14v4" }),
-    React.createElement("path", { d: "M12 10v8" }),
-    React.createElement("path", { d: "M17 6v12" })
+    React2.createElement("path", { d: "M3 3v18h18" }),
+    React2.createElement("path", { d: "M7 14v4" }),
+    React2.createElement("path", { d: "M12 10v8" }),
+    React2.createElement("path", { d: "M17 6v12" })
   );
 }
 var rt3 = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
 });
-var CORE_PAGE_SLUGS = [
-  "home",
-  "about",
-  "contact",
-  "shop",
-  "gallery",
-  "downloads",
-  "publishers",
-  "important-links"
-];
 var CORE_PAGE_GLOB = `{${CORE_PAGE_SLUGS.join(",")}}`;
 var pageFields = [
   {
@@ -2457,14 +2763,9 @@ var pageFields = [
       description: "The sections on this page, top to bottom. Drag to reorder, click a section to edit it, or use the + button to add a new one."
     },
     templates: ALL_BLOCKS
-  }
+  },
+  ...seoFields("page")
 ];
-function corePageRoute(basename) {
-  const base = basename.replace(/\.json$/i, "");
-  if (base === "home") return "/";
-  if (base === "important-links") return "/important-links-page";
-  return `/${base}`;
-}
 function navLinkFields() {
   return [
     {
@@ -2786,7 +3087,8 @@ var config_default = defineConfig({
               description: "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add Heading, Text, Spacer, Image, and more."
             },
             templates: BLOG_BLOCKS
-          }
+          },
+          ...seoFields("post")
         ]
       },
       // ---------------------------------------------------------------
@@ -2989,7 +3291,8 @@ var config_default = defineConfig({
             name: "createdAt",
             label: "Created Date",
             ui: { description: 'Used for "Newest" sort on the shop page.' }
-          }
+          },
+          ...seoFields("product")
         ]
       },
       // ---------------------------------------------------------------

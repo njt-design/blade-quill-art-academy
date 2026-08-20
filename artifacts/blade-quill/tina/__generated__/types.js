@@ -654,6 +654,12 @@ export const PagePartsFragmentDoc = gql`
       }
     }
   }
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
     `;
 export const LandingPagePartsFragmentDoc = gql`
@@ -1306,6 +1312,12 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
   ... on LandingPageEvent {
     title
@@ -1953,6 +1965,12 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+    }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
     }
   }
   ... on LandingPagePromo {
@@ -2602,6 +2620,12 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
   ... on LandingPageInfo {
     title
@@ -3249,6 +3273,12 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+    }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
     }
   }
   ... on LandingPageLinkInBio {
@@ -3898,6 +3928,12 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
     }
+    seoAssistant
+    seo {
+      __typename
+      metaTitle
+      metaDescription
+    }
   }
 }
     `;
@@ -4016,6 +4052,12 @@ export const PostPartsFragmentDoc = gql`
       }
     }
   }
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
     `;
 export const ShopProductPartsFragmentDoc = gql`
@@ -4044,6 +4086,12 @@ export const ShopProductPartsFragmentDoc = gql`
   googlePlayUrl
   productId
   createdAt
+  seoAssistant
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+  }
 }
     `;
 export const GalleryPartsFragmentDoc = gql`
@@ -4714,6 +4762,12 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
         }
+        seoAssistant
+        seo {
+          __typename
+          metaTitle
+          metaDescription
+        }
       }
       ... on LandingPage {
         __typename
@@ -5364,6 +5418,12 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageEvent {
           title
@@ -6011,6 +6071,12 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+          }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
           }
         }
         ... on LandingPagePromo {
@@ -6660,6 +6726,12 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageInfo {
           title
@@ -7308,6 +7380,12 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPageLinkInBio {
           title
@@ -7955,6 +8033,12 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+          }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
           }
         }
       }
@@ -8625,6 +8709,12 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPage {
           __typename
@@ -9275,6 +9365,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageEvent {
             title
@@ -9922,6 +10018,12 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
           ... on LandingPagePromo {
@@ -10571,6 +10673,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageInfo {
             title
@@ -11219,6 +11327,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageLinkInBio {
             title
@@ -11866,6 +11980,12 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
         }
@@ -12541,6 +12661,12 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
           }
+          seoAssistant
+          seo {
+            __typename
+            metaTitle
+            metaDescription
+          }
         }
         ... on LandingPage {
           __typename
@@ -13191,6 +13317,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageEvent {
             title
@@ -13838,6 +13970,12 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
           ... on LandingPagePromo {
@@ -14487,6 +14625,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageInfo {
             title
@@ -15135,6 +15279,12 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
             }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
+            }
           }
           ... on LandingPageLinkInBio {
             title
@@ -15782,6 +15932,12 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+            }
+            seoAssistant
+            seo {
+              __typename
+              metaTitle
+              metaDescription
             }
           }
         }
