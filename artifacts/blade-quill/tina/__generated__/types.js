@@ -13,6 +13,7 @@ export const PagePartsFragmentDoc = gql`
   blocks {
     __typename
     ... on PageBlocksHomeHero {
+      backgroundImage
       eyebrow
       heading
       subheading
@@ -664,6 +665,7 @@ export const LandingPagePartsFragmentDoc = gql`
     blocks {
       __typename
       ... on LandingPageBlankBlocksHomeHero {
+        backgroundImage
         eyebrow
         heading
         subheading
@@ -1311,6 +1313,7 @@ export const LandingPagePartsFragmentDoc = gql`
     blocks {
       __typename
       ... on LandingPageEventBlocksHomeHero {
+        backgroundImage
         eyebrow
         heading
         subheading
@@ -1958,6 +1961,7 @@ export const LandingPagePartsFragmentDoc = gql`
     blocks {
       __typename
       ... on LandingPagePromoBlocksHomeHero {
+        backgroundImage
         eyebrow
         heading
         subheading
@@ -2605,6 +2609,7 @@ export const LandingPagePartsFragmentDoc = gql`
     blocks {
       __typename
       ... on LandingPageInfoBlocksHomeHero {
+        backgroundImage
         eyebrow
         heading
         subheading
@@ -3252,6 +3257,7 @@ export const LandingPagePartsFragmentDoc = gql`
     blocks {
       __typename
       ... on LandingPageLinkInBioBlocksHomeHero {
+        backgroundImage
         eyebrow
         heading
         subheading
@@ -4055,6 +4061,7 @@ export const NavigationPartsFragmentDoc = gql`
         blocks {
           __typename
           ... on PageBlocksHomeHero {
+            backgroundImage
             eyebrow
             heading
             subheading
@@ -4704,6 +4711,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on LandingPageBlankBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -5351,6 +5359,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on LandingPageEventBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -5998,6 +6007,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on LandingPagePromoBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -6645,6 +6655,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on LandingPageInfoBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -7292,6 +7303,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on LandingPageLinkInBioBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -7960,6 +7972,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on PageBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -8609,6 +8622,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -9256,6 +9270,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -9903,6 +9918,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -10550,6 +10566,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -11197,6 +11214,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -11870,6 +11888,7 @@ export const NavigationPartsFragmentDoc = gql`
           blocks {
             __typename
             ... on PageBlocksHomeHero {
+              backgroundImage
               eyebrow
               heading
               subheading
@@ -12519,6 +12538,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -13166,6 +13186,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -13813,6 +13834,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -14460,6 +14482,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
@@ -15107,6 +15130,7 @@ export const NavigationPartsFragmentDoc = gql`
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {
+                backgroundImage
                 eyebrow
                 heading
                 subheading
