@@ -1242,7 +1242,10 @@ var galleryGridBlock = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: charLimit(60, "Images load automatically from the gallery database. This heading only shows if the gallery is empty.")
+      ui: charLimit(
+        60,
+        "Images are managed in the Gallery collection in Tina (sidebar). This heading only shows if the gallery is empty."
+      )
     },
     {
       type: "string",
@@ -2978,6 +2981,77 @@ var config_default = defineConfig({
             name: "createdAt",
             label: "Created Date",
             ui: { description: 'Used for "Newest" sort on the shop page.' }
+          }
+        ]
+      },
+      // ---------------------------------------------------------------
+      // Gallery — single document; drag to reorder artworks.
+      // ---------------------------------------------------------------
+      {
+        name: "gallery",
+        label: "Gallery",
+        path: "content/gallery",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          router: () => "/gallery"
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "Artwork",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title || "Artwork"
+              }),
+              defaultItem: {
+                title: "New artwork",
+                description: "",
+                image: "",
+                downloadFile: ""
+              },
+              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional downloadable file on any piece."
+            },
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+                ui: charLimit(
+                  80,
+                  "Shown on hover and in the lightbox under the image."
+                )
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Image",
+                required: true,
+                ui: {
+                  description: "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/."
+                }
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description (optional)",
+                ui: charLimit(
+                  200,
+                  "Short caption under the title in the lightbox."
+                )
+              },
+              {
+                type: "image",
+                name: "downloadFile",
+                label: "Downloadable File (optional)",
+                ui: {
+                  description: "Extra file visitors can download from the lightbox (high-res image, PDF, ZIP, PSD, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no download."
+                }
+              }
+            ]
           }
         ]
       },

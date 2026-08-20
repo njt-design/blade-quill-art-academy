@@ -1,0 +1,16 @@
+{
+  "name": "Blade & Quill Art Academy",
+  "install": "pnpm install --frozen-lockfile",
+  "terminals": [
+    {
+      "name": "Frontend",
+      "command": "pnpm --filter @workspace/blade-quill run dev",
+      "description": "TinaCMS on 4001, Vite on 3001, combined proxy on 3000. Open http://localhost:3000/gallery to test the public gallery lightbox."
+    }
+  ],
+  "ports": [
+    { "name": "Site (dev proxy)", "port": 3000 },
+    { "name": "Vite", "port": 3001 },
+    { "name": "TinaCMS", "port": 4001 }
+  ]
+}

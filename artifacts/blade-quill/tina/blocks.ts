@@ -1331,7 +1331,10 @@ export const galleryGridBlock: Template = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: charLimit(60, "Images load automatically from the gallery database. This heading only shows if the gallery is empty."),
+      ui: charLimit(
+        60,
+        "Images are managed in the Gallery collection in Tina (sidebar). This heading only shows if the gallery is empty."
+      ),
     },
     {
       type: "string",

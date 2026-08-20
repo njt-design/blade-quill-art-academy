@@ -4040,6 +4040,18 @@ export const ShopProductPartsFragmentDoc = gql`
   createdAt
 }
     `;
+export const GalleryPartsFragmentDoc = gql`
+    fragment GalleryParts on Gallery {
+  __typename
+  items {
+    __typename
+    title
+    image
+    description
+    downloadFile
+  }
+}
+    `;
 export const NavigationPartsFragmentDoc = gql`
     fragment NavigationParts on Navigation {
   __typename
@@ -15995,6 +16007,63 @@ export const ShopProductConnectionDocument = gql`
   }
 }
     ${ShopProductPartsFragmentDoc}`;
+export const GalleryDocument = gql`
+    query gallery($relativePath: String!) {
+  gallery(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...GalleryParts
+  }
+}
+    ${GalleryPartsFragmentDoc}`;
+export const GalleryConnectionDocument = gql`
+    query galleryConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GalleryFilter) {
+  galleryConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...GalleryParts
+      }
+    }
+  }
+}
+    ${GalleryPartsFragmentDoc}`;
 export const NavigationDocument = gql`
     query navigation($relativePath: String!) {
   navigation(relativePath: $relativePath) {
@@ -16077,6 +16146,12 @@ export function getSdk(requester) {
     },
     shopProductConnection(variables, options) {
       return requester(ShopProductConnectionDocument, variables, options);
+    },
+    gallery(variables, options) {
+      return requester(GalleryDocument, variables, options);
+    },
+    galleryConnection(variables, options) {
+      return requester(GalleryConnectionDocument, variables, options);
     },
     navigation(variables, options) {
       return requester(NavigationDocument, variables, options);
