@@ -108,6 +108,7 @@ type PageBlocksHomeHeroTextStyle {
 }
 
 type PageBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -847,6 +848,13 @@ input StringFilter {
   in: [String]
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -871,6 +879,7 @@ input PageBlocksHomeHeroTextStyleFilter {
 }
 
 input PageBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: PageBlocksHomeHeroSubheadingFilter
@@ -891,13 +900,6 @@ input PageBlocksAboutHeroLeadTextContentLinkFilter {
 
 input PageBlocksAboutHeroLeadTextFilter {
   ContentLink: PageBlocksAboutHeroLeadTextContentLinkFilter
-}
-
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
 }
 
 input PageBlocksAboutHeroTextStyleFilter {
@@ -1907,6 +1909,7 @@ type LandingPageBlankBlocksHomeHeroTextStyle {
 }
 
 type LandingPageBlankBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -2648,6 +2651,7 @@ type LandingPageEventBlocksHomeHeroTextStyle {
 }
 
 type LandingPageEventBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -3389,6 +3393,7 @@ type LandingPagePromoBlocksHomeHeroTextStyle {
 }
 
 type LandingPagePromoBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -4130,6 +4135,7 @@ type LandingPageInfoBlocksHomeHeroTextStyle {
 }
 
 type LandingPageInfoBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -4871,6 +4877,7 @@ type LandingPageLinkInBioBlocksHomeHeroTextStyle {
 }
 
 type LandingPageLinkInBioBlocksHomeHero {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -5624,6 +5631,7 @@ input LandingPageBlankBlocksHomeHeroTextStyleFilter {
 }
 
 input LandingPageBlankBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: LandingPageBlankBlocksHomeHeroSubheadingFilter
@@ -6652,6 +6660,7 @@ input LandingPageEventBlocksHomeHeroTextStyleFilter {
 }
 
 input LandingPageEventBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: LandingPageEventBlocksHomeHeroSubheadingFilter
@@ -7680,6 +7689,7 @@ input LandingPagePromoBlocksHomeHeroTextStyleFilter {
 }
 
 input LandingPagePromoBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: LandingPagePromoBlocksHomeHeroSubheadingFilter
@@ -8708,6 +8718,7 @@ input LandingPageInfoBlocksHomeHeroTextStyleFilter {
 }
 
 input LandingPageInfoBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: LandingPageInfoBlocksHomeHeroSubheadingFilter
@@ -9736,6 +9747,7 @@ input LandingPageLinkInBioBlocksHomeHeroTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
   eyebrow: StringFilter
   heading: StringFilter
   subheading: LandingPageLinkInBioBlocksHomeHeroSubheadingFilter
@@ -11336,6 +11348,7 @@ input PageBlocksHomeHeroTextStyleMutation {
 }
 
 input PageBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -12114,6 +12127,7 @@ input LandingPageBlankBlocksHomeHeroTextStyleMutation {
 }
 
 input LandingPageBlankBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -12892,6 +12906,7 @@ input LandingPageEventBlocksHomeHeroTextStyleMutation {
 }
 
 input LandingPageEventBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -13670,6 +13685,7 @@ input LandingPagePromoBlocksHomeHeroTextStyleMutation {
 }
 
 input LandingPagePromoBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -14448,6 +14464,7 @@ input LandingPageInfoBlocksHomeHeroTextStyleMutation {
 }
 
 input LandingPageInfoBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON
@@ -15226,6 +15243,7 @@ input LandingPageLinkInBioBlocksHomeHeroTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksHomeHeroMutation {
+  backgroundImage: String
   eyebrow: String
   heading: String
   subheading: JSON

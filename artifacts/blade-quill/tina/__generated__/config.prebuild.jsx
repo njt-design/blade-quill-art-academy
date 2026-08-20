@@ -502,6 +502,14 @@ var homeHeroBlock = {
   }),
   fields: [
     {
+      type: "image",
+      name: "backgroundImage",
+      label: "Background Image",
+      ui: {
+        description: "Optional. Upload your own image to replace the default illustrated background \u2014 the text stays separate and sits on top. Best size: a wide landscape image around 2400\xD71200 pixels (2:1 shape, minimum 1920\xD7960). Use JPG or WebP under 1 MB so the page loads fast, and keep the left half of the image simple since the heading and buttons appear there. A soft dark tint is added automatically so white text stays readable. Upload into images/pages/. Leave empty to keep the default artwork."
+      }
+    },
+    {
       type: "string",
       name: "eyebrow",
       label: "Eyebrow",

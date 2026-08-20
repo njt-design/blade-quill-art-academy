@@ -40,20 +40,26 @@ function HeroCtas({
   primaryLink,
   setLocation,
   variant,
+  onImage,
 }: {
   block: Block;
   secondaryLink?: string;
   primaryLink?: string;
   setLocation: (to: string) => void;
   variant: "mobile" | "desktop";
+  /** True when a custom background image is behind the CTAs (white outline everywhere). */
+  onImage?: boolean;
 }) {
   const desktop = variant === "desktop";
   const btnSize = desktop ? "lg" : "md";
+  const mobileOutlineColors = onImage
+    ? "border-white text-white bg-transparent hover:bg-white hover:text-[var(--taupe)]"
+    : "border-[var(--maroon)] text-[var(--maroon)] bg-transparent hover:bg-[var(--maroon)] hover:text-[var(--paper)]";
   const outlineClass = desktop
     ? "border-white bg-transparent text-white hover:bg-white hover:text-[var(--taupe)] h-[60px]"
     : [
         "w-full h-11 min-h-11 max-h-11 px-5 py-0 text-sm",
-        "border-[var(--maroon)] text-[var(--maroon)] bg-transparent hover:bg-[var(--maroon)] hover:text-[var(--paper)]",
+        mobileOutlineColors,
         "md:w-auto md:h-auto md:max-h-none md:px-7 md:py-[17px] md:text-[15px]",
         "md:border-white md:bg-transparent md:text-white md:hover:bg-white md:hover:text-[var(--taupe)]",
       ].join(" ");
@@ -146,6 +152,8 @@ export default function HomeHeroBlock({ block }: Props) {
   const marqueeItems = (block.marqueeItems as string[] | undefined)?.filter(Boolean) ?? [];
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
   const primaryLink = block.ctaPrimaryLink as string | undefined;
+  const backgroundImage = ((block.backgroundImage as string) || "").trim();
+  const hasCustomBg = backgroundImage.length > 0;
 
   return (
     <section className="relative overflow-hidden">
@@ -155,42 +163,56 @@ export default function HomeHeroBlock({ block }: Props) {
             "@container/hero relative overflow-hidden",
             "min-h-[680px] md:min-h-[720px] lg:min-h-[min(560px,50cqw)]",
             "md:rounded-2xl lg:rounded-[32px] md:bg-[var(--taupe)]",
+            hasCustomBg ? "rounded-2xl bg-[var(--taupe)]" : "",
           ].join(" ")}
         >
-          {/* Characters — desktop % from Figma 185:3261 */}
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <img
-              src={HERO_STEAMPUNK_CAT}
-              alt=""
-              className={[
-                "absolute z-[1] object-contain",
-                "right-[-6%] bottom-[-4%] h-auto w-[70%]",
-                "md:right-[-2%] md:bottom-[-8%] md:w-[58%]",
-                "lg:right-auto lg:bottom-auto lg:left-[60.7%] lg:top-[2.3%] lg:h-[106.5%] lg:w-[42.5%]",
-                "rotate-[-0.3deg] md:rotate-[2.11deg]",
-              ].join(" ")}
-            />
-            <img
-              src={HERO_BABY_DRAGON}
-              alt=""
-              className={[
-                "absolute z-[2] object-contain",
-                "left-[-4%] bottom-[-2%] h-auto w-[58%]",
-                "md:left-[26%] md:bottom-[-4%] md:w-[38%]",
-                "lg:bottom-auto lg:left-[47.9%] lg:top-[56.2%] lg:h-[47.6%] lg:w-[25.4%]",
-              ].join(" ")}
-            />
-            <img
-              src={HERO_CHILD_AND_BEAR}
-              alt=""
-              className={[
-                "absolute z-[3] hidden object-contain md:block",
-                "md:left-[6%] md:bottom-[-6%] md:h-auto md:w-[24%]",
-                "lg:bottom-auto lg:left-[34.4%] lg:top-[69.1%] lg:h-[39.8%] lg:w-[15.6%]",
-                "-rotate-4",
-              ].join(" ")}
-            />
-          </div>
+          {hasCustomBg ? (
+            /* Custom uploaded background — replaces the default illustrations. */
+            <div className="absolute inset-0" data-tina-field={tinaField(block, "backgroundImage")}>
+              <img
+                src={backgroundImage}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {/* Scrim keeps the white text readable over any image. */}
+              <div aria-hidden className="absolute inset-0 bg-[rgba(46,34,34,0.45)]" />
+            </div>
+          ) : (
+            /* Characters — desktop % from Figma 185:3261 */
+            <div aria-hidden className="pointer-events-none absolute inset-0">
+              <img
+                src={HERO_STEAMPUNK_CAT}
+                alt=""
+                className={[
+                  "absolute z-[1] object-contain",
+                  "right-[-6%] bottom-[-4%] h-auto w-[70%]",
+                  "md:right-[-2%] md:bottom-[-8%] md:w-[58%]",
+                  "lg:right-auto lg:bottom-auto lg:left-[60.7%] lg:top-[2.3%] lg:h-[106.5%] lg:w-[42.5%]",
+                  "rotate-[-0.3deg] md:rotate-[2.11deg]",
+                ].join(" ")}
+              />
+              <img
+                src={HERO_BABY_DRAGON}
+                alt=""
+                className={[
+                  "absolute z-[2] object-contain",
+                  "left-[-4%] bottom-[-2%] h-auto w-[58%]",
+                  "md:left-[26%] md:bottom-[-4%] md:w-[38%]",
+                  "lg:bottom-auto lg:left-[47.9%] lg:top-[56.2%] lg:h-[47.6%] lg:w-[25.4%]",
+                ].join(" ")}
+              />
+              <img
+                src={HERO_CHILD_AND_BEAR}
+                alt=""
+                className={[
+                  "absolute z-[3] hidden object-contain md:block",
+                  "md:left-[6%] md:bottom-[-6%] md:h-auto md:w-[24%]",
+                  "lg:bottom-auto lg:left-[34.4%] lg:top-[69.1%] lg:h-[39.8%] lg:w-[15.6%]",
+                  "-rotate-4",
+                ].join(" ")}
+              />
+            </div>
+          )}
 
           {/* ── Mobile / tablet copy ── */}
           <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-12 lg:hidden">
@@ -209,7 +231,7 @@ export default function HomeHeroBlock({ block }: Props) {
               block={block}
               defaultTag="h1"
               baseSize="clamp(36px, 8vw, 56px)"
-              className="mb-5 text-[var(--ink)] md:mb-7 md:text-white"
+              className={`mb-5 md:mb-7 md:text-white ${hasCustomBg ? "text-white" : "text-[var(--ink)]"}`}
               style={{
                 lineHeight: 1.1,
                 letterSpacing: "-0.025em",
@@ -223,7 +245,7 @@ export default function HomeHeroBlock({ block }: Props) {
             {block.subheading ? (
               <Reveal>
                 <div
-                  className="mb-12 max-w-[540px] space-y-4 text-lg leading-[1.45] text-[var(--ink-soft)] md:mb-14 md:text-[19px] md:text-white [&_p]:m-0"
+                  className={`mb-12 max-w-[540px] space-y-4 text-lg leading-[1.45] md:mb-14 md:text-[19px] md:text-white [&_p]:m-0 ${hasCustomBg ? "text-white" : "text-[var(--ink-soft)]"}`}
                   style={{ ...bodyTextStyle(block), textAlign: "left" }}
                   data-tina-field={tinaField(block, "subheading")}
                 >
@@ -241,6 +263,7 @@ export default function HomeHeroBlock({ block }: Props) {
                 primaryLink={primaryLink}
                 setLocation={setLocation}
                 variant="mobile"
+                onImage={hasCustomBg}
               />
             </Reveal>
           </div>
