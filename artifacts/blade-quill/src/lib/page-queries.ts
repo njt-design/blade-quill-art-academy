@@ -145,6 +145,9 @@ function blocksSelection(prefix: string): string {
 const SYS_SELECTION =
   "... on Document { _sys { filename basename hasReferences breadcrumbs path relativePath extension } id }";
 
+/** Optional per-document search-listing fields (tina/seo.ts). */
+const SEO_SELECTION = "seo { metaTitle metaDescription }";
+
 /** Query for the protected core "page" collection. */
 export const sitePageQuery = `
   query page($relativePath: String!) {
@@ -153,6 +156,7 @@ export const sitePageQuery = `
       __typename
       title
       layout
+      ${SEO_SELECTION}
       blocks {
         ${blocksSelection("PageBlocks")}
       }
@@ -173,6 +177,7 @@ export const landingPageQuery = `
         (t) => `... on LandingPage${pascalCase(t)} {
         title
         layout
+        ${SEO_SELECTION}
         blocks {
           ${blocksSelection(`LandingPage${pascalCase(t)}Blocks`)}
         }

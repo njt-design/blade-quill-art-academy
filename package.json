@@ -23,6 +23,7 @@
     "@vercel/node": "^5.8.26",
     "@workspace/checkout": "workspace:*",
     "@workspace/insights": "workspace:*",
+    "@workspace/seo-suggest": "workspace:*",
     "resend": "^6.17.2",
     "stripe": "^20.4.1"
   }

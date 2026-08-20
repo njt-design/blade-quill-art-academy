@@ -1,0 +1,11 @@
+{
+  "name": "@workspace/seo-suggest",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:"
+  }
+}

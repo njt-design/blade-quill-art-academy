@@ -157,6 +157,9 @@ importers:
       '@workspace/insights':
         specifier: workspace:*
         version: link:lib/insights
+      '@workspace/seo-suggest':
+        specifier: workspace:*
+        version: link:lib/seo-suggest
       resend:
         specifier: ^6.17.2
         version: 6.17.2
@@ -188,6 +191,9 @@ importers:
       '@workspace/insights':
         specifier: workspace:*
         version: link:../../lib/insights
+      '@workspace/seo-suggest':
+        specifier: workspace:*
+        version: link:../../lib/seo-suggest
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -654,6 +660,12 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.49.4
         version: 2.99.3
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.3.5
+
+  lib/seo-suggest:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

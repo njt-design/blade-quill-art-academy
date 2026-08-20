@@ -10,6 +10,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { sitePageQuery, landingPageQuery } from "../src/lib/page-queries.ts";
 import { navigationQuery } from "../src/lib/navigation-queries.ts";
+import { postQuery } from "../src/lib/post-queries.ts";
+import { shopProductQuery } from "../src/lib/product-query.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -27,6 +29,8 @@ for (const [name, query] of [
   ["sitePageQuery", sitePageQuery],
   ["landingPageQuery", landingPageQuery],
   ["navigationQuery", navigationQuery],
+  ["postQuery", postQuery],
+  ["shopProductQuery", shopProductQuery],
 ]) {
   const errors = validate(schema, parse(query));
   if (errors.length > 0) {

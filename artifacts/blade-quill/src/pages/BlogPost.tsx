@@ -9,6 +9,7 @@ import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
 import { richTextComponents } from "@/components/site/rich-text-components";
 import { postQuery } from "@/lib/post-queries";
+import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
 import type { Block } from "@/pages/blocks/block-utils";
 import ArticleSectionRenderer from "@/pages/blog/ArticleSectionRenderer";
 import ArticleToc from "@/pages/blog/ArticleToc";
@@ -68,6 +69,14 @@ export default function BlogPost() {
     if (!post?.showTableOfContents) return [];
     return collectTocItems(sections);
   }, [post?.showTableOfContents, sections]);
+
+  const seo = (post?.seo ?? null) as CmsSeo | null;
+  useSeo({
+    title: seo?.metaTitle || (post?.title as string | undefined),
+    description: seo?.metaDescription || richTextToPlain(post?.excerpt),
+    image: typeof post?.coverImage === "string" ? post.coverImage : undefined,
+    type: "article",
+  });
 
   // Temporary fallback for posts not yet migrated off legacy `body`.
   const legacyBody = post?.body;

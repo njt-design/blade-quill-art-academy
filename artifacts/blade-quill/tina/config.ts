@@ -8,6 +8,7 @@ import {
   charLimit,
 } from "./blocks";
 import { BLOG_BLOCKS } from "./blog-blocks";
+import { CORE_PAGE_SLUGS, corePageRoute, seoFields } from "./seo";
 
 const INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
 
@@ -220,20 +221,9 @@ const rt = (text: string) => ({
 // ---------------------------------------------------------------------------
 
 /**
- * Slugs that belong to the core site pages. These live in the protected
- * "Site Pages" collection; anything else in content/pages is a "New Page".
+ * Slugs that belong to the core site pages (defined in ./seo alongside the
+ * URL mapping). Anything else in content/pages is a "New Page".
  */
-const CORE_PAGE_SLUGS = [
-  "home",
-  "about",
-  "contact",
-  "shop",
-  "gallery",
-  "downloads",
-  "publishers",
-  "important-links",
-];
-
 const CORE_PAGE_GLOB = `{${CORE_PAGE_SLUGS.join(",")}}`;
 
 const pageFields: TinaField[] = [
@@ -270,15 +260,8 @@ const pageFields: TinaField[] = [
     },
     templates: ALL_BLOCKS,
   },
+  ...seoFields("page"),
 ];
-
-/** Map a page file name to its live URL for visual editing. */
-function corePageRoute(basename: string): string {
-  const base = basename.replace(/\.json$/i, "");
-  if (base === "home") return "/";
-  if (base === "important-links") return "/important-links-page";
-  return `/${base}`;
-}
 
 // ---------------------------------------------------------------------------
 // Navigation (site menu + footer links, editable as a single document)
@@ -656,6 +639,7 @@ export default defineConfig({
             },
             templates: BLOG_BLOCKS,
           },
+          ...seoFields("post"),
         ],
       },
 
@@ -882,6 +866,7 @@ export default defineConfig({
             label: "Created Date",
             ui: { description: 'Used for "Newest" sort on the shop page.' },
           },
+          ...seoFields("product"),
         ],
       },
 

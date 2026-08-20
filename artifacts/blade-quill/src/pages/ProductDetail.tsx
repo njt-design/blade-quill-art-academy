@@ -20,6 +20,7 @@ import {
   type CatalogProduct,
 } from "@/lib/products";
 import { useCart } from "@/hooks/useCart";
+import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { flyToCart } from "@/lib/flyToCart";
 
@@ -136,6 +137,7 @@ export default function ProductDetail() {
         featured: seedRaw.featured,
         inStock: seedRaw.inStock,
         createdAt: seedRaw.createdAt,
+        seo: seedRaw.seo,
       }
     : {};
 
@@ -194,6 +196,14 @@ export default function ProductDetail() {
 
   /** Tina document used for data-tina-field bindings (visual editing). */
   const tinaDoc = (tinaData.shopProduct ?? null) as Record<string, unknown> | null;
+
+  const seo = (tinaDoc?.seo ?? null) as CmsSeo | null;
+  useSeo({
+    title: seo?.metaTitle || product?.name,
+    description: seo?.metaDescription || richTextToPlain(product?.description),
+    image: product?.imageUrl,
+    type: "product",
+  });
 
   const isLoading = useApi && apiLoading && !product;
   const error = useApi ? apiError : undefined;

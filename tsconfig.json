@@ -13,6 +13,9 @@
       "path": "./lib/insights"
     },
     {
+      "path": "./lib/seo-suggest"
+    },
+    {
       "path": "./lib/api-client-react"
     },
     {

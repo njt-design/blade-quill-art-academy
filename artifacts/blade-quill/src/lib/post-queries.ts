@@ -55,6 +55,7 @@ export const postQuery = `
       publishedAt
       tags
       showTableOfContents
+      seo { metaTitle metaDescription }
       sections {
         ${sectionsSelection()}
       }
