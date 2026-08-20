@@ -1,4 +1,3 @@
-import { useEffect, useMemo } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { useLiveTina } from "@/hooks/use-live-tina";
@@ -15,6 +14,7 @@ import {
   normalizeSlug,
   sitePageQuery,
 } from "@/lib/page-content";
+import { useSeo, type CmsSeo } from "@/lib/seo";
 import { BlockRenderer } from "./blocks/BlockRenderer";
 import { type Block } from "./blocks/block-utils";
 
@@ -96,11 +96,11 @@ export default function Page({ slug: rawSlug, chrome = "none" }: PageProps) {
     | (Record<string, unknown> & { title?: string; layout?: string; blocks?: Block[] })
     | null;
 
-  useEffect(() => {
-    if (page?.title) {
-      document.title = `${page.title} — Blade & Quill`;
-    }
-  }, [page?.title]);
+  const seo = (page?.seo ?? null) as CmsSeo | null;
+  useSeo({
+    title: seo?.metaTitle || page?.title,
+    description: seo?.metaDescription,
+  });
 
   if (!page || !page.title) {
     const notFound = (

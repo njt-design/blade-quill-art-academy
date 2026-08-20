@@ -39,6 +39,7 @@ export const shopProductQuery = `
       featured
       inStock
       createdAt
+      seo { metaTitle metaDescription }
     }
   }
 `;
