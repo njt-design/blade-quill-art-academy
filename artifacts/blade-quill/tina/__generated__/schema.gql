@@ -62,6 +62,8 @@ type Query {
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
   shopProduct(relativePath: String): ShopProduct!
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
+  gallery(relativePath: String): Gallery!
+  galleryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GalleryFilter): GalleryConnection!
   navigation(relativePath: String): Navigation!
   navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
 }
@@ -71,6 +73,7 @@ input DocumentFilter {
   landingPage: LandingPageFilter
   post: PostFilter
   shopProduct: ShopProductFilter
+  gallery: GalleryFilter
   navigation: NavigationFilter
 }
 
@@ -97,7 +100,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Navigation | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Navigation | Folder
 
 type PageBlocksHomeHeroTextStyle {
   headingSize: String
@@ -11205,6 +11208,42 @@ type ShopProductConnection implements Connection {
   edges: [ShopProductConnectionEdges]
 }
 
+type GalleryItems {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
+type Gallery implements Node & Document {
+  items: [GalleryItems]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input GalleryItemsFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
+input GalleryFilter {
+  items: GalleryItemsFilter
+}
+
+type GalleryConnectionEdges {
+  cursor: String!
+  node: Gallery
+}
+
+type GalleryConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [GalleryConnectionEdges]
+}
+
 union NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
 union NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
@@ -11318,6 +11357,8 @@ type Mutation {
   createPost(relativePath: String!, params: PostMutation!): Post!
   updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
+  updateGallery(relativePath: String!, params: GalleryMutation!): Gallery!
+  createGallery(relativePath: String!, params: GalleryMutation!): Gallery!
   updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
   createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
 }
@@ -11327,6 +11368,7 @@ input DocumentUpdateMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
+  gallery: GalleryMutation
   navigation: NavigationMutation
   relativePath: String
 }
@@ -11336,6 +11378,7 @@ input DocumentMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
+  gallery: GalleryMutation
   navigation: NavigationMutation
 }
 
@@ -16191,6 +16234,17 @@ input ShopProductMutation {
   googlePlayUrl: String
   productId: Float
   createdAt: String
+}
+
+input GalleryItemsMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
+input GalleryMutation {
+  items: [GalleryItemsMutation]
 }
 
 input NavigationItemsChildrenMutation {

@@ -1,39 +1,66 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, X } from "lucide-react";
 import { tinaField } from "tinacms/react";
-import { useListGallery, type GalleryItem } from "@workspace/api-client-react";
-import { asArray } from "@/lib/api-helpers";
+import { useLiveGallery } from "@/hooks/use-live-content";
 import { FALLBACK_GALLERY } from "@/lib/fallback-data";
+import {
+  fileNameFromUrl,
+  hasDownloadFile,
+  resolveGalleryArtworks,
+  type GalleryArtwork,
+} from "@/lib/gallery";
 import { type Block } from "./block-utils";
 import { SectionHeading } from "./text-style";
 
-function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
+function Lightbox({
+  items,
+  index,
+  onClose,
+  onPrev,
+  onNext,
+}: {
+  items: GalleryArtwork[];
+  index: number;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
+  const item = items[index];
+  const showNav = items.length > 1;
+  const downloadFile = item?.downloadFile;
+  const canDownload = hasDownloadFile(downloadFile);
+
   useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
     };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
     };
-  }, [onClose]);
+  }, [onClose, onPrev, onNext]);
+
+  if (!item) return null;
 
   // Portal to body so `position: fixed` is viewport-relative. Ancestors with
   // `.page` keep a CSS transform from the page-entrance animation, which would
   // otherwise make the overlay cover the full document and center mid-page.
   return createPortal(
     <div
-      className="fixed inset-0 z-[1001] flex items-start justify-center overflow-y-auto bg-black/80 px-4 pt-16 pb-8 cursor-pointer sm:pt-20"
+      className="fixed inset-0 z-[1001] flex items-start justify-center overflow-y-auto bg-black/80 px-4 pt-16 pb-8 cursor-pointer sm:px-16 sm:pt-20"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={item.title}
     >
       <button
+        type="button"
         className="fixed top-3 right-3 w-11 h-11 grid place-items-center text-white/70 hover:text-white transition-colors z-10"
         onClick={onClose}
         aria-label="Close"
@@ -44,15 +71,47 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
         className="relative w-full max-w-4xl cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={item.imageUrl}
-          alt={item.title}
-          className="mx-auto max-w-full max-h-[75vh] object-contain rounded-lg"
-        />
+        <div className="relative flex items-center justify-center">
+          {showNav && (
+            <button
+              type="button"
+              className="absolute left-1 top-1/2 z-10 -translate-y-1/2 w-11 h-11 grid place-items-center rounded-full bg-black/45 text-white/85 hover:text-white hover:bg-black/65 transition-colors sm:-left-14"
+              onClick={onPrev}
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-7 h-7" />
+            </button>
+          )}
+          <img
+            src={item.imageUrl}
+            alt={item.title}
+            className="mx-auto max-w-full max-h-[75vh] object-contain rounded-lg"
+          />
+          {showNav && (
+            <button
+              type="button"
+              className="absolute right-1 top-1/2 z-10 -translate-y-1/2 w-11 h-11 grid place-items-center rounded-full bg-black/45 text-white/85 hover:text-white hover:bg-black/65 transition-colors sm:-right-14"
+              onClick={onNext}
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-7 h-7" />
+            </button>
+          )}
+        </div>
         <div className="mt-3 text-center">
           <h3 className="text-white font-normal">{item.title}</h3>
           {item.description && (
             <p className="text-white/60 text-sm mt-1">{item.description}</p>
+          )}
+          {canDownload && (
+            <a
+              href={downloadFile}
+              download={fileNameFromUrl(downloadFile)}
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white hover:bg-white/25 transition-colors"
+            >
+              <Download className="w-4 h-4" aria-hidden />
+              Download this file
+            </a>
           )}
         </div>
       </div>
@@ -61,8 +120,15 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
   );
 }
 
-function GalleryImage({ item, onClick }: { item: GalleryItem; onClick: () => void }) {
+function GalleryImage({
+  item,
+  onClick,
+}: {
+  item: GalleryArtwork;
+  onClick: () => void;
+}) {
   const [loaded, setLoaded] = useState(false);
+  const canDownload = hasDownloadFile(item.downloadFile);
 
   return (
     <div
@@ -77,6 +143,15 @@ function GalleryImage({ item, onClick }: { item: GalleryItem; onClick: () => voi
         onLoad={() => setLoaded(true)}
       />
       {!loaded && <div className="aspect-[3/4] bg-muted animate-pulse" />}
+      {canDownload && (
+        <span
+          className="absolute top-2 right-2 z-[1] w-7 h-7 rounded-full bg-black/40 text-white/90 grid place-items-center pointer-events-none"
+          title="Download available"
+          aria-hidden
+        >
+          <Download className="w-3.5 h-3.5" />
+        </span>
+      )}
       {(item.title || item.description) && (
         <div className="hover-overlay">
           <h3 className="text-white font-normal text-sm">{item.title}</h3>
@@ -94,33 +169,40 @@ interface Props {
 }
 
 export default function GalleryGridBlock({ block }: Props) {
-  const { data: galleryItems, isLoading } = useListGallery(undefined, {
-    query: { enabled: import.meta.env.PROD },
-  });
-  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
+  const catalog = useLiveGallery();
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const items = asArray<GalleryItem>(galleryItems, FALLBACK_GALLERY);
-  const closeLightbox = useCallback(() => setLightboxItem(null), []);
+  const items = useMemo(
+    () => resolveGalleryArtworks(undefined, FALLBACK_GALLERY, catalog),
+    [catalog],
+  );
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const goPrev = useCallback(() => {
+    setLightboxIndex((current) =>
+      current === null || items.length === 0
+        ? current
+        : (current - 1 + items.length) % items.length,
+    );
+  }, [items.length]);
+  const goNext = useCallback(() => {
+    setLightboxIndex((current) =>
+      current === null || items.length === 0
+        ? current
+        : (current + 1) % items.length,
+    );
+  }, [items.length]);
 
   return (
     <section className="py-6">
       <div className="container mx-auto px-4 md:px-6">
-        {isLoading ? (
+        {items.length > 0 ? (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div
-                key={i}
-                className="animate-pulse bg-muted rounded-lg aspect-[3/4] break-inside-avoid"
-              />
-            ))}
-          </div>
-        ) : items.length > 0 ? (
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-            {items.map((item) => (
+            {items.map((item, index) => (
               <GalleryImage
                 key={item.id}
                 item={item}
-                onClick={() => setLightboxItem(item)}
+                onClick={() => setLightboxIndex(index)}
               />
             ))}
           </div>
@@ -146,7 +228,15 @@ export default function GalleryGridBlock({ block }: Props) {
         )}
       </div>
 
-      {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
+      {lightboxIndex !== null && (
+        <Lightbox
+          items={items}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={goPrev}
+          onNext={goNext}
+        />
+      )}
     </section>
   );
 }

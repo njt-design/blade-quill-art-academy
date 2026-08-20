@@ -14,6 +14,11 @@ import {
   type CatalogProduct,
 } from "@/lib/products";
 import {
+  loadGalleryArtworks,
+  toGalleryArtwork,
+  type GalleryArtwork,
+} from "@/lib/gallery";
+import {
   fetchTinaData,
   isInTinaEditor,
   isLiveContentEnabled,
@@ -64,6 +69,19 @@ const POSTS_PAGE_QUERY = `
           publishedAt
           tags
         }
+      }
+    }
+  }
+`;
+
+const GALLERY_QUERY = `
+  query liveGallery($relativePath: String!) {
+    gallery(relativePath: $relativePath) {
+      items {
+        title
+        image
+        description
+        downloadFile
       }
     }
   }
@@ -222,6 +240,23 @@ export function useLiveBlogPosts(): BlogPostMeta[] {
     return sortBlogPosts(
       nodes.filter((n) => n.slug).map((n) => toBlogPostMeta(n.slug, n.data))
     );
+  });
+}
+
+/** Gallery artworks, CMS order — bundled seed refreshed from Tina Cloud. */
+export function useLiveGallery(): GalleryArtwork[] {
+  return useLiveList("gallery", loadGalleryArtworks, async () => {
+    const data = await fetchTinaData<{
+      gallery?: { items?: Array<Record<string, unknown> | null> | null };
+    }>(GALLERY_QUERY, { relativePath: "items.json" });
+    if (!data?.gallery?.items) return null;
+    const items = data.gallery.items
+      .filter((item): item is Record<string, unknown> =>
+        Boolean(item && typeof item === "object")
+      )
+      .map((item, index) => toGalleryArtwork(item, index))
+      .filter((item) => Boolean(item.imageUrl));
+    return items.length > 0 ? items : null;
   });
 }
 

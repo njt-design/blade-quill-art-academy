@@ -4,9 +4,12 @@
  */
 
 import { FALLBACK_GALLERY, FALLBACK_PRODUCTS } from "./fallback-data";
+import { loadGalleryArtworks } from "./gallery";
 
-/** Look up one of Corinne's artworks (bundled gallery data) by its title. */
+/** Look up one of Corinne's artworks (Tina gallery, then bundled fallback) by its title. */
 export function galleryImageUrl(title: string): string | undefined {
+  const fromCms = loadGalleryArtworks().find((item) => item.title === title)?.imageUrl;
+  if (fromCms) return fromCms;
   return FALLBACK_GALLERY.find((item) => item.title === title)?.imageUrl;
 }
 
