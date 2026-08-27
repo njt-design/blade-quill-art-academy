@@ -37,6 +37,21 @@
             "type": "p",
             "children": [
               {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Huion-Download-Center-page.jpg",
+                "caption": "",
+                "alt": "",
+                "id": "jXH4A49JBL"
+              },
+              {
                 "type": "text",
                 "text": "Click on the website to access the latest updates: ",
                 "id": "RsincSff2E"
