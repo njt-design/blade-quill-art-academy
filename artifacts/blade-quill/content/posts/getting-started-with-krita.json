@@ -10,11 +10,12 @@
             "type": "text",
             "text": "Krita is a everything you need to know to get started on your first project."
           }
-        ]
+        ],
+        "id": "mP-FkBdmBZ"
       }
     ]
   },
-  "coverImage": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&q=80",
+  "coverImage": "/images/example-of-layers.jpg",
   "publishedAt": "2026-03-20T10:00:00.000Z",
   "tags": [
     "Krita",
@@ -22,7 +23,6 @@
   ],
   "sections": [
     {
-      "_template": "text",
       "heading": "",
       "body": {
         "type": "root",
@@ -37,7 +37,8 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     }
   ]
 }
