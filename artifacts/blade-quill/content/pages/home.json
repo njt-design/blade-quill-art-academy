@@ -3,6 +3,7 @@
   "layout": "standard",
   "blocks": [
     {
+      "backgroundImage": "/images/Welcome-page_SteamPunk-Characters.png",
       "eyebrow": "✦ WELCOME TO BLADE & QUILL ✦",
       "heading": "Author, illustrator, and digital art educator",
       "subheading": {
