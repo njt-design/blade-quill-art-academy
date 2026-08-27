@@ -243,8 +243,9 @@
       "_template": "text"
     },
     {
+      "src": "/images/Sila-for-Blog.jpg",
       "alt": "",
-      "caption": "",
+      "caption": "The only thing left to do is to install your new driver. ",
       "width": "content",
       "aspect": "auto",
       "_template": "image"
