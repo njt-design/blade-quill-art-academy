@@ -51,47 +51,14 @@
                   }
                 ],
                 "props": {
-                  "url": "https://www.google.com",
-                  "text": "Google",
+                  "url": "https://www.huion.com/download?gad_source=1&gad_campaignid=21311091114&gbraid=0AAAAACnW_2DnuGeSJ3qQwPJg7cLXN9zTJ&gclid=CjwKCAjwwL_UBhAjEiwAEhuT5Jj39pOq7GSLQT81qnDgtzV2FBFtKFFR7Q4YDBHiPskL24CexKvG5xoCUoEQAvD_BwE",
+                  "text": "Huion Cownload Center",
                   "openInNewTab": true
                 },
                 "id": "BAEPIubvsc"
               },
               {
-                "text": " and click here to go to "
-              },
-              {
-                "type": "mdxJsxTextElement",
-                "name": "ContentLink",
-                "children": [
-                  {
-                    "text": ""
-                  }
-                ],
-                "props": {
-                  "url": "https://facebook.com",
-                  "text": "Facebook Website",
-                  "openInNewTab": true
-                },
-                "id": "kJDEJ0sYHu"
-              },
-              {
-                "text": ""
-              },
-              {
-                "type": "img",
-                "children": [
-                  {
-                    "text": ""
-                  }
-                ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/For-webpage_how-it-all-started.png",
-                "caption": "",
-                "alt": "",
-                "id": "ZruvOG3Bg_"
-              },
-              {
-                "text": ""
+                "text": " "
               }
             ],
             "id": "_6YPEAGzuc"
