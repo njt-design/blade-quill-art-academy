@@ -4106,6 +4106,18 @@ export const GalleryPartsFragmentDoc = gql`
   }
 }
     `;
+export const GalleryPartsFragmentDoc = gql`
+    fragment GalleryParts on Gallery {
+  __typename
+  items {
+    __typename
+    title
+    image
+    description
+    downloadFile
+  }
+}
+    `;
 export const NavigationPartsFragmentDoc = gql`
     fragment NavigationParts on Navigation {
   __typename

@@ -4094,6 +4094,17 @@ fragment GalleryParts on Gallery {
   }
 }
 
+fragment GalleryParts on Gallery {
+  __typename
+  items {
+    __typename
+    title
+    image
+    description
+    downloadFile
+  }
+}
+
 fragment NavigationParts on Navigation {
   __typename
   items {

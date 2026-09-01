@@ -14,8 +14,8 @@ Sign in with the Tina Cloud account Nick set up for you.
 
 | Sidebar | What you edit |
 |---------|----------------|
-| **Site Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
-| **New Pages** | Extra pages you create (events, promos, link-in-bio) |
+| **Main Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
+| **Featured Pages** | Extra pages you create (events, promos, link-in-bio) |
 | **Blog Posts** | Blog articles |
 | **Shop Products** | Product name, price, image, stock — prices here drive Stripe checkout |
 | **Menu & Footer** | Header menu + footer link columns |
@@ -47,7 +47,7 @@ If you’re unsure: focus or refresh the public tab. If the change is there, you
 
 ### Change homepage copy or a section
 
-1. **Site Pages → Home**
+1. **Main Pages → Home**
 2. Click the section in the preview, or open **Page Sections** in the form.
 3. Edit headings/buttons/images. Drag sections to reorder.
 4. Save.
@@ -101,9 +101,10 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 ## Images
 
 - Upload through Tina’s media library (the image field picker).
-- Suggested folders: `images/pages/`, `images/products/`, `images/blog/`, `images/nav/`.
-- Heroes: wide landscape (~1920×1080). Blog covers: ~1600×900 (16:9). Products: square or tall portrait, ≥1200px wide.
+- Suggested folders: `images/pages/`, `images/products/`, `images/blog/`, `images/gallery/`, `images/nav/`.
+- Heroes: wide landscape (~1920×1080). Blog covers: ~1600×900 (16:9). Products: square or tall portrait, ≥1200px wide. Gallery artwork: ≥1200px on the long edge.
 - Field descriptions show character limits — if the editor warns “Too long”, shorten so the design still fits.
+- **Full reference:** [blade-quill-art-academy.vercel.app/design-system](https://blade-quill-art-academy.vercel.app/design-system) shows every page section with its image sizes, file types, and character limits (see the **Images & Media** section at the bottom for the complete upload guide).
 
 ## If something looks broken
 

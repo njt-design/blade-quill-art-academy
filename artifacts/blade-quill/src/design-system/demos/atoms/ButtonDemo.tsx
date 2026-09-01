@@ -4,11 +4,11 @@ export default function ButtonDemo() {
   return (
     <div className="flex flex-wrap gap-3 items-center">
       <Button>Default</Button>
+      <Button variant="accent">Accent</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="link">Link</Button>
-      <Button variant="destructive">Destructive</Button>
       <Button size="sm">Small</Button>
       <Button size="lg">Large</Button>
       <Button disabled>Disabled</Button>

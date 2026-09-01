@@ -2965,11 +2965,11 @@ var config_default = defineConfig({
     // Order = sidebar order for Corinne (most-used first).
     collections: [
       // ---------------------------------------------------------------
-      // Site Pages — core pages. Protected from create/delete.
+      // Main Pages — core pages. Protected from create/delete.
       // ---------------------------------------------------------------
       {
         name: "page",
-        label: "Site Pages",
+        label: "Main Pages",
         path: "content/pages",
         match: { include: CORE_PAGE_GLOB },
         format: "json",
@@ -2980,11 +2980,11 @@ var config_default = defineConfig({
         fields: pageFields
       },
       // ---------------------------------------------------------------
-      // New Pages — client-created from templates.
+      // Featured Pages — client-created from templates.
       // ---------------------------------------------------------------
       {
         name: "landingPage",
-        label: "New Pages",
+        label: "Featured Pages",
         path: "content/pages",
         match: { exclude: CORE_PAGE_GLOB },
         format: "json",
@@ -3293,6 +3293,77 @@ var config_default = defineConfig({
             ui: { description: 'Used for "Newest" sort on the shop page.' }
           },
           ...seoFields("product")
+        ]
+      },
+      // ---------------------------------------------------------------
+      // Gallery — single document; drag to reorder artworks.
+      // ---------------------------------------------------------------
+      {
+        name: "gallery",
+        label: "Gallery",
+        path: "content/gallery",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          router: () => "/gallery"
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "Artwork",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title || "Artwork"
+              }),
+              defaultItem: {
+                title: "New artwork",
+                description: "",
+                image: "",
+                downloadFile: ""
+              },
+              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional downloadable file on any piece."
+            },
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+                ui: charLimit(
+                  80,
+                  "Shown on hover and in the lightbox under the image."
+                )
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Image",
+                required: true,
+                ui: {
+                  description: "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/."
+                }
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description (optional)",
+                ui: charLimit(
+                  200,
+                  "Short caption under the title in the lightbox."
+                )
+              },
+              {
+                type: "image",
+                name: "downloadFile",
+                label: "Downloadable File (optional)",
+                ui: {
+                  description: "Extra file visitors can download from the lightbox (high-res image, PDF, ZIP, PSD, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no download."
+                }
+              }
+            ]
+          }
         ]
       },
       // ---------------------------------------------------------------
