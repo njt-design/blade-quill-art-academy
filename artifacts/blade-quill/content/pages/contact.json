@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "pageHeader",
       "heading": "Get in Touch",
       "description": {
         "type": "root",
@@ -18,16 +17,17 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "pageHeader"
     },
     {
-      "_template": "contactInfo",
-      "email": "Corinne@bladeandquillartacademy.com",
-      "location": "Des Moines, IA"
+      "email": "",
+      "location": "",
+      "_template": "contactInfo"
     },
     {
-      "_template": "contactForm",
-      "submitLabel": "Send Message"
+      "submitLabel": "Send Message",
+      "_template": "contactForm"
     }
   ]
 }
