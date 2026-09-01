@@ -28,7 +28,7 @@ function groupedEntries(entries: DesignSystemEntry[]) {
 
 export function StickyNav({ sections, view, onViewChange }: Props) {
   return (
-    <nav className="hidden lg:block sticky top-4 w-60 shrink-0 max-h-[calc(100vh-2rem)] overflow-y-auto text-sm pr-2">
+    <nav className="hidden lg:block sticky top-[72px] w-60 shrink-0 self-start h-[calc(100vh-72px)] overflow-y-auto overscroll-contain text-sm pr-2 pb-8">
       <div className="mb-4">
         <ViewToggle view={view} onChange={onViewChange} />
       </div>
