@@ -210,6 +210,104 @@ function InsightsScreenIcon() {
   );
 }
 
+/**
+ * Tina sidebar screen for the Editing Guide — embeds the password-protected
+ * /guide page (same origin, so the bq_guide cookie is shared).
+ */
+function GuideScreen(_props: { close: () => void }) {
+  const guideUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/guide`
+      : "/guide";
+
+  return React.createElement(
+    "div",
+    {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: "70vh",
+        fontFamily: "system-ui, sans-serif",
+      },
+    },
+    React.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          padding: "12px 16px",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          flexShrink: 0,
+        },
+      },
+      React.createElement(
+        "div",
+        { style: { fontSize: 14, color: "#4A3838" } },
+        "How to edit the site"
+      ),
+      React.createElement(
+        "a",
+        {
+          href: guideUrl,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "8px 14px",
+            borderRadius: 999,
+            background: "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none",
+          },
+        },
+        "Open full page"
+      )
+    ),
+    React.createElement("iframe", {
+      src: guideUrl,
+      title: "Editing Guide",
+      style: {
+        flex: 1,
+        width: "100%",
+        minHeight: 0,
+        border: "none",
+        background: "#F7F1EA",
+      },
+    })
+  );
+}
+
+function GuideScreenIcon() {
+  return React.createElement(
+    "svg",
+    {
+      width: 20,
+      height: 20,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": true,
+    },
+    React.createElement("path", {
+      d: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20",
+    }),
+    React.createElement("path", {
+      d: "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z",
+    })
+  );
+}
+
 /** Build a Slate rich-text value from a plain sentence (for starter content). */
 const rt = (text: string) => ({
   type: "root",
@@ -486,6 +584,14 @@ export default defineConfig({
       Icon: InsightsScreenIcon,
       layout: "fullscreen",
       navCategory: "Dashboard",
+    });
+    cms.plugins.add({
+      __type: "screen",
+      name: "Guide",
+      Component: GuideScreen,
+      Icon: GuideScreenIcon,
+      layout: "fullscreen",
+      navCategory: "Help",
     });
     return cms;
   },

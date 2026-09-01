@@ -2727,6 +2727,94 @@ function InsightsScreenIcon() {
     React2.createElement("path", { d: "M17 6v12" })
   );
 }
+function GuideScreen(_props) {
+  const guideUrl = typeof window !== "undefined" ? `${window.location.origin}/guide` : "/guide";
+  return React2.createElement(
+    "div",
+    {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: "70vh",
+        fontFamily: "system-ui, sans-serif"
+      }
+    },
+    React2.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 12,
+          padding: "12px 16px",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          flexShrink: 0
+        }
+      },
+      React2.createElement(
+        "div",
+        { style: { fontSize: 14, color: "#4A3838" } },
+        "How to edit the site"
+      ),
+      React2.createElement(
+        "a",
+        {
+          href: guideUrl,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "8px 14px",
+            borderRadius: 999,
+            background: "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none"
+          }
+        },
+        "Open full page"
+      )
+    ),
+    React2.createElement("iframe", {
+      src: guideUrl,
+      title: "Editing Guide",
+      style: {
+        flex: 1,
+        width: "100%",
+        minHeight: 0,
+        border: "none",
+        background: "#F7F1EA"
+      }
+    })
+  );
+}
+function GuideScreenIcon() {
+  return React2.createElement(
+    "svg",
+    {
+      width: 20,
+      height: 20,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": true
+    },
+    React2.createElement("path", {
+      d: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+    }),
+    React2.createElement("path", {
+      d: "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+    })
+  );
+}
 var rt3 = (text) => ({
   type: "root",
   children: [{ type: "p", children: [{ type: "text", text }] }]
@@ -2959,17 +3047,25 @@ var config_default = defineConfig({
       layout: "fullscreen",
       navCategory: "Dashboard"
     });
+    cms.plugins.add({
+      __type: "screen",
+      name: "Guide",
+      Component: GuideScreen,
+      Icon: GuideScreenIcon,
+      layout: "fullscreen",
+      navCategory: "Help"
+    });
     return cms;
   },
   schema: {
     // Order = sidebar order for Corinne (most-used first).
     collections: [
       // ---------------------------------------------------------------
-      // Main Pages — core pages. Protected from create/delete.
+      // Site Pages — core pages. Protected from create/delete.
       // ---------------------------------------------------------------
       {
         name: "page",
-        label: "Main Pages",
+        label: "Site Pages",
         path: "content/pages",
         match: { include: CORE_PAGE_GLOB },
         format: "json",
@@ -2980,11 +3076,11 @@ var config_default = defineConfig({
         fields: pageFields
       },
       // ---------------------------------------------------------------
-      // Featured Pages — client-created from templates.
+      // New Pages — client-created from templates.
       // ---------------------------------------------------------------
       {
         name: "landingPage",
-        label: "Featured Pages",
+        label: "New Pages",
         path: "content/pages",
         match: { exclude: CORE_PAGE_GLOB },
         format: "json",
@@ -3293,77 +3389,6 @@ var config_default = defineConfig({
             ui: { description: 'Used for "Newest" sort on the shop page.' }
           },
           ...seoFields("product")
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Gallery — single document; drag to reorder artworks.
-      // ---------------------------------------------------------------
-      {
-        name: "gallery",
-        label: "Gallery",
-        path: "content/gallery",
-        format: "json",
-        ui: {
-          allowedActions: { create: false, delete: false },
-          router: () => "/gallery"
-        },
-        fields: [
-          {
-            type: "object",
-            name: "items",
-            label: "Artwork",
-            list: true,
-            ui: {
-              itemProps: (item) => ({
-                label: item?.title || "Artwork"
-              }),
-              defaultItem: {
-                title: "New artwork",
-                description: "",
-                image: "",
-                downloadFile: ""
-              },
-              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional downloadable file on any piece."
-            },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-                ui: charLimit(
-                  80,
-                  "Shown on hover and in the lightbox under the image."
-                )
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Image",
-                required: true,
-                ui: {
-                  description: "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/."
-                }
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description (optional)",
-                ui: charLimit(
-                  200,
-                  "Short caption under the title in the lightbox."
-                )
-              },
-              {
-                type: "image",
-                name: "downloadFile",
-                label: "Downloadable File (optional)",
-                ui: {
-                  description: "Extra file visitors can download from the lightbox (high-res image, PDF, ZIP, PSD, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no download."
-                }
-              }
-            ]
-          }
         ]
       },
       // ---------------------------------------------------------------

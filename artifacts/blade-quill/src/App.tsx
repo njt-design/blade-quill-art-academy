@@ -21,6 +21,7 @@ import BlogPost from "@/pages/BlogPost";
 import MockupHomePreview from "@/pages/MockupHomePreview";
 import DesignSystem from "@/pages/DesignSystem";
 import Insights from "@/pages/Insights";
+import Guide from "@/pages/Guide";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -93,6 +94,7 @@ function Router() {
       <Route path="/preview/:slug" component={MockupHomePreview} />
       <Route path="/design-system" component={DesignSystem} />
       <Route path="/insights" component={Insights} />
+      <Route path="/guide" component={Guide} />
       <Route component={MainLayout} />
     </Switch>
   );

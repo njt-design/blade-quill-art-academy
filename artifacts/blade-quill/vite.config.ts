@@ -78,6 +78,8 @@ export default defineConfig({
       allow: [
         path.resolve(import.meta.dirname),
         path.resolve(import.meta.dirname, "..", "mockup-sandbox"),
+        /** Editing guide markdown rendered on /guide via `?raw` import. */
+        path.resolve(import.meta.dirname, "..", "..", "docs"),
       ],
       deny: ["**/.*"],
     },

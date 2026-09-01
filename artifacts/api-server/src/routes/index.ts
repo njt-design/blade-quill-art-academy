@@ -8,6 +8,7 @@ import downloadsRouter from "./downloads";
 import checkoutRouter from "./checkout";
 import contactRouter from "./contact";
 import insightsRouter from "./insights";
+import guideRouter from "./guide";
 import seoRouter from "./seo";
 
 const router: IRouter = Router();
@@ -22,5 +23,6 @@ router.use(checkoutRouter);
 router.use(contactRouter);
 router.use(insightsRouter);
 router.use(seoRouter);
+router.use(guideRouter);
 
 export default router;

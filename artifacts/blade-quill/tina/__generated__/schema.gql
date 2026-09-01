@@ -16415,17 +16415,6 @@ input GalleryMutation {
   items: [GalleryItemsMutation]
 }
 
-input GalleryItemsMutation {
-  title: String
-  image: String
-  description: String
-  downloadFile: String
-}
-
-input GalleryMutation {
-  items: [GalleryItemsMutation]
-}
-
 input NavigationItemsChildrenMutation {
   label: String
   linkType: String

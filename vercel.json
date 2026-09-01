@@ -179,6 +179,15 @@
           "value": "attachment"
         }
       ]
+    },
+    {
+      "source": "/guide",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
