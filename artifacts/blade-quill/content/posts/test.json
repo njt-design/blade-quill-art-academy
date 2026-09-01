@@ -1,0 +1,18 @@
+{
+  "title": "test",
+  "excerpt": {
+    "type": "root",
+    "children": [
+      {
+        "children": [
+          {
+            "text": "test"
+          }
+        ],
+        "type": "p",
+        "id": "zFWC-4BU8B"
+      }
+    ]
+  },
+  "coverImage": "/images/Welcome-page_SteamPunk-Characters.jpg"
+}
