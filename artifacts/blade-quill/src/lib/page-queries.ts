@@ -56,7 +56,7 @@ const BLOCK_FIELDS: Record<string, string> = {
   ),
   pageHeader: withTextStyle("heading description"),
   homeHero: withTextStyle(
-    "eyebrow heading subheading ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine marqueeItems"
+    "eyebrow heading subheading ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine marqueeItems backgroundImage"
   ),
   pillars: withTextStyle(
     "eyebrow heading items { tag title sub cta badge link image }"
