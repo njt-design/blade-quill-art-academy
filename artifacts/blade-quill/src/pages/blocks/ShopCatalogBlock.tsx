@@ -3,9 +3,8 @@ import { Link, useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { useListProducts } from "@workspace/api-client-react";
 import { useLiveProducts } from "@/hooks/use-live-content";
-import { FALLBACK_CATEGORIES, FALLBACK_PRODUCTS } from "@/lib/fallback-data";
+import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import {
-  deriveCategories,
   hasCatalogProducts,
   resolveCatalogProducts,
   type CatalogProduct,
@@ -60,7 +59,6 @@ interface Props {
 
 export default function ShopCatalogBlock({ block }: Props) {
   const [, setLocation] = useLocation();
-  const [activeCategories, setActiveCategories] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState<SortOption>("Newest");
   const [sortOpen, setSortOpen] = useState(false);
 
@@ -73,10 +71,6 @@ export default function ShopCatalogBlock({ block }: Props) {
     () => resolveCatalogProducts(productsRaw, FALLBACK_PRODUCTS, catalog),
     [productsRaw, catalog]
   );
-  const categories = useMemo(() => {
-    const derived = deriveCategories(allProducts);
-    return derived.length > 0 ? derived : FALLBACK_CATEGORIES;
-  }, [allProducts]);
 
   const featuredProduct = useMemo(
     () => allProducts.find((p) => p.featured) || allProducts[0] || null,
@@ -84,22 +78,10 @@ export default function ShopCatalogBlock({ block }: Props) {
   );
   const showFeaturedBanner = block.showFeaturedBanner !== false && featuredProduct;
 
-  const filtered = useMemo(() => {
-    const base =
-      activeCategories.size === 0
-        ? allProducts
-        : allProducts.filter((p) => activeCategories.has(p.category as string));
-    return sortProducts(base, sort);
-  }, [allProducts, activeCategories, sort]);
-
-  const toggleCategory = (id: string) => {
-    setActiveCategories((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
+  const sorted = useMemo(
+    () => sortProducts(allProducts, sort),
+    [allProducts, sort]
+  );
 
   return (
     <div className="page pt-12 pb-24">
@@ -285,136 +267,55 @@ export default function ShopCatalogBlock({ block }: Props) {
         </section>
       )}
 
-      {/* ── FILTERS + GRID ──────────────────────────────────── */}
+      {/* ── PRODUCT GRID ────────────────────────────────────── */}
       <section className="pt-10">
         <div className="bq-container">
-          <div className="grid lg:grid-cols-[240px_1fr] gap-12">
-            <aside>
-              <div className="lg:sticky lg:top-28">
-                <div className="mb-8">
-                  <div className="eyebrow mb-3.5" style={{ color: "var(--ink)" }}>
-                    Type
-                  </div>
-                  <div className="flex flex-col gap-2.5">
-                    {categories.map((cat) => {
-                      const id = String(cat.id);
-                      const checked = activeCategories.has(id);
-                      return (
-                        <label
-                          key={id}
-                          className="filter-row flex items-center gap-3 cursor-pointer"
-                          style={{
-                            fontSize: 14,
-                            color: checked ? "var(--ink)" : "var(--ink-soft)",
-                            fontWeight: checked ? 600 : 500,
-                          }}
-                        >
-                          <span
-                            className="grid place-items-center"
-                            style={{
-                              width: 18,
-                              height: 18,
-                              borderRadius: 4,
-                              border: `1.5px solid ${
-                                checked ? "var(--maroon)" : "rgba(46,34,34,0.25)"
-                              }`,
-                              background: checked ? "var(--maroon)" : "transparent",
-                              transition:
-                                "background .2s var(--e-out), border-color .2s var(--e-out)",
-                            }}
-                          >
-                            {checked && (
-                              <svg width={10} height={10} viewBox="0 0 12 12" fill="none">
-                                <path
-                                  d="M2 6.5 L 5 9.5 L 10 3"
-                                  stroke="white"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            )}
-                          </span>
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={() => toggleCategory(id)}
-                            className="hidden"
-                          />
-                          <span>
-                            {cat.label}
-                            {typeof cat.productCount === "number" && (
-                              <span
-                                className="ml-2"
-                                style={{
-                                  fontFamily: "var(--f-mono)",
-                                  fontSize: 11,
-                                  color: "var(--ink-faint)",
-                                }}
-                              >
-                                {cat.productCount}
-                              </span>
-                            )}
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <Btn kind="ghost" size="sm" onClick={() => setActiveCategories(new Set())}>
-                  Clear filters
-                </Btn>
+          <Reveal stagger>
+            {isLoading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="animate-pulse rounded-2xl"
+                    style={{ background: "var(--paper-3)", height: 360 }}
+                  />
+                ))}
               </div>
-            </aside>
-
-            <Reveal stagger>
-              {isLoading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="animate-pulse rounded-2xl"
-                      style={{ background: "var(--paper-3)", height: 360 }}
-                    />
-                  ))}
-                </div>
-              ) : filtered.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-                  {filtered.map((product, i) => (
-                    <ProductCard key={product.id} product={product} index={i} />
-                  ))}
-                </div>
-              ) : (
-                <div
-                  className="text-center py-20 rounded-2xl"
-                  style={{
-                    border: "1px dashed var(--paper-deep)",
-                    background: "var(--paper-2)",
-                  }}
+            ) : sorted.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                {sorted.map((product, i) => (
+                  <ProductCard key={product.id} product={product} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="text-center py-20 rounded-2xl"
+                style={{
+                  border: "1px dashed var(--paper-deep)",
+                  background: "var(--paper-2)",
+                }}
+              >
+                <SectionHeading
+                  block={block}
+                  field="emptyHeading"
+                  defaultTag="h3"
+                  baseSize="clamp(20px, 2vw, 20px)"
+                  className="mb-2"
+                  style={{ color: "var(--ink-mute)" }}
                 >
-                  <SectionHeading
-                    block={block}
-                    field="emptyHeading"
-                    defaultTag="h3"
-                    baseSize="clamp(20px, 2vw, 20px)"
-                    className="mb-2"
-                    style={{ color: "var(--ink-mute)" }}
-                  >
-                    {(block.emptyHeading as string) || "No products found"}
-                  </SectionHeading>
-                  <p
-                    className="text-sm"
-                    style={{ color: "var(--ink-faint)" }}
-                    data-tina-field={tinaField(block, "emptyDescription")}
-                  >
-                    {(block.emptyDescription as string) ||
-                      "Check back later for new releases."}
-                  </p>
-                </div>
-              )}
-            </Reveal>
-          </div>
+                  {(block.emptyHeading as string) || "No products found"}
+                </SectionHeading>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--ink-faint)" }}
+                  data-tina-field={tinaField(block, "emptyDescription")}
+                >
+                  {(block.emptyDescription as string) ||
+                    "Check back later for new releases."}
+                </p>
+              </div>
+            )}
+          </Reveal>
         </div>
       </section>
     </div>

@@ -125,7 +125,7 @@
     },
     {
       "source": "/krita-quick-start-guide-ebook",
-      "destination": "/shop/krita-quick-start-guide",
+      "destination": "/shop",
       "permanent": true
     },
     {

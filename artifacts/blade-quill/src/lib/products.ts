@@ -1,4 +1,4 @@
-import type { Category, Product, ProductCategory } from "@workspace/api-client-react";
+import type { Product, ProductCategory } from "@workspace/api-client-react";
 import { isRichText, type RichTextValue } from "@/lib/rich-text";
 
 const productModules = import.meta.glob("../../content/products/*.json", {
@@ -165,27 +165,6 @@ export function getCatalogProduct(
   slugOrId: string
 ): CatalogProduct | undefined {
   return findCatalogProduct(loadCatalogProducts(), slugOrId);
-}
-
-const CATEGORY_LABELS: Record<ProductCategory, string> = {
-  physical: "Physical",
-  digital: "Digital",
-  curriculum: "Curriculum",
-};
-
-/** Category pills for the shop filter rail (derived from catalog products). */
-export function deriveCategories(products: CatalogProduct[]): Category[] {
-  const counts = new Map<ProductCategory, number>();
-  for (const p of products) {
-    counts.set(p.category, (counts.get(p.category) ?? 0) + 1);
-  }
-  return (["physical", "digital", "curriculum"] as const)
-    .filter((id) => (counts.get(id) ?? 0) > 0)
-    .map((id) => ({
-      id,
-      label: CATEGORY_LABELS[id],
-      productCount: counts.get(id) ?? 0,
-    }));
 }
 
 export function resolveCatalogProducts(

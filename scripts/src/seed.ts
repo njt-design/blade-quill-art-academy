@@ -14,7 +14,7 @@ const FILES = "/files";
 async function seed() {
   console.log("Seeding database...");
 
-  // ── Products (the 3 real products sold on the Squarespace site) ───
+  // ── Products (the real products sold on the Squarespace site) ───
   await supabase.from("products").delete().neq("id", 0);
   const { error: prodErr } = await supabase.from("products").insert([
     {
@@ -25,18 +25,6 @@ async function seed() {
       category: "physical",
       image_url: `${IMG}/home/the-book-is-live-1.png`,
       gumroad_url: "https://bladeandquill.gumroad.com/l/qilks",
-      download_url: null,
-      featured: true,
-      in_stock: true,
-    },
-    {
-      name: "Krita Quick Start Guide (eBook) — 2nd Edition",
-      description:
-        "The second edition of the Quick Start Guide to Krita is here! This updated and expanded edition includes 25 extra pages of content, links to amazing free online tools, additional tips, updates for Krita version 5.2.6, and interactive features with links to video tutorials.",
-      price: "14.99",
-      category: "digital",
-      image_url: `${IMG}/home/new-image-for-gumroad-1280-x-720-px.png`,
-      gumroad_url: "https://bladeandquill.gumroad.com/l/yjisjc",
       download_url: null,
       featured: true,
       in_stock: true,
@@ -55,7 +43,7 @@ async function seed() {
     },
   ]);
   if (prodErr) throw prodErr;
-  console.log("✓ Products seeded (3 items)");
+  console.log("✓ Products seeded (2 items)");
 
   // ── Gallery (21 items from /digital-paintings, newest first) ──────
   await supabase.from("gallery").delete().neq("id", 0);

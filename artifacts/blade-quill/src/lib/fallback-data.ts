@@ -11,7 +11,6 @@ import type {
   Tutorial,
   Download,
   Product,
-  Category,
 } from "@workspace/api-client-react";
 
 const IMG = "/images/squarespace";
@@ -83,11 +82,5 @@ export const FALLBACK_DOWNLOADS: Download[] = [
 
 export const FALLBACK_PRODUCTS: Product[] = [
   { id: 1, name: "Lheeloo & Luna Cartoon Book", description: "The official Lheeloo & Luna illustrated cartoon book by Corinne — a pure delight for both children and adults! Paperback on Amazon (currently out of print); eBook on Gumroad and Google Play.", price: 24.99, category: "physical" as const, imageUrl: `${IMG}/home/the-book-is-live-1.png`, gumroadUrl: "https://bladeandquill.gumroad.com/l/qilks", featured: true, inStock: true, createdAt: ts },
-  { id: 2, name: "Krita Quick Start Guide (eBook) — 2nd Edition", description: "Updated and expanded! 25 extra pages, links to free online tools, additional tips, updated for Krita 5.2.6, and interactive links to video tutorials.", price: 14.99, category: "digital" as const, imageUrl: `${IMG}/home/new-image-for-gumroad-1280-x-720-px.png`, gumroadUrl: "https://bladeandquill.gumroad.com/l/yjisjc", featured: true, inStock: true, createdAt: ts },
   { id: 3, name: "Super Fun Activity Book — Puzzle Games for Kids Ages 8–12", description: "Word searches, crosswords, mazes, spot-the-difference, trivia, coloring pages, drawing activities, and more — starring Lheeloo & Luna. Paperback on Amazon or printable version on Gumroad.", price: 11.99, category: "physical" as const, imageUrl: "/images/puzzle-book-front.png", gumroadUrl: "https://bladeandquill.gumroad.com/l/einoxf", featured: true, inStock: true, createdAt: ts },
-];
-
-export const FALLBACK_CATEGORIES: Category[] = [
-  { id: "physical", label: "Physical", productCount: 2 },
-  { id: "digital", label: "Digital", productCount: 1 },
 ];
