@@ -161,6 +161,7 @@ Corinne is a **French author and illustrator** who runs Blade & Quill Art Academ
 /shop             Shop
 /shop/:slug       Product detail (Tina `content/products/*.json`; numeric IDs still work)
 /cart             Cart
+/education        Education landing (newest YouTube video + gallery/downloads previews)
 /gallery          Gallery
 /downloads        Downloads
 /blog             Blog list
@@ -173,7 +174,7 @@ Corinne is a **French author and illustrator** who runs Blade & Quill Art Academ
 /design-system    Component showcase (dev)
 ```
 
-**Navbar:** Shop (CTA), Gallery, Downloads, Blog, About, Contact  
+**Navbar:** Shop (CTA), Education, Blog, About, Publishers, Contact  
 **Footer:** Same pages + social links (YouTube, Instagram, Amazon, Ko-fi) + admin entry
 
 ---
@@ -288,3 +289,4 @@ pnpm --filter @workspace/blade-quill run dev
 | 2026-05 | Removed public `/tutorials` page; nav link removed; CTAs → YouTube |
 | 2026-05 | Fixed Footer `FaAmazon` icon (was breaking entire app load) |
 | 2026-07 | Header menu + footer link columns now CMS-driven via Tina "Navigation" document (`content/navigation/main.json`); supports reordering, one-level dropdowns, and linking to any page |
+| 2026-09 | Added `/education` landing page: hero, auto-updating "Newest video" YouTube feature (`/api/youtube-latest`, no API key), Gallery + Downloads preview sections. Gallery/Downloads removed from the main nav (pages still live at `/gallery` and `/downloads`; footer links kept). New blocks: `featuredVideo`, `galleryPreview`, `downloadsPreview` |
