@@ -50,9 +50,11 @@ All Tina Cloud content-API traffic is routed through a same-origin
 serverless proxy that negotiates `gzip` upstream (never zstd), so browsers
 always receive clean JSON:
 
-- `api/tina/[...path].ts`: catch-all proxy to `content.tinajs.io/*`,
-  restricted to this project's client ID paths (GraphQL, branch list/create,
-  index status). Open CORS so preview deployments' admins can use it.
+- `api/tina-proxy.ts`: proxy to `content.tinajs.io/*`, restricted to this
+  project's client ID paths (GraphQL, branch list/create, index status).
+  Open CORS so preview deployments' admins can use it. Reached via the
+  vercel.json rewrite `/api/tina/:path*` → `/api/tina-proxy?__path=:path*`
+  (zero-config /api functions don't support catch-all bracket routes).
 - `src/lib/tina-live.ts`: the site's live-refresh fetches
   `/api/tina/2.4/content/<clientId>/github/<branch>` (relative — works on
   every deployment; the bundled-content fallback still covers any proxy
