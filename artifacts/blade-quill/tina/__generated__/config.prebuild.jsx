@@ -3455,7 +3455,7 @@ var config_default = defineConfig({
                 name: "downloadFile",
                 label: "Free Downloadable Resource (optional)",
                 ui: {
-                  description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Download Free Resource' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
+                  description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
                 }
               }
             ]

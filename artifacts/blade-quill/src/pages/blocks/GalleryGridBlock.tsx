@@ -124,7 +124,7 @@ function Lightbox({
                 iconLeft={<Download className="w-4 h-4" />}
                 className="border-white/80 text-white hover:bg-white hover:text-[var(--ink)]"
               >
-                Download Free Resource
+                Sketch Download
               </Btn>
             )}
           </div>
