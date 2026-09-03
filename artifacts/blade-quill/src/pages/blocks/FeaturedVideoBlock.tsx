@@ -5,6 +5,7 @@ import { RichText } from "@/components/site/RichText";
 import { FALLBACK_TUTORIALS } from "@/lib/fallback-data";
 import {
   extractYoutubeId,
+  formatPublishedAgo,
   useLatestVideo,
   YOUTUBE_CHANNEL_URL,
 } from "@/lib/latest-video";
@@ -17,9 +18,10 @@ interface Props {
 
 /**
  * "Newest video" feature — embeds the latest Blade & Quill YouTube upload
- * (resolved by /api/youtube-latest) on a dark ink panel. Corinne can pin a
- * specific video with the optional YouTube URL override; when the lookup
- * fails, the first featured tutorial keeps the section alive.
+ * (written to /latest-video.json at build time) on a dark ink panel.
+ * Corinne can pin a specific video with the optional YouTube URL override;
+ * when the file is missing, the first featured tutorial keeps the section
+ * alive.
  */
 export default function FeaturedVideoBlock({ block }: Props) {
   const latest = useLatestVideo();
@@ -33,9 +35,7 @@ export default function FeaturedVideoBlock({ block }: Props) {
   const videoTitle = overrideId
     ? null
     : (latest?.title ?? fallback.title ?? null);
-  const videoMeta = overrideId
-    ? null
-    : (latest?.publishedText ?? null);
+  const videoMeta = overrideId || !latest ? null : formatPublishedAgo(latest);
   const channelUrl = latest?.channelUrl ?? YOUTUBE_CHANNEL_URL;
 
   return (

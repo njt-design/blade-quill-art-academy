@@ -14,7 +14,6 @@
     "./**/*.ts",
     "../lib/checkout/src/**/*.ts",
     "../lib/insights/src/**/*.ts",
-    "../lib/seo-suggest/src/**/*.ts",
-    "../lib/youtube/src/**/*.ts"
+    "../lib/seo-suggest/src/**/*.ts"
   ]
 }

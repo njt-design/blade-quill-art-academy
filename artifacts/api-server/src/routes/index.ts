@@ -10,7 +10,6 @@ import contactRouter from "./contact";
 import insightsRouter from "./insights";
 import guideRouter from "./guide";
 import seoRouter from "./seo";
-import youtubeRouter from "./youtube";
 
 const router: IRouter = Router();
 
@@ -25,6 +24,5 @@ router.use(contactRouter);
 router.use(insightsRouter);
 router.use(seoRouter);
 router.use(guideRouter);
-router.use(youtubeRouter);
 
 export default router;

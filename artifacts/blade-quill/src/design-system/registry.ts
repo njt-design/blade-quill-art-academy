@@ -719,8 +719,8 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
         { field: "buttonLabel", limit: 24 },
       ],
       notes: [
-        "The newest upload is resolved automatically by /api/youtube-latest (no API key; 15-minute edge cache). Paste a YouTube URL in the block to pin a specific video instead.",
-        "If YouTube is unreachable, the first featured tutorial is shown so the section never renders empty.",
+        "The newest upload is resolved automatically at every site build/deploy (no API key) and shipped as /latest-video.json. Paste a YouTube URL in the block to pin a specific video instead.",
+        "If the video file is missing, the first featured tutorial is shown so the section never renders empty.",
         TEXT_STYLE_NOTE,
       ],
     },
