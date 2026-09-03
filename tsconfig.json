@@ -16,6 +16,9 @@
       "path": "./lib/seo-suggest"
     },
     {
+      "path": "./lib/youtube"
+    },
+    {
       "path": "./lib/api-client-react"
     },
     {

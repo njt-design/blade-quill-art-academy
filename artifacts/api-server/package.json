@@ -14,6 +14,7 @@
     "@workspace/db": "workspace:*",
     "@workspace/insights": "workspace:*",
     "@workspace/seo-suggest": "workspace:*",
+    "@workspace/youtube": "workspace:*",
     "cookie-parser": "^1.4.7",
     "cors": "^2",
     "express": "^5",

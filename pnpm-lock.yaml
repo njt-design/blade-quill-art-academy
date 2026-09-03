@@ -194,6 +194,9 @@ importers:
       '@workspace/seo-suggest':
         specifier: workspace:*
         version: link:../../lib/seo-suggest
+      '@workspace/youtube':
+        specifier: workspace:*
+        version: link:../../lib/youtube
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -669,6 +672,12 @@ importers:
         version: 25.3.5
 
   lib/seo-suggest:
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.3.5
+
+  lib/youtube:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
