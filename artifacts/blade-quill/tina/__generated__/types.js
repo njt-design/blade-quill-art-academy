@@ -464,6 +464,53 @@ export const PagePartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PageBlocksFeaturedVideo {
+      eyebrow
+      heading
+      description
+      youtubeUrl
+      buttonLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PageBlocksGalleryPreview {
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PageBlocksDownloadsPreview {
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PageBlocksTutorialsStrip {
       eyebrow
       headingPrefix
@@ -1113,6 +1160,53 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageBlankBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksFeaturedVideo {
+        eyebrow
+        heading
+        description
+        youtubeUrl
+        buttonLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksGalleryPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksDownloadsPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
         textStyle {
           __typename
           headingSize
@@ -1776,6 +1870,53 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageEventBlocksFeaturedVideo {
+        eyebrow
+        heading
+        description
+        youtubeUrl
+        buttonLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageEventBlocksGalleryPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageEventBlocksDownloadsPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageEventBlocksTutorialsStrip {
         eyebrow
         headingPrefix
@@ -2421,6 +2562,53 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPagePromoBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksFeaturedVideo {
+        eyebrow
+        heading
+        description
+        youtubeUrl
+        buttonLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksGalleryPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksDownloadsPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
         textStyle {
           __typename
           headingSize
@@ -3084,6 +3272,53 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageInfoBlocksFeaturedVideo {
+        eyebrow
+        heading
+        description
+        youtubeUrl
+        buttonLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageInfoBlocksGalleryPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageInfoBlocksDownloadsPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageInfoBlocksTutorialsStrip {
         eyebrow
         headingPrefix
@@ -3729,6 +3964,53 @@ export const LandingPagePartsFragmentDoc = gql`
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
         emptyHeading
         emptyDescription
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksFeaturedVideo {
+        eyebrow
+        heading
+        description
+        youtubeUrl
+        buttonLabel
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksGalleryPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksDownloadsPreview {
+        eyebrow
+        heading
+        description
+        maxItems
+        viewAllLabel
+        viewAllLink
         textStyle {
           __typename
           headingSize
@@ -4572,6 +4854,53 @@ export const NavigationPartsFragmentDoc = gql`
               bodySize
             }
           }
+          ... on PageBlocksFeaturedVideo {
+            eyebrow
+            heading
+            description
+            youtubeUrl
+            buttonLabel
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksGalleryPreview {
+            eyebrow
+            heading
+            description
+            maxItems
+            viewAllLabel
+            viewAllLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksDownloadsPreview {
+            eyebrow
+            heading
+            description
+            maxItems
+            viewAllLabel
+            viewAllLink
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
           ... on PageBlocksTutorialsStrip {
             eyebrow
             headingPrefix
@@ -5219,6 +5548,53 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageBlankBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageBlankBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageBlankBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageBlankBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
               textStyle {
                 __typename
                 headingSize
@@ -5882,6 +6258,53 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageEventBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageEventBlocksTutorialsStrip {
               eyebrow
               headingPrefix
@@ -6527,6 +6950,53 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPagePromoBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPagePromoBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPagePromoBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPagePromoBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
               textStyle {
                 __typename
                 headingSize
@@ -7190,6 +7660,53 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageInfoBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageInfoBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageInfoBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageInfoBlocksTutorialsStrip {
               eyebrow
               headingPrefix
@@ -7835,6 +8352,53 @@ export const NavigationPartsFragmentDoc = gql`
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
               emptyHeading
               emptyDescription
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
               textStyle {
                 __typename
                 headingSize
@@ -8519,6 +9083,53 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksTutorialsStrip {
               eyebrow
               headingPrefix
@@ -9166,6 +9777,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize
@@ -9829,6 +10487,53 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksTutorialsStrip {
                 eyebrow
                 headingPrefix
@@ -10474,6 +11179,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize
@@ -11137,6 +11889,53 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksTutorialsStrip {
                 eyebrow
                 headingPrefix
@@ -11782,6 +12581,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize
@@ -12471,6 +13317,53 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksFeaturedVideo {
+              eyebrow
+              heading
+              description
+              youtubeUrl
+              buttonLabel
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksGalleryPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksDownloadsPreview {
+              eyebrow
+              heading
+              description
+              maxItems
+              viewAllLabel
+              viewAllLink
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksTutorialsStrip {
               eyebrow
               headingPrefix
@@ -13118,6 +14011,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageBlankBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize
@@ -13781,6 +14721,53 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksTutorialsStrip {
                 eyebrow
                 headingPrefix
@@ -14426,6 +15413,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPagePromoBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize
@@ -15089,6 +16123,53 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksTutorialsStrip {
                 eyebrow
                 headingPrefix
@@ -15734,6 +16815,53 @@ export const NavigationPartsFragmentDoc = gql`
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
                 emptyHeading
                 emptyDescription
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksFeaturedVideo {
+                eyebrow
+                heading
+                description
+                youtubeUrl
+                buttonLabel
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksGalleryPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                eyebrow
+                heading
+                description
+                maxItems
+                viewAllLabel
+                viewAllLink
                 textStyle {
                   __typename
                   headingSize

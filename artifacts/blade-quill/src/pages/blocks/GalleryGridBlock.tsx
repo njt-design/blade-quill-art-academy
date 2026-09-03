@@ -13,7 +13,7 @@ import {
 import { type Block } from "./block-utils";
 import { SectionHeading } from "./text-style";
 
-function Lightbox({
+export function GalleryLightbox({
   items,
   index,
   onClose,
@@ -229,7 +229,7 @@ export default function GalleryGridBlock({ block }: Props) {
       </div>
 
       {lightboxIndex !== null && (
-        <Lightbox
+        <GalleryLightbox
           items={items}
           index={lightboxIndex}
           onClose={closeLightbox}

@@ -19,6 +19,7 @@ export const CORE_PAGE_SLUGS = [
   "shop",
   "gallery",
   "downloads",
+  "education",
   "publishers",
   "important-links",
 ] as const;
@@ -126,6 +127,13 @@ const BLOCK_FIELDS: Record<string, string> = {
     "heading leftImage { src alt caption } rightImage { src alt caption } style"
   ),
   imageMasonry: withTextStyle("heading images { src alt caption size }"),
+  featuredVideo: withTextStyle("eyebrow heading description youtubeUrl buttonLabel"),
+  galleryPreview: withTextStyle(
+    "eyebrow heading description maxItems viewAllLabel viewAllLink"
+  ),
+  downloadsPreview: withTextStyle(
+    "eyebrow heading description maxItems viewAllLabel viewAllLink"
+  ),
 };
 
 export function pascalCase(name: string): string {

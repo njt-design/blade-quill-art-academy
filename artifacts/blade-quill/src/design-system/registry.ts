@@ -702,6 +702,73 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
     },
   },
   {
+    id: "block-featured-video",
+    name: "Newest Video (YouTube)",
+    category: "block",
+    group: "Commerce & media",
+    description:
+      "Dark feature panel that automatically embeds the newest Blade & Quill YouTube upload, with a gold “Newest video” badge and subscribe button.",
+    demo: makeBlockDemo("featuredVideo"),
+    guidelines: {
+      usage: "Featuring the latest YouTube lesson on landing pages.",
+      usedOn: ["/education"],
+      cmsLocation: `${SECTIONS_LOCATION} → Newest Video (YouTube)`,
+      charLimits: [
+        { field: "eyebrow", limit: 40 },
+        { field: "heading", limit: 60 },
+        { field: "buttonLabel", limit: 24 },
+      ],
+      notes: [
+        "The newest upload is resolved automatically by /api/youtube-latest (no API key; 15-minute edge cache). Paste a YouTube URL in the block to pin a specific video instead.",
+        "If YouTube is unreachable, the first featured tutorial is shown so the section never renders empty.",
+        TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
+    id: "block-gallery-preview",
+    name: "Gallery Preview",
+    category: "block",
+    group: "Commerce & media",
+    description:
+      "The first N artworks from the Gallery collection in a square-tile grid with lightbox, plus a “view all” button.",
+    demo: makeBlockDemo("galleryPreview"),
+    guidelines: {
+      usage: "Teasing the gallery from landing pages (the full wall stays on /gallery).",
+      usedOn: ["/education"],
+      cmsLocation: `${SECTIONS_LOCATION} → Gallery Preview`,
+      charLimits: [
+        { field: "eyebrow", limit: 40 },
+        { field: "heading", limit: 60 },
+        { field: "viewAllLabel", limit: 32 },
+      ],
+      notes: [
+        "Artworks come from the Gallery collection (Tina sidebar), in CMS order.",
+        TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
+    id: "block-downloads-preview",
+    name: "Downloads Preview",
+    category: "block",
+    group: "Commerce & media",
+    description:
+      "The first N free downloads as cards with direct download buttons, plus a “view all” link to the Downloads page.",
+    demo: makeBlockDemo("downloadsPreview"),
+    guidelines: {
+      usage: "Teasing free resources from landing pages (the full grid stays on /downloads).",
+      usedOn: ["/education"],
+      cmsLocation: `${SECTIONS_LOCATION} → Downloads Preview`,
+      charLimits: [
+        { field: "eyebrow", limit: 40 },
+        { field: "heading", limit: 60 },
+        { field: "viewAllLabel", limit: 32 },
+      ],
+      notes: [TEXT_STYLE_NOTE],
+    },
+  },
+  {
     id: "block-tutorials-strip",
     name: "YouTube Tutorials Strip",
     category: "block",
