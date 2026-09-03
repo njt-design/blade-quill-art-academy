@@ -3554,7 +3554,7 @@ var config_default = defineConfig({
                 image: "",
                 downloadFile: ""
               },
-              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional downloadable file on any piece."
+              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional free downloadable resource on any piece \u2014 it shows a FREE badge on the grid."
             },
             fields: [
               {
@@ -3588,9 +3588,9 @@ var config_default = defineConfig({
               {
                 type: "image",
                 name: "downloadFile",
-                label: "Downloadable File (optional)",
+                label: "Free Downloadable Resource (optional)",
                 ui: {
-                  description: "Extra file visitors can download from the lightbox (high-res image, PDF, ZIP, PSD, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no download."
+                  description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
                 }
               }
             ]
