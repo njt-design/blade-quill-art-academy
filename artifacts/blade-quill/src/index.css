@@ -516,28 +516,11 @@
     transform: translateY(-4px);
     box-shadow: var(--sh-lg);
   }
-  /* Quick add: hidden-until-hover only on devices that can hover.
-     Touch devices get an always-visible button. */
-  @media (hover: hover) and (pointer: fine) {
-    .product-card .quick-add > button {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    .product-card:hover .quick-add > button {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
   .product-card .card-arrow {
     transition: transform 0.25s var(--e-out);
   }
   .product-card:hover .card-arrow {
     transform: translateX(6px);
-  }
-
-  /* ── Shop filter row hover ───────────────────────────────── */
-  .filter-row:hover {
-    color: var(--maroon);
   }
 
   /* ── About "What I make" card hover ──────────────────────── */
