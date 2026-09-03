@@ -166,11 +166,11 @@
       "destination": "/important-links-page"
     },
     {
-      "source": "/tina-api/:path*",
-      "destination": "https://content.tinajs.io/:path*"
+      "source": "/api/insights/session",
+      "destination": "/api/insights?__route=session"
     },
     {
-      "source": "/((?!assets/|api/|tina-api/).*)",
+      "source": "/((?!assets/|api/).*)",
       "destination": "/index.html"
     }
   ],

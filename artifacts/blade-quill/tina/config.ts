@@ -566,6 +566,17 @@ export default defineConfig({
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
   token: process.env.TINA_TOKEN,
   branch: process.env.TINA_BRANCH || "main",
+  // Route Tina Cloud content-API calls through our same-origin proxy
+  // function (api/tina/[...path].ts). Tina Cloud currently corrupts
+  // zstd-compressed responses, so browsers that advertise zstd get
+  // ERR_CONTENT_DECODING_FAILED on larger GraphQL responses — which breaks
+  // the admin intermittently. The proxy negotiates gzip upstream instead.
+  // (tinaioConfig.contentApiUrlOverride keeps Tina Cloud auth; the top-level
+  // contentApiUrlOverride would switch the admin to self-hosted mode.)
+  tinaioConfig: {
+    contentApiUrlOverride:
+      "https://blade-quill-art-academy.vercel.app/api/tina",
+  },
   build: {
     outputFolder: "admin",
     publicFolder: "public",
