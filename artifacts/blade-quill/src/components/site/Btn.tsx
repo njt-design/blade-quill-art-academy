@@ -21,6 +21,8 @@ interface BtnProps
   href?: string;
   /** Open href in a new tab. */
   external?: boolean;
+  /** Save the href as a file (anchor `download` attribute). */
+  download?: string | boolean;
   /** Analytics placement label when the href is an Amazon outbound link. */
   analyticsPlacement?: string;
   /** Generic click handler that works for both anchor and button elements. */
@@ -62,6 +64,7 @@ export function Btn({
   iconRight,
   href,
   external,
+  download,
   analyticsPlacement,
   className,
   style,
@@ -103,6 +106,7 @@ export function Btn({
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
+        download={download}
         className={classes}
         style={sharedStyle}
         onClick={handleClick}

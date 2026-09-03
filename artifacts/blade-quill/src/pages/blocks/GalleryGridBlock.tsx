@@ -10,6 +10,8 @@ import {
   resolveGalleryArtworks,
   type GalleryArtwork,
 } from "@/lib/gallery";
+import { Btn } from "@/components/site/Btn";
+import { FreeResourceBadge } from "@/components/site/FreeResourceBadge";
 import { type Block } from "./block-utils";
 import { SectionHeading } from "./text-style";
 
@@ -103,16 +105,29 @@ function Lightbox({
           {item.description && (
             <p className="text-white/60 text-sm mt-1">{item.description}</p>
           )}
-          {canDownload && (
-            <a
-              href={downloadFile}
-              download={fileNameFromUrl(downloadFile)}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white hover:bg-white/25 transition-colors"
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <Btn
+              kind="primary"
+              size="md"
+              href={item.imageUrl}
+              download={fileNameFromUrl(item.imageUrl)}
+              iconLeft={<Download className="w-4 h-4" />}
             >
-              <Download className="w-4 h-4" aria-hidden />
-              Download this file
-            </a>
-          )}
+              Download Full Image
+            </Btn>
+            {canDownload && (
+              <Btn
+                kind="outline"
+                size="md"
+                href={downloadFile}
+                download={fileNameFromUrl(downloadFile)}
+                iconLeft={<Download className="w-4 h-4" />}
+                className="border-white/80 text-white hover:bg-white hover:text-[var(--ink)]"
+              >
+                Sketch Download
+              </Btn>
+            )}
+          </div>
         </div>
       </div>
     </div>,
@@ -145,11 +160,10 @@ function GalleryImage({
       {!loaded && <div className="aspect-[3/4] bg-muted animate-pulse" />}
       {canDownload && (
         <span
-          className="absolute top-2 right-2 z-[1] w-7 h-7 rounded-full bg-black/40 text-white/90 grid place-items-center pointer-events-none"
-          title="Download available"
-          aria-hidden
+          className="absolute top-2 right-2 z-[1] pointer-events-none drop-shadow-md"
+          title="Includes a free download"
         >
-          <Download className="w-3.5 h-3.5" />
+          <FreeResourceBadge className="w-11 h-11 sm:w-12 sm:h-12" />
         </span>
       )}
       {(item.title || item.description) && (
