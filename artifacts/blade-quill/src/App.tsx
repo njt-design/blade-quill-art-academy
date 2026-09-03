@@ -54,6 +54,9 @@ function MainLayout() {
           <Route path="/downloads">
             <Page slug="downloads" />
           </Route>
+          <Route path="/education">
+            <Page slug="education" />
+          </Route>
           <Route path="/publishers">
             <Page slug="publishers" />
           </Route>

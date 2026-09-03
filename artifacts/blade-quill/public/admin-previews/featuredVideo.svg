@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#1f1a14"/>
+  <rect x="36" y="52" width="120" height="10" rx="5" fill="#c9a24b"/>
+  <rect x="36" y="72" width="150" height="16" rx="4" fill="#fbf6ec"/>
+  <rect x="36" y="96" width="110" height="8" rx="4" fill="#8a7f6a"/>
+  <rect x="36" y="110" width="90" height="8" rx="4" fill="#8a7f6a"/>
+  <rect x="36" y="132" width="86" height="24" rx="12" fill="#fbf6ec"/>
+  <rect x="216" y="42" width="148" height="116" rx="8" fill="#2e2820" stroke="#c9a24b" stroke-width="1.5"/>
+  <polygon points="278,86 278,114 306,100" fill="#fbf6ec"/>
+  <rect x="228" y="30" width="64" height="14" rx="7" fill="#c9a24b"/>
+  <rect x="0" y="182" width="400" height="38" fill="#fbf6ec"/>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#1f1a14">NEWEST VIDEO</text>
+</svg>

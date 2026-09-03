@@ -6,14 +6,9 @@
       "page": "content/pages/shop.json"
     },
     {
-      "label": "Gallery",
+      "label": "Education",
       "linkType": "page",
-      "page": "content/pages/gallery.json"
-    },
-    {
-      "label": "Downloads",
-      "linkType": "page",
-      "page": "content/pages/downloads.json"
+      "page": "content/pages/education.json"
     },
     {
       "label": "Blog",
@@ -70,6 +65,11 @@
     {
       "heading": "Studio",
       "links": [
+        {
+          "label": "Education",
+          "linkType": "page",
+          "page": "content/pages/education.json"
+        },
         {
           "label": "About",
           "linkType": "page",

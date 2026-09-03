@@ -40,6 +40,9 @@ import HeroImageGridBlock from "./HeroImageGridBlock";
 import ImageSpotlightBlock from "./ImageSpotlightBlock";
 import ImageSideBySideBlock from "./ImageSideBySideBlock";
 import ImageMasonryBlock from "./ImageMasonryBlock";
+import FeaturedVideoBlock from "./FeaturedVideoBlock";
+import GalleryPreviewBlock from "./GalleryPreviewBlock";
+import DownloadsPreviewBlock from "./DownloadsPreviewBlock";
 
 const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   hero: HeroBlock,
@@ -81,6 +84,9 @@ const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   imageSpotlight: ImageSpotlightBlock,
   imageSideBySide: ImageSideBySideBlock,
   imageMasonry: ImageMasonryBlock,
+  featuredVideo: FeaturedVideoBlock,
+  galleryPreview: GalleryPreviewBlock,
+  downloadsPreview: DownloadsPreviewBlock,
 };
 
 /**

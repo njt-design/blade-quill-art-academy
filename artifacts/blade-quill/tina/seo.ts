@@ -30,6 +30,7 @@ export const CORE_PAGE_SLUGS = [
   "shop",
   "gallery",
   "downloads",
+  "education",
   "publishers",
   "important-links",
 ];

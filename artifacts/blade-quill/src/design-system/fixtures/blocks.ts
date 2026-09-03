@@ -335,6 +335,35 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
     emptyHeading: "Free resources coming soon!",
     emptyDescription: "Coloring pages, guides, and more on the way.",
   },
+  featuredVideo: {
+    eyebrow: "JUST PUBLISHED",
+    heading: "Watch the newest lesson.",
+    description: rt(
+      "The latest Blade & Quill YouTube video, featured here automatically the moment it goes live."
+    ),
+    youtubeUrl: "",
+    buttonLabel: "Subscribe on YouTube",
+  },
+  galleryPreview: {
+    eyebrow: "THE GALLERY",
+    heading: "Artwork from the studio",
+    description: rt(
+      "Chibi-style cartoons and illustrations, all painted in Krita. Click any piece to enlarge it."
+    ),
+    maxItems: 6,
+    viewAllLabel: "Browse the full gallery",
+    viewAllLink: "/gallery",
+  },
+  downloadsPreview: {
+    eyebrow: "FREE DOWNLOADS",
+    heading: "Free guides & coloring pages",
+    description: rt(
+      "Printable coloring pages and free Krita guides — free for private use."
+    ),
+    maxItems: 4,
+    viewAllLabel: "Browse all downloads",
+    viewAllLink: "/downloads",
+  },
   tutorialsStrip: {
     eyebrow: "FREE LESSONS ON YOUTUBE",
     headingPrefix: "Join ",

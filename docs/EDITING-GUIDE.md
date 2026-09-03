@@ -14,7 +14,7 @@ Sign in with the Tina Cloud account Nick set up for you.
 
 | Sidebar | What you edit |
 |---------|----------------|
-| **Main Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
+| **Main Pages** | Home, About, Shop, Education, Gallery, Downloads, Contact, etc. (can’t delete these) |
 | **Featured Pages** | Extra pages you create (events, promos, link-in-bio) |
 | **Blog Posts** | Blog articles |
 | **Shop Products** | Product name, price, image, stock — prices here drive Stripe checkout |

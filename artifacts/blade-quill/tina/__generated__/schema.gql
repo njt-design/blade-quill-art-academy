@@ -617,6 +617,59 @@ type PageBlocksDownloadsGrid {
   textStyle: PageBlocksDownloadsGridTextStyle
 }
 
+type PageBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PageBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: PageBlocksFeaturedVideoTextStyle
+}
+
+type PageBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PageBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PageBlocksGalleryPreviewTextStyle
+}
+
+type PageBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PageBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PageBlocksDownloadsPreviewTextStyle
+}
+
 type PageBlocksTutorialsStripStats {
   value: String
   label: String
@@ -833,7 +886,7 @@ type PageBlocksSocialLinks {
   textStyle: PageBlocksSocialLinksTextStyle
 }
 
-union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
+union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksFeaturedVideo | PageBlocksGalleryPreview | PageBlocksDownloadsPreview | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
 
 type PageSeo {
   metaTitle: String
@@ -1555,6 +1608,99 @@ input PageBlocksDownloadsGridFilter {
   textStyle: PageBlocksDownloadsGridTextStyleFilter
 }
 
+input PageBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: PageBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input PageBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PageBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PageBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: PageBlocksFeaturedVideoTextStyleFilter
+}
+
+input PageBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: PageBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input PageBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PageBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PageBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: PageBlocksGalleryPreviewTextStyleFilter
+}
+
+input PageBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: PageBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input PageBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PageBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PageBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: PageBlocksDownloadsPreviewTextStyleFilter
+}
+
 input PageBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -1878,6 +2024,9 @@ input PageBlocksFilter {
   shopCatalog: PageBlocksShopCatalogFilter
   galleryGrid: PageBlocksGalleryGridFilter
   downloadsGrid: PageBlocksDownloadsGridFilter
+  featuredVideo: PageBlocksFeaturedVideoFilter
+  galleryPreview: PageBlocksGalleryPreviewFilter
+  downloadsPreview: PageBlocksDownloadsPreviewFilter
   tutorialsStrip: PageBlocksTutorialsStripFilter
   classesPitch: PageBlocksClassesPitchFilter
   blogFeed: PageBlocksBlogFeedFilter
@@ -2432,6 +2581,59 @@ type LandingPageBlankBlocksDownloadsGrid {
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyle
 }
 
+type LandingPageBlankBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageBlankBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageBlankBlocksFeaturedVideoTextStyle
+}
+
+type LandingPageBlankBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageBlankBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageBlankBlocksGalleryPreviewTextStyle
+}
+
+type LandingPageBlankBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageBlankBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyle
+}
+
 type LandingPageBlankBlocksTutorialsStripStats {
   value: String
   label: String
@@ -2648,7 +2850,7 @@ type LandingPageBlankBlocksSocialLinks {
   textStyle: LandingPageBlankBlocksSocialLinksTextStyle
 }
 
-union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
+union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksFeaturedVideo | LandingPageBlankBlocksGalleryPreview | LandingPageBlankBlocksDownloadsPreview | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
 
 type LandingPageBlankSeo {
   metaTitle: String
@@ -3181,6 +3383,59 @@ type LandingPageEventBlocksDownloadsGrid {
   textStyle: LandingPageEventBlocksDownloadsGridTextStyle
 }
 
+type LandingPageEventBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageEventBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageEventBlocksFeaturedVideoTextStyle
+}
+
+type LandingPageEventBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageEventBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageEventBlocksGalleryPreviewTextStyle
+}
+
+type LandingPageEventBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageEventBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageEventBlocksDownloadsPreviewTextStyle
+}
+
 type LandingPageEventBlocksTutorialsStripStats {
   value: String
   label: String
@@ -3397,7 +3652,7 @@ type LandingPageEventBlocksSocialLinks {
   textStyle: LandingPageEventBlocksSocialLinksTextStyle
 }
 
-union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
+union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksFeaturedVideo | LandingPageEventBlocksGalleryPreview | LandingPageEventBlocksDownloadsPreview | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
 
 type LandingPageEventSeo {
   metaTitle: String
@@ -3930,6 +4185,59 @@ type LandingPagePromoBlocksDownloadsGrid {
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyle
 }
 
+type LandingPagePromoBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPagePromoBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPagePromoBlocksFeaturedVideoTextStyle
+}
+
+type LandingPagePromoBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPagePromoBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPagePromoBlocksGalleryPreviewTextStyle
+}
+
+type LandingPagePromoBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPagePromoBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyle
+}
+
 type LandingPagePromoBlocksTutorialsStripStats {
   value: String
   label: String
@@ -4146,7 +4454,7 @@ type LandingPagePromoBlocksSocialLinks {
   textStyle: LandingPagePromoBlocksSocialLinksTextStyle
 }
 
-union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
+union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksFeaturedVideo | LandingPagePromoBlocksGalleryPreview | LandingPagePromoBlocksDownloadsPreview | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
 
 type LandingPagePromoSeo {
   metaTitle: String
@@ -4679,6 +4987,59 @@ type LandingPageInfoBlocksDownloadsGrid {
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyle
 }
 
+type LandingPageInfoBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageInfoBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageInfoBlocksFeaturedVideoTextStyle
+}
+
+type LandingPageInfoBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageInfoBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageInfoBlocksGalleryPreviewTextStyle
+}
+
+type LandingPageInfoBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageInfoBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyle
+}
+
 type LandingPageInfoBlocksTutorialsStripStats {
   value: String
   label: String
@@ -4895,7 +5256,7 @@ type LandingPageInfoBlocksSocialLinks {
   textStyle: LandingPageInfoBlocksSocialLinksTextStyle
 }
 
-union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
+union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksFeaturedVideo | LandingPageInfoBlocksGalleryPreview | LandingPageInfoBlocksDownloadsPreview | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
 
 type LandingPageInfoSeo {
   metaTitle: String
@@ -5428,6 +5789,59 @@ type LandingPageLinkInBioBlocksDownloadsGrid {
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyle
 }
 
+type LandingPageLinkInBioBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageLinkInBioBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageLinkInBioBlocksFeaturedVideoTextStyle
+}
+
+type LandingPageLinkInBioBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageLinkInBioBlocksGalleryPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageLinkInBioBlocksGalleryPreviewTextStyle
+}
+
+type LandingPageLinkInBioBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageLinkInBioBlocksDownloadsPreview {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyle
+}
+
 type LandingPageLinkInBioBlocksTutorialsStripStats {
   value: String
   label: String
@@ -5644,7 +6058,7 @@ type LandingPageLinkInBioBlocksSocialLinks {
   textStyle: LandingPageLinkInBioBlocksSocialLinksTextStyle
 }
 
-union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
+union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksFeaturedVideo | LandingPageLinkInBioBlocksGalleryPreview | LandingPageLinkInBioBlocksDownloadsPreview | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
 
 type LandingPageLinkInBioSeo {
   metaTitle: String
@@ -6349,6 +6763,89 @@ input LandingPageBlankBlocksDownloadsGridFilter {
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageBlankBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input LandingPageBlankBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageBlankBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageBlankBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: LandingPageBlankBlocksFeaturedVideoTextStyleFilter
+}
+
+input LandingPageBlankBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageBlankBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageBlankBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageBlankBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageBlankBlocksGalleryPreviewTextStyleFilter
+}
+
+input LandingPageBlankBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: LandingPageBlankBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageBlankBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageBlankBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageBlankBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyleFilter
+}
+
 input LandingPageBlankBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -6672,6 +7169,9 @@ input LandingPageBlankBlocksFilter {
   shopCatalog: LandingPageBlankBlocksShopCatalogFilter
   galleryGrid: LandingPageBlankBlocksGalleryGridFilter
   downloadsGrid: LandingPageBlankBlocksDownloadsGridFilter
+  featuredVideo: LandingPageBlankBlocksFeaturedVideoFilter
+  galleryPreview: LandingPageBlankBlocksGalleryPreviewFilter
+  downloadsPreview: LandingPageBlankBlocksDownloadsPreviewFilter
   tutorialsStrip: LandingPageBlankBlocksTutorialsStripFilter
   classesPitch: LandingPageBlankBlocksClassesPitchFilter
   blogFeed: LandingPageBlankBlocksBlogFeedFilter
@@ -7385,6 +7885,89 @@ input LandingPageEventBlocksDownloadsGridFilter {
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageEventBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: LandingPageEventBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input LandingPageEventBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageEventBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageEventBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: LandingPageEventBlocksFeaturedVideoTextStyleFilter
+}
+
+input LandingPageEventBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: LandingPageEventBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageEventBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageEventBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageEventBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageEventBlocksGalleryPreviewTextStyleFilter
+}
+
+input LandingPageEventBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: LandingPageEventBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageEventBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageEventBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageEventBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageEventBlocksDownloadsPreviewTextStyleFilter
+}
+
 input LandingPageEventBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -7708,6 +8291,9 @@ input LandingPageEventBlocksFilter {
   shopCatalog: LandingPageEventBlocksShopCatalogFilter
   galleryGrid: LandingPageEventBlocksGalleryGridFilter
   downloadsGrid: LandingPageEventBlocksDownloadsGridFilter
+  featuredVideo: LandingPageEventBlocksFeaturedVideoFilter
+  galleryPreview: LandingPageEventBlocksGalleryPreviewFilter
+  downloadsPreview: LandingPageEventBlocksDownloadsPreviewFilter
   tutorialsStrip: LandingPageEventBlocksTutorialsStripFilter
   classesPitch: LandingPageEventBlocksClassesPitchFilter
   blogFeed: LandingPageEventBlocksBlogFeedFilter
@@ -8421,6 +9007,89 @@ input LandingPagePromoBlocksDownloadsGridFilter {
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPagePromoBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input LandingPagePromoBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPagePromoBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPagePromoBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: LandingPagePromoBlocksFeaturedVideoTextStyleFilter
+}
+
+input LandingPagePromoBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input LandingPagePromoBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPagePromoBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPagePromoBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPagePromoBlocksGalleryPreviewTextStyleFilter
+}
+
+input LandingPagePromoBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: LandingPagePromoBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input LandingPagePromoBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPagePromoBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPagePromoBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyleFilter
+}
+
 input LandingPagePromoBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -8744,6 +9413,9 @@ input LandingPagePromoBlocksFilter {
   shopCatalog: LandingPagePromoBlocksShopCatalogFilter
   galleryGrid: LandingPagePromoBlocksGalleryGridFilter
   downloadsGrid: LandingPagePromoBlocksDownloadsGridFilter
+  featuredVideo: LandingPagePromoBlocksFeaturedVideoFilter
+  galleryPreview: LandingPagePromoBlocksGalleryPreviewFilter
+  downloadsPreview: LandingPagePromoBlocksDownloadsPreviewFilter
   tutorialsStrip: LandingPagePromoBlocksTutorialsStripFilter
   classesPitch: LandingPagePromoBlocksClassesPitchFilter
   blogFeed: LandingPagePromoBlocksBlogFeedFilter
@@ -9457,6 +10129,89 @@ input LandingPageInfoBlocksDownloadsGridFilter {
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageInfoBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input LandingPageInfoBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageInfoBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageInfoBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: LandingPageInfoBlocksFeaturedVideoTextStyleFilter
+}
+
+input LandingPageInfoBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageInfoBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageInfoBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageInfoBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageInfoBlocksGalleryPreviewTextStyleFilter
+}
+
+input LandingPageInfoBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: LandingPageInfoBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageInfoBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageInfoBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageInfoBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyleFilter
+}
+
 input LandingPageInfoBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -9780,6 +10535,9 @@ input LandingPageInfoBlocksFilter {
   shopCatalog: LandingPageInfoBlocksShopCatalogFilter
   galleryGrid: LandingPageInfoBlocksGalleryGridFilter
   downloadsGrid: LandingPageInfoBlocksDownloadsGridFilter
+  featuredVideo: LandingPageInfoBlocksFeaturedVideoFilter
+  galleryPreview: LandingPageInfoBlocksGalleryPreviewFilter
+  downloadsPreview: LandingPageInfoBlocksDownloadsPreviewFilter
   tutorialsStrip: LandingPageInfoBlocksTutorialsStripFilter
   classesPitch: LandingPageInfoBlocksClassesPitchFilter
   blogFeed: LandingPageInfoBlocksBlogFeedFilter
@@ -10493,6 +11251,89 @@ input LandingPageLinkInBioBlocksDownloadsGridFilter {
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageLinkInBioBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageLinkInBioBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: LandingPageLinkInBioBlocksFeaturedVideoTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageLinkInBioBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageLinkInBioBlocksGalleryPreviewTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: LandingPageLinkInBioBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: LandingPageLinkInBioBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyleFilter
+}
+
 input LandingPageLinkInBioBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -10816,6 +11657,9 @@ input LandingPageLinkInBioBlocksFilter {
   shopCatalog: LandingPageLinkInBioBlocksShopCatalogFilter
   galleryGrid: LandingPageLinkInBioBlocksGalleryGridFilter
   downloadsGrid: LandingPageLinkInBioBlocksDownloadsGridFilter
+  featuredVideo: LandingPageLinkInBioBlocksFeaturedVideoFilter
+  galleryPreview: LandingPageLinkInBioBlocksGalleryPreviewFilter
+  downloadsPreview: LandingPageLinkInBioBlocksDownloadsPreviewFilter
   tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripFilter
   classesPitch: LandingPageLinkInBioBlocksClassesPitchFilter
   blogFeed: LandingPageLinkInBioBlocksBlogFeedFilter
@@ -11262,16 +12106,6 @@ input ShopProductDescriptionContentLinkFilter {
 
 input ShopProductDescriptionFilter {
   ContentLink: ShopProductDescriptionContentLinkFilter
-}
-
-input NumberFilter {
-  lt: Float
-  lte: Float
-  gte: Float
-  gt: Float
-  eq: Float
-  exists: Boolean
-  in: [Float]
 }
 
 input ShopProductGalleryImagesFilter {
@@ -12009,6 +12843,59 @@ input PageBlocksDownloadsGridMutation {
   textStyle: PageBlocksDownloadsGridTextStyleMutation
 }
 
+input PageBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PageBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: PageBlocksFeaturedVideoTextStyleMutation
+}
+
+input PageBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PageBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PageBlocksGalleryPreviewTextStyleMutation
+}
+
+input PageBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PageBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PageBlocksDownloadsPreviewTextStyleMutation
+}
+
 input PageBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -12252,6 +13139,9 @@ input PageBlocksMutation {
   shopCatalog: PageBlocksShopCatalogMutation
   galleryGrid: PageBlocksGalleryGridMutation
   downloadsGrid: PageBlocksDownloadsGridMutation
+  featuredVideo: PageBlocksFeaturedVideoMutation
+  galleryPreview: PageBlocksGalleryPreviewMutation
+  downloadsPreview: PageBlocksDownloadsPreviewMutation
   tutorialsStrip: PageBlocksTutorialsStripMutation
   classesPitch: PageBlocksClassesPitchMutation
   blogFeed: PageBlocksBlogFeedMutation
@@ -12795,6 +13685,59 @@ input LandingPageBlankBlocksDownloadsGridMutation {
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleMutation
 }
 
+input LandingPageBlankBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageBlankBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageBlankBlocksFeaturedVideoTextStyleMutation
+}
+
+input LandingPageBlankBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageBlankBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageBlankBlocksGalleryPreviewTextStyleMutation
+}
+
+input LandingPageBlankBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageBlankBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyleMutation
+}
+
 input LandingPageBlankBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -13038,6 +13981,9 @@ input LandingPageBlankBlocksMutation {
   shopCatalog: LandingPageBlankBlocksShopCatalogMutation
   galleryGrid: LandingPageBlankBlocksGalleryGridMutation
   downloadsGrid: LandingPageBlankBlocksDownloadsGridMutation
+  featuredVideo: LandingPageBlankBlocksFeaturedVideoMutation
+  galleryPreview: LandingPageBlankBlocksGalleryPreviewMutation
+  downloadsPreview: LandingPageBlankBlocksDownloadsPreviewMutation
   tutorialsStrip: LandingPageBlankBlocksTutorialsStripMutation
   classesPitch: LandingPageBlankBlocksClassesPitchMutation
   blogFeed: LandingPageBlankBlocksBlogFeedMutation
@@ -13581,6 +14527,59 @@ input LandingPageEventBlocksDownloadsGridMutation {
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleMutation
 }
 
+input LandingPageEventBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageEventBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageEventBlocksFeaturedVideoTextStyleMutation
+}
+
+input LandingPageEventBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageEventBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageEventBlocksGalleryPreviewTextStyleMutation
+}
+
+input LandingPageEventBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageEventBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageEventBlocksDownloadsPreviewTextStyleMutation
+}
+
 input LandingPageEventBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -13824,6 +14823,9 @@ input LandingPageEventBlocksMutation {
   shopCatalog: LandingPageEventBlocksShopCatalogMutation
   galleryGrid: LandingPageEventBlocksGalleryGridMutation
   downloadsGrid: LandingPageEventBlocksDownloadsGridMutation
+  featuredVideo: LandingPageEventBlocksFeaturedVideoMutation
+  galleryPreview: LandingPageEventBlocksGalleryPreviewMutation
+  downloadsPreview: LandingPageEventBlocksDownloadsPreviewMutation
   tutorialsStrip: LandingPageEventBlocksTutorialsStripMutation
   classesPitch: LandingPageEventBlocksClassesPitchMutation
   blogFeed: LandingPageEventBlocksBlogFeedMutation
@@ -14367,6 +15369,59 @@ input LandingPagePromoBlocksDownloadsGridMutation {
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleMutation
 }
 
+input LandingPagePromoBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPagePromoBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPagePromoBlocksFeaturedVideoTextStyleMutation
+}
+
+input LandingPagePromoBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPagePromoBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPagePromoBlocksGalleryPreviewTextStyleMutation
+}
+
+input LandingPagePromoBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPagePromoBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyleMutation
+}
+
 input LandingPagePromoBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -14610,6 +15665,9 @@ input LandingPagePromoBlocksMutation {
   shopCatalog: LandingPagePromoBlocksShopCatalogMutation
   galleryGrid: LandingPagePromoBlocksGalleryGridMutation
   downloadsGrid: LandingPagePromoBlocksDownloadsGridMutation
+  featuredVideo: LandingPagePromoBlocksFeaturedVideoMutation
+  galleryPreview: LandingPagePromoBlocksGalleryPreviewMutation
+  downloadsPreview: LandingPagePromoBlocksDownloadsPreviewMutation
   tutorialsStrip: LandingPagePromoBlocksTutorialsStripMutation
   classesPitch: LandingPagePromoBlocksClassesPitchMutation
   blogFeed: LandingPagePromoBlocksBlogFeedMutation
@@ -15153,6 +16211,59 @@ input LandingPageInfoBlocksDownloadsGridMutation {
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleMutation
 }
 
+input LandingPageInfoBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageInfoBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageInfoBlocksFeaturedVideoTextStyleMutation
+}
+
+input LandingPageInfoBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageInfoBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageInfoBlocksGalleryPreviewTextStyleMutation
+}
+
+input LandingPageInfoBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageInfoBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyleMutation
+}
+
 input LandingPageInfoBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -15396,6 +16507,9 @@ input LandingPageInfoBlocksMutation {
   shopCatalog: LandingPageInfoBlocksShopCatalogMutation
   galleryGrid: LandingPageInfoBlocksGalleryGridMutation
   downloadsGrid: LandingPageInfoBlocksDownloadsGridMutation
+  featuredVideo: LandingPageInfoBlocksFeaturedVideoMutation
+  galleryPreview: LandingPageInfoBlocksGalleryPreviewMutation
+  downloadsPreview: LandingPageInfoBlocksDownloadsPreviewMutation
   tutorialsStrip: LandingPageInfoBlocksTutorialsStripMutation
   classesPitch: LandingPageInfoBlocksClassesPitchMutation
   blogFeed: LandingPageInfoBlocksBlogFeedMutation
@@ -15939,6 +17053,59 @@ input LandingPageLinkInBioBlocksDownloadsGridMutation {
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation
 }
 
+input LandingPageLinkInBioBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageLinkInBioBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: LandingPageLinkInBioBlocksFeaturedVideoTextStyleMutation
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageLinkInBioBlocksGalleryPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageLinkInBioBlocksGalleryPreviewTextStyleMutation
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageLinkInBioBlocksDownloadsPreviewMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyleMutation
+}
+
 input LandingPageLinkInBioBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -16182,6 +17349,9 @@ input LandingPageLinkInBioBlocksMutation {
   shopCatalog: LandingPageLinkInBioBlocksShopCatalogMutation
   galleryGrid: LandingPageLinkInBioBlocksGalleryGridMutation
   downloadsGrid: LandingPageLinkInBioBlocksDownloadsGridMutation
+  featuredVideo: LandingPageLinkInBioBlocksFeaturedVideoMutation
+  galleryPreview: LandingPageLinkInBioBlocksGalleryPreviewMutation
+  downloadsPreview: LandingPageLinkInBioBlocksDownloadsPreviewMutation
   tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripMutation
   classesPitch: LandingPageLinkInBioBlocksClassesPitchMutation
   blogFeed: LandingPageLinkInBioBlocksBlogFeedMutation

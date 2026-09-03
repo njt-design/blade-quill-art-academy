@@ -2073,6 +2073,146 @@ export const imageMasonryBlock: Template = {
 };
 
 // ---------------------------------------------------------------------------
+// Education-page blocks
+// ---------------------------------------------------------------------------
+
+export const featuredVideoBlock: Template = {
+  name: "featuredVideo",
+  label: "Newest Video (YouTube)",
+  ui: blockUi("featuredVideo", "Newest Video", "heading", {
+    eyebrow: "FRESH FROM THE STUDIO",
+    heading: "Watch the newest lesson.",
+    description: rt(
+      "The latest Blade & Quill YouTube video, featured here automatically the moment it goes live."
+    ),
+    youtubeUrl: "",
+    buttonLabel: "Subscribe on YouTube",
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
+      ui: { description: "Short text beside the video." },
+    },
+    {
+      type: "string",
+      name: "youtubeUrl",
+      label: "YouTube URL (optional override)",
+      ui: {
+        description:
+          "Leave empty to automatically feature your newest upload. Paste a full YouTube link to pin a specific video instead.",
+        validate: (value?: string) => {
+          if (value && !/youtube\.com|youtu\.be/i.test(value)) {
+            return "Please paste a full YouTube link (youtube.com or youtu.be).";
+          }
+          return undefined;
+        },
+      },
+    },
+    {
+      type: "string",
+      name: "buttonLabel",
+      label: "Button Label",
+      ui: charLimit(24, "The button links to your YouTube channel."),
+    },
+    ...textStyleFields(),
+  ],
+};
+
+export const galleryPreviewBlock: Template = {
+  name: "galleryPreview",
+  label: "Gallery Preview",
+  ui: blockUi("galleryPreview", "Gallery Preview", "heading", {
+    eyebrow: "THE GALLERY",
+    heading: "Artwork from the studio",
+    description: rt(
+      "Chibi-style cartoons and illustrations, all painted in Krita."
+    ),
+    maxItems: 6,
+    viewAllLabel: "Browse the full gallery",
+    viewAllLink: "/gallery",
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
+    },
+    {
+      type: "number",
+      name: "maxItems",
+      label: "Number of Artworks",
+      ui: {
+        description:
+          "How many artworks to show (from the start of your Gallery collection). Default: 6.",
+      },
+    },
+    { type: "string", name: "viewAllLabel", label: "View All Button Label", ui: charLimit(32) },
+    {
+      type: "string",
+      name: "viewAllLink",
+      label: "View All Button Link",
+      ui: { description: 'Usually "/gallery".' },
+    },
+    ...textStyleFields(),
+  ],
+};
+
+export const downloadsPreviewBlock: Template = {
+  name: "downloadsPreview",
+  label: "Downloads Preview",
+  ui: blockUi("downloadsPreview", "Downloads Preview", "heading", {
+    eyebrow: "FREE DOWNLOADS",
+    heading: "Free guides & coloring pages",
+    description: rt(
+      "Printable coloring pages and free Krita guides — free for private use."
+    ),
+    maxItems: 4,
+    viewAllLabel: "Browse all downloads",
+    viewAllLink: "/downloads",
+  }),
+  fields: [
+    { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
+    { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
+    {
+      type: "rich-text",
+      name: "description",
+      label: "Description",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
+    },
+    {
+      type: "number",
+      name: "maxItems",
+      label: "Number of Downloads",
+      ui: {
+        description: "How many downloads to show. Default: 4.",
+      },
+    },
+    { type: "string", name: "viewAllLabel", label: "View All Button Label", ui: charLimit(32) },
+    {
+      type: "string",
+      name: "viewAllLink",
+      label: "View All Button Link",
+      ui: { description: 'Usually "/downloads".' },
+    },
+    ...textStyleFields(),
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // Master list — every block available on every page
 // ---------------------------------------------------------------------------
 
@@ -2106,6 +2246,9 @@ export const ALL_BLOCKS: Template[] = [
   shopCatalogBlock,
   galleryGridBlock,
   downloadsGridBlock,
+  featuredVideoBlock,
+  galleryPreviewBlock,
+  downloadsPreviewBlock,
   tutorialsStripBlock,
   classesPitchBlock,
   blogFeedBlock,
