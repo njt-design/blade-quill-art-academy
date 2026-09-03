@@ -34,7 +34,14 @@ const branch = (
   .replace(/\\n/g, "")
   .trim();
 
-const contentApiUrl = `https://content.tinajs.io/${TINA_API_VERSION}/content/${clientId}/github/${branch}`;
+/**
+ * Same-origin proxy for the Tina Cloud content API (vercel.json rewrites
+ * /tina-api/* → content.tinajs.io/*). Tina Cloud currently corrupts
+ * zstd-compressed responses, and modern browsers advertise zstd — direct
+ * calls fail with ERR_CONTENT_DECODING_FAILED. The proxy leg negotiates
+ * gzip/identity upstream, which Tina serves cleanly.
+ */
+const contentApiUrl = `/tina-api/${TINA_API_VERSION}/content/${clientId}/github/${branch}`;
 
 /**
  * Live content is production-only: in dev Vite HMR already reloads content
