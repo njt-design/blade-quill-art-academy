@@ -1046,7 +1046,7 @@ const BRAND: DesignSystemEntry[] = [
     category: "brand",
     group: "Brand components",
     description:
-      "Shop card: BookCover for physical books, ArtTile otherwise; hover lifts the media, reveals Quick add, and peels the page corner.",
+      "Shop card: BookCover for physical books, ArtTile otherwise; hover lifts the media and peels the page corner.",
     demo: lazy(() => import("./demos/brand/ProductCardDemo")),
     guidelines: {
       cmsLocation: "Shop Products (name, price, cover image, stock, featured)",

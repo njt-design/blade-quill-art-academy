@@ -1,10 +1,5 @@
-import { MouseEvent, useState } from "react";
 import { Link } from "wouter";
-import { Check } from "lucide-react";
 import type { CatalogProduct } from "@/lib/products";
-import { cn } from "@/lib/utils";
-import { useCart } from "@/hooks/useCart";
-import { flyToCart } from "@/lib/flyToCart";
 import { ArtTile, type ArtTilePalette } from "./ArtTile";
 import { BookCover, type BookCoverPalette } from "./BookCover";
 
@@ -37,8 +32,8 @@ function eyebrowLabel(category: string) {
 
 /**
  * Shop product card. Renders a `BookCover` for physical books and an
- * `ArtTile` for everything else. Hover lifts the media area, fades in
- * a "Quick add" button, and reveals the page-corner peel.
+ * `ArtTile` for everything else. Hover lifts the media area and reveals
+ * the page-corner peel.
  */
 export function ProductCard({
   product,
@@ -46,34 +41,16 @@ export function ProductCard({
   palette,
   index = 0,
 }: ProductCardProps) {
-  const { addItem } = useCart();
-  const [added, setAdded] = useState(false);
   const isBook = product.category === "physical";
   const palWarm: ArtTilePalette = palette || ROTATION[index % ROTATION.length];
   const palBook: BookCoverPalette =
     (palette as BookCoverPalette) || BOOK_PALETTES[index % BOOK_PALETTES.length];
   const mediaHeight = size === "lg" ? 320 : 260;
 
-  const handleQuickAdd = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addItem({
-      id: product.id,
-      slug: product.slug,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      category: product.category,
-    });
-    flyToCart(e.currentTarget);
-    setAdded(true);
-    window.setTimeout(() => setAdded(false), 1600);
-  };
-
   return (
     <Link
       href={`/shop/${product.slug}`}
-      className={cn("product-card card-peel block group", added && "is-added")}
+      className="product-card card-peel block group"
       style={{ position: "relative" }}
     >
       <div
@@ -154,36 +131,6 @@ export function ProductCard({
             NEW
           </span>
         )}
-
-        <div className="quick-add" aria-hidden={false}>
-          <button
-            type="button"
-            onClick={handleQuickAdd}
-            className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-center gap-2 rounded-full font-sans font-semibold"
-            style={{
-              background: "var(--ink)",
-              color: "var(--paper)",
-              border: "none",
-              padding: "12px 18px",
-              fontSize: 13,
-              cursor: "pointer",
-              transition:
-                "transform .35s var(--e-out), opacity .35s ease, background .2s ease",
-            }}
-          >
-            {added ? (
-              <>
-                <Check className="w-4 h-4" />
-                <span>Added</span>
-              </>
-            ) : (
-              <>
-                <span>Quick add</span>
-                <span style={{ fontSize: 16 }}>+</span>
-              </>
-            )}
-          </button>
-        </div>
       </div>
 
       <div className="pt-4 px-1 pb-1">
