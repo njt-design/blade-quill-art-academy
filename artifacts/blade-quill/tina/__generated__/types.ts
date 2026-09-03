@@ -92,6 +92,10 @@ export type Query = {
   shopProductConnection: ShopProductConnection;
   gallery: Gallery;
   galleryConnection: GalleryConnection;
+  download: Download;
+  downloadConnection: DownloadConnection;
+  tutorial: Tutorial;
+  tutorialConnection: TutorialConnection;
   navigation: Navigation;
   navigationConnection: NavigationConnection;
 };
@@ -193,6 +197,36 @@ export type QueryGalleryConnectionArgs = {
 };
 
 
+export type QueryDownloadArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDownloadConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<DownloadFilter>;
+};
+
+
+export type QueryTutorialArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryTutorialConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<TutorialFilter>;
+};
+
+
 export type QueryNavigationArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -213,6 +247,8 @@ export type DocumentFilter = {
   post?: InputMaybe<PostFilter>;
   shopProduct?: InputMaybe<ShopProductFilter>;
   gallery?: InputMaybe<GalleryFilter>;
+  download?: InputMaybe<DownloadFilter>;
+  tutorial?: InputMaybe<TutorialFilter>;
   navigation?: InputMaybe<NavigationFilter>;
 };
 
@@ -253,7 +289,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Navigation | Folder;
+export type DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Download | Tutorial | Navigation | Folder;
 
 export type PageBlocksHomeHeroTextStyle = {
   __typename?: 'PageBlocksHomeHeroTextStyle';
@@ -12097,6 +12133,90 @@ export type GalleryConnection = Connection & {
   edges?: Maybe<Array<Maybe<GalleryConnectionEdges>>>;
 };
 
+export type DownloadItems = {
+  __typename?: 'DownloadItems';
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  file: Scalars['String']['output'];
+  fileType: Scalars['String']['output'];
+  thumbnail?: Maybe<Scalars['String']['output']>;
+};
+
+export type Download = Node & Document & {
+  __typename?: 'Download';
+  items?: Maybe<Array<Maybe<DownloadItems>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type DownloadItemsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  file?: InputMaybe<ImageFilter>;
+  fileType?: InputMaybe<StringFilter>;
+  thumbnail?: InputMaybe<ImageFilter>;
+};
+
+export type DownloadFilter = {
+  items?: InputMaybe<DownloadItemsFilter>;
+};
+
+export type DownloadConnectionEdges = {
+  __typename?: 'DownloadConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Download>;
+};
+
+export type DownloadConnection = Connection & {
+  __typename?: 'DownloadConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<DownloadConnectionEdges>>>;
+};
+
+export type TutorialItems = {
+  __typename?: 'TutorialItems';
+  title: Scalars['String']['output'];
+  youtubeId: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  topic?: Maybe<Scalars['String']['output']>;
+  featured?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type Tutorial = Node & Document & {
+  __typename?: 'Tutorial';
+  items?: Maybe<Array<Maybe<TutorialItems>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type TutorialItemsFilter = {
+  title?: InputMaybe<StringFilter>;
+  youtubeId?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  topic?: InputMaybe<StringFilter>;
+  featured?: InputMaybe<BooleanFilter>;
+};
+
+export type TutorialFilter = {
+  items?: InputMaybe<TutorialItemsFilter>;
+};
+
+export type TutorialConnectionEdges = {
+  __typename?: 'TutorialConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Tutorial>;
+};
+
+export type TutorialConnection = Connection & {
+  __typename?: 'TutorialConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<TutorialConnectionEdges>>>;
+};
+
 export type NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio;
 
 export type NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio;
@@ -12220,6 +12340,10 @@ export type Mutation = {
   createShopProduct: ShopProduct;
   updateGallery: Gallery;
   createGallery: Gallery;
+  updateDownload: Download;
+  createDownload: Download;
+  updateTutorial: Tutorial;
+  createTutorial: Tutorial;
   updateNavigation: Navigation;
   createNavigation: Navigation;
 };
@@ -12318,6 +12442,30 @@ export type MutationCreateGalleryArgs = {
 };
 
 
+export type MutationUpdateDownloadArgs = {
+  relativePath: Scalars['String']['input'];
+  params: DownloadMutation;
+};
+
+
+export type MutationCreateDownloadArgs = {
+  relativePath: Scalars['String']['input'];
+  params: DownloadMutation;
+};
+
+
+export type MutationUpdateTutorialArgs = {
+  relativePath: Scalars['String']['input'];
+  params: TutorialMutation;
+};
+
+
+export type MutationCreateTutorialArgs = {
+  relativePath: Scalars['String']['input'];
+  params: TutorialMutation;
+};
+
+
 export type MutationUpdateNavigationArgs = {
   relativePath: Scalars['String']['input'];
   params: NavigationMutation;
@@ -12335,6 +12483,8 @@ export type DocumentUpdateMutation = {
   post?: InputMaybe<PostMutation>;
   shopProduct?: InputMaybe<ShopProductMutation>;
   gallery?: InputMaybe<GalleryMutation>;
+  download?: InputMaybe<DownloadMutation>;
+  tutorial?: InputMaybe<TutorialMutation>;
   navigation?: InputMaybe<NavigationMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -12345,6 +12495,8 @@ export type DocumentMutation = {
   post?: InputMaybe<PostMutation>;
   shopProduct?: InputMaybe<ShopProductMutation>;
   gallery?: InputMaybe<GalleryMutation>;
+  download?: InputMaybe<DownloadMutation>;
+  tutorial?: InputMaybe<TutorialMutation>;
   navigation?: InputMaybe<NavigationMutation>;
 };
 
@@ -17269,6 +17421,30 @@ export type GalleryMutation = {
   items?: InputMaybe<Array<InputMaybe<GalleryItemsMutation>>>;
 };
 
+export type DownloadItemsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  file?: InputMaybe<Scalars['String']['input']>;
+  fileType?: InputMaybe<Scalars['String']['input']>;
+  thumbnail?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DownloadMutation = {
+  items?: InputMaybe<Array<InputMaybe<DownloadItemsMutation>>>;
+};
+
+export type TutorialItemsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  youtubeId?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  topic?: InputMaybe<Scalars['String']['input']>;
+  featured?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type TutorialMutation = {
+  items?: InputMaybe<Array<InputMaybe<TutorialItemsMutation>>>;
+};
+
 export type NavigationItemsChildrenMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   linkType?: InputMaybe<Scalars['String']['input']>;
@@ -17320,6 +17496,10 @@ export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: a
 export type ShopProductPartsFragment = { __typename: 'ShopProduct', name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null };
 
 export type GalleryPartsFragment = { __typename: 'Gallery', items?: Array<{ __typename: 'GalleryItems', title: string, image: string, description?: string | null, downloadFile?: string | null } | null> | null };
+
+export type DownloadPartsFragment = { __typename: 'Download', items?: Array<{ __typename: 'DownloadItems', title: string, description?: string | null, file: string, fileType: string, thumbnail?: string | null } | null> | null };
+
+export type TutorialPartsFragment = { __typename: 'Tutorial', items?: Array<{ __typename: 'TutorialItems', title: string, youtubeId: string, description?: string | null, topic?: string | null, featured?: boolean | null } | null> | null };
 
 export type NavigationPartsFragment = { __typename: 'Navigation', items?: Array<{ __typename: 'NavigationItems', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, seoAssistant?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', backgroundImage?: string | null, eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null, textStyle?: { __typename: 'PageBlocksHomeHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null, textStyle?: { __typename: 'PageBlocksAboutHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroSplitImageTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroFullBleedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroFloatingImagesTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroImageGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null, textStyle?: { __typename: 'PageBlocksPageHeaderTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null, textStyle?: { __typename: 'PageBlocksStoryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTimelineTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeatureGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksCardRowTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksPillarsTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksImageSpotlightTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PageBlocksImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageMasonryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PageBlocksVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeaturedBookTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null, textStyle?: { __typename: 'PageBlocksFeaturedReleaseTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null, textStyle?: { __typename: 'PageBlocksProductStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksShopCatalogTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksGalleryGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksDownloadsGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTutorialsStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksClassesPitchTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, textStyle?: { __typename: 'PageBlocksBlogFeedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PageBlocksCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksBigCtaTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null, textStyle?: { __typename: 'PageBlocksNewsletterSignupTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null, textStyle?: { __typename: 'PageBlocksDummyBookRequestTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null, textStyle?: { __typename: 'PageBlocksKofiSupportTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksReviewLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksSocialLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null, seo?: { __typename: 'PageSeo', metaTitle?: string | null, metaDescription?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, children?: Array<{ __typename: 'NavigationItemsChildren', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, seoAssistant?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', backgroundImage?: string | null, eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null, textStyle?: { __typename: 'PageBlocksHomeHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null, textStyle?: { __typename: 'PageBlocksAboutHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroSplitImageTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroFullBleedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroFloatingImagesTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroImageGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null, textStyle?: { __typename: 'PageBlocksPageHeaderTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null, textStyle?: { __typename: 'PageBlocksStoryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTimelineTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeatureGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksCardRowTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksPillarsTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksImageSpotlightTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PageBlocksImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageMasonryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PageBlocksVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeaturedBookTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null, textStyle?: { __typename: 'PageBlocksFeaturedReleaseTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null, textStyle?: { __typename: 'PageBlocksProductStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksShopCatalogTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksGalleryGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksDownloadsGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTutorialsStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksClassesPitchTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, textStyle?: { __typename: 'PageBlocksBlogFeedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PageBlocksCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksBigCtaTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null, textStyle?: { __typename: 'PageBlocksNewsletterSignupTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null, textStyle?: { __typename: 'PageBlocksDummyBookRequestTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null, textStyle?: { __typename: 'PageBlocksKofiSupportTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksReviewLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksSocialLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null, seo?: { __typename: 'PageSeo', metaTitle?: string | null, metaDescription?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null, footerColumns?: Array<{ __typename: 'NavigationFooterColumns', heading: string, links?: Array<{ __typename: 'NavigationFooterColumnsLinks', label: string, linkType?: string | null, href?: string | null, page?: { __typename: 'Page', title: string, layout?: string | null, seoAssistant?: string | null, id: string, blocks?: Array<{ __typename: 'PageBlocksHomeHero', backgroundImage?: string | null, eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, marqueeItems?: Array<string | null> | null, textStyle?: { __typename: 'PageBlocksHomeHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksAboutHero', eyebrow?: string | null, heading?: string | null, leadText?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, metaLine?: string | null, portraitImage?: string | null, portraitCaption?: string | null, deskImage?: string | null, deskCaption?: string | null, screenImage?: string | null, screenCaption?: string | null, textStyle?: { __typename: 'PageBlocksAboutHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHero', heading?: string | null, subheading?: any | null, backgroundImage?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroSplitImage', eyebrow?: string | null, heading?: string | null, subheading?: any | null, featuredImage?: string | null, imageAlt?: string | null, imageCaption?: string | null, imagePosition?: string | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroSplitImageTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFullBleed', backgroundImage?: string | null, heading?: string | null, subheading?: any | null, overlay?: string | null, textAlign?: string | null, minHeight?: string | null, ctaLabel?: string | null, ctaLink?: string | null, textStyle?: { __typename: 'PageBlocksHeroFullBleedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroFloatingImages', eyebrow?: string | null, heading?: string | null, subheading?: any | null, ctaPrimary?: string | null, ctaPrimaryLink?: string | null, ctaSecondary?: string | null, ctaSecondaryLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroFloatingImagesImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroFloatingImagesTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksHeroImageGrid', eyebrow?: string | null, heading?: string | null, subheading?: any | null, layout?: string | null, ctaLabel?: string | null, ctaLink?: string | null, images?: Array<{ __typename: 'PageBlocksHeroImageGridImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksHeroImageGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPageHeader', heading?: string | null, description?: any | null, textStyle?: { __typename: 'PageBlocksPageHeaderTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStory', number?: string | null, label?: string | null, heading?: string | null, paragraph1?: any | null, quote?: any | null, paragraph2?: any | null, sideImage?: string | null, sideCaption?: string | null, textStyle?: { __typename: 'PageBlocksStoryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTimeline', number?: string | null, label?: string | null, events?: Array<{ __typename: 'PageBlocksTimelineEvents', year?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTimelineTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksStatsRow', stats?: Array<{ __typename: 'PageBlocksStatsRowStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PageBlocksFeatureGrid', heading?: string | null, items?: Array<{ __typename: 'PageBlocksFeatureGridItems', icon?: string | null, title?: string | null, description?: any | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeatureGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCardRow', number?: string | null, label?: string | null, cards?: Array<{ __typename: 'PageBlocksCardRowCards', tag?: string | null, title?: string | null, body?: string | null, image?: string | null, ctaLabel?: string | null, link?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksCardRowTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksPillars', eyebrow?: string | null, heading?: string | null, items?: Array<{ __typename: 'PageBlocksPillarsItems', tag?: string | null, title?: string | null, sub?: string | null, cta?: string | null, badge?: string | null, link?: string | null, image?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksPillarsTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageGallery', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSpotlight', eyebrow?: string | null, heading?: string | null, image?: string | null, alt?: string | null, caption?: string | null, aspect?: string | null, body?: any | null, textStyle?: { __typename: 'PageBlocksImageSpotlightTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PageBlocksImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PageBlocksImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PageBlocksImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksImageMasonry', heading?: string | null, images?: Array<{ __typename: 'PageBlocksImageMasonryImages', src?: string | null, alt?: string | null, caption?: string | null, size?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksImageMasonryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PageBlocksVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedBook', eyebrow?: string | null, heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, stats?: Array<{ __typename: 'PageBlocksFeaturedBookStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksFeaturedBookTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksFeaturedRelease', eyebrow?: string | null, title: string, description?: any | null, coverImage?: string | null, backCoverImage?: string | null, ctaLabel?: string | null, ctaHref?: string | null, textStyle?: { __typename: 'PageBlocksFeaturedReleaseTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksProductStrip', eyebrow?: string | null, heading?: string | null, viewAllLabel?: string | null, viewAllLink?: string | null, textStyle?: { __typename: 'PageBlocksProductStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksShopCatalog', heading?: string | null, highlightText?: string | null, description?: any | null, showFeaturedBanner?: boolean | null, emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksShopCatalogTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksGalleryGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksGalleryGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksDownloadsGrid', emptyHeading?: string | null, emptyDescription?: string | null, textStyle?: { __typename: 'PageBlocksDownloadsGridTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksTutorialsStrip', eyebrow?: string | null, headingPrefix?: string | null, headingHighlight?: string | null, headingSuffix?: string | null, buttonLabel?: string | null, youtubeUrl?: string | null, stats?: Array<{ __typename: 'PageBlocksTutorialsStripStats', value?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksTutorialsStripTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksClassesPitch', eyebrow?: string | null, heading?: string | null, subheading?: any | null, bullets?: Array<string | null> | null, metaTags?: string | null, ctaLabel?: string | null, ctaLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksClassesPitchTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBlogFeed', heading?: string | null, showNewsletter?: boolean | null, newsletter?: { __typename: 'PageBlocksBlogFeedNewsletter', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null } | null, textStyle?: { __typename: 'PageBlocksBlogFeedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PageBlocksCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksBigCta', eyebrow?: string | null, heading?: string | null, highlightText?: string | null, primaryLabel?: string | null, primaryLink?: string | null, secondaryLabel?: string | null, secondaryLink?: string | null, textStyle?: { __typename: 'PageBlocksBigCtaTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksNewsletterSignup', eyebrow?: string | null, heading?: string | null, subheading?: any | null, placeholderText?: string | null, ctaLabel?: string | null, privacyNote?: string | null, textStyle?: { __typename: 'PageBlocksNewsletterSignupTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksContactInfo', email?: string | null, location?: string | null } | { __typename: 'PageBlocksContactForm', submitLabel?: string | null } | { __typename: 'PageBlocksDummyBookRequest', heading?: string | null, description?: any | null, pdfUrl?: string | null, submitLabel?: string | null, successHeading?: string | null, successNote?: string | null, downloadLabel?: string | null, textStyle?: { __typename: 'PageBlocksDummyBookRequestTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksKofiSupport', heading?: string | null, body?: any | null, ctaLabel?: string | null, href?: string | null, textStyle?: { __typename: 'PageBlocksKofiSupportTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksReviewLinks', heading?: string | null, intro?: any | null, thankYou?: string | null, ctaHeading?: string | null, links?: Array<{ __typename: 'PageBlocksReviewLinksLinks', label?: string | null, href?: string | null, region?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksReviewLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PageBlocksMarquee', highlightText?: string | null, text?: string | null } | { __typename: 'PageBlocksSocialLinks', heading?: string | null, body?: any | null, links?: Array<{ __typename: 'PageBlocksSocialLinksLinks', platform?: string | null, url?: string | null, label?: string | null } | null> | null, textStyle?: { __typename: 'PageBlocksSocialLinksTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null, seo?: { __typename: 'PageSeo', metaTitle?: string | null, metaDescription?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageBlank', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageEvent', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPagePromo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageInfo', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LandingPageLinkInBio', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null };
 
@@ -17417,6 +17597,44 @@ export type GalleryConnectionQueryVariables = Exact<{
 
 
 export type GalleryConnectionQuery = { __typename?: 'Query', galleryConnection: { __typename?: 'GalleryConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GalleryConnectionEdges', cursor: string, node?: { __typename: 'Gallery', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'GalleryItems', title: string, image: string, description?: string | null, downloadFile?: string | null } | null> | null } | null } | null> | null } };
+
+export type DownloadQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type DownloadQuery = { __typename?: 'Query', download: { __typename: 'Download', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'DownloadItems', title: string, description?: string | null, file: string, fileType: string, thumbnail?: string | null } | null> | null } };
+
+export type DownloadConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<DownloadFilter>;
+}>;
+
+
+export type DownloadConnectionQuery = { __typename?: 'Query', downloadConnection: { __typename?: 'DownloadConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DownloadConnectionEdges', cursor: string, node?: { __typename: 'Download', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'DownloadItems', title: string, description?: string | null, file: string, fileType: string, thumbnail?: string | null } | null> | null } | null } | null> | null } };
+
+export type TutorialQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type TutorialQuery = { __typename?: 'Query', tutorial: { __typename: 'Tutorial', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'TutorialItems', title: string, youtubeId: string, description?: string | null, topic?: string | null, featured?: boolean | null } | null> | null } };
+
+export type TutorialConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<TutorialFilter>;
+}>;
+
+
+export type TutorialConnectionQuery = { __typename?: 'Query', tutorialConnection: { __typename?: 'TutorialConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'TutorialConnectionEdges', cursor: string, node?: { __typename: 'Tutorial', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, items?: Array<{ __typename: 'TutorialItems', title: string, youtubeId: string, description?: string | null, topic?: string | null, featured?: boolean | null } | null> | null } | null } | null> | null } };
 
 export type NavigationQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -21535,6 +21753,32 @@ export const GalleryPartsFragmentDoc = gql`
     image
     description
     downloadFile
+  }
+}
+    `;
+export const DownloadPartsFragmentDoc = gql`
+    fragment DownloadParts on Download {
+  __typename
+  items {
+    __typename
+    title
+    description
+    file
+    fileType
+    thumbnail
+  }
+}
+    `;
+export const TutorialPartsFragmentDoc = gql`
+    fragment TutorialParts on Tutorial {
+  __typename
+  items {
+    __typename
+    title
+    youtubeId
+    description
+    topic
+    featured
   }
 }
     `;
@@ -33676,6 +33920,120 @@ export const GalleryConnectionDocument = gql`
   }
 }
     ${GalleryPartsFragmentDoc}`;
+export const DownloadDocument = gql`
+    query download($relativePath: String!) {
+  download(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...DownloadParts
+  }
+}
+    ${DownloadPartsFragmentDoc}`;
+export const DownloadConnectionDocument = gql`
+    query downloadConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DownloadFilter) {
+  downloadConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...DownloadParts
+      }
+    }
+  }
+}
+    ${DownloadPartsFragmentDoc}`;
+export const TutorialDocument = gql`
+    query tutorial($relativePath: String!) {
+  tutorial(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...TutorialParts
+  }
+}
+    ${TutorialPartsFragmentDoc}`;
+export const TutorialConnectionDocument = gql`
+    query tutorialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TutorialFilter) {
+  tutorialConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...TutorialParts
+      }
+    }
+  }
+}
+    ${TutorialPartsFragmentDoc}`;
 export const NavigationDocument = gql`
     query navigation($relativePath: String!) {
   navigation(relativePath: $relativePath) {
@@ -33765,6 +34123,18 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     galleryConnection(variables?: GalleryConnectionQueryVariables, options?: C): Promise<{data: GalleryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryConnectionQueryVariables, query: string}> {
         return requester<{data: GalleryConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GalleryConnectionQueryVariables, query: string}, GalleryConnectionQueryVariables>(GalleryConnectionDocument, variables, options);
+      },
+    download(variables: DownloadQueryVariables, options?: C): Promise<{data: DownloadQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadQueryVariables, query: string}> {
+        return requester<{data: DownloadQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadQueryVariables, query: string}, DownloadQueryVariables>(DownloadDocument, variables, options);
+      },
+    downloadConnection(variables?: DownloadConnectionQueryVariables, options?: C): Promise<{data: DownloadConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadConnectionQueryVariables, query: string}> {
+        return requester<{data: DownloadConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DownloadConnectionQueryVariables, query: string}, DownloadConnectionQueryVariables>(DownloadConnectionDocument, variables, options);
+      },
+    tutorial(variables: TutorialQueryVariables, options?: C): Promise<{data: TutorialQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialQueryVariables, query: string}> {
+        return requester<{data: TutorialQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialQueryVariables, query: string}, TutorialQueryVariables>(TutorialDocument, variables, options);
+      },
+    tutorialConnection(variables?: TutorialConnectionQueryVariables, options?: C): Promise<{data: TutorialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialConnectionQueryVariables, query: string}> {
+        return requester<{data: TutorialConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: TutorialConnectionQueryVariables, query: string}, TutorialConnectionQueryVariables>(TutorialConnectionDocument, variables, options);
       },
     navigation(variables: NavigationQueryVariables, options?: C): Promise<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}> {
         return requester<{data: NavigationQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NavigationQueryVariables, query: string}, NavigationQueryVariables>(NavigationDocument, variables, options);

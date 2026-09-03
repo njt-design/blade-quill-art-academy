@@ -4106,6 +4106,32 @@ export const GalleryPartsFragmentDoc = gql`
   }
 }
     `;
+export const DownloadPartsFragmentDoc = gql`
+    fragment DownloadParts on Download {
+  __typename
+  items {
+    __typename
+    title
+    description
+    file
+    fileType
+    thumbnail
+  }
+}
+    `;
+export const TutorialPartsFragmentDoc = gql`
+    fragment TutorialParts on Tutorial {
+  __typename
+  items {
+    __typename
+    title
+    youtubeId
+    description
+    topic
+    featured
+  }
+}
+    `;
 export const NavigationPartsFragmentDoc = gql`
     fragment NavigationParts on Navigation {
   __typename
@@ -16244,6 +16270,120 @@ export const GalleryConnectionDocument = gql`
   }
 }
     ${GalleryPartsFragmentDoc}`;
+export const DownloadDocument = gql`
+    query download($relativePath: String!) {
+  download(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...DownloadParts
+  }
+}
+    ${DownloadPartsFragmentDoc}`;
+export const DownloadConnectionDocument = gql`
+    query downloadConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DownloadFilter) {
+  downloadConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...DownloadParts
+      }
+    }
+  }
+}
+    ${DownloadPartsFragmentDoc}`;
+export const TutorialDocument = gql`
+    query tutorial($relativePath: String!) {
+  tutorial(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...TutorialParts
+  }
+}
+    ${TutorialPartsFragmentDoc}`;
+export const TutorialConnectionDocument = gql`
+    query tutorialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TutorialFilter) {
+  tutorialConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...TutorialParts
+      }
+    }
+  }
+}
+    ${TutorialPartsFragmentDoc}`;
 export const NavigationDocument = gql`
     query navigation($relativePath: String!) {
   navigation(relativePath: $relativePath) {
@@ -16332,6 +16472,18 @@ export function getSdk(requester) {
     },
     galleryConnection(variables, options) {
       return requester(GalleryConnectionDocument, variables, options);
+    },
+    download(variables, options) {
+      return requester(DownloadDocument, variables, options);
+    },
+    downloadConnection(variables, options) {
+      return requester(DownloadConnectionDocument, variables, options);
+    },
+    tutorial(variables, options) {
+      return requester(TutorialDocument, variables, options);
+    },
+    tutorialConnection(variables, options) {
+      return requester(TutorialConnectionDocument, variables, options);
     },
     navigation(variables, options) {
       return requester(NavigationDocument, variables, options);

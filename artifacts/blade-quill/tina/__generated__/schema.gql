@@ -64,6 +64,10 @@ type Query {
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
   gallery(relativePath: String): Gallery!
   galleryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GalleryFilter): GalleryConnection!
+  download(relativePath: String): Download!
+  downloadConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DownloadFilter): DownloadConnection!
+  tutorial(relativePath: String): Tutorial!
+  tutorialConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialFilter): TutorialConnection!
   navigation(relativePath: String): Navigation!
   navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
 }
@@ -74,6 +78,8 @@ input DocumentFilter {
   post: PostFilter
   shopProduct: ShopProductFilter
   gallery: GalleryFilter
+  download: DownloadFilter
+  tutorial: TutorialFilter
   navigation: NavigationFilter
 }
 
@@ -100,7 +106,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Navigation | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Download | Tutorial | Navigation | Folder
 
 type PageBlocksHomeHeroTextStyle {
   headingSize: String
@@ -11356,6 +11362,82 @@ type GalleryConnection implements Connection {
   edges: [GalleryConnectionEdges]
 }
 
+type DownloadItems {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
+}
+
+type Download implements Node & Document {
+  items: [DownloadItems]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input DownloadItemsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
+}
+
+input DownloadFilter {
+  items: DownloadItemsFilter
+}
+
+type DownloadConnectionEdges {
+  cursor: String!
+  node: Download
+}
+
+type DownloadConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [DownloadConnectionEdges]
+}
+
+type TutorialItems {
+  title: String!
+  youtubeId: String!
+  description: String
+  topic: String
+  featured: Boolean
+}
+
+type Tutorial implements Node & Document {
+  items: [TutorialItems]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input TutorialItemsFilter {
+  title: StringFilter
+  youtubeId: StringFilter
+  description: StringFilter
+  topic: StringFilter
+  featured: BooleanFilter
+}
+
+input TutorialFilter {
+  items: TutorialItemsFilter
+}
+
+type TutorialConnectionEdges {
+  cursor: String!
+  node: Tutorial
+}
+
+type TutorialConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [TutorialConnectionEdges]
+}
+
 union NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
 union NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
@@ -11471,6 +11553,10 @@ type Mutation {
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   updateGallery(relativePath: String!, params: GalleryMutation!): Gallery!
   createGallery(relativePath: String!, params: GalleryMutation!): Gallery!
+  updateDownload(relativePath: String!, params: DownloadMutation!): Download!
+  createDownload(relativePath: String!, params: DownloadMutation!): Download!
+  updateTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
+  createTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
   updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
   createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
 }
@@ -11481,6 +11567,8 @@ input DocumentUpdateMutation {
   post: PostMutation
   shopProduct: ShopProductMutation
   gallery: GalleryMutation
+  download: DownloadMutation
+  tutorial: TutorialMutation
   navigation: NavigationMutation
   relativePath: String
 }
@@ -11491,6 +11579,8 @@ input DocumentMutation {
   post: PostMutation
   shopProduct: ShopProductMutation
   gallery: GalleryMutation
+  download: DownloadMutation
+  tutorial: TutorialMutation
   navigation: NavigationMutation
 }
 
@@ -16413,6 +16503,30 @@ input GalleryItemsMutation {
 
 input GalleryMutation {
   items: [GalleryItemsMutation]
+}
+
+input DownloadItemsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
+}
+
+input DownloadMutation {
+  items: [DownloadItemsMutation]
+}
+
+input TutorialItemsMutation {
+  title: String
+  youtubeId: String
+  description: String
+  topic: String
+  featured: Boolean
+}
+
+input TutorialMutation {
+  items: [TutorialItemsMutation]
 }
 
 input NavigationItemsChildrenMutation {

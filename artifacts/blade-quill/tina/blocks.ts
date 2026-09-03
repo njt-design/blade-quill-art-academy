@@ -856,7 +856,10 @@ export const tutorialsStripBlock: Template = {
       type: "string",
       name: "youtubeUrl",
       label: "YouTube Channel URL",
-      ui: { description: "Full channel URL — the button links here." },
+      ui: {
+        description:
+          "Full channel URL — the button links here. The videos in this strip are managed in the YouTube Tutorials collection (sidebar): the first 4 Featured videos appear, in that list's order.",
+      },
     },
     {
       type: "object",
@@ -1367,7 +1370,10 @@ export const downloadsGridBlock: Template = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: charLimit(60, "Downloads load automatically. This heading only shows when there are none."),
+      ui: charLimit(
+        60,
+        "Downloads are managed in the Downloads collection in Tina (sidebar). This heading only shows when there are none."
+      ),
     },
     {
       type: "string",
