@@ -86,9 +86,11 @@ if (existsSync(adminIndex)) {
 // Login uses the Client ID embedded in the content API URL. Building without
 // TINA_PUBLIC_CLIENT_ID bakes content/undefined and every login returns "No Access".
 // Note: a bare clientId:"" string also appears in healthy --local builds (library
-// default); the reliable signal is the content.tinajs.io/.../content/<uuid> URL.
+// default); the reliable signal is the content API URL containing the UUID-shaped
+// Client ID — either content.tinajs.io/.../content/<uuid> or, since the zstd
+// workaround, the same-origin /tina-api proxy (see docs/tina-cloud-zstd-issue.md).
 const UUID_IN_CONTENT_URL =
-  /content\.tinajs\.io\/[^/"']+\/content\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\//i;
+  /(content\.tinajs\.io|tina-api)\/[^/"']+\/content\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\//i;
 
 function adminBundlePathsToCheck() {
   // Only the HTML entrypoint embeds the content API Client ID.
