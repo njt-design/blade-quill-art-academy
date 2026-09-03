@@ -53,13 +53,24 @@ the upstream request never advertises zstd:
   (before the SPA fallback; no serverless function consumed).
 - `src/lib/tina-live.ts`: the site's live-refresh fetches
   `/tina-api/2.4/content/<clientId>/github/<branch>` (relative — works on
-  every deployment).
-- `tina/config.ts`: `tinaioConfig.contentApiUrlOverride` points the prebuilt
-  admin's content API at `https://blade-quill-art-academy.vercel.app/tina-api`
-  (keeps Tina Cloud auth; only the content API base changes). The admin bundle
-  must be regenerated (`pnpm run build:deploy`) for this to take effect.
+  every deployment; the bundled-content fallback still covers any proxy
+  failure, so this is zero-risk).
 
-Note: preview deployments' admins still call the production proxy
+Rolled out in two phases because preview deployments are behind Vercel
+Deployment Protection (the proxy can only be verified on production):
+
+1. **Phase 1 (this change):** the rewrite + the site's live-refresh. Verify
+   on production that `/tina-api/...` returns clean JSON to a
+   zstd-advertising client.
+2. **Phase 2 (follow-up):** point the admin at the proxy by adding
+   `tinaioConfig.contentApiUrlOverride:
+   "https://blade-quill-art-academy.vercel.app/tina-api"` to `tina/config.ts`
+   and regenerating the admin bundle (`pnpm run build:deploy`). This keeps
+   Tina Cloud auth (only the content API base changes). Do NOT use the
+   top-level `contentApiUrlOverride` — it flips the admin into
+   "self-hosted" mode and breaks Tina Cloud login.
+
+Note: with phase 2, preview deployments' admins call the production proxy
 (cross-origin; Tina's API sends permissive CORS headers). Local dev
 (`tinacms dev`) is unaffected — it uses the local datalayer.
 
