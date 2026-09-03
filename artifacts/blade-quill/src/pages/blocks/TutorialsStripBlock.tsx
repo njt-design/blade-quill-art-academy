@@ -2,7 +2,9 @@ import { useMemo } from "react";
 import { tinaField } from "tinacms/react";
 import { cn } from "@/lib/utils";
 import { useListTutorials } from "@workspace/api-client-react";
+import { useLiveTutorials } from "@/hooks/use-live-content";
 import { FALLBACK_TUTORIALS } from "@/lib/fallback-data";
+import { pickStripTutorials, resolveTutorials } from "@/lib/tutorials";
 import { type ArtTilePalette } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
@@ -22,18 +24,20 @@ interface Props {
 }
 
 export default function TutorialsStripBlock({ block }: Props) {
+  const catalog = useLiveTutorials();
   const { data: tutorials } = useListTutorials(
     { featured: true },
-    { query: { enabled: import.meta.env.PROD } }
+    { query: { enabled: import.meta.env.PROD && catalog.length === 0 } }
   );
 
   const featuredTutorials = useMemo(() => {
-    const list =
-      Array.isArray(tutorials) && tutorials.length > 0
-        ? tutorials
-        : FALLBACK_TUTORIALS.filter((t) => t.featured);
-    return list.slice(0, 4);
-  }, [tutorials]);
+    const list = resolveTutorials(
+      Array.isArray(tutorials) ? tutorials : undefined,
+      FALLBACK_TUTORIALS,
+      catalog
+    );
+    return pickStripTutorials(list, 4);
+  }, [tutorials, catalog]);
 
   // Keep original list indices for tinaField(block, "stats", i).
   const stats = (block.stats as StatItem[] | undefined) ?? [];
