@@ -14,10 +14,13 @@ Sign in with the Tina Cloud account Nick set up for you.
 
 | Sidebar | What you edit |
 |---------|----------------|
-| **Main Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
-| **Featured Pages** | Extra pages you create (events, promos, link-in-bio) |
+| **Site Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
+| **New Pages** | Extra pages you create (events, promos, link-in-bio) |
 | **Blog Posts** | Blog articles |
 | **Shop Products** | Product name, price, image, stock — prices here drive Stripe checkout |
+| **Gallery** | The artwork on the Gallery page — add, remove, drag to reorder |
+| **Downloads** | The free resources on the Downloads page — add, remove, drag to reorder |
+| **YouTube Tutorials** | Your tutorial videos — pick which ones are Featured on the homepage |
 | **Menu & Footer** | Header menu + footer link columns |
 | **Insights** (Dashboard) | Traffic & sales glance (not for editing pages) |
 
@@ -97,6 +100,20 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 2. Edit Menu Items (header) or Footer Columns.
 3. Prefer **Link Type → Site page** so links can’t typo. Use **Site link** for `/blog` or `/cart`. Use **External URL** for YouTube/Amazon/etc.
 4. Save. Preview opens on the homepage.
+
+### Add, remove, or reorder free downloads
+
+1. **Downloads → items**
+2. **Add** a resource with the + button: Title, the **Downloadable File** (upload via Media or paste a path like `/files/…`), the **File Type Badge** (PDF, JPG, …), and an optional **Card Image**.
+3. **Remove** a resource with the ⋮ menu on its row. **Drag** rows to reorder the grid.
+4. Save. The Downloads page updates within seconds.
+
+### Choose the videos in the homepage YouTube strip
+
+1. **YouTube Tutorials → items**
+2. Each video needs a **Title** and its **YouTube Video ID** (the 11-character code after `watch?v=` in the video’s URL).
+3. Turn on **Featured on Homepage** for the videos you want in the strip — the first 4 featured videos (in list order) are shown. Drag rows to change that order.
+4. Save. The homepage strip updates within seconds.
 
 ## Images
 
