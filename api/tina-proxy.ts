@@ -9,6 +9,9 @@
  * negotiating gzip only, which Tina serves correctly. See
  * docs/tina-cloud-zstd-issue.md for the full diagnosis.
  *
+ * Routing: zero-config /api functions don't support catch-all brackets, so
+ * vercel.json rewrites /api/tina/:path* → /api/tina-proxy?__path=:path*.
+ *
  * Used by:
  * - src/lib/tina-live.ts (public site live-refresh, read-only token)
  * - the prebuilt Tina admin (tinaioConfig.contentApiUrlOverride in
@@ -48,8 +51,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const clientId = process.env.TINA_PUBLIC_CLIENT_ID || FALLBACK_CLIENT_ID;
-  const segments = req.query.path;
-  const subPath = Array.isArray(segments) ? segments.join("/") : segments ?? "";
+  const raw = req.query.__path;
+  const subPath = (Array.isArray(raw) ? raw.join("/") : raw ?? "").replace(
+    /^\/+/,
+    ""
+  );
 
   // Only proxy this project's content-API surface (GraphQL, branch list/
   // create, index status) — never an open proxy.

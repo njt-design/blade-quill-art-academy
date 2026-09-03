@@ -170,6 +170,10 @@
       "destination": "/api/insights?__route=session"
     },
     {
+      "source": "/api/tina/:path*",
+      "destination": "/api/tina-proxy?__path=:path*"
+    },
+    {
       "source": "/((?!assets/|api/).*)",
       "destination": "/index.html"
     }
