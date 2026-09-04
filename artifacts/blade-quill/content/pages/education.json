@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "LEARN WITH ME",
-      "heading": "Art education,\nstraight from my studio.",
+      "heading": "Free resources & art education guides",
       "subheading": {
         "type": "root",
         "children": [
@@ -15,7 +15,8 @@
                 "type": "text",
                 "text": "Free Krita video lessons, printable coloring pages, and digital painting guides — everything I teach, gathered in one place."
               }
-            ]
+            ],
+            "id": "CuKFoE-oJP"
           }
         ]
       },
