@@ -53,9 +53,13 @@ always receive clean JSON:
 - `api/tina-proxy.ts`: proxy to `content.tinajs.io/*`, restricted to this
   project's client ID paths (GraphQL, branch list/create, index status,
   events feed, editorial workflow, request status, collection search). The
-  allowlist must cover every path the tinacms client builds on
-  `contentApiBase` — check `contentApiBase` usages in the tinacms dist when
-  upgrading tinacms.
+  media library is covered too: TinaCloudMediaStore derives its URL from the
+  content-API origin (`origin.replace("content","assets")` no-ops on our
+  vercel.app origin), so media calls land at `/v1/<clientId>/*` on this
+  deployment — vercel.json rewrites those to the proxy, which forwards them
+  to `assets.tinajs.io`. The allowlist must cover every path the tinacms
+  client builds on `contentApiBase` — check `contentApiBase` usages in the
+  tinacms dist when upgrading tinacms.
   Open CORS so preview deployments' admins can use it. Reached via the
   vercel.json rewrite `/api/tina/:path*` → `/api/tina-proxy?__path=:path*`
   (zero-config /api functions don't support catch-all bracket routes).
