@@ -34,7 +34,7 @@ export default function Cart() {
         <p className="text-muted-foreground mb-8 max-w-sm">
           Discover books, digital guides, and curriculum to start your artistic journey.
         </p>
-        <Button onClick={() => setLocation("/shop")} className="bg-maroon hover:bg-maroon-deep text-white">
+        <Button onClick={() => setLocation("/shop")}>
           Browse the Shop <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </div>
@@ -110,7 +110,7 @@ export default function Cart() {
             {items.map((item) => (
               <Button
                 key={item.id}
-                className="w-full bg-maroon hover:bg-maroon-deep text-white text-sm"
+                className="w-full text-sm"
                 size="sm"
                 disabled={checkingOutId !== null}
                 onClick={() =>

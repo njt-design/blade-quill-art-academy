@@ -30,6 +30,7 @@ import {
 } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
 import { InkUnderline } from "@/components/site/InkUnderline";
@@ -497,7 +498,10 @@ export default function ProductDetail() {
 
               {isBook ? (
                 <Reveal>
-                  <div className="flex flex-wrap gap-3 mb-8">
+                  {/* BtnGroup: primary first in DOM — renders on the right on
+                      desktop, on top when stacked. Exactly one primary exists:
+                      Gumroad when available, otherwise Amazon. */}
+                  <BtnGroup className="mb-8">
                     {product.gumroadUrl ? (
                       <Btn
                         kind="primary"
@@ -507,6 +511,17 @@ export default function ProductDetail() {
                         external
                       >
                         Get eBook on Gumroad
+                      </Btn>
+                    ) : product.amazonUrl ? (
+                      <Btn
+                        kind="primary"
+                        size="lg"
+                        iconRight="→"
+                        href={product.amazonUrl}
+                        external
+                        analyticsPlacement="product_detail"
+                      >
+                        Buy paperback on Amazon
                       </Btn>
                     ) : null}
                     {product.googlePlayUrl ? (
@@ -519,9 +534,9 @@ export default function ProductDetail() {
                         Get eBook on Google Play
                       </Btn>
                     ) : null}
-                    {product.amazonUrl ? (
+                    {product.gumroadUrl && product.amazonUrl ? (
                       <Btn
-                        kind={product.gumroadUrl ? "outline" : "primary"}
+                        kind="outline"
                         size="lg"
                         iconRight="→"
                         href={product.amazonUrl}
@@ -531,7 +546,7 @@ export default function ProductDetail() {
                         Buy paperback on Amazon
                       </Btn>
                     ) : null}
-                  </div>
+                  </BtnGroup>
                 </Reveal>
               ) : (
                 <>

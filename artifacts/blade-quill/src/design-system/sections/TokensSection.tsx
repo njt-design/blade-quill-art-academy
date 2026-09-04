@@ -427,12 +427,6 @@ export function TokensSection() {
             <p className="text-xs text-muted-foreground mb-2 font-mono">.price-badge</p>
             <span className="price-badge">$24.99</span>
           </div>
-          <div>
-            <p className="text-xs text-muted-foreground mb-2 font-mono">.cta-bold</p>
-            <button className="cta-bold bg-primary text-primary-foreground px-6 py-2 rounded-md">
-              Call to Action
-            </button>
-          </div>
         </div>
       </div>
     </Section>

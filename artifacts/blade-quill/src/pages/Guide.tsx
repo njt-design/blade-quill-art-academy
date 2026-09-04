@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { marked } from "marked";
 import { ArrowUpRight, Loader2, LogOut, Printer } from "lucide-react";
 import { QuillMark } from "@/components/site/QuillMark";
+import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 // Single source of truth: the repo doc, inlined at build time by Vite.
 import guideMarkdown from "../../../../docs/EDITING-GUIDE.md?raw";
 
@@ -200,22 +202,17 @@ export default function Guide() {
                 {error}
               </p>
             ) : null}
-            <button
+            <Btn
               type="submit"
+              className="w-full"
               disabled={submitting || !password.trim()}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold disabled:opacity-60"
-              style={{
-                background: "var(--g-cta)",
-                color: "var(--paper)",
-                fontFamily: "var(--f-sans)",
-              }}
             >
               {submitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : (
                 "Open the guide"
               )}
-            </button>
+            </Btn>
           </form>
           <p
             className="text-xs mt-5"
@@ -262,41 +259,32 @@ export default function Guide() {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <a
+          <BtnGroup className="gap-2">
+            <Btn
+              size="sm"
               href={`${import.meta.env.BASE_URL}admin/index.html`}
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold"
-              style={{ background: "var(--g-cta)", color: "var(--paper)" }}
+              iconRight={<ArrowUpRight className="w-3.5 h-3.5" />}
             >
               Open the editor
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-            <button
-              type="button"
+            </Btn>
+            <Btn
+              kind="outline"
+              size="sm"
               onClick={() => window.print()}
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm border"
-              style={{
-                borderColor: "rgba(46,34,34,0.14)",
-                color: "var(--ink)",
-              }}
+              iconLeft={<Printer className="w-3.5 h-3.5" />}
             >
-              <Printer className="w-3.5 h-3.5" />
               Print
-            </button>
-            <button
-              type="button"
+            </Btn>
+            <Btn
+              kind="outline"
+              size="sm"
               onClick={handleSignOut}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm border"
-              style={{
-                borderColor: "rgba(46,34,34,0.14)",
-                color: "var(--ink-mute)",
-              }}
+              iconLeft={<LogOut className="w-3.5 h-3.5" />}
               aria-label="Sign out of the guide"
             >
-              <LogOut className="w-3.5 h-3.5" />
               Sign out
-            </button>
-          </div>
+            </Btn>
+          </BtnGroup>
         </div>
       </header>
 

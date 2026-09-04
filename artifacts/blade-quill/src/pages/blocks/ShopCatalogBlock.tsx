@@ -12,6 +12,7 @@ import {
 } from "@/lib/products";
 import { BookCover } from "@/components/site/BookCover";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -250,7 +251,7 @@ export default function ShopCatalogBlock({ block }: Props) {
                   >
                     <RichText value={featuredProduct.description} />
                   </div>
-                  <div className="flex flex-wrap gap-2.5">
+                  <BtnGroup className="gap-2.5">
                     <Btn
                       kind="primary"
                       iconRight="→"
@@ -264,7 +265,7 @@ export default function ShopCatalogBlock({ block }: Props) {
                     >
                       Details
                     </Btn>
-                  </div>
+                  </BtnGroup>
                 </div>
                 <div className="relative flex items-center justify-center p-6 sm:p-10">
                   <BookCover

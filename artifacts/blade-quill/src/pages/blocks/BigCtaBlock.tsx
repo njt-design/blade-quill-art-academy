@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, sectionAlignStyle } from "./text-style";
@@ -61,7 +62,7 @@ export default function BigCtaBlock({ block }: Props) {
           </Reveal>
         )}
         <Reveal>
-          <div className="flex flex-wrap justify-center gap-3">
+          <BtnGroup align="center">
             {block.primaryLabel ? (
               <Btn
                 kind="primary"
@@ -95,7 +96,7 @@ export default function BigCtaBlock({ block }: Props) {
                 </Btn>
               )
             ) : null}
-          </div>
+          </BtnGroup>
         </Reveal>
       </div>
     </section>

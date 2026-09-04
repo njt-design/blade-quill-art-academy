@@ -72,7 +72,9 @@ function HeroCtas({
       className={
         desktop
           ? "flex items-center gap-4"
-          : "flex w-full shrink-0 flex-col gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
+          : // DOM order is [secondary, primary]: flex-col-reverse puts the
+            // primary on TOP when stacked, and the row keeps it on the RIGHT.
+            "flex w-full shrink-0 flex-col-reverse gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
       }
     >
       {block.ctaSecondary ? (

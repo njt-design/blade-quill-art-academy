@@ -686,28 +686,11 @@
     @apply text-lg font-bold text-maroon;
   }
 
-  .cta-bold {
-    @apply font-semibold tracking-wide;
-    transition: transform 0.15s ease, box-shadow 0.2s ease;
-  }
-  .cta-bold:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  }
-  .cta-bold:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
-
+  /* Layout-only helper for download-card buttons — the hover language
+     (lift + ink fill) belongs to the outline button variant itself. */
   .dl-btn {
     @apply w-full mt-auto font-semibold;
-    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   }
-  .dl-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  .dl-btn:active { transform: scale(0.97); }
 
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -740,9 +723,6 @@
   .home-media-mask-flush { @apply overflow-hidden rounded-2xl bg-muted; }
   .home-panel { @apply rounded-3xl border border-border/40 bg-card overflow-hidden; }
   .important-links-page .home-panel { border-color: hsl(var(--border) / 0.72); }
-  .home-link { @apply inline-flex items-center gap-1 transition-colors; }
-  .home-link svg { transition: transform 0.25s ease; }
-  .home-link:hover svg { transform: translateX(2px); }
 
   @keyframes marquee {
     from { transform: translateX(0); }

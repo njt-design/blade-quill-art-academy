@@ -2,6 +2,7 @@ import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
@@ -91,7 +92,7 @@ export default function HeroFloatingImagesBlock({ block }: Props) {
             </Reveal>
           ) : null}
           <Reveal>
-            <div className="flex flex-wrap gap-3 justify-center">
+            <BtnGroup align="center">
               {block.ctaPrimary ? (
                 <Btn
                   kind="primary"
@@ -125,7 +126,7 @@ export default function HeroFloatingImagesBlock({ block }: Props) {
                   </Btn>
                 )
               ) : null}
-            </div>
+            </BtnGroup>
           </Reveal>
         </div>
 

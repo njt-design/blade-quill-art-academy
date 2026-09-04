@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { SiInstagram, SiKofi, SiYoutube } from "react-icons/si";
 import { FaAmazon } from "react-icons/fa";
 import { QuillMark } from "@/components/site/QuillMark";
+import { Btn } from "@/components/site/Btn";
 import { useLiveNavigation } from "@/hooks/use-live-navigation";
 import { useNewsletterSignup } from "@/hooks/use-newsletter";
 import { maybeTrackAmazonClick } from "@/lib/analytics";
@@ -135,16 +136,9 @@ export function Footer() {
                   fontFamily: "var(--f-sans)",
                 }}
               />
-              <button
-                type="submit"
-                className="btn-cta min-h-11 px-5 py-2.5 rounded-full text-[13px] font-semibold whitespace-nowrap"
-                style={{
-                  background: "var(--g-cta)",
-                  color: "var(--paper)",
-                }}
-              >
+              <Btn type="submit" size="sm" className="px-5 text-[13px]">
                 {status === "submitting" ? "..." : "Join"}
-              </button>
+              </Btn>
             </form>
             {status === "success" || status === "error" ? (
               <div

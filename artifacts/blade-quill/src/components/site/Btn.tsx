@@ -21,6 +21,8 @@ interface BtnProps
   href?: string;
   /** Open href in a new tab. */
   external?: boolean;
+  /** Explicit anchor target — overrides `external` (e.g. "_top" to break out of an iframe). */
+  target?: string;
   /** Save the href as a file (anchor `download` attribute). */
   download?: string | boolean;
   /** Analytics placement label when the href is an Amazon outbound link. */
@@ -64,6 +66,7 @@ export function Btn({
   iconRight,
   href,
   external,
+  target,
   download,
   analyticsPlacement,
   className,
@@ -81,6 +84,7 @@ export function Btn({
     "relative inline-flex items-center justify-center gap-2.5 rounded-full whitespace-nowrap select-none overflow-hidden",
     "font-sans font-semibold tracking-[0.01em]",
     "transition-[transform,box-shadow,background-position] duration-200",
+    "disabled:pointer-events-none disabled:opacity-50",
     SIZES[size],
     KINDS[kind],
     className
@@ -104,8 +108,8 @@ export function Btn({
     return (
       <a
         href={href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
+        target={target ?? (external ? "_blank" : undefined)}
+        rel={target || external ? "noopener noreferrer" : undefined}
         download={download}
         className={classes}
         style={sharedStyle}

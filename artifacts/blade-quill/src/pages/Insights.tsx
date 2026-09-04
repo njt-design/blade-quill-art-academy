@@ -16,6 +16,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { QuillMark } from "@/components/site/QuillMark";
+import { Btn } from "@/components/site/Btn";
 import {
   adminLoginUrl,
   establishInsightsSession,
@@ -279,20 +280,13 @@ export default function Insights() {
             Sign in with TinaCMS to see sessions, bounce rate, Stripe sales, and
             conversion glances for Blade &amp; Quill.
           </p>
-          <a
+          <Btn
             href={adminLoginUrl("/insights")}
             target="_top"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
-            style={{
-              background: "var(--g-cta)",
-              color: "var(--paper)",
-              fontFamily: "var(--f-sans)",
-            }}
+            iconRight={<ArrowUpRight className="w-4 h-4" />}
           >
             Sign in with Tina
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          </Btn>
           <p
             className="text-xs mt-5"
             style={{ color: "var(--ink-faint)", fontFamily: "var(--f-sans)" }}
@@ -341,24 +335,17 @@ export default function Insights() {
             </div>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <a
+            <Btn
+              kind="outline"
+              size="sm"
               href={`${import.meta.env.BASE_URL}admin/index.html`}
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm border"
-              style={{
-                borderColor: "rgba(46,34,34,0.14)",
-                color: "var(--ink)",
-              }}
+              iconLeft={<Package className="w-3.5 h-3.5" />}
             >
-              <Package className="w-3.5 h-3.5" />
               Edit products in Tina
-            </a>
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm border"
-              style={{
-                borderColor: "rgba(46,34,34,0.14)",
-                color: "var(--ink-mute)",
-              }}
+            </Btn>
+            <Btn
+              kind="outline"
+              size="sm"
               aria-label="Refresh"
               onClick={() => {
                 setLoading(true);
@@ -374,7 +361,7 @@ export default function Insights() {
               }}
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
-            </button>
+            </Btn>
           </div>
         </div>
       </header>

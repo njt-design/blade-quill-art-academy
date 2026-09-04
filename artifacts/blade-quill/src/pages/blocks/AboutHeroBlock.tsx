@@ -3,6 +3,7 @@ import { tinaField } from "tinacms/react";
 import { galleryImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -93,7 +94,7 @@ export default function AboutHeroBlock({ block }: Props) {
               </Reveal>
             ) : null}
             <Reveal>
-              <div className="flex flex-wrap gap-3 mb-7">
+              <BtnGroup className="mb-7">
                 {block.ctaPrimary ? (
                   <Btn
                     kind="primary"
@@ -127,7 +128,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     </Btn>
                   )
                 ) : null}
-              </div>
+              </BtnGroup>
             </Reveal>
             {metaLine ? (
               <Reveal>

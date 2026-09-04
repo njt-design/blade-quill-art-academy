@@ -104,7 +104,7 @@ export default function ContactFormBlock({ block }: Props) {
 
             <Button
               type="submit"
-              className="w-full bg-maroon hover:bg-maroon-deep text-white"
+              className="w-full"
               disabled={isPending}
               data-tina-field={tinaField(block, "submitLabel")}
             >

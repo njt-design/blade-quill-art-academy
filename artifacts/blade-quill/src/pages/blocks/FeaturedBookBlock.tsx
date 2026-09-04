@@ -9,6 +9,7 @@ import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { ArtTile } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -162,7 +163,7 @@ export default function FeaturedBookBlock({ block }: Props) {
               </Reveal>
             )}
             <Reveal>
-              <div className="flex flex-wrap gap-3">
+              <BtnGroup>
                 {block.ctaLabel ? (
                   <Btn
                     kind="primary"
@@ -192,9 +193,9 @@ export default function FeaturedBookBlock({ block }: Props) {
                     <span data-tina-field={tinaField(block, "secondaryLabel")}>
                       {block.secondaryLabel as string}
                     </span>
-                  </Btn>
-                ) : null}
-              </div>
+                    </Btn>
+                  ) : null}
+              </BtnGroup>
             </Reveal>
           </div>
         </div>

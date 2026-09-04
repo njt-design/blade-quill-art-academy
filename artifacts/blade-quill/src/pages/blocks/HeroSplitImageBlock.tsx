@@ -2,6 +2,7 @@ import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
+import { BtnGroup } from "@/components/site/BtnGroup";
 import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
@@ -88,7 +89,7 @@ export default function HeroSplitImageBlock({ block }: Props) {
         </Reveal>
       ) : null}
       <Reveal>
-        <div className="flex flex-wrap gap-3">
+        <BtnGroup>
           {block.ctaPrimary ? (
             <Btn
               kind="primary"
@@ -122,7 +123,7 @@ export default function HeroSplitImageBlock({ block }: Props) {
               </Btn>
             )
           ) : null}
-        </div>
+        </BtnGroup>
       </Reveal>
     </div>
   );

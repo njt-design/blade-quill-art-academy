@@ -13,7 +13,7 @@ export default function NotFound() {
         <p className="text-muted-foreground mb-6">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <Button onClick={() => setLocation("/")} className="bg-foreground text-background hover:bg-foreground/90">
+        <Button onClick={() => setLocation("/")}>
           Go Home
         </Button>
       </div>

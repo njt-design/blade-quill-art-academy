@@ -4,6 +4,7 @@ import { FaAmazon } from "react-icons/fa";
 import { tinaField } from "tinacms/react";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
+import { Btn } from "@/components/site/Btn";
 import { maybeTrackAmazonClick } from "@/lib/analytics";
 import { type Block } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
@@ -94,22 +95,24 @@ function Panel({ block, links }: { block: Block; links: SocialLink[] }) {
               const name =
                 link.label || PLATFORM_NAMES[link.platform ?? ""] || "Follow";
               return (
-                <a
+                <Btn
                   key={`${link.platform}-${i}`}
+                  kind="outline"
+                  size="md"
                   href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm text-foreground hover:bg-foreground hover:text-[var(--paper)] hover:-translate-y-0.5 hover:shadow-md transition-[transform,background,color,box-shadow] duration-200"
+                  external
+                  iconLeft={
+                    PLATFORM_ICONS[link.platform ?? ""] ?? (
+                      <SiYoutube className="w-5 h-5" />
+                    )
+                  }
                   data-tina-field={tinaField(block, "links", i)}
                   onClick={() =>
                     maybeTrackAmazonClick(link.url, "social_links_panel")
                   }
                 >
-                  {PLATFORM_ICONS[link.platform ?? ""] ?? (
-                    <SiYoutube className="w-5 h-5" />
-                  )}
-                  <span>{name}</span>
-                </a>
+                  {name}
+                </Btn>
               );
             })}
           </div>

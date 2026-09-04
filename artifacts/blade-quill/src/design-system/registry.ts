@@ -1104,7 +1104,24 @@ const BRAND: DesignSystemEntry[] = [
     demo: lazy(() => import("./demos/brand/BtnDemo")),
     guidelines: {
       usage:
-        "Developers: use Btn for marketing/CTA surfaces; the shadcn Button (Atoms below) is for app UI like forms and dialogs.",
+        "Developers: use Btn for marketing/CTA surfaces; the shadcn Button (Atoms below) is for app UI like forms and dialogs. Two or more buttons together? Wrap them in BtnGroup.",
+    },
+  },
+  {
+    id: "btn-group",
+    name: "BtnGroup (CTA ordering)",
+    category: "brand",
+    group: "Brand components",
+    description:
+      "Button-group ordering rule: the primary action always sits on the RIGHT in a horizontal group and on TOP when buttons stack on mobile. Write children primary-first; BtnGroup flips the horizontal order automatically.",
+    demo: lazy(() => import("./demos/brand/BtnGroupDemo")),
+    guidelines: {
+      usage:
+        "Wrap any pair/group of CTAs. Primary first in code — it renders right on desktop, top on mobile. Use align to match the section's text alignment.",
+      notes: [
+        "Never hard-code button order per breakpoint — BtnGroup owns the rule.",
+        "One primary per group; everything else is outline, ghost, or light.",
+      ],
     },
   },
   {
@@ -1251,8 +1268,8 @@ const ATOMS: DesignSystemEntry[] = [
     demo: lazy(() => import("./demos/atoms/ButtonDemo")),
     guidelines: {
       notes: [
-        "Variants: default (maroon), accent (gold), secondary, outline, ghost, link. Sizes: sm, default, lg, icon.",
-        "For marketing CTAs use the brand Btn component instead.",
+        "Variants: default (brand gradient — same --g-cta language as Btn primary), secondary, outline (ink, fills on hover), ghost, link. Sizes: sm, default, lg, icon.",
+        "Gold is accent-only — never a button fill. For marketing CTAs use the brand Btn component instead.",
       ],
     },
   },
