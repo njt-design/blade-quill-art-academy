@@ -44,35 +44,57 @@ Impact:
 - **Public site**: `tina-live` runtime fetches fail and fall back to bundled
   build-time content (graceful; visitors unaffected).
 
-## Workaround shipped in this repo
+## Resolution (2026-09-04): Tina Cloud fixed it upstream
 
-All Tina Cloud content-API traffic is routed through a same-origin
+Re-tested on 2026-09-04: `content.tinajs.io` no longer emits zstd at all.
+With `Accept-Encoding: zstd` it returns identity (plain JSON); with Chrome's
+full `gzip, deflate, br, zstd` it returns valid Brotli that decodes cleanly.
+The workaround below is therefore no longer needed for the admin — and the
+admin half of it turned out to be **broken on its own**:
+
+> Pointing the admin at our domain via `tinaioConfig.contentApiUrlOverride`
+> crashes it on boot. Tina's `TinaCMSProvider` runs `parseURL()` on the
+> content API URL; that helper only recognises `*.tinajs.io` hosts and
+> returns `clientId: null, branch: null` for anything else, so the provider
+> throws `Invalid setup. See https://tina.io/docs/r/what-is-tinacloud`
+> before rendering. On /admin this surfaces as the generic **"Failed
+> loading TinaCMS assets"** placeholder (the inline 2-second check finds an
+> empty `#root`). Nobody could reach the login screen from the 2026-09-03
+> deploy until this was reverted. Do not reintroduce either override.
+
+Current state:
+
+- `tina/config.ts`: no content API override — the admin talks to Tina
+  Cloud directly again. Admin bundle regenerated (`pnpm run build:deploy`).
+- `api/tina-proxy.ts` + the `/api/tina/:path*` rewrite are **kept** for the
+  public site's live refresh (`src/lib/tina-live.ts`), which is not affected
+  by `parseURL` and benefits from a same-origin call. Allowlisted paths:
+  GraphQL, branch list/create, index status, events, editorial workflow,
+  request status, collection search — all scoped to this client ID.
+- Diagnosis tip: when /admin shows "Failed loading TinaCMS assets", load
+  `/admin/index.html` in headless Chrome and read the console — the real
+  error is an uncaught exception from the admin bundle, not a missing file:
+  `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  --headless=new --enable-logging=stderr --v=0 --dump-dom <url>`.
+
+## Original workaround (2026-09-03, superseded)
+
+All Tina Cloud content-API traffic was routed through a same-origin
 serverless proxy that negotiates `gzip` upstream (never zstd), so browsers
 always receive clean JSON:
 
 - `api/tina-proxy.ts`: proxy to `content.tinajs.io/*`, restricted to this
-  project's client ID paths (GraphQL, branch list/create, index status,
-  events feed, editorial workflow, request status, collection search). The
-  media library is covered too: TinaCloudMediaStore derives its URL from the
-  content-API origin (`origin.replace("content","assets")` no-ops on our
-  vercel.app origin), so media calls land at `/v1/<clientId>/*` on this
-  deployment — vercel.json rewrites those to the proxy, which forwards them
-  to `assets.tinajs.io`. The allowlist must cover every path the tinacms
-  client builds on `contentApiBase` — check `contentApiBase` usages in the
-  tinacms dist when upgrading tinacms.
-  Open CORS so preview deployments' admins can use it. Reached via the
-  vercel.json rewrite `/api/tina/:path*` → `/api/tina-proxy?__path=:path*`
-  (zero-config /api functions don't support catch-all bracket routes).
+  project's client ID paths. Open CORS so preview deployments' admins can
+  use it. Reached via the vercel.json rewrite `/api/tina/:path*` →
+  `/api/tina-proxy?__path=:path*` (zero-config /api functions don't support
+  catch-all bracket routes).
 - `src/lib/tina-live.ts`: the site's live-refresh fetches
   `/api/tina/2.4/content/<clientId>/github/<branch>` (relative — works on
   every deployment; the bundled-content fallback still covers any proxy
   failure).
-- `tina/config.ts`: `tinaioConfig.contentApiUrlOverride` points the prebuilt
+- `tina/config.ts`: `tinaioConfig.contentApiUrlOverride` pointed the prebuilt
   admin's content API at `https://blade-quill-art-academy.vercel.app/api/tina`.
-  This keeps Tina Cloud auth (only the content API base changes). Do NOT use
-  the top-level `contentApiUrlOverride` — it flips the admin into
-  "self-hosted" mode and breaks Tina Cloud login. The admin bundle must be
-  regenerated (`pnpm run build:deploy`) for changes to take effect.
+  **Reverted — see Resolution above; this broke admin boot.**
 
 Function budget note: the Vercel Hobby plan caps deployments at 12
 serverless functions. To make room for the proxy, `api/insights/session.ts`
