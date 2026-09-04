@@ -506,7 +506,7 @@ var homeHeroBlock = {
       name: "backgroundImage",
       label: "Background Image",
       ui: {
-        description: "Optional. Upload your own image to replace the default illustrated background \u2014 the text stays separate and sits on top. Best size: a wide landscape image around 2400\xD71200 pixels (2:1 shape, minimum 1920\xD7960). Use JPG or WebP under 1 MB so the page loads fast, and keep the left half of the image simple since the heading and buttons appear there. A soft dark tint is added automatically so white text stays readable. Upload into images/pages/. Leave empty to keep the default artwork."
+        description: "Optional. Upload your own artwork to replace the default characters. It sits ON the taupe card (not stretched behind it) anchored to the bottom-right, with the heading and buttons on top \u2014 no tint is added. Use a PNG or WebP with a TRANSPARENT background (a white background will show as a white box). Best size: about 1800 pixels tall, under 1 MB. Upload into images/pages/. Leave empty to keep the default artwork."
       }
     },
     {

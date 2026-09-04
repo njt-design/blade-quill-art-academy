@@ -169,15 +169,28 @@ export default function HomeHeroBlock({ block }: Props) {
           ].join(" ")}
         >
           {hasCustomBg ? (
-            /* Custom uploaded background — replaces the default illustrations. */
-            <div className="absolute inset-0" data-tina-field={tinaField(block, "backgroundImage")}>
+            /*
+             * Custom uploaded artwork — replaces the default illustrations.
+             * Layer order: taupe card (back) → artwork (middle) → copy (top).
+             * The image is NOT stretched to cover the card and there is NO
+             * tint over it: it sits on the card like an illustration, anchored
+             * bottom-right so the copy on the left stays clear of it. Works
+             * best with a transparent PNG/WebP cutout.
+             */
+            <div
+              className={[
+                "pointer-events-none absolute flex items-end justify-end",
+                "right-0 bottom-0 h-[62%] w-[78%]",
+                "md:right-[2%] md:h-[64%] md:w-[46%]",
+                "lg:inset-y-0 lg:right-[3%] lg:h-auto lg:w-[50%]",
+              ].join(" ")}
+              data-tina-field={tinaField(block, "backgroundImage")}
+            >
               <img
                 src={backgroundImage}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover"
+                className="max-h-full max-w-full object-contain object-right-bottom lg:max-h-[96%]"
               />
-              {/* Scrim keeps the white text readable over any image. */}
-              <div aria-hidden className="absolute inset-0 bg-[rgba(46,34,34,0.45)]" />
             </div>
           ) : (
             /* Characters — desktop % from Figma 185:3261 */
@@ -217,7 +230,13 @@ export default function HomeHeroBlock({ block }: Props) {
           )}
 
           {/* ── Mobile / tablet copy ── */}
-          <div className="relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:max-w-[520px] md:px-10 md:pt-12 md:pb-12 lg:hidden">
+          <div
+            className={[
+              "relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:px-10 md:pt-12 md:pb-12 lg:hidden",
+              // Keep tablet copy clear of the bottom-right artwork.
+              hasCustomBg ? "md:max-w-[56%]" : "md:max-w-[520px]",
+            ].join(" ")}
+          >
             {block.eyebrow ? (
               <Reveal>
                 <div
