@@ -174,8 +174,8 @@
       "destination": "/api/tina-proxy?__path=:path*"
     },
     {
-      "source": "/v1/:path*",
-      "destination": "/api/tina-proxy?__path=v1/:path*"
+      "source": "/v1/(.*)",
+      "destination": "/api/tina-proxy?__path=v1/$1"
     },
     {
       "source": "/((?!assets/|api/).*)",
