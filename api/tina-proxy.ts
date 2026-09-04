@@ -15,7 +15,9 @@
  * Used by:
  * - src/lib/tina-live.ts (public site live-refresh, read-only token)
  * - the prebuilt Tina admin (tinaioConfig.contentApiUrlOverride in
- *   tina/config.ts), including its branch/status endpoints
+ *   tina/config.ts), which calls this base for everything: GraphQL content,
+ *   branch list/create, index status, the events feed (sync status banner +
+ *   activity list), editorial-workflow requests, and collection search.
  *
  * Only paths under this project's client ID are proxied. CORS is open so
  * preview deployments' admins (served from other origins) can use it.
@@ -57,16 +59,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     ""
   );
 
-  // Only proxy this project's content-API surface (GraphQL, branch list/
-  // create, index status) — never an open proxy.
+  // Only proxy this project's content-API surface — never an open proxy.
+  // Covers everything the admin calls on contentApiBase (tinacms client):
+  // GraphQL content, branch list/create, index status, events feed (sync
+  // banner + activity list), editorial workflow, and collection search.
   const allowed =
     subPath.startsWith(`2.4/content/${clientId}/`) ||
     subPath.startsWith(`github/${clientId}/`) ||
-    subPath.startsWith(`db/${clientId}/`);
+    subPath.startsWith(`db/${clientId}/`) ||
+    subPath.startsWith(`events/${clientId}/`) ||
+    subPath.startsWith(`request-status/${clientId}/`) ||
+    subPath.startsWith(`editorial-workflow/${clientId}/`) ||
+    subPath.startsWith(`searchIndex/${clientId}/`) ||
+    subPath.startsWith(`v2/searchIndex/${clientId}/`);
   if (!allowed) {
     res.status(403).json({ error: "Not a proxied Tina path" });
     return;
   }
+
+  // Forward the original query string (limit, cursor, search params, …)
+  // upstream; only the routing param __path is consumed by the proxy.
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(req.query)) {
+    if (key === "__path") continue;
+    if (Array.isArray(value)) {
+      for (const v of value) query.append(key, v);
+    } else if (typeof value === "string") {
+      query.append(key, value);
+    }
+  }
+  const qs = query.toString();
+  const upstreamUrl = `${TINA_CONTENT_API}/${subPath}${qs ? `?${qs}` : ""}`;
 
   try {
     const headers: Record<string, string> = {
@@ -86,7 +109,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const hasBody = req.method === "POST" && req.body != null;
     if (hasBody) headers["Content-Type"] = "application/json";
 
-    const upstream = await fetch(`${TINA_CONTENT_API}/${subPath}`, {
+    const upstream = await fetch(upstreamUrl, {
       method: req.method,
       headers,
       body: hasBody ? JSON.stringify(req.body) : undefined,

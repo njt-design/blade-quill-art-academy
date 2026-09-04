@@ -51,7 +51,11 @@ serverless proxy that negotiates `gzip` upstream (never zstd), so browsers
 always receive clean JSON:
 
 - `api/tina-proxy.ts`: proxy to `content.tinajs.io/*`, restricted to this
-  project's client ID paths (GraphQL, branch list/create, index status).
+  project's client ID paths (GraphQL, branch list/create, index status,
+  events feed, editorial workflow, request status, collection search). The
+  allowlist must cover every path the tinacms client builds on
+  `contentApiBase` — check `contentApiBase` usages in the tinacms dist when
+  upgrading tinacms.
   Open CORS so preview deployments' admins can use it. Reached via the
   vercel.json rewrite `/api/tina/:path*` → `/api/tina-proxy?__path=:path*`
   (zero-config /api functions don't support catch-all bracket routes).
