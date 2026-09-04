@@ -24,10 +24,10 @@
       "imageAlt": "Coloring a caricature in Krita — beginner-friendly video lesson",
       "imageCaption": "from the classroom",
       "imagePosition": "right",
-      "ctaPrimary": "Watch on YouTube",
-      "ctaPrimaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
-      "ctaSecondary": "Meet your teacher",
-      "ctaSecondaryLink": "/about",
+      "ctaPrimary": "Browse the Gallery",
+      "ctaPrimaryLink": "/gallery",
+      "ctaSecondary": "Free downloads",
+      "ctaSecondaryLink": "/downloads",
       "_template": "heroSplitImage"
     },
     {
