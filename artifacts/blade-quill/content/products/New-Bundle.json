@@ -1,0 +1,38 @@
+{
+  "name": "New Bundle",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "children": [
+          {
+            "text": "T3est descriptions for the products"
+          }
+        ],
+        "type": "p",
+        "id": "sZxe499HPM"
+      }
+    ]
+  },
+  "price": 17.99,
+  "category": "digital",
+  "image": "/images/Screenshot-2026-09-06-at-5.39.22-PM.png",
+  "galleryImages": [
+    {
+      "src": "/images/Screenshot-2026-09-06-at-5.32.13-PM.png",
+      "alt": ""
+    },
+    {
+      "src": "",
+      "alt": ""
+    },
+    {
+      "src": "",
+      "alt": ""
+    }
+  ],
+  "featured": false,
+  "inStock": true,
+  "productId": 1788735667,
+  "createdAt": "2026-09-06T23:01:07.935Z"
+}
