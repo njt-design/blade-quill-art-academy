@@ -157,13 +157,6 @@
       "_template": "tutorialsStrip"
     },
     {
-      "eyebrow": "FROM THE SHOP",
-      "heading": "Books & Ebooks",
-      "viewAllLabel": "View All",
-      "viewAllLink": "/shop",
-      "_template": "productStrip"
-    },
-    {
       "heading": "Recent Blog Posts",
       "showNewsletter": true,
       "newsletter": {

@@ -31,11 +31,13 @@ function isLinkActive(location: string, link: ResolvedNavLink): boolean {
 function NavAnchor({
   link,
   className,
+  style,
   onClick,
   children,
 }: {
   link: ResolvedNavLink;
   className?: string;
+  style?: React.CSSProperties;
   onClick?: () => void;
   children: React.ReactNode;
 }) {
@@ -46,6 +48,7 @@ function NavAnchor({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        style={style}
         onClick={() => {
           maybeTrackAmazonClick(link.href, "navbar");
           onClick?.();
@@ -56,7 +59,7 @@ function NavAnchor({
     );
   }
   return (
-    <Link href={link.href ?? "/"} className={className} onClick={onClick}>
+    <Link href={link.href ?? "/"} className={className} style={style} onClick={onClick}>
       {children}
     </Link>
   );
@@ -136,21 +139,33 @@ function DesktopNavItem({ link }: { link: ResolvedNavLink }) {
         )}
         style={{ transitionTimingFunction: "var(--e-out)" }}
       >
-        <div className="min-w-[190px] rounded-xl border border-[rgba(46,34,34,0.1)] bg-[rgba(238,229,224,0.97)] backdrop-blur-xl shadow-[0_12px_32px_rgba(46,34,34,0.14)] py-2">
-          {link.children.map((child) => (
-            <NavAnchor
-              key={child.label + (child.href ?? "")}
-              link={child}
-              className={cn(
-                "block px-4 py-2 font-sans text-sm whitespace-nowrap",
-                location === child.href
-                  ? "text-foreground"
-                  : "text-foreground/75 hover:text-foreground"
-              )}
-            >
-              {child.label}
-            </NavAnchor>
-          ))}
+        <div
+          role="menu"
+          className="min-w-[220px] rounded-[14px] px-5 py-5"
+          style={{
+            background: "var(--ink)",
+            boxShadow: "0 16px 40px rgba(46,34,34,0.28)",
+          }}
+        >
+          <div className="eyebrow-grad-gold mb-3">{link.label}</div>
+          {link.children.map((child) => {
+            const childActive = location === child.href;
+            return (
+              <NavAnchor
+                key={child.label + (child.href ?? "")}
+                link={child}
+                className={cn(
+                  "block py-2 font-sans text-[15px] whitespace-nowrap transition-opacity duration-200",
+                  childActive
+                    ? "opacity-100 font-semibold"
+                    : "opacity-[0.78] hover:opacity-100"
+                )}
+                style={{ color: "var(--paper)" }}
+              >
+                {child.label}
+              </NavAnchor>
+            );
+          })}
         </div>
       </div>
     </div>

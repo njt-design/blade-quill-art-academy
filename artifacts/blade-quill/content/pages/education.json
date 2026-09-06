@@ -48,7 +48,6 @@
         ]
       },
       "youtubeUrl": "https://youtu.be/v_nOcN30LDI",
-      "buttonLabel": "Subscribe on YouTube",
       "_template": "featuredVideo"
     },
     {
@@ -99,8 +98,6 @@
       "eyebrow": "NEVER MISS A LESSON",
       "heading": "New lessons,\nevery other week.",
       "highlightText": "every other week.",
-      "primaryLabel": "Subscribe on YouTube",
-      "primaryLink": "https://www.youtube.com/c/BladeQuillartacademy",
       "secondaryLabel": "Get in touch",
       "secondaryLink": "/contact",
       "_template": "bigCta"

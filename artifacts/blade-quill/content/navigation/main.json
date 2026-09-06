@@ -8,7 +8,24 @@
     {
       "label": "Education",
       "linkType": "page",
-      "page": "content/pages/education.json"
+      "page": "content/pages/education.json",
+      "children": [
+        {
+          "label": "Free downloads",
+          "linkType": "page",
+          "page": "content/pages/downloads.json"
+        },
+        {
+          "label": "Gallery",
+          "linkType": "page",
+          "page": "content/pages/gallery.json"
+        },
+        {
+          "label": "Videos",
+          "linkType": "page",
+          "page": "content/pages/education.json"
+        }
+      ]
     },
     {
       "label": "Blog",

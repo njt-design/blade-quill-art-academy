@@ -19,6 +19,7 @@ import Cart from "@/pages/Cart";
 import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
 import MockupHomePreview from "@/pages/MockupHomePreview";
+import NavDropdownMockups from "@/pages/NavDropdownMockups";
 import DesignSystem from "@/pages/DesignSystem";
 import Insights from "@/pages/Insights";
 import Guide from "@/pages/Guide";
@@ -94,6 +95,7 @@ function Router() {
       <Route path="/p/:slug">
         {(params) => <Page slug={params.slug} chrome="auto" />}
       </Route>
+      <Route path="/preview/nav-dropdowns" component={NavDropdownMockups} />
       <Route path="/preview/:slug" component={MockupHomePreview} />
       <Route path="/design-system" component={DesignSystem} />
       <Route path="/insights" component={Insights} />

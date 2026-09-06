@@ -603,8 +603,7 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
       "A horizontal strip of shop products with a “view all” link. Products load automatically from the catalog.",
     demo: makeBlockDemo("productStrip"),
     guidelines: {
-      usage: "Teasing the shop from the homepage or landing pages.",
-      usedOn: ["/"],
+      usage: "Teasing the shop from landing pages. Currently unused on live pages.",
       cmsLocation: `${SECTIONS_LOCATION} → Product Strip`,
       charLimits: [
         { field: "eyebrow", limit: 40 },
