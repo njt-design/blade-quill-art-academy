@@ -64,6 +64,11 @@
     },
     "supportEmail": "njthrockmorton@gmail.com"
   },
+  "trustBullets": [
+    {
+      "label": "New badge"
+    }
+  ],
   "featured": true,
   "inStock": true,
   "downloadFiles": [
