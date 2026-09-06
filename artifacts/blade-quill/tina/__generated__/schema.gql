@@ -12076,8 +12076,78 @@ type ShopProductSpreadImages {
   alt: String
 }
 
+type ShopProductPageCopy {
+  eyebrow: String
+  coverSubtitle: String
+  fullDescription: JSON
+  shippingNote: JSON
+  supportEmail: String
+  paperbackLabel: String
+  ebookLabel: String
+  ebookStoresLabel: String
+  addToCartLabel: String
+  buyNowLabel: String
+  gumroadButtonLabel: String
+  amazonButtonLabel: String
+  googlePlayButtonLabel: String
+}
+
+type ShopProductPurchaseOptionsOptions {
+  name: String!
+  meta: String
+}
+
+type ShopProductPurchaseOptions {
+  groupLabel: String
+  options: [ShopProductPurchaseOptionsOptions]
+}
+
+type ShopProductTrustBullets {
+  label: String!
+}
+
+type ShopProductDetailsRows {
+  label: String!
+  value: String!
+}
+
+type ShopProductDetails {
+  format: String
+  studio: String
+  rows: [ShopProductDetailsRows]
+}
+
+type ShopProductReviewsItems {
+  name: String!
+  date: String
+  body: String
+  stars: Float
+}
+
+type ShopProductReviews {
+  rating: Float
+  countLabel: String
+  items: [ShopProductReviewsItems]
+}
+
+type ShopProductTabs {
+  descriptionLabel: String
+  insideLabel: String
+  reviewsLabel: String
+  shippingLabel: String
+  showInside: Boolean
+  showReviews: Boolean
+  showShipping: Boolean
+}
+
+type ShopProductRelated {
+  show: Boolean
+  eyebrow: String
+  heading: String
+}
+
 type ShopProductDownloadFiles {
-  file: String!
+  file: String
   label: String
 }
 
@@ -12094,6 +12164,13 @@ type ShopProduct implements Node & Document {
   image: String
   galleryImages: [ShopProductGalleryImages]
   spreadImages: [ShopProductSpreadImages]
+  pageCopy: ShopProductPageCopy
+  purchaseOptions: ShopProductPurchaseOptions
+  trustBullets: [ShopProductTrustBullets]
+  details: ShopProductDetails
+  reviews: ShopProductReviews
+  tabs: ShopProductTabs
+  related: ShopProductRelated
   featured: Boolean
   inStock: Boolean
   downloadFiles: [ShopProductDownloadFiles]
@@ -12130,6 +12207,96 @@ input ShopProductSpreadImagesFilter {
   alt: StringFilter
 }
 
+input ShopProductPageCopyFullDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductPageCopyFullDescriptionFilter {
+  ContentLink: ShopProductPageCopyFullDescriptionContentLinkFilter
+}
+
+input ShopProductPageCopyShippingNoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductPageCopyShippingNoteFilter {
+  ContentLink: ShopProductPageCopyShippingNoteContentLinkFilter
+}
+
+input ShopProductPageCopyFilter {
+  eyebrow: StringFilter
+  coverSubtitle: StringFilter
+  fullDescription: ShopProductPageCopyFullDescriptionFilter
+  shippingNote: ShopProductPageCopyShippingNoteFilter
+  supportEmail: StringFilter
+  paperbackLabel: StringFilter
+  ebookLabel: StringFilter
+  ebookStoresLabel: StringFilter
+  addToCartLabel: StringFilter
+  buyNowLabel: StringFilter
+  gumroadButtonLabel: StringFilter
+  amazonButtonLabel: StringFilter
+  googlePlayButtonLabel: StringFilter
+}
+
+input ShopProductPurchaseOptionsOptionsFilter {
+  name: StringFilter
+  meta: StringFilter
+}
+
+input ShopProductPurchaseOptionsFilter {
+  groupLabel: StringFilter
+  options: ShopProductPurchaseOptionsOptionsFilter
+}
+
+input ShopProductTrustBulletsFilter {
+  label: StringFilter
+}
+
+input ShopProductDetailsRowsFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input ShopProductDetailsFilter {
+  format: StringFilter
+  studio: StringFilter
+  rows: ShopProductDetailsRowsFilter
+}
+
+input ShopProductReviewsItemsFilter {
+  name: StringFilter
+  date: StringFilter
+  body: StringFilter
+  stars: NumberFilter
+}
+
+input ShopProductReviewsFilter {
+  rating: NumberFilter
+  countLabel: StringFilter
+  items: ShopProductReviewsItemsFilter
+}
+
+input ShopProductTabsFilter {
+  descriptionLabel: StringFilter
+  insideLabel: StringFilter
+  reviewsLabel: StringFilter
+  shippingLabel: StringFilter
+  showInside: BooleanFilter
+  showReviews: BooleanFilter
+  showShipping: BooleanFilter
+}
+
+input ShopProductRelatedFilter {
+  show: BooleanFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+}
+
 input ShopProductDownloadFilesFilter {
   file: StringFilter
   label: StringFilter
@@ -12148,6 +12315,13 @@ input ShopProductFilter {
   image: ImageFilter
   galleryImages: ShopProductGalleryImagesFilter
   spreadImages: ShopProductSpreadImagesFilter
+  pageCopy: ShopProductPageCopyFilter
+  purchaseOptions: ShopProductPurchaseOptionsFilter
+  trustBullets: ShopProductTrustBulletsFilter
+  details: ShopProductDetailsFilter
+  reviews: ShopProductReviewsFilter
+  tabs: ShopProductTabsFilter
+  related: ShopProductRelatedFilter
   featured: BooleanFilter
   inStock: BooleanFilter
   downloadFiles: ShopProductDownloadFilesFilter
@@ -17651,6 +17825,76 @@ input ShopProductSpreadImagesMutation {
   alt: String
 }
 
+input ShopProductPageCopyMutation {
+  eyebrow: String
+  coverSubtitle: String
+  fullDescription: JSON
+  shippingNote: JSON
+  supportEmail: String
+  paperbackLabel: String
+  ebookLabel: String
+  ebookStoresLabel: String
+  addToCartLabel: String
+  buyNowLabel: String
+  gumroadButtonLabel: String
+  amazonButtonLabel: String
+  googlePlayButtonLabel: String
+}
+
+input ShopProductPurchaseOptionsOptionsMutation {
+  name: String
+  meta: String
+}
+
+input ShopProductPurchaseOptionsMutation {
+  groupLabel: String
+  options: [ShopProductPurchaseOptionsOptionsMutation]
+}
+
+input ShopProductTrustBulletsMutation {
+  label: String
+}
+
+input ShopProductDetailsRowsMutation {
+  label: String
+  value: String
+}
+
+input ShopProductDetailsMutation {
+  format: String
+  studio: String
+  rows: [ShopProductDetailsRowsMutation]
+}
+
+input ShopProductReviewsItemsMutation {
+  name: String
+  date: String
+  body: String
+  stars: Float
+}
+
+input ShopProductReviewsMutation {
+  rating: Float
+  countLabel: String
+  items: [ShopProductReviewsItemsMutation]
+}
+
+input ShopProductTabsMutation {
+  descriptionLabel: String
+  insideLabel: String
+  reviewsLabel: String
+  shippingLabel: String
+  showInside: Boolean
+  showReviews: Boolean
+  showShipping: Boolean
+}
+
+input ShopProductRelatedMutation {
+  show: Boolean
+  eyebrow: String
+  heading: String
+}
+
 input ShopProductDownloadFilesMutation {
   file: String
   label: String
@@ -17669,6 +17913,13 @@ input ShopProductMutation {
   image: String
   galleryImages: [ShopProductGalleryImagesMutation]
   spreadImages: [ShopProductSpreadImagesMutation]
+  pageCopy: ShopProductPageCopyMutation
+  purchaseOptions: ShopProductPurchaseOptionsMutation
+  trustBullets: [ShopProductTrustBulletsMutation]
+  details: ShopProductDetailsMutation
+  reviews: ShopProductReviewsMutation
+  tabs: ShopProductTabsMutation
+  related: ShopProductRelatedMutation
   featured: Boolean
   inStock: Boolean
   downloadFiles: [ShopProductDownloadFilesMutation]

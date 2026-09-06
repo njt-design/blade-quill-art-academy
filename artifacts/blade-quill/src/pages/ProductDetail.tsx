@@ -10,14 +10,17 @@ import { useLiveProducts } from "@/hooks/use-live-content";
 import { useLiveTina } from "@/hooks/use-live-tina";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
 import { shopProductQuery } from "@/lib/product-query";
+import { isInTinaEditor } from "@/lib/tina-live";
 import {
   findCatalogProduct,
   getCatalogProduct,
   hasCatalogProducts,
+  rawProductImages,
   resolveCatalogProducts,
   resolveProductThumbnails,
   toCatalogProduct,
   type CatalogProduct,
+  type ProductReview,
 } from "@/lib/products";
 import { useCart } from "@/hooks/useCart";
 import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
@@ -48,6 +51,13 @@ function formatsForProduct(p: CatalogProduct): {
   label: string;
   options: FormatOption[];
 } {
+  const custom = p.purchaseOptions;
+  if (custom && custom.options.length > 0) {
+    return {
+      label: custom.groupLabel || "OPTIONS",
+      options: custom.options,
+    };
+  }
   switch (p.category) {
     case "physical":
       return {
@@ -81,12 +91,43 @@ function formatsForProduct(p: CatalogProduct): {
   }
 }
 
-const TABS: Array<{ key: TabKey; label: string }> = [
-  { key: "description", label: "Description" },
-  { key: "inside", label: "Inside" },
-  { key: "reviews", label: "Reviews" },
-  { key: "shipping", label: "Shipping & License" },
+const DEFAULT_REVIEWS: ProductReview[] = [
+  {
+    name: "Maya R.",
+    date: "MAY 2026",
+    body: "Absolutely beautiful. Worth every penny — even better in print than I'd imagined.",
+    stars: 5,
+  },
+  {
+    name: "Tom K.",
+    date: "APR 2026",
+    body: "I bought the bundle and use the brushes every day now. Everything just fits together.",
+    stars: 5,
+  },
+  {
+    name: "Liv H.",
+    date: "APR 2026",
+    body: "Quiet, gentle, and visually stunning. A book I keep on my desk to flip through.",
+    stars: 5,
+  },
+  {
+    name: "David S.",
+    date: "MAR 2026",
+    body: "Corinne explains the why behind each decision. So much better than copying tutorials.",
+    stars: 5,
+  },
 ];
+
+const DEFAULT_TRUST = [
+  "Instant download",
+  "Stripe secure checkout",
+  "30-day returns",
+];
+
+function starString(count: number): string {
+  const n = Math.round(Math.max(0, Math.min(5, count)));
+  return "★".repeat(n) || "★";
+}
 
 const PALETTE_BY_INDEX: ArtTilePalette[] = [
   "warm",
@@ -131,6 +172,13 @@ export default function ProductDetail() {
         spreadImages: Array.isArray(seedRaw.spreadImages)
           ? seedRaw.spreadImages
           : [],
+        pageCopy: seedRaw.pageCopy,
+        purchaseOptions: seedRaw.purchaseOptions,
+        trustBullets: seedRaw.trustBullets,
+        details: seedRaw.details,
+        reviews: seedRaw.reviews,
+        tabs: seedRaw.tabs,
+        related: seedRaw.related,
         gumroadUrl: seedRaw.gumroadUrl,
         downloadUrl: seedRaw.downloadUrl,
         amazonUrl: seedRaw.amazonUrl,
@@ -262,14 +310,79 @@ export default function ProductDetail() {
   }
 
   const isBook = product.category === "physical";
+  const inEditor = isInTinaEditor();
+  const copy = product.pageCopy;
   const palette: ArtTilePalette =
     PALETTE_BY_INDEX[product.id % PALETTE_BY_INDEX.length];
-  const thumbnails = resolveProductThumbnails(product);
+  const editorGallery = inEditor
+    ? rawProductImages(tinaDoc, "galleryImages")
+    : product.galleryImages;
+  let thumbnails = resolveProductThumbnails(
+    { ...product, galleryImages: editorGallery },
+    { includeEmpty: inEditor }
+  );
+  if (inEditor && thumbnails.length < 5) {
+    thumbnails = [
+      ...thumbnails,
+      ...Array.from({ length: 5 - thumbnails.length }, () => ({
+        src: "",
+        alt: "",
+      })),
+    ];
+  }
+  const editorSpreads = inEditor
+    ? rawProductImages(tinaDoc, "spreadImages")
+    : product.spreadImages;
+  const spreads =
+    inEditor && editorSpreads.length === 0
+      ? Array.from({ length: 6 }, () => ({ src: "", alt: "" }))
+      : editorSpreads;
   const activeThumb = thumbnails[thumb] ?? thumbnails[0] ?? null;
   const activeSrc = activeThumb?.src || product.imageUrl;
   const activeAlt = activeThumb?.alt || product.name;
   const showBookCover =
     isBook && (!activeSrc || activeSrc === product.imageUrl);
+  const eyebrow =
+    copy?.eyebrow || (product.featured ? "FEATURED" : "FROM THE STUDIO");
+  const coverSubtitle = copy ? copy.coverSubtitle ?? "" : "C. HADAWAY";
+  const trustBullets =
+    product.trustBullets ?? DEFAULT_TRUST.map((label) => ({ label }));
+  const reviewItems = product.reviews ? product.reviews.items : DEFAULT_REVIEWS;
+  const reviewRating = product.reviews?.rating ?? 4.9;
+  const reviewCountLabel = product.reviews?.countLabel ?? "142 reviews";
+  const pageTabs: Array<{ key: TabKey; label: string; show: boolean }> = [
+    {
+      key: "description",
+      label: product.tabs?.descriptionLabel || "Description",
+      show: true,
+    },
+    {
+      key: "inside",
+      label: product.tabs?.insideLabel || "Inside",
+      show:
+        product.tabs?.showInside !== false &&
+        (inEditor || spreads.length > 0),
+    },
+    {
+      key: "reviews",
+      label: product.tabs?.reviewsLabel || "Reviews",
+      show:
+        product.tabs?.showReviews !== false &&
+        (inEditor || reviewItems.length > 0),
+    },
+    {
+      key: "shipping",
+      label: product.tabs?.shippingLabel || "Shipping & License",
+      show:
+        product.tabs?.showShipping !== false &&
+        (inEditor ||
+          Boolean(copy?.shippingNote) ||
+          Boolean(copy?.supportEmail) ||
+          !copy),
+    },
+  ];
+  const visibleTabs = pageTabs.filter((t) => t.show);
+  const currentTab = visibleTabs.some((t) => t.key === tab) ? tab : "description";
 
   return (
     <div className="page pt-12 pb-24">
@@ -318,7 +431,7 @@ export default function ProductDetail() {
                   {showBookCover ? (
                     <BookCover
                       title={product.name}
-                      subtitle="C. HADAWAY"
+                      subtitle={coverSubtitle}
                       palette="warm"
                       src={activeSrc}
                       alt={activeAlt}
@@ -356,10 +469,14 @@ export default function ProductDetail() {
                     key={i}
                     type="button"
                     onClick={() => setThumb(i)}
-                    className={cn(
-                      "relative overflow-hidden p-0 border-0 bg-transparent cursor-pointer",
-                      i === 4 && "hidden sm:block"
-                    )}
+                    className="relative overflow-hidden p-0 border-0 bg-transparent cursor-pointer"
+                    data-tina-field={
+                      tinaDoc
+                        ? i === 0
+                          ? tinaField(tinaDoc, "image")
+                          : tinaField(tinaDoc, "galleryImages", i - 1)
+                        : undefined
+                    }
                     style={{
                       borderRadius: 10,
                       transform:
@@ -376,7 +493,7 @@ export default function ProductDetail() {
                       palette={PALETTE_BY_INDEX[i]}
                       width="100%"
                       height={84}
-                      src={slot?.src}
+                      src={slot?.src || undefined}
                       alt={slot?.alt || `${product.name} thumbnail ${i + 1}`}
                       label={`${i + 1}`}
                       radius={10}
@@ -399,8 +516,13 @@ export default function ProductDetail() {
 
             <div>
               <Reveal>
-                <div className="eyebrow-grad mb-4">
-                  {product.featured ? "FEATURED" : "FROM THE STUDIO"}
+                <div
+                  className="eyebrow-grad mb-4"
+                  data-tina-field={
+                    tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                  }
+                >
+                  {eyebrow}
                 </div>
               </Reveal>
               <Reveal>
@@ -446,19 +568,36 @@ export default function ProductDetail() {
                       >
                         ${product.price.toFixed(2)}
                       </div>
-                      <div className="eyebrow">PAPERBACK</div>
+                      <div
+                        className="eyebrow"
+                        data-tina-field={
+                          tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                        }
+                      >
+                        {copy?.paperbackLabel || "PAPERBACK"}
+                      </div>
                     </div>
                     <div>
                       <div
+                        data-tina-field={
+                          tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                        }
                         style={{
                           fontFamily: "var(--f-serif)",
                           fontSize: 36,
                           color: "var(--ink)",
                         }}
                       >
-                        eBook
+                        {copy?.ebookLabel || "eBook"}
                       </div>
-                      <div className="eyebrow">GUMROAD · GOOGLE PLAY</div>
+                      <div
+                        className="eyebrow"
+                        data-tina-field={
+                          tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                        }
+                      >
+                        {copy?.ebookStoresLabel || "GUMROAD · GOOGLE PLAY"}
+                      </div>
                     </div>
                   </div>
                 </Reveal>
@@ -510,7 +649,7 @@ export default function ProductDetail() {
                         href={product.gumroadUrl}
                         external
                       >
-                        Get eBook on Gumroad
+                        {copy?.gumroadButtonLabel || "Get eBook on Gumroad"}
                       </Btn>
                     ) : product.amazonUrl ? (
                       <Btn
@@ -521,7 +660,7 @@ export default function ProductDetail() {
                         external
                         analyticsPlacement="product_detail"
                       >
-                        Buy paperback on Amazon
+                        {copy?.amazonButtonLabel || "Buy paperback on Amazon"}
                       </Btn>
                     ) : null}
                     {product.googlePlayUrl ? (
@@ -531,7 +670,8 @@ export default function ProductDetail() {
                         href={product.googlePlayUrl}
                         external
                       >
-                        Get eBook on Google Play
+                        {copy?.googlePlayButtonLabel ||
+                          "Get eBook on Google Play"}
                       </Btn>
                     ) : null}
                     {product.gumroadUrl && product.amazonUrl ? (
@@ -543,7 +683,7 @@ export default function ProductDetail() {
                         external
                         analyticsPlacement="product_detail"
                       >
-                        Buy paperback on Amazon
+                        {copy?.amazonButtonLabel || "Buy paperback on Amazon"}
                       </Btn>
                     ) : null}
                   </BtnGroup>
@@ -551,7 +691,14 @@ export default function ProductDetail() {
               ) : (
                 <>
                   <Reveal>
-                    <div className="mb-7">
+                    <div
+                      className="mb-7"
+                      data-tina-field={
+                        tinaDoc
+                          ? tinaField(tinaDoc, "purchaseOptions")
+                          : undefined
+                      }
+                    >
                       <div className="eyebrow mb-3">{formats.label}</div>
                       <div className="flex gap-2.5 flex-wrap">
                         {formats.options.map((f, i) => {
@@ -680,7 +827,9 @@ export default function ProductDetail() {
                           flyToCart(e.currentTarget);
                         }}
                       >
-                        {!product.inStock ? "Out of stock" : "Add to cart"}
+                        {!product.inStock
+                          ? "Out of stock"
+                          : copy?.addToCartLabel || "Add to cart"}
                       </Btn>
                       <Btn
                         kind="primary"
@@ -699,26 +848,28 @@ export default function ProductDetail() {
                           });
                         }}
                       >
-                        {isCheckingOut ? "Redirecting…" : "Buy now"}
+                        {isCheckingOut
+                          ? "Redirecting…"
+                          : copy?.buyNowLabel || "Buy now"}
                       </Btn>
                     </div>
                   </Reveal>
 
                   <Reveal>
+                    {trustBullets.length > 0 && (
                     <div
                       className="flex flex-wrap gap-x-7 gap-y-3 py-5"
+                      data-tina-field={
+                        tinaDoc ? tinaField(tinaDoc, "trustBullets") : undefined
+                      }
                       style={{
                         borderTop: "1px solid rgba(46,34,34,0.1)",
                         borderBottom: "1px solid rgba(46,34,34,0.1)",
                       }}
                     >
-                      {[
-                        "Instant download",
-                        "Stripe secure checkout",
-                        "30-day returns",
-                      ].map((label, i) => (
+                      {trustBullets.map((item, i) => (
                         <div
-                          key={label}
+                          key={`${item.label}-${i}`}
                           className="flex items-center gap-2.5"
                         >
                           <span
@@ -732,10 +883,11 @@ export default function ProductDetail() {
                               ][i % 3],
                             }}
                           />
-                          <span className="eyebrow">{label}</span>
+                          <span className="eyebrow">{item.label}</span>
                         </div>
                       ))}
                     </div>
+                    )}
                   </Reveal>
                 </>
               )}
@@ -751,13 +903,14 @@ export default function ProductDetail() {
         <div className="bq-container">
           <div
             className="flex flex-wrap gap-9 relative"
+            data-tina-field={tinaDoc ? tinaField(tinaDoc, "tabs") : undefined}
             style={{
               borderBottom: "1px solid rgba(46,34,34,0.08)",
               marginBottom: 36,
             }}
           >
-            {TABS.map((t) => {
-              const active = tab === t.key;
+            {visibleTabs.map((t) => {
+              const active = currentTab === t.key;
               return (
                 <button
                   key={t.key}
@@ -789,7 +942,7 @@ export default function ProductDetail() {
           </div>
 
           <div className="min-h-[260px]">
-            {tab === "description" && (
+            {currentTab === "description" && (
               <div className="grid lg:grid-cols-[2fr_1fr] gap-10 lg:gap-14">
                 <div
                   style={{
@@ -799,20 +952,35 @@ export default function ProductDetail() {
                   }}
                 >
                   <RichText value={product.description} className="mb-4" />
-                  <p className="mb-4">
-                    {isBook
-                      ? "Paperback copies are available on Amazon. eBooks are on Gumroad and Google Play — choose whichever store works best for you."
-                      : "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author."}
-                  </p>
-                  {!isBook && (
-                    <p>
-                      Digital editions are delivered by email immediately after
-                      checkout.
-                    </p>
+                  {copy ? (
+                    <div
+                      data-tina-field={
+                        tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                      }
+                    >
+                      <RichText value={copy.fullDescription} />
+                    </div>
+                  ) : (
+                    <>
+                      <p className="mb-4">
+                        {isBook
+                          ? "Paperback copies are available on Amazon. eBooks are on Gumroad and Google Play — choose whichever store works best for you."
+                          : "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author."}
+                      </p>
+                      {!isBook && (
+                        <p>
+                          Digital editions are delivered by email immediately after
+                          checkout.
+                        </p>
+                      )}
+                    </>
                   )}
                 </div>
                 <div
                   className="self-start p-7"
+                  data-tina-field={
+                    tinaDoc ? tinaField(tinaDoc, "details") : undefined
+                  }
                   style={{
                     background: "var(--paper-2)",
                     borderRadius: 18,
@@ -820,12 +988,25 @@ export default function ProductDetail() {
                 >
                   <div className="eyebrow mb-4">DETAILS</div>
                   {[
-                    ["Format", isBook ? "Paperback & eBook" : formats.options[formatIdx].name],
+                    [
+                      "Format",
+                      product.details?.format ||
+                        (isBook
+                          ? "Paperback & eBook"
+                          : formats.options[formatIdx]?.name),
+                    ],
                     ["Category", product.category],
                     ...(isBook
                       ? []
                       : [["In stock", product.inStock ? "Yes" : "No"] as const]),
-                    ["Studio", "Nantes, France"],
+                    ...(product.details
+                      ? product.details.studio
+                        ? [["Studio", product.details.studio] as const]
+                        : []
+                      : [["Studio", "Nantes, France"] as const]),
+                    ...(product.details?.rows ?? []).map(
+                      (row) => [row.label, row.value] as const
+                    ),
                   ].map(([k, v]) => (
                     <div
                       key={k}
@@ -847,10 +1028,9 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {tab === "inside" && (
+            {currentTab === "inside" && (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-                {Array.from({ length: 6 }, (_, i) => {
-                  const spread = product.spreadImages[i];
+                {spreads.map((spread, i) => {
                   const label = isBook ? `SPREAD ${i + 1}` : `PREVIEW ${i + 1}`;
                   return (
                     <div
@@ -865,9 +1045,9 @@ export default function ProductDetail() {
                         palette={PALETTE_BY_INDEX[i % 5]}
                         width="100%"
                         height={220}
-                        label={label}
-                        src={spread?.src}
-                        alt={spread?.alt || label}
+                        label={spread.src ? spread.alt || label : label}
+                        src={spread.src || undefined}
+                        alt={spread.alt || label}
                       />
                     </div>
                   );
@@ -875,8 +1055,8 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {tab === "reviews" && (
-              <div>
+            {currentTab === "reviews" && (
+              <div data-tina-field={tinaDoc ? tinaField(tinaDoc, "reviews") : undefined}>
                 <div className="flex flex-wrap items-baseline gap-4 mb-8">
                   <span
                     style={{
@@ -885,45 +1065,31 @@ export default function ProductDetail() {
                       color: "var(--ink)",
                     }}
                   >
-                    4.9
+                    {Number.isInteger(reviewRating)
+                      ? reviewRating
+                      : reviewRating.toFixed(1)}
                   </span>
                   <span
                     style={{ color: "var(--gold)", fontSize: 22 }}
                   >
-                    ★★★★★
+                    {starString(reviewRating)}
                   </span>
-                  <span
-                    style={{ color: "var(--ink-mute)", fontSize: 14 }}
-                  >
-                    142 reviews
-                  </span>
+                  {reviewCountLabel ? (
+                    <span
+                      style={{ color: "var(--ink-mute)", fontSize: 14 }}
+                    >
+                      {reviewCountLabel}
+                    </span>
+                  ) : null}
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
-                  {[
-                    {
-                      name: "Maya R.",
-                      date: "MAY 2026",
-                      body: "Absolutely beautiful. Worth every penny — even better in print than I'd imagined.",
-                    },
-                    {
-                      name: "Tom K.",
-                      date: "APR 2026",
-                      body: "I bought the bundle and use the brushes every day now. Everything just fits together.",
-                    },
-                    {
-                      name: "Liv H.",
-                      date: "APR 2026",
-                      body: "Quiet, gentle, and visually stunning. A book I keep on my desk to flip through.",
-                    },
-                    {
-                      name: "David S.",
-                      date: "MAR 2026",
-                      body: "Corinne explains the why behind each decision. So much better than copying tutorials.",
-                    },
-                  ].map((r) => (
+                  {reviewItems.map((r, i) => (
                     <div
-                      key={r.name}
+                      key={`${r.name}-${i}`}
                       className="p-6"
+                      data-tina-field={
+                        tinaDoc ? tinaField(tinaDoc, "reviews") : undefined
+                      }
                       style={{
                         background: "var(--paper-2)",
                         borderRadius: 16,
@@ -933,7 +1099,7 @@ export default function ProductDetail() {
                         className="mb-2.5"
                         style={{ color: "var(--gold)" }}
                       >
-                        ★★★★★
+                        {starString(r.stars)}
                       </div>
                       <p
                         className="mb-3.5 italic"
@@ -946,7 +1112,7 @@ export default function ProductDetail() {
                         “{r.body}”
                       </p>
                       <div className="eyebrow">
-                        {r.name} · {r.date}
+                        {r.date ? `${r.name} · ${r.date}` : r.name}
                       </div>
                     </div>
                   ))}
@@ -954,7 +1120,7 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {tab === "shipping" && (
+            {currentTab === "shipping" && (
               <div
                 className="max-w-[640px]"
                 style={{
@@ -963,43 +1129,75 @@ export default function ProductDetail() {
                   lineHeight: 1.8,
                 }}
               >
-                <p className="mb-4">
-                  {isBook
-                    ? "Paperback copies are sold on Amazon. eBooks are available on Gumroad and Google Play — instant delivery, no shipping."
-                    : "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."}
-                </p>
-                <p>
-                  Questions? Email{" "}
-                  <a
-                    href="mailto:hello@bladeandquillacademy.com"
-                    className="link-ink"
-                    style={{ color: "var(--maroon)" }}
-                  >
-                    hello@bladeandquillacademy.com
-                  </a>
-                  .
-                </p>
+                {copy ? (
+                  <>
+                    <div
+                      data-tina-field={
+                        tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                      }
+                    >
+                      <RichText value={copy.shippingNote} className="mb-4" />
+                    </div>
+                    {copy.supportEmail ? (
+                      <p
+                        data-tina-field={
+                          tinaDoc ? tinaField(tinaDoc, "pageCopy") : undefined
+                        }
+                      >
+                        Questions? Email{" "}
+                        <a
+                          href={`mailto:${copy.supportEmail}`}
+                          className="link-ink"
+                          style={{ color: "var(--maroon)" }}
+                        >
+                          {copy.supportEmail}
+                        </a>
+                        .
+                      </p>
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    <p className="mb-4">
+                      {isBook
+                        ? "Paperback copies are sold on Amazon. eBooks are available on Gumroad and Google Play — instant delivery, no shipping."
+                        : "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."}
+                    </p>
+                    <p>
+                      Questions? Email{" "}
+                      <a
+                        href="mailto:hello@bladeandquillacademy.com"
+                        className="link-ink"
+                        style={{ color: "var(--maroon)" }}
+                      >
+                        hello@bladeandquillacademy.com
+                      </a>
+                      .
+                    </p>
+                  </>
+                )}
               </div>
             )}
           </div>
         </div>
       </section>
 
-      {related.length > 0 && (
+      {related.length > 0 && product.related?.show !== false && (
         <section
           className="py-20"
+          data-tina-field={tinaDoc ? tinaField(tinaDoc, "related") : undefined}
           style={{ background: "var(--paper-2)" }}
         >
           <div className="bq-container">
             <div className="mb-10">
               <Reveal>
                 <div className="eyebrow-grad mb-3">
-                  MORE FROM THE STUDIO
+                  {product.related?.eyebrow || "MORE FROM THE STUDIO"}
                 </div>
               </Reveal>
               <Reveal>
                 <h2 style={{ fontSize: "clamp(28px, 3.6vw, 40px)" }}>
-                  You might also like
+                  {product.related?.heading || "You might also like"}
                 </h2>
               </Reveal>
             </div>

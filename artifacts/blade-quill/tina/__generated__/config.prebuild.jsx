@@ -2378,6 +2378,498 @@ var BLOG_BLOCKS = [
   blogCtaBlock
 ];
 
+// tina/product-page-fields.ts
+function richText(...paragraphs) {
+  return {
+    type: "root",
+    children: paragraphs.map((text) => ({
+      type: "p",
+      children: [{ type: "text", text }]
+    }))
+  };
+}
+var emptyThumb = (alt) => ({ src: "", alt });
+var SHOP_PRODUCT_DEFAULT_ITEM = {
+  name: "New product",
+  description: richText("A short description for shop cards and the top of the product page."),
+  price: 15,
+  category: "digital",
+  image: "",
+  galleryImages: [
+    emptyThumb("Thumbnail 2"),
+    emptyThumb("Thumbnail 3"),
+    emptyThumb("Thumbnail 4"),
+    emptyThumb("Thumbnail 5")
+  ],
+  spreadImages: [
+    emptyThumb("Preview 1"),
+    emptyThumb("Preview 2"),
+    emptyThumb("Preview 3"),
+    emptyThumb("Preview 4"),
+    emptyThumb("Preview 5"),
+    emptyThumb("Preview 6")
+  ],
+  featured: false,
+  inStock: true,
+  pageCopy: {
+    eyebrow: "",
+    coverSubtitle: "C. HADAWAY",
+    fullDescription: richText(
+      "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author.",
+      "Digital editions are delivered by email immediately after checkout."
+    ),
+    shippingNote: richText(
+      "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."
+    ),
+    supportEmail: "hello@bladeandquillacademy.com",
+    paperbackLabel: "PAPERBACK",
+    ebookLabel: "eBook",
+    ebookStoresLabel: "GUMROAD \xB7 GOOGLE PLAY",
+    addToCartLabel: "Add to cart",
+    buyNowLabel: "Buy now",
+    gumroadButtonLabel: "Get eBook on Gumroad",
+    amazonButtonLabel: "Buy paperback on Amazon",
+    googlePlayButtonLabel: "Get eBook on Google Play"
+  },
+  purchaseOptions: {
+    groupLabel: "LICENSE",
+    options: [
+      { name: "Personal", meta: "$15" },
+      { name: "Commercial", meta: "$37" }
+    ]
+  },
+  trustBullets: [
+    { label: "Instant download" },
+    { label: "Stripe secure checkout" },
+    { label: "30-day returns" }
+  ],
+  details: {
+    format: "",
+    studio: "Nantes, France",
+    rows: []
+  },
+  reviews: {
+    rating: 4.9,
+    countLabel: "142 reviews",
+    items: [
+      {
+        name: "Maya R.",
+        date: "MAY 2026",
+        body: "Absolutely beautiful. Worth every penny \u2014 even better in print than I'd imagined.",
+        stars: 5
+      },
+      {
+        name: "Tom K.",
+        date: "APR 2026",
+        body: "I bought the bundle and use the brushes every day now. Everything just fits together.",
+        stars: 5
+      },
+      {
+        name: "Liv H.",
+        date: "APR 2026",
+        body: "Quiet, gentle, and visually stunning. A book I keep on my desk to flip through.",
+        stars: 5
+      },
+      {
+        name: "David S.",
+        date: "MAR 2026",
+        body: "Corinne explains the why behind each decision. So much better than copying tutorials.",
+        stars: 5
+      }
+    ]
+  },
+  tabs: {
+    descriptionLabel: "Description",
+    insideLabel: "Inside",
+    reviewsLabel: "Reviews",
+    shippingLabel: "Shipping & License",
+    showInside: true,
+    showReviews: true,
+    showShipping: true
+  },
+  related: {
+    eyebrow: "MORE FROM THE STUDIO",
+    heading: "You might also like",
+    show: true
+  }
+};
+var PRODUCT_PAGE_FIELDS = [
+  {
+    type: "object",
+    name: "pageCopy",
+    label: "Page Copy & Buttons",
+    ui: {
+      description: "Headlines, extra description, button labels, and book price labels on this product page."
+    },
+    fields: [
+      {
+        type: "string",
+        name: "eyebrow",
+        label: "Eyebrow (above the title)",
+        ui: charLimit(
+          40,
+          "Small label above the product name. Leave blank to use FEATURED or FROM THE STUDIO automatically."
+        )
+      },
+      {
+        type: "string",
+        name: "coverSubtitle",
+        label: "Cover Author Line (books)",
+        ui: charLimit(
+          40,
+          "Shown on the decorative book cover when no extra gallery image is selected (e.g. C. HADAWAY)."
+        )
+      },
+      {
+        type: "rich-text",
+        name: "fullDescription",
+        label: "Full Description (Description tab)",
+        overrides: INLINE_RICH_TEXT,
+        parser: SLATE_JSON_PARSER,
+        templates: RICH_TEXT_TEMPLATES,
+        ui: {
+          description: "Longer copy under the Description tab. The short Description field above still shows under the title and on shop cards."
+        }
+      },
+      {
+        type: "rich-text",
+        name: "shippingNote",
+        label: "Shipping & License Copy",
+        overrides: INLINE_RICH_TEXT,
+        parser: SLATE_JSON_PARSER,
+        templates: RICH_TEXT_TEMPLATES,
+        ui: {
+          description: "Body copy for the Shipping & License tab."
+        }
+      },
+      {
+        type: "string",
+        name: "supportEmail",
+        label: "Support Email",
+        ui: charLimit(
+          80,
+          "Shown as a mailto link at the end of the Shipping & License tab. Leave blank to hide it."
+        )
+      },
+      {
+        type: "string",
+        name: "paperbackLabel",
+        label: "Paperback Price Label (books)",
+        ui: charLimit(24, "Small label under the price on book pages (e.g. PAPERBACK).")
+      },
+      {
+        type: "string",
+        name: "ebookLabel",
+        label: "eBook Title (books)",
+        ui: charLimit(24, "The word shown next to the paperback price (e.g. eBook).")
+      },
+      {
+        type: "string",
+        name: "ebookStoresLabel",
+        label: "eBook Stores Line (books)",
+        ui: charLimit(40, "Small line under the eBook title (e.g. GUMROAD \xB7 GOOGLE PLAY).")
+      },
+      {
+        type: "string",
+        name: "addToCartLabel",
+        label: "Add to Cart Button",
+        ui: charLimit(24, "Digital / bundle / curriculum products.")
+      },
+      {
+        type: "string",
+        name: "buyNowLabel",
+        label: "Buy Now Button",
+        ui: charLimit(24, "Digital / bundle / curriculum products.")
+      },
+      {
+        type: "string",
+        name: "gumroadButtonLabel",
+        label: "Gumroad Button (books)",
+        ui: charLimit(40)
+      },
+      {
+        type: "string",
+        name: "amazonButtonLabel",
+        label: "Amazon Button (books)",
+        ui: charLimit(40)
+      },
+      {
+        type: "string",
+        name: "googlePlayButtonLabel",
+        label: "Google Play Button (books)",
+        ui: charLimit(40)
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "purchaseOptions",
+    label: "License / Format Tiles",
+    ui: {
+      description: "The selectable tiles under the price (Personal / Commercial, Hardcover / Ebook, etc.). These are for display \u2014 Stripe still charges the Price field above."
+    },
+    fields: [
+      {
+        type: "string",
+        name: "groupLabel",
+        label: "Group Label",
+        ui: charLimit(24, "Small heading above the tiles (e.g. LICENSE, FORMAT, OPTIONS).")
+      },
+      {
+        type: "object",
+        name: "options",
+        label: "Tiles",
+        list: true,
+        ui: {
+          itemProps: (item) => ({
+            label: [item?.name, item?.meta].filter(Boolean).join(" \xB7 ") || "Tile"
+          }),
+          defaultItem: { name: "Option", meta: "" },
+          description: "Add, remove, or rewrite the tiles. Leave this list empty to use automatic tiles from the product category and price."
+        },
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            required: true,
+            ui: charLimit(32, "e.g. Personal, Commercial, Hardcover.")
+          },
+          {
+            type: "string",
+            name: "meta",
+            label: "Price / Note",
+            ui: charLimit(40, "The smaller line under the name, e.g. $15 or $14 \xB7 instant.")
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "trustBullets",
+    label: "Trust Badges",
+    list: true,
+    ui: {
+      description: "The small checklist under Add to cart (Instant download, Stripe, returns). Remove every item to hide the row.",
+      itemProps: (item) => ({
+        label: item?.label || "Badge"
+      }),
+      defaultItem: { label: "New badge" }
+    },
+    fields: [
+      {
+        type: "string",
+        name: "label",
+        label: "Label",
+        required: true,
+        ui: charLimit(40)
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "details",
+    label: "Details Box",
+    ui: {
+      description: "The DETAILS card on the Description tab. Format and Studio can be edited; extra rows are added below them."
+    },
+    fields: [
+      {
+        type: "string",
+        name: "format",
+        label: "Format",
+        ui: charLimit(
+          40,
+          "Overrides the automatic format line (e.g. Paperback & eBook). Leave blank to keep the automatic value."
+        )
+      },
+      {
+        type: "string",
+        name: "studio",
+        label: "Studio",
+        ui: charLimit(40, "e.g. Nantes, France. Leave blank to hide this row.")
+      },
+      {
+        type: "object",
+        name: "rows",
+        label: "Extra Detail Rows",
+        list: true,
+        ui: {
+          itemProps: (item) => ({
+            label: [item?.label, item?.value].filter(Boolean).join(" \xB7 ") || "Row"
+          }),
+          defaultItem: { label: "", value: "" }
+        },
+        fields: [
+          {
+            type: "string",
+            name: "label",
+            label: "Label",
+            required: true,
+            ui: charLimit(24, "Left side, e.g. Pages or Age.")
+          },
+          {
+            type: "string",
+            name: "value",
+            label: "Value",
+            required: true,
+            ui: charLimit(40, "Right side, e.g. 64 or Ages 8\u201312.")
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "reviews",
+    label: "Reviews",
+    ui: {
+      description: "The Reviews tab: overall rating plus each review card. Remove every review to hide the tab on the live site."
+    },
+    fields: [
+      {
+        type: "number",
+        name: "rating",
+        label: "Overall Rating",
+        ui: { description: "The big number (e.g. 4.9). Use 0\u20135." }
+      },
+      {
+        type: "string",
+        name: "countLabel",
+        label: "Review Count Label",
+        ui: charLimit(32, "e.g. 142 reviews.")
+      },
+      {
+        type: "object",
+        name: "items",
+        label: "Review Cards",
+        list: true,
+        ui: {
+          itemProps: (item) => ({
+            label: [item?.name, item?.date].filter(Boolean).join(" \xB7 ") || "Review"
+          }),
+          defaultItem: {
+            name: "A reader",
+            date: "",
+            body: "",
+            stars: 5
+          }
+        },
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            required: true,
+            ui: charLimit(40)
+          },
+          {
+            type: "string",
+            name: "date",
+            label: "Date",
+            ui: charLimit(24, "e.g. MAY 2026.")
+          },
+          {
+            type: "string",
+            name: "body",
+            label: "Review",
+            ui: {
+              component: "textarea",
+              ...charLimit(400, "The quote on the card.")
+            }
+          },
+          {
+            type: "number",
+            name: "stars",
+            label: "Stars",
+            ui: { description: "1 to 5. Defaults to 5 if left blank." }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "tabs",
+    label: "Tabs",
+    ui: {
+      description: "Rename or hide the tabs under the product (Description is always shown)."
+    },
+    fields: [
+      {
+        type: "string",
+        name: "descriptionLabel",
+        label: "Description Tab Label",
+        ui: charLimit(24)
+      },
+      {
+        type: "string",
+        name: "insideLabel",
+        label: "Inside Tab Label",
+        ui: charLimit(24)
+      },
+      {
+        type: "string",
+        name: "reviewsLabel",
+        label: "Reviews Tab Label",
+        ui: charLimit(24)
+      },
+      {
+        type: "string",
+        name: "shippingLabel",
+        label: "Shipping Tab Label",
+        ui: charLimit(32)
+      },
+      {
+        type: "boolean",
+        name: "showInside",
+        label: "Show Inside Tab",
+        ui: {
+          description: "Off hides the Look Inside / Previews tab even if images are uploaded."
+        }
+      },
+      {
+        type: "boolean",
+        name: "showReviews",
+        label: "Show Reviews Tab"
+      },
+      {
+        type: "boolean",
+        name: "showShipping",
+        label: "Show Shipping & License Tab"
+      }
+    ]
+  },
+  {
+    type: "object",
+    name: "related",
+    label: "Related Products",
+    ui: {
+      description: "The \u201Cyou might also like\u201D row at the bottom of the page."
+    },
+    fields: [
+      {
+        type: "boolean",
+        name: "show",
+        label: "Show Related Products"
+      },
+      {
+        type: "string",
+        name: "eyebrow",
+        label: "Eyebrow",
+        ui: charLimit(40, "Small line above the heading.")
+      },
+      {
+        type: "string",
+        name: "heading",
+        label: "Heading",
+        ui: charLimit(60)
+      }
+    ]
+  }
+];
+
 // tina/seo.ts
 import React from "react";
 var h = React.createElement;
@@ -3491,6 +3983,25 @@ var config_default = defineConfig({
         path: "content/products",
         format: "json",
         ui: {
+          // Pre-fill every required field on a brand-new product. Tina refuses
+          // to open any list-item panel (thumbnails, spreads, download files)
+          // while a required field is empty — "Cannot navigate away from an
+          // invalid form" — so a new product must start out valid. Product ID
+          // is a unix-seconds stamp: unique, and far above the hand-numbered
+          // legacy IDs (1–3). Price stays required so it is never guessed.
+          // Spread because UICollection's published type omits defaultItem;
+          // Tina's runtime reads collection.ui.defaultItem (its source even
+          // carries "@ts-ignore internal types aren't up to date" there).
+          ...{
+            defaultItem: () => ({
+              name: "New product",
+              category: "digital",
+              productId: Math.floor(Date.now() / 1e3),
+              inStock: true,
+              featured: false,
+              createdAt: (/* @__PURE__ */ new Date()).toISOString()
+            })
+          },
           router: ({ document }) => {
             const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
             return `/shop/${base}`;
@@ -3525,7 +4036,7 @@ var config_default = defineConfig({
             label: "Price (USD)",
             required: true,
             ui: {
-              description: "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here \u2014 no Stripe dashboard needed."
+              description: "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here \u2014 no Stripe dashboard needed. On a new product, set the price before adding images or files."
             }
           },
           {
@@ -3546,19 +4057,19 @@ var config_default = defineConfig({
           {
             type: "image",
             name: "image",
-            label: "Cover Image",
+            label: "Cover Image (thumbnail 1)",
             ui: {
-              description: "Product image for the shop grid and detail page. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/."
+              description: "The large product photo and the first thumbnail. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/."
             }
           },
           {
             type: "object",
             name: "galleryImages",
-            label: "Detail Page Thumbnails",
+            label: "More Thumbnails (under the big photo)",
             list: true,
             ui: {
-              description: "Up to 4 extra images for the thumbnail strip under the large preview. Slot 1 is always the Cover Image; the first upload here becomes thumbnail 2. Upload into images/products/.",
-              max: 4,
+              description: "Click + Add to upload more small images under the big photo. The Cover Image is always thumbnail 1; the first item here is thumbnail 2. Upload into images/products/.",
+              max: 8,
               itemProps: (item) => ({
                 label: item?.alt || item?.src?.split("/").pop() || "Thumbnail"
               }),
@@ -3573,7 +4084,7 @@ var config_default = defineConfig({
                 name: "src",
                 label: "Image",
                 ui: {
-                  description: "Square or 3:4 portrait works best. At least 800px wide."
+                  description: "Click to upload or pick from Media. Square or 3:4 portrait works best. At least 800px wide."
                 }
               },
               {
@@ -3590,13 +4101,13 @@ var config_default = defineConfig({
           {
             type: "object",
             name: "spreadImages",
-            label: "Interior Spreads / Previews",
+            label: "Inside Tab Images (previews / spreads)",
             list: true,
             ui: {
-              description: "Up to 6 images for the Look Inside tab (books show as Spreads, digital as Previews). Upload page spreads or sample pages into images/products/.",
-              max: 6,
+              description: "These fill the Inside tab \u2014 the PREVIEW / SPREAD boxes. Click + Add for each page you want to show, then upload the image. Upload into images/products/.",
+              max: 12,
               itemProps: (item) => ({
-                label: item?.alt?.trim() || item?.src?.split("/").pop() || "Spread"
+                label: item?.alt?.trim() || item?.src?.split("/").pop() || "Preview"
               }),
               defaultItem: {
                 src: "",
@@ -3609,7 +4120,7 @@ var config_default = defineConfig({
                 name: "src",
                 label: "Image",
                 ui: {
-                  description: "Landscape page spread or preview works best. At least 1200px wide."
+                  description: "Click to upload or pick from Media. Landscape page spread or preview works best. At least 1200px wide."
                 }
               },
               {
@@ -3623,6 +4134,7 @@ var config_default = defineConfig({
               }
             ]
           },
+          ...PRODUCT_PAGE_FIELDS,
           {
             type: "boolean",
             name: "featured",
@@ -3659,7 +4171,10 @@ var config_default = defineConfig({
                 type: "string",
                 name: "file",
                 label: "File",
-                required: true,
+                // Not `required`: an empty just-added item would make the whole
+                // form invalid and lock Tina's panel navigation (see the
+                // defaultItem note on this collection). Empty items are ignored
+                // by checkout (toDownloadFiles in lib/checkout).
                 ui: {
                   // Tina's Component typing predates custom-field props; same
                   // cast the SEO assistant uses in tina/seo.ts.
@@ -3716,7 +4231,7 @@ var config_default = defineConfig({
             label: "Product ID (advanced)",
             required: true,
             ui: {
-              description: "Stable numeric ID for cart and Stripe. Must be unique. Do not change existing products \u2014 only set this when creating a brand-new product (pick the next free number)."
+              description: "Stable numeric ID for cart and Stripe \u2014 filled in automatically for new products. Must be unique. Never change it on an existing product."
             }
           },
           {

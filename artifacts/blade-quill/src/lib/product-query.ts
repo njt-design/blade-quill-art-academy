@@ -32,6 +32,63 @@ export const shopProductQuery = `
         src
         alt
       }
+      pageCopy {
+        eyebrow
+        coverSubtitle
+        fullDescription
+        shippingNote
+        supportEmail
+        paperbackLabel
+        ebookLabel
+        ebookStoresLabel
+        addToCartLabel
+        buyNowLabel
+        gumroadButtonLabel
+        amazonButtonLabel
+        googlePlayButtonLabel
+      }
+      purchaseOptions {
+        groupLabel
+        options {
+          name
+          meta
+        }
+      }
+      trustBullets {
+        label
+      }
+      details {
+        format
+        studio
+        rows {
+          label
+          value
+        }
+      }
+      reviews {
+        rating
+        countLabel
+        items {
+          name
+          date
+          body
+          stars
+        }
+      }
+      tabs {
+        descriptionLabel
+        insideLabel
+        reviewsLabel
+        shippingLabel
+        showInside
+        showReviews
+        showShipping
+      }
+      related {
+        eyebrow
+        heading
+        show
+      }
       gumroadUrl
       downloadUrl
       amazonUrl

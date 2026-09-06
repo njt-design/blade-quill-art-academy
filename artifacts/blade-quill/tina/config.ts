@@ -13,6 +13,7 @@ import {
   charLimit,
 } from "./blocks";
 import { BLOG_BLOCKS } from "./blog-blocks";
+import { PRODUCT_PAGE_FIELDS } from "./product-page-fields";
 import { CORE_PAGE_SLUGS, corePageRoute, seoFields } from "./seo";
 
 const INSIGHTS_AUTH_MESSAGE = "bq-insights-auth";
@@ -955,6 +956,25 @@ export default defineConfig({
         path: "content/products",
         format: "json",
         ui: {
+          // Pre-fill every required field on a brand-new product. Tina refuses
+          // to open any list-item panel (thumbnails, spreads, download files)
+          // while a required field is empty — "Cannot navigate away from an
+          // invalid form" — so a new product must start out valid. Product ID
+          // is a unix-seconds stamp: unique, and far above the hand-numbered
+          // legacy IDs (1–3). Price stays required so it is never guessed.
+          // Spread because UICollection's published type omits defaultItem;
+          // Tina's runtime reads collection.ui.defaultItem (its source even
+          // carries "@ts-ignore internal types aren't up to date" there).
+          ...({
+            defaultItem: () => ({
+              name: "New product",
+              category: "digital",
+              productId: Math.floor(Date.now() / 1000),
+              inStock: true,
+              featured: false,
+              createdAt: new Date().toISOString(),
+            }),
+          } as Record<string, unknown>),
           router: ({ document }) => {
             const base =
               document._sys.basename?.replace(/\.json$/i, "") ??
@@ -993,7 +1013,7 @@ export default defineConfig({
             required: true,
             ui: {
               description:
-                "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here — no Stripe dashboard needed.",
+                "Customer pays this amount at Stripe Checkout (USD, e.g. 24.99). Change it here — no Stripe dashboard needed. On a new product, set the price before adding images or files.",
             },
           },
           {
@@ -1015,21 +1035,21 @@ export default defineConfig({
           {
             type: "image",
             name: "image",
-            label: "Cover Image",
+            label: "Cover Image (thumbnail 1)",
             ui: {
               description:
-                "Product image for the shop grid and detail page. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/.",
+                "The large product photo and the first thumbnail. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/.",
             },
           },
           {
             type: "object",
             name: "galleryImages",
-            label: "Detail Page Thumbnails",
+            label: "More Thumbnails (under the big photo)",
             list: true,
             ui: {
               description:
-                "Up to 4 extra images for the thumbnail strip under the large preview. Slot 1 is always the Cover Image; the first upload here becomes thumbnail 2. Upload into images/products/.",
-              max: 4,
+                "Click + Add to upload more small images under the big photo. The Cover Image is always thumbnail 1; the first item here is thumbnail 2. Upload into images/products/.",
+              max: 8,
               itemProps: (item: Record<string, unknown> | undefined) => ({
                 label:
                   (item?.alt as string) ||
@@ -1048,7 +1068,7 @@ export default defineConfig({
                 label: "Image",
                 ui: {
                   description:
-                    "Square or 3:4 portrait works best. At least 800px wide.",
+                    "Click to upload or pick from Media. Square or 3:4 portrait works best. At least 800px wide.",
                 },
               },
               {
@@ -1065,17 +1085,17 @@ export default defineConfig({
           {
             type: "object",
             name: "spreadImages",
-            label: "Interior Spreads / Previews",
+            label: "Inside Tab Images (previews / spreads)",
             list: true,
             ui: {
               description:
-                "Up to 6 images for the Look Inside tab (books show as Spreads, digital as Previews). Upload page spreads or sample pages into images/products/.",
-              max: 6,
+                "These fill the Inside tab — the PREVIEW / SPREAD boxes. Click + Add for each page you want to show, then upload the image. Upload into images/products/.",
+              max: 12,
               itemProps: (item: Record<string, unknown> | undefined) => ({
                 label:
                   (item?.alt as string)?.trim() ||
                   (item?.src as string)?.split("/").pop() ||
-                  "Spread",
+                  "Preview",
               }),
               defaultItem: {
                 src: "",
@@ -1089,7 +1109,7 @@ export default defineConfig({
                 label: "Image",
                 ui: {
                   description:
-                    "Landscape page spread or preview works best. At least 1200px wide.",
+                    "Click to upload or pick from Media. Landscape page spread or preview works best. At least 1200px wide.",
                 },
               },
               {
@@ -1103,6 +1123,7 @@ export default defineConfig({
               },
             ],
           },
+          ...PRODUCT_PAGE_FIELDS,
           {
             type: "boolean",
             name: "featured",
@@ -1145,7 +1166,10 @@ export default defineConfig({
                 type: "string",
                 name: "file",
                 label: "File",
-                required: true,
+                // Not `required`: an empty just-added item would make the whole
+                // form invalid and lock Tina's panel navigation (see the
+                // defaultItem note on this collection). Empty items are ignored
+                // by checkout (toDownloadFiles in lib/checkout).
                 ui: {
                   // Tina's Component typing predates custom-field props; same
                   // cast the SEO assistant uses in tina/seo.ts.
@@ -1208,7 +1232,7 @@ export default defineConfig({
             required: true,
             ui: {
               description:
-                "Stable numeric ID for cart and Stripe. Must be unique. Do not change existing products — only set this when creating a brand-new product (pick the next free number).",
+                "Stable numeric ID for cart and Stripe — filled in automatically for new products. Must be unique. Never change it on an existing product.",
             },
           },
           {

@@ -88,10 +88,10 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 ### Add or edit a shop product
 
 1. **Shop Products**
-2. Edit Name, Description, **Price (USD)**, Category, Cover Image (prefer `images/products/`).
+2. Edit Name, Description, **Price (USD)**, Category, Cover Image (prefer `images/products/`). On a new product, **set the price first** — Tina won't let you open Thumbnails, Spreads, or Download Files while a required field is still blank (it says "Cannot navigate away from an invalid form").
 3. Toggle **In Stock** / **Featured** as needed.
 4. For anything customers download (Digital, Bundle, Curriculum), add the files under **Download Files** — see below.
-5. **Product ID (advanced):** only when creating a *new* product — pick the next unused number and never renumber old ones.
+5. **Product ID (advanced):** filled in automatically on new products. Never change it on an existing product.
 6. Save. Preview at `/shop/your-product-slug`. You can click the title, price, description, and image in the preview to edit.
 
 ### Sell a download or a bundle of files

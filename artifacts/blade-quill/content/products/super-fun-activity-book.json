@@ -17,8 +17,130 @@
   "price": 14.99,
   "category": "digital",
   "image": "/images/puzzle-book-front.png",
+  "galleryImages": [
+    { "src": "", "alt": "Thumbnail 2" },
+    { "src": "", "alt": "Thumbnail 3" },
+    { "src": "", "alt": "Thumbnail 4" },
+    { "src": "", "alt": "Thumbnail 5" }
+  ],
+  "spreadImages": [
+    { "src": "", "alt": "Preview 1" },
+    { "src": "", "alt": "Preview 2" },
+    { "src": "", "alt": "Preview 3" },
+    { "src": "", "alt": "Preview 4" },
+    { "src": "", "alt": "Preview 5" },
+    { "src": "", "alt": "Preview 6" }
+  ],
   "featured": true,
   "inStock": true,
+  "pageCopy": {
+    "eyebrow": "FEATURED",
+    "coverSubtitle": "C. HADAWAY",
+    "fullDescription": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Digital editions are delivered by email immediately after checkout."
+            }
+          ]
+        }
+      ]
+    },
+    "shippingNote": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."
+            }
+          ]
+        }
+      ]
+    },
+    "supportEmail": "hello@bladeandquillacademy.com",
+    "paperbackLabel": "PAPERBACK",
+    "ebookLabel": "eBook",
+    "ebookStoresLabel": "GUMROAD · GOOGLE PLAY",
+    "addToCartLabel": "Add to cart",
+    "buyNowLabel": "Buy now",
+    "gumroadButtonLabel": "Get eBook on Gumroad",
+    "amazonButtonLabel": "Buy paperback on Amazon",
+    "googlePlayButtonLabel": "Get eBook on Google Play"
+  },
+  "purchaseOptions": {
+    "groupLabel": "LICENSE",
+    "options": [
+      { "name": "Personal", "meta": "$15" },
+      { "name": "Commercial", "meta": "$37" }
+    ]
+  },
+  "trustBullets": [
+    { "label": "Instant download" },
+    { "label": "Stripe secure checkout" },
+    { "label": "30-day returns" }
+  ],
+  "details": {
+    "format": "",
+    "studio": "Nantes, France",
+    "rows": []
+  },
+  "reviews": {
+    "rating": 4.9,
+    "countLabel": "142 reviews",
+    "items": [
+      {
+        "name": "Maya R.",
+        "date": "MAY 2026",
+        "body": "Absolutely beautiful. Worth every penny — even better in print than I'd imagined.",
+        "stars": 5
+      },
+      {
+        "name": "Tom K.",
+        "date": "APR 2026",
+        "body": "I bought the bundle and use the brushes every day now. Everything just fits together.",
+        "stars": 5
+      },
+      {
+        "name": "Liv H.",
+        "date": "APR 2026",
+        "body": "Quiet, gentle, and visually stunning. A book I keep on my desk to flip through.",
+        "stars": 5
+      },
+      {
+        "name": "David S.",
+        "date": "MAR 2026",
+        "body": "Corinne explains the why behind each decision. So much better than copying tutorials.",
+        "stars": 5
+      }
+    ]
+  },
+  "tabs": {
+    "descriptionLabel": "Description",
+    "insideLabel": "Inside",
+    "reviewsLabel": "Reviews",
+    "shippingLabel": "Shipping & License",
+    "showInside": true,
+    "showReviews": true,
+    "showShipping": true
+  },
+  "related": {
+    "eyebrow": "MORE FROM THE STUDIO",
+    "heading": "You might also like",
+    "show": true
+  },
   "downloadUrl": "",
   "gumroadUrl": "",
   "productId": 3,

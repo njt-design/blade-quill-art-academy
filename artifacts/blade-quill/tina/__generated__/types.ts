@@ -12875,9 +12875,89 @@ export type ShopProductSpreadImages = {
   alt?: Maybe<Scalars['String']['output']>;
 };
 
+export type ShopProductPageCopy = {
+  __typename?: 'ShopProductPageCopy';
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  coverSubtitle?: Maybe<Scalars['String']['output']>;
+  fullDescription?: Maybe<Scalars['JSON']['output']>;
+  shippingNote?: Maybe<Scalars['JSON']['output']>;
+  supportEmail?: Maybe<Scalars['String']['output']>;
+  paperbackLabel?: Maybe<Scalars['String']['output']>;
+  ebookLabel?: Maybe<Scalars['String']['output']>;
+  ebookStoresLabel?: Maybe<Scalars['String']['output']>;
+  addToCartLabel?: Maybe<Scalars['String']['output']>;
+  buyNowLabel?: Maybe<Scalars['String']['output']>;
+  gumroadButtonLabel?: Maybe<Scalars['String']['output']>;
+  amazonButtonLabel?: Maybe<Scalars['String']['output']>;
+  googlePlayButtonLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type ShopProductPurchaseOptionsOptions = {
+  __typename?: 'ShopProductPurchaseOptionsOptions';
+  name: Scalars['String']['output'];
+  meta?: Maybe<Scalars['String']['output']>;
+};
+
+export type ShopProductPurchaseOptions = {
+  __typename?: 'ShopProductPurchaseOptions';
+  groupLabel?: Maybe<Scalars['String']['output']>;
+  options?: Maybe<Array<Maybe<ShopProductPurchaseOptionsOptions>>>;
+};
+
+export type ShopProductTrustBullets = {
+  __typename?: 'ShopProductTrustBullets';
+  label: Scalars['String']['output'];
+};
+
+export type ShopProductDetailsRows = {
+  __typename?: 'ShopProductDetailsRows';
+  label: Scalars['String']['output'];
+  value: Scalars['String']['output'];
+};
+
+export type ShopProductDetails = {
+  __typename?: 'ShopProductDetails';
+  format?: Maybe<Scalars['String']['output']>;
+  studio?: Maybe<Scalars['String']['output']>;
+  rows?: Maybe<Array<Maybe<ShopProductDetailsRows>>>;
+};
+
+export type ShopProductReviewsItems = {
+  __typename?: 'ShopProductReviewsItems';
+  name: Scalars['String']['output'];
+  date?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['String']['output']>;
+  stars?: Maybe<Scalars['Float']['output']>;
+};
+
+export type ShopProductReviews = {
+  __typename?: 'ShopProductReviews';
+  rating?: Maybe<Scalars['Float']['output']>;
+  countLabel?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<ShopProductReviewsItems>>>;
+};
+
+export type ShopProductTabs = {
+  __typename?: 'ShopProductTabs';
+  descriptionLabel?: Maybe<Scalars['String']['output']>;
+  insideLabel?: Maybe<Scalars['String']['output']>;
+  reviewsLabel?: Maybe<Scalars['String']['output']>;
+  shippingLabel?: Maybe<Scalars['String']['output']>;
+  showInside?: Maybe<Scalars['Boolean']['output']>;
+  showReviews?: Maybe<Scalars['Boolean']['output']>;
+  showShipping?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type ShopProductRelated = {
+  __typename?: 'ShopProductRelated';
+  show?: Maybe<Scalars['Boolean']['output']>;
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+};
+
 export type ShopProductDownloadFiles = {
   __typename?: 'ShopProductDownloadFiles';
-  file: Scalars['String']['output'];
+  file?: Maybe<Scalars['String']['output']>;
   label?: Maybe<Scalars['String']['output']>;
 };
 
@@ -12896,6 +12976,13 @@ export type ShopProduct = Node & Document & {
   image?: Maybe<Scalars['String']['output']>;
   galleryImages?: Maybe<Array<Maybe<ShopProductGalleryImages>>>;
   spreadImages?: Maybe<Array<Maybe<ShopProductSpreadImages>>>;
+  pageCopy?: Maybe<ShopProductPageCopy>;
+  purchaseOptions?: Maybe<ShopProductPurchaseOptions>;
+  trustBullets?: Maybe<Array<Maybe<ShopProductTrustBullets>>>;
+  details?: Maybe<ShopProductDetails>;
+  reviews?: Maybe<ShopProductReviews>;
+  tabs?: Maybe<ShopProductTabs>;
+  related?: Maybe<ShopProductRelated>;
   featured?: Maybe<Scalars['Boolean']['output']>;
   inStock?: Maybe<Scalars['Boolean']['output']>;
   downloadFiles?: Maybe<Array<Maybe<ShopProductDownloadFiles>>>;
@@ -12932,6 +13019,96 @@ export type ShopProductSpreadImagesFilter = {
   alt?: InputMaybe<StringFilter>;
 };
 
+export type ShopProductPageCopyFullDescriptionContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type ShopProductPageCopyFullDescriptionFilter = {
+  ContentLink?: InputMaybe<ShopProductPageCopyFullDescriptionContentLinkFilter>;
+};
+
+export type ShopProductPageCopyShippingNoteContentLinkFilter = {
+  url?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
+  openInNewTab?: InputMaybe<BooleanFilter>;
+};
+
+export type ShopProductPageCopyShippingNoteFilter = {
+  ContentLink?: InputMaybe<ShopProductPageCopyShippingNoteContentLinkFilter>;
+};
+
+export type ShopProductPageCopyFilter = {
+  eyebrow?: InputMaybe<StringFilter>;
+  coverSubtitle?: InputMaybe<StringFilter>;
+  fullDescription?: InputMaybe<ShopProductPageCopyFullDescriptionFilter>;
+  shippingNote?: InputMaybe<ShopProductPageCopyShippingNoteFilter>;
+  supportEmail?: InputMaybe<StringFilter>;
+  paperbackLabel?: InputMaybe<StringFilter>;
+  ebookLabel?: InputMaybe<StringFilter>;
+  ebookStoresLabel?: InputMaybe<StringFilter>;
+  addToCartLabel?: InputMaybe<StringFilter>;
+  buyNowLabel?: InputMaybe<StringFilter>;
+  gumroadButtonLabel?: InputMaybe<StringFilter>;
+  amazonButtonLabel?: InputMaybe<StringFilter>;
+  googlePlayButtonLabel?: InputMaybe<StringFilter>;
+};
+
+export type ShopProductPurchaseOptionsOptionsFilter = {
+  name?: InputMaybe<StringFilter>;
+  meta?: InputMaybe<StringFilter>;
+};
+
+export type ShopProductPurchaseOptionsFilter = {
+  groupLabel?: InputMaybe<StringFilter>;
+  options?: InputMaybe<ShopProductPurchaseOptionsOptionsFilter>;
+};
+
+export type ShopProductTrustBulletsFilter = {
+  label?: InputMaybe<StringFilter>;
+};
+
+export type ShopProductDetailsRowsFilter = {
+  label?: InputMaybe<StringFilter>;
+  value?: InputMaybe<StringFilter>;
+};
+
+export type ShopProductDetailsFilter = {
+  format?: InputMaybe<StringFilter>;
+  studio?: InputMaybe<StringFilter>;
+  rows?: InputMaybe<ShopProductDetailsRowsFilter>;
+};
+
+export type ShopProductReviewsItemsFilter = {
+  name?: InputMaybe<StringFilter>;
+  date?: InputMaybe<StringFilter>;
+  body?: InputMaybe<StringFilter>;
+  stars?: InputMaybe<NumberFilter>;
+};
+
+export type ShopProductReviewsFilter = {
+  rating?: InputMaybe<NumberFilter>;
+  countLabel?: InputMaybe<StringFilter>;
+  items?: InputMaybe<ShopProductReviewsItemsFilter>;
+};
+
+export type ShopProductTabsFilter = {
+  descriptionLabel?: InputMaybe<StringFilter>;
+  insideLabel?: InputMaybe<StringFilter>;
+  reviewsLabel?: InputMaybe<StringFilter>;
+  shippingLabel?: InputMaybe<StringFilter>;
+  showInside?: InputMaybe<BooleanFilter>;
+  showReviews?: InputMaybe<BooleanFilter>;
+  showShipping?: InputMaybe<BooleanFilter>;
+};
+
+export type ShopProductRelatedFilter = {
+  show?: InputMaybe<BooleanFilter>;
+  eyebrow?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+};
+
 export type ShopProductDownloadFilesFilter = {
   file?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
@@ -12950,6 +13127,13 @@ export type ShopProductFilter = {
   image?: InputMaybe<ImageFilter>;
   galleryImages?: InputMaybe<ShopProductGalleryImagesFilter>;
   spreadImages?: InputMaybe<ShopProductSpreadImagesFilter>;
+  pageCopy?: InputMaybe<ShopProductPageCopyFilter>;
+  purchaseOptions?: InputMaybe<ShopProductPurchaseOptionsFilter>;
+  trustBullets?: InputMaybe<ShopProductTrustBulletsFilter>;
+  details?: InputMaybe<ShopProductDetailsFilter>;
+  reviews?: InputMaybe<ShopProductReviewsFilter>;
+  tabs?: InputMaybe<ShopProductTabsFilter>;
+  related?: InputMaybe<ShopProductRelatedFilter>;
   featured?: InputMaybe<BooleanFilter>;
   inStock?: InputMaybe<BooleanFilter>;
   downloadFiles?: InputMaybe<ShopProductDownloadFilesFilter>;
@@ -18604,6 +18788,76 @@ export type ShopProductSpreadImagesMutation = {
   alt?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ShopProductPageCopyMutation = {
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  coverSubtitle?: InputMaybe<Scalars['String']['input']>;
+  fullDescription?: InputMaybe<Scalars['JSON']['input']>;
+  shippingNote?: InputMaybe<Scalars['JSON']['input']>;
+  supportEmail?: InputMaybe<Scalars['String']['input']>;
+  paperbackLabel?: InputMaybe<Scalars['String']['input']>;
+  ebookLabel?: InputMaybe<Scalars['String']['input']>;
+  ebookStoresLabel?: InputMaybe<Scalars['String']['input']>;
+  addToCartLabel?: InputMaybe<Scalars['String']['input']>;
+  buyNowLabel?: InputMaybe<Scalars['String']['input']>;
+  gumroadButtonLabel?: InputMaybe<Scalars['String']['input']>;
+  amazonButtonLabel?: InputMaybe<Scalars['String']['input']>;
+  googlePlayButtonLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ShopProductPurchaseOptionsOptionsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ShopProductPurchaseOptionsMutation = {
+  groupLabel?: InputMaybe<Scalars['String']['input']>;
+  options?: InputMaybe<Array<InputMaybe<ShopProductPurchaseOptionsOptionsMutation>>>;
+};
+
+export type ShopProductTrustBulletsMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ShopProductDetailsRowsMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ShopProductDetailsMutation = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  studio?: InputMaybe<Scalars['String']['input']>;
+  rows?: InputMaybe<Array<InputMaybe<ShopProductDetailsRowsMutation>>>;
+};
+
+export type ShopProductReviewsItemsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['String']['input']>;
+  stars?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ShopProductReviewsMutation = {
+  rating?: InputMaybe<Scalars['Float']['input']>;
+  countLabel?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<ShopProductReviewsItemsMutation>>>;
+};
+
+export type ShopProductTabsMutation = {
+  descriptionLabel?: InputMaybe<Scalars['String']['input']>;
+  insideLabel?: InputMaybe<Scalars['String']['input']>;
+  reviewsLabel?: InputMaybe<Scalars['String']['input']>;
+  shippingLabel?: InputMaybe<Scalars['String']['input']>;
+  showInside?: InputMaybe<Scalars['Boolean']['input']>;
+  showReviews?: InputMaybe<Scalars['Boolean']['input']>;
+  showShipping?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ShopProductRelatedMutation = {
+  show?: InputMaybe<Scalars['Boolean']['input']>;
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ShopProductDownloadFilesMutation = {
   file?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
@@ -18622,6 +18876,13 @@ export type ShopProductMutation = {
   image?: InputMaybe<Scalars['String']['input']>;
   galleryImages?: InputMaybe<Array<InputMaybe<ShopProductGalleryImagesMutation>>>;
   spreadImages?: InputMaybe<Array<InputMaybe<ShopProductSpreadImagesMutation>>>;
+  pageCopy?: InputMaybe<ShopProductPageCopyMutation>;
+  purchaseOptions?: InputMaybe<ShopProductPurchaseOptionsMutation>;
+  trustBullets?: InputMaybe<Array<InputMaybe<ShopProductTrustBulletsMutation>>>;
+  details?: InputMaybe<ShopProductDetailsMutation>;
+  reviews?: InputMaybe<ShopProductReviewsMutation>;
+  tabs?: InputMaybe<ShopProductTabsMutation>;
+  related?: InputMaybe<ShopProductRelatedMutation>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;
   inStock?: InputMaybe<Scalars['Boolean']['input']>;
   downloadFiles?: InputMaybe<Array<InputMaybe<ShopProductDownloadFilesMutation>>>;
@@ -18718,7 +18979,7 @@ export type LandingPagePartsFragment = LandingPageParts_LandingPageBlank_Fragmen
 
 export type PostPartsFragment = { __typename: 'Post', title: string, excerpt?: any | null, coverImage?: string | null, publishedAt?: string | null, tags?: Array<string | null> | null, showTableOfContents?: boolean | null, seoAssistant?: string | null, sections?: Array<{ __typename: 'PostSectionsHeading', number?: string | null, text: string, level?: string | null } | { __typename: 'PostSectionsText', heading?: string | null, body?: any | null, textStyle?: { __typename: 'PostSectionsTextTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsSpacer', size?: string | null } | { __typename: 'PostSectionsDivider', style?: string | null } | { __typename: 'PostSectionsImage', src?: string | null, alt?: string | null, caption?: string | null, width?: string | null, aspect?: string | null } | { __typename: 'PostSectionsImageSideBySide', heading?: string | null, style?: string | null, leftImage?: { __typename: 'PostSectionsImageSideBySideLeftImage', src?: string | null, alt?: string | null, caption?: string | null } | null, rightImage?: { __typename: 'PostSectionsImageSideBySideRightImage', src?: string | null, alt?: string | null, caption?: string | null } | null, textStyle?: { __typename: 'PostSectionsImageSideBySideTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsImageGallery', heading?: string | null, images?: Array<{ __typename: 'PostSectionsImageGalleryImages', src?: string | null, alt?: string | null, caption?: string | null } | null> | null, textStyle?: { __typename: 'PostSectionsImageGalleryTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsVideoEmbed', heading?: string | null, youtubeUrl?: string | null, textStyle?: { __typename: 'PostSectionsVideoEmbedTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | { __typename: 'PostSectionsCallout', title?: string | null, body?: any | null, tone?: string | null } | { __typename: 'PostSectionsCtaBand', heading?: string | null, description?: any | null, ctaLabel?: string | null, ctaLink?: string | null, variant?: string | null, textStyle?: { __typename: 'PostSectionsCtaBandTextStyle', headingSize?: string | null, headingType?: string | null, headingFont?: string | null, align?: string | null, bodySize?: string | null } | null } | null> | null, seo?: { __typename: 'PostSeo', metaTitle?: string | null, metaDescription?: string | null } | null };
 
-export type ShopProductPartsFragment = { __typename: 'ShopProduct', name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file: string, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null };
+export type ShopProductPartsFragment = { __typename: 'ShopProduct', name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, pageCopy?: { __typename: 'ShopProductPageCopy', eyebrow?: string | null, coverSubtitle?: string | null, fullDescription?: any | null, shippingNote?: any | null, supportEmail?: string | null, paperbackLabel?: string | null, ebookLabel?: string | null, ebookStoresLabel?: string | null, addToCartLabel?: string | null, buyNowLabel?: string | null, gumroadButtonLabel?: string | null, amazonButtonLabel?: string | null, googlePlayButtonLabel?: string | null } | null, purchaseOptions?: { __typename: 'ShopProductPurchaseOptions', groupLabel?: string | null, options?: Array<{ __typename: 'ShopProductPurchaseOptionsOptions', name: string, meta?: string | null } | null> | null } | null, trustBullets?: Array<{ __typename: 'ShopProductTrustBullets', label: string } | null> | null, details?: { __typename: 'ShopProductDetails', format?: string | null, studio?: string | null, rows?: Array<{ __typename: 'ShopProductDetailsRows', label: string, value: string } | null> | null } | null, reviews?: { __typename: 'ShopProductReviews', rating?: number | null, countLabel?: string | null, items?: Array<{ __typename: 'ShopProductReviewsItems', name: string, date?: string | null, body?: string | null, stars?: number | null } | null> | null } | null, tabs?: { __typename: 'ShopProductTabs', descriptionLabel?: string | null, insideLabel?: string | null, reviewsLabel?: string | null, shippingLabel?: string | null, showInside?: boolean | null, showReviews?: boolean | null, showShipping?: boolean | null } | null, related?: { __typename: 'ShopProductRelated', show?: boolean | null, eyebrow?: string | null, heading?: string | null } | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file?: string | null, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null };
 
 export type GalleryPartsFragment = { __typename: 'Gallery', items?: Array<{ __typename: 'GalleryItems', title: string, image: string, description?: string | null, downloadFile?: string | null } | null> | null };
 
@@ -18790,7 +19051,7 @@ export type ShopProductQueryVariables = Exact<{
 }>;
 
 
-export type ShopProductQuery = { __typename?: 'Query', shopProduct: { __typename: 'ShopProduct', id: string, name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file: string, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null } };
+export type ShopProductQuery = { __typename?: 'Query', shopProduct: { __typename: 'ShopProduct', id: string, name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, pageCopy?: { __typename: 'ShopProductPageCopy', eyebrow?: string | null, coverSubtitle?: string | null, fullDescription?: any | null, shippingNote?: any | null, supportEmail?: string | null, paperbackLabel?: string | null, ebookLabel?: string | null, ebookStoresLabel?: string | null, addToCartLabel?: string | null, buyNowLabel?: string | null, gumroadButtonLabel?: string | null, amazonButtonLabel?: string | null, googlePlayButtonLabel?: string | null } | null, purchaseOptions?: { __typename: 'ShopProductPurchaseOptions', groupLabel?: string | null, options?: Array<{ __typename: 'ShopProductPurchaseOptionsOptions', name: string, meta?: string | null } | null> | null } | null, trustBullets?: Array<{ __typename: 'ShopProductTrustBullets', label: string } | null> | null, details?: { __typename: 'ShopProductDetails', format?: string | null, studio?: string | null, rows?: Array<{ __typename: 'ShopProductDetailsRows', label: string, value: string } | null> | null } | null, reviews?: { __typename: 'ShopProductReviews', rating?: number | null, countLabel?: string | null, items?: Array<{ __typename: 'ShopProductReviewsItems', name: string, date?: string | null, body?: string | null, stars?: number | null } | null> | null } | null, tabs?: { __typename: 'ShopProductTabs', descriptionLabel?: string | null, insideLabel?: string | null, reviewsLabel?: string | null, shippingLabel?: string | null, showInside?: boolean | null, showReviews?: boolean | null, showShipping?: boolean | null } | null, related?: { __typename: 'ShopProductRelated', show?: boolean | null, eyebrow?: string | null, heading?: string | null } | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file?: string | null, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null } };
 
 export type ShopProductConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -18802,7 +19063,7 @@ export type ShopProductConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ShopProductConnectionQuery = { __typename?: 'Query', shopProductConnection: { __typename?: 'ShopProductConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ShopProductConnectionEdges', cursor: string, node?: { __typename: 'ShopProduct', id: string, name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file: string, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null } | null } | null> | null } };
+export type ShopProductConnectionQuery = { __typename?: 'Query', shopProductConnection: { __typename?: 'ShopProductConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ShopProductConnectionEdges', cursor: string, node?: { __typename: 'ShopProduct', id: string, name: string, description?: any | null, price: number, category: string, image?: string | null, featured?: boolean | null, inStock?: boolean | null, downloadUrl?: string | null, gumroadUrl?: string | null, amazonUrl?: string | null, googlePlayUrl?: string | null, productId: number, createdAt?: string | null, seoAssistant?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, galleryImages?: Array<{ __typename: 'ShopProductGalleryImages', src?: string | null, alt?: string | null } | null> | null, spreadImages?: Array<{ __typename: 'ShopProductSpreadImages', src?: string | null, alt?: string | null } | null> | null, pageCopy?: { __typename: 'ShopProductPageCopy', eyebrow?: string | null, coverSubtitle?: string | null, fullDescription?: any | null, shippingNote?: any | null, supportEmail?: string | null, paperbackLabel?: string | null, ebookLabel?: string | null, ebookStoresLabel?: string | null, addToCartLabel?: string | null, buyNowLabel?: string | null, gumroadButtonLabel?: string | null, amazonButtonLabel?: string | null, googlePlayButtonLabel?: string | null } | null, purchaseOptions?: { __typename: 'ShopProductPurchaseOptions', groupLabel?: string | null, options?: Array<{ __typename: 'ShopProductPurchaseOptionsOptions', name: string, meta?: string | null } | null> | null } | null, trustBullets?: Array<{ __typename: 'ShopProductTrustBullets', label: string } | null> | null, details?: { __typename: 'ShopProductDetails', format?: string | null, studio?: string | null, rows?: Array<{ __typename: 'ShopProductDetailsRows', label: string, value: string } | null> | null } | null, reviews?: { __typename: 'ShopProductReviews', rating?: number | null, countLabel?: string | null, items?: Array<{ __typename: 'ShopProductReviewsItems', name: string, date?: string | null, body?: string | null, stars?: number | null } | null> | null } | null, tabs?: { __typename: 'ShopProductTabs', descriptionLabel?: string | null, insideLabel?: string | null, reviewsLabel?: string | null, shippingLabel?: string | null, showInside?: boolean | null, showReviews?: boolean | null, showShipping?: boolean | null } | null, related?: { __typename: 'ShopProductRelated', show?: boolean | null, eyebrow?: string | null, heading?: string | null } | null, downloadFiles?: Array<{ __typename: 'ShopProductDownloadFiles', file?: string | null, label?: string | null } | null> | null, seo?: { __typename: 'ShopProductSeo', metaTitle?: string | null, metaDescription?: string | null } | null } | null } | null> | null } };
 
 export type GalleryQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -23234,6 +23495,73 @@ export const ShopProductPartsFragmentDoc = gql`
     __typename
     src
     alt
+  }
+  pageCopy {
+    __typename
+    eyebrow
+    coverSubtitle
+    fullDescription
+    shippingNote
+    supportEmail
+    paperbackLabel
+    ebookLabel
+    ebookStoresLabel
+    addToCartLabel
+    buyNowLabel
+    gumroadButtonLabel
+    amazonButtonLabel
+    googlePlayButtonLabel
+  }
+  purchaseOptions {
+    __typename
+    groupLabel
+    options {
+      __typename
+      name
+      meta
+    }
+  }
+  trustBullets {
+    __typename
+    label
+  }
+  details {
+    __typename
+    format
+    studio
+    rows {
+      __typename
+      label
+      value
+    }
+  }
+  reviews {
+    __typename
+    rating
+    countLabel
+    items {
+      __typename
+      name
+      date
+      body
+      stars
+    }
+  }
+  tabs {
+    __typename
+    descriptionLabel
+    insideLabel
+    reviewsLabel
+    shippingLabel
+    showInside
+    showReviews
+    showShipping
+  }
+  related {
+    __typename
+    show
+    eyebrow
+    heading
   }
   featured
   inStock

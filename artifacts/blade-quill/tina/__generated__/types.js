@@ -4360,6 +4360,73 @@ export const ShopProductPartsFragmentDoc = gql`
     src
     alt
   }
+  pageCopy {
+    __typename
+    eyebrow
+    coverSubtitle
+    fullDescription
+    shippingNote
+    supportEmail
+    paperbackLabel
+    ebookLabel
+    ebookStoresLabel
+    addToCartLabel
+    buyNowLabel
+    gumroadButtonLabel
+    amazonButtonLabel
+    googlePlayButtonLabel
+  }
+  purchaseOptions {
+    __typename
+    groupLabel
+    options {
+      __typename
+      name
+      meta
+    }
+  }
+  trustBullets {
+    __typename
+    label
+  }
+  details {
+    __typename
+    format
+    studio
+    rows {
+      __typename
+      label
+      value
+    }
+  }
+  reviews {
+    __typename
+    rating
+    countLabel
+    items {
+      __typename
+      name
+      date
+      body
+      stars
+    }
+  }
+  tabs {
+    __typename
+    descriptionLabel
+    insideLabel
+    reviewsLabel
+    shippingLabel
+    showInside
+    showReviews
+    showShipping
+  }
+  related {
+    __typename
+    show
+    eyebrow
+    heading
+  }
   featured
   inStock
   downloadFiles {
