@@ -4,6 +4,12 @@
   "buildCommand": "pnpm --filter @workspace/blade-quill run build:static",
   "outputDirectory": "artifacts/blade-quill/dist/public",
   "framework": null,
+  "crons": [
+    {
+      "path": "/api/keep-alive",
+      "schedule": "0 13 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/",

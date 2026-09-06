@@ -139,7 +139,7 @@ try {
     url: `https://www.youtube.com/watch?v=${video.videoId}`,
     publishedAt: video.publishedAt,
     publishedText: video.publishedText,
-    thumbnailUrl: `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`,
+    thumbnailUrl: `https://i.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`,
     channelUrl: CHANNEL_URL,
     generatedAt: new Date().toISOString(),
   };

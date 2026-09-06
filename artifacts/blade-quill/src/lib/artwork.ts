@@ -20,7 +20,12 @@ export function productImageUrl(
   return FALLBACK_PRODUCTS.find((p) => p.category === category)?.imageUrl;
 }
 
-/** Standard-quality YouTube thumbnail for a tutorial video. */
+/** Standard-quality YouTube thumbnail for a tutorial video (480×360). */
 export function youtubeThumb(id: string): string {
   return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+}
+
+/** YouTube’s recommended custom-thumbnail size (1280×720). Falls back to hq if the video has no maxres still. */
+export function youtubeThumbMaxres(id: string): string {
+  return `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 }
