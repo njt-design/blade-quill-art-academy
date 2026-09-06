@@ -13,4 +13,5 @@ export const ProductCategory = {
   physical: "physical",
   digital: "digital",
   curriculum: "curriculum",
+  bundle: "bundle",
 } as const;

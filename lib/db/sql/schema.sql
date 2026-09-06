@@ -8,7 +8,7 @@ create table if not exists products (
   name text not null,
   description text not null,
   price numeric(10, 2) not null,
-  category text not null check (category in ('physical', 'digital', 'curriculum')),
+  category text not null check (category in ('physical', 'digital', 'curriculum', 'bundle')),
   image_url text not null,
   gumroad_url text,
   download_url text,
@@ -59,6 +59,10 @@ create table if not exists orders (
   product_slug text,
   gumroad_url text,
   download_url text,
+  -- Snapshot of the product's Download Files at checkout:
+  -- [{ "label": "Workbook (PDF)", "path": "krita-bundle/workbook.pdf" }, ...]
+  -- Paths are object keys in the private `product-downloads` storage bucket.
+  download_files jsonb,
   customer_email text,
   status text not null default 'pending',
   download_token text,
@@ -91,6 +95,7 @@ alter table orders add column if not exists product_category text;
 alter table orders add column if not exists product_slug text;
 alter table orders add column if not exists gumroad_url text;
 alter table orders add column if not exists download_url text;
+alter table orders add column if not exists download_files jsonb;
 
 alter table products enable row level security;
 alter table gallery enable row level security;

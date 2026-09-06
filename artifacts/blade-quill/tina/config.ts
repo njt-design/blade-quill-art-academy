@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { defineConfig, type Template, type TinaField } from "tinacms";
+import {
+  defineConfig,
+  wrapFieldsWithMeta,
+  type Template,
+  type TinaField,
+} from "tinacms";
 import {
   ALL_BLOCKS,
   INLINE_RICH_TEXT,
@@ -22,6 +27,191 @@ function readTinaIdTokenFromStorage(): string | null {
   } catch {
     return null;
   }
+}
+
+const DOWNLOAD_FILE_ACCEPT = ".pdf,.zip,.epub";
+const DOWNLOAD_FILE_MAX_BYTES = 50 * 1024 * 1024; // Supabase free-tier per-object cap
+
+type UploadStatus =
+  | { kind: "idle" }
+  | { kind: "busy"; message: string }
+  | { kind: "done"; message: string }
+  | { kind: "error"; message: string };
+
+/**
+ * Custom field for Shop Products → Download Files → File.
+ *
+ * Corinne picks a PDF/ZIP/EPUB; we ask /api/uploads (Tina-authenticated) for
+ * a signed upload URL into the private `product-downloads` bucket, PUT the
+ * file there straight from the browser, and store the object path as the
+ * field value. Buyers later get 48-hour signed download links to that path.
+ */
+function DownloadFileField(props: {
+  input: { value?: unknown; onChange: (value: unknown) => void; name: string };
+  form?: { getState?: () => { values?: Record<string, unknown> } };
+  tinaForm?: { values?: Record<string, unknown> };
+}) {
+  const [status, setStatus] = React.useState<UploadStatus>({ kind: "idle" });
+  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+  const value = typeof props.input.value === "string" ? props.input.value.trim() : "";
+  const fileName = value.split("/").pop() || "";
+
+  const productName = (): string => {
+    const values =
+      props.form?.getState?.()?.values ?? props.tinaForm?.values ?? undefined;
+    const name = values?.name;
+    return typeof name === "string" ? name : "";
+  };
+
+  const upload = async (file: File) => {
+    if (file.size > DOWNLOAD_FILE_MAX_BYTES) {
+      setStatus({ kind: "error", message: "That file is over 50 MB. Compress it or split it into two files." });
+      return;
+    }
+    const isLocalAdmin =
+      typeof window !== "undefined" &&
+      /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+    const token = readTinaIdTokenFromStorage() ?? (isLocalAdmin ? "LOCAL" : null);
+    if (!token) {
+      setStatus({ kind: "error", message: "No Tina session found. Sign in again, then retry the upload." });
+      return;
+    }
+
+    try {
+      setStatus({ kind: "busy", message: "Preparing secure upload…" });
+      const prep = await fetch("/api/uploads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type,
+          folder: productName(),
+        }),
+      });
+      const prepBody = (await prep.json().catch(() => ({}))) as {
+        path?: string;
+        uploadUrl?: string;
+        contentType?: string;
+        error?: string;
+      };
+      if (!prep.ok || !prepBody.path || !prepBody.uploadUrl) {
+        throw new Error(prepBody.error || `Upload could not be prepared (${prep.status})`);
+      }
+
+      setStatus({ kind: "busy", message: `Uploading ${file.name}…` });
+      const put = await fetch(prepBody.uploadUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": prepBody.contentType || file.type || "application/octet-stream",
+          "x-upsert": "true",
+        },
+        body: file,
+      });
+      if (!put.ok) {
+        const text = await put.text().catch(() => "");
+        throw new Error(`Storage rejected the file (${put.status}) ${text}`.trim());
+      }
+
+      props.input.onChange(prepBody.path);
+      setStatus({ kind: "done", message: `Uploaded ${file.name}. Remember to Save.` });
+    } catch (err) {
+      setStatus({
+        kind: "error",
+        message: err instanceof Error ? err.message : "Upload failed",
+      });
+    } finally {
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
+  const busy = status.kind === "busy";
+  const statusColor =
+    status.kind === "error" ? "#B23B3B" : status.kind === "done" ? "#2F7A4F" : "#776562";
+
+  return React.createElement(
+    "div",
+    { style: { display: "flex", flexDirection: "column", gap: 8 } },
+    React.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "10px 12px",
+          border: "1px solid rgba(0,0,0,0.12)",
+          borderRadius: 8,
+          background: "#FAF7F3",
+        },
+      },
+      React.createElement(
+        "div",
+        { style: { flex: 1, minWidth: 0 } },
+        React.createElement(
+          "div",
+          {
+            style: {
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#4A3838",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            },
+            title: value || undefined,
+          },
+          fileName || "No file uploaded yet"
+        ),
+        value
+          ? React.createElement(
+              "div",
+              { style: { fontSize: 11, color: "#776562", marginTop: 2 } },
+              "Stored securely · buyers get a 48-hour link"
+            )
+          : null
+      ),
+      React.createElement(
+        "button",
+        {
+          type: "button",
+          disabled: busy,
+          onClick: () => fileInputRef.current?.click(),
+          style: {
+            padding: "8px 14px",
+            borderRadius: 999,
+            border: "none",
+            background: busy ? "#C9B7B7" : "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: busy ? "default" : "pointer",
+            whiteSpace: "nowrap",
+          },
+        },
+        busy ? "Uploading…" : value ? "Replace file" : "Choose file"
+      ),
+      React.createElement("input", {
+        ref: fileInputRef,
+        type: "file",
+        accept: DOWNLOAD_FILE_ACCEPT,
+        style: { display: "none" },
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+          const file = e.target.files?.[0];
+          if (file) void upload(file);
+        },
+      })
+    ),
+    status.kind !== "idle"
+      ? React.createElement(
+          "div",
+          { style: { fontSize: 12, color: statusColor } },
+          status.message
+        )
+      : null
+  );
 }
 
 /**
@@ -814,9 +1004,13 @@ export default defineConfig({
             options: [
               { value: "physical", label: "Physical (book)" },
               { value: "digital", label: "Digital download" },
+              { value: "bundle", label: "Bundle (several downloads)" },
               { value: "curriculum", label: "Curriculum" },
             ],
-            ui: { description: "Controls card style and shop filters." },
+            ui: {
+              description:
+                "Controls card style and shop filters. Digital, Bundle, and Curriculum products deliver the Download Files below after payment.",
+            },
           },
           {
             type: "image",
@@ -928,12 +1122,56 @@ export default defineConfig({
             },
           },
           {
-            type: "string",
-            name: "downloadUrl",
-            label: "Download URL",
+            type: "object",
+            name: "downloadFiles",
+            label: "Download Files",
+            list: true,
             ui: {
               description:
-                "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf).",
+                "What the customer receives after paying (Digital, Bundle, and Curriculum products). Add one item per file — PDF, ZIP, or EPUB, up to 50 MB each. Each file gets its own download button on the thank-you page; with 2 or more files customers also get a Download All (.zip) button.",
+              itemProps: (item: Record<string, unknown> | undefined) => ({
+                label:
+                  (item?.label as string)?.trim() ||
+                  (item?.file as string)?.split("/").pop() ||
+                  "New file",
+              }),
+              defaultItem: {
+                label: "",
+                file: "",
+              },
+            },
+            fields: [
+              {
+                type: "string",
+                name: "file",
+                label: "File",
+                required: true,
+                ui: {
+                  // Tina's Component typing predates custom-field props; same
+                  // cast the SEO assistant uses in tina/seo.ts.
+                  component: wrapFieldsWithMeta(DownloadFileField as never) as never,
+                  description:
+                    "Uploads go to private storage, never to the public site. Replace the file any time — customers always get the latest version.",
+                },
+              },
+              {
+                type: "string",
+                name: "label",
+                label: "Button Label",
+                ui: charLimit(
+                  60,
+                  "Text on the customer's download button, e.g. “Workbook (PDF)” or “Brush pack”. Leave blank to use the file name."
+                ),
+              },
+            ],
+          },
+          {
+            type: "string",
+            name: "downloadUrl",
+            label: "Legacy Download URL (advanced)",
+            ui: {
+              description:
+                "Older single-link method. Use Download Files above instead; this is only read when that list is empty.",
             },
           },
           {

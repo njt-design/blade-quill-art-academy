@@ -4351,6 +4351,11 @@ fragment ShopProductParts on ShopProduct {
   }
   featured
   inStock
+  downloadFiles {
+    __typename
+    file
+    label
+  }
   downloadUrl
   gumroadUrl
   amazonUrl

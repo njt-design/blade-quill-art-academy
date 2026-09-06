@@ -27,6 +27,7 @@ function eyebrowLabel(category: string) {
   if (category === "physical") return "BOOK";
   if (category === "curriculum") return "CURRICULUM";
   if (category === "digital") return "DOWNLOAD";
+  if (category === "bundle") return "BUNDLE";
   return category.toUpperCase();
 }
 

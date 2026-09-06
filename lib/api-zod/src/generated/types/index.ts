@@ -20,6 +20,7 @@ export * from "./healthStatus";
 export * from "./listProductsCategory";
 export * from "./listProductsParams";
 export * from "./listTutorialsParams";
+export * from "./orderDownloadLink";
 export * from "./orderSuccess";
 export * from "./product";
 export * from "./productCategory";

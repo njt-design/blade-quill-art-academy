@@ -262,7 +262,7 @@ components:
           format: float
         category:
           type: string
-          enum: [physical, digital, curriculum]
+          enum: [physical, digital, curriculum, bundle]
         imageUrl:
           type: string
         gumroadUrl:
@@ -376,10 +376,29 @@ components:
         downloadUrl:
           type: string
           nullable: true
+          description: Convenience link when the order has exactly one file.
+        downloads:
+          type: array
+          description: One link per file, in product order. Empty for physical products.
+          items:
+            $ref: "#/components/schemas/OrderDownloadLink"
+        downloadAllUrl:
+          type: string
+          nullable: true
+          description: Zip of every file; only set when there is more than one.
         email:
           type: string
           nullable: true
-      required: [productName, productCategory]
+      required: [productName, productCategory, downloads]
+
+    OrderDownloadLink:
+      type: object
+      properties:
+        label:
+          type: string
+        url:
+          type: string
+      required: [label, url]
 
     ContactRequest:
       type: object

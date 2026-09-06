@@ -22,6 +22,7 @@ export const ProductCategory = {
   physical: "physical",
   digital: "digital",
   curriculum: "curriculum",
+  bundle: "bundle",
 } as const;
 
 export interface Product {
@@ -79,11 +80,21 @@ export interface CheckoutResponse {
   sessionId: string;
 }
 
+export interface OrderDownloadLink {
+  label: string;
+  url: string;
+}
+
 export interface OrderSuccess {
   productName: string;
   productCategory: string;
   gumroadUrl?: string | null;
+  /** Convenience link when the order has exactly one file. */
   downloadUrl?: string | null;
+  /** One link per file, in product order. Empty for physical products. */
+  downloads: OrderDownloadLink[];
+  /** Zip of every file; only set when there is more than one. */
+  downloadAllUrl?: string | null;
   email?: string | null;
 }
 

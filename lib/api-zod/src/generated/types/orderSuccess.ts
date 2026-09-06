@@ -5,11 +5,17 @@
  * Blade & Quill Art Academy API
  * OpenAPI spec version: 0.1.0
  */
+import type { OrderDownloadLink } from "./orderDownloadLink";
 
 export interface OrderSuccess {
   productName: string;
   productCategory: string;
   gumroadUrl?: string | null;
+  /** Convenience link when the order has exactly one file. */
   downloadUrl?: string | null;
+  /** One link per file, in product order. Empty for physical products. */
+  downloads: OrderDownloadLink[];
+  /** Zip of every file; only set when there is more than one. */
+  downloadAllUrl?: string | null;
   email?: string | null;
 }

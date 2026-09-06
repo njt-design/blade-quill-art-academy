@@ -1,6 +1,9 @@
 // tina/config.ts
 import React2, { useEffect } from "react";
-import { defineConfig } from "tinacms";
+import {
+  defineConfig,
+  wrapFieldsWithMeta
+} from "tinacms";
 
 // tina/blocks.ts
 var RICH_TEXT_TEMPLATES = [
@@ -2705,6 +2708,151 @@ function readTinaIdTokenFromStorage() {
     return null;
   }
 }
+var DOWNLOAD_FILE_ACCEPT = ".pdf,.zip,.epub";
+var DOWNLOAD_FILE_MAX_BYTES = 50 * 1024 * 1024;
+function DownloadFileField(props) {
+  const [status, setStatus] = React2.useState({ kind: "idle" });
+  const fileInputRef = React2.useRef(null);
+  const value = typeof props.input.value === "string" ? props.input.value.trim() : "";
+  const fileName = value.split("/").pop() || "";
+  const productName = () => {
+    const values = props.form?.getState?.()?.values ?? props.tinaForm?.values ?? void 0;
+    const name = values?.name;
+    return typeof name === "string" ? name : "";
+  };
+  const upload = async (file) => {
+    if (file.size > DOWNLOAD_FILE_MAX_BYTES) {
+      setStatus({ kind: "error", message: "That file is over 50 MB. Compress it or split it into two files." });
+      return;
+    }
+    const isLocalAdmin = typeof window !== "undefined" && /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+    const token = readTinaIdTokenFromStorage() ?? (isLocalAdmin ? "LOCAL" : null);
+    if (!token) {
+      setStatus({ kind: "error", message: "No Tina session found. Sign in again, then retry the upload." });
+      return;
+    }
+    try {
+      setStatus({ kind: "busy", message: "Preparing secure upload\u2026" });
+      const prep = await fetch("/api/uploads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          fileName: file.name,
+          contentType: file.type,
+          folder: productName()
+        })
+      });
+      const prepBody = await prep.json().catch(() => ({}));
+      if (!prep.ok || !prepBody.path || !prepBody.uploadUrl) {
+        throw new Error(prepBody.error || `Upload could not be prepared (${prep.status})`);
+      }
+      setStatus({ kind: "busy", message: `Uploading ${file.name}\u2026` });
+      const put = await fetch(prepBody.uploadUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": prepBody.contentType || file.type || "application/octet-stream",
+          "x-upsert": "true"
+        },
+        body: file
+      });
+      if (!put.ok) {
+        const text = await put.text().catch(() => "");
+        throw new Error(`Storage rejected the file (${put.status}) ${text}`.trim());
+      }
+      props.input.onChange(prepBody.path);
+      setStatus({ kind: "done", message: `Uploaded ${file.name}. Remember to Save.` });
+    } catch (err) {
+      setStatus({
+        kind: "error",
+        message: err instanceof Error ? err.message : "Upload failed"
+      });
+    } finally {
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+  const busy = status.kind === "busy";
+  const statusColor = status.kind === "error" ? "#B23B3B" : status.kind === "done" ? "#2F7A4F" : "#776562";
+  return React2.createElement(
+    "div",
+    { style: { display: "flex", flexDirection: "column", gap: 8 } },
+    React2.createElement(
+      "div",
+      {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "10px 12px",
+          border: "1px solid rgba(0,0,0,0.12)",
+          borderRadius: 8,
+          background: "#FAF7F3"
+        }
+      },
+      React2.createElement(
+        "div",
+        { style: { flex: 1, minWidth: 0 } },
+        React2.createElement(
+          "div",
+          {
+            style: {
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#4A3838",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap"
+            },
+            title: value || void 0
+          },
+          fileName || "No file uploaded yet"
+        ),
+        value ? React2.createElement(
+          "div",
+          { style: { fontSize: 11, color: "#776562", marginTop: 2 } },
+          "Stored securely \xB7 buyers get a 48-hour link"
+        ) : null
+      ),
+      React2.createElement(
+        "button",
+        {
+          type: "button",
+          disabled: busy,
+          onClick: () => fileInputRef.current?.click(),
+          style: {
+            padding: "8px 14px",
+            borderRadius: 999,
+            border: "none",
+            background: busy ? "#C9B7B7" : "#9A5151",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: busy ? "default" : "pointer",
+            whiteSpace: "nowrap"
+          }
+        },
+        busy ? "Uploading\u2026" : value ? "Replace file" : "Choose file"
+      ),
+      React2.createElement("input", {
+        ref: fileInputRef,
+        type: "file",
+        accept: DOWNLOAD_FILE_ACCEPT,
+        style: { display: "none" },
+        onChange: (e) => {
+          const file = e.target.files?.[0];
+          if (file) void upload(file);
+        }
+      })
+    ),
+    status.kind !== "idle" ? React2.createElement(
+      "div",
+      { style: { fontSize: 12, color: statusColor } },
+      status.message
+    ) : null
+  );
+}
 function InsightsRedirectScreen(_props) {
   const [iframeSrc, setIframeSrc] = React2.useState(null);
   const [status, setStatus] = React2.useState("Preparing Insights\u2026");
@@ -3388,9 +3536,12 @@ var config_default = defineConfig({
             options: [
               { value: "physical", label: "Physical (book)" },
               { value: "digital", label: "Digital download" },
+              { value: "bundle", label: "Bundle (several downloads)" },
               { value: "curriculum", label: "Curriculum" }
             ],
-            ui: { description: "Controls card style and shop filters." }
+            ui: {
+              description: "Controls card style and shop filters. Digital, Bundle, and Curriculum products deliver the Download Files below after payment."
+            }
           },
           {
             type: "image",
@@ -3489,11 +3640,50 @@ var config_default = defineConfig({
             }
           },
           {
+            type: "object",
+            name: "downloadFiles",
+            label: "Download Files",
+            list: true,
+            ui: {
+              description: "What the customer receives after paying (Digital, Bundle, and Curriculum products). Add one item per file \u2014 PDF, ZIP, or EPUB, up to 50 MB each. Each file gets its own download button on the thank-you page; with 2 or more files customers also get a Download All (.zip) button.",
+              itemProps: (item) => ({
+                label: item?.label?.trim() || item?.file?.split("/").pop() || "New file"
+              }),
+              defaultItem: {
+                label: "",
+                file: ""
+              }
+            },
+            fields: [
+              {
+                type: "string",
+                name: "file",
+                label: "File",
+                required: true,
+                ui: {
+                  // Tina's Component typing predates custom-field props; same
+                  // cast the SEO assistant uses in tina/seo.ts.
+                  component: wrapFieldsWithMeta(DownloadFileField),
+                  description: "Uploads go to private storage, never to the public site. Replace the file any time \u2014 customers always get the latest version."
+                }
+              },
+              {
+                type: "string",
+                name: "label",
+                label: "Button Label",
+                ui: charLimit(
+                  60,
+                  "Text on the customer's download button, e.g. \u201CWorkbook (PDF)\u201D or \u201CBrush pack\u201D. Leave blank to use the file name."
+                )
+              }
+            ]
+          },
+          {
             type: "string",
             name: "downloadUrl",
-            label: "Download URL",
+            label: "Legacy Download URL (advanced)",
             ui: {
-              description: "After Stripe payment, digital/curriculum products get a 48-hour download link that redirects here. Prefer a file on this site (e.g. /files/guide.pdf)."
+              description: "Older single-link method. Use Download Files above instead; this is only read when that list is empty."
             }
           },
           {

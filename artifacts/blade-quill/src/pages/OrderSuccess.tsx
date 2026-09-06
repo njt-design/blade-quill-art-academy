@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { CheckCircle, Download, ArrowRight } from "lucide-react";
+import { CheckCircle, Download, FolderDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
 import { useCart } from "@/hooks/useCart";
@@ -62,6 +62,7 @@ export default function OrderSuccess() {
   }
 
   const isDigital = order.productCategory !== "physical";
+  const downloads = order.downloads ?? [];
 
   return (
     <div className="min-h-screen py-20 flex items-center justify-center">
@@ -77,11 +78,38 @@ export default function OrderSuccess() {
 
           {isDigital && (
             <div className="bg-secondary/60 rounded-lg p-5 mb-6 border border-border text-left">
-              <h3 className="font-normal mb-3">Your Download</h3>
-              {order.downloadUrl ? (
+              <h3 className="font-normal mb-3">
+                {downloads.length > 1 ? `Your Downloads (${downloads.length} files)` : "Your Download"}
+              </h3>
+              {downloads.length > 1 ? (
+                <>
+                  {order.downloadAllUrl && (
+                    <Button asChild className="w-full gap-2 mb-3">
+                      <a href={order.downloadAllUrl} download>
+                        <FolderDown className="w-4 h-4" /> Download All (.zip)
+                      </a>
+                    </Button>
+                  )}
+                  <ul className="divide-y divide-border rounded-md border border-border bg-background/60">
+                    {downloads.map((file) => (
+                      <li key={file.url} className="flex items-center justify-between gap-3 px-3 py-2">
+                        <span className="text-sm truncate" title={file.label}>{file.label}</span>
+                        <Button asChild variant="outline" size="sm" className="shrink-0 gap-1.5">
+                          <a href={file.url} download>
+                            <Download className="w-3.5 h-3.5" /> Download
+                          </a>
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-muted-foreground mt-3">
+                    These links work for 48 hours. Save the files somewhere safe once they download.
+                  </p>
+                </>
+              ) : downloads.length === 1 ? (
                 <>
                   <Button asChild className="w-full gap-2">
-                    <a href={order.downloadUrl} download>
+                    <a href={downloads[0].url} download>
                       <Download className="w-4 h-4" /> Download Now
                     </a>
                   </Button>

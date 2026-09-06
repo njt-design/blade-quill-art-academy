@@ -26,7 +26,7 @@ export const ListProductsResponseItem = zod.object({
   name: zod.string(),
   description: zod.string(),
   price: zod.number(),
-  category: zod.enum(["physical", "digital", "curriculum"]),
+  category: zod.enum(["physical", "digital", "curriculum", "bundle"]),
   imageUrl: zod.string(),
   gumroadUrl: zod.string().nullish(),
   downloadUrl: zod.string().nullish(),
@@ -48,7 +48,7 @@ export const GetProductResponse = zod.object({
   name: zod.string(),
   description: zod.string(),
   price: zod.number(),
-  category: zod.enum(["physical", "digital", "curriculum"]),
+  category: zod.enum(["physical", "digital", "curriculum", "bundle"]),
   imageUrl: zod.string(),
   gumroadUrl: zod.string().nullish(),
   downloadUrl: zod.string().nullish(),
@@ -119,7 +119,10 @@ export const ListDownloadsResponse = zod.array(ListDownloadsResponseItem);
 export const CreateCheckoutSessionBody = zod.object({
   productId: zod.number(),
   quantity: zod.number().min(1),
-  productSlug: zod.string().optional(),
+  productSlug: zod
+    .string()
+    .optional()
+    .describe("Optional Tina product filename slug for O(1) catalog lookup"),
 });
 
 export const CreateCheckoutSessionResponse = zod.object({
@@ -138,7 +141,24 @@ export const GetOrderSuccessResponse = zod.object({
   productName: zod.string(),
   productCategory: zod.string(),
   gumroadUrl: zod.string().nullish(),
-  downloadUrl: zod.string().nullish(),
+  downloadUrl: zod
+    .string()
+    .nullish()
+    .describe("Convenience link when the order has exactly one file."),
+  downloads: zod
+    .array(
+      zod.object({
+        label: zod.string(),
+        url: zod.string(),
+      }),
+    )
+    .describe(
+      "One link per file, in product order. Empty for physical products.",
+    ),
+  downloadAllUrl: zod
+    .string()
+    .nullish()
+    .describe("Zip of every file; only set when there is more than one."),
   email: zod.string().nullish(),
 });
 

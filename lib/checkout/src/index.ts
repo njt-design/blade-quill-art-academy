@@ -1,24 +1,35 @@
+import type { ServerResponse } from "node:http";
 import type Stripe from "stripe";
-import { getStripe, getSupabase, hasStripe, hasSupabase } from "./clients";
+import { getStripe, hasStripe, hasSupabase } from "./clients";
+import {
+  getDownloadableOrder,
+  pickFile,
+  signFileUrl,
+  streamOrderArchive,
+} from "./downloads";
 import {
   fulfillOrder,
-  getOrderByDownloadToken,
   getOrderBySessionId,
   insertPendingOrder,
+  orderFiles,
 } from "./orders";
 import { findTinaProductById } from "./tina-product";
 import {
   CheckoutError,
   type CreateCheckoutResult,
+  type OrderDownloadLink,
   type OrderSuccessResult,
 } from "./types";
 
-export { CheckoutError } from "./types";
+export { CheckoutError, DOWNLOADABLE_CATEGORIES } from "./types";
 export type {
   CheckoutProduct,
   CreateCheckoutResult,
+  DownloadFile,
+  OrderDownloadLink,
   OrderSuccessResult,
 } from "./types";
+export { DOWNLOADS_BUCKET, getDownloadableOrder, streamOrderArchive } from "./downloads";
 
 function requirePaymentsConfigured(): void {
   if (!hasStripe()) {
@@ -170,18 +181,28 @@ export async function getOrderSuccess(
     throw new CheckoutError("order_not_found", "Order not found", 404);
   }
 
-  let downloadUrl: string | null = null;
-  if (order.download_token && order.download_token_expires_at) {
-    if (new Date(order.download_token_expires_at) > new Date()) {
-      downloadUrl = `/api/download/${order.download_token}`;
-    }
+  let downloads: OrderDownloadLink[] = [];
+  let downloadAllUrl: string | null = null;
+  const tokenLive =
+    order.download_token &&
+    order.download_token_expires_at &&
+    new Date(order.download_token_expires_at) > new Date();
+  if (tokenLive) {
+    const base = `/api/download/${order.download_token}`;
+    downloads = orderFiles(order).map((f, i) => ({
+      label: f.label,
+      url: `${base}?file=${i}`,
+    }));
+    if (downloads.length > 1) downloadAllUrl = `${base}?all=1`;
   }
 
   return {
     productName: order.product_name || "Your purchase",
     productCategory: order.product_category || "digital",
     gumroadUrl: order.gumroad_url,
-    downloadUrl,
+    downloadUrl: downloads.length === 1 ? downloads[0].url : null,
+    downloads,
+    downloadAllUrl,
     email: order.customer_email,
   };
 }
@@ -257,92 +278,41 @@ export async function handleStripeWebhook(input: {
   return { received: true };
 }
 
-export async function resolveDownloadRedirect(
-  token: string
-): Promise<string> {
+/**
+ * Resolve a download request into either a redirect URL (one file) or a
+ * streamed zip (many files). `fileIndex` selects one file; `all` forces the
+ * zip. Used by /api/download/[token] on Vercel and the Express dev server.
+ */
+export async function serveDownload(
+  token: string,
+  opts: { fileIndex?: number; all?: boolean },
+  res: ServerResponse
+): Promise<void> {
   requirePaymentsConfigured();
-  if (!token) {
-    throw new CheckoutError(
-      "download_invalid",
-      "Invalid or expired download link",
-      404
-    );
+  const { order, files } = await getDownloadableOrder(token);
+
+  const wantsZip = opts.all || (opts.fileIndex === undefined && files.length > 1);
+  if (wantsZip) {
+    await streamOrderArchive(order, files, res);
+    return;
   }
 
-  const order = await getOrderByDownloadToken(token);
-  if (!order) {
-    throw new CheckoutError(
-      "download_invalid",
-      "Invalid or expired download link",
-      404
-    );
-  }
-  if (order.status !== "paid") {
-    throw new CheckoutError(
-      "download_unpaid",
-      "Payment not confirmed for this download",
-      402
-    );
-  }
-  if (
-    !order.download_token_expires_at ||
-    new Date(order.download_token_expires_at) < new Date()
-  ) {
-    throw new CheckoutError(
-      "download_expired",
-      "Download link has expired",
-      410
-    );
-  }
-  if (!order.download_url) {
-    throw new CheckoutError(
-      "download_missing",
-      "No download file available for this product",
-      404
-    );
-  }
-  return resolveDownloadTarget(order.download_url);
+  const file = pickFile(files, opts.fileIndex);
+  const url = await signFileUrl(file.path);
+  res.statusCode = 302;
+  res.setHeader("Location", url);
+  res.setHeader("Cache-Control", "private, no-store");
+  res.end();
 }
 
-/** Private Supabase Storage bucket holding paid product files. */
-const DOWNLOADS_BUCKET =
-  process.env.DOWNLOADS_BUCKET?.trim() || "product-downloads";
-/** Signed URLs are single-use in practice; keep them short-lived. */
-const SIGNED_URL_TTL_SECONDS = 60;
-
 /**
- * Turn a Tina `downloadUrl` value into something the browser can fetch.
- *
- * - `https://…` or `/files/….pdf` → returned as-is (public link).
- * - Anything else (e.g. `krita-quick-start-guide-2e.pdf`) is treated as an
- *   object path inside the private DOWNLOADS_BUCKET and exchanged for a
- *   short-lived signed URL that forces a file download.
+ * Back-compat: resolve a token to a single redirect URL. Multi-file orders
+ * resolve to their first file; prefer `serveDownload`.
  */
-async function resolveDownloadTarget(downloadUrl: string): Promise<string> {
-  const value = downloadUrl.trim();
-  if (/^https?:\/\//i.test(value) || value.startsWith("/")) {
-    return value;
-  }
-
-  const objectPath = value.replace(/^\/+/, "");
-  const filename = objectPath.split("/").pop() || "download";
-  const { data, error } = await getSupabase()
-    .storage.from(DOWNLOADS_BUCKET)
-    .createSignedUrl(objectPath, SIGNED_URL_TTL_SECONDS, {
-      download: filename,
-    });
-  if (error || !data?.signedUrl) {
-    console.error(
-      `Signed URL failed for ${DOWNLOADS_BUCKET}/${objectPath}:`,
-      error
-    );
-    throw new CheckoutError(
-      "download_missing",
-      "No download file available for this product",
-      404
-    );
-  }
-  return data.signedUrl;
+export async function resolveDownloadRedirect(token: string): Promise<string> {
+  requirePaymentsConfigured();
+  const { files } = await getDownloadableOrder(token);
+  return signFileUrl(files[0].path);
 }
 
 /** Re-export for callers that need a session lookup without fulfillment. */

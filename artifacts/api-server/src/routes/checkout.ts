@@ -4,7 +4,7 @@ import {
   createCheckoutSession,
   getOrderSuccess,
   handleStripeWebhook,
-  resolveDownloadRedirect,
+  serveDownload,
 } from "@workspace/checkout";
 import {
   CreateCheckoutSessionBody,
@@ -94,9 +94,16 @@ router.get(
     try {
       const raw = req.params.token;
       const token = Array.isArray(raw) ? String(raw[0] ?? "") : String(raw ?? "");
-      const url = await resolveDownloadRedirect(token);
-      res.redirect(302, url);
+      const fileRaw = typeof req.query.file === "string" ? req.query.file : "";
+      const fileIndex = fileRaw === "" ? undefined : Number(fileRaw);
+      const all = ["1", "true", "yes"].includes(String(req.query.all ?? "").toLowerCase());
+      await serveDownload(token, { fileIndex, all }, res);
     } catch (err) {
+      if (res.headersSent) {
+        console.error("Download failed mid-stream:", err);
+        res.end();
+        return;
+      }
       sendError(res, err);
     }
   }

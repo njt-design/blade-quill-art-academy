@@ -4362,6 +4362,11 @@ export const ShopProductPartsFragmentDoc = gql`
   }
   featured
   inStock
+  downloadFiles {
+    __typename
+    file
+    label
+  }
   downloadUrl
   gumroadUrl
   amazonUrl

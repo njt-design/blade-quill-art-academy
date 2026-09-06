@@ -90,9 +90,20 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 1. **Shop Products**
 2. Edit Name, Description, **Price (USD)**, Category, Cover Image (prefer `images/products/`).
 3. Toggle **In Stock** / **Featured** as needed.
-4. For digital products, set **Download URL** (e.g. `/files/…`).
+4. For anything customers download (Digital, Bundle, Curriculum), add the files under **Download Files** — see below.
 5. **Product ID (advanced):** only when creating a *new* product — pick the next unused number and never renumber old ones.
 6. Save. Preview at `/shop/your-product-slug`. You can click the title, price, description, and image in the preview to edit.
+
+### Sell a download or a bundle of files
+
+1. **Shop Products** → open the product (or create one) and set **Category** to *Digital download* for one file, or *Bundle (several downloads)* for a set.
+2. Set the **Price (USD)** — one price for the whole bundle.
+3. Under **Download Files**, click **Add item**, then **Choose file** and pick the PDF, ZIP, or EPUB (up to 50 MB each). Wait for "Uploaded …" to appear.
+4. Optionally give it a **Button Label** (e.g. "Workbook (PDF)"). Blank = the file name.
+5. Repeat **Add item** for each extra file. Drag the handle to reorder.
+6. **Save.** Files are stored privately — nobody can reach them without paying.
+
+After paying, the customer's thank-you page shows one **Download** button per file, plus **Download All (.zip)** when there are two or more. Links work for 48 hours. To ship a corrected file, open the item, click **Replace file**, and save — customers always get the latest version.
 
 ### Change the menu or footer
 

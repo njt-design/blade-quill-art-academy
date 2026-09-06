@@ -1,6 +1,10 @@
 import crypto from "node:crypto";
 import { getSupabase } from "./clients";
-import type { CheckoutProduct } from "./types";
+import {
+  DOWNLOADABLE_CATEGORIES,
+  type CheckoutProduct,
+  type DownloadFile,
+} from "./types";
 
 export interface OrderRow {
   id: number;
@@ -10,11 +14,39 @@ export interface OrderRow {
   product_category: string | null;
   product_slug: string | null;
   gumroad_url: string | null;
+  /** Legacy single-file snapshot. */
   download_url: string | null;
+  /** Snapshot of the product's Download Files at checkout (jsonb). */
+  download_files: DownloadFile[] | null;
   customer_email: string | null;
   status: string;
   download_token: string | null;
   download_token_expires_at: string | null;
+}
+
+/**
+ * Every deliverable file for an order, newest schema first: the
+ * `download_files` snapshot, else the legacy single `download_url`.
+ */
+export function orderFiles(order: Pick<OrderRow, "download_files" | "download_url">): DownloadFile[] {
+  if (Array.isArray(order.download_files) && order.download_files.length > 0) {
+    return order.download_files
+      .filter((f) => f && typeof f.path === "string" && f.path.trim())
+      .map((f) => ({
+        label: (typeof f.label === "string" && f.label.trim()) || fileLabel(f.path),
+        path: f.path.trim(),
+      }));
+  }
+  if (order.download_url?.trim()) {
+    const path = order.download_url.trim();
+    return [{ label: fileLabel(path), path }];
+  }
+  return [];
+}
+
+function fileLabel(path: string): string {
+  const base = path.split("/").pop() ?? path;
+  return base.replace(/\.[a-z0-9]{1,5}$/i, "").replace(/[-_]+/g, " ").trim() || base;
 }
 
 function generateDownloadToken(): string {
@@ -32,7 +64,7 @@ export async function insertPendingOrder(
   product: CheckoutProduct
 ): Promise<void> {
   const supabase = getSupabase();
-  const { error } = await supabase.from("orders").insert({
+  const row: Record<string, unknown> = {
     stripe_session_id: sessionId,
     product_id: product.productId,
     product_name: product.name,
@@ -41,7 +73,13 @@ export async function insertPendingOrder(
     gumroad_url: product.gumroadUrl,
     download_url: product.downloadUrl,
     status: "pending",
-  });
+  };
+  // Only send the column when there is something to store, so products
+  // without a files list keep working even before the jsonb column exists.
+  if (product.files.length > 0) {
+    row.download_files = product.files;
+  }
+  const { error } = await supabase.from("orders").insert(row);
   if (error) throw error;
 }
 
@@ -94,11 +132,9 @@ export async function fulfillOrder(
     ...(customerEmail ? { customer_email: customerEmail } : {}),
   };
 
-  const category = order.product_category;
-  const downloadUrl = order.download_url;
   if (
-    (category === "digital" || category === "curriculum") &&
-    downloadUrl
+    DOWNLOADABLE_CATEGORIES.has(order.product_category ?? "") &&
+    orderFiles(order).length > 0
   ) {
     updates.download_token = generateDownloadToken();
     updates.download_token_expires_at = getTokenExpiry();

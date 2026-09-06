@@ -45,7 +45,24 @@ Decision: buyers download directly from the success page; no Gumroad hand-off.
 - Follow-up: update the Tina **Download URL** field hint (`tina/config.ts` ~line 935) to describe the bucket workflow the next time `build:deploy` is run — changing `config.ts` requires regenerating `tina-lock.json`/`__generated__`, so it wasn't bundled with this fix.
 - Verified end to end with a stand-in PDF: upload → signed URL → 200 `application/pdf`, `Content-Disposition: attachment` → expired token → 410. Stand-in removed afterwards.
 
-**Remaining manual step:** upload the real *Krita Quick Start Guide (2nd Edition)* PDF to Supabase Storage → `product-downloads`, then in Tina Shop Products set **Download URL** to its filename (e.g. `krita-quick-start-guide-2e.pdf`). Physical books don't need this.
+**Remaining manual step:** in Tina → Shop Products → Krita Quick Start Guide → **Download Files** → Add item → Choose file → pick the real *2nd Edition* PDF → Save. Physical books don't need this.
+
+### Bundles / multi-file products (built 2026-09-06)
+
+- **Tina:** `shopProduct.downloadFiles` object list (`file`, `label`) with a custom upload widget (`DownloadFileField` in `tina/config.ts`); new **Bundle** category; `downloadUrl` demoted to "Legacy Download URL (advanced)" and only read when the list is empty. Regenerated `tina-lock.json`, `__generated__/`, `public/admin`.
+- **Upload path:** `POST /api/uploads` (Tina-authenticated via `assertTinaAuthorized`, same as Insights) → `createSignedUploadUrl` into `product-downloads` → browser PUTs directly to Supabase. Allowed: pdf/zip/epub. Object path = `<product-name-slug>/<file-slug>.<ext>`, upsert on.
+- **Orders:** new `orders.download_files jsonb` snapshot; `insertPendingOrder` only sends it when non-empty; `fulfillOrder` mints a token for digital/curriculum/bundle with ≥1 file (`orderFiles()` falls back to legacy `download_url`).
+- **Download API:** `/api/download/<token>?file=N` → 302 signed URL; `?all=1` → streamed zip (`archiver@7`, stored/no-deflate; ESM-only v8 avoided because Vercel bundles `api/` as CJS). `serveDownload()` in `lib/checkout`; Express dev route mirrors it.
+- **Success API/page:** `OrderSuccess.downloads[] {label,url}` + `downloadAllUrl`; page shows one button per file + **Download All (.zip)** when >1. OpenAPI + orval client regenerated.
+- **Verified locally:** auth rejection (401/400), signed upload + PUT + replace, two-file zip streamed via real HTTP server (integrity OK), invalid token rejected.
+
+**REQUIRED MIGRATION (one line, Supabase SQL Editor) before selling a bundle:**
+
+```sql
+alter table orders add column if not exists download_files jsonb;
+```
+
+Until it's run, single-file and physical products keep working; a bundle checkout would 500 (and the Stripe session is auto-expired). Also in `lib/db/sql/schema.sql`.
 
 ## API keys Corinne needs
 

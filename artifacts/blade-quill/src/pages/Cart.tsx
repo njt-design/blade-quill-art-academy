@@ -57,7 +57,7 @@ export default function Cart() {
               <div className="flex-grow min-w-0">
                 <h3 className="font-normal text-sm line-clamp-1 mb-0.5">{item.name}</h3>
                 <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                  {item.category === "physical" ? "Physical" : item.category === "curriculum" ? "Curriculum" : "Digital"}
+                  {item.category === "physical" ? "Physical" : item.category === "curriculum" ? "Curriculum" : item.category === "bundle" ? "Bundle" : "Digital"}
                 </span>
                 <div className="flex items-center justify-between mt-2">
                   <div className="flex items-center gap-1">

@@ -12076,6 +12076,11 @@ type ShopProductSpreadImages {
   alt: String
 }
 
+type ShopProductDownloadFiles {
+  file: String!
+  label: String
+}
+
 type ShopProductSeo {
   metaTitle: String
   metaDescription: String
@@ -12091,6 +12096,7 @@ type ShopProduct implements Node & Document {
   spreadImages: [ShopProductSpreadImages]
   featured: Boolean
   inStock: Boolean
+  downloadFiles: [ShopProductDownloadFiles]
   downloadUrl: String
   gumroadUrl: String
   amazonUrl: String
@@ -12124,6 +12130,11 @@ input ShopProductSpreadImagesFilter {
   alt: StringFilter
 }
 
+input ShopProductDownloadFilesFilter {
+  file: StringFilter
+  label: StringFilter
+}
+
 input ShopProductSeoFilter {
   metaTitle: StringFilter
   metaDescription: StringFilter
@@ -12139,6 +12150,7 @@ input ShopProductFilter {
   spreadImages: ShopProductSpreadImagesFilter
   featured: BooleanFilter
   inStock: BooleanFilter
+  downloadFiles: ShopProductDownloadFilesFilter
   downloadUrl: StringFilter
   gumroadUrl: StringFilter
   amazonUrl: StringFilter
@@ -17639,6 +17651,11 @@ input ShopProductSpreadImagesMutation {
   alt: String
 }
 
+input ShopProductDownloadFilesMutation {
+  file: String
+  label: String
+}
+
 input ShopProductSeoMutation {
   metaTitle: String
   metaDescription: String
@@ -17654,6 +17671,7 @@ input ShopProductMutation {
   spreadImages: [ShopProductSpreadImagesMutation]
   featured: Boolean
   inStock: Boolean
+  downloadFiles: [ShopProductDownloadFilesMutation]
   downloadUrl: String
   gumroadUrl: String
   amazonUrl: String

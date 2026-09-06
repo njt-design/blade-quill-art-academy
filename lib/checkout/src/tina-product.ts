@@ -1,4 +1,4 @@
-import type { CheckoutProduct, ProductCategory } from "./types";
+import type { CheckoutProduct, DownloadFile, ProductCategory } from "./types";
 
 const TINA_API_VERSION = "2.4";
 const PAGE_SIZE = 50;
@@ -17,6 +17,10 @@ const PRODUCT_FIELDS = `
   image
   gumroadUrl
   downloadUrl
+  downloadFiles {
+    label
+    file
+  }
   inStock
 `;
 
@@ -69,6 +73,10 @@ interface TinaNode {
   image?: string | null;
   gumroadUrl?: string | null;
   downloadUrl?: string | null;
+  downloadFiles?: Array<{
+    label?: string | null;
+    file?: string | null;
+  } | null> | null;
   inStock?: boolean | null;
 }
 
@@ -97,8 +105,31 @@ function richTextToPlain(value: unknown): string {
 }
 
 function asCategory(raw: unknown): ProductCategory {
-  if (raw === "physical" || raw === "digital" || raw === "curriculum") return raw;
+  if (
+    raw === "physical" ||
+    raw === "digital" ||
+    raw === "curriculum" ||
+    raw === "bundle"
+  ) {
+    return raw;
+  }
   return "digital";
+}
+
+function fileLabelFromPath(path: string): string {
+  const base = path.split("/").pop() ?? path;
+  return base.replace(/\.[a-z0-9]{1,5}$/i, "").replace(/[-_]+/g, " ").trim() || base;
+}
+
+function toDownloadFiles(node: TinaNode): DownloadFile[] {
+  const out: DownloadFile[] = [];
+  for (const item of node.downloadFiles ?? []) {
+    const path = item?.file?.trim();
+    if (!path) continue;
+    const label = item?.label?.trim() || fileLabelFromPath(path);
+    out.push({ label, path });
+  }
+  return out;
 }
 
 function absoluteUrl(baseUrl: string, maybeRelative: string | null): string | null {
@@ -130,6 +161,7 @@ function toProduct(node: TinaNode, baseUrl: string): CheckoutProduct | null {
     imageUrl: absoluteUrl(baseUrl, node.image ?? null),
     gumroadUrl: node.gumroadUrl?.trim() || null,
     downloadUrl: node.downloadUrl?.trim() || null,
+    files: toDownloadFiles(node),
     inStock: node.inStock !== false,
   };
 }
