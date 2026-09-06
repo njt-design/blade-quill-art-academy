@@ -1,5 +1,5 @@
 import type Stripe from "stripe";
-import { getStripe, hasStripe, hasSupabase } from "./clients";
+import { getStripe, getSupabase, hasStripe, hasSupabase } from "./clients";
 import {
   fulfillOrder,
   getOrderByDownloadToken,
@@ -117,7 +117,24 @@ export async function createCheckoutSession(input: {
     throw new CheckoutError("internal", "Failed to create checkout session", 500);
   }
 
-  await insertPendingOrder(session.id, product);
+  try {
+    await insertPendingOrder(session.id, product);
+  } catch (err) {
+    // Order storage failed after the Stripe session was created. Expire the
+    // session so the buyer can't pay for an order we have no record of.
+    console.error("Pending order insert failed:", err);
+    try {
+      await stripe.checkout.sessions.expire(session.id);
+    } catch (expireErr) {
+      console.error("Failed to expire orphaned session", session.id, expireErr);
+    }
+    throw new CheckoutError(
+      "internal",
+      "Failed to create checkout session",
+      500
+    );
+  }
+
   return { url: session.url, sessionId: session.id };
 }
 
@@ -284,7 +301,48 @@ export async function resolveDownloadRedirect(
       404
     );
   }
-  return order.download_url;
+  return resolveDownloadTarget(order.download_url);
+}
+
+/** Private Supabase Storage bucket holding paid product files. */
+const DOWNLOADS_BUCKET =
+  process.env.DOWNLOADS_BUCKET?.trim() || "product-downloads";
+/** Signed URLs are single-use in practice; keep them short-lived. */
+const SIGNED_URL_TTL_SECONDS = 60;
+
+/**
+ * Turn a Tina `downloadUrl` value into something the browser can fetch.
+ *
+ * - `https://…` or `/files/….pdf` → returned as-is (public link).
+ * - Anything else (e.g. `krita-quick-start-guide-2e.pdf`) is treated as an
+ *   object path inside the private DOWNLOADS_BUCKET and exchanged for a
+ *   short-lived signed URL that forces a file download.
+ */
+async function resolveDownloadTarget(downloadUrl: string): Promise<string> {
+  const value = downloadUrl.trim();
+  if (/^https?:\/\//i.test(value) || value.startsWith("/")) {
+    return value;
+  }
+
+  const objectPath = value.replace(/^\/+/, "");
+  const filename = objectPath.split("/").pop() || "download";
+  const { data, error } = await getSupabase()
+    .storage.from(DOWNLOADS_BUCKET)
+    .createSignedUrl(objectPath, SIGNED_URL_TTL_SECONDS, {
+      download: filename,
+    });
+  if (error || !data?.signedUrl) {
+    console.error(
+      `Signed URL failed for ${DOWNLOADS_BUCKET}/${objectPath}:`,
+      error
+    );
+    throw new CheckoutError(
+      "download_missing",
+      "No download file available for this product",
+      404
+    );
+  }
+  return data.signedUrl;
 }
 
 /** Re-export for callers that need a session lookup without fulfillment. */

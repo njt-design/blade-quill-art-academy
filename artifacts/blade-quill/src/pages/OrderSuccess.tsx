@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { CheckCircle, Download, ExternalLink, ArrowRight } from "lucide-react";
+import { CheckCircle, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
 import { useCart } from "@/hooks/useCart";
@@ -77,17 +77,26 @@ export default function OrderSuccess() {
 
           {isDigital && (
             <div className="bg-secondary/60 rounded-lg p-5 mb-6 border border-border text-left">
-              <h3 className="font-normal mb-3">Access Your Purchase</h3>
+              <h3 className="font-normal mb-3">Your Download</h3>
               {order.downloadUrl ? (
-                <Button className="w-full gap-2" onClick={() => window.open(order.downloadUrl as string, "_blank")}>
-                  <Download className="w-4 h-4" /> Download Files
-                </Button>
-              ) : order.gumroadUrl ? (
-                <Button className="w-full gap-2" onClick={() => window.open(order.gumroadUrl as string, "_blank")}>
-                  <ExternalLink className="w-4 h-4" /> Access on Gumroad
-                </Button>
+                <>
+                  <Button asChild className="w-full gap-2">
+                    <a href={order.downloadUrl} download>
+                      <Download className="w-4 h-4" /> Download Now
+                    </a>
+                  </Button>
+                  <p className="text-xs text-muted-foreground mt-3">
+                    This link works for 48 hours. Save the file somewhere safe once it downloads.
+                  </p>
+                </>
               ) : (
-                <p className="text-sm text-muted-foreground">You'll receive an email with your access link shortly.</p>
+                <p className="text-sm text-muted-foreground">
+                  Your file isn't ready yet. Please{" "}
+                  <button type="button" className="underline underline-offset-2" onClick={() => setLocation("/contact")}>
+                    contact us
+                  </button>{" "}
+                  with your receipt email and we'll send it right away.
+                </p>
               )}
             </div>
           )}
