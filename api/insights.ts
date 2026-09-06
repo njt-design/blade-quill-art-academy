@@ -1,16 +1,20 @@
 /**
- * /api/insights — Tina-authenticated Owner Studio metrics + session.
+ * /api/insights — Tina-authenticated Owner Studio API.
  *
- * Two routes in one function (Vercel Hobby caps deployments at 12
+ * Three routes in one function (Vercel Hobby caps deployments at 12
  * serverless functions):
  * - GET  /api/insights                    → metrics (query: clientID, range)
  * - *    /api/insights/session            → session cookie management
  *         (reached via the vercel.json rewrite to /api/insights?__route=session)
+ * - POST /api/uploads                     → signed upload URL into the private
+ *         product-downloads bucket for the Tina "Download Files" widget
+ *         (rewrite to /api/insights?__route=uploads)
  *
  * Auth: Authorization: Bearer <tina id_token> OR bq_insights cookie
  *       from POST /api/insights/session
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { CheckoutError, prepareDownloadUpload } from "../lib/checkout/src/index";
 import {
   assertTinaAuthorized,
   buildInsightsSessionCookie,
@@ -81,10 +85,52 @@ async function sessionHandler(req: VercelRequest, res: VercelResponse) {
   }
 }
 
+/**
+ * POST /api/uploads — { fileName, contentType?, folder? } →
+ * { path, uploadUrl, contentType }. The browser then PUTs the file to
+ * uploadUrl (x-upsert: true) and stores `path` in Tina.
+ */
+async function uploadsHandler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+
+  try {
+    await assertTinaAuthorized({
+      clientId: process.env.TINA_PUBLIC_CLIENT_ID,
+      authorization: req.headers.authorization,
+    });
+    const body = (req.body ?? {}) as {
+      fileName?: unknown;
+      contentType?: unknown;
+      folder?: unknown;
+    };
+    const result = await prepareDownloadUpload(body);
+    res.status(200).json(result);
+  } catch (err) {
+    const status = insightsAuthErrorStatus(err);
+    if (status !== null) {
+      res.status(status).json({ error: (err as Error).message });
+      return;
+    }
+    if (err instanceof CheckoutError) {
+      res.status(err.status).json({ error: err.message });
+      return;
+    }
+    console.error(err);
+    res.status(500).json({ error: "Could not prepare upload" });
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // /api/insights/session arrives here via the vercel.json rewrite.
+  // /api/insights/session and /api/uploads arrive here via vercel.json rewrites.
   if (req.query.__route === "session") {
     return sessionHandler(req, res);
+  }
+  if (req.query.__route === "uploads") {
+    return uploadsHandler(req, res);
   }
 
   if (req.method !== "GET") {

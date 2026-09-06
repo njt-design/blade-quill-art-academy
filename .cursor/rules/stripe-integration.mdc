@@ -14,6 +14,7 @@ When the user asks about Stripe, checkout setup, Corinne's payment keys, webhook
 - **Supabase:** free-tier project pauses after 7 idle days and its hostname stops resolving → checkout 500s. Restored 2026-09-06; keep-alive ping being added. If `SCHEMA_ERROR: fetch failed` reappears, it's paused again — Restore in the dashboard
 - **Downloads:** private Supabase bucket `product-downloads`. Tina **Download Files** list (upload widget → `/api/uploads` → signed PUT). `/api/download/<token>?file=N` (302) or `?all=1` (streamed zip). Bundle category = several files. Krita guide PDF still needs uploading via the widget
 - **Migration needed:** `alter table orders add column if not exists download_files jsonb;` — bundles 500 at checkout until run
+- **Vercel Hobby = max 12 files in `api/`.** We're at exactly 12. Never add a new `api/*.ts`; fold routes into an existing function via a `vercel.json` rewrite + `__route` query (see `api/insights.ts`, `api/checkout.ts`)
 - **Webhook:** must use Web handler signature (`POST(request: Request)` + `request.text()`); Vercel pre-parses `req.body` and breaks Stripe signatures otherwise. `api/inbound.ts` probably has the same bug
 - **Test purchase:** done 2026-09-06 (order #7). **Still todo:** upload PDF, go live with `sk_live_` + live webhook
 - **Testing URL:** `blade-quill-art-academy.vercel.app` — custom domain blocks `/api/*` until launch

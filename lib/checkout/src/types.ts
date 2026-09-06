@@ -67,6 +67,7 @@ export type CheckoutErrorCode =
   | "download_unpaid"
   | "download_expired"
   | "download_missing"
+  | "upload_failed"
   | "internal";
 
 export class CheckoutError extends Error {

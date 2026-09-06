@@ -176,6 +176,14 @@
       "destination": "/api/insights?__route=session"
     },
     {
+      "source": "/api/uploads",
+      "destination": "/api/insights?__route=uploads"
+    },
+    {
+      "source": "/api/checkout/success",
+      "destination": "/api/checkout?__route=success"
+    },
+    {
       "source": "/api/tina/:path*",
       "destination": "/api/tina-proxy?__path=:path*"
     },

@@ -30,6 +30,8 @@ export type {
   OrderSuccessResult,
 } from "./types";
 export { DOWNLOADS_BUCKET, getDownloadableOrder, streamOrderArchive } from "./downloads";
+export { prepareDownloadUpload } from "./uploads";
+export type { PrepareUploadInput, PrepareUploadResult } from "./uploads";
 
 function requirePaymentsConfigured(): void {
   if (!hasStripe()) {
