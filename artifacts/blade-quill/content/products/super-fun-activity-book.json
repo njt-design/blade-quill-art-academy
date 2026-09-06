@@ -1,5 +1,5 @@
 {
-  "name": "Super Fun Activity Book — Puzzle Games for Kids Ages 8–12",
+  "name": "Lheeloo Super Fun Bundle",
   "description": {
     "type": "root",
     "children": [
@@ -7,20 +7,20 @@
         "type": "p",
         "children": [
           {
-            "type": "text",
-            "text": "Word searches, word scrambles, crossword puzzles, mazes, spot-the-difference games, connect-the-dots, matching games, trivia and fun facts, true-or-false challenges, coloring pages, drawing activities, cartoon strips, jokes, and more! Along the way, kids will meet Lheeloo, a spirited little French Bulldog, and Luna, her tiny mouse best friend. Paperback $11.99 on Amazon, or download and print the digital version for $7.99 on Gumroad."
+            "text": "You get the Lheeloo & Luna E-book, the coloring book, and the activity book. "
           }
         ],
         "id": "Av8V3OoO1v"
       }
     ]
   },
-  "price": 11.99,
-  "category": "physical",
+  "price": 14.99,
+  "category": "digital",
   "image": "/images/puzzle-book-front.png",
   "featured": true,
   "inStock": true,
-  "gumroadUrl": "https://bladeandquill.gumroad.com/l/einoxf",
+  "downloadUrl": "",
+  "gumroadUrl": "",
   "productId": 3,
   "createdAt": "2026-06-01T00:00:00.000Z"
 }
