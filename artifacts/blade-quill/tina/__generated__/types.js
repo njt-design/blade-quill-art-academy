@@ -4376,15 +4376,6 @@ export const ShopProductPartsFragmentDoc = gql`
     amazonButtonLabel
     googlePlayButtonLabel
   }
-  purchaseOptions {
-    __typename
-    groupLabel
-    options {
-      __typename
-      name
-      meta
-    }
-  }
   trustBullets {
     __typename
     label

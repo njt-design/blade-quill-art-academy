@@ -4,15 +4,25 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
 import { useCreateCheckoutSession } from "@workspace/api-client-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { checkoutErrorMessage } from "@/lib/checkout-error";
 
 export default function Cart() {
   const [, setLocation] = useLocation();
   const { items, removeItem, updateQuantity, totalPrice } = useCart();
   const [checkingOutId, setCheckingOutId] = useState<number | null>(null);
+  const { toast } = useToast();
 
   const { mutate: checkout } = useCreateCheckoutSession({
     mutation: {
       onSuccess: (data) => { if (data.url) window.location.href = data.url; },
+      onError: (err: unknown) => {
+        toast({
+          variant: "destructive",
+          title: "Checkout isn't available right now",
+          description: checkoutErrorMessage(err),
+        });
+      },
       onSettled: () => setCheckingOutId(null),
     },
   });

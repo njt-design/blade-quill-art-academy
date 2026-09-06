@@ -80,13 +80,6 @@
     "amazonButtonLabel": "Buy paperback on Amazon",
     "googlePlayButtonLabel": "Get eBook on Google Play"
   },
-  "purchaseOptions": {
-    "groupLabel": "LICENSE",
-    "options": [
-      { "name": "Personal", "meta": "$15" },
-      { "name": "Commercial", "meta": "$37" }
-    ]
-  },
   "trustBullets": [
     { "label": "Instant download" },
     { "label": "Stripe secure checkout" },

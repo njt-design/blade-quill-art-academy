@@ -12092,16 +12092,6 @@ type ShopProductPageCopy {
   googlePlayButtonLabel: String
 }
 
-type ShopProductPurchaseOptionsOptions {
-  name: String!
-  meta: String
-}
-
-type ShopProductPurchaseOptions {
-  groupLabel: String
-  options: [ShopProductPurchaseOptionsOptions]
-}
-
 type ShopProductTrustBullets {
   label: String!
 }
@@ -12165,7 +12155,6 @@ type ShopProduct implements Node & Document {
   galleryImages: [ShopProductGalleryImages]
   spreadImages: [ShopProductSpreadImages]
   pageCopy: ShopProductPageCopy
-  purchaseOptions: ShopProductPurchaseOptions
   trustBullets: [ShopProductTrustBullets]
   details: ShopProductDetails
   reviews: ShopProductReviews
@@ -12243,16 +12232,6 @@ input ShopProductPageCopyFilter {
   googlePlayButtonLabel: StringFilter
 }
 
-input ShopProductPurchaseOptionsOptionsFilter {
-  name: StringFilter
-  meta: StringFilter
-}
-
-input ShopProductPurchaseOptionsFilter {
-  groupLabel: StringFilter
-  options: ShopProductPurchaseOptionsOptionsFilter
-}
-
 input ShopProductTrustBulletsFilter {
   label: StringFilter
 }
@@ -12316,7 +12295,6 @@ input ShopProductFilter {
   galleryImages: ShopProductGalleryImagesFilter
   spreadImages: ShopProductSpreadImagesFilter
   pageCopy: ShopProductPageCopyFilter
-  purchaseOptions: ShopProductPurchaseOptionsFilter
   trustBullets: ShopProductTrustBulletsFilter
   details: ShopProductDetailsFilter
   reviews: ShopProductReviewsFilter
@@ -17841,16 +17819,6 @@ input ShopProductPageCopyMutation {
   googlePlayButtonLabel: String
 }
 
-input ShopProductPurchaseOptionsOptionsMutation {
-  name: String
-  meta: String
-}
-
-input ShopProductPurchaseOptionsMutation {
-  groupLabel: String
-  options: [ShopProductPurchaseOptionsOptionsMutation]
-}
-
 input ShopProductTrustBulletsMutation {
   label: String
 }
@@ -17914,7 +17882,6 @@ input ShopProductMutation {
   galleryImages: [ShopProductGalleryImagesMutation]
   spreadImages: [ShopProductSpreadImagesMutation]
   pageCopy: ShopProductPageCopyMutation
-  purchaseOptions: ShopProductPurchaseOptionsMutation
   trustBullets: [ShopProductTrustBulletsMutation]
   details: ShopProductDetailsMutation
   reviews: ShopProductReviewsMutation

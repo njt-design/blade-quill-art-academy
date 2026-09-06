@@ -2431,13 +2431,6 @@ var SHOP_PRODUCT_DEFAULT_ITEM = {
     amazonButtonLabel: "Buy paperback on Amazon",
     googlePlayButtonLabel: "Get eBook on Google Play"
   },
-  purchaseOptions: {
-    groupLabel: "LICENSE",
-    options: [
-      { name: "Personal", meta: "$15" },
-      { name: "Commercial", meta: "$37" }
-    ]
-  },
   trustBullets: [
     { label: "Instant download" },
     { label: "Stripe secure checkout" },
@@ -2598,50 +2591,6 @@ var PRODUCT_PAGE_FIELDS = [
         name: "googlePlayButtonLabel",
         label: "Google Play Button (books)",
         ui: charLimit(40)
-      }
-    ]
-  },
-  {
-    type: "object",
-    name: "purchaseOptions",
-    label: "License / Format Tiles",
-    ui: {
-      description: "The selectable tiles under the price (Personal / Commercial, Hardcover / Ebook, etc.). These are for display \u2014 Stripe still charges the Price field above."
-    },
-    fields: [
-      {
-        type: "string",
-        name: "groupLabel",
-        label: "Group Label",
-        ui: charLimit(24, "Small heading above the tiles (e.g. LICENSE, FORMAT, OPTIONS).")
-      },
-      {
-        type: "object",
-        name: "options",
-        label: "Tiles",
-        list: true,
-        ui: {
-          itemProps: (item) => ({
-            label: [item?.name, item?.meta].filter(Boolean).join(" \xB7 ") || "Tile"
-          }),
-          defaultItem: { name: "Option", meta: "" },
-          description: "Add, remove, or rewrite the tiles. Leave this list empty to use automatic tiles from the product category and price."
-        },
-        fields: [
-          {
-            type: "string",
-            name: "name",
-            label: "Name",
-            required: true,
-            ui: charLimit(32, "e.g. Personal, Commercial, Hardcover.")
-          },
-          {
-            type: "string",
-            name: "meta",
-            label: "Price / Note",
-            ui: charLimit(40, "The smaller line under the name, e.g. $15 or $14 \xB7 instant.")
-          }
-        ]
       }
     ]
   },

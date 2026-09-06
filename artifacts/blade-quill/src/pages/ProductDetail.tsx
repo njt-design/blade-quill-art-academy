@@ -23,6 +23,8 @@ import {
   type ProductReview,
 } from "@/lib/products";
 import { useCart } from "@/hooks/useCart";
+import { useToast } from "@/hooks/use-toast";
+import { checkoutErrorMessage } from "@/lib/checkout-error";
 import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { flyToCart } from "@/lib/flyToCart";
@@ -41,55 +43,6 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 
 type TabKey = "description" | "inside" | "reviews" | "shipping";
-
-interface FormatOption {
-  name: string;
-  meta: string;
-}
-
-function formatsForProduct(p: CatalogProduct): {
-  label: string;
-  options: FormatOption[];
-} {
-  const custom = p.purchaseOptions;
-  if (custom && custom.options.length > 0) {
-    return {
-      label: custom.groupLabel || "OPTIONS",
-      options: custom.options,
-    };
-  }
-  switch (p.category) {
-    case "physical":
-      return {
-        label: "FORMAT",
-        options: [
-          { name: "Hardcover", meta: `$${p.price.toFixed(0)} · signed` },
-          { name: "Ebook", meta: "$14 · instant" },
-        ],
-      };
-    case "digital":
-      return {
-        label: "LICENSE",
-        options: [
-          { name: "Personal", meta: `$${p.price.toFixed(0)}` },
-          { name: "Commercial", meta: `$${(p.price * 2.5).toFixed(0)}` },
-        ],
-      };
-    case "curriculum":
-      return {
-        label: "INCLUDED",
-        options: [
-          { name: "Self-paced", meta: `$${p.price.toFixed(0)}` },
-          { name: "Live cohort", meta: `$${(p.price * 1.4).toFixed(0)}` },
-        ],
-      };
-    default:
-      return {
-        label: "OPTIONS",
-        options: [{ name: "Standard", meta: `$${p.price.toFixed(0)}` }],
-      };
-  }
-}
 
 const DEFAULT_REVIEWS: ProductReview[] = [
   {
@@ -173,7 +126,6 @@ export default function ProductDetail() {
           ? seedRaw.spreadImages
           : [],
         pageCopy: seedRaw.pageCopy,
-        purchaseOptions: seedRaw.purchaseOptions,
         trustBullets: seedRaw.trustBullets,
         details: seedRaw.details,
         reviews: seedRaw.reviews,
@@ -257,25 +209,27 @@ export default function ProductDetail() {
   const isLoading = useApi && apiLoading && !product;
   const error = useApi ? apiError : undefined;
 
+  const { toast } = useToast();
   const { mutate: checkout, isPending: isCheckingOut } =
     useCreateCheckoutSession({
       mutation: {
         onSuccess: (data: { url?: string }) => {
           if (data?.url) window.location.href = data.url;
         },
+        onError: (err: unknown) => {
+          toast({
+            variant: "destructive",
+            title: "Checkout isn't available right now",
+            description: checkoutErrorMessage(err),
+          });
+        },
       },
     });
 
   const { addItem } = useCart();
   const [thumb, setThumb] = useState(0);
-  const [formatIdx, setFormatIdx] = useState(0);
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState<TabKey>("description");
-
-  const formats = useMemo(
-    () => (product ? formatsForProduct(product) : null),
-    [product]
-  );
 
   const related = useMemo(() => {
     if (!product) return [];
@@ -294,7 +248,7 @@ export default function ProductDetail() {
       </div>
     );
   }
-  if (error || !product || !formats) {
+  if (error || !product) {
     return (
       <div className="page pt-32 pb-24 text-center">
         <p style={{ color: "var(--ink-mute)" }}>Product not found.</p>
@@ -690,84 +644,6 @@ export default function ProductDetail() {
                 </Reveal>
               ) : (
                 <>
-                  <Reveal>
-                    <div
-                      className="mb-7"
-                      data-tina-field={
-                        tinaDoc
-                          ? tinaField(tinaDoc, "purchaseOptions")
-                          : undefined
-                      }
-                    >
-                      <div className="eyebrow mb-3">{formats.label}</div>
-                      <div className="flex gap-2.5 flex-wrap">
-                        {formats.options.map((f, i) => {
-                          const selected = i === formatIdx;
-                          return (
-                            <button
-                              key={f.name}
-                              type="button"
-                              onClick={() => setFormatIdx(i)}
-                              className={cn(
-                                "relative text-left transition-all duration-300",
-                                "format-tile"
-                              )}
-                              style={{
-                                flex: "1 1 0",
-                                minWidth: 140,
-                                padding: "14px 16px",
-                                background: selected
-                                  ? "var(--paper)"
-                                  : "transparent",
-                                border: `1.5px solid ${
-                                  selected
-                                    ? "var(--ink)"
-                                    : "rgba(46,34,34,0.15)"
-                                }`,
-                                borderRadius: 14,
-                                transform: selected
-                                  ? "translateY(-2px)"
-                                  : "translateY(0)",
-                                boxShadow: selected
-                                  ? "var(--sh-md)"
-                                  : "none",
-                                fontFamily: "var(--f-sans)",
-                                transitionTimingFunction: "var(--e-out)",
-                              }}
-                            >
-                              <div
-                                style={{
-                                  fontSize: 14,
-                                  fontWeight: 600,
-                                  color: "var(--ink)",
-                                }}
-                              >
-                                {f.name}
-                              </div>
-                              <div
-                                className="mt-1"
-                                style={{
-                                  fontFamily: "var(--f-mono)",
-                                  fontSize: 11,
-                                  color: "var(--ink-mute)",
-                                  letterSpacing: "0.04em",
-                                }}
-                              >
-                                {f.meta}
-                              </div>
-                              {selected && (
-                                <span
-                                  aria-hidden
-                                  className="absolute top-2 right-2.5 block w-2 h-2 rounded-full"
-                                  style={{ background: "var(--maroon)" }}
-                                />
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </Reveal>
 
                   <Reveal>
                     <div className="flex items-stretch gap-3 mb-3.5">
@@ -991,10 +867,9 @@ export default function ProductDetail() {
                     [
                       "Format",
                       product.details?.format ||
-                        (isBook
-                          ? "Paperback & eBook"
-                          : formats.options[formatIdx]?.name),
+                        (isBook ? "Paperback & eBook" : "Digital download"),
                     ],
+                    ...(isBook ? [] : [["License", "Personal use"] as const]),
                     ["Category", product.category],
                     ...(isBook
                       ? []

@@ -47,13 +47,6 @@ export const shopProductQuery = `
         amazonButtonLabel
         googlePlayButtonLabel
       }
-      purchaseOptions {
-        groupLabel
-        options {
-          name
-          meta
-        }
-      }
       trustBullets {
         label
       }

@@ -13,11 +13,6 @@ export type ProductGalleryImage = {
   alt?: string;
 };
 
-export type ProductPurchaseOption = {
-  name: string;
-  meta: string;
-};
-
 export type ProductTrustBullet = {
   label: string;
 };
@@ -48,11 +43,6 @@ export type ProductPageCopy = {
   gumroadButtonLabel?: string;
   amazonButtonLabel?: string;
   googlePlayButtonLabel?: string;
-};
-
-export type ProductPurchaseOptions = {
-  groupLabel?: string;
-  options: ProductPurchaseOption[];
 };
 
 export type ProductDetails = {
@@ -93,7 +83,6 @@ export type CatalogProduct = Omit<Product, "description"> & {
   /** Look Inside tab images (book spreads or digital previews). */
   spreadImages: ProductGalleryImage[];
   pageCopy?: ProductPageCopy;
-  purchaseOptions?: ProductPurchaseOptions;
   trustBullets?: ProductTrustBullet[];
   details?: ProductDetails;
   reviews?: ProductReviews;
@@ -132,28 +121,6 @@ function optionalString(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   const trimmed = value.trim();
   return trimmed || undefined;
-}
-
-function parsePurchaseOptions(
-  raw: unknown
-): ProductPurchaseOptions | undefined {
-  const obj = asRecord(raw);
-  if (!obj) return undefined;
-  const options = Array.isArray(obj.options)
-    ? obj.options
-        .map((item) => {
-          const row = asRecord(item);
-          if (!row) return null;
-          const name = optionalString(row.name);
-          if (!name) return null;
-          return { name, meta: optionalString(row.meta) ?? "" };
-        })
-        .filter((item): item is ProductPurchaseOption => item !== null)
-    : [];
-  return {
-    groupLabel: optionalString(obj.groupLabel),
-    options,
-  };
 }
 
 function parseTrustBullets(raw: unknown): ProductTrustBullet[] | undefined {
@@ -329,7 +296,6 @@ export function toCatalogProduct(
       true
     ),
     pageCopy: parsePageCopy(data.pageCopy),
-    purchaseOptions: parsePurchaseOptions(data.purchaseOptions),
     trustBullets: parseTrustBullets(data.trustBullets),
     details: parseDetails(data.details),
     reviews: parseReviews(data.reviews),
