@@ -786,7 +786,9 @@ var tutorialsStripBlock = {
       type: "string",
       name: "youtubeUrl",
       label: "YouTube Channel URL",
-      ui: { description: "Full channel URL \u2014 the button links here." }
+      ui: {
+        description: "Full channel URL \u2014 the button links here. The videos in this strip are managed in the YouTube Tutorials collection (sidebar): the first 4 Featured videos appear, in that list's order."
+      }
     },
     {
       type: "object",
@@ -1276,7 +1278,10 @@ var downloadsGridBlock = {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
-      ui: charLimit(60, "Downloads load automatically. This heading only shows when there are none.")
+      ui: charLimit(
+        60,
+        "Downloads are managed in the Downloads collection in Tina (sidebar). This heading only shows when there are none."
+      )
     },
     {
       type: "string",
@@ -3598,6 +3603,155 @@ var config_default = defineConfig({
                 label: "Free Downloadable Resource (optional)",
                 ui: {
                   description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      // ---------------------------------------------------------------
+      // Downloads — single document; drag to reorder free resources.
+      // ---------------------------------------------------------------
+      {
+        name: "download",
+        label: "Downloads",
+        path: "content/downloads",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          router: () => "/downloads"
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "Free Downloads",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title || "Download"
+              }),
+              defaultItem: {
+                title: "New download",
+                description: "",
+                file: "",
+                fileType: "PDF",
+                thumbnail: ""
+              },
+              description: "The free resources on the Downloads page, top to bottom. Drag to reorder. Remove any item to take it off the site."
+            },
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+                ui: charLimit(80, "Shown on the download card.")
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description (optional)",
+                ui: charLimit(200, "One or two sentences under the title.")
+              },
+              {
+                type: "image",
+                name: "file",
+                label: "Downloadable File",
+                required: true,
+                ui: {
+                  description: "The file visitors get when they click Free Download (PDF, JPG, PNG, ZIP, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf."
+                }
+              },
+              {
+                type: "string",
+                name: "fileType",
+                label: "File Type Badge",
+                required: true,
+                options: ["PDF", "JPG", "PNG", "ZIP", "MP4", "EPUB"],
+                ui: {
+                  description: "Shown as a small badge on the card image. Pick the format of the file."
+                }
+              },
+              {
+                type: "image",
+                name: "thumbnail",
+                label: "Card Image (optional)",
+                ui: {
+                  description: "Preview image on the card. Prefer 4:3 landscape, at least 800px wide. Upload into images/downloads/."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      // ---------------------------------------------------------------
+      // YouTube Tutorials — single document; drag to reorder videos.
+      // ---------------------------------------------------------------
+      {
+        name: "tutorial",
+        label: "YouTube Tutorials",
+        path: "content/tutorials",
+        format: "json",
+        ui: {
+          allowedActions: { create: false, delete: false },
+          router: () => "/"
+        },
+        fields: [
+          {
+            type: "object",
+            name: "items",
+            label: "Videos",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.title || "Video"
+              }),
+              defaultItem: {
+                title: "New video",
+                youtubeId: "",
+                description: "",
+                topic: "",
+                featured: false
+              },
+              description: "Your YouTube tutorial videos, top to bottom. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order)."
+            },
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "Video Title",
+                required: true,
+                ui: charLimit(90, "Shown under the video thumbnail.")
+              },
+              {
+                type: "string",
+                name: "youtubeId",
+                label: "YouTube Video ID",
+                required: true,
+                ui: charLimit(
+                  20,
+                  "The 11-character code from the video URL \u2014 the part after watch?v= (e.g. 63_gp_rFtOc)."
+                )
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description (optional)",
+                ui: charLimit(200, "One or two sentences about the video.")
+              },
+              {
+                type: "string",
+                name: "topic",
+                label: "Topic (optional)",
+                ui: charLimit(32, 'Grouping label (e.g. "Learning Krita", "Brushes").')
+              },
+              {
+                type: "boolean",
+                name: "featured",
+                label: "Featured on Homepage",
+                ui: {
+                  description: "Featured videos appear in the homepage YouTube strip \u2014 the first 4 featured videos (in this list's order) are shown."
                 }
               }
             ]

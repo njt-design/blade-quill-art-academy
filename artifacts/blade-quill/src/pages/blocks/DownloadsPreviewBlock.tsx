@@ -7,7 +7,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { useListDownloads, type Download } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
+import { useLiveDownloads } from "@/hooks/use-live-content";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
+import { resolveDownloadItems } from "@/lib/downloads";
 import { type Block, followLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
@@ -33,8 +35,13 @@ function filenameFromUrl(url: string): string {
  */
 export default function DownloadsPreviewBlock({ block }: Props) {
   const [, setLocation] = useLocation();
+  const catalog = useLiveDownloads();
   const { data: downloadsRaw } = useListDownloads();
-  const downloads = asArray<Download>(downloadsRaw, FALLBACK_DOWNLOADS);
+  const downloads = resolveDownloadItems(
+    asArray<Download>(downloadsRaw),
+    FALLBACK_DOWNLOADS,
+    catalog
+  );
 
   const maxItems =
     typeof block.maxItems === "number" && block.maxItems > 0

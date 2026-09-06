@@ -3,7 +3,9 @@ import { tinaField } from "tinacms/react";
 import { buttonVariants } from "@/components/ui/button";
 import { useListDownloads, type Download } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
+import { useLiveDownloads } from "@/hooks/use-live-content";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
+import { resolveDownloadItems } from "@/lib/downloads";
 import { type Block } from "./block-utils";
 import { SectionHeading } from "./text-style";
 
@@ -23,13 +25,20 @@ function filenameFromUrl(url: string): string {
 }
 
 export default function DownloadsGridBlock({ block }: Props) {
+  const catalog = useLiveDownloads();
+  const hasCatalog = catalog.length > 0;
   const { data: downloadsRaw, isLoading } = useListDownloads();
-  const downloads = asArray<Download>(downloadsRaw, FALLBACK_DOWNLOADS);
+  const downloads = resolveDownloadItems(
+    asArray<Download>(downloadsRaw),
+    FALLBACK_DOWNLOADS,
+    catalog
+  );
+  const showLoading = !hasCatalog && isLoading;
 
   return (
     <section className="py-6">
       <div className="container mx-auto px-4 md:px-6">
-        {isLoading ? (
+        {showLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="animate-pulse bg-muted rounded-xl h-72" />

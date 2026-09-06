@@ -1,0 +1,144 @@
+{
+  "items": [
+    {
+      "title": "Learn Different Ways to Remove Backgrounds in Krita",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "Master background removal in Krita using multiple techniques.",
+      "topic": "Learning Krita",
+      "featured": true
+    },
+    {
+      "title": "Krita for Beginners — Complete Interface Walkthrough",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "A full tour of Krita's interface and workspace customization.",
+      "topic": "Learning Krita",
+      "featured": true
+    },
+    {
+      "title": "Layers in Krita — Everything You Need to Know",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Master layers, groups, blending modes, and opacity.",
+      "topic": "Learning Krita",
+      "featured": false
+    },
+    {
+      "title": "Krita Selection Tools — Complete Guide",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "A comprehensive walkthrough of all Krita selection tools.",
+      "topic": "Tools",
+      "featured": false
+    },
+    {
+      "title": "Creating a Vector Image in Krita",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "Create crisp, scalable vector images using Krita's vector tools.",
+      "topic": "Tools",
+      "featured": false
+    },
+    {
+      "title": "Transform Tool Deep Dive",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Scale, rotate, skew, and warp with precision.",
+      "topic": "Tools",
+      "featured": false
+    },
+    {
+      "title": "How to Install and Manage Brushes in Krita",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "Download, install, organize, and create custom brush packs.",
+      "topic": "Brushes",
+      "featured": true
+    },
+    {
+      "title": "Create Your Own Custom Brushes in Krita",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "Step-by-step guide to building brushes from scratch.",
+      "topic": "Brushes",
+      "featured": false
+    },
+    {
+      "title": "Turn Any Photograph into a Pencil Sketch Using Krita",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Transform any photo into a pencil sketch using Krita's filters.",
+      "topic": "Digital Painting",
+      "featured": true
+    },
+    {
+      "title": "How to Add Highlights and Shadows Digitally",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "Proper light and shadow placement for depth and dimension.",
+      "topic": "Digital Painting",
+      "featured": false
+    },
+    {
+      "title": "Digital Coloring Techniques for Beginners",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "From flat colors to blended shading in Krita.",
+      "topic": "Digital Painting",
+      "featured": false
+    },
+    {
+      "title": "How to Draw a Chibi Character from Scratch",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Design adorable chibi characters step by step.",
+      "topic": "Character Design",
+      "featured": true
+    },
+    {
+      "title": "Designing Fantasy Characters — Armor and Costumes",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "Tips for designing memorable fantasy characters.",
+      "topic": "Character Design",
+      "featured": false
+    },
+    {
+      "title": "Fix Your Pen Pressure (FOR GOOD) in 5 Easy Steps",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "5 reliable steps to fix pen pressure in Krita permanently.",
+      "topic": "Tips & Tricks",
+      "featured": true
+    },
+    {
+      "title": "Faster Krita: Fix These 8 Lag Issues Now",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Identify and fix the 8 most common causes of Krita lag.",
+      "topic": "Tips & Tricks",
+      "featured": false
+    },
+    {
+      "title": "10 Krita Shortcuts Every Artist Should Know",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "Essential keyboard shortcuts and hidden features.",
+      "topic": "Tips & Tricks",
+      "featured": false
+    },
+    {
+      "title": "Getting Started with Animation in Krita",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Create your first frame-by-frame animation in Krita.",
+      "topic": "Animation",
+      "featured": false
+    },
+    {
+      "title": "Vector Drawing in Krita — Complete Guide",
+      "youtubeId": "63_gp_rFtOc",
+      "description": "Create scalable vector art using shape tools, paths, and vector layers.",
+      "topic": "Vectors",
+      "featured": false
+    },
+    {
+      "title": "Creating Seamless Textures in Krita",
+      "youtubeId": "Oe2xkeU_mV0",
+      "description": "Design tileable textures using Krita's wrap-around mode.",
+      "topic": "Textures & Designs",
+      "featured": false
+    },
+    {
+      "title": "Pattern Design — From Sketch to Repeat",
+      "youtubeId": "lgj0WPlwMGI",
+      "description": "Turn a hand-drawn sketch into a professional repeating pattern.",
+      "topic": "Textures & Designs",
+      "featured": false
+    }
+  ]
+}

@@ -4376,6 +4376,30 @@ fragment GalleryParts on Gallery {
   }
 }
 
+fragment DownloadParts on Download {
+  __typename
+  items {
+    __typename
+    title
+    description
+    file
+    fileType
+    thumbnail
+  }
+}
+
+fragment TutorialParts on Tutorial {
+  __typename
+  items {
+    __typename
+    title
+    youtubeId
+    description
+    topic
+    featured
+  }
+}
+
 fragment NavigationParts on Navigation {
   __typename
   items {
