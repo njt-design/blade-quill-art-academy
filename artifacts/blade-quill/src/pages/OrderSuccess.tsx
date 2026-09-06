@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Download, FolderDown, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
 import { useCart } from "@/hooks/useCart";
 import { trackPurchase } from "@/lib/analytics";
@@ -69,7 +69,11 @@ export default function OrderSuccess() {
       <div className="container max-w-lg mx-auto px-4">
         <div className="border border-border rounded-lg bg-card p-8 text-center">
 
-          <CheckCircle className="w-10 h-10 text-emerald-500 mx-auto mb-5" />
+          <CheckCircle
+            className="w-10 h-10 mx-auto mb-5"
+            style={{ color: "var(--maroon)" }}
+            aria-hidden
+          />
           <h1 className="text-3xl font-display mb-2">Thank You!</h1>
           <p className="text-foreground/80 mb-1">
             Your order for <strong>{order.productName}</strong> was successful.
@@ -84,21 +88,31 @@ export default function OrderSuccess() {
               {downloads.length > 1 ? (
                 <>
                   {order.downloadAllUrl && (
-                    <Button asChild className="w-full gap-2 mb-3">
-                      <a href={order.downloadAllUrl} download>
-                        <FolderDown className="w-4 h-4" /> Download All (.zip)
-                      </a>
-                    </Button>
+                    <a
+                      href={order.downloadAllUrl}
+                      download
+                      className={buttonVariants({ className: "w-full gap-2 mb-3" })}
+                    >
+                      <FolderDown className="w-4 h-4 shrink-0" aria-hidden />
+                      <span>Download All (.zip)</span>
+                    </a>
                   )}
                   <ul className="divide-y divide-border rounded-md border border-border bg-background/60">
                     {downloads.map((file) => (
                       <li key={file.url} className="flex items-center justify-between gap-3 px-3 py-2">
                         <span className="text-sm truncate" title={file.label}>{file.label}</span>
-                        <Button asChild variant="outline" size="sm" className="shrink-0 gap-1.5">
-                          <a href={file.url} download>
-                            <Download className="w-3.5 h-3.5" /> Download
-                          </a>
-                        </Button>
+                        <a
+                          href={file.url}
+                          download
+                          className={buttonVariants({
+                            variant: "outline",
+                            size: "sm",
+                            className: "shrink-0 gap-1.5",
+                          })}
+                        >
+                          <Download className="w-3.5 h-3.5 shrink-0" aria-hidden />
+                          <span>Download</span>
+                        </a>
                       </li>
                     ))}
                   </ul>
@@ -108,11 +122,14 @@ export default function OrderSuccess() {
                 </>
               ) : downloads.length === 1 ? (
                 <>
-                  <Button asChild className="w-full gap-2">
-                    <a href={downloads[0].url} download>
-                      <Download className="w-4 h-4" /> Download Now
-                    </a>
-                  </Button>
+                  <a
+                    href={downloads[0].url}
+                    download
+                    className={buttonVariants({ className: "w-full gap-2" })}
+                  >
+                    <Download className="w-4 h-4 shrink-0" aria-hidden />
+                    <span>Download Now</span>
+                  </a>
                   <p className="text-xs text-muted-foreground mt-3">
                     This link works for 48 hours. Save the file somewhere safe once it downloads.
                   </p>
