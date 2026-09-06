@@ -64,8 +64,22 @@
     },
     "supportEmail": "njthrockmorton@gmail.com"
   },
-  "featured": false,
+  "featured": true,
   "inStock": true,
+  "downloadFiles": [
+    {
+      "file": "new-bundle/nickthrockmorton2023.pdf",
+      "label": ""
+    },
+    {
+      "file": "",
+      "label": ""
+    },
+    {
+      "file": "",
+      "label": ""
+    }
+  ],
   "productId": 1788735667,
   "createdAt": "2026-09-06T23:01:07.935Z"
 }
