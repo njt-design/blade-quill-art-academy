@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { getSupabase } from "./clients";
+import { findTinaProductById } from "./tina-product";
 import {
   DOWNLOADABLE_CATEGORIES,
   type CheckoutProduct,
@@ -80,7 +81,51 @@ export async function insertPendingOrder(
     row.download_files = product.files;
   }
   const { error } = await supabase.from("orders").insert(row);
-  if (error) throw error;
+  if (!error) return;
+  // The `orders.download_files` jsonb column is added by a migration that may
+  // not have run yet (PostgREST: PGRST204 "Could not find the '…' column").
+  // Don't block the sale: store the row without the snapshot and let
+  // `resolveOrderFiles()` re-read the file list from Tina at fulfillment.
+  if (isMissingDownloadFilesColumn(error) && "download_files" in row) {
+    console.warn(
+      "orders.download_files column missing — run `alter table orders add column if not exists download_files jsonb;`. Inserting without snapshot."
+    );
+    delete row.download_files;
+    const retry = await supabase.from("orders").insert(row);
+    if (!retry.error) return;
+    throw retry.error;
+  }
+  throw error;
+}
+
+function isMissingDownloadFilesColumn(error: { code?: string; message?: string }): boolean {
+  return (
+    error.code === "PGRST204" ||
+    /download_files/i.test(error.message ?? "") && /column/i.test(error.message ?? "")
+  );
+}
+
+/**
+ * Files to deliver for an order. Uses the snapshot on the row when present;
+ * otherwise (row written before the `download_files` column existed) re-reads
+ * the product's current Download Files from Tina. Falls back to legacy
+ * `download_url`.
+ */
+export async function resolveOrderFiles(order: OrderRow): Promise<DownloadFile[]> {
+  const snapshot = orderFiles(order);
+  if (snapshot.length > 0) return snapshot;
+  if (!DOWNLOADABLE_CATEGORIES.has(order.product_category ?? "")) return [];
+  try {
+    const product = await findTinaProductById(
+      order.product_id,
+      "",
+      order.product_slug ?? undefined
+    );
+    return product?.files ?? [];
+  } catch (err) {
+    console.error("resolveOrderFiles: Tina lookup failed", err);
+    return [];
+  }
 }
 
 export async function getOrderBySessionId(
@@ -134,7 +179,7 @@ export async function fulfillOrder(
 
   if (
     DOWNLOADABLE_CATEGORIES.has(order.product_category ?? "") &&
-    orderFiles(order).length > 0
+    (await resolveOrderFiles(order)).length > 0
   ) {
     updates.download_token = generateDownloadToken();
     updates.download_token_expires_at = getTokenExpiry();

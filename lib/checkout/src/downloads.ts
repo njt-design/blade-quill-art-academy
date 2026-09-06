@@ -14,7 +14,7 @@ import { Readable } from "node:stream";
 import type { ServerResponse } from "node:http";
 import archiver from "archiver";
 import { getSupabase } from "./clients";
-import { getOrderByDownloadToken, orderFiles, type OrderRow } from "./orders";
+import { getOrderByDownloadToken, resolveOrderFiles, type OrderRow } from "./orders";
 import { CheckoutError, type DownloadFile } from "./types";
 
 /** Private Supabase Storage bucket holding paid product files. */
@@ -52,7 +52,7 @@ export async function getDownloadableOrder(token: string): Promise<{
   ) {
     throw new CheckoutError("download_expired", "Download link has expired", 410);
   }
-  const files = orderFiles(order);
+  const files = await resolveOrderFiles(order);
   if (files.length === 0) {
     throw new CheckoutError("download_missing", "No download file available for this product", 404);
   }

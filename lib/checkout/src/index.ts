@@ -12,6 +12,7 @@ import {
   getOrderBySessionId,
   insertPendingOrder,
   orderFiles,
+  resolveOrderFiles,
 } from "./orders";
 import { findTinaProductById } from "./tina-product";
 import {
@@ -191,7 +192,7 @@ export async function getOrderSuccess(
     new Date(order.download_token_expires_at) > new Date();
   if (tokenLive) {
     const base = `/api/download/${order.download_token}`;
-    downloads = orderFiles(order).map((f, i) => ({
+    downloads = (await resolveOrderFiles(order)).map((f, i) => ({
       label: f.label,
       url: `${base}?file=${i}`,
     }));
