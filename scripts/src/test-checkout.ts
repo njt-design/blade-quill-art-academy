@@ -10,14 +10,18 @@ const { CheckoutError, createCheckoutSession, findTinaProductById } =
     "@workspace/checkout"
   ) as typeof import("@workspace/checkout");
 
+// Usage: pnpm --filter @workspace/scripts run test:checkout [productId]
+// (or TEST_PRODUCT_ID=… ). Defaults to 3 — the Krita guide (2) was retired.
+const PRODUCT_ID = Number(process.argv[2] ?? process.env.TEST_PRODUCT_ID ?? 3);
+
 async function main() {
-  const product = await findTinaProductById(2, "https://example.com");
+  const product = await findTinaProductById(PRODUCT_ID, "https://example.com");
   if (!product) {
-    console.error("Tina product lookup failed for productId=2");
+    console.error(`Tina product lookup failed for productId=${PRODUCT_ID}`);
     process.exit(1);
   }
   const bySlug = await findTinaProductById(
-    2,
+    PRODUCT_ID,
     "https://example.com",
     product.slug
   );
@@ -31,7 +35,9 @@ async function main() {
       productId: product.productId,
       slug: product.slug,
       price: product.price,
+      category: product.category,
       inStock: product.inStock,
+      files: product.files.length,
       pathLookup: "ok",
     })
   );
@@ -63,6 +69,29 @@ async function main() {
   await supabase.from("orders").delete().eq("stripe_session_id", probeId);
   console.log("SCHEMA_OK");
 
+  // Bundles need orders.download_files (jsonb). Probe it separately so a
+  // missing column is reported as a migration to run, not a hard failure.
+  const filesProbeId = `${probeId}_files`;
+  const filesProbe = await supabase.from("orders").insert({
+    stripe_session_id: filesProbeId,
+    product_id: product.productId,
+    product_name: product.name,
+    product_category: product.category,
+    product_slug: product.slug,
+    download_files: [{ label: "probe", path: "probe/probe.pdf" }],
+    status: "pending",
+  });
+  if (filesProbe.error) {
+    console.error(
+      "SCHEMA_MIGRATION_NEEDED download_files:",
+      filesProbe.error.message,
+      "\n  Run in Supabase SQL Editor: alter table orders add column if not exists download_files jsonb;"
+    );
+  } else {
+    await supabase.from("orders").delete().eq("stripe_session_id", filesProbeId);
+    console.log("SCHEMA_FILES_OK");
+  }
+
   const stripeKey = process.env.STRIPE_SECRET_KEY ?? "";
   if (
     !stripeKey ||
@@ -78,7 +107,7 @@ async function main() {
 
   try {
     const result = await createCheckoutSession({
-      productId: 2,
+      productId: PRODUCT_ID,
       quantity: 1,
       productSlug: product.slug,
       baseUrl: "http://localhost:5000",
