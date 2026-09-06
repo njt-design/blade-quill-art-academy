@@ -31,6 +31,39 @@
       "alt": ""
     }
   ],
+  "pageCopy": {
+    "eyebrow": "New Release",
+    "coverSubtitle": "Test Cover Author Line",
+    "fullDescription": {
+      "type": "root",
+      "children": [
+        {
+          "children": [
+            {
+              "text": "This is the full description of the description tab. "
+            }
+          ],
+          "type": "p",
+          "id": "Ra2iIZGJia"
+        }
+      ]
+    },
+    "shippingNote": {
+      "type": "root",
+      "children": [
+        {
+          "children": [
+            {
+              "text": "This is test shipping and license copy. "
+            }
+          ],
+          "type": "p",
+          "id": "Yzmu6UcstS"
+        }
+      ]
+    },
+    "supportEmail": "njthrockmorton@gmail.com"
+  },
   "featured": false,
   "inStock": true,
   "productId": 1788735667,
