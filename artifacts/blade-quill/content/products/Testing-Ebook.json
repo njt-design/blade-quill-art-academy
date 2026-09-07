@@ -23,6 +23,111 @@
       "alt": "French Bulldog playing with a mouse. A teddy bear is against the dog. They are playing doctor"
     }
   ],
+  "pageCopy": {
+    "fullDescription": {
+      "type": "root",
+      "children": [
+        {
+          "children": [
+            {
+              "text": "Instant Download "
+            }
+          ],
+          "type": "p",
+          "id": "pFJ-U41s7L"
+        },
+        {
+          "type": "p",
+          "id": "IQg5QgOeor",
+          "children": [
+            {
+              "text": "This is a digital download purchase."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "37gKRpxJso",
+          "children": [
+            {
+              "text": "No physical item will be mailed to you."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "nCXUWddPvX",
+          "children": [
+            {
+              "text": "Your files will be available to download once payment is confirmed. "
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "ht2eg7lFco",
+          "children": [
+            {
+              "text": "Print, frame, and enjoy!  "
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "2u_EGTXiak",
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "M-F-7pF_lp",
+          "children": [
+            {
+              "text": "Returns "
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "-3HvxgprBl",
+          "children": [
+            {
+              "text": "I don't accept returns, exchanges, or cancellations. Color will vary depending on the kind of paper/card stock you will be using and the kind of printer (ink versus laser) you own. The results will also depend on how your printer is calibrated. Finally, what you see on your screen may not match what you get. This is due to monitor resolutions. I unfortunately have no control over that."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "id": "eC_vU8K7Jl",
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    "shippingNote": {
+      "type": "root",
+      "children": [
+        {
+          "children": [
+            {
+              "text": "There is not shipping. Please refer to our terms and conditions for more information. "
+            }
+          ],
+          "type": "p",
+          "id": "NY_0jPdewp"
+        }
+      ]
+    },
+    "supportEmail": "Info@bladeandQuill.com",
+    "ebookLabel": "Lheeloo and Luna",
+    "buyNowLabel": "Buy Now"
+  },
   "featured": false,
   "inStock": true,
   "productId": 1788740450,
