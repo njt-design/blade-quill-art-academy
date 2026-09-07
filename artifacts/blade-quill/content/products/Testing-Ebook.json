@@ -1,0 +1,30 @@
+{
+  "name": "Testing Ebook",
+  "description": {
+    "type": "root",
+    "children": [
+      {
+        "children": [
+          {
+            "text": "This is a new test for the new edition of Lheeloo and Luna."
+          }
+        ],
+        "type": "p",
+        "id": "9thYwafdjE"
+      }
+    ]
+  },
+  "price": 7,
+  "category": "digital",
+  "image": "/images/Room-colors-opening-page.png",
+  "galleryImages": [
+    {
+      "src": "/images/For-webpage_how-it-all-started.png",
+      "alt": "French Bulldog playing with a mouse. A teddy bear is against the dog. They are playing doctor"
+    }
+  ],
+  "featured": false,
+  "inStock": true,
+  "productId": 1788740450,
+  "createdAt": "2026-09-07T00:20:50.674Z"
+}
