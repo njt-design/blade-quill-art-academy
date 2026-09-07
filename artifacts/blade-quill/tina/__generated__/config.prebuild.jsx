@@ -790,7 +790,7 @@ var tutorialsStripBlock = {
       name: "youtubeUrl",
       label: "YouTube Channel URL",
       ui: {
-        description: "Full channel URL \u2014 the button links here. The videos in this strip are managed in the YouTube Tutorials collection (sidebar): the first 4 Featured videos appear, in that list's order."
+        description: "Full channel URL \u2014 the Subscribe button links here. The video cards are managed in YouTube Tutorials (sidebar): paste each video's YouTube URL, mark Featured, and drag to set the order (up to 4)."
       }
     },
     {
@@ -3617,7 +3617,7 @@ function navLinkFields() {
       name: "href",
       label: "URL / Path",
       ui: {
-        description: 'For "Site link" use a path like /blog, /cart, /shop, /gallery, /downloads, /contact, /about, or /. For "External URL" paste the full https://\u2026 address. Prefer Link Type "Site page" whenever you can \u2014 that picks from your pages and cannot typo.'
+        description: 'For "Site link" use a path like /blog, /cart, /shop, /gallery, /downloads, /contact, /about, /terms-of-use, /privacy-policy, or /. For "External URL" paste the full https://\u2026 address. Prefer Link Type "Site page" whenever you can \u2014 that picks from your pages and cannot typo.'
       }
     }
   ];
@@ -4368,7 +4368,7 @@ var config_default = defineConfig({
                 topic: "",
                 featured: false
               },
-              description: "Your YouTube tutorial videos, top to bottom. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order)."
+              description: "Your YouTube tutorial videos, top to bottom. Paste a full YouTube link for each video. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order)."
             },
             fields: [
               {
@@ -4381,12 +4381,25 @@ var config_default = defineConfig({
               {
                 type: "string",
                 name: "youtubeId",
-                label: "YouTube Video ID",
+                label: "YouTube URL",
                 required: true,
-                ui: charLimit(
-                  20,
-                  "The 11-character code from the video URL \u2014 the part after watch?v= (e.g. 63_gp_rFtOc)."
-                )
+                ui: {
+                  description: "Paste the full YouTube link (youtube.com or youtu.be). The video ID is extracted automatically. An 11-character ID also works.",
+                  validate: (value) => {
+                    if (!value) return void 0;
+                    const trimmed = value.trim();
+                    if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return void 0;
+                    if (!/youtube\.com|youtu\.be/i.test(trimmed)) {
+                      return "Please paste a full YouTube link (youtube.com or youtu.be).";
+                    }
+                    if (!/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/.test(
+                      trimmed
+                    )) {
+                      return "That link does not look like a specific YouTube video.";
+                    }
+                    return void 0;
+                  }
+                }
               },
               {
                 type: "string",

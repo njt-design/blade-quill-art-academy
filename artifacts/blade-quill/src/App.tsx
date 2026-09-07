@@ -23,6 +23,8 @@ import NavDropdownMockups from "@/pages/NavDropdownMockups";
 import DesignSystem from "@/pages/DesignSystem";
 import Insights from "@/pages/Insights";
 import Guide from "@/pages/Guide";
+import LegalDocument from "@/pages/LegalDocument";
+import { PRIVACY_POLICY, TERMS_OF_USE } from "@/lib/legal";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -66,6 +68,12 @@ function MainLayout() {
           </Route>
           <Route path="/contact">
             <Page slug="contact" />
+          </Route>
+          <Route path="/terms-of-use">
+            <LegalDocument doc={TERMS_OF_USE} />
+          </Route>
+          <Route path="/privacy-policy">
+            <LegalDocument doc={PRIVACY_POLICY} />
           </Route>
           <Route path="/blog" component={BlogList} />
           <Route path="/blog/:slug" component={BlogPost} />

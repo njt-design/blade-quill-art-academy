@@ -858,7 +858,7 @@ export const tutorialsStripBlock: Template = {
       label: "YouTube Channel URL",
       ui: {
         description:
-          "Full channel URL — the button links here. The videos in this strip are managed in the YouTube Tutorials collection (sidebar): the first 4 Featured videos appear, in that list's order.",
+          "Full channel URL — the Subscribe button links here. The video cards are managed in YouTube Tutorials (sidebar): paste each video's YouTube URL, mark Featured, and drag to set the order (up to 4).",
       },
     },
     {

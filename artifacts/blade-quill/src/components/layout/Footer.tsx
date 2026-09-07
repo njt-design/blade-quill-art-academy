@@ -209,6 +209,20 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-5 text-xs">
             <Link
+              href="/terms-of-use"
+              className="link-ink"
+              style={{ color: "var(--ink-faint)" }}
+            >
+              Terms
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="link-ink"
+              style={{ color: "var(--ink-faint)" }}
+            >
+              Privacy
+            </Link>
+            <Link
               href="/about"
               className="link-ink"
               style={{ color: "var(--ink-faint)" }}

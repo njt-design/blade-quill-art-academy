@@ -73,9 +73,14 @@
           "page": "content/pages/gallery.json"
         },
         {
-          "label": "The Making of Lheeloo & Luna",
-          "linkType": "page",
-          "page": "content/pages/the-making-of-lheeloo-and-luna.json"
+          "label": "Terms of Use",
+          "linkType": "path",
+          "href": "/terms-of-use"
+        },
+        {
+          "label": "Privacy Policy",
+          "linkType": "path",
+          "href": "/privacy-policy"
         }
       ]
     },

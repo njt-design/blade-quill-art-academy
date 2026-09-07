@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
+import { extractYoutubeId } from "./youtube";
+
+export { extractYoutubeId };
 
 /**
  * The newest upload on the Blade & Quill YouTube channel, written to
@@ -45,13 +48,6 @@ export function useLatestVideo(): LatestVideo | null {
   return data ?? null;
 }
 
-/** Extract a video ID from a watch/share/embed URL. */
-export function extractYoutubeId(url: string): string | null {
-  const match = url.match(
-    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-  );
-  return match?.[1] ?? null;
-}
 
 /** "3 weeks ago" — prefers YouTube's own label, derived from the date otherwise. */
 export function formatPublishedAgo(video: LatestVideo): string | null {

@@ -7,6 +7,7 @@
  */
 
 import type { Tutorial } from "@workspace/api-client-react";
+import { extractYoutubeId } from "./youtube";
 
 const tutorialModules = import.meta.glob("../../content/tutorials/*.json", {
   eager: true,
@@ -32,7 +33,7 @@ export function toTutorial(
   return {
     id: Number(raw.id) || index + 1,
     title: text(raw.title) || `Video ${index + 1}`,
-    youtubeId: text(raw.youtubeId),
+    youtubeId: extractYoutubeId(text(raw.youtubeId)) ?? "",
     description: optionalText(raw.description),
     topic: optionalText(raw.topic),
     featured: Boolean(raw.featured),

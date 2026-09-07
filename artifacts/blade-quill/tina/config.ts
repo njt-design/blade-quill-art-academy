@@ -597,7 +597,7 @@ function navLinkFields(): TinaField[] {
       label: "URL / Path",
       ui: {
         description:
-          'For "Site link" use a path like /blog, /cart, /shop, /gallery, /downloads, /contact, /about, or /. For "External URL" paste the full https://… address. Prefer Link Type "Site page" whenever you can — that picks from your pages and cannot typo.',
+          'For "Site link" use a path like /blog, /cart, /shop, /gallery, /downloads, /contact, /about, /terms-of-use, /privacy-policy, or /. For "External URL" paste the full https://… address. Prefer Link Type "Site page" whenever you can — that picks from your pages and cannot typo.',
       },
     },
   ];
@@ -1431,7 +1431,7 @@ export default defineConfig({
                 featured: false,
               },
               description:
-                "Your YouTube tutorial videos, top to bottom. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order).",
+                "Your YouTube tutorial videos, top to bottom. Paste a full YouTube link for each video. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order).",
             },
             fields: [
               {
@@ -1444,12 +1444,28 @@ export default defineConfig({
               {
                 type: "string",
                 name: "youtubeId",
-                label: "YouTube Video ID",
+                label: "YouTube URL",
                 required: true,
-                ui: charLimit(
-                  20,
-                  "The 11-character code from the video URL — the part after watch?v= (e.g. 63_gp_rFtOc)."
-                ),
+                ui: {
+                  description:
+                    "Paste the full YouTube link (youtube.com or youtu.be). The video ID is extracted automatically. An 11-character ID also works.",
+                  validate: (value?: string) => {
+                    if (!value) return undefined;
+                    const trimmed = value.trim();
+                    if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return undefined;
+                    if (!/youtube\.com|youtu\.be/i.test(trimmed)) {
+                      return "Please paste a full YouTube link (youtube.com or youtu.be).";
+                    }
+                    if (
+                      !/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/.test(
+                        trimmed
+                      )
+                    ) {
+                      return "That link does not look like a specific YouTube video.";
+                    }
+                    return undefined;
+                  },
+                },
               },
               {
                 type: "string",
