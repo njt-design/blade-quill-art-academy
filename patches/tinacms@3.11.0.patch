@@ -1,0 +1,27 @@
+diff --git a/dist/index.js b/dist/index.js
+index 69093c78e0b237af73cb308a8690c2d5fa67664c..0bd5dc3c3cf297317a1295720b7dd4b4dc412252 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -4615,9 +4615,11 @@ const DragDropContext = ({
+ }) => {
+   const sensors = useSensors(
+     useSensor(PointerSensor, {
++      // Blade & Quill patch: arm the drag on movement instead of a press-and-hold.
++      // Tina's default (delay: 100, tolerance: 5) cancels any drag that starts
++      // moving within 100ms, which makes list reordering feel broken.
+       activationConstraint: {
+-        delay: 100,
+-        tolerance: 5
++        distance: 4
+       }
+     }),
+     useSensor(KeyboardSensor, {
+@@ -6389,7 +6391,7 @@ const DragHandle = ({
+     "div",
+     {
+       ...dragHandleProps,
+-      className: `relative w-8 px-1 py-2.5 flex items-center justify-center hover:bg-gray-50 group cursor-[grab] ${isDragging ? `text-blue-500` : `text-gray-200 hover:text-gray-600`}`
++      className: `relative w-8 px-1 py-2.5 flex items-center justify-center hover:bg-gray-50 group cursor-[grab] ${isDragging ? `text-blue-500` : `text-gray-400 hover:text-gray-700`}`
+     },
+     isDragging ? /* @__PURE__ */ React__default.createElement(ReorderIcon, { className: "fill-current w-7 h-auto" }) : /* @__PURE__ */ React__default.createElement(React__default.Fragment, null, /* @__PURE__ */ React__default.createElement(DragIcon, { className: "fill-current w-7 h-auto group-hover:opacity-0 transition-opacity duration-150 ease-out" }), /* @__PURE__ */ React__default.createElement(ReorderIcon, { className: "fill-current w-7 h-auto absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-out" }))
+   );

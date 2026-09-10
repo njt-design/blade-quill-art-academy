@@ -113,3 +113,5 @@ overrides:
   rollup>@rollup/rollup-win32-ia32-msvc: '-'
   rollup>@rollup/rollup-win32-x64-gnu: '-'
   rollup>@rollup/rollup-win32-x64-msvc: '-'
+patchedDependencies:
+  tinacms@3.11.0: patches/tinacms@3.11.0.patch

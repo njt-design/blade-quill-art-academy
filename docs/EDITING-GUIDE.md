@@ -116,8 +116,10 @@ After paying, the customer's thank-you page shows one **Download** button per fi
 
 1. **Downloads → items**
 2. **Add** a resource with the + button: Title, the **Downloadable File** (upload via Media or paste a path like `/files/…`), the **File Type Badge** (PDF, JPG, …), and an optional **Card Image**.
-3. **Remove** a resource with the ⋮ menu on its row. **Drag** rows to reorder the grid.
+3. **Remove** a resource with the trash icon on its row. **Reorder** by grabbing the ⋮⋮ handle at the far left of a row and dragging it up or down.
 4. Save. The Downloads page updates within seconds.
+
+Gallery artwork (**Gallery → items**) reorders the same way — drag the ⋮⋮ handle on the left of each row.
 
 ### Choose the videos in the homepage YouTube strip
 
