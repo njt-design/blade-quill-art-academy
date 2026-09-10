@@ -1,13 +1,25 @@
 /**
- * Gallery artworks authored in Tina (`content/gallery/items.json`).
+ * Gallery artworks authored in Tina.
  *
- * The Art Gallery Grid reads this list first. The Express / Supabase
- * gallery API remains a fallback when the Tina file is missing or empty.
+ * The list lives on the Gallery page document (`content/pages/gallery.json`)
+ * inside its "Art Gallery Grid" section, so editors manage it right on the
+ * page. The homepage Gallery Preview reads the same list. The Express /
+ * Supabase gallery API remains a fallback when the list is missing or empty.
  */
 
 import type { GalleryItem } from "@workspace/api-client-react";
 
-const galleryModules = import.meta.glob("../../content/gallery/*.json", {
+const GALLERY_PAGE_SLUG = "gallery";
+export const GALLERY_GRID_TEMPLATE = "galleryGrid";
+export const GALLERY_GRID_TYPENAME = "PageBlocksGalleryGrid";
+/**
+ * Name of the list field on the Art Gallery Grid section. (Not `items`: Tina
+ * generates one fragment per section type in the same `blocks` list, and
+ * same-named fields with different shapes conflict.)
+ */
+export const GALLERY_GRID_LIST_FIELD = "artworks";
+
+const pageModules = import.meta.glob("../../content/pages/gallery.json", {
   eager: true,
 }) as Record<
   string,
@@ -63,27 +75,52 @@ export function toGalleryArtwork(
   };
 }
 
-function itemsFromDocument(data: Record<string, unknown>): GalleryArtwork[] {
-  const rawItems = data.items;
-  if (!Array.isArray(rawItems)) return [];
-  return rawItems
-    .filter((item): item is Record<string, unknown> =>
-      Boolean(item && typeof item === "object")
-    )
+/** Raw list items from a section's `artworks` value (bundled JSON or GraphQL). */
+export function rawGalleryItems(items: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(items)) return [];
+  return items.filter((item): item is Record<string, unknown> =>
+    Boolean(item && typeof item === "object")
+  );
+}
+
+/** Artworks from a section's `artworks` value, in CMS order. */
+export function galleryArtworksFromRaw(items: unknown): GalleryArtwork[] {
+  return rawGalleryItems(items)
     .map((item, index) => toGalleryArtwork(item, index))
     .filter((item) => Boolean(item.imageUrl));
 }
 
-/** True when the Tina gallery file exists and has artworks (skip API fetches). */
+/** True for the Art Gallery Grid section (bundled `_template` or GraphQL `__typename`). */
+export function isGalleryGridBlock(block: unknown): block is Record<string, unknown> {
+  if (!block || typeof block !== "object") return false;
+  const b = block as Record<string, unknown>;
+  return (
+    b._template === GALLERY_GRID_TEMPLATE ||
+    b.__typename === GALLERY_GRID_TYPENAME
+  );
+}
+
+/** Artworks from a page document's blocks (first Art Gallery Grid section). */
+export function galleryArtworksFromPage(
+  page: Record<string, unknown> | null | undefined
+): GalleryArtwork[] {
+  const blocks = page?.blocks;
+  if (!Array.isArray(blocks)) return [];
+  const grid = blocks.find(isGalleryGridBlock);
+  return grid ? galleryArtworksFromRaw(grid[GALLERY_GRID_LIST_FIELD]) : [];
+}
+
+/** True when the Gallery page has artworks (skip API fetches). */
 export function hasGalleryArtworks(): boolean {
   return loadGalleryArtworks().length > 0;
 }
 
-/** Artworks authored in Tina, in CMS order (drag to reorder). */
+/** Artworks authored on the Gallery page, in CMS order (bundled at build). */
 export function loadGalleryArtworks(): GalleryArtwork[] {
-  for (const mod of Object.values(galleryModules)) {
+  for (const [key, mod] of Object.entries(pageModules)) {
+    if (!key.endsWith(`/${GALLERY_PAGE_SLUG}.json`)) continue;
     const data = (mod.default ?? mod) as Record<string, unknown>;
-    const items = itemsFromDocument(data);
+    const items = galleryArtworksFromPage(data);
     if (items.length > 0) return items;
   }
   return [];

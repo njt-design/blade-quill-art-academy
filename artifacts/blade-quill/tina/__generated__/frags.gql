@@ -433,7 +433,13 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksGalleryGrid {
-      manageList
+      artworks {
+        __typename
+        title
+        image
+        description
+        downloadFile
+      }
       emptyHeading
       emptyDescription
       textStyle {
@@ -446,7 +452,14 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksDownloadsGrid {
-      manageList
+      downloads {
+        __typename
+        title
+        description
+        file
+        fileType
+        thumbnail
+      }
       emptyHeading
       emptyDescription
       textStyle {
@@ -1142,7 +1155,13 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1155,7 +1174,14 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1848,7 +1874,13 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1861,7 +1893,14 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -2554,7 +2593,13 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -2567,7 +2612,14 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3260,7 +3312,13 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3273,7 +3331,14 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3966,7 +4031,13 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3979,7 +4050,14 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -4458,29 +4536,6 @@ fragment ShopProductParts on ShopProduct {
   }
 }
 
-fragment GalleryParts on Gallery {
-  __typename
-  items {
-    __typename
-    title
-    image
-    description
-    downloadFile
-  }
-}
-
-fragment DownloadParts on Download {
-  __typename
-  items {
-    __typename
-    title
-    description
-    file
-    fileType
-    thumbnail
-  }
-}
-
 fragment TutorialParts on Tutorial {
   __typename
   items {
@@ -4935,7 +4990,13 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksGalleryGrid {
-            manageList
+            artworks {
+              __typename
+              title
+              image
+              description
+              downloadFile
+            }
             emptyHeading
             emptyDescription
             textStyle {
@@ -4948,7 +5009,14 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksDownloadsGrid {
-            manageList
+            downloads {
+              __typename
+              title
+              description
+              file
+              fileType
+              thumbnail
+            }
             emptyHeading
             emptyDescription
             textStyle {
@@ -5643,7 +5711,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -5656,7 +5730,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -6349,7 +6430,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -6362,7 +6449,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7055,7 +7149,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7068,7 +7168,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7761,7 +7868,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7774,7 +7887,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -8467,7 +8587,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -8480,7 +8606,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9194,7 +9327,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9207,7 +9346,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9902,7 +10048,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9915,7 +10067,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10608,7 +10767,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10621,7 +10786,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11314,7 +11486,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11327,7 +11505,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12020,7 +12205,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12033,7 +12224,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12726,7 +12924,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12739,7 +12943,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -13458,7 +13669,13 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -13471,7 +13688,14 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -14166,7 +14390,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14179,7 +14409,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14872,7 +15109,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14885,7 +15128,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15578,7 +15828,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15591,7 +15847,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16284,7 +16547,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16297,7 +16566,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16990,7 +17266,13 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -17003,7 +17285,14 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {

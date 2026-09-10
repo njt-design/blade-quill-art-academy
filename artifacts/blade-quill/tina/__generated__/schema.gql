@@ -62,10 +62,6 @@ type Query {
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
   shopProduct(relativePath: String): ShopProduct!
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
-  gallery(relativePath: String): Gallery!
-  galleryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GalleryFilter): GalleryConnection!
-  download(relativePath: String): Download!
-  downloadConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DownloadFilter): DownloadConnection!
   tutorial(relativePath: String): Tutorial!
   tutorialConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialFilter): TutorialConnection!
   navigation(relativePath: String): Navigation!
@@ -77,8 +73,6 @@ input DocumentFilter {
   landingPage: LandingPageFilter
   post: PostFilter
   shopProduct: ShopProductFilter
-  gallery: GalleryFilter
-  download: DownloadFilter
   tutorial: TutorialFilter
   navigation: NavigationFilter
 }
@@ -106,7 +100,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Gallery | Download | Tutorial | Navigation | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Tutorial | Navigation | Folder
 
 type PageBlocksHomeHeroTextStyle {
   headingSize: String
@@ -595,6 +589,13 @@ type PageBlocksShopCatalog {
   textStyle: PageBlocksShopCatalogTextStyle
 }
 
+type PageBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type PageBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -604,10 +605,18 @@ type PageBlocksGalleryGridTextStyle {
 }
 
 type PageBlocksGalleryGrid {
-  manageList: String
+  artworks: [PageBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksGalleryGridTextStyle
+}
+
+type PageBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type PageBlocksDownloadsGridTextStyle {
@@ -619,7 +628,7 @@ type PageBlocksDownloadsGridTextStyle {
 }
 
 type PageBlocksDownloadsGrid {
-  manageList: String
+  downloads: [PageBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksDownloadsGridTextStyle
@@ -1591,6 +1600,13 @@ input PageBlocksShopCatalogFilter {
   textStyle: PageBlocksShopCatalogTextStyleFilter
 }
 
+input PageBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input PageBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -1600,10 +1616,18 @@ input PageBlocksGalleryGridTextStyleFilter {
 }
 
 input PageBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: PageBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: PageBlocksGalleryGridTextStyleFilter
+}
+
+input PageBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input PageBlocksDownloadsGridTextStyleFilter {
@@ -1615,7 +1639,7 @@ input PageBlocksDownloadsGridTextStyleFilter {
 }
 
 input PageBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: PageBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: PageBlocksDownloadsGridTextStyleFilter
@@ -2569,6 +2593,13 @@ type LandingPageBlankBlocksShopCatalog {
   textStyle: LandingPageBlankBlocksShopCatalogTextStyle
 }
 
+type LandingPageBlankBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type LandingPageBlankBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -2578,10 +2609,18 @@ type LandingPageBlankBlocksGalleryGridTextStyle {
 }
 
 type LandingPageBlankBlocksGalleryGrid {
-  manageList: String
+  artworks: [LandingPageBlankBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksGalleryGridTextStyle
+}
+
+type LandingPageBlankBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type LandingPageBlankBlocksDownloadsGridTextStyle {
@@ -2593,7 +2632,7 @@ type LandingPageBlankBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageBlankBlocksDownloadsGrid {
-  manageList: String
+  downloads: [LandingPageBlankBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyle
@@ -3376,6 +3415,13 @@ type LandingPageEventBlocksShopCatalog {
   textStyle: LandingPageEventBlocksShopCatalogTextStyle
 }
 
+type LandingPageEventBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type LandingPageEventBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -3385,10 +3431,18 @@ type LandingPageEventBlocksGalleryGridTextStyle {
 }
 
 type LandingPageEventBlocksGalleryGrid {
-  manageList: String
+  artworks: [LandingPageEventBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksGalleryGridTextStyle
+}
+
+type LandingPageEventBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type LandingPageEventBlocksDownloadsGridTextStyle {
@@ -3400,7 +3454,7 @@ type LandingPageEventBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageEventBlocksDownloadsGrid {
-  manageList: String
+  downloads: [LandingPageEventBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksDownloadsGridTextStyle
@@ -4183,6 +4237,13 @@ type LandingPagePromoBlocksShopCatalog {
   textStyle: LandingPagePromoBlocksShopCatalogTextStyle
 }
 
+type LandingPagePromoBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type LandingPagePromoBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -4192,10 +4253,18 @@ type LandingPagePromoBlocksGalleryGridTextStyle {
 }
 
 type LandingPagePromoBlocksGalleryGrid {
-  manageList: String
+  artworks: [LandingPagePromoBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksGalleryGridTextStyle
+}
+
+type LandingPagePromoBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type LandingPagePromoBlocksDownloadsGridTextStyle {
@@ -4207,7 +4276,7 @@ type LandingPagePromoBlocksDownloadsGridTextStyle {
 }
 
 type LandingPagePromoBlocksDownloadsGrid {
-  manageList: String
+  downloads: [LandingPagePromoBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyle
@@ -4990,6 +5059,13 @@ type LandingPageInfoBlocksShopCatalog {
   textStyle: LandingPageInfoBlocksShopCatalogTextStyle
 }
 
+type LandingPageInfoBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type LandingPageInfoBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -4999,10 +5075,18 @@ type LandingPageInfoBlocksGalleryGridTextStyle {
 }
 
 type LandingPageInfoBlocksGalleryGrid {
-  manageList: String
+  artworks: [LandingPageInfoBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksGalleryGridTextStyle
+}
+
+type LandingPageInfoBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type LandingPageInfoBlocksDownloadsGridTextStyle {
@@ -5014,7 +5098,7 @@ type LandingPageInfoBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageInfoBlocksDownloadsGrid {
-  manageList: String
+  downloads: [LandingPageInfoBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyle
@@ -5797,6 +5881,13 @@ type LandingPageLinkInBioBlocksShopCatalog {
   textStyle: LandingPageLinkInBioBlocksShopCatalogTextStyle
 }
 
+type LandingPageLinkInBioBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
 type LandingPageLinkInBioBlocksGalleryGridTextStyle {
   headingSize: String
   headingType: String
@@ -5806,10 +5897,18 @@ type LandingPageLinkInBioBlocksGalleryGridTextStyle {
 }
 
 type LandingPageLinkInBioBlocksGalleryGrid {
-  manageList: String
+  artworks: [LandingPageLinkInBioBlocksGalleryGridArtworks]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyle
+}
+
+type LandingPageLinkInBioBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
 }
 
 type LandingPageLinkInBioBlocksDownloadsGridTextStyle {
@@ -5821,7 +5920,7 @@ type LandingPageLinkInBioBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageLinkInBioBlocksDownloadsGrid {
-  manageList: String
+  downloads: [LandingPageLinkInBioBlocksDownloadsGridDownloads]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyle
@@ -6776,6 +6875,13 @@ input LandingPageBlankBlocksShopCatalogFilter {
   textStyle: LandingPageBlankBlocksShopCatalogTextStyleFilter
 }
 
+input LandingPageBlankBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input LandingPageBlankBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -6785,10 +6891,18 @@ input LandingPageBlankBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageBlankBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: LandingPageBlankBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageBlankBlocksGalleryGridTextStyleFilter
+}
+
+input LandingPageBlankBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input LandingPageBlankBlocksDownloadsGridTextStyleFilter {
@@ -6800,7 +6914,7 @@ input LandingPageBlankBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageBlankBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: LandingPageBlankBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleFilter
@@ -7903,6 +8017,13 @@ input LandingPageEventBlocksShopCatalogFilter {
   textStyle: LandingPageEventBlocksShopCatalogTextStyleFilter
 }
 
+input LandingPageEventBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input LandingPageEventBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -7912,10 +8033,18 @@ input LandingPageEventBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageEventBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: LandingPageEventBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageEventBlocksGalleryGridTextStyleFilter
+}
+
+input LandingPageEventBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input LandingPageEventBlocksDownloadsGridTextStyleFilter {
@@ -7927,7 +8056,7 @@ input LandingPageEventBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageEventBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: LandingPageEventBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleFilter
@@ -9030,6 +9159,13 @@ input LandingPagePromoBlocksShopCatalogFilter {
   textStyle: LandingPagePromoBlocksShopCatalogTextStyleFilter
 }
 
+input LandingPagePromoBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input LandingPagePromoBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -9039,10 +9175,18 @@ input LandingPagePromoBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPagePromoBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: LandingPagePromoBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPagePromoBlocksGalleryGridTextStyleFilter
+}
+
+input LandingPagePromoBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input LandingPagePromoBlocksDownloadsGridTextStyleFilter {
@@ -9054,7 +9198,7 @@ input LandingPagePromoBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPagePromoBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: LandingPagePromoBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleFilter
@@ -10157,6 +10301,13 @@ input LandingPageInfoBlocksShopCatalogFilter {
   textStyle: LandingPageInfoBlocksShopCatalogTextStyleFilter
 }
 
+input LandingPageInfoBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input LandingPageInfoBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -10166,10 +10317,18 @@ input LandingPageInfoBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageInfoBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: LandingPageInfoBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageInfoBlocksGalleryGridTextStyleFilter
+}
+
+input LandingPageInfoBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input LandingPageInfoBlocksDownloadsGridTextStyleFilter {
@@ -10181,7 +10340,7 @@ input LandingPageInfoBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageInfoBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: LandingPageInfoBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleFilter
@@ -11284,6 +11443,13 @@ input LandingPageLinkInBioBlocksShopCatalogFilter {
   textStyle: LandingPageLinkInBioBlocksShopCatalogTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
 input LandingPageLinkInBioBlocksGalleryGridTextStyleFilter {
   headingSize: StringFilter
   headingType: StringFilter
@@ -11293,10 +11459,18 @@ input LandingPageLinkInBioBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksGalleryGridFilter {
-  manageList: StringFilter
+  artworks: LandingPageLinkInBioBlocksGalleryGridArtworksFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter {
@@ -11308,7 +11482,7 @@ input LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridFilter {
-  manageList: StringFilter
+  downloads: LandingPageLinkInBioBlocksDownloadsGridDownloadsFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter
@@ -12384,80 +12558,6 @@ type ShopProductConnection implements Connection {
   edges: [ShopProductConnectionEdges]
 }
 
-type GalleryItems {
-  title: String!
-  image: String!
-  description: String
-  downloadFile: String
-}
-
-type Gallery implements Node & Document {
-  items: [GalleryItems]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input GalleryItemsFilter {
-  title: StringFilter
-  image: ImageFilter
-  description: StringFilter
-  downloadFile: ImageFilter
-}
-
-input GalleryFilter {
-  items: GalleryItemsFilter
-}
-
-type GalleryConnectionEdges {
-  cursor: String!
-  node: Gallery
-}
-
-type GalleryConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [GalleryConnectionEdges]
-}
-
-type DownloadItems {
-  title: String!
-  description: String
-  file: String!
-  fileType: String!
-  thumbnail: String
-}
-
-type Download implements Node & Document {
-  items: [DownloadItems]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input DownloadItemsFilter {
-  title: StringFilter
-  description: StringFilter
-  file: ImageFilter
-  fileType: StringFilter
-  thumbnail: ImageFilter
-}
-
-input DownloadFilter {
-  items: DownloadItemsFilter
-}
-
-type DownloadConnectionEdges {
-  cursor: String!
-  node: Download
-}
-
-type DownloadConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [DownloadConnectionEdges]
-}
-
 type TutorialItems {
   title: String!
   youtubeId: String!
@@ -12609,10 +12709,6 @@ type Mutation {
   createPost(relativePath: String!, params: PostMutation!): Post!
   updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
-  updateGallery(relativePath: String!, params: GalleryMutation!): Gallery!
-  createGallery(relativePath: String!, params: GalleryMutation!): Gallery!
-  updateDownload(relativePath: String!, params: DownloadMutation!): Download!
-  createDownload(relativePath: String!, params: DownloadMutation!): Download!
   updateTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
   createTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
   updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
@@ -12624,8 +12720,6 @@ input DocumentUpdateMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
-  gallery: GalleryMutation
-  download: DownloadMutation
   tutorial: TutorialMutation
   navigation: NavigationMutation
   relativePath: String
@@ -12636,8 +12730,6 @@ input DocumentMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
-  gallery: GalleryMutation
-  download: DownloadMutation
   tutorial: TutorialMutation
   navigation: NavigationMutation
 }
@@ -13129,6 +13221,13 @@ input PageBlocksShopCatalogMutation {
   textStyle: PageBlocksShopCatalogTextStyleMutation
 }
 
+input PageBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input PageBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -13138,10 +13237,18 @@ input PageBlocksGalleryGridTextStyleMutation {
 }
 
 input PageBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [PageBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksGalleryGridTextStyleMutation
+}
+
+input PageBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input PageBlocksDownloadsGridTextStyleMutation {
@@ -13153,7 +13260,7 @@ input PageBlocksDownloadsGridTextStyleMutation {
 }
 
 input PageBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [PageBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksDownloadsGridTextStyleMutation
@@ -13976,6 +14083,13 @@ input LandingPageBlankBlocksShopCatalogMutation {
   textStyle: LandingPageBlankBlocksShopCatalogTextStyleMutation
 }
 
+input LandingPageBlankBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input LandingPageBlankBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -13985,10 +14099,18 @@ input LandingPageBlankBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageBlankBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [LandingPageBlankBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksGalleryGridTextStyleMutation
+}
+
+input LandingPageBlankBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input LandingPageBlankBlocksDownloadsGridTextStyleMutation {
@@ -14000,7 +14122,7 @@ input LandingPageBlankBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageBlankBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [LandingPageBlankBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleMutation
@@ -14823,6 +14945,13 @@ input LandingPageEventBlocksShopCatalogMutation {
   textStyle: LandingPageEventBlocksShopCatalogTextStyleMutation
 }
 
+input LandingPageEventBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input LandingPageEventBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -14832,10 +14961,18 @@ input LandingPageEventBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageEventBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [LandingPageEventBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksGalleryGridTextStyleMutation
+}
+
+input LandingPageEventBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input LandingPageEventBlocksDownloadsGridTextStyleMutation {
@@ -14847,7 +14984,7 @@ input LandingPageEventBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageEventBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [LandingPageEventBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleMutation
@@ -15670,6 +15807,13 @@ input LandingPagePromoBlocksShopCatalogMutation {
   textStyle: LandingPagePromoBlocksShopCatalogTextStyleMutation
 }
 
+input LandingPagePromoBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input LandingPagePromoBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -15679,10 +15823,18 @@ input LandingPagePromoBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPagePromoBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [LandingPagePromoBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksGalleryGridTextStyleMutation
+}
+
+input LandingPagePromoBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input LandingPagePromoBlocksDownloadsGridTextStyleMutation {
@@ -15694,7 +15846,7 @@ input LandingPagePromoBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPagePromoBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [LandingPagePromoBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleMutation
@@ -16517,6 +16669,13 @@ input LandingPageInfoBlocksShopCatalogMutation {
   textStyle: LandingPageInfoBlocksShopCatalogTextStyleMutation
 }
 
+input LandingPageInfoBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input LandingPageInfoBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -16526,10 +16685,18 @@ input LandingPageInfoBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageInfoBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [LandingPageInfoBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksGalleryGridTextStyleMutation
+}
+
+input LandingPageInfoBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input LandingPageInfoBlocksDownloadsGridTextStyleMutation {
@@ -16541,7 +16708,7 @@ input LandingPageInfoBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageInfoBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [LandingPageInfoBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleMutation
@@ -17364,6 +17531,13 @@ input LandingPageLinkInBioBlocksShopCatalogMutation {
   textStyle: LandingPageLinkInBioBlocksShopCatalogTextStyleMutation
 }
 
+input LandingPageLinkInBioBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
 input LandingPageLinkInBioBlocksGalleryGridTextStyleMutation {
   headingSize: String
   headingType: String
@@ -17373,10 +17547,18 @@ input LandingPageLinkInBioBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksGalleryGridMutation {
-  manageList: String
+  artworks: [LandingPageLinkInBioBlocksGalleryGridArtworksMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyleMutation
+}
+
+input LandingPageLinkInBioBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation {
@@ -17388,7 +17570,7 @@ input LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridMutation {
-  manageList: String
+  downloads: [LandingPageLinkInBioBlocksDownloadsGridDownloadsMutation]
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation
@@ -17988,29 +18170,6 @@ input ShopProductMutation {
   createdAt: String
   seoAssistant: String
   seo: ShopProductSeoMutation
-}
-
-input GalleryItemsMutation {
-  title: String
-  image: String
-  description: String
-  downloadFile: String
-}
-
-input GalleryMutation {
-  items: [GalleryItemsMutation]
-}
-
-input DownloadItemsMutation {
-  title: String
-  description: String
-  file: String
-  fileType: String
-  thumbnail: String
-}
-
-input DownloadMutation {
-  items: [DownloadItemsMutation]
 }
 
 input TutorialItemsMutation {

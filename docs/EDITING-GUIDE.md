@@ -14,12 +14,10 @@ Sign in with the Tina Cloud account Nick set up for you.
 
 | Sidebar | What you edit |
 |---------|----------------|
-| **Site Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these) |
+| **Site Pages** | Home, About, Shop, Gallery, Downloads, Contact, etc. (can’t delete these). The gallery artwork and free download files are edited right on their pages — see below |
 | **New Pages** | Extra pages you create (events, promos, link-in-bio) |
 | **Blog Posts** | Blog articles |
 | **Shop Products** | Product name, price, image, stock — prices here drive Stripe checkout |
-| **Gallery Artwork** (under *Site*) | The artwork on the Gallery page — add, remove, drag to reorder |
-| **Free Download Files** (under *Site*) | The free resources on the Downloads page — add, remove, drag to reorder |
 | **YouTube Tutorials** (under *Site*) | Your tutorial videos — pick which ones are Featured on the homepage |
 | **Menu & Footer** (under *Site*) | Header menu + footer link columns |
 | **Insights** (Dashboard) | Traffic & sales glance (not for editing pages) |
@@ -114,12 +112,14 @@ After paying, the customer's thank-you page shows one **Download** button per fi
 
 ### Add, remove, or reorder free downloads
 
-1. ☰ menu → **Site → Free Download Files** (the list opens directly)
+1. **Site Pages → downloads**, then click the **Downloads Grid** section. The **Free Downloads** list is the first thing in it.
 2. **Add** a resource with the + button: Title, the **Downloadable File** (upload via Media or paste a path like `/files/…`), the **File Type Badge** (PDF, JPG, …), and an optional **Card Image**.
 3. **Remove** a resource with the trash icon on its row. **Reorder** by grabbing the ⋮⋮ handle at the far left of a row and dragging it up or down.
-4. Save. The Downloads page updates within seconds.
+4. Save. The Downloads page and the homepage Downloads Preview update within seconds.
 
-Gallery artwork (☰ menu → **Site → Gallery Artwork**) reorders the same way — drag the ⋮⋮ handle on the left of each row.
+Tip: in the page preview, clicking a download card jumps straight to that item in the list.
+
+Gallery artwork works the same way: **Site Pages → gallery → Art Gallery Grid** section → the **Artwork** list. Drag the ⋮⋮ handle on the left of each row to reorder.
 
 ### Choose the videos in the homepage YouTube strip
 

@@ -10,21 +10,21 @@ import React from "react";
 var h = React.createElement;
 var LISTS = {
   gallery: {
-    title: "Gallery Artwork",
     noun: "images",
-    menu: "Gallery Artwork",
-    hash: "#/collections/edit/gallery/items"
+    where: "They're edited on the Gallery page: Site Pages \u2192 gallery \u2192 the Art Gallery Grid section.",
+    button: "Open the Gallery page \u2192",
+    hash: "#/collections/edit/page/gallery"
   },
   download: {
-    title: "Free Download Files",
     noun: "files",
-    menu: "Free Download Files",
-    hash: "#/collections/edit/download/items"
+    where: "They're edited on the Downloads page: Site Pages \u2192 downloads \u2192 the Downloads Grid section.",
+    button: "Open the Downloads page \u2192",
+    hash: "#/collections/edit/page/downloads"
   },
   tutorial: {
-    title: "YouTube tutorial videos",
     noun: "videos",
-    menu: "YouTube Tutorials",
+    where: "They're edited in the \u2630 menu under Site \u2192 YouTube Tutorials.",
+    button: "Open YouTube Tutorials \u2192",
     hash: "#/collections/edit/tutorial/items"
   }
 };
@@ -58,7 +58,7 @@ function makeManageListPanel(kind) {
             lineHeight: 1.45
           }
         },
-        `This section only places the grid on the page. The ${info.noun} themselves are one list, shared by every page that shows them. Add, remove, or drag the \u22EE\u22EE handle to reorder them there \u2014 the change shows up here automatically.`
+        `This section shows the first few ${info.noun} from one shared list. ${info.where} Add, remove, or drag the \u22EE\u22EE handle to reorder them there \u2014 this section updates automatically.`
       ),
       h(
         "a",
@@ -76,12 +76,7 @@ function makeManageListPanel(kind) {
             textDecoration: "none"
           }
         },
-        `Open ${info.title} \u2192`
-      ),
-      h(
-        "div",
-        { style: { fontSize: 11.5, color: "#776562", marginTop: 8 } },
-        `Also in the \u2630 menu, under Site \u2192 ${info.menu}.`
+        info.button
       )
     );
   };
@@ -1345,14 +1340,63 @@ var galleryGridBlock = {
     emptyDescription: "Check back soon \u2014 new artwork is added regularly."
   }),
   fields: [
-    manageListField("gallery"),
+    {
+      type: "object",
+      name: "artworks",
+      label: "Artwork",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.title || "Artwork"
+        }),
+        defaultItem: {
+          title: "New artwork",
+          description: "",
+          image: "",
+          downloadFile: ""
+        },
+        description: "Every image on the Gallery page, top to bottom (shown in a masonry grid). Drag the \u22EE\u22EE handle to reorder. The homepage Gallery Preview shows the first few from this same list. Add an optional free downloadable resource on any piece \u2014 it shows a FREE badge on the grid."
+      },
+      fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          required: true,
+          ui: charLimit(80, "Shown on hover and in the lightbox under the image.")
+        },
+        {
+          type: "image",
+          name: "image",
+          label: "Image",
+          required: true,
+          ui: {
+            description: "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/."
+          }
+        },
+        {
+          type: "string",
+          name: "description",
+          label: "Description (optional)",
+          ui: charLimit(200, "Short caption under the title in the lightbox.")
+        },
+        {
+          type: "image",
+          name: "downloadFile",
+          label: "Free Downloadable Resource (optional)",
+          ui: {
+            description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
+          }
+        }
+      ]
+    },
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Only shows if the gallery list above is empty."
+        "Only shows if the Artwork list above is empty."
       )
     },
     {
@@ -1372,14 +1416,74 @@ var downloadsGridBlock = {
     emptyDescription: "Coloring pages, guides, and more on the way."
   }),
   fields: [
-    manageListField("download"),
+    {
+      type: "object",
+      name: "downloads",
+      label: "Free Downloads",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.title || "Download"
+        }),
+        defaultItem: {
+          title: "New download",
+          description: "",
+          file: "",
+          fileType: "PDF",
+          thumbnail: ""
+        },
+        description: "Every free resource on the Downloads page, top to bottom. Drag the \u22EE\u22EE handle to reorder. The homepage Downloads Preview shows the first few from this same list. Remove an item to take it off the site."
+      },
+      fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          required: true,
+          ui: charLimit(80, "Shown on the download card.")
+        },
+        {
+          type: "string",
+          name: "description",
+          label: "Description (optional)",
+          ui: charLimit(200, "One or two sentences under the title.")
+        },
+        {
+          type: "image",
+          name: "file",
+          label: "Downloadable File",
+          required: true,
+          ui: {
+            description: "The file visitors get when they click Free Download (PDF, JPG, PNG, ZIP, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf."
+          }
+        },
+        {
+          type: "string",
+          name: "fileType",
+          label: "File Type Badge",
+          required: true,
+          options: ["PDF", "JPG", "PNG", "ZIP", "MP4", "EPUB"],
+          ui: {
+            description: "Shown as a small badge on the card image. Pick the format of the file."
+          }
+        },
+        {
+          type: "image",
+          name: "thumbnail",
+          label: "Card Image (optional)",
+          ui: {
+            description: "Preview image on the card. Prefer 4:3 landscape, at least 800px wide. Upload into images/downloads/."
+          }
+        }
+      ]
+    },
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Only shows when the downloads list above is empty."
+        "Only shows when the Free Downloads list above is empty."
       )
     },
     {
@@ -4288,157 +4392,6 @@ var config_default = defineConfig({
             ui: { description: 'Used for "Newest" sort on the shop page.' }
           },
           ...seoFields("product")
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Gallery — single document; drag to reorder artworks.
-      // ---------------------------------------------------------------
-      {
-        name: "gallery",
-        label: "Gallery Artwork",
-        path: "content/gallery",
-        format: "json",
-        ui: {
-          // Single-document list: open the form straight from the menu, as a
-          // plain full-width form (no router → no site-preview detour).
-          global: true,
-          allowedActions: { create: false, delete: false }
-        },
-        fields: [
-          {
-            type: "object",
-            name: "items",
-            label: "Artwork",
-            list: true,
-            ui: {
-              itemProps: (item) => ({
-                label: item?.title || "Artwork"
-              }),
-              defaultItem: {
-                title: "New artwork",
-                description: "",
-                image: "",
-                downloadFile: ""
-              },
-              description: "Images on the Gallery page, top to bottom (shown in a masonry grid). Drag to reorder. Add an optional free downloadable resource on any piece \u2014 it shows a FREE badge on the grid."
-            },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-                ui: charLimit(
-                  80,
-                  "Shown on hover and in the lightbox under the image."
-                )
-              },
-              {
-                type: "image",
-                name: "image",
-                label: "Image",
-                required: true,
-                ui: {
-                  description: "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/."
-                }
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description (optional)",
-                ui: charLimit(
-                  200,
-                  "Short caption under the title in the lightbox."
-                )
-              },
-              {
-                type: "image",
-                name: "downloadFile",
-                label: "Free Downloadable Resource (optional)",
-                ui: {
-                  description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
-                }
-              }
-            ]
-          }
-        ]
-      },
-      // ---------------------------------------------------------------
-      // Downloads — single document; drag to reorder free resources.
-      // ---------------------------------------------------------------
-      {
-        name: "download",
-        label: "Free Download Files",
-        path: "content/downloads",
-        format: "json",
-        ui: {
-          // Single-document list: open the form straight from the menu, as a
-          // plain full-width form (no router → no site-preview detour).
-          global: true,
-          allowedActions: { create: false, delete: false }
-        },
-        fields: [
-          {
-            type: "object",
-            name: "items",
-            label: "Free Downloads",
-            list: true,
-            ui: {
-              itemProps: (item) => ({
-                label: item?.title || "Download"
-              }),
-              defaultItem: {
-                title: "New download",
-                description: "",
-                file: "",
-                fileType: "PDF",
-                thumbnail: ""
-              },
-              description: "The free resources on the Downloads page, top to bottom. Drag to reorder. Remove any item to take it off the site."
-            },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Title",
-                required: true,
-                ui: charLimit(80, "Shown on the download card.")
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description (optional)",
-                ui: charLimit(200, "One or two sentences under the title.")
-              },
-              {
-                type: "image",
-                name: "file",
-                label: "Downloadable File",
-                required: true,
-                ui: {
-                  description: "The file visitors get when they click Free Download (PDF, JPG, PNG, ZIP, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf."
-                }
-              },
-              {
-                type: "string",
-                name: "fileType",
-                label: "File Type Badge",
-                required: true,
-                options: ["PDF", "JPG", "PNG", "ZIP", "MP4", "EPUB"],
-                ui: {
-                  description: "Shown as a small badge on the card image. Pick the format of the file."
-                }
-              },
-              {
-                type: "image",
-                name: "thumbnail",
-                label: "Card Image (optional)",
-                ui: {
-                  description: "Preview image on the card. Prefer 4:3 landscape, at least 800px wide. Upload into images/downloads/."
-                }
-              }
-            ]
-          }
         ]
       },
       // ---------------------------------------------------------------

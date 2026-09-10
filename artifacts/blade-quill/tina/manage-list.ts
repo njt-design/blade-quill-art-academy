@@ -1,10 +1,12 @@
 /**
- * "Manage the list" panel for page sections whose items live in a separate
- * Tina collection (Gallery artwork, Free Downloads, YouTube Tutorials).
+ * "Where are the items?" panel for page sections that *display* a list that
+ * is edited somewhere else:
+ *   - the homepage Gallery / Downloads previews show the first few items from
+ *     the Gallery page's "Art Gallery Grid" / Downloads page's "Downloads Grid"
+ *     sections, and
+ *   - the YouTube strip shows videos from the YouTube Tutorials list.
  *
- * Opening the Downloads page in Tina shows the page *sections* (header, grid)
- * but not the files themselves, which look like they're missing. This
- * display-only field explains that and links straight to the list where
+ * This display-only field explains that and links straight to the place the
  * items are added, removed, and dragged into order.
  */
 import React from "react";
@@ -16,24 +18,26 @@ type ManagedList = "gallery" | "download" | "tutorial";
 
 const LISTS: Record<
   ManagedList,
-  { title: string; noun: string; menu: string; hash: string }
+  { where: string; noun: string; button: string; hash: string }
 > = {
   gallery: {
-    title: "Gallery Artwork",
     noun: "images",
-    menu: "Gallery Artwork",
-    hash: "#/collections/edit/gallery/items",
+    where:
+      "They're edited on the Gallery page: Site Pages → gallery → the Art Gallery Grid section.",
+    button: "Open the Gallery page →",
+    hash: "#/collections/edit/page/gallery",
   },
   download: {
-    title: "Free Download Files",
     noun: "files",
-    menu: "Free Download Files",
-    hash: "#/collections/edit/download/items",
+    where:
+      "They're edited on the Downloads page: Site Pages → downloads → the Downloads Grid section.",
+    button: "Open the Downloads page →",
+    hash: "#/collections/edit/page/downloads",
   },
   tutorial: {
-    title: "YouTube tutorial videos",
     noun: "videos",
-    menu: "YouTube Tutorials",
+    where: "They're edited in the ☰ menu under Site → YouTube Tutorials.",
+    button: "Open YouTube Tutorials →",
     hash: "#/collections/edit/tutorial/items",
   },
 };
@@ -68,7 +72,7 @@ function makeManageListPanel(kind: ManagedList): React.FC {
             lineHeight: 1.45,
           },
         },
-        `This section only places the grid on the page. The ${info.noun} themselves are one list, shared by every page that shows them. Add, remove, or drag the ⋮⋮ handle to reorder them there — the change shows up here automatically.`
+        `This section shows the first few ${info.noun} from one shared list. ${info.where} Add, remove, or drag the ⋮⋮ handle to reorder them there — this section updates automatically.`
       ),
       h(
         "a",
@@ -86,19 +90,14 @@ function makeManageListPanel(kind: ManagedList): React.FC {
             textDecoration: "none",
           },
         },
-        `Open ${info.title} →`
-      ),
-      h(
-        "div",
-        { style: { fontSize: 11.5, color: "#776562", marginTop: 8 } },
-        `Also in the ☰ menu, under Site → ${info.menu}.`
+        info.button
       )
     );
   };
 }
 
 /**
- * Display-only pointer to the collection that holds a section's items.
+ * Display-only pointer to where a section's items are edited.
  * Put it first in the section's fields so it's the first thing editors see.
  */
 export function manageListField(kind: ManagedList): TinaField {

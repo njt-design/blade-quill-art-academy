@@ -94,8 +94,12 @@ const BLOCK_FIELDS: Record<string, string> = {
   shopCatalog: withTextStyle(
     "heading highlightText description showFeaturedBanner emptyHeading emptyDescription"
   ),
-  galleryGrid: withTextStyle("emptyHeading emptyDescription"),
-  downloadsGrid: withTextStyle("emptyHeading emptyDescription"),
+  galleryGrid: withTextStyle(
+    "artworks { title image description downloadFile } emptyHeading emptyDescription"
+  ),
+  downloadsGrid: withTextStyle(
+    "downloads { title description file fileType thumbnail } emptyHeading emptyDescription"
+  ),
   contactInfo: "email location",
   contactForm: "submitLabel",
   dummyBookRequest: withTextStyle(

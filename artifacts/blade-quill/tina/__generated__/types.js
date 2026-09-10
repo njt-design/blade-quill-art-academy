@@ -441,7 +441,13 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksGalleryGrid {
-      manageList
+      artworks {
+        __typename
+        title
+        image
+        description
+        downloadFile
+      }
       emptyHeading
       emptyDescription
       textStyle {
@@ -454,7 +460,14 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksDownloadsGrid {
-      manageList
+      downloads {
+        __typename
+        title
+        description
+        file
+        fileType
+        thumbnail
+      }
       emptyHeading
       emptyDescription
       textStyle {
@@ -1151,7 +1164,13 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1164,7 +1183,14 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1857,7 +1883,13 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -1870,7 +1902,14 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -2563,7 +2602,13 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -2576,7 +2621,14 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3269,7 +3321,13 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3282,7 +3340,14 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3975,7 +4040,13 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryGrid {
-        manageList
+        artworks {
+          __typename
+          title
+          image
+          description
+          downloadFile
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -3988,7 +4059,14 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
-        manageList
+        downloads {
+          __typename
+          title
+          description
+          file
+          fileType
+          thumbnail
+        }
         emptyHeading
         emptyDescription
         textStyle {
@@ -4469,31 +4547,6 @@ export const ShopProductPartsFragmentDoc = gql`
   }
 }
     `;
-export const GalleryPartsFragmentDoc = gql`
-    fragment GalleryParts on Gallery {
-  __typename
-  items {
-    __typename
-    title
-    image
-    description
-    downloadFile
-  }
-}
-    `;
-export const DownloadPartsFragmentDoc = gql`
-    fragment DownloadParts on Download {
-  __typename
-  items {
-    __typename
-    title
-    description
-    file
-    fileType
-    thumbnail
-  }
-}
-    `;
 export const TutorialPartsFragmentDoc = gql`
     fragment TutorialParts on Tutorial {
   __typename
@@ -4950,7 +5003,13 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksGalleryGrid {
-            manageList
+            artworks {
+              __typename
+              title
+              image
+              description
+              downloadFile
+            }
             emptyHeading
             emptyDescription
             textStyle {
@@ -4963,7 +5022,14 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksDownloadsGrid {
-            manageList
+            downloads {
+              __typename
+              title
+              description
+              file
+              fileType
+              thumbnail
+            }
             emptyHeading
             emptyDescription
             textStyle {
@@ -5658,7 +5724,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -5671,7 +5743,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -6364,7 +6443,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -6377,7 +6462,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7070,7 +7162,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7083,7 +7181,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7776,7 +7881,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -7789,7 +7900,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -8482,7 +8600,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -8495,7 +8619,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9209,7 +9340,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9222,7 +9359,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -9917,7 +10061,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9930,7 +10080,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10623,7 +10780,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10636,7 +10799,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11329,7 +11499,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11342,7 +11518,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12035,7 +12218,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12048,7 +12237,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12741,7 +12937,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12754,7 +12956,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -13473,7 +13682,13 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryGrid {
-              manageList
+              artworks {
+                __typename
+                title
+                image
+                description
+                downloadFile
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -13486,7 +13701,14 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsGrid {
-              manageList
+              downloads {
+                __typename
+                title
+                description
+                file
+                fileType
+                thumbnail
+              }
               emptyHeading
               emptyDescription
               textStyle {
@@ -14181,7 +14403,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14194,7 +14422,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14887,7 +15122,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14900,7 +15141,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15593,7 +15841,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15606,7 +15860,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16299,7 +16560,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16312,7 +16579,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -17005,7 +17279,13 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
-                manageList
+                artworks {
+                  __typename
+                  title
+                  image
+                  description
+                  downloadFile
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -17018,7 +17298,14 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
-                manageList
+                downloads {
+                  __typename
+                  title
+                  description
+                  file
+                  fileType
+                  thumbnail
+                }
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -17524,120 +17811,6 @@ export const ShopProductConnectionDocument = gql`
   }
 }
     ${ShopProductPartsFragmentDoc}`;
-export const GalleryDocument = gql`
-    query gallery($relativePath: String!) {
-  gallery(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...GalleryParts
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const GalleryConnectionDocument = gql`
-    query galleryConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GalleryFilter) {
-  galleryConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...GalleryParts
-      }
-    }
-  }
-}
-    ${GalleryPartsFragmentDoc}`;
-export const DownloadDocument = gql`
-    query download($relativePath: String!) {
-  download(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...DownloadParts
-  }
-}
-    ${DownloadPartsFragmentDoc}`;
-export const DownloadConnectionDocument = gql`
-    query downloadConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: DownloadFilter) {
-  downloadConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...DownloadParts
-      }
-    }
-  }
-}
-    ${DownloadPartsFragmentDoc}`;
 export const TutorialDocument = gql`
     query tutorial($relativePath: String!) {
   tutorial(relativePath: $relativePath) {
@@ -17777,18 +17950,6 @@ export function getSdk(requester) {
     },
     shopProductConnection(variables, options) {
       return requester(ShopProductConnectionDocument, variables, options);
-    },
-    gallery(variables, options) {
-      return requester(GalleryDocument, variables, options);
-    },
-    galleryConnection(variables, options) {
-      return requester(GalleryConnectionDocument, variables, options);
-    },
-    download(variables, options) {
-      return requester(DownloadDocument, variables, options);
-    },
-    downloadConnection(variables, options) {
-      return requester(DownloadConnectionDocument, variables, options);
     },
     tutorial(variables, options) {
       return requester(TutorialDocument, variables, options);

@@ -1,13 +1,25 @@
 /**
- * Free downloads authored in Tina (`content/downloads/items.json`).
+ * Free downloads authored in Tina.
  *
- * The Downloads Grid reads this list first. The Express / Supabase
- * downloads API remains a fallback when the Tina file is missing or empty.
+ * The list lives on the Downloads page document (`content/pages/downloads.json`)
+ * inside its "Downloads Grid" section, so editors manage it right on the page.
+ * The homepage Downloads Preview reads the same list. The Express / Supabase
+ * downloads API remains a fallback when the list is missing or empty.
  */
 
 import type { Download } from "@workspace/api-client-react";
 
-const downloadModules = import.meta.glob("../../content/downloads/*.json", {
+const DOWNLOADS_PAGE_SLUG = "downloads";
+export const DOWNLOADS_GRID_TEMPLATE = "downloadsGrid";
+export const DOWNLOADS_GRID_TYPENAME = "PageBlocksDownloadsGrid";
+/**
+ * Name of the list field on the Downloads Grid section. (Not `items`: Tina
+ * generates one fragment per section type in the same `blocks` list, and
+ * same-named fields with different shapes conflict.)
+ */
+export const DOWNLOADS_GRID_LIST_FIELD = "downloads";
+
+const pageModules = import.meta.glob("../../content/pages/downloads.json", {
   eager: true,
 }) as Record<
   string,
@@ -47,27 +59,52 @@ export function toDownloadItem(
   };
 }
 
-function itemsFromDocument(data: Record<string, unknown>): Download[] {
-  const rawItems = data.items;
-  if (!Array.isArray(rawItems)) return [];
-  return rawItems
-    .filter((item): item is Record<string, unknown> =>
-      Boolean(item && typeof item === "object")
-    )
+/** Raw list items from a section's `downloads` value (bundled JSON or GraphQL). */
+export function rawDownloadItems(items: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(items)) return [];
+  return items.filter((item): item is Record<string, unknown> =>
+    Boolean(item && typeof item === "object")
+  );
+}
+
+/** Downloads from a section's `downloads` value, in CMS order. */
+export function downloadItemsFromRaw(items: unknown): Download[] {
+  return rawDownloadItems(items)
     .map((item, index) => toDownloadItem(item, index))
     .filter((item) => Boolean(item.fileUrl));
 }
 
-/** True when the Tina downloads file exists and has items (skip API fetches). */
+/** True for the Downloads Grid section (bundled `_template` or GraphQL `__typename`). */
+export function isDownloadsGridBlock(block: unknown): block is Record<string, unknown> {
+  if (!block || typeof block !== "object") return false;
+  const b = block as Record<string, unknown>;
+  return (
+    b._template === DOWNLOADS_GRID_TEMPLATE ||
+    b.__typename === DOWNLOADS_GRID_TYPENAME
+  );
+}
+
+/** Downloads from a page document's blocks (first Downloads Grid section). */
+export function downloadItemsFromPage(
+  page: Record<string, unknown> | null | undefined
+): Download[] {
+  const blocks = page?.blocks;
+  if (!Array.isArray(blocks)) return [];
+  const grid = blocks.find(isDownloadsGridBlock);
+  return grid ? downloadItemsFromRaw(grid[DOWNLOADS_GRID_LIST_FIELD]) : [];
+}
+
+/** True when the Downloads page has items (skip API fetches). */
 export function hasDownloadItems(): boolean {
   return loadDownloadItems().length > 0;
 }
 
-/** Downloads authored in Tina, in CMS order (drag to reorder). */
+/** Downloads authored on the Downloads page, in CMS order (bundled at build). */
 export function loadDownloadItems(): Download[] {
-  for (const mod of Object.values(downloadModules)) {
+  for (const [key, mod] of Object.entries(pageModules)) {
+    if (!key.endsWith(`/${DOWNLOADS_PAGE_SLUG}.json`)) continue;
     const data = (mod.default ?? mod) as Record<string, unknown>;
-    const items = itemsFromDocument(data);
+    const items = downloadItemsFromPage(data);
     if (items.length > 0) return items;
   }
   return [];

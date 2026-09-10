@@ -1341,14 +1341,66 @@ export const galleryGridBlock: Template = {
     emptyDescription: "Check back soon — new artwork is added regularly.",
   }),
   fields: [
-    manageListField("gallery"),
+    {
+      type: "object",
+      name: "artworks",
+      label: "Artwork",
+      list: true,
+      ui: {
+        itemProps: (item?: Record<string, unknown>) => ({
+          label: (item?.title as string) || "Artwork",
+        }),
+        defaultItem: {
+          title: "New artwork",
+          description: "",
+          image: "",
+          downloadFile: "",
+        },
+        description:
+          "Every image on the Gallery page, top to bottom (shown in a masonry grid). Drag the ⋮⋮ handle to reorder. The homepage Gallery Preview shows the first few from this same list. Add an optional free downloadable resource on any piece — it shows a FREE badge on the grid.",
+      },
+      fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          required: true,
+          ui: charLimit(80, "Shown on hover and in the lightbox under the image."),
+        },
+        {
+          type: "image",
+          name: "image",
+          label: "Image",
+          required: true,
+          ui: {
+            description:
+              "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/.",
+          },
+        },
+        {
+          type: "string",
+          name: "description",
+          label: "Description (optional)",
+          ui: charLimit(200, "Short caption under the title in the lightbox."),
+        },
+        {
+          type: "image",
+          name: "downloadFile",
+          label: "Free Downloadable Resource (optional)",
+          ui: {
+            description:
+              "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource.",
+          },
+        },
+      ],
+    },
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Only shows if the gallery list above is empty."
+        "Only shows if the Artwork list above is empty."
       ),
     },
     {
@@ -1369,14 +1421,78 @@ export const downloadsGridBlock: Template = {
     emptyDescription: "Coloring pages, guides, and more on the way.",
   }),
   fields: [
-    manageListField("download"),
+    {
+      type: "object",
+      name: "downloads",
+      label: "Free Downloads",
+      list: true,
+      ui: {
+        itemProps: (item?: Record<string, unknown>) => ({
+          label: (item?.title as string) || "Download",
+        }),
+        defaultItem: {
+          title: "New download",
+          description: "",
+          file: "",
+          fileType: "PDF",
+          thumbnail: "",
+        },
+        description:
+          "Every free resource on the Downloads page, top to bottom. Drag the ⋮⋮ handle to reorder. The homepage Downloads Preview shows the first few from this same list. Remove an item to take it off the site.",
+      },
+      fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          required: true,
+          ui: charLimit(80, "Shown on the download card."),
+        },
+        {
+          type: "string",
+          name: "description",
+          label: "Description (optional)",
+          ui: charLimit(200, "One or two sentences under the title."),
+        },
+        {
+          type: "image",
+          name: "file",
+          label: "Downloadable File",
+          required: true,
+          ui: {
+            description:
+              "The file visitors get when they click Free Download (PDF, JPG, PNG, ZIP, etc.). Upload via Media, or paste a path like /files/coloring-page.pdf.",
+          },
+        },
+        {
+          type: "string",
+          name: "fileType",
+          label: "File Type Badge",
+          required: true,
+          options: ["PDF", "JPG", "PNG", "ZIP", "MP4", "EPUB"],
+          ui: {
+            description:
+              "Shown as a small badge on the card image. Pick the format of the file.",
+          },
+        },
+        {
+          type: "image",
+          name: "thumbnail",
+          label: "Card Image (optional)",
+          ui: {
+            description:
+              "Preview image on the card. Prefer 4:3 landscape, at least 800px wide. Upload into images/downloads/.",
+          },
+        },
+      ],
+    },
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Only shows when the downloads list above is empty."
+        "Only shows when the Free Downloads list above is empty."
       ),
     },
     {

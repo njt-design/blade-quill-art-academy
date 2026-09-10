@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Download as DownloadIcon, FileText } from "lucide-react";
 import { tinaField } from "tinacms/react";
 import { buttonVariants } from "@/components/ui/button";
@@ -5,7 +6,12 @@ import { useListDownloads, type Download } from "@workspace/api-client-react";
 import { asArray } from "@/lib/api-helpers";
 import { useLiveDownloads } from "@/hooks/use-live-content";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
-import { resolveDownloadItems } from "@/lib/downloads";
+import {
+  DOWNLOADS_GRID_LIST_FIELD,
+  downloadItemsFromRaw,
+  rawDownloadItems,
+  resolveDownloadItems,
+} from "@/lib/downloads";
 import { type Block } from "./block-utils";
 import { SectionHeading } from "./text-style";
 
@@ -24,8 +30,21 @@ function filenameFromUrl(url: string): string {
   }
 }
 
+/**
+ * The Downloads Grid section owns the list of free resources: `block.downloads`
+ * is edited on the Downloads page in Tina (drag to reorder) and arrives live
+ * through the page's own query, including inside the visual editor. A grid
+ * placed on any other page without its own items falls back to the shared
+ * Downloads-page list.
+ */
 export default function DownloadsGridBlock({ block }: Props) {
-  const catalog = useLiveDownloads();
+  // Raw items keep Tina's content-source metadata, so each card can deep-link
+  // to its row in the editor via tinaField(rawItem).
+  const rawList = block[DOWNLOADS_GRID_LIST_FIELD];
+  const rawItems = useMemo(() => rawDownloadItems(rawList), [rawList]);
+  const ownItems = useMemo(() => downloadItemsFromRaw(rawItems), [rawItems]);
+  const sharedCatalog = useLiveDownloads();
+  const catalog = ownItems.length > 0 ? ownItems : sharedCatalog;
   const hasCatalog = catalog.length > 0;
   const { data: downloadsRaw, isLoading } = useListDownloads();
   const downloads = resolveDownloadItems(
@@ -34,6 +53,11 @@ export default function DownloadsGridBlock({ block }: Props) {
     catalog
   );
   const showLoading = !hasCatalog && isLoading;
+  const editorField = (index: number): string | undefined => {
+    if (ownItems.length === 0) return undefined;
+    const raw = rawItems[index];
+    return raw ? tinaField(raw as object) : undefined;
+  };
 
   return (
     <section className="py-6">
@@ -46,8 +70,12 @@ export default function DownloadsGridBlock({ block }: Props) {
           </div>
         ) : downloads.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {downloads.map((item) => (
-              <div key={item.id} className="gumroad-card flex flex-col group">
+            {downloads.map((item, index) => (
+              <div
+                key={item.id}
+                className="gumroad-card flex flex-col group"
+                data-tina-field={editorField(index)}
+              >
                 {item.thumbnailUrl ? (
                   <div className="aspect-[4/3] img-fit-wrap relative bg-secondary/30">
                     <img

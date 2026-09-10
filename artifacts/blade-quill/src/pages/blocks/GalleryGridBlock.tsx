@@ -5,8 +5,11 @@ import { tinaField } from "tinacms/react";
 import { useLiveGallery } from "@/hooks/use-live-content";
 import { FALLBACK_GALLERY } from "@/lib/fallback-data";
 import {
+  GALLERY_GRID_LIST_FIELD,
   fileNameFromUrl,
+  galleryArtworksFromRaw,
   hasDownloadFile,
+  rawGalleryItems,
   resolveGalleryArtworks,
   type GalleryArtwork,
 } from "@/lib/gallery";
@@ -138,9 +141,12 @@ export function GalleryLightbox({
 function GalleryImage({
   item,
   onClick,
+  editorField,
 }: {
   item: GalleryArtwork;
   onClick: () => void;
+  /** Tina content-source id so clicking the tile in the editor opens its row. */
+  editorField?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
   const canDownload = hasDownloadFile(item.downloadFile);
@@ -149,6 +155,7 @@ function GalleryImage({
     <div
       className="break-inside-avoid group rounded-lg overflow-hidden border border-border/50 relative cursor-pointer gumroad-card"
       onClick={onClick}
+      data-tina-field={editorField}
     >
       <img
         src={item.imageUrl}
@@ -182,14 +189,30 @@ interface Props {
   block: Block;
 }
 
+/**
+ * The Art Gallery Grid section owns the artwork list: `block.artworks` is edited
+ * on the Gallery page in Tina (drag to reorder) and arrives live through the
+ * page's own query, including inside the visual editor. A grid placed on any
+ * other page without its own items falls back to the shared Gallery-page list.
+ */
 export default function GalleryGridBlock({ block }: Props) {
-  const catalog = useLiveGallery();
+  // Raw items keep Tina's content-source metadata for click-to-edit tiles.
+  const rawList = block[GALLERY_GRID_LIST_FIELD];
+  const rawItems = useMemo(() => rawGalleryItems(rawList), [rawList]);
+  const ownItems = useMemo(() => galleryArtworksFromRaw(rawItems), [rawItems]);
+  const sharedCatalog = useLiveGallery();
+  const catalog = ownItems.length > 0 ? ownItems : sharedCatalog;
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const items = useMemo(
     () => resolveGalleryArtworks(undefined, FALLBACK_GALLERY, catalog),
     [catalog],
   );
+  const editorField = (index: number): string | undefined => {
+    if (ownItems.length === 0) return undefined;
+    const raw = rawItems[index];
+    return raw ? tinaField(raw as object) : undefined;
+  };
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const goPrev = useCallback(() => {
@@ -217,6 +240,7 @@ export default function GalleryGridBlock({ block }: Props) {
                 key={item.id}
                 item={item}
                 onClick={() => setLightboxIndex(index)}
+                editorField={editorField(index)}
               />
             ))}
           </div>

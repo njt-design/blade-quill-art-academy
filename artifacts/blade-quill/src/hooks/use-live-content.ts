@@ -14,13 +14,13 @@ import {
   type CatalogProduct,
 } from "@/lib/products";
 import {
+  galleryArtworksFromPage,
   loadGalleryArtworks,
-  toGalleryArtwork,
   type GalleryArtwork,
 } from "@/lib/gallery";
 import {
+  downloadItemsFromPage,
   loadDownloadItems,
-  toDownloadItem,
 } from "@/lib/downloads";
 import { loadTutorials, toTutorial } from "@/lib/tutorials";
 import type { Download, Tutorial } from "@workspace/api-client-react";
@@ -80,28 +80,40 @@ const POSTS_PAGE_QUERY = `
   }
 `;
 
+/** The gallery list lives in the Gallery page's "Art Gallery Grid" section. */
 const GALLERY_QUERY = `
   query liveGallery($relativePath: String!) {
-    gallery(relativePath: $relativePath) {
-      items {
-        title
-        image
-        description
-        downloadFile
+    page(relativePath: $relativePath) {
+      blocks {
+        ... on PageBlocksGalleryGrid {
+          __typename
+          artworks {
+            title
+            image
+            description
+            downloadFile
+          }
+        }
       }
     }
   }
 `;
 
+/** The downloads list lives in the Downloads page's "Downloads Grid" section. */
 const DOWNLOADS_QUERY = `
   query liveDownloads($relativePath: String!) {
-    download(relativePath: $relativePath) {
-      items {
-        title
-        description
-        file
-        fileType
-        thumbnail
+    page(relativePath: $relativePath) {
+      blocks {
+        ... on PageBlocksDownloadsGrid {
+          __typename
+          downloads {
+            title
+            description
+            file
+            fileType
+            thumbnail
+          }
+        }
       }
     }
   }
@@ -281,15 +293,10 @@ export function useLiveBlogPosts(): BlogPostMeta[] {
 export function useLiveGallery(): GalleryArtwork[] {
   return useLiveList("gallery", loadGalleryArtworks, async () => {
     const data = await fetchTinaData<{
-      gallery?: { items?: Array<Record<string, unknown> | null> | null };
-    }>(GALLERY_QUERY, { relativePath: "items.json" });
-    if (!data?.gallery?.items) return null;
-    const items = data.gallery.items
-      .filter((item): item is Record<string, unknown> =>
-        Boolean(item && typeof item === "object")
-      )
-      .map((item, index) => toGalleryArtwork(item, index))
-      .filter((item) => Boolean(item.imageUrl));
+      page?: Record<string, unknown> | null;
+    }>(GALLERY_QUERY, { relativePath: "gallery.json" });
+    if (!data?.page) return null;
+    const items = galleryArtworksFromPage(data.page);
     return items.length > 0 ? items : null;
   });
 }
@@ -298,15 +305,10 @@ export function useLiveGallery(): GalleryArtwork[] {
 export function useLiveDownloads(): Download[] {
   return useLiveList("downloads", loadDownloadItems, async () => {
     const data = await fetchTinaData<{
-      download?: { items?: Array<Record<string, unknown> | null> | null };
-    }>(DOWNLOADS_QUERY, { relativePath: "items.json" });
-    if (!data?.download?.items) return null;
-    const items = data.download.items
-      .filter((item): item is Record<string, unknown> =>
-        Boolean(item && typeof item === "object")
-      )
-      .map((item, index) => toDownloadItem(item, index))
-      .filter((item) => Boolean(item.fileUrl));
+      page?: Record<string, unknown> | null;
+    }>(DOWNLOADS_QUERY, { relativePath: "downloads.json" });
+    if (!data?.page) return null;
+    const items = downloadItemsFromPage(data.page);
     return items.length > 0 ? items : null;
   });
 }
