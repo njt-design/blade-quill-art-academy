@@ -40,37 +40,31 @@ export default function LegalDocument({ doc }: Props) {
 
   return (
     <div className="bq-legal-page min-h-screen">
-      <header
-        className="relative overflow-hidden"
-        style={{ background: "var(--ink)", color: "var(--paper-2)" }}
-      >
-        <div
-          className="absolute inset-x-0 bottom-0 h-1"
-          style={{ background: "var(--g-warm)" }}
-        />
-        <div className="bq-container-wide py-14 md:py-20">
-          <p className="eyebrow mb-4" style={{ color: "var(--paper-3)" }}>
+      <header className="bq-container-wide pt-16 md:pt-20 pb-10 md:pb-12">
+        <div className="max-w-2xl">
+          <p className="eyebrow mb-3" style={{ color: "var(--ink-mute)" }}>
             {doc.eyebrow}
           </p>
           <h1
-            className="text-[clamp(34px,5vw,56px)] leading-[1.1] mb-5"
-            style={{ fontFamily: "var(--f-serif)", color: "var(--paper)" }}
+            className="font-display mb-3"
+            style={{
+              fontSize: "clamp(30px, 3.5vw, 36px)",
+              lineHeight: 1.2,
+              color: "var(--ink)",
+            }}
           >
             {doc.title}
           </h1>
-          <p
-            className="max-w-2xl text-base md:text-lg leading-relaxed mb-6"
-            style={{ color: "var(--paper-2)" }}
-          >
+          <p className="text-base text-muted-foreground font-sans leading-relaxed mb-5">
             {doc.description}
           </p>
-          <p className="eyebrow" style={{ color: "var(--ink-faint)" }}>
+          <p className="text-sm" style={{ color: "var(--ink-mute)" }}>
             Effective {doc.effectiveDate} · Last updated {doc.lastUpdated}
           </p>
         </div>
       </header>
 
-      <div className="bq-container-wide py-12 md:py-16 lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16">
+      <div className="bq-container-wide pb-16 md:pb-20 lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16">
         <nav
           aria-label="On this page"
           className="mb-10 lg:mb-0 lg:sticky lg:top-28 lg:self-start"
