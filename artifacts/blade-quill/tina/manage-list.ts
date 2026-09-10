@@ -19,15 +19,15 @@ const LISTS: Record<
   { title: string; noun: string; menu: string; hash: string }
 > = {
   gallery: {
-    title: "Gallery artwork",
+    title: "Gallery Artwork",
     noun: "images",
-    menu: "Gallery",
+    menu: "Gallery Artwork",
     hash: "#/collections/edit/gallery/items",
   },
   download: {
-    title: "Free download files",
+    title: "Free Download Files",
     noun: "files",
-    menu: "Downloads",
+    menu: "Free Download Files",
     hash: "#/collections/edit/download/items",
   },
   tutorial: {
@@ -91,7 +91,7 @@ function makeManageListPanel(kind: ManagedList): React.FC {
       h(
         "div",
         { style: { fontSize: 11.5, color: "#776562", marginTop: 8 } },
-        `Also in the ☰ menu under ${info.menu} → items.`
+        `Also in the ☰ menu, under Site → ${info.menu}.`
       )
     );
   };

@@ -18,10 +18,10 @@ Sign in with the Tina Cloud account Nick set up for you.
 | **New Pages** | Extra pages you create (events, promos, link-in-bio) |
 | **Blog Posts** | Blog articles |
 | **Shop Products** | Product name, price, image, stock — prices here drive Stripe checkout |
-| **Gallery** | The artwork on the Gallery page — add, remove, drag to reorder |
-| **Downloads** | The free resources on the Downloads page — add, remove, drag to reorder |
-| **YouTube Tutorials** | Your tutorial videos — pick which ones are Featured on the homepage |
-| **Menu & Footer** | Header menu + footer link columns |
+| **Gallery Artwork** (under *Site*) | The artwork on the Gallery page — add, remove, drag to reorder |
+| **Free Download Files** (under *Site*) | The free resources on the Downloads page — add, remove, drag to reorder |
+| **YouTube Tutorials** (under *Site*) | Your tutorial videos — pick which ones are Featured on the homepage |
+| **Menu & Footer** (under *Site*) | Header menu + footer link columns |
 | **Insights** (Dashboard) | Traffic & sales glance (not for editing pages) |
 
 ## Everyday editing (click → sidebar)
@@ -107,23 +107,23 @@ After paying, the customer's thank-you page shows one **Download** button per fi
 
 ### Change the menu or footer
 
-1. **Menu & Footer → main**
+1. ☰ menu → **Site → Menu & Footer**
 2. Edit Menu Items (header) or Footer Columns.
 3. Prefer **Link Type → Site page** so links can’t typo. Use **Site link** for `/blog` or `/cart`. Use **External URL** for YouTube/Amazon/etc.
 4. Save. Preview opens on the homepage.
 
 ### Add, remove, or reorder free downloads
 
-1. **Downloads → items**
+1. ☰ menu → **Site → Free Download Files** (the list opens directly)
 2. **Add** a resource with the + button: Title, the **Downloadable File** (upload via Media or paste a path like `/files/…`), the **File Type Badge** (PDF, JPG, …), and an optional **Card Image**.
 3. **Remove** a resource with the trash icon on its row. **Reorder** by grabbing the ⋮⋮ handle at the far left of a row and dragging it up or down.
 4. Save. The Downloads page updates within seconds.
 
-Gallery artwork (**Gallery → items**) reorders the same way — drag the ⋮⋮ handle on the left of each row.
+Gallery artwork (☰ menu → **Site → Gallery Artwork**) reorders the same way — drag the ⋮⋮ handle on the left of each row.
 
 ### Choose the videos in the homepage YouTube strip
 
-1. **YouTube Tutorials → items**
+1. ☰ menu → **Site → YouTube Tutorials**
 2. Each video needs a **Title** and its **YouTube Video ID** (the 11-character code after `watch?v=` in the video’s URL).
 3. Turn on **Featured on Homepage** for the videos you want in the strip — the first 4 featured videos (in list order) are shown. Drag rows to change that order.
 4. Save. The homepage strip updates within seconds.

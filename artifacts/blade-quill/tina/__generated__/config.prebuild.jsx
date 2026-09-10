@@ -10,15 +10,15 @@ import React from "react";
 var h = React.createElement;
 var LISTS = {
   gallery: {
-    title: "Gallery artwork",
+    title: "Gallery Artwork",
     noun: "images",
-    menu: "Gallery",
+    menu: "Gallery Artwork",
     hash: "#/collections/edit/gallery/items"
   },
   download: {
-    title: "Free download files",
+    title: "Free Download Files",
     noun: "files",
-    menu: "Downloads",
+    menu: "Free Download Files",
     hash: "#/collections/edit/download/items"
   },
   tutorial: {
@@ -81,7 +81,7 @@ function makeManageListPanel(kind) {
       h(
         "div",
         { style: { fontSize: 11.5, color: "#776562", marginTop: 8 } },
-        `Also in the \u2630 menu under ${info.menu} \u2192 items.`
+        `Also in the \u2630 menu, under Site \u2192 ${info.menu}.`
       )
     );
   };
@@ -4295,12 +4295,14 @@ var config_default = defineConfig({
       // ---------------------------------------------------------------
       {
         name: "gallery",
-        label: "Gallery",
+        label: "Gallery Artwork",
         path: "content/gallery",
         format: "json",
         ui: {
-          allowedActions: { create: false, delete: false },
-          router: () => "/gallery"
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
+          allowedActions: { create: false, delete: false }
         },
         fields: [
           {
@@ -4366,12 +4368,14 @@ var config_default = defineConfig({
       // ---------------------------------------------------------------
       {
         name: "download",
-        label: "Downloads",
+        label: "Free Download Files",
         path: "content/downloads",
         format: "json",
         ui: {
-          allowedActions: { create: false, delete: false },
-          router: () => "/downloads"
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
+          allowedActions: { create: false, delete: false }
         },
         fields: [
           {
@@ -4446,8 +4450,10 @@ var config_default = defineConfig({
         path: "content/tutorials",
         format: "json",
         ui: {
-          allowedActions: { create: false, delete: false },
-          router: () => "/"
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
+          allowedActions: { create: false, delete: false }
         },
         fields: [
           {
@@ -4532,8 +4538,10 @@ var config_default = defineConfig({
         path: "content/navigation",
         format: "json",
         ui: {
-          allowedActions: { create: false, delete: false },
-          router: () => "/"
+          // Single document: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
+          allowedActions: { create: false, delete: false }
         },
         fields: [
           {

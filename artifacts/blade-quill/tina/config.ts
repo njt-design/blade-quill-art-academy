@@ -1250,12 +1250,14 @@ export default defineConfig({
       // ---------------------------------------------------------------
       {
         name: "gallery",
-        label: "Gallery",
+        label: "Gallery Artwork",
         path: "content/gallery",
         format: "json",
         ui: {
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
           allowedActions: { create: false, delete: false },
-          router: () => "/gallery",
         },
         fields: [
           {
@@ -1325,12 +1327,14 @@ export default defineConfig({
       // ---------------------------------------------------------------
       {
         name: "download",
-        label: "Downloads",
+        label: "Free Download Files",
         path: "content/downloads",
         format: "json",
         ui: {
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
           allowedActions: { create: false, delete: false },
-          router: () => "/downloads",
         },
         fields: [
           {
@@ -1410,8 +1414,10 @@ export default defineConfig({
         path: "content/tutorials",
         format: "json",
         ui: {
+          // Single-document list: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
           allowedActions: { create: false, delete: false },
-          router: () => "/",
         },
         fields: [
           {
@@ -1502,8 +1508,10 @@ export default defineConfig({
         path: "content/navigation",
         format: "json",
         ui: {
+          // Single document: open the form straight from the menu, as a
+          // plain full-width form (no router → no site-preview detour).
+          global: true,
           allowedActions: { create: false, delete: false },
-          router: () => "/",
         },
         fields: [
           {
