@@ -441,6 +441,7 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksGalleryGrid {
+      manageList
       emptyHeading
       emptyDescription
       textStyle {
@@ -453,6 +454,7 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksDownloadsGrid {
+      manageList
       emptyHeading
       emptyDescription
       textStyle {
@@ -480,6 +482,7 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksGalleryPreview {
+      manageList
       eyebrow
       heading
       description
@@ -496,6 +499,7 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksDownloadsPreview {
+      manageList
       eyebrow
       heading
       description
@@ -512,6 +516,7 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksTutorialsStrip {
+      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -1146,6 +1151,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1158,6 +1164,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1185,6 +1192,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1201,6 +1209,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1217,6 +1226,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -1847,6 +1857,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1859,6 +1870,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1886,6 +1898,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1902,6 +1915,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1918,6 +1932,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2548,6 +2563,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -2560,6 +2576,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -2587,6 +2604,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -2603,6 +2621,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -2619,6 +2638,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3249,6 +3269,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3261,6 +3282,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3288,6 +3310,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -3304,6 +3327,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -3320,6 +3344,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3950,6 +3975,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3962,6 +3988,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3989,6 +4016,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -4005,6 +4033,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -4021,6 +4050,7 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -4920,6 +4950,7 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksGalleryGrid {
+            manageList
             emptyHeading
             emptyDescription
             textStyle {
@@ -4932,6 +4963,7 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksDownloadsGrid {
+            manageList
             emptyHeading
             emptyDescription
             textStyle {
@@ -4959,6 +4991,7 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksGalleryPreview {
+            manageList
             eyebrow
             heading
             description
@@ -4975,6 +5008,7 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksDownloadsPreview {
+            manageList
             eyebrow
             heading
             description
@@ -4991,6 +5025,7 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksTutorialsStrip {
+            manageList
             eyebrow
             headingPrefix
             headingHighlight
@@ -5623,6 +5658,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -5635,6 +5671,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -5662,6 +5699,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -5678,6 +5716,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -5694,6 +5733,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -6324,6 +6364,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -6336,6 +6377,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -6363,6 +6405,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -6379,6 +6422,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -6395,6 +6439,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -7025,6 +7070,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7037,6 +7083,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7064,6 +7111,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7080,6 +7128,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7096,6 +7145,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -7726,6 +7776,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7738,6 +7789,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7765,6 +7817,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7781,6 +7834,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7797,6 +7851,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -8427,6 +8482,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -8439,6 +8495,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -8466,6 +8523,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -8482,6 +8540,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -8498,6 +8557,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9149,6 +9209,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -9161,6 +9222,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -9188,6 +9250,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -9204,6 +9267,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -9220,6 +9284,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9852,6 +9917,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9864,6 +9930,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9891,6 +9958,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -9907,6 +9975,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -9923,6 +9992,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -10553,6 +10623,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10565,6 +10636,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10592,6 +10664,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -10608,6 +10681,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -10624,6 +10698,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -11254,6 +11329,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11266,6 +11342,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11293,6 +11370,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -11309,6 +11387,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -11325,6 +11404,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -11955,6 +12035,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11967,6 +12048,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11994,6 +12076,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12010,6 +12093,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12026,6 +12110,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -12656,6 +12741,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12668,6 +12754,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12695,6 +12782,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12711,6 +12799,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12727,6 +12816,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -13383,6 +13473,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -13395,6 +13486,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -13422,6 +13514,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -13438,6 +13531,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -13454,6 +13548,7 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -14086,6 +14181,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14098,6 +14194,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14125,6 +14222,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14141,6 +14239,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14157,6 +14256,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -14787,6 +14887,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14799,6 +14900,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14826,6 +14928,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14842,6 +14945,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14858,6 +14962,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15488,6 +15593,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15500,6 +15606,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15527,6 +15634,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -15543,6 +15651,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -15559,6 +15668,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -16189,6 +16299,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16201,6 +16312,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16228,6 +16340,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16244,6 +16357,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16260,6 +16374,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -16890,6 +17005,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16902,6 +17018,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16929,6 +17046,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16945,6 +17063,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16961,6 +17080,7 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight

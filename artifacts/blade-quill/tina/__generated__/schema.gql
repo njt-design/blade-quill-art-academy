@@ -604,6 +604,7 @@ type PageBlocksGalleryGridTextStyle {
 }
 
 type PageBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksGalleryGridTextStyle
@@ -618,6 +619,7 @@ type PageBlocksDownloadsGridTextStyle {
 }
 
 type PageBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksDownloadsGridTextStyle
@@ -649,6 +651,7 @@ type PageBlocksGalleryPreviewTextStyle {
 }
 
 type PageBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -667,6 +670,7 @@ type PageBlocksDownloadsPreviewTextStyle {
 }
 
 type PageBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -690,6 +694,7 @@ type PageBlocksTutorialsStripTextStyle {
 }
 
 type PageBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -1595,6 +1600,7 @@ input PageBlocksGalleryGridTextStyleFilter {
 }
 
 input PageBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: PageBlocksGalleryGridTextStyleFilter
@@ -1609,6 +1615,7 @@ input PageBlocksDownloadsGridTextStyleFilter {
 }
 
 input PageBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: PageBlocksDownloadsGridTextStyleFilter
@@ -1670,6 +1677,7 @@ input PageBlocksGalleryPreviewTextStyleFilter {
 }
 
 input PageBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: PageBlocksGalleryPreviewDescriptionFilter
@@ -1698,6 +1706,7 @@ input PageBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input PageBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: PageBlocksDownloadsPreviewDescriptionFilter
@@ -1721,6 +1730,7 @@ input PageBlocksTutorialsStripTextStyleFilter {
 }
 
 input PageBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -2568,6 +2578,7 @@ type LandingPageBlankBlocksGalleryGridTextStyle {
 }
 
 type LandingPageBlankBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksGalleryGridTextStyle
@@ -2582,6 +2593,7 @@ type LandingPageBlankBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageBlankBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyle
@@ -2613,6 +2625,7 @@ type LandingPageBlankBlocksGalleryPreviewTextStyle {
 }
 
 type LandingPageBlankBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -2631,6 +2644,7 @@ type LandingPageBlankBlocksDownloadsPreviewTextStyle {
 }
 
 type LandingPageBlankBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -2654,6 +2668,7 @@ type LandingPageBlankBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageBlankBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -3370,6 +3385,7 @@ type LandingPageEventBlocksGalleryGridTextStyle {
 }
 
 type LandingPageEventBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksGalleryGridTextStyle
@@ -3384,6 +3400,7 @@ type LandingPageEventBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageEventBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksDownloadsGridTextStyle
@@ -3415,6 +3432,7 @@ type LandingPageEventBlocksGalleryPreviewTextStyle {
 }
 
 type LandingPageEventBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -3433,6 +3451,7 @@ type LandingPageEventBlocksDownloadsPreviewTextStyle {
 }
 
 type LandingPageEventBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -3456,6 +3475,7 @@ type LandingPageEventBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageEventBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -4172,6 +4192,7 @@ type LandingPagePromoBlocksGalleryGridTextStyle {
 }
 
 type LandingPagePromoBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksGalleryGridTextStyle
@@ -4186,6 +4207,7 @@ type LandingPagePromoBlocksDownloadsGridTextStyle {
 }
 
 type LandingPagePromoBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyle
@@ -4217,6 +4239,7 @@ type LandingPagePromoBlocksGalleryPreviewTextStyle {
 }
 
 type LandingPagePromoBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -4235,6 +4258,7 @@ type LandingPagePromoBlocksDownloadsPreviewTextStyle {
 }
 
 type LandingPagePromoBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -4258,6 +4282,7 @@ type LandingPagePromoBlocksTutorialsStripTextStyle {
 }
 
 type LandingPagePromoBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -4974,6 +4999,7 @@ type LandingPageInfoBlocksGalleryGridTextStyle {
 }
 
 type LandingPageInfoBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksGalleryGridTextStyle
@@ -4988,6 +5014,7 @@ type LandingPageInfoBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageInfoBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyle
@@ -5019,6 +5046,7 @@ type LandingPageInfoBlocksGalleryPreviewTextStyle {
 }
 
 type LandingPageInfoBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -5037,6 +5065,7 @@ type LandingPageInfoBlocksDownloadsPreviewTextStyle {
 }
 
 type LandingPageInfoBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -5060,6 +5089,7 @@ type LandingPageInfoBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageInfoBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -5776,6 +5806,7 @@ type LandingPageLinkInBioBlocksGalleryGridTextStyle {
 }
 
 type LandingPageLinkInBioBlocksGalleryGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyle
@@ -5790,6 +5821,7 @@ type LandingPageLinkInBioBlocksDownloadsGridTextStyle {
 }
 
 type LandingPageLinkInBioBlocksDownloadsGrid {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyle
@@ -5821,6 +5853,7 @@ type LandingPageLinkInBioBlocksGalleryPreviewTextStyle {
 }
 
 type LandingPageLinkInBioBlocksGalleryPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -5839,6 +5872,7 @@ type LandingPageLinkInBioBlocksDownloadsPreviewTextStyle {
 }
 
 type LandingPageLinkInBioBlocksDownloadsPreview {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -5862,6 +5896,7 @@ type LandingPageLinkInBioBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageLinkInBioBlocksTutorialsStrip {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -6750,6 +6785,7 @@ input LandingPageBlankBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageBlankBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageBlankBlocksGalleryGridTextStyleFilter
@@ -6764,6 +6800,7 @@ input LandingPageBlankBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageBlankBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleFilter
@@ -6815,6 +6852,7 @@ input LandingPageBlankBlocksGalleryPreviewTextStyleFilter {
 }
 
 input LandingPageBlankBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageBlankBlocksGalleryPreviewDescriptionFilter
@@ -6843,6 +6881,7 @@ input LandingPageBlankBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input LandingPageBlankBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageBlankBlocksDownloadsPreviewDescriptionFilter
@@ -6866,6 +6905,7 @@ input LandingPageBlankBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageBlankBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -7872,6 +7912,7 @@ input LandingPageEventBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageEventBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageEventBlocksGalleryGridTextStyleFilter
@@ -7886,6 +7927,7 @@ input LandingPageEventBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageEventBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleFilter
@@ -7937,6 +7979,7 @@ input LandingPageEventBlocksGalleryPreviewTextStyleFilter {
 }
 
 input LandingPageEventBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageEventBlocksGalleryPreviewDescriptionFilter
@@ -7965,6 +8008,7 @@ input LandingPageEventBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input LandingPageEventBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageEventBlocksDownloadsPreviewDescriptionFilter
@@ -7988,6 +8032,7 @@ input LandingPageEventBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageEventBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -8994,6 +9039,7 @@ input LandingPagePromoBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPagePromoBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPagePromoBlocksGalleryGridTextStyleFilter
@@ -9008,6 +9054,7 @@ input LandingPagePromoBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPagePromoBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleFilter
@@ -9059,6 +9106,7 @@ input LandingPagePromoBlocksGalleryPreviewTextStyleFilter {
 }
 
 input LandingPagePromoBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPagePromoBlocksGalleryPreviewDescriptionFilter
@@ -9087,6 +9135,7 @@ input LandingPagePromoBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input LandingPagePromoBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPagePromoBlocksDownloadsPreviewDescriptionFilter
@@ -9110,6 +9159,7 @@ input LandingPagePromoBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPagePromoBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -10116,6 +10166,7 @@ input LandingPageInfoBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageInfoBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageInfoBlocksGalleryGridTextStyleFilter
@@ -10130,6 +10181,7 @@ input LandingPageInfoBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageInfoBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleFilter
@@ -10181,6 +10233,7 @@ input LandingPageInfoBlocksGalleryPreviewTextStyleFilter {
 }
 
 input LandingPageInfoBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageInfoBlocksGalleryPreviewDescriptionFilter
@@ -10209,6 +10262,7 @@ input LandingPageInfoBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input LandingPageInfoBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageInfoBlocksDownloadsPreviewDescriptionFilter
@@ -10232,6 +10286,7 @@ input LandingPageInfoBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageInfoBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -11238,6 +11293,7 @@ input LandingPageLinkInBioBlocksGalleryGridTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksGalleryGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyleFilter
@@ -11252,6 +11308,7 @@ input LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridFilter {
+  manageList: StringFilter
   emptyHeading: StringFilter
   emptyDescription: StringFilter
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter
@@ -11303,6 +11360,7 @@ input LandingPageLinkInBioBlocksGalleryPreviewTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksGalleryPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageLinkInBioBlocksGalleryPreviewDescriptionFilter
@@ -11331,6 +11389,7 @@ input LandingPageLinkInBioBlocksDownloadsPreviewTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   heading: StringFilter
   description: LandingPageLinkInBioBlocksDownloadsPreviewDescriptionFilter
@@ -11354,6 +11413,7 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksTutorialsStripFilter {
+  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -13078,6 +13138,7 @@ input PageBlocksGalleryGridTextStyleMutation {
 }
 
 input PageBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksGalleryGridTextStyleMutation
@@ -13092,6 +13153,7 @@ input PageBlocksDownloadsGridTextStyleMutation {
 }
 
 input PageBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: PageBlocksDownloadsGridTextStyleMutation
@@ -13123,6 +13185,7 @@ input PageBlocksGalleryPreviewTextStyleMutation {
 }
 
 input PageBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -13141,6 +13204,7 @@ input PageBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input PageBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -13164,6 +13228,7 @@ input PageBlocksTutorialsStripTextStyleMutation {
 }
 
 input PageBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -13920,6 +13985,7 @@ input LandingPageBlankBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageBlankBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksGalleryGridTextStyleMutation
@@ -13934,6 +14000,7 @@ input LandingPageBlankBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageBlankBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleMutation
@@ -13965,6 +14032,7 @@ input LandingPageBlankBlocksGalleryPreviewTextStyleMutation {
 }
 
 input LandingPageBlankBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -13983,6 +14051,7 @@ input LandingPageBlankBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input LandingPageBlankBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -14006,6 +14075,7 @@ input LandingPageBlankBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageBlankBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -14762,6 +14832,7 @@ input LandingPageEventBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageEventBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksGalleryGridTextStyleMutation
@@ -14776,6 +14847,7 @@ input LandingPageEventBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageEventBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleMutation
@@ -14807,6 +14879,7 @@ input LandingPageEventBlocksGalleryPreviewTextStyleMutation {
 }
 
 input LandingPageEventBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -14825,6 +14898,7 @@ input LandingPageEventBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input LandingPageEventBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -14848,6 +14922,7 @@ input LandingPageEventBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageEventBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -15604,6 +15679,7 @@ input LandingPagePromoBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPagePromoBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksGalleryGridTextStyleMutation
@@ -15618,6 +15694,7 @@ input LandingPagePromoBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPagePromoBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleMutation
@@ -15649,6 +15726,7 @@ input LandingPagePromoBlocksGalleryPreviewTextStyleMutation {
 }
 
 input LandingPagePromoBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -15667,6 +15745,7 @@ input LandingPagePromoBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input LandingPagePromoBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -15690,6 +15769,7 @@ input LandingPagePromoBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPagePromoBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -16446,6 +16526,7 @@ input LandingPageInfoBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageInfoBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksGalleryGridTextStyleMutation
@@ -16460,6 +16541,7 @@ input LandingPageInfoBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageInfoBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleMutation
@@ -16491,6 +16573,7 @@ input LandingPageInfoBlocksGalleryPreviewTextStyleMutation {
 }
 
 input LandingPageInfoBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -16509,6 +16592,7 @@ input LandingPageInfoBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input LandingPageInfoBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -16532,6 +16616,7 @@ input LandingPageInfoBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageInfoBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -17288,6 +17373,7 @@ input LandingPageLinkInBioBlocksGalleryGridTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksGalleryGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksGalleryGridTextStyleMutation
@@ -17302,6 +17388,7 @@ input LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksDownloadsGridMutation {
+  manageList: String
   emptyHeading: String
   emptyDescription: String
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleMutation
@@ -17333,6 +17420,7 @@ input LandingPageLinkInBioBlocksGalleryPreviewTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksGalleryPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -17351,6 +17439,7 @@ input LandingPageLinkInBioBlocksDownloadsPreviewTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksDownloadsPreviewMutation {
+  manageList: String
   eyebrow: String
   heading: String
   description: JSON
@@ -17374,6 +17463,7 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksTutorialsStripMutation {
+  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String

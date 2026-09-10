@@ -1,9 +1,102 @@
 // tina/config.ts
-import React2, { useEffect } from "react";
+import React3, { useEffect } from "react";
 import {
   defineConfig,
   wrapFieldsWithMeta
 } from "tinacms";
+
+// tina/manage-list.ts
+import React from "react";
+var h = React.createElement;
+var LISTS = {
+  gallery: {
+    title: "Gallery artwork",
+    noun: "images",
+    menu: "Gallery",
+    hash: "#/collections/edit/gallery/items"
+  },
+  download: {
+    title: "Free download files",
+    noun: "files",
+    menu: "Downloads",
+    hash: "#/collections/edit/download/items"
+  },
+  tutorial: {
+    title: "YouTube tutorial videos",
+    noun: "videos",
+    menu: "YouTube Tutorials",
+    hash: "#/collections/edit/tutorial/items"
+  }
+};
+function makeManageListPanel(kind) {
+  const info = LISTS[kind];
+  return function ManageListPanel() {
+    return h(
+      "div",
+      {
+        style: {
+          border: "1px solid rgba(0,0,0,0.12)",
+          borderRadius: 8,
+          background: "#FBF7F1",
+          padding: "12px 14px",
+          margin: "4px 0 8px",
+          fontFamily: "system-ui, sans-serif"
+        }
+      },
+      h(
+        "div",
+        { style: { fontSize: 13, fontWeight: 700, color: "#4A3838" } },
+        `Where are the ${info.noun}?`
+      ),
+      h(
+        "div",
+        {
+          style: {
+            fontSize: 12,
+            color: "#776562",
+            margin: "4px 0 10px",
+            lineHeight: 1.45
+          }
+        },
+        `This section only places the grid on the page. The ${info.noun} themselves are one list, shared by every page that shows them. Add, remove, or drag the \u22EE\u22EE handle to reorder them there \u2014 the change shows up here automatically.`
+      ),
+      h(
+        "a",
+        {
+          href: info.hash,
+          style: {
+            display: "inline-block",
+            border: "none",
+            borderRadius: 999,
+            background: "#9A5151",
+            color: "#fff",
+            fontSize: 12.5,
+            fontWeight: 600,
+            padding: "7px 14px",
+            textDecoration: "none"
+          }
+        },
+        `Open ${info.title} \u2192`
+      ),
+      h(
+        "div",
+        { style: { fontSize: 11.5, color: "#776562", marginTop: 8 } },
+        `Also in the \u2630 menu under ${info.menu} \u2192 items.`
+      )
+    );
+  };
+}
+function manageListField(kind) {
+  return {
+    type: "string",
+    name: "manageList",
+    label: "Manage items",
+    ui: {
+      // Display-only panel — never writes its own value.
+      component: makeManageListPanel(kind)
+    }
+  };
+}
 
 // tina/blocks.ts
 var RICH_TEXT_TEMPLATES = [
@@ -765,6 +858,7 @@ var tutorialsStripBlock = {
     ]
   }),
   fields: [
+    manageListField("tutorial"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
@@ -1251,13 +1345,14 @@ var galleryGridBlock = {
     emptyDescription: "Check back soon \u2014 new artwork is added regularly."
   }),
   fields: [
+    manageListField("gallery"),
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Images are managed in the Gallery collection in Tina (sidebar). This heading only shows if the gallery is empty."
+        "Only shows if the gallery list above is empty."
       )
     },
     {
@@ -1277,13 +1372,14 @@ var downloadsGridBlock = {
     emptyDescription: "Coloring pages, guides, and more on the way."
   }),
   fields: [
+    manageListField("download"),
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Downloads are managed in the Downloads collection in Tina (sidebar). This heading only shows when there are none."
+        "Only shows when the downloads list above is empty."
       )
     },
     {
@@ -2020,6 +2116,7 @@ var galleryPreviewBlock = {
     viewAllLink: "/gallery"
   }),
   fields: [
+    manageListField("gallery"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
@@ -2062,6 +2159,7 @@ var downloadsPreviewBlock = {
     viewAllLink: "/downloads"
   }),
   fields: [
+    manageListField("download"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
@@ -2820,8 +2918,8 @@ var PRODUCT_PAGE_FIELDS = [
 ];
 
 // tina/seo.ts
-import React from "react";
-var h = React.createElement;
+import React2 from "react";
+var h2 = React2.createElement;
 var CORE_PAGE_SLUGS = [
   "home",
   "about",
@@ -2931,14 +3029,14 @@ function makeSeoAssistant(kind) {
     const finalForm = props?.form && typeof props.form.change === "function" ? props.form : props?.tinaForm?.finalForm;
     const formId = typeof props?.tinaForm?.id === "string" ? props.tinaForm.id : "";
     const urlPath = docUrlPath(formId);
-    const [status, setStatus] = React.useState("idle");
-    const [message, setMessage] = React.useState("");
-    const autoRanRef = React.useRef(false);
-    const getValues = React.useCallback(
+    const [status, setStatus] = React2.useState("idle");
+    const [message, setMessage] = React2.useState("");
+    const autoRanRef = React2.useRef(false);
+    const getValues = React2.useCallback(
       () => finalForm?.getState?.()?.values ?? {},
       [finalForm]
     );
-    const generate = React.useCallback(async () => {
+    const generate = React2.useCallback(async () => {
       const values = getValues();
       const title = String(
         values?.title ?? values?.name ?? ""
@@ -2984,7 +3082,7 @@ function makeSeoAssistant(kind) {
         );
       }
     }, [getValues, urlPath, contentNoun]);
-    React.useEffect(() => {
+    React2.useEffect(() => {
       if (autoRanRef.current) return;
       autoRanRef.current = true;
       const values = getValues();
@@ -3008,7 +3106,7 @@ function makeSeoAssistant(kind) {
       void generate();
     }, []);
     const statusColor = status === "error" ? "#B3261E" : status === "done" ? "#3A6B3A" : "#776562";
-    return h(
+    return h2(
       "div",
       {
         style: {
@@ -3020,12 +3118,12 @@ function makeSeoAssistant(kind) {
           fontFamily: "system-ui, sans-serif"
         }
       },
-      h(
+      h2(
         "div",
         { style: { fontSize: 13, fontWeight: 700, color: "#4A3838" } },
         "SEO Assistant"
       ),
-      h(
+      h2(
         "div",
         {
           style: {
@@ -3037,11 +3135,11 @@ function makeSeoAssistant(kind) {
         },
         "Fills the Search Listing fields below with suggestions written from this " + contentNoun + ". You can edit everything afterwards."
       ),
-      h(
+      h2(
         "div",
         { style: { fontSize: 12, color: "#4A3838", marginBottom: 10 } },
-        h("span", { style: { fontWeight: 600 } }, "Web address: "),
-        urlPath ? h(
+        h2("span", { style: { fontWeight: 600 } }, "Web address: "),
+        urlPath ? h2(
           "code",
           {
             style: {
@@ -3052,16 +3150,16 @@ function makeSeoAssistant(kind) {
             }
           },
           urlPath
-        ) : h(
+        ) : h2(
           "span",
           { style: { color: "#776562" } },
           "set from the file name when this is first saved"
         )
       ),
-      h(
+      h2(
         "div",
         { style: { display: "flex", alignItems: "center", gap: 10 } },
-        h(
+        h2(
           "button",
           {
             type: "button",
@@ -3081,7 +3179,7 @@ function makeSeoAssistant(kind) {
           },
           status === "working" ? "Writing\u2026" : "Suggest with AI"
         ),
-        message ? h(
+        message ? h2(
           "span",
           { style: { fontSize: 12, color: statusColor, lineHeight: 1.4 } },
           message
@@ -3152,8 +3250,8 @@ function readTinaIdTokenFromStorage() {
 var DOWNLOAD_FILE_ACCEPT = ".pdf,.zip,.epub";
 var DOWNLOAD_FILE_MAX_BYTES = 50 * 1024 * 1024;
 function DownloadFileField(props) {
-  const [status, setStatus] = React2.useState({ kind: "idle" });
-  const fileInputRef = React2.useRef(null);
+  const [status, setStatus] = React3.useState({ kind: "idle" });
+  const fileInputRef = React3.useRef(null);
   const value = typeof props.input.value === "string" ? props.input.value.trim() : "";
   const fileName = value.split("/").pop() || "";
   const productName = () => {
@@ -3216,10 +3314,10 @@ function DownloadFileField(props) {
   };
   const busy = status.kind === "busy";
   const statusColor = status.kind === "error" ? "#B23B3B" : status.kind === "done" ? "#2F7A4F" : "#776562";
-  return React2.createElement(
+  return React3.createElement(
     "div",
     { style: { display: "flex", flexDirection: "column", gap: 8 } },
-    React2.createElement(
+    React3.createElement(
       "div",
       {
         style: {
@@ -3232,10 +3330,10 @@ function DownloadFileField(props) {
           background: "#FAF7F3"
         }
       },
-      React2.createElement(
+      React3.createElement(
         "div",
         { style: { flex: 1, minWidth: 0 } },
-        React2.createElement(
+        React3.createElement(
           "div",
           {
             style: {
@@ -3250,13 +3348,13 @@ function DownloadFileField(props) {
           },
           fileName || "No file uploaded yet"
         ),
-        value ? React2.createElement(
+        value ? React3.createElement(
           "div",
           { style: { fontSize: 11, color: "#776562", marginTop: 2 } },
           "Stored securely \xB7 buyers get a 48-hour link"
         ) : null
       ),
-      React2.createElement(
+      React3.createElement(
         "button",
         {
           type: "button",
@@ -3276,7 +3374,7 @@ function DownloadFileField(props) {
         },
         busy ? "Uploading\u2026" : value ? "Replace file" : "Choose file"
       ),
-      React2.createElement("input", {
+      React3.createElement("input", {
         ref: fileInputRef,
         type: "file",
         accept: DOWNLOAD_FILE_ACCEPT,
@@ -3287,7 +3385,7 @@ function DownloadFileField(props) {
         }
       })
     ),
-    status.kind !== "idle" ? React2.createElement(
+    status.kind !== "idle" ? React3.createElement(
       "div",
       { style: { fontSize: 12, color: statusColor } },
       status.message
@@ -3295,11 +3393,11 @@ function DownloadFileField(props) {
   );
 }
 function InsightsRedirectScreen(_props) {
-  const [iframeSrc, setIframeSrc] = React2.useState(null);
-  const [status, setStatus] = React2.useState("Preparing Insights\u2026");
-  const iframeRef = React2.useRef(null);
+  const [iframeSrc, setIframeSrc] = React3.useState(null);
+  const [status, setStatus] = React3.useState("Preparing Insights\u2026");
+  const iframeRef = React3.useRef(null);
   const insightsUrl = typeof window !== "undefined" ? `${window.location.origin}/insights` : "/insights";
-  const postTokenToIframe = React2.useCallback((token) => {
+  const postTokenToIframe = React3.useCallback((token) => {
     const frame = iframeRef.current?.contentWindow;
     if (!frame) return;
     frame.postMessage(
@@ -3344,7 +3442,7 @@ function InsightsRedirectScreen(_props) {
       window.removeEventListener("message", onMessage);
     };
   }, [insightsUrl, postTokenToIframe]);
-  return React2.createElement(
+  return React3.createElement(
     "div",
     {
       style: {
@@ -3355,7 +3453,7 @@ function InsightsRedirectScreen(_props) {
         fontFamily: "system-ui, sans-serif"
       }
     },
-    React2.createElement(
+    React3.createElement(
       "div",
       {
         style: {
@@ -3368,12 +3466,12 @@ function InsightsRedirectScreen(_props) {
           flexShrink: 0
         }
       },
-      React2.createElement(
+      React3.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
         status
       ),
-      React2.createElement(
+      React3.createElement(
         "a",
         {
           href: insightsUrl,
@@ -3405,7 +3503,7 @@ function InsightsRedirectScreen(_props) {
         "Open full page"
       )
     ),
-    iframeSrc ? React2.createElement("iframe", {
+    iframeSrc ? React3.createElement("iframe", {
       ref: iframeRef,
       src: iframeSrc,
       title: "Owner Insights",
@@ -3421,7 +3519,7 @@ function InsightsRedirectScreen(_props) {
         border: "none",
         background: "#F7F1EA"
       }
-    }) : React2.createElement(
+    }) : React3.createElement(
       "div",
       {
         style: {
@@ -3437,7 +3535,7 @@ function InsightsRedirectScreen(_props) {
   );
 }
 function InsightsScreenIcon() {
-  return React2.createElement(
+  return React3.createElement(
     "svg",
     {
       width: 20,
@@ -3450,15 +3548,15 @@ function InsightsScreenIcon() {
       strokeLinejoin: "round",
       "aria-hidden": true
     },
-    React2.createElement("path", { d: "M3 3v18h18" }),
-    React2.createElement("path", { d: "M7 14v4" }),
-    React2.createElement("path", { d: "M12 10v8" }),
-    React2.createElement("path", { d: "M17 6v12" })
+    React3.createElement("path", { d: "M3 3v18h18" }),
+    React3.createElement("path", { d: "M7 14v4" }),
+    React3.createElement("path", { d: "M12 10v8" }),
+    React3.createElement("path", { d: "M17 6v12" })
   );
 }
 function GuideScreen(_props) {
   const guideUrl = typeof window !== "undefined" ? `${window.location.origin}/guide` : "/guide";
-  return React2.createElement(
+  return React3.createElement(
     "div",
     {
       style: {
@@ -3469,7 +3567,7 @@ function GuideScreen(_props) {
         fontFamily: "system-ui, sans-serif"
       }
     },
-    React2.createElement(
+    React3.createElement(
       "div",
       {
         style: {
@@ -3482,12 +3580,12 @@ function GuideScreen(_props) {
           flexShrink: 0
         }
       },
-      React2.createElement(
+      React3.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
         "How to edit the site"
       ),
-      React2.createElement(
+      React3.createElement(
         "a",
         {
           href: guideUrl,
@@ -3509,7 +3607,7 @@ function GuideScreen(_props) {
         "Open full page"
       )
     ),
-    React2.createElement("iframe", {
+    React3.createElement("iframe", {
       src: guideUrl,
       title: "Editing Guide",
       style: {
@@ -3523,7 +3621,7 @@ function GuideScreen(_props) {
   );
 }
 function GuideScreenIcon() {
-  return React2.createElement(
+  return React3.createElement(
     "svg",
     {
       width: 20,
@@ -3536,10 +3634,10 @@ function GuideScreenIcon() {
       strokeLinejoin: "round",
       "aria-hidden": true
     },
-    React2.createElement("path", {
+    React3.createElement("path", {
       d: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
     }),
-    React2.createElement("path", {
+    React3.createElement("path", {
       d: "M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
     })
   );

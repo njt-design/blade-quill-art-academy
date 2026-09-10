@@ -433,6 +433,7 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksGalleryGrid {
+      manageList
       emptyHeading
       emptyDescription
       textStyle {
@@ -445,6 +446,7 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksDownloadsGrid {
+      manageList
       emptyHeading
       emptyDescription
       textStyle {
@@ -472,6 +474,7 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksGalleryPreview {
+      manageList
       eyebrow
       heading
       description
@@ -488,6 +491,7 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksDownloadsPreview {
+      manageList
       eyebrow
       heading
       description
@@ -504,6 +508,7 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksTutorialsStrip {
+      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -1137,6 +1142,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1149,6 +1155,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1176,6 +1183,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1192,6 +1200,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1208,6 +1217,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -1838,6 +1848,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1850,6 +1861,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -1877,6 +1889,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1893,6 +1906,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -1909,6 +1923,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2539,6 +2554,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -2551,6 +2567,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -2578,6 +2595,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -2594,6 +2612,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -2610,6 +2629,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3240,6 +3260,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3252,6 +3273,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3279,6 +3301,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -3295,6 +3318,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -3311,6 +3335,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3941,6 +3966,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3953,6 +3979,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsGrid {
+        manageList
         emptyHeading
         emptyDescription
         textStyle {
@@ -3980,6 +4007,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksGalleryPreview {
+        manageList
         eyebrow
         heading
         description
@@ -3996,6 +4024,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksDownloadsPreview {
+        manageList
         eyebrow
         heading
         description
@@ -4012,6 +4041,7 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -4905,6 +4935,7 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksGalleryGrid {
+            manageList
             emptyHeading
             emptyDescription
             textStyle {
@@ -4917,6 +4948,7 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksDownloadsGrid {
+            manageList
             emptyHeading
             emptyDescription
             textStyle {
@@ -4944,6 +4976,7 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksGalleryPreview {
+            manageList
             eyebrow
             heading
             description
@@ -4960,6 +4993,7 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksDownloadsPreview {
+            manageList
             eyebrow
             heading
             description
@@ -4976,6 +5010,7 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksTutorialsStrip {
+            manageList
             eyebrow
             headingPrefix
             headingHighlight
@@ -5608,6 +5643,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -5620,6 +5656,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -5647,6 +5684,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -5663,6 +5701,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -5679,6 +5718,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -6309,6 +6349,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -6321,6 +6362,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -6348,6 +6390,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -6364,6 +6407,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -6380,6 +6424,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -7010,6 +7055,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7022,6 +7068,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7049,6 +7096,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7065,6 +7113,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7081,6 +7130,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -7711,6 +7761,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7723,6 +7774,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -7750,6 +7802,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7766,6 +7819,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -7782,6 +7836,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -8412,6 +8467,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -8424,6 +8480,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -8451,6 +8508,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -8467,6 +8525,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -8483,6 +8542,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9134,6 +9194,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -9146,6 +9207,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -9173,6 +9235,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -9189,6 +9252,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -9205,6 +9269,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9837,6 +9902,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9849,6 +9915,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -9876,6 +9943,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -9892,6 +9960,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -9908,6 +9977,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -10538,6 +10608,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10550,6 +10621,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -10577,6 +10649,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -10593,6 +10666,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -10609,6 +10683,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -11239,6 +11314,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11251,6 +11327,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11278,6 +11355,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -11294,6 +11372,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -11310,6 +11389,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -11940,6 +12020,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11952,6 +12033,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -11979,6 +12061,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -11995,6 +12078,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12011,6 +12095,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -12641,6 +12726,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12653,6 +12739,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -12680,6 +12767,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12696,6 +12784,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -12712,6 +12801,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -13368,6 +13458,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -13380,6 +13471,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsGrid {
+              manageList
               emptyHeading
               emptyDescription
               textStyle {
@@ -13407,6 +13499,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksGalleryPreview {
+              manageList
               eyebrow
               heading
               description
@@ -13423,6 +13516,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksDownloadsPreview {
+              manageList
               eyebrow
               heading
               description
@@ -13439,6 +13533,7 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksTutorialsStrip {
+              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -14071,6 +14166,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14083,6 +14179,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14110,6 +14207,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14126,6 +14224,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14142,6 +14241,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -14772,6 +14872,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14784,6 +14885,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -14811,6 +14913,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14827,6 +14930,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -14843,6 +14947,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15473,6 +15578,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15485,6 +15591,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -15512,6 +15619,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -15528,6 +15636,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -15544,6 +15653,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -16174,6 +16284,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16186,6 +16297,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16213,6 +16325,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16229,6 +16342,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16245,6 +16359,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -16875,6 +16990,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16887,6 +17003,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsGrid {
+                manageList
                 emptyHeading
                 emptyDescription
                 textStyle {
@@ -16914,6 +17031,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksGalleryPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16930,6 +17048,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksDownloadsPreview {
+                manageList
                 eyebrow
                 heading
                 description
@@ -16946,6 +17065,7 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight

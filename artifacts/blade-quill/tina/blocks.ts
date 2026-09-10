@@ -1,4 +1,5 @@
 import type { Template, TinaField } from "tinacms";
+import { manageListField } from "./manage-list";
 
 /**
  * Inline "Link" embed — Corinne inserts via Embed → Link, then toggles
@@ -832,6 +833,7 @@ export const tutorialsStripBlock: Template = {
     ],
   }),
   fields: [
+    manageListField("tutorial"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
@@ -1339,13 +1341,14 @@ export const galleryGridBlock: Template = {
     emptyDescription: "Check back soon — new artwork is added regularly.",
   }),
   fields: [
+    manageListField("gallery"),
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Images are managed in the Gallery collection in Tina (sidebar). This heading only shows if the gallery is empty."
+        "Only shows if the gallery list above is empty."
       ),
     },
     {
@@ -1366,13 +1369,14 @@ export const downloadsGridBlock: Template = {
     emptyDescription: "Coloring pages, guides, and more on the way.",
   }),
   fields: [
+    manageListField("download"),
     {
       type: "string",
       name: "emptyHeading",
       label: "Empty State Heading",
       ui: charLimit(
         60,
-        "Downloads are managed in the Downloads collection in Tina (sidebar). This heading only shows when there are none."
+        "Only shows when the downloads list above is empty."
       ),
     },
     {
@@ -2145,6 +2149,7 @@ export const galleryPreviewBlock: Template = {
     viewAllLink: "/gallery",
   }),
   fields: [
+    manageListField("gallery"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
@@ -2189,6 +2194,7 @@ export const downloadsPreviewBlock: Template = {
     viewAllLink: "/downloads",
   }),
   fields: [
+    manageListField("download"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     { type: "string", name: "heading", label: "Heading", ui: charLimit(60) },
     {
