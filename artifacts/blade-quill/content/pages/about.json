@@ -44,12 +44,12 @@
           "label": "YouTube Channel Views"
         },
         {
-          "value": "2",
-          "label": "free Krita guides"
+          "value": "173",
+          "label": "Free video tutorials"
         },
         {
-          "value": "173",
-          "label": "Video tutorials"
+          "value": "2 ",
+          "label": "Self-published books"
         }
       ],
       "_template": "statsRow"
