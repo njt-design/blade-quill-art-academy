@@ -1,5 +1,5 @@
 {
-  "name": "Lheeloo Super Fun Bundle",
+  "name": "Lheeloo & Luna Printable Fun Bundle",
   "description": {
     "type": "root",
     "children": [
@@ -527,7 +527,7 @@
       }
     ]
   },
-  "price": 14.99,
+  "price": 11.99,
   "category": "digital",
   "image": "/images/puzzle-book-front.png",
   "galleryImages": [
@@ -546,6 +546,10 @@
     {
       "src": "",
       "alt": "Thumbnail 5"
+    },
+    {
+      "src": "",
+      "alt": ""
     }
   ],
   "spreadImages": [
