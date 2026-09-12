@@ -303,10 +303,10 @@
   },
   "price": 11.99,
   "category": "digital",
-  "image": "/images/SHOP-image-Activity-Book.jpg",
+  "image": "",
   "galleryImages": [
     {
-      "src": "",
+      "src": "/images/1200-x-1600-px-activity-book.jpg",
       "alt": "Thumbnail 2"
     },
     {
