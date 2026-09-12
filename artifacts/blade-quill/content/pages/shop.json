@@ -1,35 +1,4 @@
 {
   "title": "Shop",
-  "layout": "standard",
-  "blocks": [
-    {
-      "eyebrow": "Bundle",
-      "heading": "Digital bundle",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "text": "Find your digital bundle here. "
-              }
-            ],
-            "id": "eVoNhLYhsB"
-          }
-        ]
-      },
-      "stats": [
-        {
-          "value": "$25",
-          "label": "SIGNED COPY"
-        }
-      ],
-      "ctaLabel": "Order Now",
-      "ctaLink": "/shop",
-      "secondaryLabel": "Browse the shop",
-      "secondaryLink": "/shop",
-      "_template": "featuredBook"
-    }
-  ]
+  "layout": "standard"
 }
