@@ -148,16 +148,30 @@
             "children": [
               {
                 "type": "text",
-                "text": "Corinne Hadaway is a French author-illustrator based in Des Moines, Iowa. She has self-published two illustrated books, built a YouTube audience of 12,000+ artists through her Krita tutorials, and maintains an active Instagram following for the Lheeloo & Luna series. The characters have a complete visual bible — poses, expressions, and proportions — and bilingual French and Spanish editions are planned."
+                "text": "Corinne Hadaway is a French author and illustrator based in Des Moines, Iowa. She is the creator of Lheeloo & Luna and shares her love of digital art with more than 12,000 artists through her Krita tutorials on YouTube."
+              }
+            ],
+            "id": "dW78RBn0_T"
+          },
+          {
+            "type": "p",
+            "id": "3t4_e9fGCY",
+            "children": [
+              {
+                "type": "text",
+                "id": "KMaUnJXEv9",
+                "text": ""
               }
             ]
           },
           {
             "type": "p",
+            "id": "yIyCxE74uQ",
             "children": [
               {
                 "type": "text",
-                "text": "She is currently seeking publishing and rights partners for the Lheeloo & Luna picture-book series. A complete 30-page PDF is available for professional review above."
+                "id": "x9GXU_zBVD",
+                "text": "She is currently seeking publishing and rights partners for the Lheeloo & Luna series. A complete 30-page PDF is available above for professional review."
               }
             ]
           }
