@@ -40,16 +40,16 @@
           "label": "YouTube subscribers"
         },
         {
-          "value": "2",
-          "label": "published books"
+          "value": " 1,602,001 ",
+          "label": "YouTube Channel Views"
         },
         {
-          "value": "3",
+          "value": "2",
           "label": "free Krita guides"
         },
         {
-          "value": "Many",
-          "label": "free coloring pages"
+          "value": "173",
+          "label": "Video tutorials"
         }
       ],
       "_template": "statsRow"
