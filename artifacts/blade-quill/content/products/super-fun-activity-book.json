@@ -4,16 +4,6 @@
     "type": "root",
     "children": [
       {
-        "type": "h1",
-        "children": [
-          {
-            "text": "Lheeloo & Luna Printable Fun Bundle",
-            "bold": true
-          }
-        ],
-        "id": "Av8V3OoO1v"
-      },
-      {
         "type": "p",
         "id": "crX_ofRPRC",
         "children": [
