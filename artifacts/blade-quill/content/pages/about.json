@@ -98,37 +98,6 @@
       "_template": "timeline"
     },
     {
-      "number": "03",
-      "label": "WHAT I MAKE",
-      "cards": [
-        {
-          "tag": "BOOKS",
-          "title": "Lheeloo & Luna + Activity Book",
-          "body": "The Lheeloo & Luna illustrated cartoon book and the Super Fun Activity Book for kids ages 8–12.",
-          "image": "/images/Activity-book.jpg",
-          "ctaLabel": "Browse books",
-          "link": "/shop"
-        },
-        {
-          "tag": "FREE RESOURCES",
-          "title": "Coloring Pages & Krita Guides",
-          "body": "Free PDF guides on shortcuts, blending modes and fixing lag.",
-          "image": "/images/Free-guides-covers.jpg",
-          "ctaLabel": "Get free downloads",
-          "link": "/downloads"
-        },
-        {
-          "tag": "VIDEOS",
-          "title": "Krita Video Tutorials",
-          "body": "Free Krita lessons on YouTube, usually bi-weekly. Join 12,000+ artists learning digital painting.",
-          "image": "/images/Thumbnail-Youtube-Video-Color-This.jpg",
-          "ctaLabel": "Watch on YouTube",
-          "link": "https://www.youtube.com/c/BladeQuillartacademy"
-        }
-      ],
-      "_template": "cardRow"
-    },
-    {
       "eyebrow": "SAY HI",
       "heading": "For press, collabs, or\njust a hello.",
       "highlightText": "hello",
