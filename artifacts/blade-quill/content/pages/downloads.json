@@ -36,6 +36,13 @@
           "file": "/images/PDF%20FILES/A-GUIDE-TO-KRITA-MOST-USED-SHORTCUTS_2023_KRITA-5.0.pdf",
           "fileType": "PDF",
           "thumbnail": "/images/squarespace/resources/a-quick-guide-to-kritas-shortcuts.jpg"
+        },
+        {
+          "title": "A Guide to Krita's Blending Modes",
+          "description": "Free PDF guide covering Krita's blending modes.",
+          "file": "/images/PDF%20FILES/A-GUIDE-TO-KRITA-BLENDING-MODES_2023_KRITA-5.0.pdf",
+          "fileType": "PDF",
+          "thumbnail": "/images/A-quick-guide-to-Krita's-Blending-modes_Feb.-2023.jpg"
         }
       ],
       "emptyHeading": "Free resources coming soon!",
