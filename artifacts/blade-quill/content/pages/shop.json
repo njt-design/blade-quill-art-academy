@@ -3,26 +3,11 @@
   "layout": "standard",
   "blocks": [
     {
-      "heading": "The studio shop.",
-      "highlightText": "studio",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Books, digital guides, and curriculum."
-              }
-            ]
-          }
-        ]
-      },
-      "showFeaturedBanner": true,
-      "emptyHeading": "No products found",
-      "emptyDescription": "Check back later for new releases.",
-      "_template": "shopCatalog"
+      "eyebrow": "FROM THE SHOP",
+      "heading": "Books, brushes, and guides.",
+      "viewAllLabel": "All products",
+      "viewAllLink": "/shop",
+      "_template": "productStrip"
     }
   ]
 }
