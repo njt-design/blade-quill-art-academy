@@ -4,10 +4,11 @@
     "type": "root",
     "children": [
       {
-        "type": "p",
+        "type": "h1",
         "children": [
           {
-            "text": "Lheeloo & Luna Printable Fun Bundle"
+            "text": "Lheeloo & Luna Printable Fun Bundle",
+            "bold": true
           }
         ],
         "id": "Av8V3OoO1v"
@@ -50,15 +51,6 @@
       },
       {
         "type": "p",
-        "id": "RyVxgpj8iS",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "0763tE9INz",
         "children": [
           {
@@ -67,29 +59,12 @@
         ]
       },
       {
-        "type": "p",
-        "id": "9pyooSw3El",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
+        "type": "h3",
         "id": "cSXisKiA2M",
         "children": [
           {
-            "text": "What’s Included"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "Afi6oydmc3",
-        "children": [
-          {
-            "text": ""
+            "text": "What’s Included",
+            "bold": true
           }
         ]
       },
@@ -99,15 +74,6 @@
         "children": [
           {
             "text": "Your purchase includes 3 printable PDF books:"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "B41jwss7Rb",
-        "children": [
-          {
-            "text": ""
           }
         ]
       },
@@ -131,15 +97,6 @@
       },
       {
         "type": "p",
-        "id": "kVdPdyd7zG",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "oYP6dbznGT",
         "children": [
           {
@@ -153,15 +110,6 @@
         "children": [
           {
             "text": "An 8.5 × 11-inch printable comic-style e-book featuring Lheeloo and Luna’s silly adventures, humor, and, of course, plenty of naps!"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "sLwpvZfUdO",
-        "children": [
-          {
-            "text": ""
           }
         ]
       },
@@ -184,29 +132,12 @@
         ]
       },
       {
-        "type": "p",
-        "id": "pKFx3HeOMC",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
+        "type": "h3",
         "id": "BlvIWPc7XL",
         "children": [
           {
-            "text": "Instant Digital Download"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "aCfMWYJAiD",
-        "children": [
-          {
-            "text": ""
+            "text": "Instant Digital Download",
+            "bold": true
           }
         ]
       },
@@ -216,15 +147,6 @@
         "children": [
           {
             "text": "No waiting and no shipping fees!"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "4mBM25XQ0k",
-        "children": [
-          {
-            "text": ""
           }
         ]
       },
@@ -275,64 +197,20 @@
       },
       {
         "type": "p",
-        "id": "dO19krmU-9",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "nQTpgqFERk",
         "children": [
           {
-            "text": "Once your payment is confirmed, you will receive a ZIP folder containing 3 printable PDF files."
+            "text": "Once your payment is confirmed, you will receive a ZIP folder containing 3 printable PDF files. Purchase once and print the pages again whenever you like for your own personal use.*"
           }
         ]
       },
       {
-        "type": "p",
-        "id": "QPZXPBO5OR",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "I3shdkgnQB",
-        "children": [
-          {
-            "text": "Purchase once and print the pages again whenever you like for your own personal use.*"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "K313phTpn_",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
+        "type": "h3",
         "id": "hLR9d6MqRT",
         "children": [
           {
-            "text": "Printing"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "7cpOvBFXDV",
-        "children": [
-          {
-            "text": ""
+            "text": "Printing",
+            "bold": true
           }
         ]
       },
@@ -347,15 +225,6 @@
       },
       {
         "type": "p",
-        "id": "YEWQ5g_11-",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "xNRS0lJFS6",
         "children": [
           {
@@ -364,29 +233,12 @@
         ]
       },
       {
-        "type": "p",
-        "id": "dOq5Iw_Z8U",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
+        "type": "h3",
         "id": "IJtRd0d4tx",
         "children": [
           {
-            "text": "Returns & Cancellations"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "TvjEKAyZN5",
-        "children": [
-          {
-            "text": ""
+            "text": "Returns & Cancellations",
+            "bold": true
           }
         ]
       },
@@ -401,15 +253,6 @@
       },
       {
         "type": "p",
-        "id": "YO5wraFuzF",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "-2E3U23-fN",
         "children": [
           {
@@ -418,29 +261,12 @@
         ]
       },
       {
-        "type": "p",
-        "id": "Ns8qF5Li_i",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
+        "type": "h3",
         "id": "mI46FjOv4-",
         "children": [
           {
-            "text": "*Copyright & Personal Use"
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "Yiw3OC-xiw",
-        "children": [
-          {
-            "text": ""
+            "text": "*Copyright & Personal Use",
+            "bold": true
           }
         ]
       },
@@ -455,15 +281,6 @@
       },
       {
         "type": "p",
-        "id": "bZe1JUNV9y",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "QLc64iR2Ya",
         "children": [
           {
@@ -473,28 +290,10 @@
       },
       {
         "type": "p",
-        "id": "tRqG5Ekh_o",
-        "children": [
-          {
-            "text": ""
-          }
-        ]
-      },
-      {
-        "type": "p",
         "id": "MuH4siGATO",
         "children": [
           {
             "text": "The digital files and their contents may not be resold, redistributed, shared, uploaded, reproduced for others, or used for commercial purposes. You may not sell printed or digital copies or otherwise profit from the artwork or designs."
-          }
-        ]
-      },
-      {
-        "type": "p",
-        "id": "Z9CrGvfQgn",
-        "children": [
-          {
-            "text": ""
           }
         ]
       },
@@ -590,7 +389,8 @@
             {
               "text": "Every page in the studio gets made in Krita from sketch to final color. Includes process notes, character studies, and a short epilogue from the author."
             }
-          ]
+          ],
+          "id": "7DeyBlHLxA"
         },
         {
           "type": "p",
@@ -598,7 +398,8 @@
             {
               "text": "Digital editions are delivered by email immediately after checkout."
             }
-          ]
+          ],
+          "id": "9kOVofPyfD"
         }
       ]
     },
@@ -611,7 +412,8 @@
             {
               "text": "Digital downloads are delivered instantly to your email. License terms allow personal use; commercial licenses are available for studios and freelancers."
             }
-          ]
+          ],
+          "id": "Y3oYA-8Rqh"
         }
       ]
     },
