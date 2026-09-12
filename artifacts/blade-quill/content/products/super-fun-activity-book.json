@@ -54,7 +54,11 @@
         "id": "hKHmjJjy_L",
         "children": [
           {
-            "text": "✔ Super Fun Puzzle Games for Kids — Ages 8–12"
+            "text": "✔ "
+          },
+          {
+            "text": "Super Fun Puzzle Games for Kids — Ages 8–12",
+            "bold": true
           }
         ]
       },
@@ -72,7 +76,11 @@
         "id": "oYP6dbznGT",
         "children": [
           {
-            "text": "✔ Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!"
+            "text": "✔ "
+          },
+          {
+            "text": "Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!",
+            "bold": true
           }
         ]
       },
@@ -90,7 +98,11 @@
         "id": "ZS-pgIxZ8b",
         "children": [
           {
-            "text": "✔ Chibi Mini Coloring Book"
+            "text": "✔ "
+          },
+          {
+            "text": "Chibi Mini Coloring Book",
+            "bold": true
           }
         ]
       },
@@ -219,7 +231,7 @@
         "id": "kvxmCxB_7H",
         "children": [
           {
-            "text": "Because this is a digital product available for download, returns, exchanges, and cancellations are not accepted."
+            "text": "Because this is a digital product available for download, we don't accept returns, exchanges, or cancellations."
           }
         ]
       },
@@ -228,7 +240,7 @@
         "id": "-2E3U23-fN",
         "children": [
           {
-            "text": "However, if you experience a problem with your order or have any questions about your files, please contact us. We’ll be happy to help."
+            "text": "However, if you have a problem with your order or questions about your files, please get in touch with us. We’ll be happy to help."
           }
         ]
       },
