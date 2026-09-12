@@ -25,11 +25,11 @@
       "ctaSecondary": "Visit the Shop",
       "ctaSecondaryLink": "/shop",
       "metaLine": "AUTHOR · ILLUSTRATOR · DIGITAL ARTIST",
-      "portraitImage": "/images/Profile-Corinne-Zaragoza.jpg",
+      "portraitImage": "",
       "portraitCaption": "Corinne",
       "deskImage": "/images/Paris-2014.jpg",
       "deskCaption": "Paris with Mark",
-      "screenImage": "",
+      "screenImage": "/images/Lheeloo-and-Luna_First-draft.jpg",
       "screenCaption": "Youtuber since April 2020",
       "_template": "aboutHero"
     },
