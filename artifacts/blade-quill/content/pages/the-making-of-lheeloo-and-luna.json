@@ -3,7 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "_template": "pageHeader",
       "heading": "Behind the Scenes: The Making of Lheeloo & Luna",
       "description": {
         "type": "root",
@@ -18,19 +17,19 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "pageHeader"
     },
     {
-      "_template": "imageGallery",
       "images": [
         {
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/for-webpage-how-it-all-started.png",
           "alt": "How it all started — early Lheeloo sketches"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "text",
       "body": {
         "type": "root",
         "children": [
@@ -39,29 +38,16 @@
             "children": [
               {
                 "type": "text",
-                "text": "For professional review purposes, a complete picture-book dummy for Lheeloo & Luna is available: "
-              },
-              {
-                "type": "mdxJsxTextElement",
-                "name": "ContentLink",
-                "children": [{ "type": "text", "text": "" }],
-                "props": {
-                  "url": "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf",
-                  "text": "PDF 30-page dummy",
-                  "openInNewTab": true
-                }
-              },
-              {
-                "type": "text",
-                "text": "."
+                "text": "For professional review purposes, a complete picture-book dummy for Lheeloo & Luna is available."
               }
-            ]
+            ],
+            "id": "dlQW06kFpn"
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "text",
       "heading": "How It All Began",
       "body": {
         "type": "root",
@@ -85,10 +71,10 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "imageGallery",
       "heading": "Lheeloo's poses and expressions",
       "images": [
         {
@@ -140,10 +126,10 @@
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/edible-taste-funny.png",
           "alt": "Lheeloo — edible, tastes funny"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "text",
       "heading": "The Making of Luna",
       "body": {
         "type": "root",
@@ -167,10 +153,10 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "imageGallery",
       "heading": "Luna's poses and expressions",
       "images": [
         {
@@ -222,10 +208,10 @@
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/luna-sleeping5.png",
           "alt": "Luna sleeping"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "text",
       "heading": "The Birth of the Duo",
       "body": {
         "type": "root",
@@ -258,20 +244,20 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "imageGallery",
       "images": [
         {
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/lheeloo-and-luna-poses.png",
           "alt": "Lheeloo and Luna poses together",
           "caption": "Finding the right visual balance between the duo"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "text",
       "heading": "The Naming of the Characters",
       "body": {
         "type": "root",
@@ -313,10 +299,10 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "text",
       "heading": "Lheeloo & Luna Continue to Grow",
       "body": {
         "type": "root",
@@ -340,19 +326,19 @@
             ]
           }
         ]
-      }
+      },
+      "_template": "text"
     },
     {
-      "_template": "imageGallery",
       "images": [
         {
           "src": "/images/squarespace/the-making-of-lheeloo-and-luna/32181.jpg",
           "alt": "Lheeloo and Luna illustration"
         }
-      ]
+      ],
+      "_template": "imageGallery"
     },
     {
-      "_template": "ctaBand",
       "heading": "Order your book today!",
       "description": {
         "type": "root",
@@ -370,7 +356,8 @@
       },
       "ctaLabel": "Get the Book",
       "ctaLink": "/shop/lheeloo-luna-cartoon-book",
-      "variant": "dark"
+      "variant": "dark",
+      "_template": "ctaBand"
     }
   ],
   "_template": "info"
