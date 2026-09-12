@@ -3,8 +3,8 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "FEATURED RELEASE",
-      "heading": "The new book.",
+      "eyebrow": "Bundle",
+      "heading": "Digital bundle",
       "description": {
         "type": "root",
         "children": [
@@ -12,10 +12,10 @@
             "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "A short description of the featured book."
+                "text": "Find your digital bundle here. "
               }
-            ]
+            ],
+            "id": "eVoNhLYhsB"
           }
         ]
       },
@@ -23,14 +23,6 @@
         {
           "value": "$25",
           "label": "SIGNED COPY"
-        },
-        {
-          "value": "$14",
-          "label": "EBOOK"
-        },
-        {
-          "value": "144",
-          "label": "FULL-COLOR PAGES"
         }
       ],
       "ctaLabel": "Order Now",
