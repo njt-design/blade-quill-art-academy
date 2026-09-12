@@ -78,11 +78,6 @@
           "label": "Pinterest"
         },
         {
-          "platform": "amazon",
-          "url": "https://a.co/d/0devd3Ec",
-          "label": "Amazon"
-        },
-        {
           "platform": "kofi",
           "url": "https://ko-fi.com/bladeandquill",
           "label": "Ko-fi"
