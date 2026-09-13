@@ -34,7 +34,7 @@
       "_template": "aboutHero"
     },
     {
-      "heading": "Section heading",
+      "heading": "✨ What’s Inside:",
       "body": {
         "type": "root",
         "children": [
@@ -45,7 +45,8 @@
                 "type": "text",
                 "text": "Write anything here — paragraphs, lists, links, and more."
               }
-            ]
+            ],
+            "id": "e3jaHDY1M6"
           }
         ]
       },
