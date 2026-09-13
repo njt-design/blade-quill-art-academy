@@ -26,9 +26,11 @@
       "ctaSecondaryLink": "/shop",
       "metaLine": "",
       "portraitImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
-      "portraitCaption": "",
+      "portraitCaption": "***",
       "deskImage": "/images/900-x-1200-px-shop-thumbnail-website2.png",
+      "deskCaption": "***",
       "screenImage": "/images/900-x-1200-px-shop-thumbnail-website3.png",
+      "screenCaption": "***",
       "_template": "aboutHero"
     },
     {
