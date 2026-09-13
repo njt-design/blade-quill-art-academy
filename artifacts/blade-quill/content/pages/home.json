@@ -80,26 +80,6 @@
       "_template": "pillars"
     },
     {
-      "heading": "Support the Studio",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "If you enjoy the tutorials, books, and free resources, consider buying Corinne a coffee on Ko-fi. Every bit of support helps keep the studio running."
-              }
-            ]
-          }
-        ]
-      },
-      "ctaLabel": "Support on Ko-fi",
-      "href": "https://ko-fi.com/bladeandquill",
-      "_template": "kofiSupport"
-    },
-    {
       "eyebrow": "FREE LESSONS ON YOUTUBE",
       "headingPrefix": "Join ",
       "headingHighlight": "12,000+ artists",
@@ -147,6 +127,26 @@
         "privacyNote": "No spam. Unsubscribe anytime."
       },
       "_template": "blogFeed"
+    },
+    {
+      "heading": "Support the Studio",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "If you enjoy the tutorials, books, and free resources, consider buying Corinne a coffee on Ko-fi. Every bit of support helps keep the studio running."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Support on Ko-fi",
+      "href": "https://ko-fi.com/bladeandquill",
+      "_template": "kofiSupport"
     }
   ]
 }
