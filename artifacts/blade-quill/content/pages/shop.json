@@ -39,7 +39,7 @@
         "type": "root",
         "children": [
           {
-            "type": "p",
+            "type": "h1",
             "children": [
               {
                 "type": "text",
