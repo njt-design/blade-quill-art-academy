@@ -3,8 +3,8 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "ABOUT · A STUDIO VISIT",
-      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "eyebrow": "Shop your printables here",
+      "heading": "3 Books, One Great Bundle!",
       "leadText": {
         "type": "root",
         "children": [
@@ -13,9 +13,10 @@
             "children": [
               {
                 "type": "text",
-                "text": "A short introduction sentence."
+                "text": "Color, Laugh & Play!"
               }
-            ]
+            ],
+            "id": "10r5iaGp2A"
           }
         ]
       },
