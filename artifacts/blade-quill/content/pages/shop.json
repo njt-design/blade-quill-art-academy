@@ -237,8 +237,8 @@
       "_template": "text"
     },
     {
-      "eyebrow": "FEATURED RELEASE",
-      "heading": "The new book.",
+      "eyebrow": "test",
+      "heading": "test",
       "description": {
         "type": "root",
         "children": [
@@ -249,7 +249,8 @@
                 "type": "text",
                 "text": "A short description of the featured book."
               }
-            ]
+            ],
+            "id": "OxZSYPE0hW"
           }
         ]
       },
