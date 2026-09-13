@@ -235,6 +235,32 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "eyebrow": "ABOUT · A STUDIO VISIT",
+      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "leadText": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short introduction sentence."
+              }
+            ],
+            "id": "YytVZ1hpAG"
+          }
+        ]
+      },
+      "ctaPrimary": "Get in Touch",
+      "ctaPrimaryLink": "/contact",
+      "ctaSecondary": "Visit the Shop",
+      "ctaSecondaryLink": "/shop",
+      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "portraitCaption": "in the studio",
+      "_template": "aboutHero"
     }
   ]
 }
