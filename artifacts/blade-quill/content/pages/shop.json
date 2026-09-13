@@ -66,7 +66,8 @@
               {
                 "type": "text",
                 "id": "rYJOykP0z_",
-                "text": "Color • Laugh • Play!"
+                "text": "Color • Laugh • Play!",
+                "bold": true
               }
             ]
           },
@@ -110,7 +111,7 @@
               {
                 "type": "text",
                 "id": "gQs-S16h55",
-                "text": "This digital bundle brings together coloring, comics, puzzles, games, trivia, jokes, and plenty of silly adventures for hours of screen-free entertainment."
+                "text": "This digital bundle includes coloring, comics, puzzles, games, trivia, jokes, and plenty of silly adventures for hours of screen-free fun."
               }
             ]
           },
@@ -165,7 +166,7 @@
               {
                 "type": "text",
                 "id": "NbUIAiDxCE",
-                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing and creative activity for kids—and anyone who simply loves to color!"
+                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing, creative activity for kids and anyone who loves to color!"
               }
             ]
           },
@@ -182,12 +183,23 @@
           },
           {
             "type": "p",
+            "id": "WI7zTKskdU",
+            "children": [
+              {
+                "type": "text",
+                "id": "f3wY9kPy0h",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "hpz55xaWIj",
             "children": [
               {
                 "type": "text",
                 "id": "cQj8kegviL",
-                "text": "🐶 Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!"
+                "text": "🐶 Lheeloo & Luna: Giggles, Adventures, and a Whole Lot of Naps!"
               }
             ]
           },
@@ -215,12 +227,23 @@
           },
           {
             "type": "p",
+            "id": "kGcdU_yM05",
+            "children": [
+              {
+                "type": "text",
+                "id": "DvOHnfM09S",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "zAEHGA21l0",
             "children": [
               {
                 "type": "text",
                 "id": "hDrCOGkLnD",
-                "text": "🧩 Super Fun Puzzle Games for Kids — Ages 8–12"
+                "text": "🧩 Super Fun Puzzle Games for Kids (Ages 8–12)"
               }
             ]
           },
@@ -248,12 +271,33 @@
           },
           {
             "type": "p",
+            "id": "1QEz1bAuJK",
+            "children": [
+              {
+                "type": "text",
+                "id": "532Ik3e4ys",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "mzuXO05Grq",
             "children": [
               {
                 "type": "text",
                 "id": "BI6Ely3wqS",
-                "text": "🧩 Inside the Activity Book"
+                "text": "🧩"
+              },
+              {
+                "type": "text",
+                "text": "🧩",
+                "id": "1yc83pWPIP"
+              },
+              {
+                "type": "text",
+                "id": "EFEgdKoUQy",
+                "text": " Inside the Activity Book"
               }
             ]
           },
@@ -457,66 +501,22 @@
           },
           {
             "type": "p",
-            "id": "m8GBEGOwaZ",
-            "children": [
-              {
-                "type": "text",
-                "id": "UGKQsdrCGb",
-                "text": "💛 Meet Lheeloo & Luna"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "mP-mlGm3Ct",
-            "children": [
-              {
-                "type": "text",
-                "id": "vmacayCYif",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "_0c-SawtLQ",
-            "children": [
-              {
-                "type": "text",
-                "id": "Ssl2Pyz1CF",
-                "text": "🐶 Lheeloo — the French Bulldog who is always ready to misbehave"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "fkQFX1eRt9",
-            "children": [
-              {
-                "type": "text",
-                "id": "-LrGwMdBHE",
-                "text": "🐭 Luna — her tiny mouse sidekick and best friend"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "_Y3RtihF9E",
-            "children": [
-              {
-                "type": "text",
-                "id": "dAmrW-mp2b",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
             "id": "ZXYsvmd6vj",
             "children": [
               {
                 "type": "text",
                 "id": "GZY-sYk9fE",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "3gbh56d3Fp",
+            "children": [
+              {
+                "type": "text",
+                "id": "0Qlj2MvSlj",
                 "text": "🧠 Fun With a Purpose"
               }
             ]
@@ -605,6 +605,17 @@
               {
                 "type": "text",
                 "id": "KGyktm_ng8",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "MbyZ67sAPh",
+            "children": [
+              {
+                "type": "text",
+                "id": "dHHkaSjKpK",
                 "text": ""
               }
             ]
@@ -710,6 +721,17 @@
           },
           {
             "type": "p",
+            "id": "MRX3Vru6TM",
+            "children": [
+              {
+                "type": "text",
+                "id": "XYkdckTNbG",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "Z8Xp1-Me7G",
             "children": [
               {
@@ -798,6 +820,17 @@
           },
           {
             "type": "p",
+            "id": "X9GlKbvhDU",
+            "children": [
+              {
+                "type": "text",
+                "id": "oLZDzdTNuM",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "GTf2djHnR7",
             "children": [
               {
@@ -853,6 +886,17 @@
           },
           {
             "type": "p",
+            "id": "JkYbBUHhOm",
+            "children": [
+              {
+                "type": "text",
+                "id": "5x8xt0Ha2P",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "Q0V9LrngFv",
             "children": [
               {
@@ -869,6 +913,17 @@
               {
                 "type": "text",
                 "id": "Abz5S3VTN6",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "1pgvdxMVpR",
+            "children": [
+              {
+                "type": "text",
+                "id": "5tWrjBPGUE",
                 "text": ""
               }
             ]
@@ -919,6 +974,17 @@
           },
           {
             "type": "p",
+            "id": "gtosDTSMx_",
+            "children": [
+              {
+                "type": "text",
+                "id": "gdpT9nBcBr",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "oCqlsrkl5L",
             "children": [
               {
@@ -935,6 +1001,17 @@
               {
                 "type": "text",
                 "id": "vPjFfZM_L9",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "1K5NDzqD-F",
+            "children": [
+              {
+                "type": "text",
+                "id": "rkUyOv1Tyk",
                 "text": ""
               }
             ]
@@ -985,12 +1062,24 @@
           },
           {
             "type": "p",
+            "id": "F4pMWfw0A9",
+            "children": [
+              {
+                "type": "text",
+                "id": "WRTjyaNLRM",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
             "id": "-rJ9Tkel5x",
             "children": [
               {
                 "type": "text",
                 "id": "iT2aeJ6k69",
-                "text": "Color • Laugh • Play!"
+                "text": "Color • Laugh • Play!",
+                "bold": true
               }
             ]
           }
