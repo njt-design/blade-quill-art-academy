@@ -57,52 +57,13 @@
                 "id": "3hH84uCYoa"
               },
               {
-                "text": ""
+                "type": "text",
+                "id": "rYJOykP0z_",
+                "text": "",
+                "bold": true
               }
             ],
             "id": "e3jaHDY1M6"
-          },
-          {
-            "type": "p",
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "id": "vCGx0pldec"
-          },
-          {
-            "type": "h1",
-            "id": "Qt1LFstw_M",
-            "children": [
-              {
-                "type": "text",
-                "text": "3-Book Printable Fun Bundle"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "F0TGtbswlz",
-            "children": [
-              {
-                "type": "text",
-                "id": "qeQtlkpsRD",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "9Hl_AV-hDQ",
-            "children": [
-              {
-                "type": "text",
-                "id": "rYJOykP0z_",
-                "text": "Color • Laugh • Play!",
-                "bold": true
-              }
-            ]
           },
           {
             "type": "p",
@@ -111,7 +72,7 @@
               {
                 "type": "text",
                 "id": "8qdOejvGIP",
-                "text": "Three printable books, one fun-filled bundle!"
+                "text": "3 printable books, 1 fun-filled bundle!"
               }
             ]
           },
@@ -138,275 +99,13 @@
             ]
           },
           {
-            "type": "h1",
-            "id": "WMrmGuA-xO",
-            "children": [
-              {
-                "type": "text",
-                "id": "_MSTGJuAOJ",
-                "text": "✨ What’s Included in the Bundle"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "aX1AfcNUaE",
-            "children": [
-              {
-                "type": "text",
-                "id": "NGuuQ0SNMT",
-                "text": "🎨 Chibi Mini Coloring Book"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "hpz55xaWIj",
-            "children": [
-              {
-                "type": "text",
-                "id": "cQj8kegviL",
-                "text": "🐶 Lheeloo & Luna: Giggles, Adventures, and a Whole Lot of Naps!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "zAEHGA21l0",
-            "children": [
-              {
-                "type": "text",
-                "id": "hDrCOGkLnD",
-                "text": "🧩 Super Fun Puzzle Games for Kids (Ages 8–12)"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "Z8Xp1-Me7G",
-            "children": [
-              {
-                "type": "text",
-                "id": "lIUlXg89LJ",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "h1",
-            "id": "va-nPIfhYn",
-            "children": [
-              {
-                "type": "text",
-                "id": "hTMHhF_3SM",
-                "text": "📥 What You’ll Receive"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "3q8tepP9FC",
-            "children": [
-              {
-                "type": "text",
-                "id": "23Q7m8rO0Y",
-                "text": "Your purchase includes 3 printable PDF books:"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "BLgSTe7voU",
-            "children": [
-              {
-                "type": "text",
-                "id": "hBMr7NHOpb",
-                "text": "✔ 1 Chibi Mini Coloring Book"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "liMAH19Qpv",
-            "children": [
-              {
-                "type": "text",
-                "id": "guxtE_cbWX",
-                "text": "✔ 1 Lheeloo & Luna illustrated comic book"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "dmg5EBFFNy",
-            "children": [
-              {
-                "type": "text",
-                "id": "LyG-LXz77E",
-                "text": "✔ 1 Super Fun Puzzle Games activity book"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "GTf2djHnR7",
-            "children": [
-              {
-                "type": "text",
-                "id": "3Ysfx6TYRE",
-                "text": "Format: Digital PDF files"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "6UHlx1BW-D",
-            "children": [
-              {
-                "type": "text",
-                "id": "zeTG-0SgEU",
-                "text": "Page size: 8.5 × 11 inches"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "TDFV1two7i",
-            "children": [
-              {
-                "type": "text",
-                "id": "dk2MqRSQ_N",
-                "text": "Printable: Yes"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "X4JiKxBfa2",
-            "children": [
-              {
-                "type": "text",
-                "id": "TuqRwr3DEi",
-                "text": "Delivery: Instant digital download"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "6quIZZttKL",
-            "children": [
-              {
-                "type": "text",
-                "id": "EQUDtqHD-7",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "JkYbBUHhOm",
-            "children": [
-              {
-                "type": "text",
-                "id": "5x8xt0Ha2P",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "Q0V9LrngFv",
-            "children": [
-              {
-                "type": "text",
-                "id": "iwQf6Lg1NJ",
-                "text": "This is a digital product. No physical books will be shipped."
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "-UwKsjagIS",
-            "children": [
-              {
-                "type": "text",
-                "id": "brxjqGOQvi",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "h1",
-            "id": "Q9TAnfr7Hn",
-            "children": [
-              {
-                "type": "text",
-                "id": "uqMAXfskg-",
-                "text": "🖨️ Printing"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "FAafRFSlii",
-            "children": [
-              {
-                "type": "text",
-                "id": "q7XSlEpJ52",
-                "text": "Print the books at home or through a local or online printing service."
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "gtosDTSMx_",
-            "children": [
-              {
-                "text": "Please note:"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "oCqlsrkl5L",
-            "children": [
-              {
-                "type": "text",
-                "id": "XiP0D20JzE",
-                "text": "The activity book was designed primarily in black and white to make home printing easier and help reduce ink usage. Please note that printed colors may vary slightly depending on your printer, paper, ink or toner, and monitor settings."
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "U30olQnDGB",
-            "children": [
-              {
-                "type": "text",
-                "id": "aT8kW13tyZ",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "h1",
-            "id": "qqXgrJ4O-K",
-            "children": [
-              {
-                "type": "text",
-                "id": "3GSiQU2cC2",
-                "text": "💛 Download, Print & Enjoy!"
-              }
-            ]
-          },
-          {
             "type": "p",
             "id": "0cMbUx0Vo-",
             "children": [
               {
                 "type": "text",
                 "id": "2sV1RmvAM6",
-                "text": "Purchase once, download your files, and enjoy three different kinds of fun—coloring, comics, puzzles, games, and plenty of giggles!"
+                "text": ""
               }
             ]
           }
