@@ -207,23 +207,6 @@
                 ],
                 "type": "li",
                 "id": "uvc0ubKVAb"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "5jdKKKQeCN",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "WbcxIoz9wt",
-                        "text": ""
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "hTTHcakqFX"
               }
             ],
             "type": "ul",
