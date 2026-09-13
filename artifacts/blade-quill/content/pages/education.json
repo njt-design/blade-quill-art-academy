@@ -3,34 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "LEARN WITH ME",
-      "heading": "Free resources & art education guides",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Free Krita video lessons, printable coloring pages, and digital painting guides — everything I teach, gathered in one place."
-              }
-            ],
-            "id": "CuKFoE-oJP"
-          }
-        ]
-      },
-      "featuredImage": "/images/800-x800-px-Color-This-Thumbnail.jpg",
-      "imageAlt": "Coloring a caricature in Krita — beginner-friendly video lesson",
-      "imageCaption": "from the classroom",
-      "imagePosition": "right",
-      "ctaPrimary": "Browse the Gallery",
-      "ctaPrimaryLink": "/gallery",
-      "ctaSecondary": "Free downloads",
-      "ctaSecondaryLink": "/downloads",
-      "_template": "heroSplitImage"
-    },
-    {
       "eyebrow": "JUST PUBLISHED",
       "heading": "Watch the newest lesson.",
       "description": {
