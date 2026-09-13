@@ -57,11 +57,29 @@
                 "id": "3hH84uCYoa"
               },
               {
-                "type": "text",
-                "text": "3-Book Printable Fun Bundle"
+                "text": ""
               }
             ],
             "id": "e3jaHDY1M6"
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "id": "vCGx0pldec"
+          },
+          {
+            "type": "h1",
+            "id": "Qt1LFstw_M",
+            "children": [
+              {
+                "type": "text",
+                "text": "3-Book Printable Fun Bundle"
+              }
+            ]
           },
           {
             "type": "p",
