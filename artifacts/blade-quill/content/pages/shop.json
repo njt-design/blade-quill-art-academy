@@ -237,9 +237,9 @@
       "_template": "text"
     },
     {
-      "eyebrow": "ABOUT · A STUDIO VISIT",
-      "heading": "I'm Corinne —\nand I draw\nfor a living.",
-      "leadText": {
+      "eyebrow": "FEATURED RELEASE",
+      "heading": "The new book.",
+      "description": {
         "type": "root",
         "children": [
           {
@@ -247,20 +247,31 @@
             "children": [
               {
                 "type": "text",
-                "text": "A short introduction sentence."
+                "text": "A short description of the featured book."
               }
-            ],
-            "id": "YytVZ1hpAG"
+            ]
           }
         ]
       },
-      "ctaPrimary": "Get in Touch",
-      "ctaPrimaryLink": "/contact",
-      "ctaSecondary": "Visit the Shop",
-      "ctaSecondaryLink": "/shop",
-      "metaLine": "NANTES, FRANCE · EST. 2018",
-      "portraitCaption": "in the studio",
-      "_template": "aboutHero"
+      "stats": [
+        {
+          "value": "$25",
+          "label": "SIGNED COPY"
+        },
+        {
+          "value": "$14",
+          "label": "EBOOK"
+        },
+        {
+          "value": "144",
+          "label": "FULL-COLOR PAGES"
+        }
+      ],
+      "ctaLabel": "Order Now",
+      "ctaLink": "/shop",
+      "secondaryLabel": "Browse the shop",
+      "secondaryLink": "/shop",
+      "_template": "featuredBook"
     }
   ]
 }
