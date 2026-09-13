@@ -19,6 +19,7 @@
           }
         ]
       },
+      "backgroundImage": "/images/Activity-book.jpg",
       "ctaLabel": "Gumroad",
       "ctaLink": "/",
       "_template": "hero"
