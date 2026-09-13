@@ -3,8 +3,8 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "New Featured Release",
-      "title": "Book Title",
+      "eyebrow": "3 Books, One Great Bundle!",
+      "title": "eBooks Bundle",
       "description": {
         "type": "root",
         "children": [
@@ -13,12 +13,14 @@
             "children": [
               {
                 "type": "text",
-                "text": "A short description of the release."
+                "text": "Color, Laugh & Play"
               }
-            ]
+            ],
+            "id": "tblbSf6f__"
           }
         ]
       },
+      "coverImage": "/images/Gumroad-sales-image-1920-1080px.png",
       "ctaLabel": "Get the Book",
       "ctaHref": "https://",
       "_template": "featuredRelease"
