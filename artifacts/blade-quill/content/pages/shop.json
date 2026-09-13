@@ -3,9 +3,9 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "Now Enrolling",
-      "heading": "Step inside the classroom.",
-      "subheading": {
+      "eyebrow": "ABOUT · A STUDIO VISIT",
+      "heading": "I'm Corinne —\nand I draw\nfor a living.",
+      "leadText": {
         "type": "root",
         "children": [
           {
@@ -13,23 +13,19 @@
             "children": [
               {
                 "type": "text",
-                "text": "Structured digital art training."
+                "text": "A short introduction sentence."
               }
             ]
           }
         ]
       },
-      "bullets": [
-        "First benefit",
-        "Second benefit",
-        "Third benefit"
-      ],
-      "metaTags": "Self-paced · Krita 5.2 · All skill levels",
-      "ctaLabel": "Reserve Your Spot",
-      "ctaLink": "/shop",
-      "secondaryLabel": "About Corinne",
-      "secondaryLink": "/about",
-      "_template": "classesPitch"
+      "ctaPrimary": "Get in Touch",
+      "ctaPrimaryLink": "/contact",
+      "ctaSecondary": "Visit the Shop",
+      "ctaSecondaryLink": "/shop",
+      "metaLine": "NANTES, FRANCE · EST. 2018",
+      "portraitCaption": "in the studio",
+      "_template": "aboutHero"
     }
   ]
 }
