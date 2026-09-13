@@ -42,8 +42,23 @@
             "type": "h1",
             "children": [
               {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Gumroad-sales-image-1920-1080px.png",
+                "caption": "",
+                "alt": "",
+                "id": "3hH84uCYoa"
+              },
+              {
                 "type": "text",
-                "text": "🎨 3-Book Printable Fun Bundle"
+                "text": "3-Book Printable Fun Bundle"
               }
             ],
             "id": "e3jaHDY1M6"
