@@ -1,11 +1,12 @@
 {
-  "title": "Shop",
+  "title": "3 Books, One Great Bundle!",
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "Portfolio",
-      "heading": "Art that floats\noff the page",
-      "subheading": {
+      "number": "01",
+      "label": "STORY",
+      "heading": "The story behind\nall of this.",
+      "paragraph1": {
         "type": "root",
         "children": [
           {
@@ -13,16 +14,42 @@
             "children": [
               {
                 "type": "text",
-                "text": "Scatter up to six images around the headline — like the homepage hero, but fully editable."
+                "text": "First paragraph of the story."
               }
             ]
           }
         ]
       },
-      "images": [],
-      "ctaPrimary": "View Gallery",
-      "ctaPrimaryLink": "/gallery",
-      "_template": "heroFloatingImages"
+      "quote": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A pull-quote shown in the dark panel."
+              }
+            ]
+          }
+        ]
+      },
+      "paragraph2": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Second paragraph of the story."
+              }
+            ]
+          }
+        ]
+      },
+      "sideCaption": "my window in winter",
+      "_template": "story"
     }
   ]
 }
