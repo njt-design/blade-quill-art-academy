@@ -97,129 +97,81 @@
             ]
           },
           {
+            "type": "p",
+            "id": "rJtjzXj7Dk",
             "children": [
               {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "rJtjzXj7Dk",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "7YJK0Rgv-r",
-                        "text": "coloring, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "yx4V3-j1xN"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "MKNIlvlH2M",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "GIJLj-kIWt",
-                        "text": "comics, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "2KHFhTonlo"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "d9sUjef03-",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "UZLIlRfP73",
-                        "text": "puzzles, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "Es6usfTLbJ"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "J5KLor7NXY",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "uPPiMnCUnk",
-                        "text": "games, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "GSJmlnHmq2"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "aXmwBn6lOT",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "Mu49r2TbTm",
-                        "text": "trivia, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "9DBE3DqsLA"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "TplQ2L3Ot6",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "fOLjImheA0",
-                        "text": "jokes, "
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "zUNlCs0E_d"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "l6Nk57lIqx",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "2Ys_7rZHch",
-                        "text": "and plenty of silly adventures for hours of screen-free fun."
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "uvc0ubKVAb"
+                "type": "text",
+                "id": "7YJK0Rgv-r",
+                "text": "coloring, "
               }
-            ],
-            "type": "ul",
-            "id": "Z15bWvuCS3"
+            ]
+          },
+          {
+            "type": "p",
+            "id": "MKNIlvlH2M",
+            "children": [
+              {
+                "type": "text",
+                "id": "GIJLj-kIWt",
+                "text": "comics, "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "d9sUjef03-",
+            "children": [
+              {
+                "type": "text",
+                "id": "UZLIlRfP73",
+                "text": "puzzles, "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "J5KLor7NXY",
+            "children": [
+              {
+                "type": "text",
+                "id": "uPPiMnCUnk",
+                "text": "games, "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "aXmwBn6lOT",
+            "children": [
+              {
+                "type": "text",
+                "id": "Mu49r2TbTm",
+                "text": "trivia, "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "TplQ2L3Ot6",
+            "children": [
+              {
+                "type": "text",
+                "id": "fOLjImheA0",
+                "text": "jokes, "
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "l6Nk57lIqx",
+            "children": [
+              {
+                "type": "text",
+                "id": "2Ys_7rZHch",
+                "text": "and plenty of silly adventures for hours of screen-free fun."
+              }
+            ]
           },
           {
             "type": "p",
