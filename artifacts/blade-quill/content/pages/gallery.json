@@ -27,7 +27,7 @@
           "title": "Lheeloo & Luna",
           "image": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg",
           "description": "Lheeloo the French Bulldog and Luna the mouse — the book duo, 2025",
-          "downloadFile": "/files/color-friends-take-care-of-each-other-yyw2.png"
+          "downloadFile": "/images/files/color-friends-take-care-of-each-other-yyw2.png"
         },
         {
           "title": "French Bulldog Caricature",
@@ -58,7 +58,7 @@
           "title": "Steampunk Cat",
           "image": "/images/squarespace/digital-paintings/steampunk-cat.jpg",
           "description": "A whimsical steampunk cat character",
-          "downloadFile": "/files/steampunk-cat-august-2023.jpg"
+          "downloadFile": "/images/files/steampunk-cat-august-2023.jpg"
         },
         {
           "title": "Steampunk Girl",
@@ -69,7 +69,7 @@
           "title": "French Maid",
           "image": "/images/squarespace/digital-paintings/maid.jpg",
           "description": "A chibi French maid character with charming details",
-          "downloadFile": "/files/chibi-french-maid-with-signature-and-text.jpg"
+          "downloadFile": "/images/files/chibi-french-maid-with-signature-and-text.jpg"
         },
         {
           "title": "Chibi Ninja Man",
@@ -85,7 +85,7 @@
           "title": "Geisha",
           "image": "/images/squarespace/digital-paintings/geisha.jpg",
           "description": "An elegant geisha in full traditional attire",
-          "downloadFile": "/files/chibi-geisha-with-signature-and-text.jpg"
+          "downloadFile": "/images/files/chibi-geisha-with-signature-and-text.jpg"
         },
         {
           "title": "Chibi Elephant",
@@ -106,7 +106,7 @@
           "title": "Gnome Druid",
           "image": "/images/squarespace/digital-paintings/gnome.jpg",
           "description": "A mystical gnome druid character with nature elements",
-          "downloadFile": "/files/gnome-druide-with-signature-and-text.jpg"
+          "downloadFile": "/images/files/gnome-druide-with-signature-and-text.jpg"
         },
         {
           "title": "Chibi Dragon",
@@ -122,7 +122,7 @@
           "title": "Baby Dragon",
           "image": "/images/squarespace/digital-paintings/dragon-baby.jpg",
           "description": "An adorable baby dragon with rich digital color work",
-          "downloadFile": "/files/baby-dragon-with-signature-and-text-pjft.jpg"
+          "downloadFile": "/images/files/baby-dragon-with-signature-and-text-pjft.jpg"
         },
         {
           "title": "Japanese Girl",
@@ -138,6 +138,44 @@
       "emptyHeading": "Gallery is empty",
       "emptyDescription": "Check back soon — new artwork is added regularly.",
       "_template": "galleryGrid"
+    },
+    {
+      "eyebrow": "FEATURED RELEASE",
+      "heading": "The new book.",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short description of the featured book."
+              }
+            ],
+            "id": "xvkODX2Sv5"
+          }
+        ]
+      },
+      "stats": [
+        {
+          "value": "$25",
+          "label": "SIGNED COPY"
+        },
+        {
+          "value": "$14",
+          "label": "EBOOK"
+        },
+        {
+          "value": "144",
+          "label": "FULL-COLOR PAGES"
+        }
+      ],
+      "ctaLabel": "Order Now",
+      "ctaLink": "/shop",
+      "secondaryLabel": "Browse the shop",
+      "secondaryLink": "/shop",
+      "_template": "featuredBook"
     }
   ]
 }
