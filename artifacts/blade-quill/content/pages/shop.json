@@ -3,11 +3,24 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "FROM THE SHOP",
-      "heading": "eBooks Bundle ",
-      "viewAllLabel": "All products",
-      "viewAllLink": "/shop",
-      "_template": "productStrip"
+      "heading": "A big welcoming headline",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short sentence that supports the headline."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Learn More",
+      "ctaLink": "/",
+      "_template": "hero"
     }
   ]
 }
