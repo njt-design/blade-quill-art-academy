@@ -3,9 +3,9 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "3 Books, One Great Bundle!",
-      "title": "eBooks Bundle",
-      "description": {
+      "eyebrow": "Now Enrolling",
+      "heading": "Step inside the classroom.",
+      "subheading": {
         "type": "root",
         "children": [
           {
@@ -13,17 +13,23 @@
             "children": [
               {
                 "type": "text",
-                "text": "Color, Laugh & Play"
+                "text": "Structured digital art training."
               }
-            ],
-            "id": "tblbSf6f__"
+            ]
           }
         ]
       },
-      "coverImage": "/images/GUMROAD-THUMBNAIL-600-X-600-px.png",
-      "ctaLabel": "Get the Book",
-      "ctaHref": "https://",
-      "_template": "featuredRelease"
+      "bullets": [
+        "First benefit",
+        "Second benefit",
+        "Third benefit"
+      ],
+      "metaTags": "Self-paced · Krita 5.2 · All skill levels",
+      "ctaLabel": "Reserve Your Spot",
+      "ctaLink": "/shop",
+      "secondaryLabel": "About Corinne",
+      "secondaryLink": "/about",
+      "_template": "classesPitch"
     }
   ]
 }
