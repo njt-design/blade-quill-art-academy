@@ -30,6 +30,24 @@
       "deskImage": "/images/900-x-1200-px-shop-thumbnail-website2.png",
       "screenImage": "/images/900-x-1200-px-shop-thumbnail-website3.png",
       "_template": "aboutHero"
+    },
+    {
+      "heading": "Section heading",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write anything here — paragraphs, lists, links, and more."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
