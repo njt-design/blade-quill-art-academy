@@ -138,44 +138,6 @@
       "emptyHeading": "Gallery is empty",
       "emptyDescription": "Check back soon — new artwork is added regularly.",
       "_template": "galleryGrid"
-    },
-    {
-      "eyebrow": "FEATURED RELEASE",
-      "heading": "The new book.",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "A short description of the featured book."
-              }
-            ],
-            "id": "xvkODX2Sv5"
-          }
-        ]
-      },
-      "stats": [
-        {
-          "value": "$25",
-          "label": "SIGNED COPY"
-        },
-        {
-          "value": "$14",
-          "label": "EBOOK"
-        },
-        {
-          "value": "144",
-          "label": "FULL-COLOR PAGES"
-        }
-      ],
-      "ctaLabel": "Order Now",
-      "ctaLink": "/shop",
-      "secondaryLabel": "Browse the shop",
-      "secondaryLink": "/shop",
-      "_template": "featuredBook"
     }
   ]
 }
