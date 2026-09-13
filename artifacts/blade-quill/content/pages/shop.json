@@ -73,34 +73,12 @@
           },
           {
             "type": "p",
-            "id": "kFOCix02J3",
-            "children": [
-              {
-                "type": "text",
-                "id": "7TL3eguYbI",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
             "id": "sQBSVrO6ux",
             "children": [
               {
                 "type": "text",
                 "id": "8qdOejvGIP",
                 "text": "Three printable books, one fun-filled bundle!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "kcdkpl7wWd",
-            "children": [
-              {
-                "type": "text",
-                "id": "zVREBqa6tj",
-                "text": ""
               }
             ]
           },
@@ -127,24 +105,13 @@
             ]
           },
           {
-            "type": "p",
+            "type": "h1",
             "id": "WMrmGuA-xO",
             "children": [
               {
                 "type": "text",
                 "id": "_MSTGJuAOJ",
                 "text": "✨ What’s Included in the Bundle"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "ht9M4k0HiF",
-            "children": [
-              {
-                "type": "text",
-                "id": "XQaaZRf0KT",
-                "text": ""
               }
             ]
           },
@@ -183,121 +150,22 @@
           },
           {
             "type": "p",
-            "id": "D5Mx9PbJ1y",
-            "children": [
-              {
-                "type": "text",
-                "id": "1MFIB1s8af",
-                "text": "🚗✈️ Great for"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "jvoBG1DtVt",
-            "children": [
-              {
-                "type": "text",
-                "id": "P5nu3ljnYl",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "XnK3VpNX9Y",
-            "children": [
-              {
-                "type": "text",
-                "id": "ASovEDfk8G",
-                "text": "✔ Road trips and air travel"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "dTpuglMDQH",
-            "children": [
-              {
-                "type": "text",
-                "id": "8Y4r612OaT",
-                "text": "✔ Quiet time at home"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "n-njsmJQib",
-            "children": [
-              {
-                "type": "text",
-                "id": "mNUbKdYJkB",
-                "text": "✔ Homeschool activities"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "QFcXAVF1wM",
-            "children": [
-              {
-                "type": "text",
-                "id": "2kXW8ZQorF",
-                "text": "✔ Rainy days"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "08fD2eMSfa",
-            "children": [
-              {
-                "type": "text",
-                "id": "M4ha1qZ8PJ",
-                "text": "✔ Birthday and holiday gifts"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "psiGVUrgOx",
-            "children": [
-              {
-                "type": "text",
-                "id": "3FaVNZBlcI",
-                "text": "✔ Screen-free entertainment"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "Ca4pF_T4bi",
-            "children": [
-              {
-                "type": "text",
-                "id": "9LHWKqSkiu",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "MRX3Vru6TM",
-            "children": [
-              {
-                "type": "text",
-                "id": "XYkdckTNbG",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
             "id": "Z8Xp1-Me7G",
             "children": [
               {
                 "type": "text",
                 "id": "lIUlXg89LJ",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "h1",
+            "id": "va-nPIfhYn",
+            "children": [
+              {
+                "type": "text",
+                "id": "hTMHhF_3SM",
                 "text": "📥 What You’ll Receive"
               }
             ]
@@ -425,6 +293,17 @@
           },
           {
             "type": "p",
+            "id": "-UwKsjagIS",
+            "children": [
+              {
+                "type": "text",
+                "id": "brxjqGOQvi",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "h1",
             "id": "Q9TAnfr7Hn",
             "children": [
               {
@@ -467,28 +346,17 @@
           },
           {
             "type": "p",
-            "id": "nZwET0SW5s",
+            "id": "U30olQnDGB",
             "children": [
               {
                 "type": "text",
-                "id": "vPjFfZM_L9",
+                "id": "aT8kW13tyZ",
                 "text": ""
               }
             ]
           },
           {
-            "type": "p",
-            "id": "1K5NDzqD-F",
-            "children": [
-              {
-                "type": "text",
-                "id": "rkUyOv1Tyk",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
+            "type": "h1",
             "id": "qqXgrJ4O-K",
             "children": [
               {
