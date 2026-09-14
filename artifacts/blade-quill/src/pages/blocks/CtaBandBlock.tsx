@@ -17,7 +17,7 @@ export default function CtaBandBlock({ block }: Props) {
     <section className={`py-12 ${isDark ? "bg-foreground text-background" : "bg-secondary/40"}`}>
       <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div style={sectionAlignStyle(block)}>
-          {block.heading && (
+          {block.heading ? (
             <SectionHeading
               block={block}
               defaultTag="h2"
@@ -26,8 +26,8 @@ export default function CtaBandBlock({ block }: Props) {
             >
               {block.heading as string}
             </SectionHeading>
-          )}
-          {block.description && (
+          ) : null}
+          {block.description ? (
             <div
               className={`text-sm font-sans ${isDark ? "opacity-70" : "text-muted-foreground"}`}
               style={bodyTextStyle(block)}
@@ -35,9 +35,9 @@ export default function CtaBandBlock({ block }: Props) {
             >
               <RichText value={block.description} />
             </div>
-          )}
+          ) : null}
         </div>
-        {block.ctaLabel && (
+        {block.ctaLabel ? (
           <Button
             size="lg"
             onClick={() => setLocation((block.ctaLink as string) || "/")}
@@ -46,7 +46,7 @@ export default function CtaBandBlock({ block }: Props) {
           >
             {block.ctaLabel as string} <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-        )}
+        ) : null}
       </div>
     </section>
   );

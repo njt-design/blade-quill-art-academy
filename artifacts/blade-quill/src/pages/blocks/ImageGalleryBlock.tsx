@@ -19,7 +19,7 @@ export default function ImageGalleryBlock({ block }: Props) {
         className="container mx-auto px-4 md:px-6"
         style={sectionAlignStyle(block)}
       >
-        {block.heading && (
+        {block.heading ? (
           <SectionHeading
             block={block}
             defaultTag="h2"
@@ -28,7 +28,7 @@ export default function ImageGalleryBlock({ block }: Props) {
           >
             {block.heading as string}
           </SectionHeading>
-        )}
+        ) : null}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {images.map((img, i) => (
             <div key={i} className="gumroad-card overflow-hidden group">

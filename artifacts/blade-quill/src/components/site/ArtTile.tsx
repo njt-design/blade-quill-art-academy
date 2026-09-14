@@ -61,7 +61,8 @@ function splitHeroLayoutStyle(style?: CSSProperties): {
   const inner: CSSProperties = { ...style };
   for (const key of POSITION_KEYS) {
     if (key in style && style[key] !== undefined) {
-      wrap[key] = style[key];
+      // Same key on both sides; TS can't correlate the union member.
+      (wrap as Record<string, unknown>)[key] = style[key];
       delete inner[key];
     }
   }
@@ -91,7 +92,7 @@ export function ArtTile({
   const labelColor =
     palette === "paper" ? "var(--ink-mute)" : "rgba(255,255,255,0.78)";
 
-  const tileFaceStyle: CSSProperties = {
+  const tileFaceStyle = {
     width: interactive ? "100%" : width,
     height: interactive ? "100%" : height,
     background: src ? undefined : PALETTES[palette],
@@ -101,7 +102,7 @@ export function ArtTile({
     boxShadow: "0 4px 12px rgba(46,34,34,0.12)",
     transform: interactive || !rotate ? undefined : `rotate(${rot})`,
     "--rot": interactive ? undefined : rot,
-  };
+  } as CSSProperties;
 
   const { wrap: wrapLayout, inner: innerLayout } = splitHeroLayoutStyle(style);
 

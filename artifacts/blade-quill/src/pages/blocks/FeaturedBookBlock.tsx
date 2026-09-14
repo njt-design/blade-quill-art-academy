@@ -22,6 +22,8 @@ const BOOK_SPREAD_SRC = `${import.meta.env.BASE_URL}images/puzzle-book-back.png`
 const BOOK_CHARACTER_SRC = galleryImageUrl("Chibi of the Sea");
 
 interface StatItem {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
   value?: string;
   label?: string;
 }

@@ -15,7 +15,7 @@ export default function TextBlock({ block }: Props) {
         className="container mx-auto px-4 md:px-6 max-w-3xl"
         style={sectionAlignStyle(block)}
       >
-        {block.heading && (
+        {block.heading ? (
           <SectionHeading
             block={block}
             defaultTag="h2"
@@ -24,8 +24,8 @@ export default function TextBlock({ block }: Props) {
           >
             {block.heading as string}
           </SectionHeading>
-        )}
-        {block.body && (
+        ) : null}
+        {block.body ? (
           <div
             className="prose prose-neutral max-w-none"
             style={bodyTextStyle(block)}
@@ -36,7 +36,7 @@ export default function TextBlock({ block }: Props) {
               components={richTextComponents}
             />
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

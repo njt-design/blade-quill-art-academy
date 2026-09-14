@@ -17,14 +17,14 @@ export default function HeroBlock({ block }: Props) {
       className="py-20 md:py-28 bg-cover bg-center relative"
       style={block.backgroundImage ? { backgroundImage: `url(${block.backgroundImage})` } : undefined}
     >
-      {block.backgroundImage && (
+      {block.backgroundImage ? (
         <div className="absolute inset-0 bg-background/80" />
-      )}
+      ) : null}
       <div
         className="container mx-auto px-4 md:px-6 max-w-3xl text-center relative z-10"
         style={sectionAlignStyle(block)}
       >
-        {block.heading && (
+        {block.heading ? (
           <SectionHeading
             block={block}
             defaultTag="h2"
@@ -33,8 +33,8 @@ export default function HeroBlock({ block }: Props) {
           >
             {block.heading as string}
           </SectionHeading>
-        )}
-        {block.subheading && (
+        ) : null}
+        {block.subheading ? (
           <div
             className="text-lg font-sans text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed"
             style={bodyTextStyle(block)}
@@ -42,8 +42,8 @@ export default function HeroBlock({ block }: Props) {
           >
             <RichText value={block.subheading} />
           </div>
-        )}
-        {block.ctaLabel && (
+        ) : null}
+        {block.ctaLabel ? (
           <Button
             size="lg"
             onClick={() => setLocation((block.ctaLink as string) || "/")}
@@ -51,7 +51,7 @@ export default function HeroBlock({ block }: Props) {
           >
             {block.ctaLabel as string} <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-        )}
+        ) : null}
       </div>
     </section>
   );

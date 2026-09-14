@@ -15,7 +15,10 @@ interface Props {
 
 function getIcon(name?: string) {
   if (!name) return null;
-  const icons = LucideIcons as Record<string, React.ComponentType<{ className?: string }>>;
+  const icons = LucideIcons as unknown as Record<
+    string,
+    React.ComponentType<{ className?: string }> | undefined
+  >;
   return icons[name] ?? null;
 }
 
@@ -25,7 +28,7 @@ export default function FeatureGridBlock({ block }: Props) {
   return (
     <section className="py-12" style={sectionAlignStyle(block)}>
       <div className="container mx-auto px-4 md:px-6">
-        {block.heading && (
+        {block.heading ? (
           <SectionHeading
             block={block}
             defaultTag="h2"
@@ -34,7 +37,7 @@ export default function FeatureGridBlock({ block }: Props) {
           >
             {block.heading as string}
           </SectionHeading>
-        )}
+        ) : null}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {items.map((item, i) => {
             const Icon = getIcon(item.icon);

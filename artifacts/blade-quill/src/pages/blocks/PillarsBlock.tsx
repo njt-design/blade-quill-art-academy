@@ -20,6 +20,8 @@ const MEDIA_BACKGROUNDS = [
 const CONTENT_BG = "#F7F1EA";
 
 interface PillarItem {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
   tag?: string;
   title?: string;
   sub?: string;

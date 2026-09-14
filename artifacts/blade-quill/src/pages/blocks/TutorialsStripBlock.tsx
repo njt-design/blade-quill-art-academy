@@ -15,6 +15,8 @@ import { SectionHeading, sectionAlignStyle } from "./text-style";
 const STAT_COLORS = ["gold", "paper", "gold-deep", "paper-3"];
 
 interface StatItem {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
   value?: string;
   label?: string;
 }

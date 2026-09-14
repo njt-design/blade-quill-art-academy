@@ -6,6 +6,8 @@ import { type Block } from "./block-utils";
 const STAT_COLORS = ["maroon", "gold-deep", "brown", "taupe"];
 
 interface StatItem {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
   value?: string;
   label?: string;
 }

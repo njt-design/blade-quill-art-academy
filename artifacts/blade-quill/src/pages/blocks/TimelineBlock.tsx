@@ -20,6 +20,8 @@ const EVENT_ART_FALLBACK: Array<{ src?: string; alt: string }> = [
 ];
 
 interface TimelineEvent {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
   year?: string;
   title?: string;
   description?: string;

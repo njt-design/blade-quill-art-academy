@@ -30,6 +30,13 @@ export default defineConfig({
       clean: true,
       prettier: true,
       override: {
+        // The workspace uses `catalog:` version specifiers, so orval can't
+        // detect the TanStack Query major from package.json and falls back to
+        // v4-style output (`query?: UseQueryOptions` with a required
+        // `queryKey`). Pin v5 so hooks accept `Partial<UseQueryOptions>`.
+        query: {
+          version: 5,
+        },
         fetch: {
           includeHttpResponseReturnType: false,
         },
