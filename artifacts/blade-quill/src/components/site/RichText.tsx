@@ -1,6 +1,6 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
-import { isRichText } from "@/lib/rich-text";
+import { isRichText, preserveBlankLines } from "@/lib/rich-text";
 import { richTextComponents } from "@/components/site/rich-text-components";
 
 type Props = { value: unknown; className?: string };
@@ -29,7 +29,10 @@ export function RichText({ value, className }: Props) {
 
   return (
     <div className={wrapperClass}>
-      <TinaMarkdown content={value as any} components={richTextComponents} />
+      <TinaMarkdown
+        content={preserveBlankLines(value) as any}
+        components={richTextComponents}
+      />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { CmsStatusPill } from "@/components/site/CmsStatusPill";
 import { RichText } from "@/components/site/RichText";
 import { richTextComponents } from "@/components/site/rich-text-components";
+import { preserveBlankLines } from "@/lib/rich-text";
 import { postQuery } from "@/lib/post-queries";
 import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
 import type { Block } from "@/pages/blocks/block-utils";
@@ -164,7 +165,7 @@ export default function BlogPost() {
           ) : legacyBody ? (
             <div className="prose prose-neutral max-w-none">
               <TinaMarkdown
-                content={legacyBody as any}
+                content={preserveBlankLines(legacyBody) as any}
                 components={richTextComponents}
               />
             </div>

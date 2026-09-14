@@ -21,6 +21,45 @@ export function isRichText(value: unknown): value is RichTextValue {
   );
 }
 
+const BLANK_LINE_BLOCKS = new Set(["p", "h1", "h2", "h3", "h4", "h5", "h6"]);
+
+function isBlankInline(nodes: RichTextNode[] | undefined): boolean {
+  if (!nodes?.length) return true;
+  return nodes.every(
+    (node) =>
+      (node.type === undefined || node.type === "text") &&
+      typeof node.text === "string" &&
+      node.text.trim() === "",
+  );
+}
+
+function preserveBlankLinesInNodes(nodes: RichTextNode[]): RichTextNode[] {
+  return nodes.map((node) => {
+    if (node.type === "code_block") return node;
+    if (BLANK_LINE_BLOCKS.has(node.type ?? "") && isBlankInline(node.children)) {
+      return { ...node, children: [{ type: "break" }] };
+    }
+    if (node.children?.length) {
+      return { ...node, children: preserveBlankLinesInNodes(node.children) };
+    }
+    return node;
+  });
+}
+
+/**
+ * Editors add breathing room by pressing Enter twice, which Tina stores as an
+ * empty paragraph (`{ type: "p", children: [{ text: "" }] }`). TinaMarkdown
+ * renders that as a literal `<p></p>` — zero height, margins collapsed into
+ * its neighbours — so the gap silently disappears on the public site.
+ *
+ * This swaps blank paragraphs/headings for `<p><br /></p>` so a blank line
+ * in the CMS is a blank line on the page. Non-rich-text values pass through.
+ */
+export function preserveBlankLines<T>(value: T): T {
+  if (!isRichText(value) || !value.children?.length) return value;
+  return { ...value, children: preserveBlankLinesInNodes(value.children) } as T;
+}
+
 function flattenInline(nodes: RichTextNode[] | undefined): string {
   if (!nodes?.length) return "";
   return nodes

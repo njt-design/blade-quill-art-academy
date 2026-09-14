@@ -2,6 +2,7 @@ import { tinaField } from "tinacms/react";
 import { TinaMarkdown, type Components } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
 import { richTextComponents } from "@/components/site/rich-text-components";
+import { preserveBlankLines } from "@/lib/rich-text";
 import type { Block } from "@/pages/blocks/block-utils";
 import { SectionHeading, bodyTextStyle } from "@/pages/blocks/text-style";
 
@@ -70,7 +71,10 @@ export default function ArticleText({ block }: Props) {
           style={bodyTextStyle(block)}
           data-tina-field={tinaField(block, "body")}
         >
-          <TinaMarkdown content={block.body as any} components={proseComponents} />
+          <TinaMarkdown
+            content={preserveBlankLines(block.body) as any}
+            components={proseComponents}
+          />
         </div>
       ) : null}
     </div>
