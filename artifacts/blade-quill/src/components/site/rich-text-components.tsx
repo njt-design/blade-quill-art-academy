@@ -61,11 +61,14 @@ export const richTextComponents: Components<{
       </a>
     );
   },
+  // Tina wraps each list item's content in a block-level `lic` element.
+  // `list-outside` + left padding keeps the marker in the gutter so the text
+  // sits beside it instead of wrapping underneath (which `list-inside` causes).
   ul: (props) => (
     <ul
       {...props}
       className={cn(
-        "list-disc list-inside space-y-1",
+        "list-disc list-outside pl-6 space-y-1",
         (props as { className?: string }).className,
       )}
     />
@@ -74,7 +77,7 @@ export const richTextComponents: Components<{
     <ol
       {...props}
       className={cn(
-        "list-decimal list-inside space-y-1",
+        "list-decimal list-outside pl-6 space-y-1",
         (props as { className?: string }).className,
       )}
     />
