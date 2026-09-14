@@ -3,9 +3,9 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "Shop your printables here",
-      "heading": "3 Books, One Great Bundle!",
-      "leadText": {
+      "eyebrow": "New Bundle",
+      "heading": "3 Books\nOne Great Bundle",
+      "subheading": {
         "type": "root",
         "children": [
           {
@@ -13,25 +13,18 @@
             "children": [
               {
                 "type": "text",
-                "text": "Color, Laugh & Play!"
+                "text": "Color, laugh, and play with this fun bundle."
               }
             ],
-            "id": "10r5iaGp2A"
+            "id": "P2Jwt6ubPN"
           }
         ]
       },
-      "ctaPrimary": "Get in Touch",
+      "featuredImage": "/images/Screenshot-2026-09-10-at-10.50.10-AM.png",
+      "imagePosition": "right",
+      "ctaPrimary": "Learn More",
       "ctaPrimaryLink": "/contact",
-      "ctaSecondary": "To Gumroad shop",
-      "ctaSecondaryLink": "https://bladeandquill.gumroad.com/l/einoxf",
-      "metaLine": "",
-      "portraitImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
-      "portraitCaption": "***",
-      "deskImage": "/images/900-x-1200-px-shop-thumbnail-website2.png",
-      "deskCaption": "***",
-      "screenImage": "/images/900-x-1200-px-shop-thumbnail-website3.png",
-      "screenCaption": "***",
-      "_template": "aboutHero"
+      "_template": "heroSplitImage"
     },
     {
       "heading": "✨ What’s Inside:",
