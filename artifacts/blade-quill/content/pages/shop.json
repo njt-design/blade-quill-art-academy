@@ -3,9 +3,9 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "New Bundle",
-      "heading": "3 Books\nOne Great Bundle",
-      "subheading": {
+      "eyebrow": "Shop your printables here",
+      "heading": "3 Books, One Great Bundle!",
+      "leadText": {
         "type": "root",
         "children": [
           {
@@ -13,228 +13,25 @@
             "children": [
               {
                 "type": "text",
-                "text": "Color, laugh, and play with this fun bundle."
+                "text": "Color, Laugh & Play!"
               }
             ],
-            "id": "P2Jwt6ubPN"
+            "id": "10r5iaGp2A"
           }
         ]
       },
-      "featuredImage": "/images/Screenshot-2026-09-10-at-10.50.10-AM.png",
-      "imagePosition": "right",
-      "ctaPrimary": "Learn More",
+      "ctaPrimary": "Get in Touch",
       "ctaPrimaryLink": "/contact",
-      "_template": "heroSplitImage"
-    },
-    {
-      "heading": "✨ What’s Inside:",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "h1",
-            "children": [
-              {
-                "text": ""
-              },
-              {
-                "type": "img",
-                "children": [
-                  {
-                    "text": ""
-                  }
-                ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/Gumroad-sales-image-1920-1080px.png",
-                "caption": "",
-                "alt": "",
-                "id": "3hH84uCYoa"
-              },
-              {
-                "type": "text",
-                "id": "rYJOykP0z_",
-                "text": "",
-                "bold": true
-              }
-            ],
-            "id": "e3jaHDY1M6"
-          },
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "K3mG6C5XdC"
-          },
-          {
-            "type": "h1",
-            "id": "sQBSVrO6ux",
-            "children": [
-              {
-                "type": "text",
-                "id": "8qdOejvGIP",
-                "text": "3 printable books, 1 fun-filled bundle! $11.99"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "n_IwrUkuvX",
-            "children": [
-              {
-                "type": "text",
-                "id": "gQs-S16h55",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "mucy0wufxR",
-            "children": [
-              {
-                "type": "text",
-                "id": "lzxTcaXze4",
-                "text": "This digital bundle includes:"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "MikE4E26kc",
-            "children": [
-              {
-                "type": "text",
-                "id": "w7iaVoW6OJ",
-                "text": "🎨Coloring"
-              }
-            ]
-          },
-          {
-            "children": [
-              {
-                "text": "🗨️Comics",
-                "type": "text",
-                "id": "lVhO_bz59M"
-              }
-            ],
-            "type": "p",
-            "id": "x1hLHicYRu"
-          },
-          {
-            "children": [
-              {
-                "text": "🧩Puzzles",
-                "type": "text",
-                "id": "DekE2XV-Wr"
-              }
-            ],
-            "type": "p",
-            "id": "Dr_4A6Aela"
-          },
-          {
-            "children": [
-              {
-                "text": "🎯Games",
-                "type": "text",
-                "id": "gLtdLxDuSp"
-              }
-            ],
-            "type": "p",
-            "id": "40FZX2vbIe"
-          },
-          {
-            "children": [
-              {
-                "text": "💡Trivia",
-                "type": "text",
-                "id": "4jHzwBV_9O"
-              }
-            ],
-            "type": "p",
-            "id": "1bhq8188aO"
-          },
-          {
-            "children": [
-              {
-                "text": "🤣Jokes",
-                "type": "text",
-                "id": "TqTKo9U59m"
-              }
-            ],
-            "type": "p",
-            "id": "rahs0yH34Q"
-          },
-          {
-            "children": [
-              {
-                "text": "and plenty of silly adventures for hours of screen-free fun!",
-                "type": "text",
-                "id": "2yqKMpk6fd"
-              }
-            ],
-            "type": "p",
-            "id": "qdnyFbeCf8"
-          },
-          {
-            "type": "p",
-            "id": "0cMbUx0Vo-",
-            "children": [
-              {
-                "type": "text",
-                "id": "2sV1RmvAM6",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "ZOooHkg22G",
-            "children": [
-              {
-                "type": "text",
-                "id": "LRlX-dbkfL",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "oprVH7dDZ1",
-            "children": [
-              {
-                "type": "text",
-                "id": "SuBoMjd-u2",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "O3oY17cvyv",
-            "children": [
-              {
-                "type": "text",
-                "id": "-bLqpsNoql",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "86vrkWVJOT",
-            "children": [
-              {
-                "type": "text",
-                "id": "W4f-5c27Ec",
-                "text": ""
-              }
-            ]
-          }
-        ]
-      },
-      "_template": "text"
+      "ctaSecondary": "To Gumroad shop",
+      "ctaSecondaryLink": "https://bladeandquill.gumroad.com/l/einoxf",
+      "metaLine": "",
+      "portraitImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
+      "portraitCaption": "***",
+      "deskImage": "/images/900-x-1200-px-shop-thumbnail-website2.png",
+      "deskCaption": "***",
+      "screenImage": "/images/900-x-1200-px-shop-thumbnail-website3.png",
+      "screenCaption": "***",
+      "_template": "aboutHero"
     }
   ]
 }
