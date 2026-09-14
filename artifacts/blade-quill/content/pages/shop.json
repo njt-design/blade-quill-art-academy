@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "New bundle!",
-      "heading": "3 Books \nOne Great Bundle",
+      "heading": "This is a headline",
       "subheading": {
         "type": "root",
         "children": [
