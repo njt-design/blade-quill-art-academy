@@ -480,6 +480,23 @@
   .word-reveal.in .word-reveal__word {
     transform: translateY(0);
   }
+  /* Gradient headline lines (.grad-text wrapping a WordReveal): the
+     transformed word spans are painted as their own layers, so the
+     wrapper's background-clip:text never reaches them and the inherited
+     transparent fill left the whole line invisible. Paint the gradient on
+     each word instead. */
+  .grad-text .word-reveal__word,
+  .grad-text-warm .word-reveal__word {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .grad-text .word-reveal__word {
+    background-image: var(--g-dawn);
+  }
+  .grad-text-warm .word-reveal__word {
+    background-image: var(--g-warm);
+  }
 
   /* ── Hand-drawn ink underline link ────────────────────────── */
   .link-ink {
