@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTina } from "tinacms/react";
 import { useLiveRefresh } from "@/hooks/use-live-refresh";
 import { hasTinaSession } from "@/lib/tina-auth";
@@ -43,13 +43,27 @@ export function useLiveTina<T extends object>({
   variables,
   data,
 }: UseLiveTinaArgs<T>): UseLiveTinaResult<T> {
-  const tina = useTina({ query, variables, data });
+  const variablesKey = JSON.stringify(variables);
+  const liveKey = query + variablesKey;
+
+  // `data` MUST be referentially stable. Callers build the seed inline
+  // (`data: { page: seed }`), so its identity changes every render — and
+  // tinacms's useTina re-runs `setData(props.data)` whenever that identity
+  // changes. With an unstable object that became an infinite render loop
+  // (~20k React commits/sec on every page) and, inside the Tina editor,
+  // every `updateData` from the sidebar form was immediately overwritten by
+  // the bundled seed, so the live preview never reflected edits. Key the
+  // memo on the serialized seed so a genuinely different document (route
+  // change) still flows through while identical content stays stable.
+  const dataKey = JSON.stringify(data);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableData = useMemo(() => data, [liveKey, dataKey]);
+
+  const tina = useTina({ query, variables, data: stableData });
   // Keyed by query+variables so stale live data never shows after the
   // component re-renders for a different document (e.g. /p/a -> /p/b).
   const [live, setLive] = useState<{ key: string; data: T } | null>(null);
   const [freshness, setFreshness] = useState<LiveTinaFreshness>("bundled");
-  const variablesKey = JSON.stringify(variables);
-  const liveKey = query + variablesKey;
   const liveEnabled = isLiveContentEnabled() && !isInTinaEditor();
   const requestId = useRef(0);
 
