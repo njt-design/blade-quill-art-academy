@@ -1,10 +1,10 @@
 {
-  "title": "3 Books, One Great Bundle!",
+  "title": "Shop",
   "layout": "standard",
   "blocks": [
     {
       "eyebrow": "New bundle!",
-      "heading": "3 Books\nOne Great Bundle",
+      "heading": "3 Books, One Great Bundle",
       "subheading": {
         "type": "root",
         "children": [
