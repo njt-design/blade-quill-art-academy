@@ -3,9 +3,9 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "Shop your printables here",
-      "heading": "3 Books, One Great Bundle!",
-      "leadText": {
+      "eyebrow": "New bundle!",
+      "heading": "3 Books\nOne Great Bundle",
+      "subheading": {
         "type": "root",
         "children": [
           {
@@ -13,25 +13,18 @@
             "children": [
               {
                 "type": "text",
-                "text": "Color, Laugh & Play!"
+                "text": "Pair a bold headline with one large image — great for book launches, class promos, or portfolio highlights."
               }
             ],
-            "id": "10r5iaGp2A"
+            "id": "GE9I3nRFRS"
           }
         ]
       },
-      "ctaPrimary": "Get in Touch",
-      "ctaPrimaryLink": "/contact",
-      "ctaSecondary": "To Gumroad shop",
-      "ctaSecondaryLink": "https://bladeandquill.gumroad.com/l/einoxf",
-      "metaLine": "",
-      "portraitImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
-      "portraitCaption": "***",
-      "deskImage": "/images/900-x-1200-px-shop-thumbnail-website2.png",
-      "deskCaption": "***",
-      "screenImage": "/images/900-x-1200-px-shop-thumbnail-website3.png",
-      "screenCaption": "***",
-      "_template": "aboutHero"
+      "featuredImage": "/images/Lheeloo-and-Luna_First-draft.jpg",
+      "imagePosition": "right",
+      "ctaPrimary": "Buy on Gumroad",
+      "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/einoxf?layout=profile",
+      "_template": "heroSplitImage"
     }
   ]
 }
