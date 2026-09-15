@@ -66,16 +66,33 @@
             ]
           },
           {
-            "type": "p",
+            "type": "h3",
             "id": "I-Vqgy1Xh5",
             "children": [
               {
                 "type": "text",
-                "code": true,
                 "id": "Un9raupLL_",
-                "text": ""
+                "text": "This is a heading page"
               }
             ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "n2mIYK-l0p"
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "HCtT4Tph53"
           }
         ]
       },
