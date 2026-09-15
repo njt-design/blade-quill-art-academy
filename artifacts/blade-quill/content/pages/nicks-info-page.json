@@ -38,6 +38,43 @@
                 "type": "text",
                 "text": "Write anything here — paragraphs, lists, links, and more."
               }
+            ],
+            "id": "sGgnqHW4nZ"
+          },
+          {
+            "type": "p",
+            "id": "2zcXIElKTc",
+            "children": [
+              {
+                "text": "This is some code",
+                "type": "text",
+                "code": true,
+                "id": "OSdQBQWuQx"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "id": "dsQE8hTFOi",
+            "children": [
+              {
+                "type": "text",
+                "code": true,
+                "id": "ripsK_je-l",
+                "text": "This is actually. a quote"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "I-Vqgy1Xh5",
+            "children": [
+              {
+                "type": "text",
+                "code": true,
+                "id": "Un9raupLL_",
+                "text": ""
+              }
             ]
           }
         ]
