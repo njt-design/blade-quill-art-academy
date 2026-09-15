@@ -47,6 +47,26 @@
       "_template": "imageSpotlight"
     },
     {
+      "heading": "",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "Click here to go to the shop"
+              }
+            ],
+            "id": "oMWAVvr8et",
+            "type": "p"
+          }
+        ]
+      },
+      "ctaLabel": "Gumroad",
+      "ctaLink": "https://gumroad.com/products/einoxf/edit",
+      "_template": "hero"
+    },
+    {
       "heading": "Section heading",
       "body": {
         "type": "root",
@@ -162,26 +182,6 @@
         ]
       },
       "_template": "text"
-    },
-    {
-      "heading": "",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": "Click here to go to the shop"
-              }
-            ],
-            "id": "oMWAVvr8et",
-            "type": "p"
-          }
-        ]
-      },
-      "ctaLabel": "Gumroad",
-      "ctaLink": "https://gumroad.com/products/einoxf/edit",
-      "_template": "hero"
     }
   ]
 }
