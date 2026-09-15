@@ -3,31 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "NEW!",
-      "heading": "3-book, E-book\nBundle!",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "text": "Puzzle Games for Kids Ages 8–12 | Coloring pages | Cartoons | Digital Download"
-              }
-            ],
-            "id": "GE9I3nRFRS"
-          }
-        ]
-      },
-      "featuredImage": "/images/GUMROAD-THUMBNAIL-600-X-600-px.png",
-      "imageAlt": "This image depicts Chibi coloring book, Lheeloo & Luna, and the Super Fun Puzzle games on a desk with colored pencils. ",
-      "imageCaption": "",
-      "imagePosition": "right",
-      "ctaPrimary": "Buy on Gumroad",
-      "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/einoxf?layout=profile",
-      "_template": "heroSplitImage"
-    },
-    {
       "eyebrow": "NEW",
       "heading": "3-book, E-book Bundle!",
       "image": "/images/Gumroad-sales-image-1920-1080px.png",
