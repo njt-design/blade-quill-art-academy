@@ -1,0 +1,49 @@
+{
+  "title": "Nick's info page",
+  "layout": "standard",
+  "blocks": [
+    {
+      "heading": "Page Title",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short introduction to what this page covers."
+              }
+            ],
+            "id": "i-aAHJIYSR"
+          }
+        ]
+      },
+      "_template": "pageHeader"
+    },
+    {
+      "emptyHeading": "Free resources coming soon!",
+      "emptyDescription": "Coloring pages, guides, and more on the way.",
+      "_template": "downloadsGrid"
+    },
+    {
+      "heading": "Section heading",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write anything here — paragraphs, lists, links, and more."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
+    }
+  ],
+  "_template": "info"
+}
