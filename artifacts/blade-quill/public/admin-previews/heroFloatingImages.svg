@@ -6,5 +6,5 @@
   <rect x="320" y="125" width="52" height="68" rx="3" fill="#D9B783" transform="rotate(-5 346 159)"/>
   <rect x="120" y="75" width="160" height="10" rx="5" fill="#1f1a14"/><rect x="140" y="95" width="120" height="8" rx="4" fill="#c9bfa9"/>
   <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
-  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="1" fill="#fbf6ec">HERO  FLOATING IMAGES</text>
+  <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="1" fill="#fbf6ec">HERO FLOATING IMAGES</text>
 </svg>
