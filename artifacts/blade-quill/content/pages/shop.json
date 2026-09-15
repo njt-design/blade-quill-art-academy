@@ -37,10 +37,480 @@
             "children": [
               {
                 "type": "text",
-                "text": "Write anything here — paragraphs, lists, links, and more."
+                "text": "🎨 "
+              },
+              {
+                "type": "text",
+                "id": "YmLyZ67PZq",
+                "text": "Chibi Mini Coloring Book",
+                "bold": true
               }
             ],
             "id": "OTYBN6Zszh"
+          },
+          {
+            "type": "p",
+            "id": "TzCnOo0jcL",
+            "children": [
+              {
+                "type": "text",
+                "id": "hr6YcexBus",
+                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing, creative activity for kids—and anyone who loves to color!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "grEYfcnis2",
+            "children": [
+              {
+                "type": "text",
+                "id": "55TvRu-K0g",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "fc-zOk8xLa",
+            "children": [
+              {
+                "type": "text",
+                "id": "kDgi8Uwtx2",
+                "text": "🐶 "
+              },
+              {
+                "type": "text",
+                "id": "N31cL6T2Sd",
+                "text": "Lheeloo & Luna",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "id": "bpSr0U3bXh",
+                "text": " — Giggles, Adventures, and a Whole Lot of Naps!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "AKTBqMECB0",
+            "children": [
+              {
+                "type": "text",
+                "id": "DAjJz8MXYS",
+                "text": "Meet Lheeloo, a mischievous French Bulldog with plenty of attitude, and Luna, her tiny mouse best friend. This illustrated comic book follows the pair through a collection of funny everyday adventures, playful mischief, and, naturally, a whole lot of naps!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "36lAnyohdi",
+            "children": [
+              {
+                "type": "text",
+                "id": "cV0rqGeNf5",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "S3xbE7vOGw",
+            "children": [
+              {
+                "type": "text",
+                "id": "7MF5YkpWOf",
+                "text": "🧩 "
+              },
+              {
+                "type": "text",
+                "id": "fNzL4UyfpW",
+                "text": "Super Fun Puzzle Games for Kids — Ages 8–12",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "WYBe8sUPhK",
+            "children": [
+              {
+                "type": "text",
+                "id": "smeAtvNUPt",
+                "text": "This screen-free activity book is packed with exciting challenges designed to help boost focus, logic, observation, and problem-solving skills while keeping kids entertained and engaged.\n"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "SzWD-HkgrI",
+            "children": [
+              {
+                "type": "text",
+                "id": "j37y4Uc_XJ",
+                "text": "🧩 "
+              },
+              {
+                "type": "text",
+                "id": "l0V2Ial2oK",
+                "text": "Inside the Activity Book",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "qTe0A6xgA9",
+            "children": [
+              {
+                "type": "text",
+                "id": "Njpwg0f04g",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "Oj-Zn7jAyv",
+            "children": [
+              {
+                "type": "text",
+                "id": "CBI_UQpxIb",
+                "text": "• Word Searches"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "5PD2Em1rop",
+            "children": [
+              {
+                "type": "text",
+                "id": "RP1IiyCgLe",
+                "text": "• Word Scrambles"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "cYIwLEzerV",
+            "children": [
+              {
+                "type": "text",
+                "id": "bZ3LKWis5Y",
+                "text": "• Crossword Puzzles"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "F4RzVC5RtV",
+            "children": [
+              {
+                "type": "text",
+                "id": "h8K7N_7rZb",
+                "text": "• Coloring Pages"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "ytmLnPvZEV",
+            "children": [
+              {
+                "type": "text",
+                "id": "ZcDWmyru5E",
+                "text": "• Mazes"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "687Bc6YulX",
+            "children": [
+              {
+                "type": "text",
+                "id": "a4qfhDLEwc",
+                "text": "• Counting Games"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "eb2JXgNgHN",
+            "children": [
+              {
+                "type": "text",
+                "id": "TOslF-B781",
+                "text": "• Spot the Differences"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "Ve-1RK8al9",
+            "children": [
+              {
+                "type": "text",
+                "id": "fk2Icz2hC6",
+                "text": "• Match the Shadows"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "gQyNOEx-ga",
+            "children": [
+              {
+                "type": "text",
+                "id": "693Nd0viaz",
+                "text": "• Connect the Dots"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "bMemutkRKF",
+            "children": [
+              {
+                "type": "text",
+                "id": "1v6kxgW805",
+                "text": "• Matching Games"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "WN7GMQEG7o",
+            "children": [
+              {
+                "type": "text",
+                "id": "-Zc-rBtGoy",
+                "text": "• Which Object Doesn’t Belong?"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "rgNoDtY4cX",
+            "children": [
+              {
+                "type": "text",
+                "id": "b4WkGeBK_b",
+                "text": "• Lheeloo & Luna Cartoon Strips"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "xgFOTpu4y6",
+            "children": [
+              {
+                "type": "text",
+                "id": "4M7lxGkkr-",
+                "text": "• Trivia Questions"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "8ApHnO8F2e",
+            "children": [
+              {
+                "type": "text",
+                "id": "uBEDrUiCX_",
+                "text": "• Jokes & Giggles"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "wuhTo5YyXG",
+            "children": [
+              {
+                "type": "text",
+                "id": "coQ96SQaH9",
+                "text": "• Did You Know? Fun Facts"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "_C_gu9dzSc",
+            "children": [
+              {
+                "type": "text",
+                "id": "PQG9Bb6Y3b",
+                "text": "• True or False? Games"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "p9HZLz9L7d",
+            "children": [
+              {
+                "type": "text",
+                "id": "HnQb15VQRE",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "pojOVf3vNa",
+            "children": [
+              {
+                "type": "text",
+                "id": "t9EBwqZsZz",
+                "text": "💛 "
+              },
+              {
+                "type": "text",
+                "id": "anJtLW6ovv",
+                "text": "Meet Lheeloo & Luna",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "IOXIUg3vLi",
+            "children": [
+              {
+                "type": "text",
+                "id": "MWjZQaPNL5",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "CuOQNOSMWK",
+            "children": [
+              {
+                "type": "text",
+                "id": "-X8y71gSw2",
+                "text": "🐶 Lheeloo — the French Bulldog who is always ready to misbehave"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "P9qMbT5dtw",
+            "children": [
+              {
+                "type": "text",
+                "id": "LS7ddDWAAm",
+                "text": "🐭 Luna — her tiny mouse sidekick and best friend"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "vjjbYBmujq",
+            "children": [
+              {
+                "type": "text",
+                "id": "IT-CWFO_ZP",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "hZHM2-R2NV",
+            "children": [
+              {
+                "type": "text",
+                "id": "s8tays5wN9",
+                "text": "🧠 "
+              },
+              {
+                "type": "text",
+                "id": "WZD3E9ingU",
+                "text": "Fun With a Purpose",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "_6BMQWzVlY",
+            "children": [
+              {
+                "type": "text",
+                "id": "xJiT6oyGfX",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "KHODRfaekU",
+            "children": [
+              {
+                "type": "text",
+                "id": "q-5f6s4j6M",
+                "text": "The activity book encourages:"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "EcNVN5llvl",
+            "children": [
+              {
+                "type": "text",
+                "id": "W3C0xArkz4",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "CWnAdXkneV",
+            "children": [
+              {
+                "type": "text",
+                "id": "ctUDZtTXA3",
+                "text": "• Focus and concentration"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "DJJQo4b7TO",
+            "children": [
+              {
+                "type": "text",
+                "id": "VKR44lpx8N",
+                "text": "• Logic and problem-solving"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "vT_CebHOI2",
+            "children": [
+              {
+                "type": "text",
+                "id": "FP5m4l_czH",
+                "text": "• Observation and visual thinking"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "rcaRanbaKG",
+            "children": [
+              {
+                "type": "text",
+                "id": "0B7NWySjXx",
+                "text": "• Screen-free learning and play"
+              }
+            ]
           }
         ]
       },
