@@ -155,7 +155,7 @@ export default function AboutHeroBlock({ block }: Props) {
             ) : null}
           </div>
 
-          <Reveal>
+          <Reveal className="relative lg:self-stretch">
             {/* Mobile / tablet: single centered portrait, fluid width. */}
             <div
               className="lg:hidden flex justify-center"
@@ -182,25 +182,34 @@ export default function AboutHeroBlock({ block }: Props) {
             {/* Desktop: layered collage when accent photos exist; otherwise
                 the portrait polaroid alone fills the column. */}
             {accentCount === 0 ? (
+              /* Absolute + self-stretch: the polaroid matches the hero text
+                 column's height exactly and never extends past it. */
               <div
-                className="hidden lg:block"
+                className="hidden lg:flex absolute inset-0 items-center justify-center"
                 data-tina-field={tinaField(block, "portraitImage")}
               >
                 <Polaroid
                   rotate={2}
                   washiColor="var(--maroon)"
                   hoverStraighten
-                  style={{ width: "100%" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
                 >
-                  <ArtTile
-                    palette="warm"
-                    src={portraitSrc}
-                    alt="Corinne in the studio"
-                    width="100%"
-                    height="auto"
-                    radius={2}
-                    fit="contain"
-                  />
+                  <div className="flex-1 min-h-0">
+                    <ArtTile
+                      palette="warm"
+                      src={portraitSrc}
+                      alt="Corinne in the studio"
+                      width="100%"
+                      height="100%"
+                      radius={2}
+                      fit="contain"
+                    />
+                  </div>
                   {portraitCaption}
                 </Polaroid>
               </div>
