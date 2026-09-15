@@ -1,6 +1,5 @@
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
-import { galleryImageUrl, youtubeThumb } from "@/lib/artwork";
 import { ArtTile } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { BtnGroup } from "@/components/site/BtnGroup";
@@ -10,10 +9,6 @@ import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
-
-const DEFAULT_DESK_ART = galleryImageUrl("Japanese Girl");
-// Krita interface walkthrough — the literal "screen" from Corinne's channel.
-const DEFAULT_KRITA_SCREEN = youtubeThumb("Oe2xkeU_mV0");
 
 interface Props {
   block: Block;
@@ -30,10 +25,13 @@ export default function AboutHeroBlock({ block }: Props) {
     (block.portraitImage as string) ||
     `${import.meta.env.BASE_URL}images/about-portrait.png`;
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
-  const deskSrc = (block.deskImage as string | undefined) || DEFAULT_DESK_ART;
+  // Accent polaroids only render when the CMS provides an image —
+  // "leave blank to hide" (no gradient/default fallbacks).
+  const deskSrc = block.deskImage as string | undefined;
   const deskCaption = (block.deskCaption as string | undefined) || "from the desk";
-  const screenSrc = (block.screenImage as string | undefined) || DEFAULT_KRITA_SCREEN;
+  const screenSrc = block.screenImage as string | undefined;
   const screenCaption = (block.screenCaption as string | undefined) || "krita screen";
+  const accentCount = (deskSrc ? 1 : 0) + (screenSrc ? 1 : 0);
 
   const portraitCaption = block.portraitCaption ? (
     <div
@@ -173,7 +171,7 @@ export default function AboutHeroBlock({ block }: Props) {
                   src={portraitSrc}
                   alt="Corinne in the studio"
                   width="100%"
-                  height={300}
+                  height="auto"
                   radius={2}
                   fit="contain"
                 />
@@ -181,90 +179,130 @@ export default function AboutHeroBlock({ block }: Props) {
               </Polaroid>
             </div>
 
-            {/* Desktop: layered collage. */}
-            <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
+            {/* Desktop: layered collage when accent photos exist; otherwise
+                the portrait polaroid alone fills the column. */}
+            {accentCount === 0 ? (
               <div
+                className="hidden lg:block"
                 data-tina-field={tinaField(block, "portraitImage")}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 30,
-                  zIndex: 3,
-                  width: 280,
-                }}
               >
-                <Polaroid rotate={4} washiColor="var(--maroon)" hoverStraighten>
+                <Polaroid
+                  rotate={2}
+                  washiColor="var(--maroon)"
+                  hoverStraighten
+                  style={{ width: "100%" }}
+                >
                   <ArtTile
                     palette="warm"
                     src={portraitSrc}
                     alt="Corinne in the studio"
                     width="100%"
-                    height={320}
+                    height="auto"
                     radius={2}
                     fit="contain"
                   />
                   {portraitCaption}
                 </Polaroid>
               </div>
-              <div
-                data-tina-field={tinaField(block, "deskImage")}
-                style={{
-                  position: "absolute",
-                  top: 80,
-                  left: 0,
-                  zIndex: 2,
-                  width: 220,
-                }}
-              >
-                <Polaroid rotate={-6} washiColor="var(--taupe)" hoverStraighten>
-                  <ArtTile
-                    palette="violet"
-                    width="100%"
-                    height={240}
-                    src={deskSrc}
-                    alt={deskCaption}
-                    label={deskCaption}
-                    radius={2}
-                    fit="contain"
-                  />
-                </Polaroid>
+            ) : (
+              <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
                 <div
-                  className="sr-only"
-                  data-tina-field={tinaField(block, "deskCaption")}
+                  data-tina-field={tinaField(block, "portraitImage")}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 30,
+                    zIndex: 3,
+                    width: accentCount === 2 ? 280 : 330,
+                  }}
                 >
-                  {deskCaption}
+                  <Polaroid rotate={4} washiColor="var(--maroon)" hoverStraighten>
+                    <ArtTile
+                      palette="warm"
+                      src={portraitSrc}
+                      alt="Corinne in the studio"
+                      width="100%"
+                      height={accentCount === 2 ? 320 : 380}
+                      radius={2}
+                      fit="contain"
+                    />
+                    {portraitCaption}
+                  </Polaroid>
                 </div>
+                {deskSrc ? (
+                  <div
+                    data-tina-field={tinaField(block, "deskImage")}
+                    style={{
+                      position: "absolute",
+                      top: screenSrc ? 80 : 150,
+                      left: 0,
+                      zIndex: 2,
+                      width: screenSrc ? 220 : 250,
+                    }}
+                  >
+                    <Polaroid rotate={-6} washiColor="var(--taupe)" hoverStraighten>
+                      <ArtTile
+                        palette="violet"
+                        width="100%"
+                        height={screenSrc ? 240 : 270}
+                        src={deskSrc}
+                        alt={deskCaption}
+                        label={deskCaption}
+                        radius={2}
+                        fit="contain"
+                      />
+                    </Polaroid>
+                    <div
+                      className="sr-only"
+                      data-tina-field={tinaField(block, "deskCaption")}
+                    >
+                      {deskCaption}
+                    </div>
+                  </div>
+                ) : null}
+                {screenSrc ? (
+                  <div
+                    data-tina-field={tinaField(block, "screenImage")}
+                    style={
+                      deskSrc
+                        ? {
+                            position: "absolute",
+                            bottom: 0,
+                            right: 60,
+                            zIndex: 1,
+                            width: 200,
+                          }
+                        : {
+                            position: "absolute",
+                            top: 150,
+                            left: 0,
+                            zIndex: 2,
+                            width: 250,
+                          }
+                    }
+                  >
+                    <Polaroid rotate={5} washiColor="var(--gold)" hoverStraighten>
+                      <ArtTile
+                        palette="rose"
+                        width="100%"
+                        height={deskSrc ? 200 : 270}
+                        src={screenSrc}
+                        alt={screenCaption}
+                        label={screenCaption}
+                        radius={2}
+                        fit="contain"
+                      />
+                    </Polaroid>
+                    <div
+                      className="sr-only"
+                      data-tina-field={tinaField(block, "screenCaption")}
+                    >
+                      {screenCaption}
+                    </div>
+                  </div>
+                ) : null}
               </div>
-              <div
-                data-tina-field={tinaField(block, "screenImage")}
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  right: 60,
-                  zIndex: 1,
-                  width: 200,
-                }}
-              >
-                <Polaroid rotate={5} washiColor="var(--gold)" hoverStraighten>
-                  <ArtTile
-                    palette="rose"
-                    width="100%"
-                    height={200}
-                    src={screenSrc}
-                    alt={screenCaption}
-                    label={screenCaption}
-                    radius={2}
-                    fit="contain"
-                  />
-                </Polaroid>
-                <div
-                  className="sr-only"
-                  data-tina-field={tinaField(block, "screenCaption")}
-                >
-                  {screenCaption}
-                </div>
-              </div>
-            </div>
+            )}
           </Reveal>
         </div>
       </div>
