@@ -24,6 +24,11 @@
     {
       "artworks": [
         {
+          "title": "Chibi Ninja Girl",
+          "image": "/images/squarespace/digital-paintings/chibi-ninja-girl.png",
+          "description": "A fierce chibi kunoichi with throwing stars"
+        },
+        {
           "title": "Lheeloo & Luna",
           "image": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg",
           "description": "Lheeloo the French Bulldog and Luna the mouse",
@@ -75,11 +80,6 @@
           "title": "Chibi Ninja Man",
           "image": "/images/squarespace/digital-paintings/chibi-ninja-man.png",
           "description": "A stealthy chibi ninja warrior"
-        },
-        {
-          "title": "Chibi Ninja Girl",
-          "image": "/images/squarespace/digital-paintings/chibi-ninja-girl.png",
-          "description": "A fierce chibi kunoichi with throwing stars"
         },
         {
           "title": "Geisha",
