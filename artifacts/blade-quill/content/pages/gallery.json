@@ -133,6 +133,18 @@
           "title": "Landscape",
           "image": "/images/squarespace/digital-paintings/landscape.jpg",
           "description": "A serene digital landscape painting"
+        },
+        {
+          "title": "New artwork",
+          "image": "/images/Lheeloo-and-Luna_First-draft.jpg",
+          "description": "",
+          "downloadFile": ""
+        },
+        {
+          "title": "New artwork",
+          "image": "",
+          "description": "",
+          "downloadFile": ""
         }
       ],
       "emptyHeading": "Gallery is empty",
