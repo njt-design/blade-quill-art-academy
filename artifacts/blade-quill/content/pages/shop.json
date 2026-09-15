@@ -138,7 +138,18 @@
               {
                 "type": "text",
                 "id": "smeAtvNUPt",
-                "text": "This screen-free activity book is packed with exciting challenges designed to help boost focus, logic, observation, and problem-solving skills while keeping kids entertained and engaged.\n"
+                "text": "This screen-free activity book is packed with exciting challenges designed to help boost focus, logic, observation, and problem-solving skills while keeping kids entertained and engaged."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "qtex7sIp8B",
+            "children": [
+              {
+                "type": "text",
+                "id": "SKyJQtFMx2",
+                "text": ""
               }
             ]
           },
