@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "NEW!",
-      "heading": "Super fun E-book\nBundle!",
+      "heading": "3-book, E-book\nBundle!",
       "subheading": {
         "type": "root",
         "children": [
@@ -26,6 +26,25 @@
       "ctaPrimary": "Buy on Gumroad",
       "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/einoxf?layout=profile",
       "_template": "heroSplitImage"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write anything here — paragraphs, lists, links, and more."
+              }
+            ],
+            "id": "OTYBN6Zszh"
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
