@@ -14,11 +14,21 @@
           {
             "children": [
               {
-                "text": "Color, Laugh and Play"
+                "text": "Color, Laugh and Play",
+                "bold": true
+              }
+            ],
+            "type": "h1",
+            "id": "xfuAZOAgVO"
+          },
+          {
+            "children": [
+              {
+                "text": ""
               }
             ],
             "type": "p",
-            "id": "xfuAZOAgVO"
+            "id": "290KOijkAP"
           }
         ]
       },
