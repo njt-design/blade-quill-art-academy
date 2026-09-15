@@ -522,6 +522,47 @@
                 "text": "• Screen-free learning and play"
               }
             ]
+          },
+          {
+            "type": "p",
+            "id": "Z9j8Gt0n4D",
+            "children": [
+              {
+                "type": "text",
+                "id": "M0IDnWLO_-",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "id": "XwtgvGQnQi",
+            "children": [
+              {
+                "text": "\"Best thing I've given my kids as a "
+              },
+              {
+                "type": "break",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "id": "8bi2D1ZjN9"
+              },
+              {
+                "text": "non-tablet activity in a long time!"
+              }
+            ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "Ehkq5Dp9hw"
           }
         ]
       },
