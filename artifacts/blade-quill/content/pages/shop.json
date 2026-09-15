@@ -6,7 +6,7 @@
       "eyebrow": "NEW Digital Download",
       "heading": "Super Fun Bundle  \nColoring pages | Cartoons | Puzzle Games ",
       "image": "/images/Gumroad-sales-image-1920-1080px.png",
-      "caption": "Color, Laugh and Play",
+      "caption": "",
       "aspect": "landscape",
       "body": {
         "type": "root",
@@ -14,7 +14,7 @@
           {
             "children": [
               {
-                "text": ""
+                "text": "Color, Laugh and Play"
               }
             ],
             "type": "p",
