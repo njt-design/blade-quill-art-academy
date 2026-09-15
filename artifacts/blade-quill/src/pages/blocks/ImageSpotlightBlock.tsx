@@ -53,18 +53,20 @@ export default function ImageSpotlightBlock({ block }: Props) {
         <Reveal>
           <div data-tina-field={tinaField(block, "image")}>
             <Polaroid rotate={1} washiColor="var(--gold-deep)" hoverStraighten>
-              <div className={`overflow-hidden ${ASPECT_CLASS[aspect] ?? ASPECT_CLASS.landscape} img-fit-wrap bg-[var(--paper-3)]`}>
-                {block.image ? (
-                  <img
-                    src={block.image as string}
-                    alt={(block.alt as string) || "Spotlight image"}
-                    className="img-fit"
-                    loading="lazy"
-                  />
-                ) : (
-                  <ArtTile palette="moss" width="100%" height={280} radius={2} />
-                )}
-              </div>
+              {block.image ? (
+                /* Frame hugs the image — natural aspect, no letterboxing. */
+                <img
+                  src={block.image as string}
+                  alt={(block.alt as string) || "Spotlight image"}
+                  className="block w-full h-auto"
+                  style={{ borderRadius: 2 }}
+                  loading="lazy"
+                />
+              ) : (
+                <div className={`overflow-hidden ${ASPECT_CLASS[aspect] ?? ASPECT_CLASS.landscape}`}>
+                  <ArtTile palette="moss" width="100%" height="100%" radius={2} />
+                </div>
+              )}
               {block.caption ? (
                 <div className="mt-3 text-center" style={captionStyle} data-tina-field={tinaField(block, "caption")}>
                   {block.caption as string}

@@ -23,7 +23,7 @@ function ImageCell({
     <ArtTile
       palette="warm"
       width="100%"
-      height={320}
+      height={style === "polaroid" ? "auto" : 320}
       src={image.src}
       alt={image.alt || image.caption || "Artwork"}
       radius={style === "rounded" ? 12 : 2}

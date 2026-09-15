@@ -155,7 +155,7 @@ export default function AboutHeroBlock({ block }: Props) {
             ) : null}
           </div>
 
-          <Reveal className={accentCount === 0 ? "self-stretch min-h-0" : undefined}>
+          <Reveal>
             {/* Mobile / tablet: single centered portrait, fluid width. */}
             <div
               className="lg:hidden flex justify-center"
@@ -182,51 +182,33 @@ export default function AboutHeroBlock({ block }: Props) {
             {/* Desktop: layered collage when accent photos exist; otherwise
                 the portrait polaroid alone fills the column. */}
             {accentCount === 0 ? (
-              /* The polaroid is height-capped to the text column: the cell
-                 stretches (self-stretch on Reveal), and the absolutely
-                 positioned inner box keeps the image from adding height of
-                 its own — it can only shrink to fit. */
+              /* Solo portrait: the frame shrink-wraps the image (fit-content),
+                 and a viewport-based cap keeps it from towering over the
+                 hero text. No fixed tile height — no letterbox bars. */
               <div
-                className="relative hidden lg:block h-full"
+                className="hidden lg:flex justify-center"
                 data-tina-field={tinaField(block, "portraitImage")}
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Polaroid
-                    rotate={2}
-                    washiColor="var(--maroon)"
-                    hoverStraighten
+                <Polaroid
+                  rotate={2}
+                  washiColor="var(--maroon)"
+                  hoverStraighten
+                  style={{ width: "fit-content", maxWidth: "100%" }}
+                >
+                  <img
+                    src={portraitSrc}
+                    alt="Corinne in the studio"
                     style={{
+                      display: "block",
+                      width: "auto",
+                      height: "auto",
                       maxWidth: "100%",
-                      maxHeight: "100%",
-                      display: "flex",
-                      flexDirection: "column",
+                      maxHeight: "min(56vh, 500px)",
+                      borderRadius: 2,
                     }}
-                  >
-                    <div
-                      style={{
-                        flex: "1 1 auto",
-                        minHeight: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img
-                        src={portraitSrc}
-                        alt="Corinne in the studio"
-                        style={{
-                          maxWidth: "100%",
-                          maxHeight: "100%",
-                          width: "auto",
-                          height: "auto",
-                          objectFit: "contain",
-                          borderRadius: 2,
-                        }}
-                      />
-                    </div>
-                    {portraitCaption}
-                  </Polaroid>
-                </div>
+                  />
+                  {portraitCaption}
+                </Polaroid>
               </div>
             ) : (
               <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
@@ -246,7 +228,7 @@ export default function AboutHeroBlock({ block }: Props) {
                       src={portraitSrc}
                       alt="Corinne in the studio"
                       width="100%"
-                      height={accentCount === 2 ? 320 : 380}
+                      height="auto"
                       radius={2}
                       fit="contain"
                     />
@@ -268,7 +250,7 @@ export default function AboutHeroBlock({ block }: Props) {
                       <ArtTile
                         palette="violet"
                         width="100%"
-                        height={screenSrc ? 240 : 270}
+                        height="auto"
                         src={deskSrc}
                         alt={deskCaption}
                         label={deskCaption}
@@ -309,7 +291,7 @@ export default function AboutHeroBlock({ block }: Props) {
                       <ArtTile
                         palette="rose"
                         width="100%"
-                        height={deskSrc ? 200 : 270}
+                        height="auto"
                         src={screenSrc}
                         alt={screenCaption}
                         label={screenCaption}

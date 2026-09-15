@@ -109,7 +109,7 @@ export default function StoryBlock({ block }: Props) {
               <ArtTile
                 palette="moss"
                 width="100%"
-                height={240}
+                height="auto"
                 src={(block.sideImage as string | undefined) || STUDIO_ART}
                 alt="Digital landscape painting"
                 radius={2}

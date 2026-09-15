@@ -79,7 +79,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                   <ArtTile
                     palette="rose"
                     width={180}
-                    height={130}
+                    height="auto"
                     src={BOOK_SPREAD_SRC}
                     alt="Inside the book — puzzles and activities"
                     label="spread"
@@ -91,7 +91,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                   <ArtTile
                     palette="violet"
                     width={180}
-                    height={130}
+                    height="auto"
                     src={BOOK_CHARACTER_SRC}
                     alt="Chibi of the Sea character art"
                     label="character"

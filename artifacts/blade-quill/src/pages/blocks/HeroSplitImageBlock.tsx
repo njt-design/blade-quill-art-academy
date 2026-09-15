@@ -33,7 +33,7 @@ export default function HeroSplitImageBlock({ block }: Props) {
           <ArtTile
             palette="warm"
             width="100%"
-            height={420}
+            height={block.featuredImage ? "auto" : 420}
             src={block.featuredImage as string | undefined}
             alt={(block.imageAlt as string) || "Featured artwork"}
             radius={2}
