@@ -28,6 +28,28 @@
       "_template": "heroSplitImage"
     },
     {
+      "eyebrow": "NEW",
+      "heading": "3-book, E-book Bundle!",
+      "image": "/images/Gumroad-sales-image-1920-1080px.png",
+      "caption": "Color, Laugh and Play",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "ug06M8GY_n"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
+    },
+    {
       "heading": "",
       "body": {
         "type": "root",
@@ -567,28 +589,6 @@
         ]
       },
       "_template": "text"
-    },
-    {
-      "eyebrow": "Featured",
-      "heading": "One piece,\nfront and center",
-      "image": "/images/Gumroad-sales-image-1920-1080px.png",
-      "caption": "A single large image with room to breathe.",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "ug06M8GY_n"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
     }
   ]
 }
