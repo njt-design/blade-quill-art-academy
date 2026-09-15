@@ -1158,7 +1158,7 @@ const BRAND: DesignSystemEntry[] = [
       usage:
         "Developers: any artwork slot without a confirmed asset should be an ArtTile so empty states stay on-brand.",
       notes: [
-        "Images are cropped to fill (object-cover) — keep subjects centered.",
+        "Images crop to fill (object-cover) by default — keep subjects centered. Inside polaroids, pass fit=\"contain\" so the full image shows, letterboxed on paper.",
         "All ArtTile images lazy-load automatically.",
       ],
     },

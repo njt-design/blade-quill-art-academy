@@ -7,14 +7,14 @@ export default function PolaroidDemo() {
         <img
           src="/images/squarespace/digital-paintings/gnome.jpg"
           alt="Gnome painting"
-          className="block w-[180px] h-[180px] object-cover"
+          className="block w-[180px] h-[180px] object-contain bg-[var(--paper-3)]"
         />
       </Polaroid>
       <Polaroid caption="no washi tape" rotate={2} washi={false}>
         <img
           src="/images/squarespace/digital-paintings/geisha.jpg"
           alt="Geisha painting"
-          className="block w-[180px] h-[180px] object-cover"
+          className="block w-[180px] h-[180px] object-contain bg-[var(--paper-3)]"
         />
       </Polaroid>
     </div>
