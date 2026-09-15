@@ -567,6 +567,33 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "eyebrow": "Portfolio",
+      "heading": "Art that floats\noff the page",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Scatter up to six images around the headline — like the homepage hero, but fully editable."
+              }
+            ],
+            "id": "r383DbgVGC"
+          }
+        ]
+      },
+      "images": [
+        {
+          "src": "/images/Gumroad-sales-image-1920-1080px.png"
+        }
+      ],
+      "ctaPrimary": "View Gallery",
+      "ctaPrimaryLink": "/gallery",
+      "_template": "heroFloatingImages"
     }
   ]
 }
