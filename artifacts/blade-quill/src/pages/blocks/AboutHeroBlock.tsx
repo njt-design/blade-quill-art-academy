@@ -175,6 +175,7 @@ export default function AboutHeroBlock({ block }: Props) {
                   width="100%"
                   height={300}
                   radius={2}
+                  fit="contain"
                 />
                 {portraitCaption}
               </Polaroid>
@@ -200,6 +201,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     width="100%"
                     height={320}
                     radius={2}
+                    fit="contain"
                   />
                   {portraitCaption}
                 </Polaroid>
@@ -223,6 +225,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     alt={deskCaption}
                     label={deskCaption}
                     radius={2}
+                    fit="contain"
                   />
                 </Polaroid>
                 <div
@@ -251,6 +254,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     alt={screenCaption}
                     label={screenCaption}
                     radius={2}
+                    fit="contain"
                   />
                 </Polaroid>
                 <div

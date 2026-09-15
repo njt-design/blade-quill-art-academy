@@ -27,6 +27,7 @@ function ImageCell({
       src={image.src}
       alt={image.alt || image.caption || "Artwork"}
       radius={style === "rounded" ? 12 : 2}
+      fit={style === "polaroid" ? "contain" : "cover"}
     />
   );
 

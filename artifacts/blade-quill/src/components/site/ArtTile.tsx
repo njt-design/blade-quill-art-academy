@@ -40,6 +40,12 @@ interface ArtTileProps {
   radius?: number;
   /** Lift, straighten, zoom media, and shine on hover (hero floating tiles). */
   interactive?: boolean;
+  /**
+   * How the image fills the tile. "cover" (default) crops to fill;
+   * "contain" shows the whole image, letterboxed on a paper background —
+   * use inside polaroids so edges never get cut off.
+   */
+  fit?: "cover" | "contain";
 }
 
 const POSITION_KEYS = [
@@ -87,6 +93,7 @@ export function ArtTile({
   style,
   radius = 8,
   interactive,
+  fit = "cover",
 }: ArtTileProps) {
   const rot = rotate ? `${rotate}deg` : "0deg";
   const labelColor =
@@ -95,7 +102,11 @@ export function ArtTile({
   const tileFaceStyle = {
     width: interactive ? "100%" : width,
     height: interactive ? "100%" : height,
-    background: src ? undefined : PALETTES[palette],
+    background: src
+      ? fit === "contain"
+        ? "var(--paper-3)"
+        : undefined
+      : PALETTES[palette],
     borderRadius: radius,
     position: "relative",
     overflow: "hidden",
@@ -113,7 +124,10 @@ export function ArtTile({
           src={src}
           alt={alt ?? label ?? ""}
           loading="lazy"
-          className="art-tile-media w-full h-full object-cover"
+          className={cn(
+            "art-tile-media w-full h-full",
+            fit === "contain" ? "object-contain" : "object-cover",
+          )}
         />
       )}
       {label && (

@@ -113,6 +113,7 @@ export default function StoryBlock({ block }: Props) {
                 src={(block.sideImage as string | undefined) || STUDIO_ART}
                 alt="Digital landscape painting"
                 radius={2}
+                fit="contain"
               />
               {block.sideCaption ? (
                 <div

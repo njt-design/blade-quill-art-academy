@@ -84,6 +84,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                     alt="Inside the book — puzzles and activities"
                     label="spread"
                     radius={2}
+                    fit="contain"
                   />
                 </Polaroid>
                 <Polaroid rotate={-4} washi={false}>
@@ -95,6 +96,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                     alt="Chibi of the Sea character art"
                     label="character"
                     radius={2}
+                    fit="contain"
                   />
                 </Polaroid>
               </div>
