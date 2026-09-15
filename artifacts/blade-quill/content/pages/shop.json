@@ -14,110 +14,11 @@
           {
             "children": [
               {
-                "text": "✨ What’s Included in the Bundle"
+                "text": ""
               }
             ],
             "type": "p",
-            "id": "ug06M8GY_n"
-          },
-          {
-            "type": "p",
-            "id": "VgAAHddS-z",
-            "children": [
-              {
-                "text": "Three printable books, one fun-filled bundle!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "mr-XXDjRyR",
-            "children": [
-              {
-                "text": "This digital bundle includes coloring, comics, puzzles, games, trivia, jokes, and plenty of silly adventures for hours of screen-free fun."
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "QZvz4QwM7j",
-            "children": [
-              {
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "L78hlzF3NT",
-            "children": [
-              {
-                "text": "🎨 Chibi Mini Coloring Book"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "gY1IUWSTGI",
-            "children": [
-              {
-                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing, creative activity for kids—and anyone who loves to color!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "70jJXaydQY",
-            "children": [
-              {
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "_Ydk4QR83z",
-            "children": [
-              {
-                "text": "🐶 Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "2-BPNyHV9l",
-            "children": [
-              {
-                "text": "Meet Lheeloo, a mischievous French Bulldog with plenty of attitude, and Luna, her tiny mouse best friend. This illustrated comic book follows the pair through a collection of funny everyday adventures, playful mischief, and, naturally, a whole lot of naps!"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "ffIpm2kmiG",
-            "children": [
-              {
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "lXuFerPJGi",
-            "children": [
-              {
-                "text": "🧩 Super Fun Puzzle Games for Kids — Ages 8–12"
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "ns-YZZLyWv",
-            "children": [
-              {
-                "text": "This screen-free activity book is packed with exciting challenges designed to help boost focus, logic, observation, and problem-solving skills while keeping kids entertained and engaged."
-              }
-            ]
+            "id": "xfuAZOAgVO"
           }
         ]
       },
@@ -144,6 +45,24 @@
         ]
       },
       "_template": "imageSpotlight"
+    },
+    {
+      "heading": "Section heading",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write anything here — paragraphs, lists, links, and more."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
