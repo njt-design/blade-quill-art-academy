@@ -183,6 +183,35 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "eyebrow": "",
+      "heading": "",
+      "image": "/images/PNG%20Images%20Only/Module-6-A+-content-for-module.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "OLcSePTisD"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
+    },
+    {
+      "eyebrow": "Featured",
+      "heading": "One piece,\nfront and center",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "_template": "imageSpotlight"
     }
   ]
 }
