@@ -1,0 +1,47 @@
+---
+description: How to size images inside Polaroid frames — frame hugs the image, never crop or letterbox
+globs: artifacts/blade-quill/src/**/*.tsx
+alwaysApply: false
+---
+
+# Polaroid Image Handling
+
+A `Polaroid` must look like a real polaroid: its white border (the component's
+own ~14px padding, 18px bottom) hugs the photo on all sides, in a square-ish
+shape that follows the image.
+
+## Rules
+
+- **Never give a fixed height to an image inside a Polaroid.** Fixed height +
+  `object-cover` crops the edges; fixed height + `object-contain` letterboxes
+  with visible backdrop bars that read as a giant misshapen frame. Both are wrong.
+- Render polaroid images at **natural aspect ratio**: `width: 100%` (or a fixed
+  width) with `height: "auto"` on `ArtTile`, or `className="block w-full h-auto"`
+  on a raw `<img>`.
+- If the polaroid's height must be capped (e.g. next to hero text), keep the
+  frame shrink-wrapped: `width: "fit-content"` on the Polaroid and
+  `maxHeight: min(56vh, 500px)` (with `width/height: auto`) on the `<img>` —
+  the image scales down proportionally and the frame keeps hugging it.
+- Fixed heights and `object-cover` are fine **outside** polaroids (product
+  cards, tutorial thumbs, hero collage tiles) and for gradient **placeholder**
+  `ArtTile`s with no `src`.
+
+## Examples
+
+```tsx
+// ❌ BAD — crops edges (cover) or letterboxes (contain)
+<Polaroid><ArtTile src={src} width="100%" height={320} /></Polaroid>
+
+// ✅ GOOD — frame hugs the image
+<Polaroid><ArtTile src={src} width="100%" height="auto" fit="contain" /></Polaroid>
+
+// ✅ GOOD — hugging frame with a height cap
+<Polaroid style={{ width: "fit-content", maxWidth: "100%" }}>
+  <img src={src} style={{ display: "block", width: "auto", height: "auto",
+    maxWidth: "100%", maxHeight: "min(56vh, 500px)" }} />
+</Polaroid>
+```
+
+Empty-state rule: accent polaroids with no CMS image are hidden entirely
+(no gradient fallback), and the remaining polaroid scales up to use the space
+(see `AboutHeroBlock`).
