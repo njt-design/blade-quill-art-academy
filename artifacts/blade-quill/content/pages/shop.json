@@ -569,31 +569,26 @@
       "_template": "text"
     },
     {
-      "eyebrow": "Portfolio",
-      "heading": "Art that floats\noff the page",
-      "subheading": {
+      "eyebrow": "Featured",
+      "heading": "One piece,\nfront and center",
+      "image": "/images/Gumroad-sales-image-1920-1080px.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "Scatter up to six images around the headline — like the homepage hero, but fully editable."
+                "text": ""
               }
             ],
-            "id": "r383DbgVGC"
+            "type": "p",
+            "id": "ug06M8GY_n"
           }
         ]
       },
-      "images": [
-        {
-          "src": "/images/Gumroad-sales-image-1920-1080px.png"
-        }
-      ],
-      "ctaPrimary": "View Gallery",
-      "ctaPrimaryLink": "/gallery",
-      "_template": "heroFloatingImages"
+      "_template": "imageSpotlight"
     }
   ]
 }
