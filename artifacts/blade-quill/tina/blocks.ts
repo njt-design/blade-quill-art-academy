@@ -2,14 +2,15 @@ import type { Template, TinaField } from "tinacms";
 import { manageListField } from "./manage-list";
 
 /**
- * Inline "Link" embed — Corinne inserts via Embed → Link, then toggles
- * "Open in new tab". New-tab links render with a ↗ arrow on the site.
- * (Tina's built-in link control has no target/_blank option.)
+ * Inline "Link" embed — the explicit-control version of a link. The normal
+ * way to link is the toolbar Link button (select words → Link → paste URL);
+ * the site opens off-site URLs in a new tab automatically. This embed is for
+ * the odd case where Corinne needs to force the new-tab behaviour on or off.
  */
 export const RICH_TEXT_TEMPLATES = [
   {
     name: "ContentLink",
-    label: "Link",
+    label: "Link (advanced)",
     inline: true,
     fields: [
       {
@@ -35,7 +36,7 @@ export const RICH_TEXT_TEMPLATES = [
         label: "Open in new tab",
         ui: {
           description:
-            "Turn on for external sites or PDFs. Shows a small ↗ after the link text.",
+            "Force the link to open in a new tab (shows a small ↗). Tip: for everyday links just use the toolbar Link button — off-site links open in a new tab on their own.",
         },
       },
     ],
@@ -49,10 +50,54 @@ export const RICH_TEXT_TEMPLATES = [
   },
 ];
 
-export const INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "embed", "ul", "ol"] as Array<
-    "bold" | "italic" | "embed" | "ul" | "ol"
-  >,
+/** The `overrides` shape Tina accepts on a rich-text field (toolbar, headingLevels…). */
+type RichTextOverrides = NonNullable<
+  Extract<TinaField, { type: "rich-text" }>["overrides"]
+>;
+
+/**
+ * Toolbar for short copy — subheadings, card descriptions, callouts.
+ * Formatting only: no headings, images, or tables, because these fields
+ * render inside tight layouts where block-level content would break them.
+ * Order here = order of the buttons in the editor.
+ */
+export const INLINE_RICH_TEXT: RichTextOverrides = {
+  toolbar: [
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "ul",
+    "ol",
+    "embed",
+  ],
+  showFloatingToolbar: true,
+};
+
+/**
+ * Toolbar for long-form copy — Text section bodies, product descriptions.
+ * Adds structure (headings, quotes, dividers, tables, images). Headings are
+ * limited to H2–H4 because the page/post title already owns the H1 slot.
+ * Deliberately left out: inline code, code blocks, mermaid, raw markdown.
+ */
+export const BODY_RICH_TEXT: RichTextOverrides = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "image",
+    "quote",
+    "hr",
+    "table",
+    "ul",
+    "ol",
+    "embed",
+  ],
+  headingLevels: ["h2", "h3", "h4"],
   showFloatingToolbar: true,
 };
 
@@ -287,23 +332,10 @@ export const textBlock: Template = {
       label: "Body",
       parser: SLATE_JSON_PARSER,
       templates: RICH_TEXT_TEMPLATES,
-      overrides: {
-        toolbar: [
-          "heading",
-          "bold",
-          "italic",
-          "embed",
-          "ul",
-          "ol",
-          "quote",
-          "code",
-          "image",
-        ],
-        showFloatingToolbar: true,
-      },
+      overrides: BODY_RICH_TEXT,
       ui: {
         description:
-          "Rich text content. To add a link: Embed → Link. Toggle Open in new tab for external sites (shows ↗).",
+          "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. To link, select the words and click the Link button — off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists.",
       },
     },
     ...textStyleFields(),

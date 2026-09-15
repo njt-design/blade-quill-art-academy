@@ -43,22 +43,39 @@ export function corePageRoute(basename: string): string {
   return `/${base}`;
 }
 
+/**
+ * Core pages a New Page can live under (its `parent` field → URL prefix).
+ * Must stay in sync with PARENT_PAGE_SLUGS in src/lib/page-queries.ts.
+ */
+const PARENT_PAGE_SLUGS = [
+  "shop",
+  "gallery",
+  "downloads",
+  "education",
+  "publishers",
+  "about",
+  "contact",
+];
+
 /** Live URL path for a document, from its content folder + file name. */
-function liveUrlPath(folder: string, slug: string): string | null {
+function liveUrlPath(folder: string, slug: string, parent?: unknown): string | null {
   if (!slug) return null;
   if (folder === "posts") return `/blog/${slug}`;
   if (folder === "products") return `/shop/${slug}`;
   if (folder === "pages") {
-    return CORE_PAGE_SLUGS.includes(slug) ? corePageRoute(slug) : `/p/${slug}`;
+    if (CORE_PAGE_SLUGS.includes(slug)) return corePageRoute(slug);
+    return typeof parent === "string" && PARENT_PAGE_SLUGS.includes(parent)
+      ? `/${parent}/${slug}`
+      : `/p/${slug}`;
   }
   return null;
 }
 
 /** Derive the live URL from a Tina form id like "content/posts/my-post.json". */
-function docUrlPath(formId: string): string | null {
+function docUrlPath(formId: string, parent?: unknown): string | null {
   const match = /content\/(pages|posts|products)\/(.+?)\.json$/i.exec(formId);
   if (!match) return null;
-  return liveUrlPath(match[1], match[2]);
+  return liveUrlPath(match[1], match[2], parent);
 }
 
 // ---------------------------------------------------------------------------
@@ -74,6 +91,7 @@ const SKIP_KEYS = new Set([
   "icon",
   "variant",
   "layout",
+  "parent",
   "align",
   "platform",
   "tone",
@@ -160,6 +178,10 @@ interface AssistantProps {
   form?: {
     change?: (name: string, value: unknown) => void;
     getState?: () => { values?: Record<string, unknown> };
+    subscribe?: (
+      listener: (state: { values?: Record<string, unknown> }) => void,
+      subscription: { values: boolean }
+    ) => () => void;
   };
   tinaForm?: {
     id?: string;
@@ -179,7 +201,6 @@ function makeSeoAssistant(kind: SeoKind) {
         ? props.form
         : props?.tinaForm?.finalForm;
     const formId = typeof props?.tinaForm?.id === "string" ? props.tinaForm.id : "";
-    const urlPath = docUrlPath(formId);
 
     const [status, setStatus] = React.useState<AssistantStatus>("idle");
     const [message, setMessage] = React.useState("");
@@ -189,6 +210,18 @@ function makeSeoAssistant(kind: SeoKind) {
       (): Record<string, unknown> => finalForm?.getState?.()?.values ?? {},
       [finalForm]
     );
+
+    // New Pages: the "Lives Under" choice changes the web address, so keep
+    // the displayed URL in step with the form value.
+    const [parent, setParent] = React.useState<unknown>(() => getValues().parent);
+    React.useEffect(() => {
+      if (!finalForm?.subscribe) return;
+      return finalForm.subscribe(
+        (state) => setParent(state?.values?.parent),
+        { values: true }
+      );
+    }, [finalForm]);
+    const urlPath = docUrlPath(formId, parent);
 
     const generate = React.useCallback(async () => {
       const values = getValues();

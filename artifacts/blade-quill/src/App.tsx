@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Redirect, Router as WouterRouter } from "wouter";
+import { getNestedPageRoutes, getPagePath } from "@/lib/page-content";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,6 +27,19 @@ import Guide from "@/pages/Guide";
 import LegalDocument from "@/pages/LegalDocument";
 import { PRIVACY_POLICY, TERMS_OF_USE } from "@/lib/legal";
 import NotFound from "@/pages/not-found";
+
+/** New Pages that live under a core page (from each page's "Lives Under" field). */
+const NESTED_PAGE_ROUTES = getNestedPageRoutes();
+
+/**
+ * /p/:slug stays the fallback address for every New Page. If the page has
+ * been given a parent, send visitors on to its real address instead.
+ */
+function NewPageRoute({ slug }: { slug: string }) {
+  const canonical = getPagePath(slug);
+  if (!canonical.startsWith("/p/")) return <Redirect to={canonical} replace />;
+  return <Page slug={slug} chrome="auto" />;
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -100,8 +114,13 @@ function Router() {
         <Page slug="important-links" chrome="auto" />
       </Route>
       {/* Client-created pages choose their own layout (standard/standalone). */}
+      {NESTED_PAGE_ROUTES.map(({ path, slug }) => (
+        <Route key={path} path={path}>
+          <Page slug={slug} chrome="auto" />
+        </Route>
+      ))}
       <Route path="/p/:slug">
-        {(params) => <Page slug={params.slug} chrome="auto" />}
+        {(params) => <NewPageRoute slug={params.slug} />}
       </Route>
       <Route path="/preview/nav-dropdowns" component={NavDropdownMockups} />
       <Route path="/preview/:slug" component={MockupHomePreview} />

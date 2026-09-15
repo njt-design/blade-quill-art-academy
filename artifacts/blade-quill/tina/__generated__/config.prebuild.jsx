@@ -97,7 +97,7 @@ function manageListField(kind) {
 var RICH_TEXT_TEMPLATES = [
   {
     name: "ContentLink",
-    label: "Link",
+    label: "Link (advanced)",
     inline: true,
     fields: [
       {
@@ -121,7 +121,7 @@ var RICH_TEXT_TEMPLATES = [
         name: "openInNewTab",
         label: "Open in new tab",
         ui: {
-          description: "Turn on for external sites or PDFs. Shows a small \u2197 after the link text."
+          description: "Force the link to open in a new tab (shows a small \u2197). Tip: for everyday links just use the toolbar Link button \u2014 off-site links open in a new tab on their own."
         }
       }
     ],
@@ -135,7 +135,35 @@ var RICH_TEXT_TEMPLATES = [
   }
 ];
 var INLINE_RICH_TEXT = {
-  toolbar: ["bold", "italic", "embed", "ul", "ol"],
+  toolbar: [
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "ul",
+    "ol",
+    "embed"
+  ],
+  showFloatingToolbar: true
+};
+var BODY_RICH_TEXT = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "image",
+    "quote",
+    "hr",
+    "table",
+    "ul",
+    "ol",
+    "embed"
+  ],
+  headingLevels: ["h2", "h3", "h4"],
   showFloatingToolbar: true
 };
 var SLATE_JSON_PARSER = { type: "slatejson" };
@@ -325,22 +353,9 @@ var textBlock = {
       label: "Body",
       parser: SLATE_JSON_PARSER,
       templates: RICH_TEXT_TEMPLATES,
-      overrides: {
-        toolbar: [
-          "heading",
-          "bold",
-          "italic",
-          "embed",
-          "ul",
-          "ol",
-          "quote",
-          "code",
-          "image"
-        ],
-        showFloatingToolbar: true
-      },
+      overrides: BODY_RICH_TEXT,
       ui: {
-        description: "Rich text content. To add a link: Embed \u2192 Link. Toggle Open in new tab for external sites (shows \u2197)."
+        description: "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. To link, select the words and click the Link button \u2014 off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists."
       }
     },
     ...textStyleFields()
@@ -2719,7 +2734,7 @@ var PRODUCT_PAGE_FIELDS = [
         type: "rich-text",
         name: "fullDescription",
         label: "Full Description (Description tab)",
-        overrides: INLINE_RICH_TEXT,
+        overrides: BODY_RICH_TEXT,
         parser: SLATE_JSON_PARSER,
         templates: RICH_TEXT_TEMPLATES,
         ui: {
@@ -2730,7 +2745,7 @@ var PRODUCT_PAGE_FIELDS = [
         type: "rich-text",
         name: "shippingNote",
         label: "Shipping & License Copy",
-        overrides: INLINE_RICH_TEXT,
+        overrides: BODY_RICH_TEXT,
         parser: SLATE_JSON_PARSER,
         templates: RICH_TEXT_TEMPLATES,
         ui: {
@@ -3041,19 +3056,29 @@ function corePageRoute(basename) {
   if (base === "important-links") return "/important-links-page";
   return `/${base}`;
 }
-function liveUrlPath(folder, slug) {
+var PARENT_PAGE_SLUGS = [
+  "shop",
+  "gallery",
+  "downloads",
+  "education",
+  "publishers",
+  "about",
+  "contact"
+];
+function liveUrlPath(folder, slug, parent) {
   if (!slug) return null;
   if (folder === "posts") return `/blog/${slug}`;
   if (folder === "products") return `/shop/${slug}`;
   if (folder === "pages") {
-    return CORE_PAGE_SLUGS.includes(slug) ? corePageRoute(slug) : `/p/${slug}`;
+    if (CORE_PAGE_SLUGS.includes(slug)) return corePageRoute(slug);
+    return typeof parent === "string" && PARENT_PAGE_SLUGS.includes(parent) ? `/${parent}/${slug}` : `/p/${slug}`;
   }
   return null;
 }
-function docUrlPath(formId) {
+function docUrlPath(formId, parent) {
   const match = /content\/(pages|posts|products)\/(.+?)\.json$/i.exec(formId);
   if (!match) return null;
-  return liveUrlPath(match[1], match[2]);
+  return liveUrlPath(match[1], match[2], parent);
 }
 var SKIP_KEYS = /* @__PURE__ */ new Set([
   "id",
@@ -3063,6 +3088,7 @@ var SKIP_KEYS = /* @__PURE__ */ new Set([
   "icon",
   "variant",
   "layout",
+  "parent",
   "align",
   "platform",
   "tone",
@@ -3132,7 +3158,6 @@ function makeSeoAssistant(kind) {
   return function SeoAssistant(props) {
     const finalForm = props?.form && typeof props.form.change === "function" ? props.form : props?.tinaForm?.finalForm;
     const formId = typeof props?.tinaForm?.id === "string" ? props.tinaForm.id : "";
-    const urlPath = docUrlPath(formId);
     const [status, setStatus] = React2.useState("idle");
     const [message, setMessage] = React2.useState("");
     const autoRanRef = React2.useRef(false);
@@ -3140,6 +3165,15 @@ function makeSeoAssistant(kind) {
       () => finalForm?.getState?.()?.values ?? {},
       [finalForm]
     );
+    const [parent, setParent] = React2.useState(() => getValues().parent);
+    React2.useEffect(() => {
+      if (!finalForm?.subscribe) return;
+      return finalForm.subscribe(
+        (state) => setParent(state?.values?.parent),
+        { values: true }
+      );
+    }, [finalForm]);
+    const urlPath = docUrlPath(formId, parent);
     const generate = React2.useCallback(async () => {
       const values = getValues();
       const title = String(
@@ -3659,7 +3693,26 @@ function InsightsScreenIcon() {
   );
 }
 function GuideScreen(_props) {
+  const iframeRef = React3.useRef(null);
   const guideUrl = typeof window !== "undefined" ? `${window.location.origin}/guide` : "/guide";
+  const postTokenToIframe = React3.useCallback(() => {
+    const token = readTinaIdTokenFromStorage();
+    const frame = iframeRef.current?.contentWindow;
+    if (!token || !frame) return;
+    frame.postMessage(
+      { type: INSIGHTS_AUTH_MESSAGE, idToken: token },
+      window.location.origin
+    );
+  }, []);
+  useEffect(() => {
+    const onMessage = (event) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (data?.type === `${INSIGHTS_AUTH_MESSAGE}-request`) postTokenToIframe();
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [postTokenToIframe]);
   return React3.createElement(
     "div",
     {
@@ -3687,7 +3740,7 @@ function GuideScreen(_props) {
       React3.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
-        "How to edit the site"
+        "How to use Tina \u2014 video walkthroughs"
       ),
       React3.createElement(
         "a",
@@ -3712,8 +3765,10 @@ function GuideScreen(_props) {
       )
     ),
     React3.createElement("iframe", {
+      ref: iframeRef,
       src: guideUrl,
-      title: "Editing Guide",
+      title: "How To",
+      onLoad: postTokenToIframe,
       style: {
         flex: 1,
         width: "100%",
@@ -3827,8 +3882,35 @@ function navLinkFields() {
 var navItemProps = (item) => ({
   label: item?.label || "Menu item"
 });
+var PARENT_PAGE_OPTIONS = [
+  { value: "none", label: "Top level \u2014 /p/page-name" },
+  { value: "shop", label: "Shop \u2014 /shop/page-name" },
+  { value: "gallery", label: "Gallery \u2014 /gallery/page-name" },
+  { value: "downloads", label: "Downloads \u2014 /downloads/page-name" },
+  { value: "education", label: "Education \u2014 /education/page-name" },
+  { value: "publishers", label: "Publishers \u2014 /publishers/page-name" },
+  { value: "about", label: "About \u2014 /about/page-name" },
+  { value: "contact", label: "Contact \u2014 /contact/page-name" }
+];
+var parentPageField = {
+  type: "string",
+  name: "parent",
+  label: "Lives Under",
+  options: PARENT_PAGE_OPTIONS,
+  ui: {
+    description: "Which main page this new page belongs to. It sets the web address \u2014 for example a page called \u201CSummer Workshop\u201D under Education lives at /education/summer-workshop. Pick Top level if it doesn't belong anywhere in particular. The new address goes live when the site next publishes. (This doesn't add it to the menu.)"
+  }
+};
+var newPageFields = pageFields.flatMap(
+  (field) => field.name === "layout" ? [field, parentPageField] : [field]
+);
 function newPageTemplate(name, label, defaultItem) {
-  return { name, label, ui: { defaultItem }, fields: pageFields };
+  return {
+    name,
+    label,
+    ui: { defaultItem: { parent: "none", ...defaultItem } },
+    fields: newPageFields
+  };
 }
 var blankPageTemplate = newPageTemplate("blank", "Blank Page", {
   title: "New Page",
@@ -3987,7 +4069,7 @@ var config_default = defineConfig({
     });
     cms.plugins.add({
       __type: "screen",
-      name: "Guide",
+      name: "How To",
       Component: GuideScreen,
       Icon: GuideScreenIcon,
       layout: "fullscreen",
@@ -4027,6 +4109,9 @@ var config_default = defineConfig({
             readonly: true,
             slugify: (values) => String(values?.title ?? "new-page").toLowerCase().replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "new-page"
           },
+          // Tina only hands the router `_sys` (no field values), so we can't
+          // read "Lives Under" here. /p/<slug> always resolves: the site
+          // redirects it to the parent-based address when one is set.
           router: ({ document }) => {
             const base = document._sys.basename?.replace(/\.json$/i, "") ?? document._sys.filename?.replace(/\.json$/i, "") ?? "";
             return `/p/${base}`;

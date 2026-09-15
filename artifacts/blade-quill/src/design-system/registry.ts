@@ -254,7 +254,7 @@ const CONTENT_BLOCKS: DesignSystemEntry[] = [
     category: "block",
     group: "Content",
     description:
-      "Rich-text section: paragraphs, lists, quotes, inline links and images, with an optional heading.",
+      "Rich-text section: paragraphs, headings (H2–H4), lists, quotes, highlights, dividers, tables, inline links and images, with an optional heading.",
     demo: makeBlockDemo("text"),
     guidelines: {
       usage: "Any long-form copy. The workhorse block.",
@@ -262,7 +262,8 @@ const CONTENT_BLOCKS: DesignSystemEntry[] = [
       cmsLocation: `${SECTIONS_LOCATION} → Text Section`,
       charLimits: [{ field: "heading", limit: 70 }],
       notes: [
-        "Links are added via Embed → Link; toggle “Open in new tab” for external sites (shows ↗).",
+        "To link: select words → Link button → paste URL. Off-site links and PDFs open in a new tab automatically (shows ↗). Embed → Link (advanced) only when you need to force that on or off.",
+        "Type / at the start of a line for quick headings and lists; select text to get the floating “Turn into” menu.",
         "Inline images uploaded here should still follow the media guide below (≥1200px, kebab-case names).",
         TEXT_STYLE_NOTE,
       ],

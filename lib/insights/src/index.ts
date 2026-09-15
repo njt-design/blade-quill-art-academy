@@ -4,12 +4,7 @@ import {
   clearInsightsSessionCookie,
   resolveAuthorization,
 } from "./cookie";
-import {
-  buildGuideSessionCookie,
-  clearGuideSessionCookie,
-  hasValidGuideSession,
-  verifyGuidePassword,
-} from "./guide-auth";
+import { getGuideContent } from "./guide-content";
 import { fetchGaMetrics } from "./ga";
 import { fetchOrderInsights } from "./orders";
 import type { InsightsRange, InsightsResponse } from "./types";
@@ -21,14 +16,17 @@ export {
   assertTinaAuthorized,
   buildInsightsSessionCookie,
   clearInsightsSessionCookie,
-  buildGuideSessionCookie,
-  clearGuideSessionCookie,
-  hasValidGuideSession,
-  verifyGuidePassword,
+  getGuideContent,
   fetchGaMetrics,
   resolveAuthorization,
 };
-export type { GuidePasswordResult } from "./guide-auth";
+export type {
+  GuideContent,
+  GuideSection,
+  GuideSpecGroup,
+  GuideSpecRow,
+  GuideVideo,
+} from "./guide-content";
 
 const CACHE_TTL_MS = 5 * 60 * 1000;
 

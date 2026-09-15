@@ -35,6 +35,33 @@ export function corePageRoute(slug: string): string {
   return `/${slug}`;
 }
 
+/**
+ * Core pages a New Page can "live under" (its `parent` field). The parent
+ * becomes the URL prefix: parent "education" + slug "summer-workshop" →
+ * /education/summer-workshop. Must stay in sync with PARENT_PAGE_OPTIONS in
+ * tina/config.ts.
+ */
+export const PARENT_PAGE_SLUGS = [
+  "shop",
+  "gallery",
+  "downloads",
+  "education",
+  "publishers",
+  "about",
+  "contact",
+] as const;
+
+export function isParentPageSlug(slug: unknown): slug is (typeof PARENT_PAGE_SLUGS)[number] {
+  return (
+    typeof slug === "string" && (PARENT_PAGE_SLUGS as readonly string[]).includes(slug)
+  );
+}
+
+/** Public URL for a New Page given its slug and optional parent. */
+export function newPagePath(slug: string, parent?: unknown): string {
+  return isParentPageSlug(parent) ? `/${parent}/${slug}` : `/p/${slug}`;
+}
+
 /** Shared CMS typography presets — must stay in sync with textStyleFields() in tina/blocks.ts. */
 const TEXT_STYLE_SELECTION =
   "textStyle { headingSize headingType headingFont align bodySize }";
@@ -189,6 +216,7 @@ export const landingPageQuery = `
         (t) => `... on LandingPage${pascalCase(t)} {
         title
         layout
+        parent
         ${SEO_SELECTION}
         blocks {
           ${blocksSelection(`LandingPage${pascalCase(t)}Blocks`)}

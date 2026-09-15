@@ -126,7 +126,7 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
   text: {
     heading: "About Our Approach",
     body: rt(
-      "Write anything here — paragraphs, lists, links, and inline images. Links are added via Embed → Link and can open in a new tab."
+      "Write anything here — headings, paragraphs, lists, quotes, highlights, tables, links, and inline images. Select words and click Link to add a link; off-site links open in a new tab on their own."
     ),
   },
   story: {

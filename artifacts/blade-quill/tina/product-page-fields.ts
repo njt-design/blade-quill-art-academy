@@ -1,7 +1,7 @@
 import type { TinaField } from "tinacms";
 import {
   charLimit,
-  INLINE_RICH_TEXT,
+  BODY_RICH_TEXT,
   RICH_TEXT_TEMPLATES,
   SLATE_JSON_PARSER,
 } from "./blocks";
@@ -154,7 +154,7 @@ export const PRODUCT_PAGE_FIELDS: TinaField[] = [
         type: "rich-text",
         name: "fullDescription",
         label: "Full Description (Description tab)",
-        overrides: INLINE_RICH_TEXT,
+        overrides: BODY_RICH_TEXT,
         parser: SLATE_JSON_PARSER,
         templates: RICH_TEXT_TEMPLATES,
         ui: {
@@ -166,7 +166,7 @@ export const PRODUCT_PAGE_FIELDS: TinaField[] = [
         type: "rich-text",
         name: "shippingNote",
         label: "Shipping & License Copy",
-        overrides: INLINE_RICH_TEXT,
+        overrides: BODY_RICH_TEXT,
         parser: SLATE_JSON_PARSER,
         templates: RICH_TEXT_TEMPLATES,
         ui: {

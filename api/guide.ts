@@ -1,53 +1,55 @@
 /**
- * /api/guide — password gate for the owner editing guide (/guide).
+ * /api/guide — content for the owner "How To" page (/guide).
  *
- * Method-routed on a single endpoint:
- * - GET    → 200 when the bq_guide session cookie is valid, else 401
- * - POST   → body { password }; verifies GUIDE_PASSWORD and sets the cookie
- * - DELETE → clears the cookie (sign out)
+ * GET only. The caller must be signed in to Tina: we accept
+ * `Authorization: Bearer <tina id_token>` or the bq_insights cookie minted
+ * by POST /api/insights/session, and verify it against Tina Cloud before
+ * returning anything. Unauthenticated requests get a 401 and no content —
+ * the Loom links never leave the server otherwise.
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import {
-  buildGuideSessionCookie,
-  clearGuideSessionCookie,
-  hasValidGuideSession,
-  verifyGuidePassword,
+  assertTinaAuthorized,
+  getGuideContent,
+  InsightsAuthError,
+  resolveAuthorization,
 } from "../lib/insights/src/index";
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method === "GET") {
-    if (hasValidGuideSession(req.headers.cookie)) {
-      res.status(200).json({ ok: true });
-    } else {
-      res.status(401).json({ error: "Not signed in" });
-    }
-    return;
-  }
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  res.setHeader("Cache-Control", "private, no-store");
+  res.setHeader("X-Robots-Tag", "noindex, nofollow");
 
-  if (req.method === "DELETE") {
-    res.setHeader("Set-Cookie", clearGuideSessionCookie());
-    res.status(200).json({ ok: true });
-    return;
-  }
-
-  if (req.method !== "POST") {
-    res.setHeader("Allow", "GET, POST, DELETE");
+  if (req.method !== "GET") {
+    res.setHeader("Allow", "GET");
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
-  const body = (req.body ?? {}) as { password?: unknown };
-  const result = verifyGuidePassword(body.password);
+  try {
+    const clientIdParam = req.query.clientID;
+    const clientId =
+      (typeof clientIdParam === "string" ? clientIdParam : undefined) ||
+      process.env.TINA_PUBLIC_CLIENT_ID;
 
-  if (result === "unconfigured") {
-    res.status(500).json({ error: "Guide password is not configured" });
-    return;
-  }
-  if (result === "invalid") {
-    res.status(401).json({ error: "That password isn't right — try again." });
-    return;
-  }
+    await assertTinaAuthorized({
+      clientId,
+      authorization: resolveAuthorization({
+        authorization: req.headers.authorization,
+        cookie: req.headers.cookie,
+      }),
+    });
 
-  res.setHeader("Set-Cookie", buildGuideSessionCookie());
-  res.status(200).json({ ok: true });
+    res.status(200).json(getGuideContent());
+  } catch (err) {
+    if (
+      err instanceof InsightsAuthError ||
+      (err instanceof Error && err.name === "InsightsAuthError")
+    ) {
+      const status = (err as InsightsAuthError).status || 401;
+      res.status(status).json({ error: err.message });
+      return;
+    }
+    console.error(err);
+    res.status(500).json({ error: "Failed to load the guide" });
+  }
 }

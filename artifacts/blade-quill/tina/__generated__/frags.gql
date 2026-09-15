@@ -724,6 +724,7 @@ fragment LandingPageParts on LandingPage {
   ... on LandingPageBlank {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageBlankBlocksHomeHero {
@@ -1443,6 +1444,7 @@ fragment LandingPageParts on LandingPage {
   ... on LandingPageEvent {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageEventBlocksHomeHero {
@@ -2162,6 +2164,7 @@ fragment LandingPageParts on LandingPage {
   ... on LandingPagePromo {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPagePromoBlocksHomeHero {
@@ -2881,6 +2884,7 @@ fragment LandingPageParts on LandingPage {
   ... on LandingPageInfo {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageInfoBlocksHomeHero {
@@ -3600,6 +3604,7 @@ fragment LandingPageParts on LandingPage {
   ... on LandingPageLinkInBio {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageLinkInBioBlocksHomeHero {
@@ -5280,6 +5285,7 @@ fragment NavigationParts on Navigation {
         ... on LandingPageBlank {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageBlankBlocksHomeHero {
@@ -5999,6 +6005,7 @@ fragment NavigationParts on Navigation {
         ... on LandingPageEvent {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageEventBlocksHomeHero {
@@ -6718,6 +6725,7 @@ fragment NavigationParts on Navigation {
         ... on LandingPagePromo {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPagePromoBlocksHomeHero {
@@ -7437,6 +7445,7 @@ fragment NavigationParts on Navigation {
         ... on LandingPageInfo {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageInfoBlocksHomeHero {
@@ -8156,6 +8165,7 @@ fragment NavigationParts on Navigation {
         ... on LandingPageLinkInBio {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageLinkInBioBlocksHomeHero {
@@ -9617,6 +9627,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageBlank {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
@@ -10336,6 +10347,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageEvent {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
@@ -11055,6 +11067,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPagePromo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
@@ -11774,6 +11787,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageInfo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
@@ -12493,6 +12507,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageLinkInBio {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {
@@ -13959,6 +13974,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageBlank {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
@@ -14678,6 +14694,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageEvent {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
@@ -15397,6 +15414,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPagePromo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
@@ -16116,6 +16134,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageInfo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
@@ -16835,6 +16854,7 @@ fragment NavigationParts on Navigation {
           ... on LandingPageLinkInBio {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {

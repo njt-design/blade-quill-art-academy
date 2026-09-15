@@ -2920,6 +2920,7 @@ type LandingPageBlankSeo {
 type LandingPageBlank implements Node & Document {
   title: String!
   layout: String
+  parent: String
   blocks: [LandingPageBlankBlocks]
   seoAssistant: String
   seo: LandingPageBlankSeo
@@ -3742,6 +3743,7 @@ type LandingPageEventSeo {
 type LandingPageEvent implements Node & Document {
   title: String!
   layout: String
+  parent: String
   blocks: [LandingPageEventBlocks]
   seoAssistant: String
   seo: LandingPageEventSeo
@@ -4564,6 +4566,7 @@ type LandingPagePromoSeo {
 type LandingPagePromo implements Node & Document {
   title: String!
   layout: String
+  parent: String
   blocks: [LandingPagePromoBlocks]
   seoAssistant: String
   seo: LandingPagePromoSeo
@@ -5386,6 +5389,7 @@ type LandingPageInfoSeo {
 type LandingPageInfo implements Node & Document {
   title: String!
   layout: String
+  parent: String
   blocks: [LandingPageInfoBlocks]
   seoAssistant: String
   seo: LandingPageInfoSeo
@@ -6208,6 +6212,7 @@ type LandingPageLinkInBioSeo {
 type LandingPageLinkInBio implements Node & Document {
   title: String!
   layout: String
+  parent: String
   blocks: [LandingPageLinkInBioBlocks]
   seoAssistant: String
   seo: LandingPageLinkInBioSeo
@@ -7355,6 +7360,7 @@ input LandingPageBlankSeoFilter {
 input LandingPageBlankFilter {
   title: StringFilter
   layout: StringFilter
+  parent: StringFilter
   blocks: LandingPageBlankBlocksFilter
   seoAssistant: StringFilter
   seo: LandingPageBlankSeoFilter
@@ -8497,6 +8503,7 @@ input LandingPageEventSeoFilter {
 input LandingPageEventFilter {
   title: StringFilter
   layout: StringFilter
+  parent: StringFilter
   blocks: LandingPageEventBlocksFilter
   seoAssistant: StringFilter
   seo: LandingPageEventSeoFilter
@@ -9639,6 +9646,7 @@ input LandingPagePromoSeoFilter {
 input LandingPagePromoFilter {
   title: StringFilter
   layout: StringFilter
+  parent: StringFilter
   blocks: LandingPagePromoBlocksFilter
   seoAssistant: StringFilter
   seo: LandingPagePromoSeoFilter
@@ -10781,6 +10789,7 @@ input LandingPageInfoSeoFilter {
 input LandingPageInfoFilter {
   title: StringFilter
   layout: StringFilter
+  parent: StringFilter
   blocks: LandingPageInfoBlocksFilter
   seoAssistant: StringFilter
   seo: LandingPageInfoSeoFilter
@@ -11923,6 +11932,7 @@ input LandingPageLinkInBioSeoFilter {
 input LandingPageLinkInBioFilter {
   title: StringFilter
   layout: StringFilter
+  parent: StringFilter
   blocks: LandingPageLinkInBioBlocksFilter
   seoAssistant: StringFilter
   seo: LandingPageLinkInBioSeoFilter
@@ -14453,6 +14463,7 @@ input LandingPageBlankSeoMutation {
 input LandingPageBlankMutation {
   title: String
   layout: String
+  parent: String
   blocks: [LandingPageBlankBlocksMutation]
   seoAssistant: String
   seo: LandingPageBlankSeoMutation
@@ -15315,6 +15326,7 @@ input LandingPageEventSeoMutation {
 input LandingPageEventMutation {
   title: String
   layout: String
+  parent: String
   blocks: [LandingPageEventBlocksMutation]
   seoAssistant: String
   seo: LandingPageEventSeoMutation
@@ -16177,6 +16189,7 @@ input LandingPagePromoSeoMutation {
 input LandingPagePromoMutation {
   title: String
   layout: String
+  parent: String
   blocks: [LandingPagePromoBlocksMutation]
   seoAssistant: String
   seo: LandingPagePromoSeoMutation
@@ -17039,6 +17052,7 @@ input LandingPageInfoSeoMutation {
 input LandingPageInfoMutation {
   title: String
   layout: String
+  parent: String
   blocks: [LandingPageInfoBlocksMutation]
   seoAssistant: String
   seo: LandingPageInfoSeoMutation
@@ -17901,6 +17915,7 @@ input LandingPageLinkInBioSeoMutation {
 input LandingPageLinkInBioMutation {
   title: String
   layout: String
+  parent: String
   blocks: [LandingPageLinkInBioBlocksMutation]
   seoAssistant: String
   seo: LandingPageLinkInBioSeoMutation

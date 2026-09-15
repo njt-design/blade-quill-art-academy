@@ -1,5 +1,5 @@
 import { tinaField } from "tinacms/react";
-import { TinaMarkdown, type Components } from "tinacms/dist/rich-text";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
 import { richTextComponents } from "@/components/site/rich-text-components";
 import { preserveBlankLines } from "@/lib/rich-text";
@@ -10,15 +10,8 @@ interface Props {
   block: Block;
 }
 
-const proseComponents: Components<{
-  ContentLink: {
-    url?: string;
-    text?: string;
-    openInNewTab?: boolean;
-    children?: React.ReactNode;
-  };
-  img: { url: string; alt?: string; caption?: string };
-}> = {
+/** Article bodies get the shared components plus roomier list spacing. */
+const proseComponents: typeof richTextComponents = {
   ...richTextComponents,
   ul: (props) => (
     <ul
@@ -32,24 +25,6 @@ const proseComponents: Components<{
       className={cn("list-decimal pl-5 space-y-1.5 my-4", (props as { className?: string }).className)}
     />
   ),
-  img: (props) => {
-    if (!props?.url) return null;
-    return (
-      <figure className="my-6">
-        <img
-          src={props.url}
-          alt={props.alt || ""}
-          className="w-full rounded-md"
-          loading="lazy"
-        />
-        {props.caption ? (
-          <figcaption className="mt-2 text-center text-sm text-muted-foreground">
-            {props.caption}
-          </figcaption>
-        ) : null}
-      </figure>
-    );
-  },
 };
 
 export default function ArticleText({ block }: Props) {

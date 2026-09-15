@@ -117,6 +117,34 @@ export function hasTinaSession(): boolean {
   return Boolean(getTinaIdToken());
 }
 
+/** `tinacms dev` (local, no Tina Cloud) flags login with this key instead of a JWT. */
+const TINA_LOCAL_LOGIN_KEY = "tina.local.isLogedIn";
+
+/**
+ * Dev-only sentinel for owner tools (/guide): the local Tina admin never
+ * writes a `tinacms-auth` token, so return "LOCAL" when it reports a login.
+ * The dev API server accepts "LOCAL" only under NODE_ENV=development; this
+ * always returns null in production builds.
+ */
+export function getLocalDevTinaToken(): string | null {
+  if (!import.meta.env.DEV || typeof window === "undefined") return null;
+  const isFlagged = (storage: Storage | undefined) =>
+    storage?.getItem(TINA_LOCAL_LOGIN_KEY) === "true";
+  try {
+    if (isFlagged(window.localStorage)) return "LOCAL";
+  } catch {
+    // ignore
+  }
+  try {
+    if (window.parent && window.parent !== window && isFlagged(window.parent.localStorage)) {
+      return "LOCAL";
+    }
+  } catch {
+    // Cross-origin parent — ignore.
+  }
+  return null;
+}
+
 /**
  * Listen for token handoff from the Tina Insights screen (parent frame).
  * Returns an unsubscribe function.

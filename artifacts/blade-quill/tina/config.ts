@@ -402,14 +402,37 @@ function InsightsScreenIcon() {
 }
 
 /**
- * Tina sidebar screen for the Editing Guide — embeds the password-protected
- * /guide page (same origin, so the bq_guide cookie is shared).
+ * Tina sidebar screen for the owner "How To" page — embeds /guide, which only
+ * renders for a signed-in Tina user. Same origin, so the page can read the
+ * admin's Tina session directly; we also answer its token request so the
+ * handoff works even when storage is unreadable from the frame.
  */
 function GuideScreen(_props: { close: () => void }) {
+  const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
   const guideUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/guide`
       : "/guide";
+
+  const postTokenToIframe = React.useCallback(() => {
+    const token = readTinaIdTokenFromStorage();
+    const frame = iframeRef.current?.contentWindow;
+    if (!token || !frame) return;
+    frame.postMessage(
+      { type: INSIGHTS_AUTH_MESSAGE, idToken: token },
+      window.location.origin
+    );
+  }, []);
+
+  useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data as { type?: string } | null;
+      if (data?.type === `${INSIGHTS_AUTH_MESSAGE}-request`) postTokenToIframe();
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [postTokenToIframe]);
 
   return React.createElement(
     "div",
@@ -438,7 +461,7 @@ function GuideScreen(_props: { close: () => void }) {
       React.createElement(
         "div",
         { style: { fontSize: 14, color: "#4A3838" } },
-        "How to edit the site"
+        "How to use Tina — video walkthroughs"
       ),
       React.createElement(
         "a",
@@ -463,8 +486,10 @@ function GuideScreen(_props: { close: () => void }) {
       )
     ),
     React.createElement("iframe", {
+      ref: iframeRef,
       src: guideUrl,
-      title: "Editing Guide",
+      title: "How To",
+      onLoad: postTokenToIframe,
       style: {
         flex: 1,
         width: "100%",
@@ -611,12 +636,49 @@ const navItemProps = (item?: Record<string, unknown>) => ({
 // Starter templates for new pages
 // ---------------------------------------------------------------------------
 
+/**
+ * Where a New Page lives in the site. The choice becomes the URL prefix
+ * (Education → /education/<page-name>); "Top level" keeps /p/<page-name>.
+ * Must stay in sync with PARENT_PAGE_SLUGS in src/lib/page-queries.ts.
+ */
+const PARENT_PAGE_OPTIONS: Array<{ value: string; label: string }> = [
+  { value: "none", label: "Top level — /p/page-name" },
+  { value: "shop", label: "Shop — /shop/page-name" },
+  { value: "gallery", label: "Gallery — /gallery/page-name" },
+  { value: "downloads", label: "Downloads — /downloads/page-name" },
+  { value: "education", label: "Education — /education/page-name" },
+  { value: "publishers", label: "Publishers — /publishers/page-name" },
+  { value: "about", label: "About — /about/page-name" },
+  { value: "contact", label: "Contact — /contact/page-name" },
+];
+
+const parentPageField: TinaField = {
+  type: "string",
+  name: "parent",
+  label: "Lives Under",
+  options: PARENT_PAGE_OPTIONS,
+  ui: {
+    description:
+      "Which main page this new page belongs to. It sets the web address — for example a page called “Summer Workshop” under Education lives at /education/summer-workshop. Pick Top level if it doesn't belong anywhere in particular. The new address goes live when the site next publishes. (This doesn't add it to the menu.)",
+  },
+};
+
+/** New Pages get the shared page fields plus the "Lives Under" choice after Page Layout. */
+const newPageFields: TinaField[] = pageFields.flatMap((field) =>
+  field.name === "layout" ? [field, parentPageField] : [field]
+);
+
 function newPageTemplate(
   name: string,
   label: string,
   defaultItem: Record<string, unknown>
 ): Template {
-  return { name, label, ui: { defaultItem }, fields: pageFields };
+  return {
+    name,
+    label,
+    ui: { defaultItem: { parent: "none", ...defaultItem } },
+    fields: newPageFields,
+  };
 }
 
 const blankPageTemplate = newPageTemplate("blank", "Blank Page", {
@@ -785,7 +847,7 @@ export default defineConfig({
     });
     cms.plugins.add({
       __type: "screen",
-      name: "Guide",
+      name: "How To",
       Component: GuideScreen,
       Icon: GuideScreenIcon,
       layout: "fullscreen",
@@ -832,6 +894,9 @@ export default defineConfig({
                 .replace(/[^a-z0-9]+/g, "-")
                 .replace(/(^-|-$)/g, "") || "new-page",
           },
+          // Tina only hands the router `_sys` (no field values), so we can't
+          // read "Lives Under" here. /p/<slug> always resolves: the site
+          // redirects it to the parent-based address when one is set.
           router: ({ document }) => {
             const base =
               document._sys.basename?.replace(/\.json$/i, "") ??

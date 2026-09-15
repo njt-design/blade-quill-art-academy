@@ -8,6 +8,7 @@ import {
   type ResolvedNavColumn,
   type ResolvedNavLink,
 } from "@/lib/navigation-content";
+import { getPagePath } from "@/lib/page-content";
 
 // The bundled seed never changes at runtime, so build it once — a stable
 // identity keeps useTina from re-processing it on every render.
@@ -37,7 +38,7 @@ export function useLiveNavigation(): {
     NAV_SEED.navigation;
 
   return {
-    items: resolveNavLinks(nav.items),
-    footerColumns: resolveNavColumns(nav.footerColumns),
+    items: resolveNavLinks(nav.items, getPagePath),
+    footerColumns: resolveNavColumns(nav.footerColumns, getPagePath),
   };
 }

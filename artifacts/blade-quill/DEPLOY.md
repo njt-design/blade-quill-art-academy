@@ -175,9 +175,11 @@ Products / prices stay in Tina (**Shop Products**). Insights is the glanceable a
 
 Note: Squarespace used Consent Mode (analytics denied until cookies accepted). This site loads gtag without a consent banner, so absolute counts may differ slightly from the old site even with the same Measurement ID.
 
-## Editing guide (for Corinne)
+## How To page (for Corinne)
 
-See [docs/EDITING-GUIDE.md](../../docs/EDITING-GUIDE.md) — bookmark, sidebar map, save feedback, and troubleshooting.
+`/guide` is the owner **How To** page — Loom walkthroughs of editing the site in Tina, with a table of contents down the left. It is not public: the page only renders for a signed-in Tina account, and its content (including the recording links) comes from `GET /api/guide`, which verifies the Tina session server-side ([`api/guide.ts`](../../api/guide.ts)). Crawlers are kept out by `X-Robots-Tag: noindex, nofollow` (`vercel.json`), a `robots` meta tag, and `public/robots.txt`. Corinne reaches it from **How To** in the Tina sidebar.
+
+To add or change a recording, edit [`lib/insights/src/guide-content.ts`](../../lib/insights/src/guide-content.ts) and paste the Loom share link into `loomUrl`. The older written walkthrough is still in [docs/EDITING-GUIDE.md](../../docs/EDITING-GUIDE.md).
 
 **Canonical editor URL (while the real domain is under construction):**  
 https://blade-quill-art-academy.vercel.app/admin

@@ -733,6 +733,7 @@ export const LandingPagePartsFragmentDoc = gql`
   ... on LandingPageBlank {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageBlankBlocksHomeHero {
@@ -1452,6 +1453,7 @@ export const LandingPagePartsFragmentDoc = gql`
   ... on LandingPageEvent {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageEventBlocksHomeHero {
@@ -2171,6 +2173,7 @@ export const LandingPagePartsFragmentDoc = gql`
   ... on LandingPagePromo {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPagePromoBlocksHomeHero {
@@ -2890,6 +2893,7 @@ export const LandingPagePartsFragmentDoc = gql`
   ... on LandingPageInfo {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageInfoBlocksHomeHero {
@@ -3609,6 +3613,7 @@ export const LandingPagePartsFragmentDoc = gql`
   ... on LandingPageLinkInBio {
     title
     layout
+    parent
     blocks {
       __typename
       ... on LandingPageLinkInBioBlocksHomeHero {
@@ -5293,6 +5298,7 @@ export const NavigationPartsFragmentDoc = gql`
         ... on LandingPageBlank {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageBlankBlocksHomeHero {
@@ -6012,6 +6018,7 @@ export const NavigationPartsFragmentDoc = gql`
         ... on LandingPageEvent {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageEventBlocksHomeHero {
@@ -6731,6 +6738,7 @@ export const NavigationPartsFragmentDoc = gql`
         ... on LandingPagePromo {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPagePromoBlocksHomeHero {
@@ -7450,6 +7458,7 @@ export const NavigationPartsFragmentDoc = gql`
         ... on LandingPageInfo {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageInfoBlocksHomeHero {
@@ -8169,6 +8178,7 @@ export const NavigationPartsFragmentDoc = gql`
         ... on LandingPageLinkInBio {
           title
           layout
+          parent
           blocks {
             __typename
             ... on LandingPageLinkInBioBlocksHomeHero {
@@ -9630,6 +9640,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageBlank {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
@@ -10349,6 +10360,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageEvent {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
@@ -11068,6 +11080,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPagePromo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
@@ -11787,6 +11800,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageInfo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
@@ -12506,6 +12520,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageLinkInBio {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {
@@ -13972,6 +13987,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageBlank {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageBlankBlocksHomeHero {
@@ -14691,6 +14707,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageEvent {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageEventBlocksHomeHero {
@@ -15410,6 +15427,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPagePromo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPagePromoBlocksHomeHero {
@@ -16129,6 +16147,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageInfo {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageInfoBlocksHomeHero {
@@ -16848,6 +16867,7 @@ export const NavigationPartsFragmentDoc = gql`
           ... on LandingPageLinkInBio {
             title
             layout
+            parent
             blocks {
               __typename
               ... on LandingPageLinkInBioBlocksHomeHero {

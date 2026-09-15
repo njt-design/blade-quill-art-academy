@@ -79,46 +79,65 @@ function pageSlug(page: NavLinkData["page"]): string | null {
   return page._sys?.filename ?? null;
 }
 
-/** Public URL for a page slug (mirrors the Tina router config). */
+/**
+ * Fallback public URL for a page slug (mirrors the Tina router config).
+ * New Pages with a parent have a nicer canonical address — the app passes
+ * `getPagePath` from page-content as `hrefFor` to use it; /p/:slug redirects
+ * there anyway, so this stays correct as a fallback.
+ */
 export function pageHref(slug: string): string {
   return isCorePageSlug(slug) ? corePageRoute(slug) : `/p/${slug}`;
 }
 
-function resolveHref(link: NavLinkData): { href: string | null; external: boolean } {
+/** Maps a page slug to its public URL. */
+export type PageHrefResolver = (slug: string) => string;
+
+function resolveHref(
+  link: NavLinkData,
+  hrefFor: PageHrefResolver
+): { href: string | null; external: boolean } {
   if (link.linkType === "external") {
     return { href: link.href || null, external: true };
   }
   const slug = pageSlug(link.page);
   if (link.linkType === "page") {
-    return { href: slug ? pageHref(slug) : null, external: false };
+    return { href: slug ? hrefFor(slug) : null, external: false };
   }
   // "path" (or legacy items without a linkType): explicit href wins,
   // page reference is the fallback. Full URLs still open externally.
-  const href = link.href || (slug ? pageHref(slug) : null);
+  const href = link.href || (slug ? hrefFor(slug) : null);
   return { href, external: Boolean(href && /^https?:\/\//i.test(href)) };
 }
 
-function resolveLink(link: NavLinkData | null | undefined): ResolvedNavLink | null {
+function resolveLink(
+  link: NavLinkData | null | undefined,
+  hrefFor: PageHrefResolver
+): ResolvedNavLink | null {
   if (!link?.label) return null;
-  const { href, external } = resolveHref(link);
-  const children = resolveNavLinks(link.children);
+  const { href, external } = resolveHref(link, hrefFor);
+  const children = resolveNavLinks(link.children, hrefFor);
   if (!href && children.length === 0) return null;
   return { label: link.label, href, external, children };
 }
 
 export function resolveNavLinks(
-  links: Array<NavLinkData | null> | null | undefined
+  links: Array<NavLinkData | null> | null | undefined,
+  hrefFor: PageHrefResolver = pageHref
 ): ResolvedNavLink[] {
   return (links ?? [])
-    .map(resolveLink)
+    .map((l) => resolveLink(l, hrefFor))
     .filter((l): l is ResolvedNavLink => l !== null);
 }
 
 export function resolveNavColumns(
-  columns: Array<NavColumnData | null> | null | undefined
+  columns: Array<NavColumnData | null> | null | undefined,
+  hrefFor: PageHrefResolver = pageHref
 ): ResolvedNavColumn[] {
   return (columns ?? [])
     .filter((c): c is NavColumnData => Boolean(c?.heading))
-    .map((c) => ({ heading: c.heading as string, links: resolveNavLinks(c.links) }))
+    .map((c) => ({
+      heading: c.heading as string,
+      links: resolveNavLinks(c.links, hrefFor),
+    }))
     .filter((c) => c.links.length > 0);
 }
