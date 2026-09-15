@@ -663,7 +663,7 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
         },
         {
           field: "Gallery → items[].downloadFile",
-          spec: "Optional extra file visitors can download from the lightbox (PDF/JPG/PNG). Upload to files/ or images/.",
+          spec: "Optional free file (PDF/JPG/PNG). When set, the lightbox shows both Download Full Image and Sketch Download; when empty, the artwork is view-only with no download buttons. Upload to files/ or images/.",
         },
       ],
       charLimits: [

@@ -1400,7 +1400,7 @@ var galleryGridBlock = {
           name: "downloadFile",
           label: "Free Downloadable Resource (optional)",
           ui: {
-            description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and a 'Sketch Download' button next to the full-image download. Upload via Media, or paste a path like /files/coloring-page.pdf. Leave empty if this piece has no free resource."
+            description: "A free file visitors can grab from the lightbox (coloring page, high-res image, PDF, etc.). When set, the artwork shows a FREE badge in the grid and both download buttons ('Download Full Image' and 'Sketch Download') in the lightbox. Leave empty and the piece is view-only \u2014 no download buttons at all. Upload via Media, or paste a path like /files/coloring-page.pdf."
           }
         }
       ]

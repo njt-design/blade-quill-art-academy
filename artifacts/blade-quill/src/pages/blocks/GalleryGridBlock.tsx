@@ -108,17 +108,19 @@ export function GalleryLightbox({
           {item.description && (
             <p className="text-white/60 text-sm mt-1">{item.description}</p>
           )}
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <Btn
-              kind="primary"
-              size="md"
-              href={item.imageUrl}
-              download={fileNameFromUrl(item.imageUrl)}
-              iconLeft={<Download className="w-4 h-4" />}
-            >
-              Download Full Image
-            </Btn>
-            {canDownload && (
+          {/* Downloads only appear when the artwork offers a free resource in
+              the CMS; otherwise the lightbox is view-only. */}
+          {canDownload && (
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <Btn
+                kind="primary"
+                size="md"
+                href={item.imageUrl}
+                download={fileNameFromUrl(item.imageUrl)}
+                iconLeft={<Download className="w-4 h-4" />}
+              >
+                Download Full Image
+              </Btn>
               <Btn
                 kind="outline"
                 size="md"
@@ -129,8 +131,8 @@ export function GalleryLightbox({
               >
                 Sketch Download
               </Btn>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>,
