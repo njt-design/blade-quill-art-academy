@@ -122,6 +122,28 @@
         ]
       },
       "_template": "imageSpotlight"
+    },
+    {
+      "eyebrow": "Featured",
+      "heading": "One piece,\nfront and center",
+      "image": "/images/Module-2-A+-content-for-module.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "RjbFyPqCZR"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
     }
   ]
 }
