@@ -35,6 +35,26 @@
       "_template": "imageSpotlight"
     },
     {
+      "heading": "",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "GRAB YOUR BUNDLE NOW!"
+              }
+            ],
+            "id": "oMWAVvr8et",
+            "type": "p"
+          }
+        ]
+      },
+      "ctaLabel": "Gumroad",
+      "ctaLink": "https://gumroad.com/products/einoxf",
+      "_template": "hero"
+    },
+    {
       "eyebrow": "",
       "heading": "",
       "image": "/images/Module-2-A+-content-for-module.png",
@@ -99,26 +119,6 @@
         ]
       },
       "_template": "imageSpotlight"
-    },
-    {
-      "heading": "",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": "GRAB YOUR BUNDLE NOW!"
-              }
-            ],
-            "id": "oMWAVvr8et",
-            "type": "p"
-          }
-        ]
-      },
-      "ctaLabel": "Gumroad",
-      "ctaLink": "https://gumroad.com/products/einoxf",
-      "_template": "hero"
     },
     {
       "heading": "✨ What’s Included in the Bundle",
