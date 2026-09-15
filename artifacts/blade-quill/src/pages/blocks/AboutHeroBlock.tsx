@@ -183,7 +183,8 @@ export default function AboutHeroBlock({ block }: Props) {
                 the portrait polaroid alone fills the column. */}
             {accentCount === 0 ? (
               /* Absolute + self-stretch: the polaroid matches the hero text
-                 column's height exactly and never extends past it. */
+                 column's height exactly and never extends past it. The frame
+                 hugs the image's displayed width (no letterbox margins). */
               <div
                 className="hidden lg:flex absolute inset-0 items-center justify-center"
                 data-tina-field={tinaField(block, "portraitImage")}
@@ -193,21 +194,20 @@ export default function AboutHeroBlock({ block }: Props) {
                   washiColor="var(--maroon)"
                   hoverStraighten
                   style={{
-                    width: "100%",
                     height: "100%",
+                    width: "fit-content",
+                    maxWidth: "100%",
                     display: "flex",
                     flexDirection: "column",
                   }}
                 >
-                  <div className="flex-1 min-h-0">
-                    <ArtTile
-                      palette="warm"
+                  <div className="flex-1 min-h-0 flex items-center justify-center">
+                    <img
                       src={portraitSrc}
                       alt="Corinne in the studio"
-                      width="100%"
-                      height="100%"
-                      radius={2}
-                      fit="contain"
+                      loading="lazy"
+                      className="h-full w-auto max-w-full object-contain"
+                      style={{ borderRadius: 2 }}
                     />
                   </div>
                   {portraitCaption}
