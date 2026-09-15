@@ -162,6 +162,26 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "heading": "",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "Click here to go to the shop"
+              }
+            ],
+            "id": "oMWAVvr8et",
+            "type": "p"
+          }
+        ]
+      },
+      "ctaLabel": "Gumroad",
+      "ctaLink": "/",
+      "_template": "hero"
     }
   ]
 }
