@@ -57,6 +57,50 @@
       "_template": "imageSpotlight"
     },
     {
+      "eyebrow": "",
+      "heading": "",
+      "image": "/images/PNG%20Images%20Only/Module-6-A+-content-for-module.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "OLcSePTisD"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
+    },
+    {
+      "eyebrow": "",
+      "heading": "",
+      "image": "/images/PNG%20Images%20Only/Module-7-A+-content-for-module.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "nl35MPe4Y3"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
+    },
+    {
       "heading": "",
       "subheading": {
         "type": "root",
@@ -183,50 +227,6 @@
         ]
       },
       "_template": "text"
-    },
-    {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG%20Images%20Only/Module-6-A+-content-for-module.png",
-      "caption": "A single large image with room to breathe.",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "OLcSePTisD"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
-    },
-    {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG%20Images%20Only/Module-7-A+-content-for-module.png",
-      "caption": "A single large image with room to breathe.",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "nl35MPe4Y3"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
     }
   ]
 }
