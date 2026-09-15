@@ -155,7 +155,7 @@ export default function AboutHeroBlock({ block }: Props) {
             ) : null}
           </div>
 
-          <Reveal className="relative lg:self-stretch">
+          <Reveal className={accentCount === 0 ? "self-stretch min-h-0" : undefined}>
             {/* Mobile / tablet: single centered portrait, fluid width. */}
             <div
               className="lg:hidden flex justify-center"
@@ -182,36 +182,51 @@ export default function AboutHeroBlock({ block }: Props) {
             {/* Desktop: layered collage when accent photos exist; otherwise
                 the portrait polaroid alone fills the column. */}
             {accentCount === 0 ? (
-              /* Absolute + self-stretch: the polaroid matches the hero text
-                 column's height exactly and never extends past it. The frame
-                 hugs the image's displayed width (no letterbox margins). */
+              /* The polaroid is height-capped to the text column: the cell
+                 stretches (self-stretch on Reveal), and the absolutely
+                 positioned inner box keeps the image from adding height of
+                 its own — it can only shrink to fit. */
               <div
-                className="hidden lg:flex absolute inset-0 items-center justify-center"
+                className="relative hidden lg:block h-full"
                 data-tina-field={tinaField(block, "portraitImage")}
               >
-                <Polaroid
-                  rotate={2}
-                  washiColor="var(--maroon)"
-                  hoverStraighten
-                  style={{
-                    height: "100%",
-                    width: "fit-content",
-                    maxWidth: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <div className="flex-1 min-h-0 flex items-center justify-center">
-                    <img
-                      src={portraitSrc}
-                      alt="Corinne in the studio"
-                      loading="lazy"
-                      className="h-full w-auto max-w-full object-contain"
-                      style={{ borderRadius: 2 }}
-                    />
-                  </div>
-                  {portraitCaption}
-                </Polaroid>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Polaroid
+                    rotate={2}
+                    washiColor="var(--maroon)"
+                    hoverStraighten
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <div
+                      style={{
+                        flex: "1 1 auto",
+                        minHeight: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src={portraitSrc}
+                        alt="Corinne in the studio"
+                        style={{
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                          width: "auto",
+                          height: "auto",
+                          objectFit: "contain",
+                          borderRadius: 2,
+                        }}
+                      />
+                    </div>
+                    {portraitCaption}
+                  </Polaroid>
+                </div>
               </div>
             ) : (
               <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
