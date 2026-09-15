@@ -249,6 +249,34 @@
       "width": "content",
       "aspect": "auto",
       "_template": "image"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write your paragraph here. You can add lists, links, and inline images."
+              }
+            ],
+            "id": "W9TciNBS3h"
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "R9zmUSyYXU"
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
