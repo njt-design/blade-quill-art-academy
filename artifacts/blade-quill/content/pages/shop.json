@@ -124,10 +124,10 @@
       "_template": "imageSpotlight"
     },
     {
-      "eyebrow": "Featured",
-      "heading": "One piece,\nfront and center",
+      "eyebrow": "",
+      "heading": "",
       "image": "/images/Module-2-A+-content-for-module.png",
-      "caption": "A single large image with room to breathe.",
+      "caption": "",
       "aspect": "landscape",
       "body": {
         "type": "root",
