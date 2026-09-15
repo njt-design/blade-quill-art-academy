@@ -67,14 +67,14 @@
       "_template": "hero"
     },
     {
-      "heading": "Section heading",
+      "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
         "children": [
           {
             "children": [
               {
-                "text": "✨ What’s Included in the Bundle"
+                "text": ""
               }
             ],
             "type": "p",
