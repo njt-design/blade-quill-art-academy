@@ -121,6 +121,28 @@
       "_template": "imageSpotlight"
     },
     {
+      "eyebrow": "",
+      "heading": "",
+      "image": "/images/PNG%20Images%20Only/Activity-book-image-970-x-300-px.png",
+      "caption": "",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "4gZvtuXOnU"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
+    },
+    {
       "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
