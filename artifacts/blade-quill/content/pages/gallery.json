@@ -24,25 +24,32 @@
     {
       "artworks": [
         {
-          "title": "Chibi Ninja Girl",
-          "image": "/images/squarespace/digital-paintings/chibi-ninja-girl.png",
-          "description": "A fierce chibi kunoichi with throwing stars"
-        },
-        {
           "title": "Lheeloo & Luna",
           "image": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg",
           "description": "Lheeloo the French Bulldog and Luna the mouse",
           "downloadFile": ""
         },
         {
-          "title": "French Bulldog Caricature",
-          "image": "/images/squarespace/digital-paintings/caricature-french-bulldog-krita.png",
-          "description": "A playful caricature leaning into exaggeration — February 2026"
-        },
-        {
           "title": "Steampunk Girl",
           "image": "/images/squarespace/digital-paintings/steampunk.jpg",
           "description": "A steampunk-themed girl with mechanical accessories"
+        },
+        {
+          "title": "Steampunk Cat",
+          "image": "/images/squarespace/digital-paintings/steampunk-cat.jpg",
+          "description": "A whimsical steampunk cat character",
+          "downloadFile": ""
+        },
+        {
+          "title": "Gnome Druid",
+          "image": "/images/squarespace/digital-paintings/gnome.jpg",
+          "description": "A mystical gnome druid character with nature elements",
+          "downloadFile": ""
+        },
+        {
+          "title": "French Bulldog Caricature",
+          "image": "/images/squarespace/digital-paintings/caricature-french-bulldog-krita.png",
+          "description": "A playful caricature leaning into exaggeration — February 2026"
         },
         {
           "title": "Sila",
@@ -55,20 +62,15 @@
           "description": "A guardian creature protecting its precious dragon egg"
         },
         {
-          "title": "Chibi of the Sea",
-          "image": "/images/squarespace/digital-paintings/chibi-of-the-sea.jpg",
-          "description": "An ocean-themed chibi character with underwater colors"
+          "title": "Geisha",
+          "image": "/images/squarespace/digital-paintings/geisha.jpg",
+          "description": "An elegant geisha in full traditional attire",
+          "downloadFile": ""
         },
         {
           "title": "Child and Bear",
           "image": "/images/squarespace/digital-paintings/child-and-bear.jpg",
           "description": "A heartwarming scene of a child with a bear companion"
-        },
-        {
-          "title": "Steampunk Cat",
-          "image": "/images/squarespace/digital-paintings/steampunk-cat.jpg",
-          "description": "A whimsical steampunk cat character",
-          "downloadFile": ""
         },
         {
           "title": "French Maid",
@@ -82,10 +84,14 @@
           "description": "A stealthy chibi ninja warrior"
         },
         {
-          "title": "Geisha",
-          "image": "/images/squarespace/digital-paintings/geisha.jpg",
-          "description": "An elegant geisha in full traditional attire",
-          "downloadFile": ""
+          "title": "Chibi Ninja Girl",
+          "image": "/images/squarespace/digital-paintings/chibi-ninja-girl.png",
+          "description": "A fierce chibi kunoichi with throwing stars"
+        },
+        {
+          "title": "Chibi of the Sea",
+          "image": "/images/squarespace/digital-paintings/chibi-of-the-sea.jpg",
+          "description": "An ocean-themed chibi character with underwater colors"
         },
         {
           "title": "Chibi Elephant",
@@ -101,12 +107,6 @@
           "title": "Chibi Giraffe",
           "image": "/images/squarespace/digital-paintings/chibi-giraffe.png",
           "description": "A tall chibi giraffe with expressive eyes"
-        },
-        {
-          "title": "Gnome Druid",
-          "image": "/images/squarespace/digital-paintings/gnome.jpg",
-          "description": "A mystical gnome druid character with nature elements",
-          "downloadFile": ""
         },
         {
           "title": "Chibi Dragon",
@@ -133,18 +133,6 @@
           "title": "Landscape",
           "image": "/images/squarespace/digital-paintings/landscape.jpg",
           "description": "A serene digital landscape painting"
-        },
-        {
-          "title": "New artwork",
-          "image": "",
-          "description": "",
-          "downloadFile": ""
-        },
-        {
-          "title": "New artwork",
-          "image": "",
-          "description": "",
-          "downloadFile": ""
         }
       ],
       "emptyHeading": "Gallery is empty",
