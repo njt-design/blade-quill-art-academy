@@ -67,6 +67,11 @@ Most page sections have a **Text Style** group near the bottom of the form. Leav
 
 Changes show live in the preview. Save when you’re happy. If a section looks wrong, set the controls back to Default.
 
+Inside the text editor itself (Text sections, product descriptions), the heading dropdown offers two families:
+
+- **Heading 2 / 3 / 4** — the regular sans-serif (Quicksand) headings, large to small
+- **Heading 5 / 6** — smaller **fancy serif (Young Serif)** headings, the same face as the big page titles — nice for sub-titles that want a touch of elegance
+
 ### Add a blog post
 
 1. **Blog Posts →** create new.

@@ -1,13 +1,135 @@
 import type { Template, TinaField } from "tinacms";
 import { manageListField } from "./manage-list";
 
+/** The `overrides` shape Tina accepts on a rich-text field (toolbar, headingLevels…). */
+type RichTextOverrides = NonNullable<
+  Extract<TinaField, { type: "rich-text" }>["overrides"]
+>;
+
 /**
- * Inline "Link" embed — the explicit-control version of a link. The normal
- * way to link is the toolbar Link button (select words → Link → paste URL);
- * the site opens off-site URLs in a new tab automatically. This embed is for
- * the odd case where Corinne needs to force the new-tab behaviour on or off.
+ * Toolbar for short copy — subheadings, card descriptions, callouts.
+ * Formatting only: no headings, images, or tables, because these fields
+ * render inside tight layouts where block-level content would break them.
+ * Order here = order of the buttons in the editor.
+ */
+export const INLINE_RICH_TEXT: RichTextOverrides = {
+  toolbar: [
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "ul",
+    "ol",
+    "embed",
+  ],
+  showFloatingToolbar: true,
+};
+
+/**
+ * Toolbar for long-form copy — Text section bodies, product descriptions.
+ * Adds structure (headings, quotes, dividers, tables, images). H1 is left
+ * out because the page/post title already owns the H1 slot. H2–H4 are the
+ * regular sans (Quicksand) headings; H5–H6 are repurposed as smaller serif
+ * (Young Serif) heading styles — see rich-text-components.tsx.
+ * Deliberately left out: inline code, code blocks, mermaid, raw markdown.
+ */
+export const BODY_RICH_TEXT: RichTextOverrides = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "image",
+    "quote",
+    "hr",
+    "table",
+    "ul",
+    "ol",
+    "embed",
+  ],
+  headingLevels: ["h2", "h3", "h4", "h5", "h6"],
+  showFloatingToolbar: true,
+};
+
+/**
+ * Toolbar for text *inside* an embed (e.g. Aligned Text). Same formatting as
+ * BODY_RICH_TEXT minus "embed", so embeds can't nest inside embeds.
+ */
+const NESTED_RICH_TEXT: RichTextOverrides = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "quote",
+    "ul",
+    "ol",
+  ],
+  headingLevels: ["h2", "h3", "h4", "h5", "h6"],
+  showFloatingToolbar: true,
+};
+
+/**
+ * Embeds available from the rich-text toolbar's Embed menu.
+ *
+ * - "Aligned Text": Tina's editor has no align button (Markdown has no
+ *   concept of alignment), so this wraps a chunk of text and centers or
+ *   right-aligns it on the site.
+ * - "Link (advanced)": the explicit-control version of a link. The normal
+ *   way to link is the toolbar Link button (select words → Link → paste URL);
+ *   the site opens off-site URLs in a new tab automatically. This embed is
+ *   for the odd case where Corinne needs to force the new-tab behaviour.
  */
 export const RICH_TEXT_TEMPLATES = [
+  {
+    name: "AlignedText",
+    label: "Aligned Text",
+    inline: false,
+    fields: [
+      {
+        type: "string" as const,
+        name: "align",
+        label: "Alignment",
+        options: [
+          { value: "left", label: "Left" },
+          { value: "center", label: "Center" },
+          { value: "right", label: "Right" },
+        ],
+        ui: {
+          description: "How the text below lines up on the page.",
+        },
+      },
+      {
+        type: "rich-text" as const,
+        name: "text",
+        label: "Text",
+        overrides: NESTED_RICH_TEXT,
+        ui: {
+          description:
+            "Everything typed here gets the alignment above. Headings, bold, links and lists all work as usual.",
+        },
+      },
+    ],
+    ui: {
+      defaultItem: {
+        align: "center",
+        text: {
+          type: "root",
+          children: [
+            {
+              type: "p",
+              children: [{ type: "text", text: "Your centered text goes here." }],
+            },
+          ],
+        },
+      },
+    },
+  },
   {
     name: "ContentLink",
     label: "Link (advanced)",
@@ -49,57 +171,6 @@ export const RICH_TEXT_TEMPLATES = [
     },
   },
 ];
-
-/** The `overrides` shape Tina accepts on a rich-text field (toolbar, headingLevels…). */
-type RichTextOverrides = NonNullable<
-  Extract<TinaField, { type: "rich-text" }>["overrides"]
->;
-
-/**
- * Toolbar for short copy — subheadings, card descriptions, callouts.
- * Formatting only: no headings, images, or tables, because these fields
- * render inside tight layouts where block-level content would break them.
- * Order here = order of the buttons in the editor.
- */
-export const INLINE_RICH_TEXT: RichTextOverrides = {
-  toolbar: [
-    "bold",
-    "italic",
-    "strikethrough",
-    "highlight",
-    "link",
-    "ul",
-    "ol",
-    "embed",
-  ],
-  showFloatingToolbar: true,
-};
-
-/**
- * Toolbar for long-form copy — Text section bodies, product descriptions.
- * Adds structure (headings, quotes, dividers, tables, images). Headings are
- * limited to H2–H4 because the page/post title already owns the H1 slot.
- * Deliberately left out: inline code, code blocks, mermaid, raw markdown.
- */
-export const BODY_RICH_TEXT: RichTextOverrides = {
-  toolbar: [
-    "heading",
-    "bold",
-    "italic",
-    "strikethrough",
-    "highlight",
-    "link",
-    "image",
-    "quote",
-    "hr",
-    "table",
-    "ul",
-    "ol",
-    "embed",
-  ],
-  headingLevels: ["h2", "h3", "h4"],
-  showFloatingToolbar: true,
-};
 
 /** JSON collections store Slate AST directly — skip markdown re-parsing. */
 export const SLATE_JSON_PARSER = { type: "slatejson" as const };
@@ -335,7 +406,7 @@ export const textBlock: Template = {
       overrides: BODY_RICH_TEXT,
       ui: {
         description:
-          "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. To link, select the words and click the Link button — off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists.",
+          "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2–4 are the regular sans-serif headings; Headings 5–6 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button — off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To center or right-align a passage, use Embed → Aligned Text.",
       },
     },
     ...textStyleFields(),

@@ -94,7 +94,97 @@ function manageListField(kind) {
 }
 
 // tina/blocks.ts
+var INLINE_RICH_TEXT = {
+  toolbar: [
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "ul",
+    "ol",
+    "embed"
+  ],
+  showFloatingToolbar: true
+};
+var BODY_RICH_TEXT = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "image",
+    "quote",
+    "hr",
+    "table",
+    "ul",
+    "ol",
+    "embed"
+  ],
+  headingLevels: ["h2", "h3", "h4", "h5", "h6"],
+  showFloatingToolbar: true
+};
+var NESTED_RICH_TEXT = {
+  toolbar: [
+    "heading",
+    "bold",
+    "italic",
+    "strikethrough",
+    "highlight",
+    "link",
+    "quote",
+    "ul",
+    "ol"
+  ],
+  headingLevels: ["h2", "h3", "h4", "h5", "h6"],
+  showFloatingToolbar: true
+};
 var RICH_TEXT_TEMPLATES = [
+  {
+    name: "AlignedText",
+    label: "Aligned Text",
+    inline: false,
+    fields: [
+      {
+        type: "string",
+        name: "align",
+        label: "Alignment",
+        options: [
+          { value: "left", label: "Left" },
+          { value: "center", label: "Center" },
+          { value: "right", label: "Right" }
+        ],
+        ui: {
+          description: "How the text below lines up on the page."
+        }
+      },
+      {
+        type: "rich-text",
+        name: "text",
+        label: "Text",
+        overrides: NESTED_RICH_TEXT,
+        ui: {
+          description: "Everything typed here gets the alignment above. Headings, bold, links and lists all work as usual."
+        }
+      }
+    ],
+    ui: {
+      defaultItem: {
+        align: "center",
+        text: {
+          type: "root",
+          children: [
+            {
+              type: "p",
+              children: [{ type: "text", text: "Your centered text goes here." }]
+            }
+          ]
+        }
+      }
+    }
+  },
   {
     name: "ContentLink",
     label: "Link (advanced)",
@@ -134,38 +224,6 @@ var RICH_TEXT_TEMPLATES = [
     }
   }
 ];
-var INLINE_RICH_TEXT = {
-  toolbar: [
-    "bold",
-    "italic",
-    "strikethrough",
-    "highlight",
-    "link",
-    "ul",
-    "ol",
-    "embed"
-  ],
-  showFloatingToolbar: true
-};
-var BODY_RICH_TEXT = {
-  toolbar: [
-    "heading",
-    "bold",
-    "italic",
-    "strikethrough",
-    "highlight",
-    "link",
-    "image",
-    "quote",
-    "hr",
-    "table",
-    "ul",
-    "ol",
-    "embed"
-  ],
-  headingLevels: ["h2", "h3", "h4"],
-  showFloatingToolbar: true
-};
 var SLATE_JSON_PARSER = { type: "slatejson" };
 var charLimit = (max, description) => ({
   description: [description, `Max ${max} characters.`].filter(Boolean).join(" "),
@@ -355,7 +413,7 @@ var textBlock = {
       templates: RICH_TEXT_TEMPLATES,
       overrides: BODY_RICH_TEXT,
       ui: {
-        description: "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. To link, select the words and click the Link button \u2014 off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists."
+        description: "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2\u20134 are the regular sans-serif headings; Headings 5\u20136 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button \u2014 off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To center or right-align a passage, use Embed \u2192 Aligned Text."
       }
     },
     ...textStyleFields()

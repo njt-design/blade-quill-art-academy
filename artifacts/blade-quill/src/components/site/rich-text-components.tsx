@@ -1,7 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
-import type { Components } from "tinacms/dist/rich-text";
+import { TinaMarkdown, type Components } from "tinacms/dist/rich-text";
 import { cn } from "@/lib/utils";
+import { isRichText, preserveBlankLines } from "@/lib/rich-text";
 
 const linkClassName =
   "underline decoration-maroon/60 underline-offset-2 hover:text-maroon transition-colors";
@@ -77,6 +78,19 @@ type ContentLinkProps = {
   children?: ReactNode;
 };
 
+type AlignedTextProps = {
+  align?: string;
+  /** Nested rich-text tree (Slate `root`) from the embed's Text field. */
+  text?: unknown;
+  children?: ReactNode;
+};
+
+const ALIGN_CLASS: Record<string, string> = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+};
+
 type WithChildren = { children?: ReactNode; className?: string };
 type HighlightProps = { color?: string; children?: ReactNode };
 type TableCellProps = { align?: string; children?: ReactNode };
@@ -100,10 +114,13 @@ function highlightStyle(color?: string): CSSProperties | undefined {
 }
 
 const headingClassName = "font-heading text-ink tracking-tight";
+/** H5/H6 are repurposed in the editor as smaller serif (Young Serif) styles. */
+const serifHeadingClassName = "font-display text-ink tracking-tight font-normal";
 
 /** Shared TinaMarkdown components for site + blog rich text. */
 export const richTextComponents: Components<{
   ContentLink: ContentLinkProps;
+  AlignedText: AlignedTextProps;
   strikethrough: WithChildren;
   highlight: HighlightProps;
   table: WithChildren;
@@ -114,7 +131,11 @@ export const richTextComponents: Components<{
   p: (props) => <p {...props} />,
   break: () => <br />,
 
-  // --- Headings (H2–H4 are what the editor offers; H1 stays reserved) ---
+  // --- Headings ---
+  // H2–H4 are the regular sans (Quicksand) headings; H1 stays reserved for
+  // the page title. H5/H6 are offered in the editor as smaller serif
+  // (Young Serif) heading styles — same display face as the big page titles,
+  // scaled down for use inside body copy.
   h1: (props) => (
     <h2 {...props} className={cn(headingClassName, "mt-8 mb-3 text-3xl leading-tight")} />
   ),
@@ -128,10 +149,10 @@ export const richTextComponents: Components<{
     <h4 {...props} className={cn(headingClassName, "mt-5 mb-2 text-xl leading-snug")} />
   ),
   h5: (props) => (
-    <h5 {...props} className={cn(headingClassName, "mt-4 mb-1 text-lg")} />
+    <h5 {...props} className={cn(serifHeadingClassName, "mt-6 mb-2 text-2xl leading-snug")} />
   ),
   h6: (props) => (
-    <h6 {...props} className={cn(headingClassName, "mt-4 mb-1 text-base uppercase tracking-wide")} />
+    <h6 {...props} className={cn(serifHeadingClassName, "mt-5 mb-2 text-xl leading-snug")} />
   ),
 
   // --- Links ---
@@ -155,6 +176,23 @@ export const richTextComponents: Components<{
       <SmartLink href={href} newTab={props?.openInNewTab === true}>
         {label}
       </SmartLink>
+    );
+  },
+
+  // --- Embeds ---
+  // "Aligned Text": Tina's editor has no align button, so this embed wraps a
+  // nested rich-text tree and aligns the whole chunk. It re-renders with the
+  // same component map so headings/links/lists inside look like the rest.
+  AlignedText: (props) => {
+    const align = ALIGN_CLASS[props?.align ?? ""] ?? "text-left";
+    if (!isRichText(props?.text)) return null;
+    return (
+      <div className={cn("space-y-4", align)}>
+        <TinaMarkdown
+          content={preserveBlankLines(props.text) as any}
+          components={richTextComponents}
+        />
+      </div>
     );
   },
 

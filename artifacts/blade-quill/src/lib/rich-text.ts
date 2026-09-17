@@ -9,7 +9,13 @@ type RichTextNode = {
   text?: string;
   bold?: boolean;
   italic?: boolean;
-  props?: { text?: string; url?: string; openInNewTab?: boolean };
+  props?: {
+    /** ContentLink stores a string; AlignedText stores a nested rich-text root. */
+    text?: string | RichTextValue;
+    url?: string;
+    openInNewTab?: boolean;
+    align?: string;
+  };
   children?: RichTextNode[];
 };
 
@@ -71,7 +77,14 @@ function flattenInline(nodes: RichTextNode[] | undefined): string {
           node.type === "mdxJsxFlowElement") &&
         node.name === "ContentLink"
       ) {
-        return node.props?.text ?? "";
+        return typeof node.props?.text === "string" ? node.props.text : "";
+      }
+      if (
+        node.type === "mdxJsxFlowElement" &&
+        node.name === "AlignedText" &&
+        isRichText(node.props?.text)
+      ) {
+        return richTextToPlain(node.props.text);
       }
       if (node.children?.length) return flattenInline(node.children);
       return "";

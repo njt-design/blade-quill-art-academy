@@ -974,6 +974,17 @@ input ImageFilter {
   in: [String]
 }
 
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PageBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input BooleanFilter {
   eq: Boolean
   exists: Boolean
@@ -986,6 +997,7 @@ input PageBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input PageBlocksHomeHeroSubheadingFilter {
+  AlignedText: PageBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: PageBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -1011,6 +1023,11 @@ input PageBlocksHomeHeroFilter {
   textStyle: PageBlocksHomeHeroTextStyleFilter
 }
 
+input PageBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1018,6 +1035,7 @@ input PageBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input PageBlocksAboutHeroLeadTextFilter {
+  AlignedText: PageBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: PageBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -1047,6 +1065,11 @@ input PageBlocksAboutHeroFilter {
   textStyle: PageBlocksAboutHeroTextStyleFilter
 }
 
+input PageBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1054,6 +1077,7 @@ input PageBlocksHeroSubheadingContentLinkFilter {
 }
 
 input PageBlocksHeroSubheadingFilter {
+  AlignedText: PageBlocksHeroSubheadingAlignedTextFilter
   ContentLink: PageBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -1074,6 +1098,11 @@ input PageBlocksHeroFilter {
   textStyle: PageBlocksHeroTextStyleFilter
 }
 
+input PageBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1081,6 +1110,7 @@ input PageBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input PageBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: PageBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: PageBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -1107,6 +1137,11 @@ input PageBlocksHeroSplitImageFilter {
   textStyle: PageBlocksHeroSplitImageTextStyleFilter
 }
 
+input PageBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1114,6 +1149,7 @@ input PageBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input PageBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: PageBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: PageBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -1137,6 +1173,11 @@ input PageBlocksHeroFullBleedFilter {
   textStyle: PageBlocksHeroFullBleedTextStyleFilter
 }
 
+input PageBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1144,6 +1185,7 @@ input PageBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input PageBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: PageBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: PageBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -1173,6 +1215,11 @@ input PageBlocksHeroFloatingImagesFilter {
   textStyle: PageBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input PageBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1180,6 +1227,7 @@ input PageBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input PageBlocksHeroImageGridSubheadingFilter {
+  AlignedText: PageBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: PageBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -1208,6 +1256,11 @@ input PageBlocksHeroImageGridFilter {
   textStyle: PageBlocksHeroImageGridTextStyleFilter
 }
 
+input PageBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1215,6 +1268,7 @@ input PageBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input PageBlocksPageHeaderDescriptionFilter {
+  AlignedText: PageBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: PageBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -1232,6 +1286,11 @@ input PageBlocksPageHeaderFilter {
   textStyle: PageBlocksPageHeaderTextStyleFilter
 }
 
+input PageBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1239,6 +1298,7 @@ input PageBlocksTextBodyContentLinkFilter {
 }
 
 input PageBlocksTextBodyFilter {
+  AlignedText: PageBlocksTextBodyAlignedTextFilter
   ContentLink: PageBlocksTextBodyContentLinkFilter
 }
 
@@ -1256,6 +1316,11 @@ input PageBlocksTextFilter {
   textStyle: PageBlocksTextTextStyleFilter
 }
 
+input PageBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1263,7 +1328,13 @@ input PageBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input PageBlocksStoryParagraph1Filter {
+  AlignedText: PageBlocksStoryParagraph1AlignedTextFilter
   ContentLink: PageBlocksStoryParagraph1ContentLinkFilter
+}
+
+input PageBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input PageBlocksStoryQuoteContentLinkFilter {
@@ -1273,7 +1344,13 @@ input PageBlocksStoryQuoteContentLinkFilter {
 }
 
 input PageBlocksStoryQuoteFilter {
+  AlignedText: PageBlocksStoryQuoteAlignedTextFilter
   ContentLink: PageBlocksStoryQuoteContentLinkFilter
+}
+
+input PageBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input PageBlocksStoryParagraph2ContentLinkFilter {
@@ -1283,6 +1360,7 @@ input PageBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input PageBlocksStoryParagraph2Filter {
+  AlignedText: PageBlocksStoryParagraph2AlignedTextFilter
   ContentLink: PageBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -1337,6 +1415,11 @@ input PageBlocksStatsRowFilter {
   stats: PageBlocksStatsRowStatsFilter
 }
 
+input PageBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1344,6 +1427,7 @@ input PageBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input PageBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: PageBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: PageBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -1436,6 +1520,11 @@ input PageBlocksImageGalleryFilter {
   textStyle: PageBlocksImageGalleryTextStyleFilter
 }
 
+input PageBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1443,6 +1532,7 @@ input PageBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input PageBlocksImageSpotlightBodyFilter {
+  AlignedText: PageBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: PageBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -1548,6 +1638,11 @@ input PageBlocksVideoEmbedFilter {
   textStyle: PageBlocksVideoEmbedTextStyleFilter
 }
 
+input PageBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1555,6 +1650,7 @@ input PageBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input PageBlocksFeaturedBookDescriptionFilter {
+  AlignedText: PageBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: PageBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -1583,6 +1679,11 @@ input PageBlocksFeaturedBookFilter {
   textStyle: PageBlocksFeaturedBookTextStyleFilter
 }
 
+input PageBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1590,6 +1691,7 @@ input PageBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input PageBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: PageBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: PageBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -1628,6 +1730,11 @@ input PageBlocksProductStripFilter {
   textStyle: PageBlocksProductStripTextStyleFilter
 }
 
+input PageBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1635,6 +1742,7 @@ input PageBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input PageBlocksShopCatalogDescriptionFilter {
+  AlignedText: PageBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: PageBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -1701,6 +1809,11 @@ input PageBlocksDownloadsGridFilter {
   textStyle: PageBlocksDownloadsGridTextStyleFilter
 }
 
+input PageBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1708,6 +1821,7 @@ input PageBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input PageBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: PageBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: PageBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -1728,6 +1842,11 @@ input PageBlocksFeaturedVideoFilter {
   textStyle: PageBlocksFeaturedVideoTextStyleFilter
 }
 
+input PageBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1735,6 +1854,7 @@ input PageBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input PageBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: PageBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: PageBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -1767,6 +1887,11 @@ input PageBlocksGalleryPreviewFilter {
   textStyle: PageBlocksGalleryPreviewTextStyleFilter
 }
 
+input PageBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1774,6 +1899,7 @@ input PageBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input PageBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: PageBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: PageBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -1821,6 +1947,11 @@ input PageBlocksTutorialsStripFilter {
   textStyle: PageBlocksTutorialsStripTextStyleFilter
 }
 
+input PageBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1828,6 +1959,7 @@ input PageBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input PageBlocksClassesPitchSubheadingFilter {
+  AlignedText: PageBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: PageBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -1852,6 +1984,11 @@ input PageBlocksClassesPitchFilter {
   textStyle: PageBlocksClassesPitchTextStyleFilter
 }
 
+input PageBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1859,6 +1996,7 @@ input PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input PageBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: PageBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: PageBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -1892,6 +2030,11 @@ input PageBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input PageBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1899,6 +2042,7 @@ input PageBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input PageBlocksCtaBandDescriptionFilter {
+  AlignedText: PageBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: PageBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -1919,6 +2063,11 @@ input PageBlocksCtaBandFilter {
   textStyle: PageBlocksCtaBandTextStyleFilter
 }
 
+input PageBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1926,6 +2075,7 @@ input PageBlocksTextButtonBodyContentLinkFilter {
 }
 
 input PageBlocksTextButtonBodyFilter {
+  AlignedText: PageBlocksTextButtonBodyAlignedTextFilter
   ContentLink: PageBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -1958,6 +2108,11 @@ input PageBlocksBigCtaFilter {
   textStyle: PageBlocksBigCtaTextStyleFilter
 }
 
+input PageBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1965,6 +2120,7 @@ input PageBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input PageBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: PageBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: PageBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -1995,6 +2151,11 @@ input PageBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input PageBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -2002,6 +2163,7 @@ input PageBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input PageBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: PageBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: PageBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -2024,6 +2186,11 @@ input PageBlocksDummyBookRequestFilter {
   textStyle: PageBlocksDummyBookRequestTextStyleFilter
 }
 
+input PageBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -2031,6 +2198,7 @@ input PageBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input PageBlocksKofiSupportBodyFilter {
+  AlignedText: PageBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: PageBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -2050,6 +2218,11 @@ input PageBlocksKofiSupportFilter {
   textStyle: PageBlocksKofiSupportTextStyleFilter
 }
 
+input PageBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -2057,6 +2230,7 @@ input PageBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input PageBlocksReviewLinksIntroFilter {
+  AlignedText: PageBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: PageBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -2088,6 +2262,11 @@ input PageBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input PageBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PageBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -2095,6 +2274,7 @@ input PageBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input PageBlocksSocialLinksBodyFilter {
+  AlignedText: PageBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: PageBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -6488,6 +6668,11 @@ type LandingPageLinkInBio implements Node & Document {
 
 union LandingPage = LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
+input LandingPageBlankBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6495,6 +6680,7 @@ input LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHomeHeroSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -6520,6 +6706,11 @@ input LandingPageBlankBlocksHomeHeroFilter {
   textStyle: LandingPageBlankBlocksHomeHeroTextStyleFilter
 }
 
+input LandingPageBlankBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6527,6 +6718,7 @@ input LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input LandingPageBlankBlocksAboutHeroLeadTextFilter {
+  AlignedText: LandingPageBlankBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: LandingPageBlankBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -6556,6 +6748,11 @@ input LandingPageBlankBlocksAboutHeroFilter {
   textStyle: LandingPageBlankBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6563,6 +6760,7 @@ input LandingPageBlankBlocksHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHeroSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -6583,6 +6781,11 @@ input LandingPageBlankBlocksHeroFilter {
   textStyle: LandingPageBlankBlocksHeroTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6590,6 +6793,7 @@ input LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -6616,6 +6820,11 @@ input LandingPageBlankBlocksHeroSplitImageFilter {
   textStyle: LandingPageBlankBlocksHeroSplitImageTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6623,6 +6832,7 @@ input LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -6646,6 +6856,11 @@ input LandingPageBlankBlocksHeroFullBleedFilter {
   textStyle: LandingPageBlankBlocksHeroFullBleedTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6653,6 +6868,7 @@ input LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -6682,6 +6898,11 @@ input LandingPageBlankBlocksHeroFloatingImagesFilter {
   textStyle: LandingPageBlankBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input LandingPageBlankBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6689,6 +6910,7 @@ input LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksHeroImageGridSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -6717,6 +6939,11 @@ input LandingPageBlankBlocksHeroImageGridFilter {
   textStyle: LandingPageBlankBlocksHeroImageGridTextStyleFilter
 }
 
+input LandingPageBlankBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6724,6 +6951,7 @@ input LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksPageHeaderDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -6741,6 +6969,11 @@ input LandingPageBlankBlocksPageHeaderFilter {
   textStyle: LandingPageBlankBlocksPageHeaderTextStyleFilter
 }
 
+input LandingPageBlankBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6748,6 +6981,7 @@ input LandingPageBlankBlocksTextBodyContentLinkFilter {
 }
 
 input LandingPageBlankBlocksTextBodyFilter {
+  AlignedText: LandingPageBlankBlocksTextBodyAlignedTextFilter
   ContentLink: LandingPageBlankBlocksTextBodyContentLinkFilter
 }
 
@@ -6765,6 +6999,11 @@ input LandingPageBlankBlocksTextFilter {
   textStyle: LandingPageBlankBlocksTextTextStyleFilter
 }
 
+input LandingPageBlankBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6772,7 +7011,13 @@ input LandingPageBlankBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input LandingPageBlankBlocksStoryParagraph1Filter {
+  AlignedText: LandingPageBlankBlocksStoryParagraph1AlignedTextFilter
   ContentLink: LandingPageBlankBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageBlankBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageBlankBlocksStoryQuoteContentLinkFilter {
@@ -6782,7 +7027,13 @@ input LandingPageBlankBlocksStoryQuoteContentLinkFilter {
 }
 
 input LandingPageBlankBlocksStoryQuoteFilter {
+  AlignedText: LandingPageBlankBlocksStoryQuoteAlignedTextFilter
   ContentLink: LandingPageBlankBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageBlankBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageBlankBlocksStoryParagraph2ContentLinkFilter {
@@ -6792,6 +7043,7 @@ input LandingPageBlankBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input LandingPageBlankBlocksStoryParagraph2Filter {
+  AlignedText: LandingPageBlankBlocksStoryParagraph2AlignedTextFilter
   ContentLink: LandingPageBlankBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -6846,6 +7098,11 @@ input LandingPageBlankBlocksStatsRowFilter {
   stats: LandingPageBlankBlocksStatsRowStatsFilter
 }
 
+input LandingPageBlankBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6853,6 +7110,7 @@ input LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -6945,6 +7203,11 @@ input LandingPageBlankBlocksImageGalleryFilter {
   textStyle: LandingPageBlankBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageBlankBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -6952,6 +7215,7 @@ input LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input LandingPageBlankBlocksImageSpotlightBodyFilter {
+  AlignedText: LandingPageBlankBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: LandingPageBlankBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -7057,6 +7321,11 @@ input LandingPageBlankBlocksVideoEmbedFilter {
   textStyle: LandingPageBlankBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageBlankBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7064,6 +7333,7 @@ input LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksFeaturedBookDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -7092,6 +7362,11 @@ input LandingPageBlankBlocksFeaturedBookFilter {
   textStyle: LandingPageBlankBlocksFeaturedBookTextStyleFilter
 }
 
+input LandingPageBlankBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7099,6 +7374,7 @@ input LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -7137,6 +7413,11 @@ input LandingPageBlankBlocksProductStripFilter {
   textStyle: LandingPageBlankBlocksProductStripTextStyleFilter
 }
 
+input LandingPageBlankBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7144,6 +7425,7 @@ input LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksShopCatalogDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -7210,6 +7492,11 @@ input LandingPageBlankBlocksDownloadsGridFilter {
   textStyle: LandingPageBlankBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageBlankBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7217,6 +7504,7 @@ input LandingPageBlankBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -7237,6 +7525,11 @@ input LandingPageBlankBlocksFeaturedVideoFilter {
   textStyle: LandingPageBlankBlocksFeaturedVideoTextStyleFilter
 }
 
+input LandingPageBlankBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7244,6 +7537,7 @@ input LandingPageBlankBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -7266,6 +7560,11 @@ input LandingPageBlankBlocksGalleryPreviewFilter {
   textStyle: LandingPageBlankBlocksGalleryPreviewTextStyleFilter
 }
 
+input LandingPageBlankBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7273,6 +7572,7 @@ input LandingPageBlankBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -7320,6 +7620,11 @@ input LandingPageBlankBlocksTutorialsStripFilter {
   textStyle: LandingPageBlankBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageBlankBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7327,6 +7632,7 @@ input LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksClassesPitchSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -7351,6 +7657,11 @@ input LandingPageBlankBlocksClassesPitchFilter {
   textStyle: LandingPageBlankBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageBlankBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7358,6 +7669,7 @@ input LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -7391,6 +7703,11 @@ input LandingPageBlankBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input LandingPageBlankBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7398,6 +7715,7 @@ input LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksCtaBandDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -7418,6 +7736,11 @@ input LandingPageBlankBlocksCtaBandFilter {
   textStyle: LandingPageBlankBlocksCtaBandTextStyleFilter
 }
 
+input LandingPageBlankBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7425,6 +7748,7 @@ input LandingPageBlankBlocksTextButtonBodyContentLinkFilter {
 }
 
 input LandingPageBlankBlocksTextButtonBodyFilter {
+  AlignedText: LandingPageBlankBlocksTextButtonBodyAlignedTextFilter
   ContentLink: LandingPageBlankBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -7457,6 +7781,11 @@ input LandingPageBlankBlocksBigCtaFilter {
   textStyle: LandingPageBlankBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageBlankBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7464,6 +7793,7 @@ input LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input LandingPageBlankBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: LandingPageBlankBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: LandingPageBlankBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -7494,6 +7824,11 @@ input LandingPageBlankBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageBlankBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7501,6 +7836,7 @@ input LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input LandingPageBlankBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: LandingPageBlankBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: LandingPageBlankBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -7523,6 +7859,11 @@ input LandingPageBlankBlocksDummyBookRequestFilter {
   textStyle: LandingPageBlankBlocksDummyBookRequestTextStyleFilter
 }
 
+input LandingPageBlankBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7530,6 +7871,7 @@ input LandingPageBlankBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input LandingPageBlankBlocksKofiSupportBodyFilter {
+  AlignedText: LandingPageBlankBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: LandingPageBlankBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -7549,6 +7891,11 @@ input LandingPageBlankBlocksKofiSupportFilter {
   textStyle: LandingPageBlankBlocksKofiSupportTextStyleFilter
 }
 
+input LandingPageBlankBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7556,6 +7903,7 @@ input LandingPageBlankBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input LandingPageBlankBlocksReviewLinksIntroFilter {
+  AlignedText: LandingPageBlankBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: LandingPageBlankBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -7587,6 +7935,11 @@ input LandingPageBlankBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input LandingPageBlankBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageBlankBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7594,6 +7947,7 @@ input LandingPageBlankBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input LandingPageBlankBlocksSocialLinksBodyFilter {
+  AlignedText: LandingPageBlankBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: LandingPageBlankBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -7680,6 +8034,11 @@ input LandingPageBlankFilter {
   seo: LandingPageBlankSeoFilter
 }
 
+input LandingPageEventBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7687,6 +8046,7 @@ input LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHomeHeroSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -7712,6 +8072,11 @@ input LandingPageEventBlocksHomeHeroFilter {
   textStyle: LandingPageEventBlocksHomeHeroTextStyleFilter
 }
 
+input LandingPageEventBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7719,6 +8084,7 @@ input LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input LandingPageEventBlocksAboutHeroLeadTextFilter {
+  AlignedText: LandingPageEventBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: LandingPageEventBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -7748,6 +8114,11 @@ input LandingPageEventBlocksAboutHeroFilter {
   textStyle: LandingPageEventBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7755,6 +8126,7 @@ input LandingPageEventBlocksHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHeroSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -7775,6 +8147,11 @@ input LandingPageEventBlocksHeroFilter {
   textStyle: LandingPageEventBlocksHeroTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7782,6 +8159,7 @@ input LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -7808,6 +8186,11 @@ input LandingPageEventBlocksHeroSplitImageFilter {
   textStyle: LandingPageEventBlocksHeroSplitImageTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7815,6 +8198,7 @@ input LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -7838,6 +8222,11 @@ input LandingPageEventBlocksHeroFullBleedFilter {
   textStyle: LandingPageEventBlocksHeroFullBleedTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7845,6 +8234,7 @@ input LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -7874,6 +8264,11 @@ input LandingPageEventBlocksHeroFloatingImagesFilter {
   textStyle: LandingPageEventBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input LandingPageEventBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7881,6 +8276,7 @@ input LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksHeroImageGridSubheadingFilter {
+  AlignedText: LandingPageEventBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -7909,6 +8305,11 @@ input LandingPageEventBlocksHeroImageGridFilter {
   textStyle: LandingPageEventBlocksHeroImageGridTextStyleFilter
 }
 
+input LandingPageEventBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7916,6 +8317,7 @@ input LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksPageHeaderDescriptionFilter {
+  AlignedText: LandingPageEventBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -7933,6 +8335,11 @@ input LandingPageEventBlocksPageHeaderFilter {
   textStyle: LandingPageEventBlocksPageHeaderTextStyleFilter
 }
 
+input LandingPageEventBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7940,6 +8347,7 @@ input LandingPageEventBlocksTextBodyContentLinkFilter {
 }
 
 input LandingPageEventBlocksTextBodyFilter {
+  AlignedText: LandingPageEventBlocksTextBodyAlignedTextFilter
   ContentLink: LandingPageEventBlocksTextBodyContentLinkFilter
 }
 
@@ -7957,6 +8365,11 @@ input LandingPageEventBlocksTextFilter {
   textStyle: LandingPageEventBlocksTextTextStyleFilter
 }
 
+input LandingPageEventBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7964,7 +8377,13 @@ input LandingPageEventBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input LandingPageEventBlocksStoryParagraph1Filter {
+  AlignedText: LandingPageEventBlocksStoryParagraph1AlignedTextFilter
   ContentLink: LandingPageEventBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageEventBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageEventBlocksStoryQuoteContentLinkFilter {
@@ -7974,7 +8393,13 @@ input LandingPageEventBlocksStoryQuoteContentLinkFilter {
 }
 
 input LandingPageEventBlocksStoryQuoteFilter {
+  AlignedText: LandingPageEventBlocksStoryQuoteAlignedTextFilter
   ContentLink: LandingPageEventBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageEventBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageEventBlocksStoryParagraph2ContentLinkFilter {
@@ -7984,6 +8409,7 @@ input LandingPageEventBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input LandingPageEventBlocksStoryParagraph2Filter {
+  AlignedText: LandingPageEventBlocksStoryParagraph2AlignedTextFilter
   ContentLink: LandingPageEventBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -8038,6 +8464,11 @@ input LandingPageEventBlocksStatsRowFilter {
   stats: LandingPageEventBlocksStatsRowStatsFilter
 }
 
+input LandingPageEventBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8045,6 +8476,7 @@ input LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: LandingPageEventBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -8137,6 +8569,11 @@ input LandingPageEventBlocksImageGalleryFilter {
   textStyle: LandingPageEventBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageEventBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8144,6 +8581,7 @@ input LandingPageEventBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input LandingPageEventBlocksImageSpotlightBodyFilter {
+  AlignedText: LandingPageEventBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: LandingPageEventBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -8249,6 +8687,11 @@ input LandingPageEventBlocksVideoEmbedFilter {
   textStyle: LandingPageEventBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageEventBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8256,6 +8699,7 @@ input LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksFeaturedBookDescriptionFilter {
+  AlignedText: LandingPageEventBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -8284,6 +8728,11 @@ input LandingPageEventBlocksFeaturedBookFilter {
   textStyle: LandingPageEventBlocksFeaturedBookTextStyleFilter
 }
 
+input LandingPageEventBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8291,6 +8740,7 @@ input LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: LandingPageEventBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -8329,6 +8779,11 @@ input LandingPageEventBlocksProductStripFilter {
   textStyle: LandingPageEventBlocksProductStripTextStyleFilter
 }
 
+input LandingPageEventBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8336,6 +8791,7 @@ input LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksShopCatalogDescriptionFilter {
+  AlignedText: LandingPageEventBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -8402,6 +8858,11 @@ input LandingPageEventBlocksDownloadsGridFilter {
   textStyle: LandingPageEventBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageEventBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8409,6 +8870,7 @@ input LandingPageEventBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: LandingPageEventBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -8429,6 +8891,11 @@ input LandingPageEventBlocksFeaturedVideoFilter {
   textStyle: LandingPageEventBlocksFeaturedVideoTextStyleFilter
 }
 
+input LandingPageEventBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8436,6 +8903,7 @@ input LandingPageEventBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: LandingPageEventBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -8458,6 +8926,11 @@ input LandingPageEventBlocksGalleryPreviewFilter {
   textStyle: LandingPageEventBlocksGalleryPreviewTextStyleFilter
 }
 
+input LandingPageEventBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8465,6 +8938,7 @@ input LandingPageEventBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: LandingPageEventBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -8512,6 +8986,11 @@ input LandingPageEventBlocksTutorialsStripFilter {
   textStyle: LandingPageEventBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageEventBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8519,6 +8998,7 @@ input LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksClassesPitchSubheadingFilter {
+  AlignedText: LandingPageEventBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -8543,6 +9023,11 @@ input LandingPageEventBlocksClassesPitchFilter {
   textStyle: LandingPageEventBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageEventBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8550,6 +9035,7 @@ input LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: LandingPageEventBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -8583,6 +9069,11 @@ input LandingPageEventBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input LandingPageEventBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8590,6 +9081,7 @@ input LandingPageEventBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksCtaBandDescriptionFilter {
+  AlignedText: LandingPageEventBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -8610,6 +9102,11 @@ input LandingPageEventBlocksCtaBandFilter {
   textStyle: LandingPageEventBlocksCtaBandTextStyleFilter
 }
 
+input LandingPageEventBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8617,6 +9114,7 @@ input LandingPageEventBlocksTextButtonBodyContentLinkFilter {
 }
 
 input LandingPageEventBlocksTextButtonBodyFilter {
+  AlignedText: LandingPageEventBlocksTextButtonBodyAlignedTextFilter
   ContentLink: LandingPageEventBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -8649,6 +9147,11 @@ input LandingPageEventBlocksBigCtaFilter {
   textStyle: LandingPageEventBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageEventBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8656,6 +9159,7 @@ input LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input LandingPageEventBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: LandingPageEventBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: LandingPageEventBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -8686,6 +9190,11 @@ input LandingPageEventBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageEventBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8693,6 +9202,7 @@ input LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input LandingPageEventBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: LandingPageEventBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: LandingPageEventBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -8715,6 +9225,11 @@ input LandingPageEventBlocksDummyBookRequestFilter {
   textStyle: LandingPageEventBlocksDummyBookRequestTextStyleFilter
 }
 
+input LandingPageEventBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8722,6 +9237,7 @@ input LandingPageEventBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input LandingPageEventBlocksKofiSupportBodyFilter {
+  AlignedText: LandingPageEventBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: LandingPageEventBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -8741,6 +9257,11 @@ input LandingPageEventBlocksKofiSupportFilter {
   textStyle: LandingPageEventBlocksKofiSupportTextStyleFilter
 }
 
+input LandingPageEventBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8748,6 +9269,7 @@ input LandingPageEventBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input LandingPageEventBlocksReviewLinksIntroFilter {
+  AlignedText: LandingPageEventBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: LandingPageEventBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -8779,6 +9301,11 @@ input LandingPageEventBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input LandingPageEventBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageEventBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8786,6 +9313,7 @@ input LandingPageEventBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input LandingPageEventBlocksSocialLinksBodyFilter {
+  AlignedText: LandingPageEventBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: LandingPageEventBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -8872,6 +9400,11 @@ input LandingPageEventFilter {
   seo: LandingPageEventSeoFilter
 }
 
+input LandingPagePromoBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8879,6 +9412,7 @@ input LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHomeHeroSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -8904,6 +9438,11 @@ input LandingPagePromoBlocksHomeHeroFilter {
   textStyle: LandingPagePromoBlocksHomeHeroTextStyleFilter
 }
 
+input LandingPagePromoBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8911,6 +9450,7 @@ input LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input LandingPagePromoBlocksAboutHeroLeadTextFilter {
+  AlignedText: LandingPagePromoBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: LandingPagePromoBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -8940,6 +9480,11 @@ input LandingPagePromoBlocksAboutHeroFilter {
   textStyle: LandingPagePromoBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8947,6 +9492,7 @@ input LandingPagePromoBlocksHeroSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHeroSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHeroSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -8967,6 +9513,11 @@ input LandingPagePromoBlocksHeroFilter {
   textStyle: LandingPagePromoBlocksHeroTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8974,6 +9525,7 @@ input LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -9000,6 +9552,11 @@ input LandingPagePromoBlocksHeroSplitImageFilter {
   textStyle: LandingPagePromoBlocksHeroSplitImageTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9007,6 +9564,7 @@ input LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -9030,6 +9588,11 @@ input LandingPagePromoBlocksHeroFullBleedFilter {
   textStyle: LandingPagePromoBlocksHeroFullBleedTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9037,6 +9600,7 @@ input LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -9066,6 +9630,11 @@ input LandingPagePromoBlocksHeroFloatingImagesFilter {
   textStyle: LandingPagePromoBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input LandingPagePromoBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9073,6 +9642,7 @@ input LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksHeroImageGridSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -9101,6 +9671,11 @@ input LandingPagePromoBlocksHeroImageGridFilter {
   textStyle: LandingPagePromoBlocksHeroImageGridTextStyleFilter
 }
 
+input LandingPagePromoBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9108,6 +9683,7 @@ input LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksPageHeaderDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -9125,6 +9701,11 @@ input LandingPagePromoBlocksPageHeaderFilter {
   textStyle: LandingPagePromoBlocksPageHeaderTextStyleFilter
 }
 
+input LandingPagePromoBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9132,6 +9713,7 @@ input LandingPagePromoBlocksTextBodyContentLinkFilter {
 }
 
 input LandingPagePromoBlocksTextBodyFilter {
+  AlignedText: LandingPagePromoBlocksTextBodyAlignedTextFilter
   ContentLink: LandingPagePromoBlocksTextBodyContentLinkFilter
 }
 
@@ -9149,6 +9731,11 @@ input LandingPagePromoBlocksTextFilter {
   textStyle: LandingPagePromoBlocksTextTextStyleFilter
 }
 
+input LandingPagePromoBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9156,7 +9743,13 @@ input LandingPagePromoBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input LandingPagePromoBlocksStoryParagraph1Filter {
+  AlignedText: LandingPagePromoBlocksStoryParagraph1AlignedTextFilter
   ContentLink: LandingPagePromoBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPagePromoBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPagePromoBlocksStoryQuoteContentLinkFilter {
@@ -9166,7 +9759,13 @@ input LandingPagePromoBlocksStoryQuoteContentLinkFilter {
 }
 
 input LandingPagePromoBlocksStoryQuoteFilter {
+  AlignedText: LandingPagePromoBlocksStoryQuoteAlignedTextFilter
   ContentLink: LandingPagePromoBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPagePromoBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPagePromoBlocksStoryParagraph2ContentLinkFilter {
@@ -9176,6 +9775,7 @@ input LandingPagePromoBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input LandingPagePromoBlocksStoryParagraph2Filter {
+  AlignedText: LandingPagePromoBlocksStoryParagraph2AlignedTextFilter
   ContentLink: LandingPagePromoBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -9230,6 +9830,11 @@ input LandingPagePromoBlocksStatsRowFilter {
   stats: LandingPagePromoBlocksStatsRowStatsFilter
 }
 
+input LandingPagePromoBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9237,6 +9842,7 @@ input LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -9329,6 +9935,11 @@ input LandingPagePromoBlocksImageGalleryFilter {
   textStyle: LandingPagePromoBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPagePromoBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9336,6 +9947,7 @@ input LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input LandingPagePromoBlocksImageSpotlightBodyFilter {
+  AlignedText: LandingPagePromoBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: LandingPagePromoBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -9441,6 +10053,11 @@ input LandingPagePromoBlocksVideoEmbedFilter {
   textStyle: LandingPagePromoBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPagePromoBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9448,6 +10065,7 @@ input LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksFeaturedBookDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -9476,6 +10094,11 @@ input LandingPagePromoBlocksFeaturedBookFilter {
   textStyle: LandingPagePromoBlocksFeaturedBookTextStyleFilter
 }
 
+input LandingPagePromoBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9483,6 +10106,7 @@ input LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -9521,6 +10145,11 @@ input LandingPagePromoBlocksProductStripFilter {
   textStyle: LandingPagePromoBlocksProductStripTextStyleFilter
 }
 
+input LandingPagePromoBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9528,6 +10157,7 @@ input LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksShopCatalogDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -9594,6 +10224,11 @@ input LandingPagePromoBlocksDownloadsGridFilter {
   textStyle: LandingPagePromoBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPagePromoBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9601,6 +10236,7 @@ input LandingPagePromoBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -9621,6 +10257,11 @@ input LandingPagePromoBlocksFeaturedVideoFilter {
   textStyle: LandingPagePromoBlocksFeaturedVideoTextStyleFilter
 }
 
+input LandingPagePromoBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9628,6 +10269,7 @@ input LandingPagePromoBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -9650,6 +10292,11 @@ input LandingPagePromoBlocksGalleryPreviewFilter {
   textStyle: LandingPagePromoBlocksGalleryPreviewTextStyleFilter
 }
 
+input LandingPagePromoBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9657,6 +10304,7 @@ input LandingPagePromoBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -9704,6 +10352,11 @@ input LandingPagePromoBlocksTutorialsStripFilter {
   textStyle: LandingPagePromoBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPagePromoBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9711,6 +10364,7 @@ input LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksClassesPitchSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -9735,6 +10389,11 @@ input LandingPagePromoBlocksClassesPitchFilter {
   textStyle: LandingPagePromoBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPagePromoBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9742,6 +10401,7 @@ input LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -9775,6 +10435,11 @@ input LandingPagePromoBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input LandingPagePromoBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9782,6 +10447,7 @@ input LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksCtaBandDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -9802,6 +10468,11 @@ input LandingPagePromoBlocksCtaBandFilter {
   textStyle: LandingPagePromoBlocksCtaBandTextStyleFilter
 }
 
+input LandingPagePromoBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9809,6 +10480,7 @@ input LandingPagePromoBlocksTextButtonBodyContentLinkFilter {
 }
 
 input LandingPagePromoBlocksTextButtonBodyFilter {
+  AlignedText: LandingPagePromoBlocksTextButtonBodyAlignedTextFilter
   ContentLink: LandingPagePromoBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -9841,6 +10513,11 @@ input LandingPagePromoBlocksBigCtaFilter {
   textStyle: LandingPagePromoBlocksBigCtaTextStyleFilter
 }
 
+input LandingPagePromoBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9848,6 +10525,7 @@ input LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input LandingPagePromoBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: LandingPagePromoBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: LandingPagePromoBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -9878,6 +10556,11 @@ input LandingPagePromoBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPagePromoBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9885,6 +10568,7 @@ input LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input LandingPagePromoBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: LandingPagePromoBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: LandingPagePromoBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -9907,6 +10591,11 @@ input LandingPagePromoBlocksDummyBookRequestFilter {
   textStyle: LandingPagePromoBlocksDummyBookRequestTextStyleFilter
 }
 
+input LandingPagePromoBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9914,6 +10603,7 @@ input LandingPagePromoBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input LandingPagePromoBlocksKofiSupportBodyFilter {
+  AlignedText: LandingPagePromoBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: LandingPagePromoBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -9933,6 +10623,11 @@ input LandingPagePromoBlocksKofiSupportFilter {
   textStyle: LandingPagePromoBlocksKofiSupportTextStyleFilter
 }
 
+input LandingPagePromoBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9940,6 +10635,7 @@ input LandingPagePromoBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input LandingPagePromoBlocksReviewLinksIntroFilter {
+  AlignedText: LandingPagePromoBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: LandingPagePromoBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -9971,6 +10667,11 @@ input LandingPagePromoBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input LandingPagePromoBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPagePromoBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9978,6 +10679,7 @@ input LandingPagePromoBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input LandingPagePromoBlocksSocialLinksBodyFilter {
+  AlignedText: LandingPagePromoBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: LandingPagePromoBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -10064,6 +10766,11 @@ input LandingPagePromoFilter {
   seo: LandingPagePromoSeoFilter
 }
 
+input LandingPageInfoBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10071,6 +10778,7 @@ input LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHomeHeroSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -10096,6 +10804,11 @@ input LandingPageInfoBlocksHomeHeroFilter {
   textStyle: LandingPageInfoBlocksHomeHeroTextStyleFilter
 }
 
+input LandingPageInfoBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10103,6 +10816,7 @@ input LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input LandingPageInfoBlocksAboutHeroLeadTextFilter {
+  AlignedText: LandingPageInfoBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: LandingPageInfoBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -10132,6 +10846,11 @@ input LandingPageInfoBlocksAboutHeroFilter {
   textStyle: LandingPageInfoBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10139,6 +10858,7 @@ input LandingPageInfoBlocksHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHeroSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -10159,6 +10879,11 @@ input LandingPageInfoBlocksHeroFilter {
   textStyle: LandingPageInfoBlocksHeroTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10166,6 +10891,7 @@ input LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -10192,6 +10918,11 @@ input LandingPageInfoBlocksHeroSplitImageFilter {
   textStyle: LandingPageInfoBlocksHeroSplitImageTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10199,6 +10930,7 @@ input LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -10222,6 +10954,11 @@ input LandingPageInfoBlocksHeroFullBleedFilter {
   textStyle: LandingPageInfoBlocksHeroFullBleedTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10229,6 +10966,7 @@ input LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -10258,6 +10996,11 @@ input LandingPageInfoBlocksHeroFloatingImagesFilter {
   textStyle: LandingPageInfoBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input LandingPageInfoBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10265,6 +11008,7 @@ input LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksHeroImageGridSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -10293,6 +11037,11 @@ input LandingPageInfoBlocksHeroImageGridFilter {
   textStyle: LandingPageInfoBlocksHeroImageGridTextStyleFilter
 }
 
+input LandingPageInfoBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10300,6 +11049,7 @@ input LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksPageHeaderDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -10317,6 +11067,11 @@ input LandingPageInfoBlocksPageHeaderFilter {
   textStyle: LandingPageInfoBlocksPageHeaderTextStyleFilter
 }
 
+input LandingPageInfoBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10324,6 +11079,7 @@ input LandingPageInfoBlocksTextBodyContentLinkFilter {
 }
 
 input LandingPageInfoBlocksTextBodyFilter {
+  AlignedText: LandingPageInfoBlocksTextBodyAlignedTextFilter
   ContentLink: LandingPageInfoBlocksTextBodyContentLinkFilter
 }
 
@@ -10341,6 +11097,11 @@ input LandingPageInfoBlocksTextFilter {
   textStyle: LandingPageInfoBlocksTextTextStyleFilter
 }
 
+input LandingPageInfoBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10348,7 +11109,13 @@ input LandingPageInfoBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input LandingPageInfoBlocksStoryParagraph1Filter {
+  AlignedText: LandingPageInfoBlocksStoryParagraph1AlignedTextFilter
   ContentLink: LandingPageInfoBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageInfoBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageInfoBlocksStoryQuoteContentLinkFilter {
@@ -10358,7 +11125,13 @@ input LandingPageInfoBlocksStoryQuoteContentLinkFilter {
 }
 
 input LandingPageInfoBlocksStoryQuoteFilter {
+  AlignedText: LandingPageInfoBlocksStoryQuoteAlignedTextFilter
   ContentLink: LandingPageInfoBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageInfoBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageInfoBlocksStoryParagraph2ContentLinkFilter {
@@ -10368,6 +11141,7 @@ input LandingPageInfoBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input LandingPageInfoBlocksStoryParagraph2Filter {
+  AlignedText: LandingPageInfoBlocksStoryParagraph2AlignedTextFilter
   ContentLink: LandingPageInfoBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -10422,6 +11196,11 @@ input LandingPageInfoBlocksStatsRowFilter {
   stats: LandingPageInfoBlocksStatsRowStatsFilter
 }
 
+input LandingPageInfoBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10429,6 +11208,7 @@ input LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -10521,6 +11301,11 @@ input LandingPageInfoBlocksImageGalleryFilter {
   textStyle: LandingPageInfoBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageInfoBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10528,6 +11313,7 @@ input LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input LandingPageInfoBlocksImageSpotlightBodyFilter {
+  AlignedText: LandingPageInfoBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: LandingPageInfoBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -10633,6 +11419,11 @@ input LandingPageInfoBlocksVideoEmbedFilter {
   textStyle: LandingPageInfoBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageInfoBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10640,6 +11431,7 @@ input LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksFeaturedBookDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -10668,6 +11460,11 @@ input LandingPageInfoBlocksFeaturedBookFilter {
   textStyle: LandingPageInfoBlocksFeaturedBookTextStyleFilter
 }
 
+input LandingPageInfoBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10675,6 +11472,7 @@ input LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -10713,6 +11511,11 @@ input LandingPageInfoBlocksProductStripFilter {
   textStyle: LandingPageInfoBlocksProductStripTextStyleFilter
 }
 
+input LandingPageInfoBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10720,6 +11523,7 @@ input LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksShopCatalogDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -10786,6 +11590,11 @@ input LandingPageInfoBlocksDownloadsGridFilter {
   textStyle: LandingPageInfoBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageInfoBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10793,6 +11602,7 @@ input LandingPageInfoBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -10813,6 +11623,11 @@ input LandingPageInfoBlocksFeaturedVideoFilter {
   textStyle: LandingPageInfoBlocksFeaturedVideoTextStyleFilter
 }
 
+input LandingPageInfoBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10820,6 +11635,7 @@ input LandingPageInfoBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -10842,6 +11658,11 @@ input LandingPageInfoBlocksGalleryPreviewFilter {
   textStyle: LandingPageInfoBlocksGalleryPreviewTextStyleFilter
 }
 
+input LandingPageInfoBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10849,6 +11670,7 @@ input LandingPageInfoBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -10896,6 +11718,11 @@ input LandingPageInfoBlocksTutorialsStripFilter {
   textStyle: LandingPageInfoBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageInfoBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10903,6 +11730,7 @@ input LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksClassesPitchSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -10927,6 +11755,11 @@ input LandingPageInfoBlocksClassesPitchFilter {
   textStyle: LandingPageInfoBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageInfoBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10934,6 +11767,7 @@ input LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -10967,6 +11801,11 @@ input LandingPageInfoBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input LandingPageInfoBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10974,6 +11813,7 @@ input LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksCtaBandDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -10994,6 +11834,11 @@ input LandingPageInfoBlocksCtaBandFilter {
   textStyle: LandingPageInfoBlocksCtaBandTextStyleFilter
 }
 
+input LandingPageInfoBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11001,6 +11846,7 @@ input LandingPageInfoBlocksTextButtonBodyContentLinkFilter {
 }
 
 input LandingPageInfoBlocksTextButtonBodyFilter {
+  AlignedText: LandingPageInfoBlocksTextButtonBodyAlignedTextFilter
   ContentLink: LandingPageInfoBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -11033,6 +11879,11 @@ input LandingPageInfoBlocksBigCtaFilter {
   textStyle: LandingPageInfoBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageInfoBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11040,6 +11891,7 @@ input LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input LandingPageInfoBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: LandingPageInfoBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: LandingPageInfoBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -11070,6 +11922,11 @@ input LandingPageInfoBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageInfoBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11077,6 +11934,7 @@ input LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input LandingPageInfoBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: LandingPageInfoBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: LandingPageInfoBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -11099,6 +11957,11 @@ input LandingPageInfoBlocksDummyBookRequestFilter {
   textStyle: LandingPageInfoBlocksDummyBookRequestTextStyleFilter
 }
 
+input LandingPageInfoBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11106,6 +11969,7 @@ input LandingPageInfoBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input LandingPageInfoBlocksKofiSupportBodyFilter {
+  AlignedText: LandingPageInfoBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: LandingPageInfoBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -11125,6 +11989,11 @@ input LandingPageInfoBlocksKofiSupportFilter {
   textStyle: LandingPageInfoBlocksKofiSupportTextStyleFilter
 }
 
+input LandingPageInfoBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11132,6 +12001,7 @@ input LandingPageInfoBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input LandingPageInfoBlocksReviewLinksIntroFilter {
+  AlignedText: LandingPageInfoBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: LandingPageInfoBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -11163,6 +12033,11 @@ input LandingPageInfoBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input LandingPageInfoBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageInfoBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11170,6 +12045,7 @@ input LandingPageInfoBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input LandingPageInfoBlocksSocialLinksBodyFilter {
+  AlignedText: LandingPageInfoBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: LandingPageInfoBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -11256,6 +12132,11 @@ input LandingPageInfoFilter {
   seo: LandingPageInfoSeoFilter
 }
 
+input LandingPageLinkInBioBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11263,6 +12144,7 @@ input LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHomeHeroSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -11288,6 +12170,11 @@ input LandingPageLinkInBioBlocksHomeHeroFilter {
   textStyle: LandingPageLinkInBioBlocksHomeHeroTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11295,6 +12182,7 @@ input LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksAboutHeroLeadTextFilter {
+  AlignedText: LandingPageLinkInBioBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -11324,6 +12212,11 @@ input LandingPageLinkInBioBlocksAboutHeroFilter {
   textStyle: LandingPageLinkInBioBlocksAboutHeroTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11331,6 +12224,7 @@ input LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHeroSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHeroSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -11351,6 +12245,11 @@ input LandingPageLinkInBioBlocksHeroFilter {
   textStyle: LandingPageLinkInBioBlocksHeroTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11358,6 +12257,7 @@ input LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -11384,6 +12284,11 @@ input LandingPageLinkInBioBlocksHeroSplitImageFilter {
   textStyle: LandingPageLinkInBioBlocksHeroSplitImageTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11391,6 +12296,7 @@ input LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -11414,6 +12320,11 @@ input LandingPageLinkInBioBlocksHeroFullBleedFilter {
   textStyle: LandingPageLinkInBioBlocksHeroFullBleedTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11421,6 +12332,7 @@ input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -11450,6 +12362,11 @@ input LandingPageLinkInBioBlocksHeroFloatingImagesFilter {
   textStyle: LandingPageLinkInBioBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11457,6 +12374,7 @@ input LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksHeroImageGridSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -11485,6 +12403,11 @@ input LandingPageLinkInBioBlocksHeroImageGridFilter {
   textStyle: LandingPageLinkInBioBlocksHeroImageGridTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11492,6 +12415,7 @@ input LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksPageHeaderDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -11509,6 +12433,11 @@ input LandingPageLinkInBioBlocksPageHeaderFilter {
   textStyle: LandingPageLinkInBioBlocksPageHeaderTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11516,6 +12445,7 @@ input LandingPageLinkInBioBlocksTextBodyContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksTextBodyFilter {
+  AlignedText: LandingPageLinkInBioBlocksTextBodyAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksTextBodyContentLinkFilter
 }
 
@@ -11533,6 +12463,11 @@ input LandingPageLinkInBioBlocksTextFilter {
   textStyle: LandingPageLinkInBioBlocksTextTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11540,7 +12475,13 @@ input LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksStoryParagraph1Filter {
+  AlignedText: LandingPageLinkInBioBlocksStoryParagraph1AlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksStoryParagraph1ContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter {
@@ -11550,7 +12491,13 @@ input LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksStoryQuoteFilter {
+  AlignedText: LandingPageLinkInBioBlocksStoryQuoteAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksStoryQuoteContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter {
@@ -11560,6 +12507,7 @@ input LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksStoryParagraph2Filter {
+  AlignedText: LandingPageLinkInBioBlocksStoryParagraph2AlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -11614,6 +12562,11 @@ input LandingPageLinkInBioBlocksStatsRowFilter {
   stats: LandingPageLinkInBioBlocksStatsRowStatsFilter
 }
 
+input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11621,6 +12574,7 @@ input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -11713,6 +12667,11 @@ input LandingPageLinkInBioBlocksImageGalleryFilter {
   textStyle: LandingPageLinkInBioBlocksImageGalleryTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11720,6 +12679,7 @@ input LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksImageSpotlightBodyFilter {
+  AlignedText: LandingPageLinkInBioBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -11825,6 +12785,11 @@ input LandingPageLinkInBioBlocksVideoEmbedFilter {
   textStyle: LandingPageLinkInBioBlocksVideoEmbedTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11832,6 +12797,7 @@ input LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksFeaturedBookDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -11860,6 +12826,11 @@ input LandingPageLinkInBioBlocksFeaturedBookFilter {
   textStyle: LandingPageLinkInBioBlocksFeaturedBookTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11867,6 +12838,7 @@ input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -11905,6 +12877,11 @@ input LandingPageLinkInBioBlocksProductStripFilter {
   textStyle: LandingPageLinkInBioBlocksProductStripTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11912,6 +12889,7 @@ input LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksShopCatalogDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -11978,6 +12956,11 @@ input LandingPageLinkInBioBlocksDownloadsGridFilter {
   textStyle: LandingPageLinkInBioBlocksDownloadsGridTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11985,6 +12968,7 @@ input LandingPageLinkInBioBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -12005,6 +12989,11 @@ input LandingPageLinkInBioBlocksFeaturedVideoFilter {
   textStyle: LandingPageLinkInBioBlocksFeaturedVideoTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12012,6 +13001,7 @@ input LandingPageLinkInBioBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -12034,6 +13024,11 @@ input LandingPageLinkInBioBlocksGalleryPreviewFilter {
   textStyle: LandingPageLinkInBioBlocksGalleryPreviewTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12041,6 +13036,7 @@ input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -12088,6 +13084,11 @@ input LandingPageLinkInBioBlocksTutorialsStripFilter {
   textStyle: LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12095,6 +13096,7 @@ input LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksClassesPitchSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -12119,6 +13121,11 @@ input LandingPageLinkInBioBlocksClassesPitchFilter {
   textStyle: LandingPageLinkInBioBlocksClassesPitchTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12126,6 +13133,7 @@ input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -12159,6 +13167,11 @@ input LandingPageLinkInBioBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input LandingPageLinkInBioBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12166,6 +13179,7 @@ input LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksCtaBandDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -12186,6 +13200,11 @@ input LandingPageLinkInBioBlocksCtaBandFilter {
   textStyle: LandingPageLinkInBioBlocksCtaBandTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12193,6 +13212,7 @@ input LandingPageLinkInBioBlocksTextButtonBodyContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksTextButtonBodyFilter {
+  AlignedText: LandingPageLinkInBioBlocksTextButtonBodyAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -12225,6 +13245,11 @@ input LandingPageLinkInBioBlocksBigCtaFilter {
   textStyle: LandingPageLinkInBioBlocksBigCtaTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12232,6 +13257,7 @@ input LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: LandingPageLinkInBioBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -12262,6 +13288,11 @@ input LandingPageLinkInBioBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input LandingPageLinkInBioBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12269,6 +13300,7 @@ input LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: LandingPageLinkInBioBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -12291,6 +13323,11 @@ input LandingPageLinkInBioBlocksDummyBookRequestFilter {
   textStyle: LandingPageLinkInBioBlocksDummyBookRequestTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12298,6 +13335,7 @@ input LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksKofiSupportBodyFilter {
+  AlignedText: LandingPageLinkInBioBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -12317,6 +13355,11 @@ input LandingPageLinkInBioBlocksKofiSupportFilter {
   textStyle: LandingPageLinkInBioBlocksKofiSupportTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12324,6 +13367,7 @@ input LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksReviewLinksIntroFilter {
+  AlignedText: LandingPageLinkInBioBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -12355,6 +13399,11 @@ input LandingPageLinkInBioBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input LandingPageLinkInBioBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -12362,6 +13411,7 @@ input LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input LandingPageLinkInBioBlocksSocialLinksBodyFilter {
+  AlignedText: LandingPageLinkInBioBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: LandingPageLinkInBioBlocksSocialLinksBodyContentLinkFilter
 }
 
@@ -13357,6 +14407,11 @@ type Post implements Node & Document {
   _values: JSON!
 }
 
+input PostExcerptAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostExcerptContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13364,6 +14419,7 @@ input PostExcerptContentLinkFilter {
 }
 
 input PostExcerptFilter {
+  AlignedText: PostExcerptAlignedTextFilter
   ContentLink: PostExcerptContentLinkFilter
 }
 
@@ -13381,6 +14437,11 @@ input PostSectionsHeadingFilter {
   level: StringFilter
 }
 
+input PostSectionsTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13388,6 +14449,7 @@ input PostSectionsTextBodyContentLinkFilter {
 }
 
 input PostSectionsTextBodyFilter {
+  AlignedText: PostSectionsTextBodyAlignedTextFilter
   ContentLink: PostSectionsTextBodyContentLinkFilter
 }
 
@@ -13483,6 +14545,11 @@ input PostSectionsVideoEmbedFilter {
   textStyle: PostSectionsVideoEmbedTextStyleFilter
 }
 
+input PostSectionsCalloutBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsCalloutBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13490,6 +14557,7 @@ input PostSectionsCalloutBodyContentLinkFilter {
 }
 
 input PostSectionsCalloutBodyFilter {
+  AlignedText: PostSectionsCalloutBodyAlignedTextFilter
   ContentLink: PostSectionsCalloutBodyContentLinkFilter
 }
 
@@ -13499,6 +14567,11 @@ input PostSectionsCalloutFilter {
   tone: StringFilter
 }
 
+input PostSectionsCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13506,6 +14579,7 @@ input PostSectionsCtaBandDescriptionContentLinkFilter {
 }
 
 input PostSectionsCtaBandDescriptionFilter {
+  AlignedText: PostSectionsCtaBandDescriptionAlignedTextFilter
   ContentLink: PostSectionsCtaBandDescriptionContentLinkFilter
 }
 
@@ -13526,6 +14600,11 @@ input PostSectionsCtaBandFilter {
   textStyle: PostSectionsCtaBandTextStyleFilter
 }
 
+input PostSectionsHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13533,6 +14612,7 @@ input PostSectionsHomeHeroSubheadingContentLinkFilter {
 }
 
 input PostSectionsHomeHeroSubheadingFilter {
+  AlignedText: PostSectionsHomeHeroSubheadingAlignedTextFilter
   ContentLink: PostSectionsHomeHeroSubheadingContentLinkFilter
 }
 
@@ -13558,6 +14638,11 @@ input PostSectionsHomeHeroFilter {
   textStyle: PostSectionsHomeHeroTextStyleFilter
 }
 
+input PostSectionsAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13565,6 +14650,7 @@ input PostSectionsAboutHeroLeadTextContentLinkFilter {
 }
 
 input PostSectionsAboutHeroLeadTextFilter {
+  AlignedText: PostSectionsAboutHeroLeadTextAlignedTextFilter
   ContentLink: PostSectionsAboutHeroLeadTextContentLinkFilter
 }
 
@@ -13594,6 +14680,11 @@ input PostSectionsAboutHeroFilter {
   textStyle: PostSectionsAboutHeroTextStyleFilter
 }
 
+input PostSectionsHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13601,6 +14692,7 @@ input PostSectionsHeroSubheadingContentLinkFilter {
 }
 
 input PostSectionsHeroSubheadingFilter {
+  AlignedText: PostSectionsHeroSubheadingAlignedTextFilter
   ContentLink: PostSectionsHeroSubheadingContentLinkFilter
 }
 
@@ -13621,6 +14713,11 @@ input PostSectionsHeroFilter {
   textStyle: PostSectionsHeroTextStyleFilter
 }
 
+input PostSectionsHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13628,6 +14725,7 @@ input PostSectionsHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input PostSectionsHeroSplitImageSubheadingFilter {
+  AlignedText: PostSectionsHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: PostSectionsHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -13654,6 +14752,11 @@ input PostSectionsHeroSplitImageFilter {
   textStyle: PostSectionsHeroSplitImageTextStyleFilter
 }
 
+input PostSectionsHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13661,6 +14764,7 @@ input PostSectionsHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input PostSectionsHeroFullBleedSubheadingFilter {
+  AlignedText: PostSectionsHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: PostSectionsHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -13684,6 +14788,11 @@ input PostSectionsHeroFullBleedFilter {
   textStyle: PostSectionsHeroFullBleedTextStyleFilter
 }
 
+input PostSectionsHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13691,6 +14800,7 @@ input PostSectionsHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input PostSectionsHeroFloatingImagesSubheadingFilter {
+  AlignedText: PostSectionsHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: PostSectionsHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -13720,6 +14830,11 @@ input PostSectionsHeroFloatingImagesFilter {
   textStyle: PostSectionsHeroFloatingImagesTextStyleFilter
 }
 
+input PostSectionsHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13727,6 +14842,7 @@ input PostSectionsHeroImageGridSubheadingContentLinkFilter {
 }
 
 input PostSectionsHeroImageGridSubheadingFilter {
+  AlignedText: PostSectionsHeroImageGridSubheadingAlignedTextFilter
   ContentLink: PostSectionsHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -13755,6 +14871,11 @@ input PostSectionsHeroImageGridFilter {
   textStyle: PostSectionsHeroImageGridTextStyleFilter
 }
 
+input PostSectionsPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13762,6 +14883,7 @@ input PostSectionsPageHeaderDescriptionContentLinkFilter {
 }
 
 input PostSectionsPageHeaderDescriptionFilter {
+  AlignedText: PostSectionsPageHeaderDescriptionAlignedTextFilter
   ContentLink: PostSectionsPageHeaderDescriptionContentLinkFilter
 }
 
@@ -13779,6 +14901,11 @@ input PostSectionsPageHeaderFilter {
   textStyle: PostSectionsPageHeaderTextStyleFilter
 }
 
+input PostSectionsStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13786,7 +14913,13 @@ input PostSectionsStoryParagraph1ContentLinkFilter {
 }
 
 input PostSectionsStoryParagraph1Filter {
+  AlignedText: PostSectionsStoryParagraph1AlignedTextFilter
   ContentLink: PostSectionsStoryParagraph1ContentLinkFilter
+}
+
+input PostSectionsStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input PostSectionsStoryQuoteContentLinkFilter {
@@ -13796,7 +14929,13 @@ input PostSectionsStoryQuoteContentLinkFilter {
 }
 
 input PostSectionsStoryQuoteFilter {
+  AlignedText: PostSectionsStoryQuoteAlignedTextFilter
   ContentLink: PostSectionsStoryQuoteContentLinkFilter
+}
+
+input PostSectionsStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input PostSectionsStoryParagraph2ContentLinkFilter {
@@ -13806,6 +14945,7 @@ input PostSectionsStoryParagraph2ContentLinkFilter {
 }
 
 input PostSectionsStoryParagraph2Filter {
+  AlignedText: PostSectionsStoryParagraph2AlignedTextFilter
   ContentLink: PostSectionsStoryParagraph2ContentLinkFilter
 }
 
@@ -13860,6 +15000,11 @@ input PostSectionsStatsRowFilter {
   stats: PostSectionsStatsRowStatsFilter
 }
 
+input PostSectionsFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13867,6 +15012,7 @@ input PostSectionsFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input PostSectionsFeatureGridItemsDescriptionFilter {
+  AlignedText: PostSectionsFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: PostSectionsFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -13939,6 +15085,11 @@ input PostSectionsPillarsFilter {
   textStyle: PostSectionsPillarsTextStyleFilter
 }
 
+input PostSectionsImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -13946,6 +15097,7 @@ input PostSectionsImageSpotlightBodyContentLinkFilter {
 }
 
 input PostSectionsImageSpotlightBodyFilter {
+  AlignedText: PostSectionsImageSpotlightBodyAlignedTextFilter
   ContentLink: PostSectionsImageSpotlightBodyContentLinkFilter
 }
 
@@ -14009,6 +15161,11 @@ input PostSectionsImageMasonryFilter {
   textStyle: PostSectionsImageMasonryTextStyleFilter
 }
 
+input PostSectionsFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14016,6 +15173,7 @@ input PostSectionsFeaturedBookDescriptionContentLinkFilter {
 }
 
 input PostSectionsFeaturedBookDescriptionFilter {
+  AlignedText: PostSectionsFeaturedBookDescriptionAlignedTextFilter
   ContentLink: PostSectionsFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -14044,6 +15202,11 @@ input PostSectionsFeaturedBookFilter {
   textStyle: PostSectionsFeaturedBookTextStyleFilter
 }
 
+input PostSectionsFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14051,6 +15214,7 @@ input PostSectionsFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input PostSectionsFeaturedReleaseDescriptionFilter {
+  AlignedText: PostSectionsFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: PostSectionsFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -14089,6 +15253,11 @@ input PostSectionsProductStripFilter {
   textStyle: PostSectionsProductStripTextStyleFilter
 }
 
+input PostSectionsShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14096,6 +15265,7 @@ input PostSectionsShopCatalogDescriptionContentLinkFilter {
 }
 
 input PostSectionsShopCatalogDescriptionFilter {
+  AlignedText: PostSectionsShopCatalogDescriptionAlignedTextFilter
   ContentLink: PostSectionsShopCatalogDescriptionContentLinkFilter
 }
 
@@ -14162,6 +15332,11 @@ input PostSectionsDownloadsGridFilter {
   textStyle: PostSectionsDownloadsGridTextStyleFilter
 }
 
+input PostSectionsFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14169,6 +15344,7 @@ input PostSectionsFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input PostSectionsFeaturedVideoDescriptionFilter {
+  AlignedText: PostSectionsFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: PostSectionsFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -14189,6 +15365,11 @@ input PostSectionsFeaturedVideoFilter {
   textStyle: PostSectionsFeaturedVideoTextStyleFilter
 }
 
+input PostSectionsGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14196,6 +15377,7 @@ input PostSectionsGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input PostSectionsGalleryPreviewDescriptionFilter {
+  AlignedText: PostSectionsGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: PostSectionsGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -14218,6 +15400,11 @@ input PostSectionsGalleryPreviewFilter {
   textStyle: PostSectionsGalleryPreviewTextStyleFilter
 }
 
+input PostSectionsDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14225,6 +15412,7 @@ input PostSectionsDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input PostSectionsDownloadsPreviewDescriptionFilter {
+  AlignedText: PostSectionsDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: PostSectionsDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -14272,6 +15460,11 @@ input PostSectionsTutorialsStripFilter {
   textStyle: PostSectionsTutorialsStripTextStyleFilter
 }
 
+input PostSectionsClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14279,6 +15472,7 @@ input PostSectionsClassesPitchSubheadingContentLinkFilter {
 }
 
 input PostSectionsClassesPitchSubheadingFilter {
+  AlignedText: PostSectionsClassesPitchSubheadingAlignedTextFilter
   ContentLink: PostSectionsClassesPitchSubheadingContentLinkFilter
 }
 
@@ -14303,6 +15497,11 @@ input PostSectionsClassesPitchFilter {
   textStyle: PostSectionsClassesPitchTextStyleFilter
 }
 
+input PostSectionsBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14310,6 +15509,7 @@ input PostSectionsBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input PostSectionsBlogFeedNewsletterSubheadingFilter {
+  AlignedText: PostSectionsBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: PostSectionsBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -14343,6 +15543,11 @@ input PostSectionsBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input PostSectionsTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14350,6 +15555,7 @@ input PostSectionsTextButtonBodyContentLinkFilter {
 }
 
 input PostSectionsTextButtonBodyFilter {
+  AlignedText: PostSectionsTextButtonBodyAlignedTextFilter
   ContentLink: PostSectionsTextButtonBodyContentLinkFilter
 }
 
@@ -14382,6 +15588,11 @@ input PostSectionsBigCtaFilter {
   textStyle: PostSectionsBigCtaTextStyleFilter
 }
 
+input PostSectionsNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14389,6 +15600,7 @@ input PostSectionsNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input PostSectionsNewsletterSignupSubheadingFilter {
+  AlignedText: PostSectionsNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: PostSectionsNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -14419,6 +15631,11 @@ input PostSectionsContactFormFilter {
   submitLabel: StringFilter
 }
 
+input PostSectionsDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14426,6 +15643,7 @@ input PostSectionsDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input PostSectionsDummyBookRequestDescriptionFilter {
+  AlignedText: PostSectionsDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: PostSectionsDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -14448,6 +15666,11 @@ input PostSectionsDummyBookRequestFilter {
   textStyle: PostSectionsDummyBookRequestTextStyleFilter
 }
 
+input PostSectionsKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14455,6 +15678,7 @@ input PostSectionsKofiSupportBodyContentLinkFilter {
 }
 
 input PostSectionsKofiSupportBodyFilter {
+  AlignedText: PostSectionsKofiSupportBodyAlignedTextFilter
   ContentLink: PostSectionsKofiSupportBodyContentLinkFilter
 }
 
@@ -14474,6 +15698,11 @@ input PostSectionsKofiSupportFilter {
   textStyle: PostSectionsKofiSupportTextStyleFilter
 }
 
+input PostSectionsReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14481,6 +15710,7 @@ input PostSectionsReviewLinksIntroContentLinkFilter {
 }
 
 input PostSectionsReviewLinksIntroFilter {
+  AlignedText: PostSectionsReviewLinksIntroAlignedTextFilter
   ContentLink: PostSectionsReviewLinksIntroContentLinkFilter
 }
 
@@ -14512,6 +15742,11 @@ input PostSectionsMarqueeFilter {
   text: StringFilter
 }
 
+input PostSectionsSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input PostSectionsSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -14519,6 +15754,7 @@ input PostSectionsSocialLinksBodyContentLinkFilter {
 }
 
 input PostSectionsSocialLinksBodyFilter {
+  AlignedText: PostSectionsSocialLinksBodyAlignedTextFilter
   ContentLink: PostSectionsSocialLinksBodyContentLinkFilter
 }
 
@@ -15581,6 +16817,11 @@ type ShopProduct implements Node & Document {
   _values: JSON!
 }
 
+input ShopProductDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15588,6 +16829,7 @@ input ShopProductDescriptionContentLinkFilter {
 }
 
 input ShopProductDescriptionFilter {
+  AlignedText: ShopProductDescriptionAlignedTextFilter
   ContentLink: ShopProductDescriptionContentLinkFilter
 }
 
@@ -15601,6 +16843,11 @@ input ShopProductSpreadImagesFilter {
   alt: StringFilter
 }
 
+input ShopProductPageCopyFullDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductPageCopyFullDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15608,7 +16855,13 @@ input ShopProductPageCopyFullDescriptionContentLinkFilter {
 }
 
 input ShopProductPageCopyFullDescriptionFilter {
+  AlignedText: ShopProductPageCopyFullDescriptionAlignedTextFilter
   ContentLink: ShopProductPageCopyFullDescriptionContentLinkFilter
+}
+
+input ShopProductPageCopyShippingNoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input ShopProductPageCopyShippingNoteContentLinkFilter {
@@ -15618,6 +16871,7 @@ input ShopProductPageCopyShippingNoteContentLinkFilter {
 }
 
 input ShopProductPageCopyShippingNoteFilter {
+  AlignedText: ShopProductPageCopyShippingNoteAlignedTextFilter
   ContentLink: ShopProductPageCopyShippingNoteContentLinkFilter
 }
 
@@ -15690,6 +16944,11 @@ input ShopProductBlocksProductInfoFilter {
   note: StringFilter
 }
 
+input ShopProductBlocksHomeHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHomeHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15697,6 +16956,7 @@ input ShopProductBlocksHomeHeroSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHomeHeroSubheadingFilter {
+  AlignedText: ShopProductBlocksHomeHeroSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHomeHeroSubheadingContentLinkFilter
 }
 
@@ -15722,6 +16982,11 @@ input ShopProductBlocksHomeHeroFilter {
   textStyle: ShopProductBlocksHomeHeroTextStyleFilter
 }
 
+input ShopProductBlocksAboutHeroLeadTextAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksAboutHeroLeadTextContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15729,6 +16994,7 @@ input ShopProductBlocksAboutHeroLeadTextContentLinkFilter {
 }
 
 input ShopProductBlocksAboutHeroLeadTextFilter {
+  AlignedText: ShopProductBlocksAboutHeroLeadTextAlignedTextFilter
   ContentLink: ShopProductBlocksAboutHeroLeadTextContentLinkFilter
 }
 
@@ -15758,6 +17024,11 @@ input ShopProductBlocksAboutHeroFilter {
   textStyle: ShopProductBlocksAboutHeroTextStyleFilter
 }
 
+input ShopProductBlocksHeroSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHeroSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15765,6 +17036,7 @@ input ShopProductBlocksHeroSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHeroSubheadingFilter {
+  AlignedText: ShopProductBlocksHeroSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHeroSubheadingContentLinkFilter
 }
 
@@ -15785,6 +17057,11 @@ input ShopProductBlocksHeroFilter {
   textStyle: ShopProductBlocksHeroTextStyleFilter
 }
 
+input ShopProductBlocksHeroSplitImageSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHeroSplitImageSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15792,6 +17069,7 @@ input ShopProductBlocksHeroSplitImageSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHeroSplitImageSubheadingFilter {
+  AlignedText: ShopProductBlocksHeroSplitImageSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHeroSplitImageSubheadingContentLinkFilter
 }
 
@@ -15818,6 +17096,11 @@ input ShopProductBlocksHeroSplitImageFilter {
   textStyle: ShopProductBlocksHeroSplitImageTextStyleFilter
 }
 
+input ShopProductBlocksHeroFullBleedSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHeroFullBleedSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15825,6 +17108,7 @@ input ShopProductBlocksHeroFullBleedSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHeroFullBleedSubheadingFilter {
+  AlignedText: ShopProductBlocksHeroFullBleedSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHeroFullBleedSubheadingContentLinkFilter
 }
 
@@ -15848,6 +17132,11 @@ input ShopProductBlocksHeroFullBleedFilter {
   textStyle: ShopProductBlocksHeroFullBleedTextStyleFilter
 }
 
+input ShopProductBlocksHeroFloatingImagesSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHeroFloatingImagesSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15855,6 +17144,7 @@ input ShopProductBlocksHeroFloatingImagesSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHeroFloatingImagesSubheadingFilter {
+  AlignedText: ShopProductBlocksHeroFloatingImagesSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHeroFloatingImagesSubheadingContentLinkFilter
 }
 
@@ -15884,6 +17174,11 @@ input ShopProductBlocksHeroFloatingImagesFilter {
   textStyle: ShopProductBlocksHeroFloatingImagesTextStyleFilter
 }
 
+input ShopProductBlocksHeroImageGridSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksHeroImageGridSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15891,6 +17186,7 @@ input ShopProductBlocksHeroImageGridSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksHeroImageGridSubheadingFilter {
+  AlignedText: ShopProductBlocksHeroImageGridSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksHeroImageGridSubheadingContentLinkFilter
 }
 
@@ -15919,6 +17215,11 @@ input ShopProductBlocksHeroImageGridFilter {
   textStyle: ShopProductBlocksHeroImageGridTextStyleFilter
 }
 
+input ShopProductBlocksPageHeaderDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksPageHeaderDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15926,6 +17227,7 @@ input ShopProductBlocksPageHeaderDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksPageHeaderDescriptionFilter {
+  AlignedText: ShopProductBlocksPageHeaderDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksPageHeaderDescriptionContentLinkFilter
 }
 
@@ -15943,6 +17245,11 @@ input ShopProductBlocksPageHeaderFilter {
   textStyle: ShopProductBlocksPageHeaderTextStyleFilter
 }
 
+input ShopProductBlocksTextBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksTextBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15950,6 +17257,7 @@ input ShopProductBlocksTextBodyContentLinkFilter {
 }
 
 input ShopProductBlocksTextBodyFilter {
+  AlignedText: ShopProductBlocksTextBodyAlignedTextFilter
   ContentLink: ShopProductBlocksTextBodyContentLinkFilter
 }
 
@@ -15967,6 +17275,11 @@ input ShopProductBlocksTextFilter {
   textStyle: ShopProductBlocksTextTextStyleFilter
 }
 
+input ShopProductBlocksStoryParagraph1AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksStoryParagraph1ContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -15974,7 +17287,13 @@ input ShopProductBlocksStoryParagraph1ContentLinkFilter {
 }
 
 input ShopProductBlocksStoryParagraph1Filter {
+  AlignedText: ShopProductBlocksStoryParagraph1AlignedTextFilter
   ContentLink: ShopProductBlocksStoryParagraph1ContentLinkFilter
+}
+
+input ShopProductBlocksStoryQuoteAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input ShopProductBlocksStoryQuoteContentLinkFilter {
@@ -15984,7 +17303,13 @@ input ShopProductBlocksStoryQuoteContentLinkFilter {
 }
 
 input ShopProductBlocksStoryQuoteFilter {
+  AlignedText: ShopProductBlocksStoryQuoteAlignedTextFilter
   ContentLink: ShopProductBlocksStoryQuoteContentLinkFilter
+}
+
+input ShopProductBlocksStoryParagraph2AlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
 }
 
 input ShopProductBlocksStoryParagraph2ContentLinkFilter {
@@ -15994,6 +17319,7 @@ input ShopProductBlocksStoryParagraph2ContentLinkFilter {
 }
 
 input ShopProductBlocksStoryParagraph2Filter {
+  AlignedText: ShopProductBlocksStoryParagraph2AlignedTextFilter
   ContentLink: ShopProductBlocksStoryParagraph2ContentLinkFilter
 }
 
@@ -16048,6 +17374,11 @@ input ShopProductBlocksStatsRowFilter {
   stats: ShopProductBlocksStatsRowStatsFilter
 }
 
+input ShopProductBlocksFeatureGridItemsDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksFeatureGridItemsDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16055,6 +17386,7 @@ input ShopProductBlocksFeatureGridItemsDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksFeatureGridItemsDescriptionFilter {
+  AlignedText: ShopProductBlocksFeatureGridItemsDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksFeatureGridItemsDescriptionContentLinkFilter
 }
 
@@ -16147,6 +17479,11 @@ input ShopProductBlocksImageGalleryFilter {
   textStyle: ShopProductBlocksImageGalleryTextStyleFilter
 }
 
+input ShopProductBlocksImageSpotlightBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksImageSpotlightBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16154,6 +17491,7 @@ input ShopProductBlocksImageSpotlightBodyContentLinkFilter {
 }
 
 input ShopProductBlocksImageSpotlightBodyFilter {
+  AlignedText: ShopProductBlocksImageSpotlightBodyAlignedTextFilter
   ContentLink: ShopProductBlocksImageSpotlightBodyContentLinkFilter
 }
 
@@ -16259,6 +17597,11 @@ input ShopProductBlocksVideoEmbedFilter {
   textStyle: ShopProductBlocksVideoEmbedTextStyleFilter
 }
 
+input ShopProductBlocksFeaturedBookDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksFeaturedBookDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16266,6 +17609,7 @@ input ShopProductBlocksFeaturedBookDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksFeaturedBookDescriptionFilter {
+  AlignedText: ShopProductBlocksFeaturedBookDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksFeaturedBookDescriptionContentLinkFilter
 }
 
@@ -16294,6 +17638,11 @@ input ShopProductBlocksFeaturedBookFilter {
   textStyle: ShopProductBlocksFeaturedBookTextStyleFilter
 }
 
+input ShopProductBlocksFeaturedReleaseDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksFeaturedReleaseDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16301,6 +17650,7 @@ input ShopProductBlocksFeaturedReleaseDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksFeaturedReleaseDescriptionFilter {
+  AlignedText: ShopProductBlocksFeaturedReleaseDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksFeaturedReleaseDescriptionContentLinkFilter
 }
 
@@ -16339,6 +17689,11 @@ input ShopProductBlocksProductStripFilter {
   textStyle: ShopProductBlocksProductStripTextStyleFilter
 }
 
+input ShopProductBlocksShopCatalogDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksShopCatalogDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16346,6 +17701,7 @@ input ShopProductBlocksShopCatalogDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksShopCatalogDescriptionFilter {
+  AlignedText: ShopProductBlocksShopCatalogDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksShopCatalogDescriptionContentLinkFilter
 }
 
@@ -16412,6 +17768,11 @@ input ShopProductBlocksDownloadsGridFilter {
   textStyle: ShopProductBlocksDownloadsGridTextStyleFilter
 }
 
+input ShopProductBlocksFeaturedVideoDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksFeaturedVideoDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16419,6 +17780,7 @@ input ShopProductBlocksFeaturedVideoDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksFeaturedVideoDescriptionFilter {
+  AlignedText: ShopProductBlocksFeaturedVideoDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksFeaturedVideoDescriptionContentLinkFilter
 }
 
@@ -16439,6 +17801,11 @@ input ShopProductBlocksFeaturedVideoFilter {
   textStyle: ShopProductBlocksFeaturedVideoTextStyleFilter
 }
 
+input ShopProductBlocksGalleryPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksGalleryPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16446,6 +17813,7 @@ input ShopProductBlocksGalleryPreviewDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksGalleryPreviewDescriptionFilter {
+  AlignedText: ShopProductBlocksGalleryPreviewDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksGalleryPreviewDescriptionContentLinkFilter
 }
 
@@ -16468,6 +17836,11 @@ input ShopProductBlocksGalleryPreviewFilter {
   textStyle: ShopProductBlocksGalleryPreviewTextStyleFilter
 }
 
+input ShopProductBlocksDownloadsPreviewDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksDownloadsPreviewDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16475,6 +17848,7 @@ input ShopProductBlocksDownloadsPreviewDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksDownloadsPreviewDescriptionFilter {
+  AlignedText: ShopProductBlocksDownloadsPreviewDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksDownloadsPreviewDescriptionContentLinkFilter
 }
 
@@ -16522,6 +17896,11 @@ input ShopProductBlocksTutorialsStripFilter {
   textStyle: ShopProductBlocksTutorialsStripTextStyleFilter
 }
 
+input ShopProductBlocksClassesPitchSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksClassesPitchSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16529,6 +17908,7 @@ input ShopProductBlocksClassesPitchSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksClassesPitchSubheadingFilter {
+  AlignedText: ShopProductBlocksClassesPitchSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksClassesPitchSubheadingContentLinkFilter
 }
 
@@ -16553,6 +17933,11 @@ input ShopProductBlocksClassesPitchFilter {
   textStyle: ShopProductBlocksClassesPitchTextStyleFilter
 }
 
+input ShopProductBlocksBlogFeedNewsletterSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16560,6 +17945,7 @@ input ShopProductBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksBlogFeedNewsletterSubheadingFilter {
+  AlignedText: ShopProductBlocksBlogFeedNewsletterSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksBlogFeedNewsletterSubheadingContentLinkFilter
 }
 
@@ -16593,6 +17979,11 @@ input ShopProductBlocksBlogIndexFilter {
   emptyDescription: StringFilter
 }
 
+input ShopProductBlocksCtaBandDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16600,6 +17991,7 @@ input ShopProductBlocksCtaBandDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksCtaBandDescriptionFilter {
+  AlignedText: ShopProductBlocksCtaBandDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksCtaBandDescriptionContentLinkFilter
 }
 
@@ -16620,6 +18012,11 @@ input ShopProductBlocksCtaBandFilter {
   textStyle: ShopProductBlocksCtaBandTextStyleFilter
 }
 
+input ShopProductBlocksTextButtonBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksTextButtonBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16627,6 +18024,7 @@ input ShopProductBlocksTextButtonBodyContentLinkFilter {
 }
 
 input ShopProductBlocksTextButtonBodyFilter {
+  AlignedText: ShopProductBlocksTextButtonBodyAlignedTextFilter
   ContentLink: ShopProductBlocksTextButtonBodyContentLinkFilter
 }
 
@@ -16659,6 +18057,11 @@ input ShopProductBlocksBigCtaFilter {
   textStyle: ShopProductBlocksBigCtaTextStyleFilter
 }
 
+input ShopProductBlocksNewsletterSignupSubheadingAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksNewsletterSignupSubheadingContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16666,6 +18069,7 @@ input ShopProductBlocksNewsletterSignupSubheadingContentLinkFilter {
 }
 
 input ShopProductBlocksNewsletterSignupSubheadingFilter {
+  AlignedText: ShopProductBlocksNewsletterSignupSubheadingAlignedTextFilter
   ContentLink: ShopProductBlocksNewsletterSignupSubheadingContentLinkFilter
 }
 
@@ -16696,6 +18100,11 @@ input ShopProductBlocksContactFormFilter {
   submitLabel: StringFilter
 }
 
+input ShopProductBlocksDummyBookRequestDescriptionAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksDummyBookRequestDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16703,6 +18112,7 @@ input ShopProductBlocksDummyBookRequestDescriptionContentLinkFilter {
 }
 
 input ShopProductBlocksDummyBookRequestDescriptionFilter {
+  AlignedText: ShopProductBlocksDummyBookRequestDescriptionAlignedTextFilter
   ContentLink: ShopProductBlocksDummyBookRequestDescriptionContentLinkFilter
 }
 
@@ -16725,6 +18135,11 @@ input ShopProductBlocksDummyBookRequestFilter {
   textStyle: ShopProductBlocksDummyBookRequestTextStyleFilter
 }
 
+input ShopProductBlocksKofiSupportBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksKofiSupportBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16732,6 +18147,7 @@ input ShopProductBlocksKofiSupportBodyContentLinkFilter {
 }
 
 input ShopProductBlocksKofiSupportBodyFilter {
+  AlignedText: ShopProductBlocksKofiSupportBodyAlignedTextFilter
   ContentLink: ShopProductBlocksKofiSupportBodyContentLinkFilter
 }
 
@@ -16751,6 +18167,11 @@ input ShopProductBlocksKofiSupportFilter {
   textStyle: ShopProductBlocksKofiSupportTextStyleFilter
 }
 
+input ShopProductBlocksReviewLinksIntroAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksReviewLinksIntroContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16758,6 +18179,7 @@ input ShopProductBlocksReviewLinksIntroContentLinkFilter {
 }
 
 input ShopProductBlocksReviewLinksIntroFilter {
+  AlignedText: ShopProductBlocksReviewLinksIntroAlignedTextFilter
   ContentLink: ShopProductBlocksReviewLinksIntroContentLinkFilter
 }
 
@@ -16789,6 +18211,11 @@ input ShopProductBlocksMarqueeFilter {
   text: StringFilter
 }
 
+input ShopProductBlocksSocialLinksBodyAlignedTextFilter {
+  align: StringFilter
+  text: RichTextFilter
+}
+
 input ShopProductBlocksSocialLinksBodyContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -16796,6 +18223,7 @@ input ShopProductBlocksSocialLinksBodyContentLinkFilter {
 }
 
 input ShopProductBlocksSocialLinksBodyFilter {
+  AlignedText: ShopProductBlocksSocialLinksBodyAlignedTextFilter
   ContentLink: ShopProductBlocksSocialLinksBodyContentLinkFilter
 }
 
