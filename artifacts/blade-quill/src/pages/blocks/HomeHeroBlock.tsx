@@ -40,28 +40,22 @@ function HeroCtas({
   primaryLink,
   setLocation,
   variant,
-  onImage,
 }: {
   block: Block;
   secondaryLink?: string;
   primaryLink?: string;
   setLocation: (to: string) => void;
   variant: "mobile" | "desktop";
-  /** True when a custom background image is behind the CTAs (white outline everywhere). */
-  onImage?: boolean;
 }) {
   const desktop = variant === "desktop";
   const btnSize = desktop ? "lg" : "md";
-  const mobileOutlineColors = onImage
-    ? "border-white text-white bg-transparent hover:bg-white hover:text-[var(--taupe)]"
-    : "border-[var(--maroon)] text-[var(--maroon)] bg-transparent hover:bg-[var(--maroon)] hover:text-[var(--paper)]";
+  // Taupe fills the hero on every breakpoint, so the outline CTA is always white.
   const outlineClass = desktop
     ? "border-white bg-transparent text-white hover:bg-white hover:text-[var(--taupe)] h-[60px]"
     : [
         "w-full h-11 min-h-11 max-h-11 px-5 py-0 text-sm",
-        mobileOutlineColors,
+        "border-white text-white bg-transparent hover:bg-white hover:text-[var(--taupe)]",
         "md:w-auto md:h-auto md:max-h-none md:px-7 md:py-[17px] md:text-[15px]",
-        "md:border-white md:bg-transparent md:text-white md:hover:bg-white md:hover:text-[var(--taupe)]",
       ].join(" ");
   const primaryClass = desktop
     ? "h-[60px]"
@@ -72,9 +66,9 @@ function HeroCtas({
       className={
         desktop
           ? "flex items-center gap-4"
-          : // DOM order is [secondary, primary]: flex-col-reverse puts the
-            // primary on TOP when stacked, and the row keeps it on the RIGHT.
-            "flex w-full shrink-0 flex-col-reverse gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
+          : // DOM order is [secondary, primary]: stacked mobile shows the outline
+            // CTA on top (per mockup); the md row keeps the primary on the RIGHT.
+            "flex w-full shrink-0 flex-col gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
       }
     >
       {block.ctaSecondary ? (
@@ -159,13 +153,14 @@ export default function HomeHeroBlock({ block }: Props) {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="w-full px-12 pt-6 pb-0 md:px-16 md:pt-8 md:pb-8 lg:px-24 lg:pt-16 lg:pb-16">
+      {/* Full-bleed taupe hero on mobile/tablet; inset rounded card on desktop.
+          Tight lg vertical padding keeps the marquee below visible on first load. */}
+      <div className="w-full lg:px-24 lg:pt-4 lg:pb-4">
         <div
           className={[
             "@container/hero relative overflow-hidden",
             "min-h-[680px] md:min-h-[720px] lg:min-h-[min(560px,50cqw)]",
-            "md:rounded-2xl lg:rounded-[32px] md:bg-[var(--taupe)]",
-            hasCustomBg ? "rounded-2xl bg-[var(--taupe)]" : "",
+            "bg-[var(--taupe)] lg:rounded-[32px]",
           ].join(" ")}
         >
           {hasCustomBg ? (
@@ -232,9 +227,9 @@ export default function HomeHeroBlock({ block }: Props) {
           {/* ── Mobile / tablet copy ── */}
           <div
             className={[
-              "relative z-10 flex min-h-[680px] flex-col px-1 pt-2 pb-6 md:min-h-[720px] md:px-10 md:pt-12 md:pb-12 lg:hidden",
+              "relative z-10 flex min-h-[680px] flex-col px-6 pt-8 pb-6 md:min-h-[720px] md:px-14 md:pt-12 md:pb-12 lg:hidden",
               // Keep tablet copy clear of the bottom-right artwork.
-              hasCustomBg ? "md:max-w-[56%]" : "md:max-w-[520px]",
+              hasCustomBg ? "md:max-w-[56%]" : "md:max-w-[560px]",
             ].join(" ")}
           >
             {block.eyebrow ? (
@@ -252,7 +247,7 @@ export default function HomeHeroBlock({ block }: Props) {
               block={block}
               defaultTag="h1"
               baseSize="clamp(36px, 8vw, 56px)"
-              className={`mb-5 md:mb-7 md:text-white ${hasCustomBg ? "text-white" : "text-[var(--ink)]"}`}
+              className="mb-5 text-white md:mb-7"
               style={{
                 lineHeight: 1.1,
                 letterSpacing: "-0.025em",
@@ -266,7 +261,7 @@ export default function HomeHeroBlock({ block }: Props) {
             {block.subheading ? (
               <Reveal>
                 <div
-                  className={`mb-12 max-w-[540px] space-y-4 text-lg leading-[1.45] md:mb-14 md:text-[19px] md:text-white [&_p]:m-0 ${hasCustomBg ? "text-white" : "text-[var(--ink-soft)]"}`}
+                  className="mb-12 max-w-[540px] space-y-4 text-lg leading-[1.45] text-white md:mb-14 md:text-[19px] [&_p]:m-0"
                   style={{ ...bodyTextStyle(block), textAlign: "left" }}
                   data-tina-field={tinaField(block, "subheading")}
                 >
@@ -284,7 +279,6 @@ export default function HomeHeroBlock({ block }: Props) {
                 primaryLink={primaryLink}
                 setLocation={setLocation}
                 variant="mobile"
-                onImage={hasCustomBg}
               />
             </Reveal>
           </div>

@@ -274,6 +274,21 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
     },
     style: "polaroid",
   },
+  imageBanners: {
+    heading: "Fresh from the studio",
+    images: [
+      { src: "/images/New-Banner-2026.jpg", alt: "Studio banner" },
+      {
+        src: "/images/Gumroad-sales-image-1920-1080px.png",
+        alt: "Bundle sale banner",
+      },
+      {
+        src: "/images/hero/welcome-steampunk-characters.webp",
+        alt: "Welcome banner",
+      },
+    ],
+    layout: "gallery",
+  },
   imageMasonry: {
     heading: "A wall of work",
     images: [
@@ -401,6 +416,11 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
       privacyNote: "No spam. Unsubscribe anytime.",
     },
   },
+  blogIndex: {
+    showTagFilter: true,
+    emptyHeading: "No posts yet",
+    emptyDescription: "Check back soon for updates.",
+  },
 
   // ── CTAs & forms ────────────────────────────────────────────────
   ctaBand: {
@@ -409,6 +429,17 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
     ctaLabel: "Get Started",
     ctaLink: "/shop",
     variant: "light",
+  },
+  textButton: {
+    showText: true,
+    body: rt(
+      "Digital painting looks harder than it is. With the right brushes and a few guided exercises, most beginners finish their first piece in a weekend."
+    ),
+    buttonLabel: "Browse Tutorials",
+    buttonLink: "/tutorials",
+    layout: "beside",
+    buttonAlign: "center",
+    buttonStyle: "primary",
   },
   bigCta: {
     eyebrow: "SAY HI",

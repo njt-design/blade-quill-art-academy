@@ -33,6 +33,7 @@ export const CORE_PAGE_SLUGS = [
   "education",
   "publishers",
   "important-links",
+  "blog",
 ];
 
 /** Map a core page file name to its live URL. */

@@ -467,5 +467,10 @@
   "downloadUrl": "",
   "gumroadUrl": "",
   "productId": 3,
-  "createdAt": "2026-06-01T00:00:00.000Z"
+  "createdAt": "2026-06-01T00:00:00.000Z",
+  "blocks": [
+    {
+      "_template": "productInfo"
+    }
+  ]
 }

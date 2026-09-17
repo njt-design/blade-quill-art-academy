@@ -105,7 +105,7 @@ export default function StoryBlock({ block }: Props) {
             className="hidden w-full max-w-[240px] shrink-0 lg:block lg:sticky lg:top-28"
             data-tina-field={tinaField(block, "sideImage")}
           >
-            <Polaroid rotate={3} washiColor="var(--gold-deep)" hoverStraighten>
+            <Polaroid hoverLift>
               <ArtTile
                 palette="moss"
                 width="100%"

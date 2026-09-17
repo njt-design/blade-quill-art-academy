@@ -341,6 +341,23 @@ export const PagePartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PageBlocksImageBanners {
+      heading
+      images {
+        __typename
+        src
+        alt
+      }
+      layout
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PageBlocksImageMasonry {
       heading
       images {
@@ -590,6 +607,11 @@ export const PagePartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PageBlocksBlogIndex {
+      showTagFilter
+      emptyHeading
+      emptyDescription
+    }
     ... on PageBlocksCtaBand {
       heading
       description
@@ -604,6 +626,15 @@ export const PagePartsFragmentDoc = gql`
         align
         bodySize
       }
+    }
+    ... on PageBlocksTextButton {
+      showText
+      body
+      buttonLabel
+      buttonLink
+      layout
+      buttonAlign
+      buttonStyle
     }
     ... on PageBlocksBigCta {
       eyebrow
@@ -1065,6 +1096,23 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageBlankBlocksImageBanners {
+        heading
+        images {
+          __typename
+          src
+          alt
+        }
+        layout
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageBlankBlocksImageMasonry {
         heading
         images {
@@ -1314,6 +1362,11 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageBlankBlocksBlogIndex {
+        showTagFilter
+        emptyHeading
+        emptyDescription
+      }
       ... on LandingPageBlankBlocksCtaBand {
         heading
         description
@@ -1328,6 +1381,15 @@ export const LandingPagePartsFragmentDoc = gql`
           align
           bodySize
         }
+      }
+      ... on LandingPageBlankBlocksTextButton {
+        showText
+        body
+        buttonLabel
+        buttonLink
+        layout
+        buttonAlign
+        buttonStyle
       }
       ... on LandingPageBlankBlocksBigCta {
         eyebrow
@@ -1785,6 +1847,23 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageEventBlocksImageBanners {
+        heading
+        images {
+          __typename
+          src
+          alt
+        }
+        layout
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageEventBlocksImageMasonry {
         heading
         images {
@@ -2034,6 +2113,11 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageEventBlocksBlogIndex {
+        showTagFilter
+        emptyHeading
+        emptyDescription
+      }
       ... on LandingPageEventBlocksCtaBand {
         heading
         description
@@ -2048,6 +2132,15 @@ export const LandingPagePartsFragmentDoc = gql`
           align
           bodySize
         }
+      }
+      ... on LandingPageEventBlocksTextButton {
+        showText
+        body
+        buttonLabel
+        buttonLink
+        layout
+        buttonAlign
+        buttonStyle
       }
       ... on LandingPageEventBlocksBigCta {
         eyebrow
@@ -2505,6 +2598,23 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPagePromoBlocksImageBanners {
+        heading
+        images {
+          __typename
+          src
+          alt
+        }
+        layout
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPagePromoBlocksImageMasonry {
         heading
         images {
@@ -2754,6 +2864,11 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPagePromoBlocksBlogIndex {
+        showTagFilter
+        emptyHeading
+        emptyDescription
+      }
       ... on LandingPagePromoBlocksCtaBand {
         heading
         description
@@ -2768,6 +2883,15 @@ export const LandingPagePartsFragmentDoc = gql`
           align
           bodySize
         }
+      }
+      ... on LandingPagePromoBlocksTextButton {
+        showText
+        body
+        buttonLabel
+        buttonLink
+        layout
+        buttonAlign
+        buttonStyle
       }
       ... on LandingPagePromoBlocksBigCta {
         eyebrow
@@ -3225,6 +3349,23 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageInfoBlocksImageBanners {
+        heading
+        images {
+          __typename
+          src
+          alt
+        }
+        layout
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageInfoBlocksImageMasonry {
         heading
         images {
@@ -3474,6 +3615,11 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageInfoBlocksBlogIndex {
+        showTagFilter
+        emptyHeading
+        emptyDescription
+      }
       ... on LandingPageInfoBlocksCtaBand {
         heading
         description
@@ -3488,6 +3634,15 @@ export const LandingPagePartsFragmentDoc = gql`
           align
           bodySize
         }
+      }
+      ... on LandingPageInfoBlocksTextButton {
+        showText
+        body
+        buttonLabel
+        buttonLink
+        layout
+        buttonAlign
+        buttonStyle
       }
       ... on LandingPageInfoBlocksBigCta {
         eyebrow
@@ -3945,6 +4100,23 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageLinkInBioBlocksImageBanners {
+        heading
+        images {
+          __typename
+          src
+          alt
+        }
+        layout
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageLinkInBioBlocksImageMasonry {
         heading
         images {
@@ -4194,6 +4366,11 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageLinkInBioBlocksBlogIndex {
+        showTagFilter
+        emptyHeading
+        emptyDescription
+      }
       ... on LandingPageLinkInBioBlocksCtaBand {
         heading
         description
@@ -4208,6 +4385,15 @@ export const LandingPagePartsFragmentDoc = gql`
           align
           bodySize
         }
+      }
+      ... on LandingPageLinkInBioBlocksTextButton {
+        showText
+        body
+        buttonLabel
+        buttonLink
+        layout
+        buttonAlign
+        buttonStyle
       }
       ... on LandingPageLinkInBioBlocksBigCta {
         eyebrow
@@ -4446,6 +4632,663 @@ export const PostPartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PostSectionsHomeHero {
+      backgroundImage
+      eyebrow
+      heading
+      subheading
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      marqueeItems
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsAboutHero {
+      eyebrow
+      heading
+      leadText
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      portraitImage
+      portraitCaption
+      deskImage
+      deskCaption
+      screenImage
+      screenCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsHeroSplitImage {
+      eyebrow
+      heading
+      subheading
+      featuredImage
+      imageAlt
+      imageCaption
+      imagePosition
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsHeroFullBleed {
+      backgroundImage
+      heading
+      subheading
+      overlay
+      textAlign
+      minHeight
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsHeroFloatingImages {
+      eyebrow
+      heading
+      subheading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsHeroImageGrid {
+      eyebrow
+      heading
+      subheading
+      layout
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsPageHeader {
+      heading
+      description
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsStory {
+      number
+      label
+      heading
+      paragraph1
+      quote
+      paragraph2
+      sideImage
+      sideCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsTimeline {
+      number
+      label
+      events {
+        __typename
+        year
+        title
+        description
+        image
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsStatsRow {
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on PostSectionsFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsCardRow {
+      number
+      label
+      cards {
+        __typename
+        tag
+        title
+        body
+        image
+        ctaLabel
+        link
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsPillars {
+      eyebrow
+      heading
+      items {
+        __typename
+        tag
+        title
+        sub
+        cta
+        badge
+        link
+        image
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsImageSpotlight {
+      eyebrow
+      heading
+      image
+      alt
+      caption
+      aspect
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsImageBanners {
+      heading
+      images {
+        __typename
+        src
+        alt
+      }
+      layout
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsImageMasonry {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+        size
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsFeaturedBook {
+      eyebrow
+      heading
+      description
+      stats {
+        __typename
+        value
+        label
+      }
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsFeaturedRelease {
+      eyebrow
+      title
+      description
+      coverImage
+      backCoverImage
+      ctaLabel
+      ctaHref
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsProductStrip {
+      eyebrow
+      heading
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsShopCatalog {
+      heading
+      highlightText
+      description
+      showFeaturedBanner
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsGalleryGrid {
+      artworks {
+        __typename
+        title
+        image
+        description
+        downloadFile
+      }
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsDownloadsGrid {
+      downloads {
+        __typename
+        title
+        description
+        file
+        fileType
+        thumbnail
+      }
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsFeaturedVideo {
+      eyebrow
+      heading
+      description
+      youtubeUrl
+      buttonLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsGalleryPreview {
+      manageList
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsDownloadsPreview {
+      manageList
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsTutorialsStrip {
+      manageList
+      eyebrow
+      headingPrefix
+      headingHighlight
+      headingSuffix
+      buttonLabel
+      youtubeUrl
+      stats {
+        __typename
+        value
+        label
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsClassesPitch {
+      eyebrow
+      heading
+      subheading
+      bullets
+      metaTags
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsBlogFeed {
+      heading
+      showNewsletter
+      newsletter {
+        __typename
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsBlogIndex {
+      showTagFilter
+      emptyHeading
+      emptyDescription
+    }
+    ... on PostSectionsTextButton {
+      showText
+      body
+      buttonLabel
+      buttonLink
+      layout
+      buttonAlign
+      buttonStyle
+    }
+    ... on PostSectionsBigCta {
+      eyebrow
+      heading
+      highlightText
+      primaryLabel
+      primaryLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsNewsletterSignup {
+      eyebrow
+      heading
+      subheading
+      placeholderText
+      ctaLabel
+      privacyNote
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsContactInfo {
+      email
+      location
+    }
+    ... on PostSectionsContactForm {
+      submitLabel
+    }
+    ... on PostSectionsDummyBookRequest {
+      heading
+      description
+      pdfUrl
+      submitLabel
+      successHeading
+      successNote
+      downloadLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsKofiSupport {
+      heading
+      body
+      ctaLabel
+      href
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsReviewLinks {
+      heading
+      intro
+      thankYou
+      ctaHeading
+      links {
+        __typename
+        label
+        href
+        region
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsMarquee {
+      highlightText
+      text
+    }
+    ... on PostSectionsSocialLinks {
+      heading
+      body
+      links {
+        __typename
+        platform
+        url
+        label
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
   }
   seoAssistant
   seo {
@@ -4544,6 +5387,749 @@ export const ShopProductPartsFragmentDoc = gql`
   googlePlayUrl
   productId
   createdAt
+  blocks {
+    __typename
+    ... on ShopProductBlocksProductInfo {
+      note
+    }
+    ... on ShopProductBlocksHomeHero {
+      backgroundImage
+      eyebrow
+      heading
+      subheading
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      marqueeItems
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksAboutHero {
+      eyebrow
+      heading
+      leadText
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      metaLine
+      portraitImage
+      portraitCaption
+      deskImage
+      deskCaption
+      screenImage
+      screenCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksHero {
+      heading
+      subheading
+      backgroundImage
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksHeroSplitImage {
+      eyebrow
+      heading
+      subheading
+      featuredImage
+      imageAlt
+      imageCaption
+      imagePosition
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksHeroFullBleed {
+      backgroundImage
+      heading
+      subheading
+      overlay
+      textAlign
+      minHeight
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksHeroFloatingImages {
+      eyebrow
+      heading
+      subheading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaPrimary
+      ctaPrimaryLink
+      ctaSecondary
+      ctaSecondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksHeroImageGrid {
+      eyebrow
+      heading
+      subheading
+      layout
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      ctaLabel
+      ctaLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksPageHeader {
+      heading
+      description
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksText {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksStory {
+      number
+      label
+      heading
+      paragraph1
+      quote
+      paragraph2
+      sideImage
+      sideCaption
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksTimeline {
+      number
+      label
+      events {
+        __typename
+        year
+        title
+        description
+        image
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksStatsRow {
+      stats {
+        __typename
+        value
+        label
+      }
+    }
+    ... on ShopProductBlocksFeatureGrid {
+      heading
+      items {
+        __typename
+        icon
+        title
+        description
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksCardRow {
+      number
+      label
+      cards {
+        __typename
+        tag
+        title
+        body
+        image
+        ctaLabel
+        link
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksPillars {
+      eyebrow
+      heading
+      items {
+        __typename
+        tag
+        title
+        sub
+        cta
+        badge
+        link
+        image
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksImageGallery {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksImageSpotlight {
+      eyebrow
+      heading
+      image
+      alt
+      caption
+      aspect
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksImageSideBySide {
+      heading
+      leftImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      rightImage {
+        __typename
+        src
+        alt
+        caption
+      }
+      style
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksImageBanners {
+      heading
+      images {
+        __typename
+        src
+        alt
+      }
+      layout
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksImageMasonry {
+      heading
+      images {
+        __typename
+        src
+        alt
+        caption
+        size
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksVideoEmbed {
+      heading
+      youtubeUrl
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksFeaturedBook {
+      eyebrow
+      heading
+      description
+      stats {
+        __typename
+        value
+        label
+      }
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksFeaturedRelease {
+      eyebrow
+      title
+      description
+      coverImage
+      backCoverImage
+      ctaLabel
+      ctaHref
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksProductStrip {
+      eyebrow
+      heading
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksShopCatalog {
+      heading
+      highlightText
+      description
+      showFeaturedBanner
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksGalleryGrid {
+      artworks {
+        __typename
+        title
+        image
+        description
+        downloadFile
+      }
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksDownloadsGrid {
+      downloads {
+        __typename
+        title
+        description
+        file
+        fileType
+        thumbnail
+      }
+      emptyHeading
+      emptyDescription
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksFeaturedVideo {
+      eyebrow
+      heading
+      description
+      youtubeUrl
+      buttonLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksGalleryPreview {
+      manageList
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksDownloadsPreview {
+      manageList
+      eyebrow
+      heading
+      description
+      maxItems
+      viewAllLabel
+      viewAllLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksTutorialsStrip {
+      manageList
+      eyebrow
+      headingPrefix
+      headingHighlight
+      headingSuffix
+      buttonLabel
+      youtubeUrl
+      stats {
+        __typename
+        value
+        label
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksClassesPitch {
+      eyebrow
+      heading
+      subheading
+      bullets
+      metaTags
+      ctaLabel
+      ctaLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksBlogFeed {
+      heading
+      showNewsletter
+      newsletter {
+        __typename
+        eyebrow
+        heading
+        subheading
+        placeholderText
+        ctaLabel
+        privacyNote
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksBlogIndex {
+      showTagFilter
+      emptyHeading
+      emptyDescription
+    }
+    ... on ShopProductBlocksCtaBand {
+      heading
+      description
+      ctaLabel
+      ctaLink
+      variant
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksTextButton {
+      showText
+      body
+      buttonLabel
+      buttonLink
+      layout
+      buttonAlign
+      buttonStyle
+    }
+    ... on ShopProductBlocksBigCta {
+      eyebrow
+      heading
+      highlightText
+      primaryLabel
+      primaryLink
+      secondaryLabel
+      secondaryLink
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksNewsletterSignup {
+      eyebrow
+      heading
+      subheading
+      placeholderText
+      ctaLabel
+      privacyNote
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksContactInfo {
+      email
+      location
+    }
+    ... on ShopProductBlocksContactForm {
+      submitLabel
+    }
+    ... on ShopProductBlocksDummyBookRequest {
+      heading
+      description
+      pdfUrl
+      submitLabel
+      successHeading
+      successNote
+      downloadLabel
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksKofiSupport {
+      heading
+      body
+      ctaLabel
+      href
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksReviewLinks {
+      heading
+      intro
+      thankYou
+      ctaHeading
+      links {
+        __typename
+        label
+        href
+        region
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksMarquee {
+      highlightText
+      text
+    }
+    ... on ShopProductBlocksSocialLinks {
+      heading
+      body
+      links {
+        __typename
+        platform
+        url
+        label
+      }
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+  }
   seoAssistant
   seo {
     __typename
@@ -4908,6 +6494,23 @@ export const NavigationPartsFragmentDoc = gql`
               bodySize
             }
           }
+          ... on PageBlocksImageBanners {
+            heading
+            images {
+              __typename
+              src
+              alt
+            }
+            layout
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
           ... on PageBlocksImageMasonry {
             heading
             images {
@@ -5157,6 +6760,11 @@ export const NavigationPartsFragmentDoc = gql`
               bodySize
             }
           }
+          ... on PageBlocksBlogIndex {
+            showTagFilter
+            emptyHeading
+            emptyDescription
+          }
           ... on PageBlocksCtaBand {
             heading
             description
@@ -5171,6 +6779,15 @@ export const NavigationPartsFragmentDoc = gql`
               align
               bodySize
             }
+          }
+          ... on PageBlocksTextButton {
+            showText
+            body
+            buttonLabel
+            buttonLink
+            layout
+            buttonAlign
+            buttonStyle
           }
           ... on PageBlocksBigCta {
             eyebrow
@@ -5630,6 +7247,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageBlankBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageBlankBlocksImageMasonry {
               heading
               images {
@@ -5879,6 +7513,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageBlankBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on LandingPageBlankBlocksCtaBand {
               heading
               description
@@ -5893,6 +7532,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on LandingPageBlankBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on LandingPageBlankBlocksBigCta {
               eyebrow
@@ -6350,6 +7998,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageEventBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageEventBlocksImageMasonry {
               heading
               images {
@@ -6599,6 +8264,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageEventBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on LandingPageEventBlocksCtaBand {
               heading
               description
@@ -6613,6 +8283,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on LandingPageEventBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on LandingPageEventBlocksBigCta {
               eyebrow
@@ -7070,6 +8749,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPagePromoBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPagePromoBlocksImageMasonry {
               heading
               images {
@@ -7319,6 +9015,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPagePromoBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on LandingPagePromoBlocksCtaBand {
               heading
               description
@@ -7333,6 +9034,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on LandingPagePromoBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on LandingPagePromoBlocksBigCta {
               eyebrow
@@ -7790,6 +9500,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageInfoBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageInfoBlocksImageMasonry {
               heading
               images {
@@ -8039,6 +9766,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageInfoBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on LandingPageInfoBlocksCtaBand {
               heading
               description
@@ -8053,6 +9785,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on LandingPageInfoBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on LandingPageInfoBlocksBigCta {
               eyebrow
@@ -8510,6 +10251,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageLinkInBioBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageLinkInBioBlocksImageMasonry {
               heading
               images {
@@ -8759,6 +10517,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageLinkInBioBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on LandingPageLinkInBioBlocksCtaBand {
               heading
               description
@@ -8773,6 +10536,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on LandingPageLinkInBioBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on LandingPageLinkInBioBlocksBigCta {
               eyebrow
@@ -9250,6 +11022,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksImageMasonry {
               heading
               images {
@@ -9499,6 +11288,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on PageBlocksCtaBand {
               heading
               description
@@ -9513,6 +11307,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on PageBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on PageBlocksBigCta {
               eyebrow
@@ -9972,6 +11775,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageBlankBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageBlankBlocksImageMasonry {
                 heading
                 images {
@@ -10221,6 +12041,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageBlankBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageBlankBlocksCtaBand {
                 heading
                 description
@@ -10235,6 +12060,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageBlankBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageBlankBlocksBigCta {
                 eyebrow
@@ -10692,6 +12526,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksImageMasonry {
                 heading
                 images {
@@ -10941,6 +12792,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageEventBlocksCtaBand {
                 heading
                 description
@@ -10955,6 +12811,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageEventBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageEventBlocksBigCta {
                 eyebrow
@@ -11412,6 +13277,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPagePromoBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPagePromoBlocksImageMasonry {
                 heading
                 images {
@@ -11661,6 +13543,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPagePromoBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPagePromoBlocksCtaBand {
                 heading
                 description
@@ -11675,6 +13562,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPagePromoBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPagePromoBlocksBigCta {
                 eyebrow
@@ -12132,6 +14028,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksImageMasonry {
                 heading
                 images {
@@ -12381,6 +14294,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageInfoBlocksCtaBand {
                 heading
                 description
@@ -12395,6 +14313,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageInfoBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageInfoBlocksBigCta {
                 eyebrow
@@ -12852,6 +14779,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageLinkInBioBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageLinkInBioBlocksImageMasonry {
                 heading
                 images {
@@ -13101,6 +15045,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageLinkInBioBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageLinkInBioBlocksCtaBand {
                 heading
                 description
@@ -13115,6 +15064,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageLinkInBioBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageLinkInBioBlocksBigCta {
                 eyebrow
@@ -13597,6 +15555,23 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksImageBanners {
+              heading
+              images {
+                __typename
+                src
+                alt
+              }
+              layout
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksImageMasonry {
               heading
               images {
@@ -13846,6 +15821,11 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksBlogIndex {
+              showTagFilter
+              emptyHeading
+              emptyDescription
+            }
             ... on PageBlocksCtaBand {
               heading
               description
@@ -13860,6 +15840,15 @@ export const NavigationPartsFragmentDoc = gql`
                 align
                 bodySize
               }
+            }
+            ... on PageBlocksTextButton {
+              showText
+              body
+              buttonLabel
+              buttonLink
+              layout
+              buttonAlign
+              buttonStyle
             }
             ... on PageBlocksBigCta {
               eyebrow
@@ -14319,6 +16308,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageBlankBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageBlankBlocksImageMasonry {
                 heading
                 images {
@@ -14568,6 +16574,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageBlankBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageBlankBlocksCtaBand {
                 heading
                 description
@@ -14582,6 +16593,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageBlankBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageBlankBlocksBigCta {
                 eyebrow
@@ -15039,6 +17059,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksImageMasonry {
                 heading
                 images {
@@ -15288,6 +17325,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageEventBlocksCtaBand {
                 heading
                 description
@@ -15302,6 +17344,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageEventBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageEventBlocksBigCta {
                 eyebrow
@@ -15759,6 +17810,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPagePromoBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPagePromoBlocksImageMasonry {
                 heading
                 images {
@@ -16008,6 +18076,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPagePromoBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPagePromoBlocksCtaBand {
                 heading
                 description
@@ -16022,6 +18095,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPagePromoBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPagePromoBlocksBigCta {
                 eyebrow
@@ -16479,6 +18561,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksImageMasonry {
                 heading
                 images {
@@ -16728,6 +18827,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageInfoBlocksCtaBand {
                 heading
                 description
@@ -16742,6 +18846,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageInfoBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageInfoBlocksBigCta {
                 eyebrow
@@ -17199,6 +19312,23 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageLinkInBioBlocksImageBanners {
+                heading
+                images {
+                  __typename
+                  src
+                  alt
+                }
+                layout
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageLinkInBioBlocksImageMasonry {
                 heading
                 images {
@@ -17448,6 +19578,11 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageLinkInBioBlocksBlogIndex {
+                showTagFilter
+                emptyHeading
+                emptyDescription
+              }
               ... on LandingPageLinkInBioBlocksCtaBand {
                 heading
                 description
@@ -17462,6 +19597,15 @@ export const NavigationPartsFragmentDoc = gql`
                   align
                   bodySize
                 }
+              }
+              ... on LandingPageLinkInBioBlocksTextButton {
+                showText
+                body
+                buttonLabel
+                buttonLink
+                layout
+                buttonAlign
+                buttonStyle
               }
               ... on LandingPageLinkInBioBlocksBigCta {
                 eyebrow

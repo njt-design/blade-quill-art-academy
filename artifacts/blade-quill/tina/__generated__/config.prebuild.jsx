@@ -517,6 +517,82 @@ var featureGridBlock = {
     ...textStyleFields()
   ]
 };
+var textButtonBlock = {
+  name: "textButton",
+  label: "Text + Button",
+  ui: blockUi("textButton", "Text + Button", "buttonLabel", {
+    showText: true,
+    body: rt("A few sentences of text that make the case for clicking."),
+    buttonLabel: "Get Started",
+    buttonLink: "/contact",
+    layout: "beside",
+    buttonAlign: "center",
+    buttonStyle: "primary"
+  }),
+  fields: [
+    {
+      type: "boolean",
+      name: "showText",
+      label: "Show Text",
+      ui: {
+        description: "Turn off to show just the button or link on its own \u2014 handy for dropping a single call-to-action anywhere on the page. Your text is kept, just hidden."
+      }
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Text",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
+      ui: {
+        description: "A few sentences of text shown next to (or above) the button. Hidden when Show Text is off."
+      }
+    },
+    { type: "string", name: "buttonLabel", label: "Button Label", ui: charLimit(24) },
+    {
+      type: "string",
+      name: "buttonLink",
+      label: "Button Link",
+      ui: { description: 'Relative URL (e.g. "/contact") or full https:// link.' }
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Layout",
+      options: [
+        { value: "beside", label: "Button on the right, text on the left" },
+        { value: "centered", label: "Centered \u2014 button below the text" }
+      ],
+      ui: {
+        description: "Side-by-side puts the button to the right of the text (stacks on mobile). Centered stacks the button under the text, both centered on the page. Only applies when Show Text is on."
+      }
+    },
+    {
+      type: "string",
+      name: "buttonAlign",
+      label: "Button Alignment (text off)",
+      options: [
+        { value: "left", label: "Left" },
+        { value: "center", label: "Center" },
+        { value: "right", label: "Right" }
+      ],
+      ui: {
+        description: "Where the button sits on the page when Show Text is off. With text on, Layout controls the arrangement instead."
+      }
+    },
+    {
+      type: "string",
+      name: "buttonStyle",
+      label: "Button Style",
+      options: [
+        { value: "primary", label: "Primary button (filled)" },
+        { value: "outline", label: "Secondary button (outline)" },
+        { value: "link", label: "Link (underlined text)" }
+      ]
+    }
+  ]
+};
 var bigCtaBlock = {
   name: "bigCta",
   label: "Big CTA",
@@ -935,6 +1011,37 @@ var productStripBlock = {
       ui: { description: 'Where the "view all" button goes (usually "/shop").' }
     },
     ...textStyleFields()
+  ]
+};
+var blogIndexBlock = {
+  name: "blogIndex",
+  label: "Blog Index (all posts)",
+  ui: blockUi("blogIndex", "Blog Index (all posts)", null, {
+    showTagFilter: true,
+    emptyHeading: "No posts yet",
+    emptyDescription: "Check back soon for updates."
+  }),
+  fields: [
+    {
+      type: "boolean",
+      name: "showTagFilter",
+      label: "Show Tag Filter",
+      ui: {
+        description: "Show the row of tag buttons above the posts so visitors can filter by topic."
+      }
+    },
+    {
+      type: "string",
+      name: "emptyHeading",
+      label: "Empty-State Heading",
+      ui: charLimit(60, "Shown when there are no posts to display.")
+    },
+    {
+      type: "string",
+      name: "emptyDescription",
+      label: "Empty-State Description",
+      ui: charLimit(120, "Smaller line under the empty-state heading.")
+    }
   ]
 };
 var blogFeedBlock = {
@@ -1641,7 +1748,9 @@ var featuredReleaseBlock = {
       label: "Eyebrow Label",
       ui: charLimit(40, 'Small label above the title (e.g. "New Featured Release").')
     },
-    { type: "string", name: "title", label: "Title", required: true, ui: charLimit(60) },
+    // Not `required`: nullability must match the blog Callout's optional
+    // `title` now that both templates share the PostSections union.
+    { type: "string", name: "title", label: "Title", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "description",
@@ -2134,6 +2243,59 @@ var imageSideBySideBlock = {
     ...textStyleFields()
   ]
 };
+var imageBannersBlock = {
+  name: "imageBanners",
+  label: "Image (Banners)",
+  ui: blockUi("imageBanners", "Image (Banners)", "heading", {
+    images: [],
+    layout: "stacked"
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: charLimit(60)
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Banner Images",
+      list: true,
+      ui: {
+        itemProps: (item) => ({
+          label: item?.alt || "Banner"
+        }),
+        description: "Wide promotional banners (e.g. 1200\xD7370). They display inside a soft rounded card."
+      },
+      fields: [
+        { type: "image", name: "src", label: "Image" },
+        {
+          type: "string",
+          name: "alt",
+          label: "Alt Text",
+          ui: charLimit(125, "Short image description for screen readers.")
+        }
+      ]
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Layout",
+      options: [
+        { value: "stacked", label: "Stacked \u2014 all banners full width" },
+        {
+          value: "gallery",
+          label: "Gallery \u2014 one large banner + clickable thumbnails"
+        }
+      ],
+      ui: {
+        description: "Stacked shows every banner at full width, one under the other. Gallery shows one large banner with small thumbnails beneath it \u2014 visitors click a thumbnail to switch (the active one gets a gold border)."
+      }
+    },
+    ...textStyleFields()
+  ]
+};
 var imageMasonryBlock = {
   name: "imageMasonry",
   label: "Image (Masonry)",
@@ -2307,6 +2469,21 @@ var downloadsPreviewBlock = {
     ...textStyleFields()
   ]
 };
+var productInfoBlock = {
+  name: "productInfo",
+  label: "Product Info (photos, price & buy buttons)",
+  ui: blockUi("productInfo", "Product Info (photos, price & buy buttons)", null),
+  fields: [
+    {
+      type: "string",
+      name: "note",
+      label: "Note (not shown on the site)",
+      ui: {
+        description: "This card is the product's photos, price, buy buttons, and tabs \u2014 edit those in the fields above. Drag this card to move where the purchase area sits among your other sections."
+      }
+    }
+  ]
+};
 var ALL_BLOCKS = [
   // Heroes & headers
   homeHeroBlock,
@@ -2328,6 +2505,7 @@ var ALL_BLOCKS = [
   imageGalleryBlock,
   imageSpotlightBlock,
   imageSideBySideBlock,
+  imageBannersBlock,
   imageMasonryBlock,
   videoEmbedBlock,
   // Commerce & media
@@ -2343,8 +2521,10 @@ var ALL_BLOCKS = [
   tutorialsStripBlock,
   classesPitchBlock,
   blogFeedBlock,
+  blogIndexBlock,
   // Calls to action & forms
   ctaBandBlock,
+  textButtonBlock,
   bigCtaBlock,
   newsletterSignupBlock,
   contactInfoBlock,
@@ -2392,7 +2572,8 @@ var blogHeadingBlock = {
       type: "string",
       name: "text",
       label: "Heading",
-      required: true,
+      // Not `required`: nullability must match Marquee's optional `text` now
+      // that both templates share the PostSections union (GraphQL merge rule).
       ui: charLimit(90, "The section title.")
     },
     {
@@ -2594,6 +2775,9 @@ var BLOG_BLOCKS = [
   blogCalloutBlock,
   blogCtaBlock
 ];
+var BLOG_PAGE_BLOCKS = ALL_BLOCKS.filter(
+  (block) => !BLOG_BLOCKS.some((b) => b.name === block.name)
+);
 
 // tina/product-page-fields.ts
 function richText(...paragraphs) {
@@ -3048,7 +3232,8 @@ var CORE_PAGE_SLUGS = [
   "downloads",
   "education",
   "publishers",
-  "important-links"
+  "important-links",
+  "blog"
 ];
 function corePageRoute(basename) {
   const base = basename.replace(/\.json$/i, "");
@@ -4203,9 +4388,9 @@ var config_default = defineConfig({
             list: true,
             ui: {
               visualSelector: true,
-              description: "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add Heading, Text, Spacer, Image, and more."
+              description: "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add anything \u2014 article basics (Heading, Text, Image\u2026) are listed first, and every site pattern (CTA band, newsletter, galleries\u2026) is available below them. Page-style patterns display at full width inside the article."
             },
-            templates: BLOG_BLOCKS
+            templates: [...BLOG_BLOCKS, ...BLOG_PAGE_BLOCKS]
           },
           ...seoFields("post")
         ]
@@ -4235,7 +4420,9 @@ var config_default = defineConfig({
               productId: Math.floor(Date.now() / 1e3),
               inStock: true,
               featured: false,
-              createdAt: (/* @__PURE__ */ new Date()).toISOString()
+              createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+              // Start with the purchase area as a reorderable section card.
+              blocks: [{ _template: "productInfo" }]
             })
           },
           router: ({ document }) => {
@@ -4475,6 +4662,17 @@ var config_default = defineConfig({
             name: "createdAt",
             label: "Created Date",
             ui: { description: 'Used for "Newest" sort on the shop page.' }
+          },
+          {
+            type: "object",
+            name: "blocks",
+            label: "Page Sections",
+            list: true,
+            ui: {
+              visualSelector: true,
+              description: "The sections on this product page, top to bottom. The \u201CProduct Info\u201D card is the purchase area (photos, price, buy buttons, tabs) \u2014 drag it to move it, and add any other section above or below it. If the list is empty the purchase area shows by itself, as before."
+            },
+            templates: [productInfoBlock, ...ALL_BLOCKS]
           },
           ...seoFields("product")
         ]

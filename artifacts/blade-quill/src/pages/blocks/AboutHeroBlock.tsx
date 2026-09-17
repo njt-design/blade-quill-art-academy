@@ -161,11 +161,7 @@ export default function AboutHeroBlock({ block }: Props) {
               className="lg:hidden flex justify-center"
               data-tina-field={tinaField(block, "portraitImage")}
             >
-              <Polaroid
-                rotate={3}
-                washiColor="var(--maroon)"
-                style={{ width: "min(100%, 320px)" }}
-              >
+              <Polaroid style={{ width: "min(100%, 320px)" }}>
                 <ArtTile
                   palette="warm"
                   src={portraitSrc}
@@ -190,9 +186,7 @@ export default function AboutHeroBlock({ block }: Props) {
                 data-tina-field={tinaField(block, "portraitImage")}
               >
                 <Polaroid
-                  rotate={2}
-                  washiColor="var(--maroon)"
-                  hoverStraighten
+                  hoverLift
                   style={{ width: "fit-content", maxWidth: "100%" }}
                 >
                   <img
@@ -222,7 +216,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     width: accentCount === 2 ? 280 : 330,
                   }}
                 >
-                  <Polaroid rotate={4} washiColor="var(--maroon)" hoverStraighten>
+                  <Polaroid hoverLift>
                     <ArtTile
                       palette="warm"
                       src={portraitSrc}
@@ -246,7 +240,7 @@ export default function AboutHeroBlock({ block }: Props) {
                       width: screenSrc ? 220 : 250,
                     }}
                   >
-                    <Polaroid rotate={-6} washiColor="var(--taupe)" hoverStraighten>
+                    <Polaroid hoverLift>
                       <ArtTile
                         palette="violet"
                         width="100%"
@@ -287,7 +281,7 @@ export default function AboutHeroBlock({ block }: Props) {
                           }
                     }
                   >
-                    <Polaroid rotate={5} washiColor="var(--gold)" hoverStraighten>
+                    <Polaroid hoverLift>
                       <ArtTile
                         palette="rose"
                         width="100%"

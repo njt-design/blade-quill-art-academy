@@ -476,6 +476,26 @@ type PageBlocksImageSideBySide {
   textStyle: PageBlocksImageSideBySideTextStyle
 }
 
+type PageBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type PageBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PageBlocksImageBanners {
+  heading: String
+  images: [PageBlocksImageBannersImages]
+  layout: String
+  textStyle: PageBlocksImageBannersTextStyle
+}
+
 type PageBlocksImageMasonryImages {
   src: String
   alt: String
@@ -546,7 +566,7 @@ type PageBlocksFeaturedReleaseTextStyle {
 
 type PageBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -759,6 +779,12 @@ type PageBlocksBlogFeed {
   textStyle: PageBlocksBlogFeedTextStyle
 }
 
+type PageBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type PageBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -774,6 +800,16 @@ type PageBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: PageBlocksCtaBandTextStyle
+}
+
+type PageBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type PageBlocksBigCtaTextStyle {
@@ -906,7 +942,7 @@ type PageBlocksSocialLinks {
   textStyle: PageBlocksSocialLinksTextStyle
 }
 
-union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksFeaturedVideo | PageBlocksGalleryPreview | PageBlocksDownloadsPreview | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksCtaBand | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
+union PageBlocks = PageBlocksHomeHero | PageBlocksAboutHero | PageBlocksHero | PageBlocksHeroSplitImage | PageBlocksHeroFullBleed | PageBlocksHeroFloatingImages | PageBlocksHeroImageGrid | PageBlocksPageHeader | PageBlocksText | PageBlocksStory | PageBlocksTimeline | PageBlocksStatsRow | PageBlocksFeatureGrid | PageBlocksCardRow | PageBlocksPillars | PageBlocksImageGallery | PageBlocksImageSpotlight | PageBlocksImageSideBySide | PageBlocksImageBanners | PageBlocksImageMasonry | PageBlocksVideoEmbed | PageBlocksFeaturedBook | PageBlocksFeaturedRelease | PageBlocksProductStrip | PageBlocksShopCatalog | PageBlocksGalleryGrid | PageBlocksDownloadsGrid | PageBlocksFeaturedVideo | PageBlocksGalleryPreview | PageBlocksDownloadsPreview | PageBlocksTutorialsStrip | PageBlocksClassesPitch | PageBlocksBlogFeed | PageBlocksBlogIndex | PageBlocksCtaBand | PageBlocksTextButton | PageBlocksBigCta | PageBlocksNewsletterSignup | PageBlocksContactInfo | PageBlocksContactForm | PageBlocksDummyBookRequest | PageBlocksKofiSupport | PageBlocksReviewLinks | PageBlocksMarquee | PageBlocksSocialLinks
 
 type PageSeo {
   metaTitle: String
@@ -1457,6 +1493,26 @@ input PageBlocksImageSideBySideFilter {
   textStyle: PageBlocksImageSideBySideTextStyleFilter
 }
 
+input PageBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input PageBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PageBlocksImageBannersFilter {
+  heading: StringFilter
+  images: PageBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: PageBlocksImageBannersTextStyleFilter
+}
+
 input PageBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -1830,6 +1886,12 @@ input PageBlocksBlogFeedFilter {
   textStyle: PageBlocksBlogFeedTextStyleFilter
 }
 
+input PageBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input PageBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -1855,6 +1917,26 @@ input PageBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: PageBlocksCtaBandTextStyleFilter
+}
+
+input PageBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PageBlocksTextButtonBodyFilter {
+  ContentLink: PageBlocksTextButtonBodyContentLinkFilter
+}
+
+input PageBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: PageBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input PageBlocksBigCtaTextStyleFilter {
@@ -2056,6 +2138,7 @@ input PageBlocksFilter {
   imageGallery: PageBlocksImageGalleryFilter
   imageSpotlight: PageBlocksImageSpotlightFilter
   imageSideBySide: PageBlocksImageSideBySideFilter
+  imageBanners: PageBlocksImageBannersFilter
   imageMasonry: PageBlocksImageMasonryFilter
   videoEmbed: PageBlocksVideoEmbedFilter
   featuredBook: PageBlocksFeaturedBookFilter
@@ -2070,7 +2153,9 @@ input PageBlocksFilter {
   tutorialsStrip: PageBlocksTutorialsStripFilter
   classesPitch: PageBlocksClassesPitchFilter
   blogFeed: PageBlocksBlogFeedFilter
+  blogIndex: PageBlocksBlogIndexFilter
   ctaBand: PageBlocksCtaBandFilter
+  textButton: PageBlocksTextButtonFilter
   bigCta: PageBlocksBigCtaFilter
   newsletterSignup: PageBlocksNewsletterSignupFilter
   contactInfo: PageBlocksContactInfoFilter
@@ -2480,6 +2565,26 @@ type LandingPageBlankBlocksImageSideBySide {
   textStyle: LandingPageBlankBlocksImageSideBySideTextStyle
 }
 
+type LandingPageBlankBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type LandingPageBlankBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageBlankBlocksImageBanners {
+  heading: String
+  images: [LandingPageBlankBlocksImageBannersImages]
+  layout: String
+  textStyle: LandingPageBlankBlocksImageBannersTextStyle
+}
+
 type LandingPageBlankBlocksImageMasonryImages {
   src: String
   alt: String
@@ -2550,7 +2655,7 @@ type LandingPageBlankBlocksFeaturedReleaseTextStyle {
 
 type LandingPageBlankBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -2763,6 +2868,12 @@ type LandingPageBlankBlocksBlogFeed {
   textStyle: LandingPageBlankBlocksBlogFeedTextStyle
 }
 
+type LandingPageBlankBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type LandingPageBlankBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -2778,6 +2889,16 @@ type LandingPageBlankBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: LandingPageBlankBlocksCtaBandTextStyle
+}
+
+type LandingPageBlankBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type LandingPageBlankBlocksBigCtaTextStyle {
@@ -2910,7 +3031,7 @@ type LandingPageBlankBlocksSocialLinks {
   textStyle: LandingPageBlankBlocksSocialLinksTextStyle
 }
 
-union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksFeaturedVideo | LandingPageBlankBlocksGalleryPreview | LandingPageBlankBlocksDownloadsPreview | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
+union LandingPageBlankBlocks = LandingPageBlankBlocksHomeHero | LandingPageBlankBlocksAboutHero | LandingPageBlankBlocksHero | LandingPageBlankBlocksHeroSplitImage | LandingPageBlankBlocksHeroFullBleed | LandingPageBlankBlocksHeroFloatingImages | LandingPageBlankBlocksHeroImageGrid | LandingPageBlankBlocksPageHeader | LandingPageBlankBlocksText | LandingPageBlankBlocksStory | LandingPageBlankBlocksTimeline | LandingPageBlankBlocksStatsRow | LandingPageBlankBlocksFeatureGrid | LandingPageBlankBlocksCardRow | LandingPageBlankBlocksPillars | LandingPageBlankBlocksImageGallery | LandingPageBlankBlocksImageSpotlight | LandingPageBlankBlocksImageSideBySide | LandingPageBlankBlocksImageBanners | LandingPageBlankBlocksImageMasonry | LandingPageBlankBlocksVideoEmbed | LandingPageBlankBlocksFeaturedBook | LandingPageBlankBlocksFeaturedRelease | LandingPageBlankBlocksProductStrip | LandingPageBlankBlocksShopCatalog | LandingPageBlankBlocksGalleryGrid | LandingPageBlankBlocksDownloadsGrid | LandingPageBlankBlocksFeaturedVideo | LandingPageBlankBlocksGalleryPreview | LandingPageBlankBlocksDownloadsPreview | LandingPageBlankBlocksTutorialsStrip | LandingPageBlankBlocksClassesPitch | LandingPageBlankBlocksBlogFeed | LandingPageBlankBlocksBlogIndex | LandingPageBlankBlocksCtaBand | LandingPageBlankBlocksTextButton | LandingPageBlankBlocksBigCta | LandingPageBlankBlocksNewsletterSignup | LandingPageBlankBlocksContactInfo | LandingPageBlankBlocksContactForm | LandingPageBlankBlocksDummyBookRequest | LandingPageBlankBlocksKofiSupport | LandingPageBlankBlocksReviewLinks | LandingPageBlankBlocksMarquee | LandingPageBlankBlocksSocialLinks
 
 type LandingPageBlankSeo {
   metaTitle: String
@@ -3303,6 +3424,26 @@ type LandingPageEventBlocksImageSideBySide {
   textStyle: LandingPageEventBlocksImageSideBySideTextStyle
 }
 
+type LandingPageEventBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type LandingPageEventBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageEventBlocksImageBanners {
+  heading: String
+  images: [LandingPageEventBlocksImageBannersImages]
+  layout: String
+  textStyle: LandingPageEventBlocksImageBannersTextStyle
+}
+
 type LandingPageEventBlocksImageMasonryImages {
   src: String
   alt: String
@@ -3373,7 +3514,7 @@ type LandingPageEventBlocksFeaturedReleaseTextStyle {
 
 type LandingPageEventBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -3586,6 +3727,12 @@ type LandingPageEventBlocksBlogFeed {
   textStyle: LandingPageEventBlocksBlogFeedTextStyle
 }
 
+type LandingPageEventBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type LandingPageEventBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -3601,6 +3748,16 @@ type LandingPageEventBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: LandingPageEventBlocksCtaBandTextStyle
+}
+
+type LandingPageEventBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type LandingPageEventBlocksBigCtaTextStyle {
@@ -3733,7 +3890,7 @@ type LandingPageEventBlocksSocialLinks {
   textStyle: LandingPageEventBlocksSocialLinksTextStyle
 }
 
-union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksFeaturedVideo | LandingPageEventBlocksGalleryPreview | LandingPageEventBlocksDownloadsPreview | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksCtaBand | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
+union LandingPageEventBlocks = LandingPageEventBlocksHomeHero | LandingPageEventBlocksAboutHero | LandingPageEventBlocksHero | LandingPageEventBlocksHeroSplitImage | LandingPageEventBlocksHeroFullBleed | LandingPageEventBlocksHeroFloatingImages | LandingPageEventBlocksHeroImageGrid | LandingPageEventBlocksPageHeader | LandingPageEventBlocksText | LandingPageEventBlocksStory | LandingPageEventBlocksTimeline | LandingPageEventBlocksStatsRow | LandingPageEventBlocksFeatureGrid | LandingPageEventBlocksCardRow | LandingPageEventBlocksPillars | LandingPageEventBlocksImageGallery | LandingPageEventBlocksImageSpotlight | LandingPageEventBlocksImageSideBySide | LandingPageEventBlocksImageBanners | LandingPageEventBlocksImageMasonry | LandingPageEventBlocksVideoEmbed | LandingPageEventBlocksFeaturedBook | LandingPageEventBlocksFeaturedRelease | LandingPageEventBlocksProductStrip | LandingPageEventBlocksShopCatalog | LandingPageEventBlocksGalleryGrid | LandingPageEventBlocksDownloadsGrid | LandingPageEventBlocksFeaturedVideo | LandingPageEventBlocksGalleryPreview | LandingPageEventBlocksDownloadsPreview | LandingPageEventBlocksTutorialsStrip | LandingPageEventBlocksClassesPitch | LandingPageEventBlocksBlogFeed | LandingPageEventBlocksBlogIndex | LandingPageEventBlocksCtaBand | LandingPageEventBlocksTextButton | LandingPageEventBlocksBigCta | LandingPageEventBlocksNewsletterSignup | LandingPageEventBlocksContactInfo | LandingPageEventBlocksContactForm | LandingPageEventBlocksDummyBookRequest | LandingPageEventBlocksKofiSupport | LandingPageEventBlocksReviewLinks | LandingPageEventBlocksMarquee | LandingPageEventBlocksSocialLinks
 
 type LandingPageEventSeo {
   metaTitle: String
@@ -4126,6 +4283,26 @@ type LandingPagePromoBlocksImageSideBySide {
   textStyle: LandingPagePromoBlocksImageSideBySideTextStyle
 }
 
+type LandingPagePromoBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type LandingPagePromoBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPagePromoBlocksImageBanners {
+  heading: String
+  images: [LandingPagePromoBlocksImageBannersImages]
+  layout: String
+  textStyle: LandingPagePromoBlocksImageBannersTextStyle
+}
+
 type LandingPagePromoBlocksImageMasonryImages {
   src: String
   alt: String
@@ -4196,7 +4373,7 @@ type LandingPagePromoBlocksFeaturedReleaseTextStyle {
 
 type LandingPagePromoBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -4409,6 +4586,12 @@ type LandingPagePromoBlocksBlogFeed {
   textStyle: LandingPagePromoBlocksBlogFeedTextStyle
 }
 
+type LandingPagePromoBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type LandingPagePromoBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -4424,6 +4607,16 @@ type LandingPagePromoBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: LandingPagePromoBlocksCtaBandTextStyle
+}
+
+type LandingPagePromoBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type LandingPagePromoBlocksBigCtaTextStyle {
@@ -4556,7 +4749,7 @@ type LandingPagePromoBlocksSocialLinks {
   textStyle: LandingPagePromoBlocksSocialLinksTextStyle
 }
 
-union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksFeaturedVideo | LandingPagePromoBlocksGalleryPreview | LandingPagePromoBlocksDownloadsPreview | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
+union LandingPagePromoBlocks = LandingPagePromoBlocksHomeHero | LandingPagePromoBlocksAboutHero | LandingPagePromoBlocksHero | LandingPagePromoBlocksHeroSplitImage | LandingPagePromoBlocksHeroFullBleed | LandingPagePromoBlocksHeroFloatingImages | LandingPagePromoBlocksHeroImageGrid | LandingPagePromoBlocksPageHeader | LandingPagePromoBlocksText | LandingPagePromoBlocksStory | LandingPagePromoBlocksTimeline | LandingPagePromoBlocksStatsRow | LandingPagePromoBlocksFeatureGrid | LandingPagePromoBlocksCardRow | LandingPagePromoBlocksPillars | LandingPagePromoBlocksImageGallery | LandingPagePromoBlocksImageSpotlight | LandingPagePromoBlocksImageSideBySide | LandingPagePromoBlocksImageBanners | LandingPagePromoBlocksImageMasonry | LandingPagePromoBlocksVideoEmbed | LandingPagePromoBlocksFeaturedBook | LandingPagePromoBlocksFeaturedRelease | LandingPagePromoBlocksProductStrip | LandingPagePromoBlocksShopCatalog | LandingPagePromoBlocksGalleryGrid | LandingPagePromoBlocksDownloadsGrid | LandingPagePromoBlocksFeaturedVideo | LandingPagePromoBlocksGalleryPreview | LandingPagePromoBlocksDownloadsPreview | LandingPagePromoBlocksTutorialsStrip | LandingPagePromoBlocksClassesPitch | LandingPagePromoBlocksBlogFeed | LandingPagePromoBlocksBlogIndex | LandingPagePromoBlocksCtaBand | LandingPagePromoBlocksTextButton | LandingPagePromoBlocksBigCta | LandingPagePromoBlocksNewsletterSignup | LandingPagePromoBlocksContactInfo | LandingPagePromoBlocksContactForm | LandingPagePromoBlocksDummyBookRequest | LandingPagePromoBlocksKofiSupport | LandingPagePromoBlocksReviewLinks | LandingPagePromoBlocksMarquee | LandingPagePromoBlocksSocialLinks
 
 type LandingPagePromoSeo {
   metaTitle: String
@@ -4949,6 +5142,26 @@ type LandingPageInfoBlocksImageSideBySide {
   textStyle: LandingPageInfoBlocksImageSideBySideTextStyle
 }
 
+type LandingPageInfoBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type LandingPageInfoBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageInfoBlocksImageBanners {
+  heading: String
+  images: [LandingPageInfoBlocksImageBannersImages]
+  layout: String
+  textStyle: LandingPageInfoBlocksImageBannersTextStyle
+}
+
 type LandingPageInfoBlocksImageMasonryImages {
   src: String
   alt: String
@@ -5019,7 +5232,7 @@ type LandingPageInfoBlocksFeaturedReleaseTextStyle {
 
 type LandingPageInfoBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -5232,6 +5445,12 @@ type LandingPageInfoBlocksBlogFeed {
   textStyle: LandingPageInfoBlocksBlogFeedTextStyle
 }
 
+type LandingPageInfoBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type LandingPageInfoBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -5247,6 +5466,16 @@ type LandingPageInfoBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: LandingPageInfoBlocksCtaBandTextStyle
+}
+
+type LandingPageInfoBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type LandingPageInfoBlocksBigCtaTextStyle {
@@ -5379,7 +5608,7 @@ type LandingPageInfoBlocksSocialLinks {
   textStyle: LandingPageInfoBlocksSocialLinksTextStyle
 }
 
-union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksFeaturedVideo | LandingPageInfoBlocksGalleryPreview | LandingPageInfoBlocksDownloadsPreview | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
+union LandingPageInfoBlocks = LandingPageInfoBlocksHomeHero | LandingPageInfoBlocksAboutHero | LandingPageInfoBlocksHero | LandingPageInfoBlocksHeroSplitImage | LandingPageInfoBlocksHeroFullBleed | LandingPageInfoBlocksHeroFloatingImages | LandingPageInfoBlocksHeroImageGrid | LandingPageInfoBlocksPageHeader | LandingPageInfoBlocksText | LandingPageInfoBlocksStory | LandingPageInfoBlocksTimeline | LandingPageInfoBlocksStatsRow | LandingPageInfoBlocksFeatureGrid | LandingPageInfoBlocksCardRow | LandingPageInfoBlocksPillars | LandingPageInfoBlocksImageGallery | LandingPageInfoBlocksImageSpotlight | LandingPageInfoBlocksImageSideBySide | LandingPageInfoBlocksImageBanners | LandingPageInfoBlocksImageMasonry | LandingPageInfoBlocksVideoEmbed | LandingPageInfoBlocksFeaturedBook | LandingPageInfoBlocksFeaturedRelease | LandingPageInfoBlocksProductStrip | LandingPageInfoBlocksShopCatalog | LandingPageInfoBlocksGalleryGrid | LandingPageInfoBlocksDownloadsGrid | LandingPageInfoBlocksFeaturedVideo | LandingPageInfoBlocksGalleryPreview | LandingPageInfoBlocksDownloadsPreview | LandingPageInfoBlocksTutorialsStrip | LandingPageInfoBlocksClassesPitch | LandingPageInfoBlocksBlogFeed | LandingPageInfoBlocksBlogIndex | LandingPageInfoBlocksCtaBand | LandingPageInfoBlocksTextButton | LandingPageInfoBlocksBigCta | LandingPageInfoBlocksNewsletterSignup | LandingPageInfoBlocksContactInfo | LandingPageInfoBlocksContactForm | LandingPageInfoBlocksDummyBookRequest | LandingPageInfoBlocksKofiSupport | LandingPageInfoBlocksReviewLinks | LandingPageInfoBlocksMarquee | LandingPageInfoBlocksSocialLinks
 
 type LandingPageInfoSeo {
   metaTitle: String
@@ -5772,6 +6001,26 @@ type LandingPageLinkInBioBlocksImageSideBySide {
   textStyle: LandingPageLinkInBioBlocksImageSideBySideTextStyle
 }
 
+type LandingPageLinkInBioBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type LandingPageLinkInBioBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type LandingPageLinkInBioBlocksImageBanners {
+  heading: String
+  images: [LandingPageLinkInBioBlocksImageBannersImages]
+  layout: String
+  textStyle: LandingPageLinkInBioBlocksImageBannersTextStyle
+}
+
 type LandingPageLinkInBioBlocksImageMasonryImages {
   src: String
   alt: String
@@ -5842,7 +6091,7 @@ type LandingPageLinkInBioBlocksFeaturedReleaseTextStyle {
 
 type LandingPageLinkInBioBlocksFeaturedRelease {
   eyebrow: String
-  title: String!
+  title: String
   description: JSON
   coverImage: String
   backCoverImage: String
@@ -6055,6 +6304,12 @@ type LandingPageLinkInBioBlocksBlogFeed {
   textStyle: LandingPageLinkInBioBlocksBlogFeedTextStyle
 }
 
+type LandingPageLinkInBioBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 type LandingPageLinkInBioBlocksCtaBandTextStyle {
   headingSize: String
   headingType: String
@@ -6070,6 +6325,16 @@ type LandingPageLinkInBioBlocksCtaBand {
   ctaLink: String
   variant: String
   textStyle: LandingPageLinkInBioBlocksCtaBandTextStyle
+}
+
+type LandingPageLinkInBioBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 type LandingPageLinkInBioBlocksBigCtaTextStyle {
@@ -6202,7 +6467,7 @@ type LandingPageLinkInBioBlocksSocialLinks {
   textStyle: LandingPageLinkInBioBlocksSocialLinksTextStyle
 }
 
-union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksFeaturedVideo | LandingPageLinkInBioBlocksGalleryPreview | LandingPageLinkInBioBlocksDownloadsPreview | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
+union LandingPageLinkInBioBlocks = LandingPageLinkInBioBlocksHomeHero | LandingPageLinkInBioBlocksAboutHero | LandingPageLinkInBioBlocksHero | LandingPageLinkInBioBlocksHeroSplitImage | LandingPageLinkInBioBlocksHeroFullBleed | LandingPageLinkInBioBlocksHeroFloatingImages | LandingPageLinkInBioBlocksHeroImageGrid | LandingPageLinkInBioBlocksPageHeader | LandingPageLinkInBioBlocksText | LandingPageLinkInBioBlocksStory | LandingPageLinkInBioBlocksTimeline | LandingPageLinkInBioBlocksStatsRow | LandingPageLinkInBioBlocksFeatureGrid | LandingPageLinkInBioBlocksCardRow | LandingPageLinkInBioBlocksPillars | LandingPageLinkInBioBlocksImageGallery | LandingPageLinkInBioBlocksImageSpotlight | LandingPageLinkInBioBlocksImageSideBySide | LandingPageLinkInBioBlocksImageBanners | LandingPageLinkInBioBlocksImageMasonry | LandingPageLinkInBioBlocksVideoEmbed | LandingPageLinkInBioBlocksFeaturedBook | LandingPageLinkInBioBlocksFeaturedRelease | LandingPageLinkInBioBlocksProductStrip | LandingPageLinkInBioBlocksShopCatalog | LandingPageLinkInBioBlocksGalleryGrid | LandingPageLinkInBioBlocksDownloadsGrid | LandingPageLinkInBioBlocksFeaturedVideo | LandingPageLinkInBioBlocksGalleryPreview | LandingPageLinkInBioBlocksDownloadsPreview | LandingPageLinkInBioBlocksTutorialsStrip | LandingPageLinkInBioBlocksClassesPitch | LandingPageLinkInBioBlocksBlogFeed | LandingPageLinkInBioBlocksBlogIndex | LandingPageLinkInBioBlocksCtaBand | LandingPageLinkInBioBlocksTextButton | LandingPageLinkInBioBlocksBigCta | LandingPageLinkInBioBlocksNewsletterSignup | LandingPageLinkInBioBlocksContactInfo | LandingPageLinkInBioBlocksContactForm | LandingPageLinkInBioBlocksDummyBookRequest | LandingPageLinkInBioBlocksKofiSupport | LandingPageLinkInBioBlocksReviewLinks | LandingPageLinkInBioBlocksMarquee | LandingPageLinkInBioBlocksSocialLinks
 
 type LandingPageLinkInBioSeo {
   metaTitle: String
@@ -6737,6 +7002,26 @@ input LandingPageBlankBlocksImageSideBySideFilter {
   textStyle: LandingPageBlankBlocksImageSideBySideTextStyleFilter
 }
 
+input LandingPageBlankBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input LandingPageBlankBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageBlankBlocksImageBannersFilter {
+  heading: StringFilter
+  images: LandingPageBlankBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: LandingPageBlankBlocksImageBannersTextStyleFilter
+}
+
 input LandingPageBlankBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -7100,6 +7385,12 @@ input LandingPageBlankBlocksBlogFeedFilter {
   textStyle: LandingPageBlankBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageBlankBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input LandingPageBlankBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -7125,6 +7416,26 @@ input LandingPageBlankBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: LandingPageBlankBlocksCtaBandTextStyleFilter
+}
+
+input LandingPageBlankBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageBlankBlocksTextButtonBodyFilter {
+  ContentLink: LandingPageBlankBlocksTextButtonBodyContentLinkFilter
+}
+
+input LandingPageBlankBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: LandingPageBlankBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input LandingPageBlankBlocksBigCtaTextStyleFilter {
@@ -7326,6 +7637,7 @@ input LandingPageBlankBlocksFilter {
   imageGallery: LandingPageBlankBlocksImageGalleryFilter
   imageSpotlight: LandingPageBlankBlocksImageSpotlightFilter
   imageSideBySide: LandingPageBlankBlocksImageSideBySideFilter
+  imageBanners: LandingPageBlankBlocksImageBannersFilter
   imageMasonry: LandingPageBlankBlocksImageMasonryFilter
   videoEmbed: LandingPageBlankBlocksVideoEmbedFilter
   featuredBook: LandingPageBlankBlocksFeaturedBookFilter
@@ -7340,7 +7652,9 @@ input LandingPageBlankBlocksFilter {
   tutorialsStrip: LandingPageBlankBlocksTutorialsStripFilter
   classesPitch: LandingPageBlankBlocksClassesPitchFilter
   blogFeed: LandingPageBlankBlocksBlogFeedFilter
+  blogIndex: LandingPageBlankBlocksBlogIndexFilter
   ctaBand: LandingPageBlankBlocksCtaBandFilter
+  textButton: LandingPageBlankBlocksTextButtonFilter
   bigCta: LandingPageBlankBlocksBigCtaFilter
   newsletterSignup: LandingPageBlankBlocksNewsletterSignupFilter
   contactInfo: LandingPageBlankBlocksContactInfoFilter
@@ -7880,6 +8194,26 @@ input LandingPageEventBlocksImageSideBySideFilter {
   textStyle: LandingPageEventBlocksImageSideBySideTextStyleFilter
 }
 
+input LandingPageEventBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input LandingPageEventBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageEventBlocksImageBannersFilter {
+  heading: StringFilter
+  images: LandingPageEventBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: LandingPageEventBlocksImageBannersTextStyleFilter
+}
+
 input LandingPageEventBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -8243,6 +8577,12 @@ input LandingPageEventBlocksBlogFeedFilter {
   textStyle: LandingPageEventBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageEventBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input LandingPageEventBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -8268,6 +8608,26 @@ input LandingPageEventBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: LandingPageEventBlocksCtaBandTextStyleFilter
+}
+
+input LandingPageEventBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageEventBlocksTextButtonBodyFilter {
+  ContentLink: LandingPageEventBlocksTextButtonBodyContentLinkFilter
+}
+
+input LandingPageEventBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: LandingPageEventBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input LandingPageEventBlocksBigCtaTextStyleFilter {
@@ -8469,6 +8829,7 @@ input LandingPageEventBlocksFilter {
   imageGallery: LandingPageEventBlocksImageGalleryFilter
   imageSpotlight: LandingPageEventBlocksImageSpotlightFilter
   imageSideBySide: LandingPageEventBlocksImageSideBySideFilter
+  imageBanners: LandingPageEventBlocksImageBannersFilter
   imageMasonry: LandingPageEventBlocksImageMasonryFilter
   videoEmbed: LandingPageEventBlocksVideoEmbedFilter
   featuredBook: LandingPageEventBlocksFeaturedBookFilter
@@ -8483,7 +8844,9 @@ input LandingPageEventBlocksFilter {
   tutorialsStrip: LandingPageEventBlocksTutorialsStripFilter
   classesPitch: LandingPageEventBlocksClassesPitchFilter
   blogFeed: LandingPageEventBlocksBlogFeedFilter
+  blogIndex: LandingPageEventBlocksBlogIndexFilter
   ctaBand: LandingPageEventBlocksCtaBandFilter
+  textButton: LandingPageEventBlocksTextButtonFilter
   bigCta: LandingPageEventBlocksBigCtaFilter
   newsletterSignup: LandingPageEventBlocksNewsletterSignupFilter
   contactInfo: LandingPageEventBlocksContactInfoFilter
@@ -9023,6 +9386,26 @@ input LandingPagePromoBlocksImageSideBySideFilter {
   textStyle: LandingPagePromoBlocksImageSideBySideTextStyleFilter
 }
 
+input LandingPagePromoBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input LandingPagePromoBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPagePromoBlocksImageBannersFilter {
+  heading: StringFilter
+  images: LandingPagePromoBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: LandingPagePromoBlocksImageBannersTextStyleFilter
+}
+
 input LandingPagePromoBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -9386,6 +9769,12 @@ input LandingPagePromoBlocksBlogFeedFilter {
   textStyle: LandingPagePromoBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPagePromoBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input LandingPagePromoBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -9411,6 +9800,26 @@ input LandingPagePromoBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: LandingPagePromoBlocksCtaBandTextStyleFilter
+}
+
+input LandingPagePromoBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPagePromoBlocksTextButtonBodyFilter {
+  ContentLink: LandingPagePromoBlocksTextButtonBodyContentLinkFilter
+}
+
+input LandingPagePromoBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: LandingPagePromoBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input LandingPagePromoBlocksBigCtaTextStyleFilter {
@@ -9612,6 +10021,7 @@ input LandingPagePromoBlocksFilter {
   imageGallery: LandingPagePromoBlocksImageGalleryFilter
   imageSpotlight: LandingPagePromoBlocksImageSpotlightFilter
   imageSideBySide: LandingPagePromoBlocksImageSideBySideFilter
+  imageBanners: LandingPagePromoBlocksImageBannersFilter
   imageMasonry: LandingPagePromoBlocksImageMasonryFilter
   videoEmbed: LandingPagePromoBlocksVideoEmbedFilter
   featuredBook: LandingPagePromoBlocksFeaturedBookFilter
@@ -9626,7 +10036,9 @@ input LandingPagePromoBlocksFilter {
   tutorialsStrip: LandingPagePromoBlocksTutorialsStripFilter
   classesPitch: LandingPagePromoBlocksClassesPitchFilter
   blogFeed: LandingPagePromoBlocksBlogFeedFilter
+  blogIndex: LandingPagePromoBlocksBlogIndexFilter
   ctaBand: LandingPagePromoBlocksCtaBandFilter
+  textButton: LandingPagePromoBlocksTextButtonFilter
   bigCta: LandingPagePromoBlocksBigCtaFilter
   newsletterSignup: LandingPagePromoBlocksNewsletterSignupFilter
   contactInfo: LandingPagePromoBlocksContactInfoFilter
@@ -10166,6 +10578,26 @@ input LandingPageInfoBlocksImageSideBySideFilter {
   textStyle: LandingPageInfoBlocksImageSideBySideTextStyleFilter
 }
 
+input LandingPageInfoBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input LandingPageInfoBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageInfoBlocksImageBannersFilter {
+  heading: StringFilter
+  images: LandingPageInfoBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: LandingPageInfoBlocksImageBannersTextStyleFilter
+}
+
 input LandingPageInfoBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -10529,6 +10961,12 @@ input LandingPageInfoBlocksBlogFeedFilter {
   textStyle: LandingPageInfoBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageInfoBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input LandingPageInfoBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -10554,6 +10992,26 @@ input LandingPageInfoBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: LandingPageInfoBlocksCtaBandTextStyleFilter
+}
+
+input LandingPageInfoBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageInfoBlocksTextButtonBodyFilter {
+  ContentLink: LandingPageInfoBlocksTextButtonBodyContentLinkFilter
+}
+
+input LandingPageInfoBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: LandingPageInfoBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input LandingPageInfoBlocksBigCtaTextStyleFilter {
@@ -10755,6 +11213,7 @@ input LandingPageInfoBlocksFilter {
   imageGallery: LandingPageInfoBlocksImageGalleryFilter
   imageSpotlight: LandingPageInfoBlocksImageSpotlightFilter
   imageSideBySide: LandingPageInfoBlocksImageSideBySideFilter
+  imageBanners: LandingPageInfoBlocksImageBannersFilter
   imageMasonry: LandingPageInfoBlocksImageMasonryFilter
   videoEmbed: LandingPageInfoBlocksVideoEmbedFilter
   featuredBook: LandingPageInfoBlocksFeaturedBookFilter
@@ -10769,7 +11228,9 @@ input LandingPageInfoBlocksFilter {
   tutorialsStrip: LandingPageInfoBlocksTutorialsStripFilter
   classesPitch: LandingPageInfoBlocksClassesPitchFilter
   blogFeed: LandingPageInfoBlocksBlogFeedFilter
+  blogIndex: LandingPageInfoBlocksBlogIndexFilter
   ctaBand: LandingPageInfoBlocksCtaBandFilter
+  textButton: LandingPageInfoBlocksTextButtonFilter
   bigCta: LandingPageInfoBlocksBigCtaFilter
   newsletterSignup: LandingPageInfoBlocksNewsletterSignupFilter
   contactInfo: LandingPageInfoBlocksContactInfoFilter
@@ -11309,6 +11770,26 @@ input LandingPageLinkInBioBlocksImageSideBySideFilter {
   textStyle: LandingPageLinkInBioBlocksImageSideBySideTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input LandingPageLinkInBioBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input LandingPageLinkInBioBlocksImageBannersFilter {
+  heading: StringFilter
+  images: LandingPageLinkInBioBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: LandingPageLinkInBioBlocksImageBannersTextStyleFilter
+}
+
 input LandingPageLinkInBioBlocksImageMasonryImagesFilter {
   src: ImageFilter
   alt: StringFilter
@@ -11672,6 +12153,12 @@ input LandingPageLinkInBioBlocksBlogFeedFilter {
   textStyle: LandingPageLinkInBioBlocksBlogFeedTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
 input LandingPageLinkInBioBlocksCtaBandDescriptionContentLinkFilter {
   url: StringFilter
   text: StringFilter
@@ -11697,6 +12184,26 @@ input LandingPageLinkInBioBlocksCtaBandFilter {
   ctaLink: StringFilter
   variant: StringFilter
   textStyle: LandingPageLinkInBioBlocksCtaBandTextStyleFilter
+}
+
+input LandingPageLinkInBioBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input LandingPageLinkInBioBlocksTextButtonBodyFilter {
+  ContentLink: LandingPageLinkInBioBlocksTextButtonBodyContentLinkFilter
+}
+
+input LandingPageLinkInBioBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: LandingPageLinkInBioBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
 }
 
 input LandingPageLinkInBioBlocksBigCtaTextStyleFilter {
@@ -11898,6 +12405,7 @@ input LandingPageLinkInBioBlocksFilter {
   imageGallery: LandingPageLinkInBioBlocksImageGalleryFilter
   imageSpotlight: LandingPageLinkInBioBlocksImageSpotlightFilter
   imageSideBySide: LandingPageLinkInBioBlocksImageSideBySideFilter
+  imageBanners: LandingPageLinkInBioBlocksImageBannersFilter
   imageMasonry: LandingPageLinkInBioBlocksImageMasonryFilter
   videoEmbed: LandingPageLinkInBioBlocksVideoEmbedFilter
   featuredBook: LandingPageLinkInBioBlocksFeaturedBookFilter
@@ -11912,7 +12420,9 @@ input LandingPageLinkInBioBlocksFilter {
   tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripFilter
   classesPitch: LandingPageLinkInBioBlocksClassesPitchFilter
   blogFeed: LandingPageLinkInBioBlocksBlogFeedFilter
+  blogIndex: LandingPageLinkInBioBlocksBlogIndexFilter
   ctaBand: LandingPageLinkInBioBlocksCtaBandFilter
+  textButton: LandingPageLinkInBioBlocksTextButtonFilter
   bigCta: LandingPageLinkInBioBlocksBigCtaFilter
   newsletterSignup: LandingPageLinkInBioBlocksNewsletterSignupFilter
   contactInfo: LandingPageLinkInBioBlocksContactInfoFilter
@@ -11959,7 +12469,7 @@ type LandingPageConnection implements Connection {
 
 type PostSectionsHeading {
   number: String
-  text: String!
+  text: String
   level: String
 }
 
@@ -12078,7 +12588,754 @@ type PostSectionsCtaBand {
   textStyle: PostSectionsCtaBandTextStyle
 }
 
-union PostSections = PostSectionsHeading | PostSectionsText | PostSectionsSpacer | PostSectionsDivider | PostSectionsImage | PostSectionsImageSideBySide | PostSectionsImageGallery | PostSectionsVideoEmbed | PostSectionsCallout | PostSectionsCtaBand
+type PostSectionsHomeHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHomeHero {
+  backgroundImage: String
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+  textStyle: PostSectionsHomeHeroTextStyle
+}
+
+type PostSectionsAboutHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+  deskImage: String
+  deskCaption: String
+  screenImage: String
+  screenCaption: String
+  textStyle: PostSectionsAboutHeroTextStyle
+}
+
+type PostSectionsHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroTextStyle
+}
+
+type PostSectionsHeroSplitImageTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHeroSplitImage {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  featuredImage: String
+  imageAlt: String
+  imageCaption: String
+  imagePosition: String
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: PostSectionsHeroSplitImageTextStyle
+}
+
+type PostSectionsHeroFullBleedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHeroFullBleed {
+  backgroundImage: String
+  heading: String
+  subheading: JSON
+  overlay: String
+  textAlign: String
+  minHeight: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroFullBleedTextStyle
+}
+
+type PostSectionsHeroFloatingImagesImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PostSectionsHeroFloatingImagesTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHeroFloatingImages {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  images: [PostSectionsHeroFloatingImagesImages]
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: PostSectionsHeroFloatingImagesTextStyle
+}
+
+type PostSectionsHeroImageGridImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type PostSectionsHeroImageGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsHeroImageGrid {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  layout: String
+  images: [PostSectionsHeroImageGridImages]
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroImageGridTextStyle
+}
+
+type PostSectionsPageHeaderTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsPageHeader {
+  heading: String
+  description: JSON
+  textStyle: PostSectionsPageHeaderTextStyle
+}
+
+type PostSectionsStoryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideImage: String
+  sideCaption: String
+  textStyle: PostSectionsStoryTextStyle
+}
+
+type PostSectionsTimelineEvents {
+  year: String
+  title: String
+  description: String
+  image: String
+}
+
+type PostSectionsTimelineTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsTimeline {
+  number: String
+  label: String
+  events: [PostSectionsTimelineEvents]
+  textStyle: PostSectionsTimelineTextStyle
+}
+
+type PostSectionsStatsRowStats {
+  value: String
+  label: String
+}
+
+type PostSectionsStatsRow {
+  stats: [PostSectionsStatsRowStats]
+}
+
+type PostSectionsFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type PostSectionsFeatureGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsFeatureGrid {
+  heading: String
+  items: [PostSectionsFeatureGridItems]
+  textStyle: PostSectionsFeatureGridTextStyle
+}
+
+type PostSectionsCardRowCards {
+  tag: String
+  title: String
+  body: String
+  image: String
+  ctaLabel: String
+  link: String
+}
+
+type PostSectionsCardRowTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsCardRow {
+  number: String
+  label: String
+  cards: [PostSectionsCardRowCards]
+  textStyle: PostSectionsCardRowTextStyle
+}
+
+type PostSectionsPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type PostSectionsPillarsTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsPillars {
+  eyebrow: String
+  heading: String
+  items: [PostSectionsPillarsItems]
+  textStyle: PostSectionsPillarsTextStyle
+}
+
+type PostSectionsImageSpotlightTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsImageSpotlight {
+  eyebrow: String
+  heading: String
+  image: String
+  alt: String
+  caption: String
+  aspect: String
+  body: JSON
+  textStyle: PostSectionsImageSpotlightTextStyle
+}
+
+type PostSectionsImageBannersImages {
+  src: String
+  alt: String
+}
+
+type PostSectionsImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsImageBanners {
+  heading: String
+  images: [PostSectionsImageBannersImages]
+  layout: String
+  textStyle: PostSectionsImageBannersTextStyle
+}
+
+type PostSectionsImageMasonryImages {
+  src: String
+  alt: String
+  caption: String
+  size: String
+}
+
+type PostSectionsImageMasonryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsImageMasonry {
+  heading: String
+  images: [PostSectionsImageMasonryImages]
+  textStyle: PostSectionsImageMasonryTextStyle
+}
+
+type PostSectionsFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type PostSectionsFeaturedBookTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [PostSectionsFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsFeaturedBookTextStyle
+}
+
+type PostSectionsFeaturedReleaseTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsFeaturedRelease {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+  textStyle: PostSectionsFeaturedReleaseTextStyle
+}
+
+type PostSectionsProductStripTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsProductStripTextStyle
+}
+
+type PostSectionsShopCatalogTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsShopCatalogTextStyle
+}
+
+type PostSectionsGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
+type PostSectionsGalleryGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsGalleryGrid {
+  artworks: [PostSectionsGalleryGridArtworks]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsGalleryGridTextStyle
+}
+
+type PostSectionsDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
+}
+
+type PostSectionsDownloadsGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsDownloadsGrid {
+  downloads: [PostSectionsDownloadsGridDownloads]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsDownloadsGridTextStyle
+}
+
+type PostSectionsFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: PostSectionsFeaturedVideoTextStyle
+}
+
+type PostSectionsGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsGalleryPreview {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsGalleryPreviewTextStyle
+}
+
+type PostSectionsDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsDownloadsPreview {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsDownloadsPreviewTextStyle
+}
+
+type PostSectionsTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type PostSectionsTutorialsStripTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsTutorialsStrip {
+  manageList: String
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [PostSectionsTutorialsStripStats]
+  textStyle: PostSectionsTutorialsStripTextStyle
+}
+
+type PostSectionsClassesPitchTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsClassesPitchTextStyle
+}
+
+type PostSectionsBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type PostSectionsBlogFeedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: PostSectionsBlogFeedNewsletter
+  textStyle: PostSectionsBlogFeedTextStyle
+}
+
+type PostSectionsBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type PostSectionsTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
+}
+
+type PostSectionsBigCtaTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsBigCtaTextStyle
+}
+
+type PostSectionsNewsletterSignupTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+  textStyle: PostSectionsNewsletterSignupTextStyle
+}
+
+type PostSectionsContactInfo {
+  email: String
+  location: String
+}
+
+type PostSectionsContactForm {
+  submitLabel: String
+}
+
+type PostSectionsDummyBookRequestTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsDummyBookRequest {
+  heading: String
+  description: JSON
+  pdfUrl: String
+  submitLabel: String
+  successHeading: String
+  successNote: String
+  downloadLabel: String
+  textStyle: PostSectionsDummyBookRequestTextStyle
+}
+
+type PostSectionsKofiSupportTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+  textStyle: PostSectionsKofiSupportTextStyle
+}
+
+type PostSectionsReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type PostSectionsReviewLinksTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [PostSectionsReviewLinksLinks]
+  textStyle: PostSectionsReviewLinksTextStyle
+}
+
+type PostSectionsMarquee {
+  highlightText: String
+  text: String
+}
+
+type PostSectionsSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type PostSectionsSocialLinksTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type PostSectionsSocialLinks {
+  heading: String
+  body: JSON
+  links: [PostSectionsSocialLinksLinks]
+  textStyle: PostSectionsSocialLinksTextStyle
+}
+
+union PostSections = PostSectionsHeading | PostSectionsText | PostSectionsSpacer | PostSectionsDivider | PostSectionsImage | PostSectionsImageSideBySide | PostSectionsImageGallery | PostSectionsVideoEmbed | PostSectionsCallout | PostSectionsCtaBand | PostSectionsHomeHero | PostSectionsAboutHero | PostSectionsHero | PostSectionsHeroSplitImage | PostSectionsHeroFullBleed | PostSectionsHeroFloatingImages | PostSectionsHeroImageGrid | PostSectionsPageHeader | PostSectionsStory | PostSectionsTimeline | PostSectionsStatsRow | PostSectionsFeatureGrid | PostSectionsCardRow | PostSectionsPillars | PostSectionsImageSpotlight | PostSectionsImageBanners | PostSectionsImageMasonry | PostSectionsFeaturedBook | PostSectionsFeaturedRelease | PostSectionsProductStrip | PostSectionsShopCatalog | PostSectionsGalleryGrid | PostSectionsDownloadsGrid | PostSectionsFeaturedVideo | PostSectionsGalleryPreview | PostSectionsDownloadsPreview | PostSectionsTutorialsStrip | PostSectionsClassesPitch | PostSectionsBlogFeed | PostSectionsBlogIndex | PostSectionsTextButton | PostSectionsBigCta | PostSectionsNewsletterSignup | PostSectionsContactInfo | PostSectionsContactForm | PostSectionsDummyBookRequest | PostSectionsKofiSupport | PostSectionsReviewLinks | PostSectionsMarquee | PostSectionsSocialLinks
 
 type PostSeo {
   metaTitle: String
@@ -12269,6 +13526,1023 @@ input PostSectionsCtaBandFilter {
   textStyle: PostSectionsCtaBandTextStyleFilter
 }
 
+input PostSectionsHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHomeHeroSubheadingFilter {
+  ContentLink: PostSectionsHomeHeroSubheadingContentLinkFilter
+}
+
+input PostSectionsHomeHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHomeHeroFilter {
+  backgroundImage: ImageFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsHomeHeroSubheadingFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+  textStyle: PostSectionsHomeHeroTextStyleFilter
+}
+
+input PostSectionsAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsAboutHeroLeadTextFilter {
+  ContentLink: PostSectionsAboutHeroLeadTextContentLinkFilter
+}
+
+input PostSectionsAboutHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: PostSectionsAboutHeroLeadTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+  deskImage: ImageFilter
+  deskCaption: StringFilter
+  screenImage: ImageFilter
+  screenCaption: StringFilter
+  textStyle: PostSectionsAboutHeroTextStyleFilter
+}
+
+input PostSectionsHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHeroSubheadingFilter {
+  ContentLink: PostSectionsHeroSubheadingContentLinkFilter
+}
+
+input PostSectionsHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHeroFilter {
+  heading: StringFilter
+  subheading: PostSectionsHeroSubheadingFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: PostSectionsHeroTextStyleFilter
+}
+
+input PostSectionsHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHeroSplitImageSubheadingFilter {
+  ContentLink: PostSectionsHeroSplitImageSubheadingContentLinkFilter
+}
+
+input PostSectionsHeroSplitImageTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHeroSplitImageFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsHeroSplitImageSubheadingFilter
+  featuredImage: ImageFilter
+  imageAlt: StringFilter
+  imageCaption: StringFilter
+  imagePosition: StringFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  textStyle: PostSectionsHeroSplitImageTextStyleFilter
+}
+
+input PostSectionsHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHeroFullBleedSubheadingFilter {
+  ContentLink: PostSectionsHeroFullBleedSubheadingContentLinkFilter
+}
+
+input PostSectionsHeroFullBleedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHeroFullBleedFilter {
+  backgroundImage: ImageFilter
+  heading: StringFilter
+  subheading: PostSectionsHeroFullBleedSubheadingFilter
+  overlay: StringFilter
+  textAlign: StringFilter
+  minHeight: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: PostSectionsHeroFullBleedTextStyleFilter
+}
+
+input PostSectionsHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHeroFloatingImagesSubheadingFilter {
+  ContentLink: PostSectionsHeroFloatingImagesSubheadingContentLinkFilter
+}
+
+input PostSectionsHeroFloatingImagesImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PostSectionsHeroFloatingImagesTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHeroFloatingImagesFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsHeroFloatingImagesSubheadingFilter
+  images: PostSectionsHeroFloatingImagesImagesFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  textStyle: PostSectionsHeroFloatingImagesTextStyleFilter
+}
+
+input PostSectionsHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsHeroImageGridSubheadingFilter {
+  ContentLink: PostSectionsHeroImageGridSubheadingContentLinkFilter
+}
+
+input PostSectionsHeroImageGridImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input PostSectionsHeroImageGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsHeroImageGridFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsHeroImageGridSubheadingFilter
+  layout: StringFilter
+  images: PostSectionsHeroImageGridImagesFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: PostSectionsHeroImageGridTextStyleFilter
+}
+
+input PostSectionsPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsPageHeaderDescriptionFilter {
+  ContentLink: PostSectionsPageHeaderDescriptionContentLinkFilter
+}
+
+input PostSectionsPageHeaderTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsPageHeaderFilter {
+  heading: StringFilter
+  description: PostSectionsPageHeaderDescriptionFilter
+  textStyle: PostSectionsPageHeaderTextStyleFilter
+}
+
+input PostSectionsStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsStoryParagraph1Filter {
+  ContentLink: PostSectionsStoryParagraph1ContentLinkFilter
+}
+
+input PostSectionsStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsStoryQuoteFilter {
+  ContentLink: PostSectionsStoryQuoteContentLinkFilter
+}
+
+input PostSectionsStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsStoryParagraph2Filter {
+  ContentLink: PostSectionsStoryParagraph2ContentLinkFilter
+}
+
+input PostSectionsStoryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: PostSectionsStoryParagraph1Filter
+  quote: PostSectionsStoryQuoteFilter
+  paragraph2: PostSectionsStoryParagraph2Filter
+  sideImage: ImageFilter
+  sideCaption: StringFilter
+  textStyle: PostSectionsStoryTextStyleFilter
+}
+
+input PostSectionsTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+  image: ImageFilter
+}
+
+input PostSectionsTimelineTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: PostSectionsTimelineEventsFilter
+  textStyle: PostSectionsTimelineTextStyleFilter
+}
+
+input PostSectionsStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input PostSectionsStatsRowFilter {
+  stats: PostSectionsStatsRowStatsFilter
+}
+
+input PostSectionsFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsFeatureGridItemsDescriptionFilter {
+  ContentLink: PostSectionsFeatureGridItemsDescriptionContentLinkFilter
+}
+
+input PostSectionsFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: PostSectionsFeatureGridItemsDescriptionFilter
+}
+
+input PostSectionsFeatureGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsFeatureGridFilter {
+  heading: StringFilter
+  items: PostSectionsFeatureGridItemsFilter
+  textStyle: PostSectionsFeatureGridTextStyleFilter
+}
+
+input PostSectionsCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  image: ImageFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input PostSectionsCardRowTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: PostSectionsCardRowCardsFilter
+  textStyle: PostSectionsCardRowTextStyleFilter
+}
+
+input PostSectionsPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input PostSectionsPillarsTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: PostSectionsPillarsItemsFilter
+  textStyle: PostSectionsPillarsTextStyleFilter
+}
+
+input PostSectionsImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsImageSpotlightBodyFilter {
+  ContentLink: PostSectionsImageSpotlightBodyContentLinkFilter
+}
+
+input PostSectionsImageSpotlightTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsImageSpotlightFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  image: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  aspect: StringFilter
+  body: PostSectionsImageSpotlightBodyFilter
+  textStyle: PostSectionsImageSpotlightTextStyleFilter
+}
+
+input PostSectionsImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input PostSectionsImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsImageBannersFilter {
+  heading: StringFilter
+  images: PostSectionsImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: PostSectionsImageBannersTextStyleFilter
+}
+
+input PostSectionsImageMasonryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input PostSectionsImageMasonryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsImageMasonryFilter {
+  heading: StringFilter
+  images: PostSectionsImageMasonryImagesFilter
+  textStyle: PostSectionsImageMasonryTextStyleFilter
+}
+
+input PostSectionsFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsFeaturedBookDescriptionFilter {
+  ContentLink: PostSectionsFeaturedBookDescriptionContentLinkFilter
+}
+
+input PostSectionsFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input PostSectionsFeaturedBookTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PostSectionsFeaturedBookDescriptionFilter
+  stats: PostSectionsFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: PostSectionsFeaturedBookTextStyleFilter
+}
+
+input PostSectionsFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsFeaturedReleaseDescriptionFilter {
+  ContentLink: PostSectionsFeaturedReleaseDescriptionContentLinkFilter
+}
+
+input PostSectionsFeaturedReleaseTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: PostSectionsFeaturedReleaseDescriptionFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+  textStyle: PostSectionsFeaturedReleaseTextStyleFilter
+}
+
+input PostSectionsProductStripTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: PostSectionsProductStripTextStyleFilter
+}
+
+input PostSectionsShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsShopCatalogDescriptionFilter {
+  ContentLink: PostSectionsShopCatalogDescriptionContentLinkFilter
+}
+
+input PostSectionsShopCatalogTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: PostSectionsShopCatalogDescriptionFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: PostSectionsShopCatalogTextStyleFilter
+}
+
+input PostSectionsGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
+input PostSectionsGalleryGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsGalleryGridFilter {
+  artworks: PostSectionsGalleryGridArtworksFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: PostSectionsGalleryGridTextStyleFilter
+}
+
+input PostSectionsDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
+}
+
+input PostSectionsDownloadsGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsDownloadsGridFilter {
+  downloads: PostSectionsDownloadsGridDownloadsFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: PostSectionsDownloadsGridTextStyleFilter
+}
+
+input PostSectionsFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsFeaturedVideoDescriptionFilter {
+  ContentLink: PostSectionsFeaturedVideoDescriptionContentLinkFilter
+}
+
+input PostSectionsFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PostSectionsFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: PostSectionsFeaturedVideoTextStyleFilter
+}
+
+input PostSectionsGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsGalleryPreviewDescriptionFilter {
+  ContentLink: PostSectionsGalleryPreviewDescriptionContentLinkFilter
+}
+
+input PostSectionsGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsGalleryPreviewFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PostSectionsGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: PostSectionsGalleryPreviewTextStyleFilter
+}
+
+input PostSectionsDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsDownloadsPreviewDescriptionFilter {
+  ContentLink: PostSectionsDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input PostSectionsDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsDownloadsPreviewFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: PostSectionsDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: PostSectionsDownloadsPreviewTextStyleFilter
+}
+
+input PostSectionsTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input PostSectionsTutorialsStripTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsTutorialsStripFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: PostSectionsTutorialsStripStatsFilter
+  textStyle: PostSectionsTutorialsStripTextStyleFilter
+}
+
+input PostSectionsClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsClassesPitchSubheadingFilter {
+  ContentLink: PostSectionsClassesPitchSubheadingContentLinkFilter
+}
+
+input PostSectionsClassesPitchTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsClassesPitchSubheadingFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: PostSectionsClassesPitchTextStyleFilter
+}
+
+input PostSectionsBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsBlogFeedNewsletterSubheadingFilter {
+  ContentLink: PostSectionsBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
+input PostSectionsBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsBlogFeedNewsletterSubheadingFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input PostSectionsBlogFeedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: PostSectionsBlogFeedNewsletterFilter
+  textStyle: PostSectionsBlogFeedTextStyleFilter
+}
+
+input PostSectionsBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input PostSectionsTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsTextButtonBodyFilter {
+  ContentLink: PostSectionsTextButtonBodyContentLinkFilter
+}
+
+input PostSectionsTextButtonFilter {
+  showText: BooleanFilter
+  body: PostSectionsTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
+}
+
+input PostSectionsBigCtaTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: PostSectionsBigCtaTextStyleFilter
+}
+
+input PostSectionsNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsNewsletterSignupSubheadingFilter {
+  ContentLink: PostSectionsNewsletterSignupSubheadingContentLinkFilter
+}
+
+input PostSectionsNewsletterSignupTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: PostSectionsNewsletterSignupSubheadingFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+  textStyle: PostSectionsNewsletterSignupTextStyleFilter
+}
+
+input PostSectionsContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input PostSectionsContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input PostSectionsDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsDummyBookRequestDescriptionFilter {
+  ContentLink: PostSectionsDummyBookRequestDescriptionContentLinkFilter
+}
+
+input PostSectionsDummyBookRequestTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsDummyBookRequestFilter {
+  heading: StringFilter
+  description: PostSectionsDummyBookRequestDescriptionFilter
+  pdfUrl: StringFilter
+  submitLabel: StringFilter
+  successHeading: StringFilter
+  successNote: StringFilter
+  downloadLabel: StringFilter
+  textStyle: PostSectionsDummyBookRequestTextStyleFilter
+}
+
+input PostSectionsKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsKofiSupportBodyFilter {
+  ContentLink: PostSectionsKofiSupportBodyContentLinkFilter
+}
+
+input PostSectionsKofiSupportTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsKofiSupportFilter {
+  heading: StringFilter
+  body: PostSectionsKofiSupportBodyFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+  textStyle: PostSectionsKofiSupportTextStyleFilter
+}
+
+input PostSectionsReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsReviewLinksIntroFilter {
+  ContentLink: PostSectionsReviewLinksIntroContentLinkFilter
+}
+
+input PostSectionsReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input PostSectionsReviewLinksTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsReviewLinksFilter {
+  heading: StringFilter
+  intro: PostSectionsReviewLinksIntroFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: PostSectionsReviewLinksLinksFilter
+  textStyle: PostSectionsReviewLinksTextStyleFilter
+}
+
+input PostSectionsMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input PostSectionsSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input PostSectionsSocialLinksBodyFilter {
+  ContentLink: PostSectionsSocialLinksBodyContentLinkFilter
+}
+
+input PostSectionsSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input PostSectionsSocialLinksTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input PostSectionsSocialLinksFilter {
+  heading: StringFilter
+  body: PostSectionsSocialLinksBodyFilter
+  links: PostSectionsSocialLinksLinksFilter
+  textStyle: PostSectionsSocialLinksTextStyleFilter
+}
+
 input PostSectionsFilter {
   heading: PostSectionsHeadingFilter
   text: PostSectionsTextFilter
@@ -12280,6 +14554,46 @@ input PostSectionsFilter {
   videoEmbed: PostSectionsVideoEmbedFilter
   callout: PostSectionsCalloutFilter
   ctaBand: PostSectionsCtaBandFilter
+  homeHero: PostSectionsHomeHeroFilter
+  aboutHero: PostSectionsAboutHeroFilter
+  hero: PostSectionsHeroFilter
+  heroSplitImage: PostSectionsHeroSplitImageFilter
+  heroFullBleed: PostSectionsHeroFullBleedFilter
+  heroFloatingImages: PostSectionsHeroFloatingImagesFilter
+  heroImageGrid: PostSectionsHeroImageGridFilter
+  pageHeader: PostSectionsPageHeaderFilter
+  story: PostSectionsStoryFilter
+  timeline: PostSectionsTimelineFilter
+  statsRow: PostSectionsStatsRowFilter
+  featureGrid: PostSectionsFeatureGridFilter
+  cardRow: PostSectionsCardRowFilter
+  pillars: PostSectionsPillarsFilter
+  imageSpotlight: PostSectionsImageSpotlightFilter
+  imageBanners: PostSectionsImageBannersFilter
+  imageMasonry: PostSectionsImageMasonryFilter
+  featuredBook: PostSectionsFeaturedBookFilter
+  featuredRelease: PostSectionsFeaturedReleaseFilter
+  productStrip: PostSectionsProductStripFilter
+  shopCatalog: PostSectionsShopCatalogFilter
+  galleryGrid: PostSectionsGalleryGridFilter
+  downloadsGrid: PostSectionsDownloadsGridFilter
+  featuredVideo: PostSectionsFeaturedVideoFilter
+  galleryPreview: PostSectionsGalleryPreviewFilter
+  downloadsPreview: PostSectionsDownloadsPreviewFilter
+  tutorialsStrip: PostSectionsTutorialsStripFilter
+  classesPitch: PostSectionsClassesPitchFilter
+  blogFeed: PostSectionsBlogFeedFilter
+  blogIndex: PostSectionsBlogIndexFilter
+  textButton: PostSectionsTextButtonFilter
+  bigCta: PostSectionsBigCtaFilter
+  newsletterSignup: PostSectionsNewsletterSignupFilter
+  contactInfo: PostSectionsContactInfoFilter
+  contactForm: PostSectionsContactFormFilter
+  dummyBookRequest: PostSectionsDummyBookRequestFilter
+  kofiSupport: PostSectionsKofiSupportFilter
+  reviewLinks: PostSectionsReviewLinksFilter
+  marquee: PostSectionsMarqueeFilter
+  socialLinks: PostSectionsSocialLinksFilter
 }
 
 input PostSeoFilter {
@@ -12385,6 +14699,852 @@ type ShopProductDownloadFiles {
   label: String
 }
 
+type ShopProductBlocksProductInfo {
+  note: String
+}
+
+type ShopProductBlocksHomeHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHomeHero {
+  backgroundImage: String
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+  textStyle: ShopProductBlocksHomeHeroTextStyle
+}
+
+type ShopProductBlocksAboutHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksAboutHero {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+  deskImage: String
+  deskCaption: String
+  screenImage: String
+  screenCaption: String
+  textStyle: ShopProductBlocksAboutHeroTextStyle
+}
+
+type ShopProductBlocksHeroTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHero {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroTextStyle
+}
+
+type ShopProductBlocksHeroSplitImageTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHeroSplitImage {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  featuredImage: String
+  imageAlt: String
+  imageCaption: String
+  imagePosition: String
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: ShopProductBlocksHeroSplitImageTextStyle
+}
+
+type ShopProductBlocksHeroFullBleedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHeroFullBleed {
+  backgroundImage: String
+  heading: String
+  subheading: JSON
+  overlay: String
+  textAlign: String
+  minHeight: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroFullBleedTextStyle
+}
+
+type ShopProductBlocksHeroFloatingImagesImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type ShopProductBlocksHeroFloatingImagesTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHeroFloatingImages {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  images: [ShopProductBlocksHeroFloatingImagesImages]
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: ShopProductBlocksHeroFloatingImagesTextStyle
+}
+
+type ShopProductBlocksHeroImageGridImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type ShopProductBlocksHeroImageGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksHeroImageGrid {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  layout: String
+  images: [ShopProductBlocksHeroImageGridImages]
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroImageGridTextStyle
+}
+
+type ShopProductBlocksPageHeaderTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksPageHeader {
+  heading: String
+  description: JSON
+  textStyle: ShopProductBlocksPageHeaderTextStyle
+}
+
+type ShopProductBlocksTextTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksText {
+  heading: String
+  body: JSON
+  textStyle: ShopProductBlocksTextTextStyle
+}
+
+type ShopProductBlocksStoryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksStory {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideImage: String
+  sideCaption: String
+  textStyle: ShopProductBlocksStoryTextStyle
+}
+
+type ShopProductBlocksTimelineEvents {
+  year: String
+  title: String
+  description: String
+  image: String
+}
+
+type ShopProductBlocksTimelineTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksTimeline {
+  number: String
+  label: String
+  events: [ShopProductBlocksTimelineEvents]
+  textStyle: ShopProductBlocksTimelineTextStyle
+}
+
+type ShopProductBlocksStatsRowStats {
+  value: String
+  label: String
+}
+
+type ShopProductBlocksStatsRow {
+  stats: [ShopProductBlocksStatsRowStats]
+}
+
+type ShopProductBlocksFeatureGridItems {
+  icon: String
+  title: String
+  description: JSON
+}
+
+type ShopProductBlocksFeatureGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksFeatureGrid {
+  heading: String
+  items: [ShopProductBlocksFeatureGridItems]
+  textStyle: ShopProductBlocksFeatureGridTextStyle
+}
+
+type ShopProductBlocksCardRowCards {
+  tag: String
+  title: String
+  body: String
+  image: String
+  ctaLabel: String
+  link: String
+}
+
+type ShopProductBlocksCardRowTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksCardRow {
+  number: String
+  label: String
+  cards: [ShopProductBlocksCardRowCards]
+  textStyle: ShopProductBlocksCardRowTextStyle
+}
+
+type ShopProductBlocksPillarsItems {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+type ShopProductBlocksPillarsTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksPillars {
+  eyebrow: String
+  heading: String
+  items: [ShopProductBlocksPillarsItems]
+  textStyle: ShopProductBlocksPillarsTextStyle
+}
+
+type ShopProductBlocksImageGalleryImages {
+  src: String
+  alt: String
+  caption: String
+}
+
+type ShopProductBlocksImageGalleryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksImageGallery {
+  heading: String
+  images: [ShopProductBlocksImageGalleryImages]
+  textStyle: ShopProductBlocksImageGalleryTextStyle
+}
+
+type ShopProductBlocksImageSpotlightTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksImageSpotlight {
+  eyebrow: String
+  heading: String
+  image: String
+  alt: String
+  caption: String
+  aspect: String
+  body: JSON
+  textStyle: ShopProductBlocksImageSpotlightTextStyle
+}
+
+type ShopProductBlocksImageSideBySideLeftImage {
+  src: String
+  alt: String
+  caption: String
+}
+
+type ShopProductBlocksImageSideBySideRightImage {
+  src: String
+  alt: String
+  caption: String
+}
+
+type ShopProductBlocksImageSideBySideTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksImageSideBySide {
+  heading: String
+  leftImage: ShopProductBlocksImageSideBySideLeftImage
+  rightImage: ShopProductBlocksImageSideBySideRightImage
+  style: String
+  textStyle: ShopProductBlocksImageSideBySideTextStyle
+}
+
+type ShopProductBlocksImageBannersImages {
+  src: String
+  alt: String
+}
+
+type ShopProductBlocksImageBannersTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksImageBanners {
+  heading: String
+  images: [ShopProductBlocksImageBannersImages]
+  layout: String
+  textStyle: ShopProductBlocksImageBannersTextStyle
+}
+
+type ShopProductBlocksImageMasonryImages {
+  src: String
+  alt: String
+  caption: String
+  size: String
+}
+
+type ShopProductBlocksImageMasonryTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksImageMasonry {
+  heading: String
+  images: [ShopProductBlocksImageMasonryImages]
+  textStyle: ShopProductBlocksImageMasonryTextStyle
+}
+
+type ShopProductBlocksVideoEmbedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksVideoEmbed {
+  heading: String
+  youtubeUrl: String
+  textStyle: ShopProductBlocksVideoEmbedTextStyle
+}
+
+type ShopProductBlocksFeaturedBookStats {
+  value: String
+  label: String
+}
+
+type ShopProductBlocksFeaturedBookTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksFeaturedBook {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [ShopProductBlocksFeaturedBookStats]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksFeaturedBookTextStyle
+}
+
+type ShopProductBlocksFeaturedReleaseTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksFeaturedRelease {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+  textStyle: ShopProductBlocksFeaturedReleaseTextStyle
+}
+
+type ShopProductBlocksProductStripTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksProductStrip {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksProductStripTextStyle
+}
+
+type ShopProductBlocksShopCatalogTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksShopCatalog {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksShopCatalogTextStyle
+}
+
+type ShopProductBlocksGalleryGridArtworks {
+  title: String!
+  image: String!
+  description: String
+  downloadFile: String
+}
+
+type ShopProductBlocksGalleryGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksGalleryGrid {
+  artworks: [ShopProductBlocksGalleryGridArtworks]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksGalleryGridTextStyle
+}
+
+type ShopProductBlocksDownloadsGridDownloads {
+  title: String!
+  description: String
+  file: String!
+  fileType: String!
+  thumbnail: String
+}
+
+type ShopProductBlocksDownloadsGridTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksDownloadsGrid {
+  downloads: [ShopProductBlocksDownloadsGridDownloads]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksDownloadsGridTextStyle
+}
+
+type ShopProductBlocksFeaturedVideoTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksFeaturedVideo {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: ShopProductBlocksFeaturedVideoTextStyle
+}
+
+type ShopProductBlocksGalleryPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksGalleryPreview {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksGalleryPreviewTextStyle
+}
+
+type ShopProductBlocksDownloadsPreviewTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksDownloadsPreview {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksDownloadsPreviewTextStyle
+}
+
+type ShopProductBlocksTutorialsStripStats {
+  value: String
+  label: String
+}
+
+type ShopProductBlocksTutorialsStripTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksTutorialsStrip {
+  manageList: String
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [ShopProductBlocksTutorialsStripStats]
+  textStyle: ShopProductBlocksTutorialsStripTextStyle
+}
+
+type ShopProductBlocksClassesPitchTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksClassesPitch {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksClassesPitchTextStyle
+}
+
+type ShopProductBlocksBlogFeedNewsletter {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+type ShopProductBlocksBlogFeedTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksBlogFeed {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: ShopProductBlocksBlogFeedNewsletter
+  textStyle: ShopProductBlocksBlogFeedTextStyle
+}
+
+type ShopProductBlocksBlogIndex {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+type ShopProductBlocksCtaBandTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksCtaBand {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+  textStyle: ShopProductBlocksCtaBandTextStyle
+}
+
+type ShopProductBlocksTextButton {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
+}
+
+type ShopProductBlocksBigCtaTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksBigCta {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksBigCtaTextStyle
+}
+
+type ShopProductBlocksNewsletterSignupTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksNewsletterSignup {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+  textStyle: ShopProductBlocksNewsletterSignupTextStyle
+}
+
+type ShopProductBlocksContactInfo {
+  email: String
+  location: String
+}
+
+type ShopProductBlocksContactForm {
+  submitLabel: String
+}
+
+type ShopProductBlocksDummyBookRequestTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksDummyBookRequest {
+  heading: String
+  description: JSON
+  pdfUrl: String
+  submitLabel: String
+  successHeading: String
+  successNote: String
+  downloadLabel: String
+  textStyle: ShopProductBlocksDummyBookRequestTextStyle
+}
+
+type ShopProductBlocksKofiSupportTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksKofiSupport {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+  textStyle: ShopProductBlocksKofiSupportTextStyle
+}
+
+type ShopProductBlocksReviewLinksLinks {
+  label: String
+  href: String
+  region: String
+}
+
+type ShopProductBlocksReviewLinksTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksReviewLinks {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [ShopProductBlocksReviewLinksLinks]
+  textStyle: ShopProductBlocksReviewLinksTextStyle
+}
+
+type ShopProductBlocksMarquee {
+  highlightText: String
+  text: String
+}
+
+type ShopProductBlocksSocialLinksLinks {
+  platform: String
+  url: String
+  label: String
+}
+
+type ShopProductBlocksSocialLinksTextStyle {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+type ShopProductBlocksSocialLinks {
+  heading: String
+  body: JSON
+  links: [ShopProductBlocksSocialLinksLinks]
+  textStyle: ShopProductBlocksSocialLinksTextStyle
+}
+
+union ShopProductBlocks = ShopProductBlocksProductInfo | ShopProductBlocksHomeHero | ShopProductBlocksAboutHero | ShopProductBlocksHero | ShopProductBlocksHeroSplitImage | ShopProductBlocksHeroFullBleed | ShopProductBlocksHeroFloatingImages | ShopProductBlocksHeroImageGrid | ShopProductBlocksPageHeader | ShopProductBlocksText | ShopProductBlocksStory | ShopProductBlocksTimeline | ShopProductBlocksStatsRow | ShopProductBlocksFeatureGrid | ShopProductBlocksCardRow | ShopProductBlocksPillars | ShopProductBlocksImageGallery | ShopProductBlocksImageSpotlight | ShopProductBlocksImageSideBySide | ShopProductBlocksImageBanners | ShopProductBlocksImageMasonry | ShopProductBlocksVideoEmbed | ShopProductBlocksFeaturedBook | ShopProductBlocksFeaturedRelease | ShopProductBlocksProductStrip | ShopProductBlocksShopCatalog | ShopProductBlocksGalleryGrid | ShopProductBlocksDownloadsGrid | ShopProductBlocksFeaturedVideo | ShopProductBlocksGalleryPreview | ShopProductBlocksDownloadsPreview | ShopProductBlocksTutorialsStrip | ShopProductBlocksClassesPitch | ShopProductBlocksBlogFeed | ShopProductBlocksBlogIndex | ShopProductBlocksCtaBand | ShopProductBlocksTextButton | ShopProductBlocksBigCta | ShopProductBlocksNewsletterSignup | ShopProductBlocksContactInfo | ShopProductBlocksContactForm | ShopProductBlocksDummyBookRequest | ShopProductBlocksKofiSupport | ShopProductBlocksReviewLinks | ShopProductBlocksMarquee | ShopProductBlocksSocialLinks
+
 type ShopProductSeo {
   metaTitle: String
   metaDescription: String
@@ -12413,6 +15573,7 @@ type ShopProduct implements Node & Document {
   googlePlayUrl: String
   productId: Float!
   createdAt: String
+  blocks: [ShopProductBlocks]
   seoAssistant: String
   seo: ShopProductSeo
   id: ID!
@@ -12525,6 +15686,1189 @@ input ShopProductDownloadFilesFilter {
   label: StringFilter
 }
 
+input ShopProductBlocksProductInfoFilter {
+  note: StringFilter
+}
+
+input ShopProductBlocksHomeHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHomeHeroSubheadingFilter {
+  ContentLink: ShopProductBlocksHomeHeroSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHomeHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHomeHeroFilter {
+  backgroundImage: ImageFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksHomeHeroSubheadingFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  marqueeItems: StringFilter
+  textStyle: ShopProductBlocksHomeHeroTextStyleFilter
+}
+
+input ShopProductBlocksAboutHeroLeadTextContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksAboutHeroLeadTextFilter {
+  ContentLink: ShopProductBlocksAboutHeroLeadTextContentLinkFilter
+}
+
+input ShopProductBlocksAboutHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksAboutHeroFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  leadText: ShopProductBlocksAboutHeroLeadTextFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  metaLine: StringFilter
+  portraitImage: ImageFilter
+  portraitCaption: StringFilter
+  deskImage: ImageFilter
+  deskCaption: StringFilter
+  screenImage: ImageFilter
+  screenCaption: StringFilter
+  textStyle: ShopProductBlocksAboutHeroTextStyleFilter
+}
+
+input ShopProductBlocksHeroSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHeroSubheadingFilter {
+  ContentLink: ShopProductBlocksHeroSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHeroTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHeroFilter {
+  heading: StringFilter
+  subheading: ShopProductBlocksHeroSubheadingFilter
+  backgroundImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: ShopProductBlocksHeroTextStyleFilter
+}
+
+input ShopProductBlocksHeroSplitImageSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHeroSplitImageSubheadingFilter {
+  ContentLink: ShopProductBlocksHeroSplitImageSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHeroSplitImageTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHeroSplitImageFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksHeroSplitImageSubheadingFilter
+  featuredImage: ImageFilter
+  imageAlt: StringFilter
+  imageCaption: StringFilter
+  imagePosition: StringFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  textStyle: ShopProductBlocksHeroSplitImageTextStyleFilter
+}
+
+input ShopProductBlocksHeroFullBleedSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHeroFullBleedSubheadingFilter {
+  ContentLink: ShopProductBlocksHeroFullBleedSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHeroFullBleedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHeroFullBleedFilter {
+  backgroundImage: ImageFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksHeroFullBleedSubheadingFilter
+  overlay: StringFilter
+  textAlign: StringFilter
+  minHeight: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: ShopProductBlocksHeroFullBleedTextStyleFilter
+}
+
+input ShopProductBlocksHeroFloatingImagesSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHeroFloatingImagesSubheadingFilter {
+  ContentLink: ShopProductBlocksHeroFloatingImagesSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHeroFloatingImagesImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input ShopProductBlocksHeroFloatingImagesTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHeroFloatingImagesFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksHeroFloatingImagesSubheadingFilter
+  images: ShopProductBlocksHeroFloatingImagesImagesFilter
+  ctaPrimary: StringFilter
+  ctaPrimaryLink: StringFilter
+  ctaSecondary: StringFilter
+  ctaSecondaryLink: StringFilter
+  textStyle: ShopProductBlocksHeroFloatingImagesTextStyleFilter
+}
+
+input ShopProductBlocksHeroImageGridSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksHeroImageGridSubheadingFilter {
+  ContentLink: ShopProductBlocksHeroImageGridSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksHeroImageGridImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input ShopProductBlocksHeroImageGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksHeroImageGridFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksHeroImageGridSubheadingFilter
+  layout: StringFilter
+  images: ShopProductBlocksHeroImageGridImagesFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  textStyle: ShopProductBlocksHeroImageGridTextStyleFilter
+}
+
+input ShopProductBlocksPageHeaderDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksPageHeaderDescriptionFilter {
+  ContentLink: ShopProductBlocksPageHeaderDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksPageHeaderTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksPageHeaderFilter {
+  heading: StringFilter
+  description: ShopProductBlocksPageHeaderDescriptionFilter
+  textStyle: ShopProductBlocksPageHeaderTextStyleFilter
+}
+
+input ShopProductBlocksTextBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksTextBodyFilter {
+  ContentLink: ShopProductBlocksTextBodyContentLinkFilter
+}
+
+input ShopProductBlocksTextTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksTextFilter {
+  heading: StringFilter
+  body: ShopProductBlocksTextBodyFilter
+  textStyle: ShopProductBlocksTextTextStyleFilter
+}
+
+input ShopProductBlocksStoryParagraph1ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksStoryParagraph1Filter {
+  ContentLink: ShopProductBlocksStoryParagraph1ContentLinkFilter
+}
+
+input ShopProductBlocksStoryQuoteContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksStoryQuoteFilter {
+  ContentLink: ShopProductBlocksStoryQuoteContentLinkFilter
+}
+
+input ShopProductBlocksStoryParagraph2ContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksStoryParagraph2Filter {
+  ContentLink: ShopProductBlocksStoryParagraph2ContentLinkFilter
+}
+
+input ShopProductBlocksStoryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksStoryFilter {
+  number: StringFilter
+  label: StringFilter
+  heading: StringFilter
+  paragraph1: ShopProductBlocksStoryParagraph1Filter
+  quote: ShopProductBlocksStoryQuoteFilter
+  paragraph2: ShopProductBlocksStoryParagraph2Filter
+  sideImage: ImageFilter
+  sideCaption: StringFilter
+  textStyle: ShopProductBlocksStoryTextStyleFilter
+}
+
+input ShopProductBlocksTimelineEventsFilter {
+  year: StringFilter
+  title: StringFilter
+  description: StringFilter
+  image: ImageFilter
+}
+
+input ShopProductBlocksTimelineTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksTimelineFilter {
+  number: StringFilter
+  label: StringFilter
+  events: ShopProductBlocksTimelineEventsFilter
+  textStyle: ShopProductBlocksTimelineTextStyleFilter
+}
+
+input ShopProductBlocksStatsRowStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input ShopProductBlocksStatsRowFilter {
+  stats: ShopProductBlocksStatsRowStatsFilter
+}
+
+input ShopProductBlocksFeatureGridItemsDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksFeatureGridItemsDescriptionFilter {
+  ContentLink: ShopProductBlocksFeatureGridItemsDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksFeatureGridItemsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: ShopProductBlocksFeatureGridItemsDescriptionFilter
+}
+
+input ShopProductBlocksFeatureGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksFeatureGridFilter {
+  heading: StringFilter
+  items: ShopProductBlocksFeatureGridItemsFilter
+  textStyle: ShopProductBlocksFeatureGridTextStyleFilter
+}
+
+input ShopProductBlocksCardRowCardsFilter {
+  tag: StringFilter
+  title: StringFilter
+  body: StringFilter
+  image: ImageFilter
+  ctaLabel: StringFilter
+  link: StringFilter
+}
+
+input ShopProductBlocksCardRowTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksCardRowFilter {
+  number: StringFilter
+  label: StringFilter
+  cards: ShopProductBlocksCardRowCardsFilter
+  textStyle: ShopProductBlocksCardRowTextStyleFilter
+}
+
+input ShopProductBlocksPillarsItemsFilter {
+  tag: StringFilter
+  title: StringFilter
+  sub: StringFilter
+  cta: StringFilter
+  badge: StringFilter
+  link: StringFilter
+  image: ImageFilter
+}
+
+input ShopProductBlocksPillarsTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksPillarsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  items: ShopProductBlocksPillarsItemsFilter
+  textStyle: ShopProductBlocksPillarsTextStyleFilter
+}
+
+input ShopProductBlocksImageGalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input ShopProductBlocksImageGalleryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksImageGalleryFilter {
+  heading: StringFilter
+  images: ShopProductBlocksImageGalleryImagesFilter
+  textStyle: ShopProductBlocksImageGalleryTextStyleFilter
+}
+
+input ShopProductBlocksImageSpotlightBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksImageSpotlightBodyFilter {
+  ContentLink: ShopProductBlocksImageSpotlightBodyContentLinkFilter
+}
+
+input ShopProductBlocksImageSpotlightTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksImageSpotlightFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  image: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  aspect: StringFilter
+  body: ShopProductBlocksImageSpotlightBodyFilter
+  textStyle: ShopProductBlocksImageSpotlightTextStyleFilter
+}
+
+input ShopProductBlocksImageSideBySideLeftImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input ShopProductBlocksImageSideBySideRightImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+}
+
+input ShopProductBlocksImageSideBySideTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksImageSideBySideFilter {
+  heading: StringFilter
+  leftImage: ShopProductBlocksImageSideBySideLeftImageFilter
+  rightImage: ShopProductBlocksImageSideBySideRightImageFilter
+  style: StringFilter
+  textStyle: ShopProductBlocksImageSideBySideTextStyleFilter
+}
+
+input ShopProductBlocksImageBannersImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input ShopProductBlocksImageBannersTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksImageBannersFilter {
+  heading: StringFilter
+  images: ShopProductBlocksImageBannersImagesFilter
+  layout: StringFilter
+  textStyle: ShopProductBlocksImageBannersTextStyleFilter
+}
+
+input ShopProductBlocksImageMasonryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  caption: StringFilter
+  size: StringFilter
+}
+
+input ShopProductBlocksImageMasonryTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksImageMasonryFilter {
+  heading: StringFilter
+  images: ShopProductBlocksImageMasonryImagesFilter
+  textStyle: ShopProductBlocksImageMasonryTextStyleFilter
+}
+
+input ShopProductBlocksVideoEmbedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksVideoEmbedFilter {
+  heading: StringFilter
+  youtubeUrl: StringFilter
+  textStyle: ShopProductBlocksVideoEmbedTextStyleFilter
+}
+
+input ShopProductBlocksFeaturedBookDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksFeaturedBookDescriptionFilter {
+  ContentLink: ShopProductBlocksFeaturedBookDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksFeaturedBookStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input ShopProductBlocksFeaturedBookTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksFeaturedBookFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: ShopProductBlocksFeaturedBookDescriptionFilter
+  stats: ShopProductBlocksFeaturedBookStatsFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: ShopProductBlocksFeaturedBookTextStyleFilter
+}
+
+input ShopProductBlocksFeaturedReleaseDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksFeaturedReleaseDescriptionFilter {
+  ContentLink: ShopProductBlocksFeaturedReleaseDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksFeaturedReleaseTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksFeaturedReleaseFilter {
+  eyebrow: StringFilter
+  title: StringFilter
+  description: ShopProductBlocksFeaturedReleaseDescriptionFilter
+  coverImage: ImageFilter
+  backCoverImage: ImageFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+  textStyle: ShopProductBlocksFeaturedReleaseTextStyleFilter
+}
+
+input ShopProductBlocksProductStripTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksProductStripFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: ShopProductBlocksProductStripTextStyleFilter
+}
+
+input ShopProductBlocksShopCatalogDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksShopCatalogDescriptionFilter {
+  ContentLink: ShopProductBlocksShopCatalogDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksShopCatalogTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksShopCatalogFilter {
+  heading: StringFilter
+  highlightText: StringFilter
+  description: ShopProductBlocksShopCatalogDescriptionFilter
+  showFeaturedBanner: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: ShopProductBlocksShopCatalogTextStyleFilter
+}
+
+input ShopProductBlocksGalleryGridArtworksFilter {
+  title: StringFilter
+  image: ImageFilter
+  description: StringFilter
+  downloadFile: ImageFilter
+}
+
+input ShopProductBlocksGalleryGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksGalleryGridFilter {
+  artworks: ShopProductBlocksGalleryGridArtworksFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: ShopProductBlocksGalleryGridTextStyleFilter
+}
+
+input ShopProductBlocksDownloadsGridDownloadsFilter {
+  title: StringFilter
+  description: StringFilter
+  file: ImageFilter
+  fileType: StringFilter
+  thumbnail: ImageFilter
+}
+
+input ShopProductBlocksDownloadsGridTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksDownloadsGridFilter {
+  downloads: ShopProductBlocksDownloadsGridDownloadsFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+  textStyle: ShopProductBlocksDownloadsGridTextStyleFilter
+}
+
+input ShopProductBlocksFeaturedVideoDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksFeaturedVideoDescriptionFilter {
+  ContentLink: ShopProductBlocksFeaturedVideoDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksFeaturedVideoTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksFeaturedVideoFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: ShopProductBlocksFeaturedVideoDescriptionFilter
+  youtubeUrl: StringFilter
+  buttonLabel: StringFilter
+  textStyle: ShopProductBlocksFeaturedVideoTextStyleFilter
+}
+
+input ShopProductBlocksGalleryPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksGalleryPreviewDescriptionFilter {
+  ContentLink: ShopProductBlocksGalleryPreviewDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksGalleryPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksGalleryPreviewFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: ShopProductBlocksGalleryPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: ShopProductBlocksGalleryPreviewTextStyleFilter
+}
+
+input ShopProductBlocksDownloadsPreviewDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksDownloadsPreviewDescriptionFilter {
+  ContentLink: ShopProductBlocksDownloadsPreviewDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksDownloadsPreviewTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksDownloadsPreviewFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  heading: StringFilter
+  description: ShopProductBlocksDownloadsPreviewDescriptionFilter
+  maxItems: NumberFilter
+  viewAllLabel: StringFilter
+  viewAllLink: StringFilter
+  textStyle: ShopProductBlocksDownloadsPreviewTextStyleFilter
+}
+
+input ShopProductBlocksTutorialsStripStatsFilter {
+  value: StringFilter
+  label: StringFilter
+}
+
+input ShopProductBlocksTutorialsStripTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksTutorialsStripFilter {
+  manageList: StringFilter
+  eyebrow: StringFilter
+  headingPrefix: StringFilter
+  headingHighlight: StringFilter
+  headingSuffix: StringFilter
+  buttonLabel: StringFilter
+  youtubeUrl: StringFilter
+  stats: ShopProductBlocksTutorialsStripStatsFilter
+  textStyle: ShopProductBlocksTutorialsStripTextStyleFilter
+}
+
+input ShopProductBlocksClassesPitchSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksClassesPitchSubheadingFilter {
+  ContentLink: ShopProductBlocksClassesPitchSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksClassesPitchTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksClassesPitchFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksClassesPitchSubheadingFilter
+  bullets: StringFilter
+  metaTags: StringFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: ShopProductBlocksClassesPitchTextStyleFilter
+}
+
+input ShopProductBlocksBlogFeedNewsletterSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksBlogFeedNewsletterSubheadingFilter {
+  ContentLink: ShopProductBlocksBlogFeedNewsletterSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksBlogFeedNewsletterFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksBlogFeedNewsletterSubheadingFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+}
+
+input ShopProductBlocksBlogFeedTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksBlogFeedFilter {
+  heading: StringFilter
+  showNewsletter: BooleanFilter
+  newsletter: ShopProductBlocksBlogFeedNewsletterFilter
+  textStyle: ShopProductBlocksBlogFeedTextStyleFilter
+}
+
+input ShopProductBlocksBlogIndexFilter {
+  showTagFilter: BooleanFilter
+  emptyHeading: StringFilter
+  emptyDescription: StringFilter
+}
+
+input ShopProductBlocksCtaBandDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksCtaBandDescriptionFilter {
+  ContentLink: ShopProductBlocksCtaBandDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksCtaBandTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksCtaBandFilter {
+  heading: StringFilter
+  description: ShopProductBlocksCtaBandDescriptionFilter
+  ctaLabel: StringFilter
+  ctaLink: StringFilter
+  variant: StringFilter
+  textStyle: ShopProductBlocksCtaBandTextStyleFilter
+}
+
+input ShopProductBlocksTextButtonBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksTextButtonBodyFilter {
+  ContentLink: ShopProductBlocksTextButtonBodyContentLinkFilter
+}
+
+input ShopProductBlocksTextButtonFilter {
+  showText: BooleanFilter
+  body: ShopProductBlocksTextButtonBodyFilter
+  buttonLabel: StringFilter
+  buttonLink: StringFilter
+  layout: StringFilter
+  buttonAlign: StringFilter
+  buttonStyle: StringFilter
+}
+
+input ShopProductBlocksBigCtaTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksBigCtaFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  highlightText: StringFilter
+  primaryLabel: StringFilter
+  primaryLink: StringFilter
+  secondaryLabel: StringFilter
+  secondaryLink: StringFilter
+  textStyle: ShopProductBlocksBigCtaTextStyleFilter
+}
+
+input ShopProductBlocksNewsletterSignupSubheadingContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksNewsletterSignupSubheadingFilter {
+  ContentLink: ShopProductBlocksNewsletterSignupSubheadingContentLinkFilter
+}
+
+input ShopProductBlocksNewsletterSignupTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksNewsletterSignupFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+  subheading: ShopProductBlocksNewsletterSignupSubheadingFilter
+  placeholderText: StringFilter
+  ctaLabel: StringFilter
+  privacyNote: StringFilter
+  textStyle: ShopProductBlocksNewsletterSignupTextStyleFilter
+}
+
+input ShopProductBlocksContactInfoFilter {
+  email: StringFilter
+  location: StringFilter
+}
+
+input ShopProductBlocksContactFormFilter {
+  submitLabel: StringFilter
+}
+
+input ShopProductBlocksDummyBookRequestDescriptionContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksDummyBookRequestDescriptionFilter {
+  ContentLink: ShopProductBlocksDummyBookRequestDescriptionContentLinkFilter
+}
+
+input ShopProductBlocksDummyBookRequestTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksDummyBookRequestFilter {
+  heading: StringFilter
+  description: ShopProductBlocksDummyBookRequestDescriptionFilter
+  pdfUrl: StringFilter
+  submitLabel: StringFilter
+  successHeading: StringFilter
+  successNote: StringFilter
+  downloadLabel: StringFilter
+  textStyle: ShopProductBlocksDummyBookRequestTextStyleFilter
+}
+
+input ShopProductBlocksKofiSupportBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksKofiSupportBodyFilter {
+  ContentLink: ShopProductBlocksKofiSupportBodyContentLinkFilter
+}
+
+input ShopProductBlocksKofiSupportTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksKofiSupportFilter {
+  heading: StringFilter
+  body: ShopProductBlocksKofiSupportBodyFilter
+  ctaLabel: StringFilter
+  href: StringFilter
+  textStyle: ShopProductBlocksKofiSupportTextStyleFilter
+}
+
+input ShopProductBlocksReviewLinksIntroContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksReviewLinksIntroFilter {
+  ContentLink: ShopProductBlocksReviewLinksIntroContentLinkFilter
+}
+
+input ShopProductBlocksReviewLinksLinksFilter {
+  label: StringFilter
+  href: StringFilter
+  region: StringFilter
+}
+
+input ShopProductBlocksReviewLinksTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksReviewLinksFilter {
+  heading: StringFilter
+  intro: ShopProductBlocksReviewLinksIntroFilter
+  thankYou: StringFilter
+  ctaHeading: StringFilter
+  links: ShopProductBlocksReviewLinksLinksFilter
+  textStyle: ShopProductBlocksReviewLinksTextStyleFilter
+}
+
+input ShopProductBlocksMarqueeFilter {
+  highlightText: StringFilter
+  text: StringFilter
+}
+
+input ShopProductBlocksSocialLinksBodyContentLinkFilter {
+  url: StringFilter
+  text: StringFilter
+  openInNewTab: BooleanFilter
+}
+
+input ShopProductBlocksSocialLinksBodyFilter {
+  ContentLink: ShopProductBlocksSocialLinksBodyContentLinkFilter
+}
+
+input ShopProductBlocksSocialLinksLinksFilter {
+  platform: StringFilter
+  url: StringFilter
+  label: StringFilter
+}
+
+input ShopProductBlocksSocialLinksTextStyleFilter {
+  headingSize: StringFilter
+  headingType: StringFilter
+  headingFont: StringFilter
+  align: StringFilter
+  bodySize: StringFilter
+}
+
+input ShopProductBlocksSocialLinksFilter {
+  heading: StringFilter
+  body: ShopProductBlocksSocialLinksBodyFilter
+  links: ShopProductBlocksSocialLinksLinksFilter
+  textStyle: ShopProductBlocksSocialLinksTextStyleFilter
+}
+
+input ShopProductBlocksFilter {
+  productInfo: ShopProductBlocksProductInfoFilter
+  homeHero: ShopProductBlocksHomeHeroFilter
+  aboutHero: ShopProductBlocksAboutHeroFilter
+  hero: ShopProductBlocksHeroFilter
+  heroSplitImage: ShopProductBlocksHeroSplitImageFilter
+  heroFullBleed: ShopProductBlocksHeroFullBleedFilter
+  heroFloatingImages: ShopProductBlocksHeroFloatingImagesFilter
+  heroImageGrid: ShopProductBlocksHeroImageGridFilter
+  pageHeader: ShopProductBlocksPageHeaderFilter
+  text: ShopProductBlocksTextFilter
+  story: ShopProductBlocksStoryFilter
+  timeline: ShopProductBlocksTimelineFilter
+  statsRow: ShopProductBlocksStatsRowFilter
+  featureGrid: ShopProductBlocksFeatureGridFilter
+  cardRow: ShopProductBlocksCardRowFilter
+  pillars: ShopProductBlocksPillarsFilter
+  imageGallery: ShopProductBlocksImageGalleryFilter
+  imageSpotlight: ShopProductBlocksImageSpotlightFilter
+  imageSideBySide: ShopProductBlocksImageSideBySideFilter
+  imageBanners: ShopProductBlocksImageBannersFilter
+  imageMasonry: ShopProductBlocksImageMasonryFilter
+  videoEmbed: ShopProductBlocksVideoEmbedFilter
+  featuredBook: ShopProductBlocksFeaturedBookFilter
+  featuredRelease: ShopProductBlocksFeaturedReleaseFilter
+  productStrip: ShopProductBlocksProductStripFilter
+  shopCatalog: ShopProductBlocksShopCatalogFilter
+  galleryGrid: ShopProductBlocksGalleryGridFilter
+  downloadsGrid: ShopProductBlocksDownloadsGridFilter
+  featuredVideo: ShopProductBlocksFeaturedVideoFilter
+  galleryPreview: ShopProductBlocksGalleryPreviewFilter
+  downloadsPreview: ShopProductBlocksDownloadsPreviewFilter
+  tutorialsStrip: ShopProductBlocksTutorialsStripFilter
+  classesPitch: ShopProductBlocksClassesPitchFilter
+  blogFeed: ShopProductBlocksBlogFeedFilter
+  blogIndex: ShopProductBlocksBlogIndexFilter
+  ctaBand: ShopProductBlocksCtaBandFilter
+  textButton: ShopProductBlocksTextButtonFilter
+  bigCta: ShopProductBlocksBigCtaFilter
+  newsletterSignup: ShopProductBlocksNewsletterSignupFilter
+  contactInfo: ShopProductBlocksContactInfoFilter
+  contactForm: ShopProductBlocksContactFormFilter
+  dummyBookRequest: ShopProductBlocksDummyBookRequestFilter
+  kofiSupport: ShopProductBlocksKofiSupportFilter
+  reviewLinks: ShopProductBlocksReviewLinksFilter
+  marquee: ShopProductBlocksMarqueeFilter
+  socialLinks: ShopProductBlocksSocialLinksFilter
+}
+
 input ShopProductSeoFilter {
   metaTitle: StringFilter
   metaDescription: StringFilter
@@ -12553,6 +16897,7 @@ input ShopProductFilter {
   googlePlayUrl: StringFilter
   productId: NumberFilter
   createdAt: DatetimeFilter
+  blocks: ShopProductBlocksFilter
   seoAssistant: StringFilter
   seo: ShopProductSeoFilter
 }
@@ -13118,6 +17463,26 @@ input PageBlocksImageSideBySideMutation {
   textStyle: PageBlocksImageSideBySideTextStyleMutation
 }
 
+input PageBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input PageBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PageBlocksImageBannersMutation {
+  heading: String
+  images: [PageBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: PageBlocksImageBannersTextStyleMutation
+}
+
 input PageBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -13401,6 +17766,12 @@ input PageBlocksBlogFeedMutation {
   textStyle: PageBlocksBlogFeedTextStyleMutation
 }
 
+input PageBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input PageBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -13416,6 +17787,16 @@ input PageBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: PageBlocksCtaBandTextStyleMutation
+}
+
+input PageBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input PageBlocksBigCtaTextStyleMutation {
@@ -13567,6 +17948,7 @@ input PageBlocksMutation {
   imageGallery: PageBlocksImageGalleryMutation
   imageSpotlight: PageBlocksImageSpotlightMutation
   imageSideBySide: PageBlocksImageSideBySideMutation
+  imageBanners: PageBlocksImageBannersMutation
   imageMasonry: PageBlocksImageMasonryMutation
   videoEmbed: PageBlocksVideoEmbedMutation
   featuredBook: PageBlocksFeaturedBookMutation
@@ -13581,7 +17963,9 @@ input PageBlocksMutation {
   tutorialsStrip: PageBlocksTutorialsStripMutation
   classesPitch: PageBlocksClassesPitchMutation
   blogFeed: PageBlocksBlogFeedMutation
+  blogIndex: PageBlocksBlogIndexMutation
   ctaBand: PageBlocksCtaBandMutation
+  textButton: PageBlocksTextButtonMutation
   bigCta: PageBlocksBigCtaMutation
   newsletterSignup: PageBlocksNewsletterSignupMutation
   contactInfo: PageBlocksContactInfoMutation
@@ -13980,6 +18364,26 @@ input LandingPageBlankBlocksImageSideBySideMutation {
   textStyle: LandingPageBlankBlocksImageSideBySideTextStyleMutation
 }
 
+input LandingPageBlankBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input LandingPageBlankBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageBlankBlocksImageBannersMutation {
+  heading: String
+  images: [LandingPageBlankBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: LandingPageBlankBlocksImageBannersTextStyleMutation
+}
+
 input LandingPageBlankBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -14263,6 +18667,12 @@ input LandingPageBlankBlocksBlogFeedMutation {
   textStyle: LandingPageBlankBlocksBlogFeedTextStyleMutation
 }
 
+input LandingPageBlankBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input LandingPageBlankBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -14278,6 +18688,16 @@ input LandingPageBlankBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: LandingPageBlankBlocksCtaBandTextStyleMutation
+}
+
+input LandingPageBlankBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input LandingPageBlankBlocksBigCtaTextStyleMutation {
@@ -14429,6 +18849,7 @@ input LandingPageBlankBlocksMutation {
   imageGallery: LandingPageBlankBlocksImageGalleryMutation
   imageSpotlight: LandingPageBlankBlocksImageSpotlightMutation
   imageSideBySide: LandingPageBlankBlocksImageSideBySideMutation
+  imageBanners: LandingPageBlankBlocksImageBannersMutation
   imageMasonry: LandingPageBlankBlocksImageMasonryMutation
   videoEmbed: LandingPageBlankBlocksVideoEmbedMutation
   featuredBook: LandingPageBlankBlocksFeaturedBookMutation
@@ -14443,7 +18864,9 @@ input LandingPageBlankBlocksMutation {
   tutorialsStrip: LandingPageBlankBlocksTutorialsStripMutation
   classesPitch: LandingPageBlankBlocksClassesPitchMutation
   blogFeed: LandingPageBlankBlocksBlogFeedMutation
+  blogIndex: LandingPageBlankBlocksBlogIndexMutation
   ctaBand: LandingPageBlankBlocksCtaBandMutation
+  textButton: LandingPageBlankBlocksTextButtonMutation
   bigCta: LandingPageBlankBlocksBigCtaMutation
   newsletterSignup: LandingPageBlankBlocksNewsletterSignupMutation
   contactInfo: LandingPageBlankBlocksContactInfoMutation
@@ -14843,6 +19266,26 @@ input LandingPageEventBlocksImageSideBySideMutation {
   textStyle: LandingPageEventBlocksImageSideBySideTextStyleMutation
 }
 
+input LandingPageEventBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input LandingPageEventBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageEventBlocksImageBannersMutation {
+  heading: String
+  images: [LandingPageEventBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: LandingPageEventBlocksImageBannersTextStyleMutation
+}
+
 input LandingPageEventBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -15126,6 +19569,12 @@ input LandingPageEventBlocksBlogFeedMutation {
   textStyle: LandingPageEventBlocksBlogFeedTextStyleMutation
 }
 
+input LandingPageEventBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input LandingPageEventBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -15141,6 +19590,16 @@ input LandingPageEventBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: LandingPageEventBlocksCtaBandTextStyleMutation
+}
+
+input LandingPageEventBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input LandingPageEventBlocksBigCtaTextStyleMutation {
@@ -15292,6 +19751,7 @@ input LandingPageEventBlocksMutation {
   imageGallery: LandingPageEventBlocksImageGalleryMutation
   imageSpotlight: LandingPageEventBlocksImageSpotlightMutation
   imageSideBySide: LandingPageEventBlocksImageSideBySideMutation
+  imageBanners: LandingPageEventBlocksImageBannersMutation
   imageMasonry: LandingPageEventBlocksImageMasonryMutation
   videoEmbed: LandingPageEventBlocksVideoEmbedMutation
   featuredBook: LandingPageEventBlocksFeaturedBookMutation
@@ -15306,7 +19766,9 @@ input LandingPageEventBlocksMutation {
   tutorialsStrip: LandingPageEventBlocksTutorialsStripMutation
   classesPitch: LandingPageEventBlocksClassesPitchMutation
   blogFeed: LandingPageEventBlocksBlogFeedMutation
+  blogIndex: LandingPageEventBlocksBlogIndexMutation
   ctaBand: LandingPageEventBlocksCtaBandMutation
+  textButton: LandingPageEventBlocksTextButtonMutation
   bigCta: LandingPageEventBlocksBigCtaMutation
   newsletterSignup: LandingPageEventBlocksNewsletterSignupMutation
   contactInfo: LandingPageEventBlocksContactInfoMutation
@@ -15706,6 +20168,26 @@ input LandingPagePromoBlocksImageSideBySideMutation {
   textStyle: LandingPagePromoBlocksImageSideBySideTextStyleMutation
 }
 
+input LandingPagePromoBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input LandingPagePromoBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPagePromoBlocksImageBannersMutation {
+  heading: String
+  images: [LandingPagePromoBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: LandingPagePromoBlocksImageBannersTextStyleMutation
+}
+
 input LandingPagePromoBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -15989,6 +20471,12 @@ input LandingPagePromoBlocksBlogFeedMutation {
   textStyle: LandingPagePromoBlocksBlogFeedTextStyleMutation
 }
 
+input LandingPagePromoBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input LandingPagePromoBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -16004,6 +20492,16 @@ input LandingPagePromoBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: LandingPagePromoBlocksCtaBandTextStyleMutation
+}
+
+input LandingPagePromoBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input LandingPagePromoBlocksBigCtaTextStyleMutation {
@@ -16155,6 +20653,7 @@ input LandingPagePromoBlocksMutation {
   imageGallery: LandingPagePromoBlocksImageGalleryMutation
   imageSpotlight: LandingPagePromoBlocksImageSpotlightMutation
   imageSideBySide: LandingPagePromoBlocksImageSideBySideMutation
+  imageBanners: LandingPagePromoBlocksImageBannersMutation
   imageMasonry: LandingPagePromoBlocksImageMasonryMutation
   videoEmbed: LandingPagePromoBlocksVideoEmbedMutation
   featuredBook: LandingPagePromoBlocksFeaturedBookMutation
@@ -16169,7 +20668,9 @@ input LandingPagePromoBlocksMutation {
   tutorialsStrip: LandingPagePromoBlocksTutorialsStripMutation
   classesPitch: LandingPagePromoBlocksClassesPitchMutation
   blogFeed: LandingPagePromoBlocksBlogFeedMutation
+  blogIndex: LandingPagePromoBlocksBlogIndexMutation
   ctaBand: LandingPagePromoBlocksCtaBandMutation
+  textButton: LandingPagePromoBlocksTextButtonMutation
   bigCta: LandingPagePromoBlocksBigCtaMutation
   newsletterSignup: LandingPagePromoBlocksNewsletterSignupMutation
   contactInfo: LandingPagePromoBlocksContactInfoMutation
@@ -16569,6 +21070,26 @@ input LandingPageInfoBlocksImageSideBySideMutation {
   textStyle: LandingPageInfoBlocksImageSideBySideTextStyleMutation
 }
 
+input LandingPageInfoBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input LandingPageInfoBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageInfoBlocksImageBannersMutation {
+  heading: String
+  images: [LandingPageInfoBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: LandingPageInfoBlocksImageBannersTextStyleMutation
+}
+
 input LandingPageInfoBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -16852,6 +21373,12 @@ input LandingPageInfoBlocksBlogFeedMutation {
   textStyle: LandingPageInfoBlocksBlogFeedTextStyleMutation
 }
 
+input LandingPageInfoBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input LandingPageInfoBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -16867,6 +21394,16 @@ input LandingPageInfoBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: LandingPageInfoBlocksCtaBandTextStyleMutation
+}
+
+input LandingPageInfoBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input LandingPageInfoBlocksBigCtaTextStyleMutation {
@@ -17018,6 +21555,7 @@ input LandingPageInfoBlocksMutation {
   imageGallery: LandingPageInfoBlocksImageGalleryMutation
   imageSpotlight: LandingPageInfoBlocksImageSpotlightMutation
   imageSideBySide: LandingPageInfoBlocksImageSideBySideMutation
+  imageBanners: LandingPageInfoBlocksImageBannersMutation
   imageMasonry: LandingPageInfoBlocksImageMasonryMutation
   videoEmbed: LandingPageInfoBlocksVideoEmbedMutation
   featuredBook: LandingPageInfoBlocksFeaturedBookMutation
@@ -17032,7 +21570,9 @@ input LandingPageInfoBlocksMutation {
   tutorialsStrip: LandingPageInfoBlocksTutorialsStripMutation
   classesPitch: LandingPageInfoBlocksClassesPitchMutation
   blogFeed: LandingPageInfoBlocksBlogFeedMutation
+  blogIndex: LandingPageInfoBlocksBlogIndexMutation
   ctaBand: LandingPageInfoBlocksCtaBandMutation
+  textButton: LandingPageInfoBlocksTextButtonMutation
   bigCta: LandingPageInfoBlocksBigCtaMutation
   newsletterSignup: LandingPageInfoBlocksNewsletterSignupMutation
   contactInfo: LandingPageInfoBlocksContactInfoMutation
@@ -17432,6 +21972,26 @@ input LandingPageLinkInBioBlocksImageSideBySideMutation {
   textStyle: LandingPageLinkInBioBlocksImageSideBySideTextStyleMutation
 }
 
+input LandingPageLinkInBioBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input LandingPageLinkInBioBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input LandingPageLinkInBioBlocksImageBannersMutation {
+  heading: String
+  images: [LandingPageLinkInBioBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: LandingPageLinkInBioBlocksImageBannersTextStyleMutation
+}
+
 input LandingPageLinkInBioBlocksImageMasonryImagesMutation {
   src: String
   alt: String
@@ -17715,6 +22275,12 @@ input LandingPageLinkInBioBlocksBlogFeedMutation {
   textStyle: LandingPageLinkInBioBlocksBlogFeedTextStyleMutation
 }
 
+input LandingPageLinkInBioBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
 input LandingPageLinkInBioBlocksCtaBandTextStyleMutation {
   headingSize: String
   headingType: String
@@ -17730,6 +22296,16 @@ input LandingPageLinkInBioBlocksCtaBandMutation {
   ctaLink: String
   variant: String
   textStyle: LandingPageLinkInBioBlocksCtaBandTextStyleMutation
+}
+
+input LandingPageLinkInBioBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
 }
 
 input LandingPageLinkInBioBlocksBigCtaTextStyleMutation {
@@ -17881,6 +22457,7 @@ input LandingPageLinkInBioBlocksMutation {
   imageGallery: LandingPageLinkInBioBlocksImageGalleryMutation
   imageSpotlight: LandingPageLinkInBioBlocksImageSpotlightMutation
   imageSideBySide: LandingPageLinkInBioBlocksImageSideBySideMutation
+  imageBanners: LandingPageLinkInBioBlocksImageBannersMutation
   imageMasonry: LandingPageLinkInBioBlocksImageMasonryMutation
   videoEmbed: LandingPageLinkInBioBlocksVideoEmbedMutation
   featuredBook: LandingPageLinkInBioBlocksFeaturedBookMutation
@@ -17895,7 +22472,9 @@ input LandingPageLinkInBioBlocksMutation {
   tutorialsStrip: LandingPageLinkInBioBlocksTutorialsStripMutation
   classesPitch: LandingPageLinkInBioBlocksClassesPitchMutation
   blogFeed: LandingPageLinkInBioBlocksBlogFeedMutation
+  blogIndex: LandingPageLinkInBioBlocksBlogIndexMutation
   ctaBand: LandingPageLinkInBioBlocksCtaBandMutation
+  textButton: LandingPageLinkInBioBlocksTextButtonMutation
   bigCta: LandingPageLinkInBioBlocksBigCtaMutation
   newsletterSignup: LandingPageLinkInBioBlocksNewsletterSignupMutation
   contactInfo: LandingPageLinkInBioBlocksContactInfoMutation
@@ -18050,6 +22629,753 @@ input PostSectionsCtaBandMutation {
   textStyle: PostSectionsCtaBandTextStyleMutation
 }
 
+input PostSectionsHomeHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHomeHeroMutation {
+  backgroundImage: String
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+  textStyle: PostSectionsHomeHeroTextStyleMutation
+}
+
+input PostSectionsAboutHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+  deskImage: String
+  deskCaption: String
+  screenImage: String
+  screenCaption: String
+  textStyle: PostSectionsAboutHeroTextStyleMutation
+}
+
+input PostSectionsHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroTextStyleMutation
+}
+
+input PostSectionsHeroSplitImageTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHeroSplitImageMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  featuredImage: String
+  imageAlt: String
+  imageCaption: String
+  imagePosition: String
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: PostSectionsHeroSplitImageTextStyleMutation
+}
+
+input PostSectionsHeroFullBleedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHeroFullBleedMutation {
+  backgroundImage: String
+  heading: String
+  subheading: JSON
+  overlay: String
+  textAlign: String
+  minHeight: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroFullBleedTextStyleMutation
+}
+
+input PostSectionsHeroFloatingImagesImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PostSectionsHeroFloatingImagesTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHeroFloatingImagesMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  images: [PostSectionsHeroFloatingImagesImagesMutation]
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: PostSectionsHeroFloatingImagesTextStyleMutation
+}
+
+input PostSectionsHeroImageGridImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input PostSectionsHeroImageGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsHeroImageGridMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  layout: String
+  images: [PostSectionsHeroImageGridImagesMutation]
+  ctaLabel: String
+  ctaLink: String
+  textStyle: PostSectionsHeroImageGridTextStyleMutation
+}
+
+input PostSectionsPageHeaderTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsPageHeaderMutation {
+  heading: String
+  description: JSON
+  textStyle: PostSectionsPageHeaderTextStyleMutation
+}
+
+input PostSectionsStoryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideImage: String
+  sideCaption: String
+  textStyle: PostSectionsStoryTextStyleMutation
+}
+
+input PostSectionsTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+  image: String
+}
+
+input PostSectionsTimelineTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsTimelineMutation {
+  number: String
+  label: String
+  events: [PostSectionsTimelineEventsMutation]
+  textStyle: PostSectionsTimelineTextStyleMutation
+}
+
+input PostSectionsStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input PostSectionsStatsRowMutation {
+  stats: [PostSectionsStatsRowStatsMutation]
+}
+
+input PostSectionsFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input PostSectionsFeatureGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsFeatureGridMutation {
+  heading: String
+  items: [PostSectionsFeatureGridItemsMutation]
+  textStyle: PostSectionsFeatureGridTextStyleMutation
+}
+
+input PostSectionsCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  image: String
+  ctaLabel: String
+  link: String
+}
+
+input PostSectionsCardRowTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsCardRowMutation {
+  number: String
+  label: String
+  cards: [PostSectionsCardRowCardsMutation]
+  textStyle: PostSectionsCardRowTextStyleMutation
+}
+
+input PostSectionsPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input PostSectionsPillarsTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [PostSectionsPillarsItemsMutation]
+  textStyle: PostSectionsPillarsTextStyleMutation
+}
+
+input PostSectionsImageSpotlightTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsImageSpotlightMutation {
+  eyebrow: String
+  heading: String
+  image: String
+  alt: String
+  caption: String
+  aspect: String
+  body: JSON
+  textStyle: PostSectionsImageSpotlightTextStyleMutation
+}
+
+input PostSectionsImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input PostSectionsImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsImageBannersMutation {
+  heading: String
+  images: [PostSectionsImageBannersImagesMutation]
+  layout: String
+  textStyle: PostSectionsImageBannersTextStyleMutation
+}
+
+input PostSectionsImageMasonryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+  size: String
+}
+
+input PostSectionsImageMasonryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsImageMasonryMutation {
+  heading: String
+  images: [PostSectionsImageMasonryImagesMutation]
+  textStyle: PostSectionsImageMasonryTextStyleMutation
+}
+
+input PostSectionsFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input PostSectionsFeaturedBookTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [PostSectionsFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsFeaturedBookTextStyleMutation
+}
+
+input PostSectionsFeaturedReleaseTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+  textStyle: PostSectionsFeaturedReleaseTextStyleMutation
+}
+
+input PostSectionsProductStripTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsProductStripTextStyleMutation
+}
+
+input PostSectionsShopCatalogTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsShopCatalogTextStyleMutation
+}
+
+input PostSectionsGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
+input PostSectionsGalleryGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsGalleryGridMutation {
+  artworks: [PostSectionsGalleryGridArtworksMutation]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsGalleryGridTextStyleMutation
+}
+
+input PostSectionsDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
+}
+
+input PostSectionsDownloadsGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsDownloadsGridMutation {
+  downloads: [PostSectionsDownloadsGridDownloadsMutation]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: PostSectionsDownloadsGridTextStyleMutation
+}
+
+input PostSectionsFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: PostSectionsFeaturedVideoTextStyleMutation
+}
+
+input PostSectionsGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsGalleryPreviewMutation {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsGalleryPreviewTextStyleMutation
+}
+
+input PostSectionsDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsDownloadsPreviewMutation {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: PostSectionsDownloadsPreviewTextStyleMutation
+}
+
+input PostSectionsTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input PostSectionsTutorialsStripTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsTutorialsStripMutation {
+  manageList: String
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [PostSectionsTutorialsStripStatsMutation]
+  textStyle: PostSectionsTutorialsStripTextStyleMutation
+}
+
+input PostSectionsClassesPitchTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsClassesPitchTextStyleMutation
+}
+
+input PostSectionsBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input PostSectionsBlogFeedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: PostSectionsBlogFeedNewsletterMutation
+  textStyle: PostSectionsBlogFeedTextStyleMutation
+}
+
+input PostSectionsBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input PostSectionsTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
+}
+
+input PostSectionsBigCtaTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: PostSectionsBigCtaTextStyleMutation
+}
+
+input PostSectionsNewsletterSignupTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+  textStyle: PostSectionsNewsletterSignupTextStyleMutation
+}
+
+input PostSectionsContactInfoMutation {
+  email: String
+  location: String
+}
+
+input PostSectionsContactFormMutation {
+  submitLabel: String
+}
+
+input PostSectionsDummyBookRequestTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsDummyBookRequestMutation {
+  heading: String
+  description: JSON
+  pdfUrl: String
+  submitLabel: String
+  successHeading: String
+  successNote: String
+  downloadLabel: String
+  textStyle: PostSectionsDummyBookRequestTextStyleMutation
+}
+
+input PostSectionsKofiSupportTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+  textStyle: PostSectionsKofiSupportTextStyleMutation
+}
+
+input PostSectionsReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input PostSectionsReviewLinksTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [PostSectionsReviewLinksLinksMutation]
+  textStyle: PostSectionsReviewLinksTextStyleMutation
+}
+
+input PostSectionsMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input PostSectionsSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input PostSectionsSocialLinksTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input PostSectionsSocialLinksMutation {
+  heading: String
+  body: JSON
+  links: [PostSectionsSocialLinksLinksMutation]
+  textStyle: PostSectionsSocialLinksTextStyleMutation
+}
+
 input PostSectionsMutation {
   heading: PostSectionsHeadingMutation
   text: PostSectionsTextMutation
@@ -18061,6 +23387,46 @@ input PostSectionsMutation {
   videoEmbed: PostSectionsVideoEmbedMutation
   callout: PostSectionsCalloutMutation
   ctaBand: PostSectionsCtaBandMutation
+  homeHero: PostSectionsHomeHeroMutation
+  aboutHero: PostSectionsAboutHeroMutation
+  hero: PostSectionsHeroMutation
+  heroSplitImage: PostSectionsHeroSplitImageMutation
+  heroFullBleed: PostSectionsHeroFullBleedMutation
+  heroFloatingImages: PostSectionsHeroFloatingImagesMutation
+  heroImageGrid: PostSectionsHeroImageGridMutation
+  pageHeader: PostSectionsPageHeaderMutation
+  story: PostSectionsStoryMutation
+  timeline: PostSectionsTimelineMutation
+  statsRow: PostSectionsStatsRowMutation
+  featureGrid: PostSectionsFeatureGridMutation
+  cardRow: PostSectionsCardRowMutation
+  pillars: PostSectionsPillarsMutation
+  imageSpotlight: PostSectionsImageSpotlightMutation
+  imageBanners: PostSectionsImageBannersMutation
+  imageMasonry: PostSectionsImageMasonryMutation
+  featuredBook: PostSectionsFeaturedBookMutation
+  featuredRelease: PostSectionsFeaturedReleaseMutation
+  productStrip: PostSectionsProductStripMutation
+  shopCatalog: PostSectionsShopCatalogMutation
+  galleryGrid: PostSectionsGalleryGridMutation
+  downloadsGrid: PostSectionsDownloadsGridMutation
+  featuredVideo: PostSectionsFeaturedVideoMutation
+  galleryPreview: PostSectionsGalleryPreviewMutation
+  downloadsPreview: PostSectionsDownloadsPreviewMutation
+  tutorialsStrip: PostSectionsTutorialsStripMutation
+  classesPitch: PostSectionsClassesPitchMutation
+  blogFeed: PostSectionsBlogFeedMutation
+  blogIndex: PostSectionsBlogIndexMutation
+  textButton: PostSectionsTextButtonMutation
+  bigCta: PostSectionsBigCtaMutation
+  newsletterSignup: PostSectionsNewsletterSignupMutation
+  contactInfo: PostSectionsContactInfoMutation
+  contactForm: PostSectionsContactFormMutation
+  dummyBookRequest: PostSectionsDummyBookRequestMutation
+  kofiSupport: PostSectionsKofiSupportMutation
+  reviewLinks: PostSectionsReviewLinksMutation
+  marquee: PostSectionsMarqueeMutation
+  socialLinks: PostSectionsSocialLinksMutation
 }
 
 input PostSeoMutation {
@@ -18155,6 +23521,899 @@ input ShopProductDownloadFilesMutation {
   label: String
 }
 
+input ShopProductBlocksProductInfoMutation {
+  note: String
+}
+
+input ShopProductBlocksHomeHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHomeHeroMutation {
+  backgroundImage: String
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  marqueeItems: [String]
+  textStyle: ShopProductBlocksHomeHeroTextStyleMutation
+}
+
+input ShopProductBlocksAboutHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksAboutHeroMutation {
+  eyebrow: String
+  heading: String
+  leadText: JSON
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  metaLine: String
+  portraitImage: String
+  portraitCaption: String
+  deskImage: String
+  deskCaption: String
+  screenImage: String
+  screenCaption: String
+  textStyle: ShopProductBlocksAboutHeroTextStyleMutation
+}
+
+input ShopProductBlocksHeroTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHeroMutation {
+  heading: String
+  subheading: JSON
+  backgroundImage: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroTextStyleMutation
+}
+
+input ShopProductBlocksHeroSplitImageTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHeroSplitImageMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  featuredImage: String
+  imageAlt: String
+  imageCaption: String
+  imagePosition: String
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: ShopProductBlocksHeroSplitImageTextStyleMutation
+}
+
+input ShopProductBlocksHeroFullBleedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHeroFullBleedMutation {
+  backgroundImage: String
+  heading: String
+  subheading: JSON
+  overlay: String
+  textAlign: String
+  minHeight: String
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroFullBleedTextStyleMutation
+}
+
+input ShopProductBlocksHeroFloatingImagesImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input ShopProductBlocksHeroFloatingImagesTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHeroFloatingImagesMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  images: [ShopProductBlocksHeroFloatingImagesImagesMutation]
+  ctaPrimary: String
+  ctaPrimaryLink: String
+  ctaSecondary: String
+  ctaSecondaryLink: String
+  textStyle: ShopProductBlocksHeroFloatingImagesTextStyleMutation
+}
+
+input ShopProductBlocksHeroImageGridImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input ShopProductBlocksHeroImageGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksHeroImageGridMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  layout: String
+  images: [ShopProductBlocksHeroImageGridImagesMutation]
+  ctaLabel: String
+  ctaLink: String
+  textStyle: ShopProductBlocksHeroImageGridTextStyleMutation
+}
+
+input ShopProductBlocksPageHeaderTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksPageHeaderMutation {
+  heading: String
+  description: JSON
+  textStyle: ShopProductBlocksPageHeaderTextStyleMutation
+}
+
+input ShopProductBlocksTextTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksTextMutation {
+  heading: String
+  body: JSON
+  textStyle: ShopProductBlocksTextTextStyleMutation
+}
+
+input ShopProductBlocksStoryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksStoryMutation {
+  number: String
+  label: String
+  heading: String
+  paragraph1: JSON
+  quote: JSON
+  paragraph2: JSON
+  sideImage: String
+  sideCaption: String
+  textStyle: ShopProductBlocksStoryTextStyleMutation
+}
+
+input ShopProductBlocksTimelineEventsMutation {
+  year: String
+  title: String
+  description: String
+  image: String
+}
+
+input ShopProductBlocksTimelineTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksTimelineMutation {
+  number: String
+  label: String
+  events: [ShopProductBlocksTimelineEventsMutation]
+  textStyle: ShopProductBlocksTimelineTextStyleMutation
+}
+
+input ShopProductBlocksStatsRowStatsMutation {
+  value: String
+  label: String
+}
+
+input ShopProductBlocksStatsRowMutation {
+  stats: [ShopProductBlocksStatsRowStatsMutation]
+}
+
+input ShopProductBlocksFeatureGridItemsMutation {
+  icon: String
+  title: String
+  description: JSON
+}
+
+input ShopProductBlocksFeatureGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksFeatureGridMutation {
+  heading: String
+  items: [ShopProductBlocksFeatureGridItemsMutation]
+  textStyle: ShopProductBlocksFeatureGridTextStyleMutation
+}
+
+input ShopProductBlocksCardRowCardsMutation {
+  tag: String
+  title: String
+  body: String
+  image: String
+  ctaLabel: String
+  link: String
+}
+
+input ShopProductBlocksCardRowTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksCardRowMutation {
+  number: String
+  label: String
+  cards: [ShopProductBlocksCardRowCardsMutation]
+  textStyle: ShopProductBlocksCardRowTextStyleMutation
+}
+
+input ShopProductBlocksPillarsItemsMutation {
+  tag: String
+  title: String
+  sub: String
+  cta: String
+  badge: String
+  link: String
+  image: String
+}
+
+input ShopProductBlocksPillarsTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksPillarsMutation {
+  eyebrow: String
+  heading: String
+  items: [ShopProductBlocksPillarsItemsMutation]
+  textStyle: ShopProductBlocksPillarsTextStyleMutation
+}
+
+input ShopProductBlocksImageGalleryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input ShopProductBlocksImageGalleryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksImageGalleryMutation {
+  heading: String
+  images: [ShopProductBlocksImageGalleryImagesMutation]
+  textStyle: ShopProductBlocksImageGalleryTextStyleMutation
+}
+
+input ShopProductBlocksImageSpotlightTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksImageSpotlightMutation {
+  eyebrow: String
+  heading: String
+  image: String
+  alt: String
+  caption: String
+  aspect: String
+  body: JSON
+  textStyle: ShopProductBlocksImageSpotlightTextStyleMutation
+}
+
+input ShopProductBlocksImageSideBySideLeftImageMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input ShopProductBlocksImageSideBySideRightImageMutation {
+  src: String
+  alt: String
+  caption: String
+}
+
+input ShopProductBlocksImageSideBySideTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksImageSideBySideMutation {
+  heading: String
+  leftImage: ShopProductBlocksImageSideBySideLeftImageMutation
+  rightImage: ShopProductBlocksImageSideBySideRightImageMutation
+  style: String
+  textStyle: ShopProductBlocksImageSideBySideTextStyleMutation
+}
+
+input ShopProductBlocksImageBannersImagesMutation {
+  src: String
+  alt: String
+}
+
+input ShopProductBlocksImageBannersTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksImageBannersMutation {
+  heading: String
+  images: [ShopProductBlocksImageBannersImagesMutation]
+  layout: String
+  textStyle: ShopProductBlocksImageBannersTextStyleMutation
+}
+
+input ShopProductBlocksImageMasonryImagesMutation {
+  src: String
+  alt: String
+  caption: String
+  size: String
+}
+
+input ShopProductBlocksImageMasonryTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksImageMasonryMutation {
+  heading: String
+  images: [ShopProductBlocksImageMasonryImagesMutation]
+  textStyle: ShopProductBlocksImageMasonryTextStyleMutation
+}
+
+input ShopProductBlocksVideoEmbedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksVideoEmbedMutation {
+  heading: String
+  youtubeUrl: String
+  textStyle: ShopProductBlocksVideoEmbedTextStyleMutation
+}
+
+input ShopProductBlocksFeaturedBookStatsMutation {
+  value: String
+  label: String
+}
+
+input ShopProductBlocksFeaturedBookTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksFeaturedBookMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  stats: [ShopProductBlocksFeaturedBookStatsMutation]
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksFeaturedBookTextStyleMutation
+}
+
+input ShopProductBlocksFeaturedReleaseTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksFeaturedReleaseMutation {
+  eyebrow: String
+  title: String
+  description: JSON
+  coverImage: String
+  backCoverImage: String
+  ctaLabel: String
+  ctaHref: String
+  textStyle: ShopProductBlocksFeaturedReleaseTextStyleMutation
+}
+
+input ShopProductBlocksProductStripTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksProductStripMutation {
+  eyebrow: String
+  heading: String
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksProductStripTextStyleMutation
+}
+
+input ShopProductBlocksShopCatalogTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksShopCatalogMutation {
+  heading: String
+  highlightText: String
+  description: JSON
+  showFeaturedBanner: Boolean
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksShopCatalogTextStyleMutation
+}
+
+input ShopProductBlocksGalleryGridArtworksMutation {
+  title: String
+  image: String
+  description: String
+  downloadFile: String
+}
+
+input ShopProductBlocksGalleryGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksGalleryGridMutation {
+  artworks: [ShopProductBlocksGalleryGridArtworksMutation]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksGalleryGridTextStyleMutation
+}
+
+input ShopProductBlocksDownloadsGridDownloadsMutation {
+  title: String
+  description: String
+  file: String
+  fileType: String
+  thumbnail: String
+}
+
+input ShopProductBlocksDownloadsGridTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksDownloadsGridMutation {
+  downloads: [ShopProductBlocksDownloadsGridDownloadsMutation]
+  emptyHeading: String
+  emptyDescription: String
+  textStyle: ShopProductBlocksDownloadsGridTextStyleMutation
+}
+
+input ShopProductBlocksFeaturedVideoTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksFeaturedVideoMutation {
+  eyebrow: String
+  heading: String
+  description: JSON
+  youtubeUrl: String
+  buttonLabel: String
+  textStyle: ShopProductBlocksFeaturedVideoTextStyleMutation
+}
+
+input ShopProductBlocksGalleryPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksGalleryPreviewMutation {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksGalleryPreviewTextStyleMutation
+}
+
+input ShopProductBlocksDownloadsPreviewTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksDownloadsPreviewMutation {
+  manageList: String
+  eyebrow: String
+  heading: String
+  description: JSON
+  maxItems: Float
+  viewAllLabel: String
+  viewAllLink: String
+  textStyle: ShopProductBlocksDownloadsPreviewTextStyleMutation
+}
+
+input ShopProductBlocksTutorialsStripStatsMutation {
+  value: String
+  label: String
+}
+
+input ShopProductBlocksTutorialsStripTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksTutorialsStripMutation {
+  manageList: String
+  eyebrow: String
+  headingPrefix: String
+  headingHighlight: String
+  headingSuffix: String
+  buttonLabel: String
+  youtubeUrl: String
+  stats: [ShopProductBlocksTutorialsStripStatsMutation]
+  textStyle: ShopProductBlocksTutorialsStripTextStyleMutation
+}
+
+input ShopProductBlocksClassesPitchTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksClassesPitchMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  bullets: [String]
+  metaTags: String
+  ctaLabel: String
+  ctaLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksClassesPitchTextStyleMutation
+}
+
+input ShopProductBlocksBlogFeedNewsletterMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+}
+
+input ShopProductBlocksBlogFeedTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksBlogFeedMutation {
+  heading: String
+  showNewsletter: Boolean
+  newsletter: ShopProductBlocksBlogFeedNewsletterMutation
+  textStyle: ShopProductBlocksBlogFeedTextStyleMutation
+}
+
+input ShopProductBlocksBlogIndexMutation {
+  showTagFilter: Boolean
+  emptyHeading: String
+  emptyDescription: String
+}
+
+input ShopProductBlocksCtaBandTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksCtaBandMutation {
+  heading: String
+  description: JSON
+  ctaLabel: String
+  ctaLink: String
+  variant: String
+  textStyle: ShopProductBlocksCtaBandTextStyleMutation
+}
+
+input ShopProductBlocksTextButtonMutation {
+  showText: Boolean
+  body: JSON
+  buttonLabel: String
+  buttonLink: String
+  layout: String
+  buttonAlign: String
+  buttonStyle: String
+}
+
+input ShopProductBlocksBigCtaTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksBigCtaMutation {
+  eyebrow: String
+  heading: String
+  highlightText: String
+  primaryLabel: String
+  primaryLink: String
+  secondaryLabel: String
+  secondaryLink: String
+  textStyle: ShopProductBlocksBigCtaTextStyleMutation
+}
+
+input ShopProductBlocksNewsletterSignupTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksNewsletterSignupMutation {
+  eyebrow: String
+  heading: String
+  subheading: JSON
+  placeholderText: String
+  ctaLabel: String
+  privacyNote: String
+  textStyle: ShopProductBlocksNewsletterSignupTextStyleMutation
+}
+
+input ShopProductBlocksContactInfoMutation {
+  email: String
+  location: String
+}
+
+input ShopProductBlocksContactFormMutation {
+  submitLabel: String
+}
+
+input ShopProductBlocksDummyBookRequestTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksDummyBookRequestMutation {
+  heading: String
+  description: JSON
+  pdfUrl: String
+  submitLabel: String
+  successHeading: String
+  successNote: String
+  downloadLabel: String
+  textStyle: ShopProductBlocksDummyBookRequestTextStyleMutation
+}
+
+input ShopProductBlocksKofiSupportTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksKofiSupportMutation {
+  heading: String
+  body: JSON
+  ctaLabel: String
+  href: String
+  textStyle: ShopProductBlocksKofiSupportTextStyleMutation
+}
+
+input ShopProductBlocksReviewLinksLinksMutation {
+  label: String
+  href: String
+  region: String
+}
+
+input ShopProductBlocksReviewLinksTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksReviewLinksMutation {
+  heading: String
+  intro: JSON
+  thankYou: String
+  ctaHeading: String
+  links: [ShopProductBlocksReviewLinksLinksMutation]
+  textStyle: ShopProductBlocksReviewLinksTextStyleMutation
+}
+
+input ShopProductBlocksMarqueeMutation {
+  highlightText: String
+  text: String
+}
+
+input ShopProductBlocksSocialLinksLinksMutation {
+  platform: String
+  url: String
+  label: String
+}
+
+input ShopProductBlocksSocialLinksTextStyleMutation {
+  headingSize: String
+  headingType: String
+  headingFont: String
+  align: String
+  bodySize: String
+}
+
+input ShopProductBlocksSocialLinksMutation {
+  heading: String
+  body: JSON
+  links: [ShopProductBlocksSocialLinksLinksMutation]
+  textStyle: ShopProductBlocksSocialLinksTextStyleMutation
+}
+
+input ShopProductBlocksMutation {
+  productInfo: ShopProductBlocksProductInfoMutation
+  homeHero: ShopProductBlocksHomeHeroMutation
+  aboutHero: ShopProductBlocksAboutHeroMutation
+  hero: ShopProductBlocksHeroMutation
+  heroSplitImage: ShopProductBlocksHeroSplitImageMutation
+  heroFullBleed: ShopProductBlocksHeroFullBleedMutation
+  heroFloatingImages: ShopProductBlocksHeroFloatingImagesMutation
+  heroImageGrid: ShopProductBlocksHeroImageGridMutation
+  pageHeader: ShopProductBlocksPageHeaderMutation
+  text: ShopProductBlocksTextMutation
+  story: ShopProductBlocksStoryMutation
+  timeline: ShopProductBlocksTimelineMutation
+  statsRow: ShopProductBlocksStatsRowMutation
+  featureGrid: ShopProductBlocksFeatureGridMutation
+  cardRow: ShopProductBlocksCardRowMutation
+  pillars: ShopProductBlocksPillarsMutation
+  imageGallery: ShopProductBlocksImageGalleryMutation
+  imageSpotlight: ShopProductBlocksImageSpotlightMutation
+  imageSideBySide: ShopProductBlocksImageSideBySideMutation
+  imageBanners: ShopProductBlocksImageBannersMutation
+  imageMasonry: ShopProductBlocksImageMasonryMutation
+  videoEmbed: ShopProductBlocksVideoEmbedMutation
+  featuredBook: ShopProductBlocksFeaturedBookMutation
+  featuredRelease: ShopProductBlocksFeaturedReleaseMutation
+  productStrip: ShopProductBlocksProductStripMutation
+  shopCatalog: ShopProductBlocksShopCatalogMutation
+  galleryGrid: ShopProductBlocksGalleryGridMutation
+  downloadsGrid: ShopProductBlocksDownloadsGridMutation
+  featuredVideo: ShopProductBlocksFeaturedVideoMutation
+  galleryPreview: ShopProductBlocksGalleryPreviewMutation
+  downloadsPreview: ShopProductBlocksDownloadsPreviewMutation
+  tutorialsStrip: ShopProductBlocksTutorialsStripMutation
+  classesPitch: ShopProductBlocksClassesPitchMutation
+  blogFeed: ShopProductBlocksBlogFeedMutation
+  blogIndex: ShopProductBlocksBlogIndexMutation
+  ctaBand: ShopProductBlocksCtaBandMutation
+  textButton: ShopProductBlocksTextButtonMutation
+  bigCta: ShopProductBlocksBigCtaMutation
+  newsletterSignup: ShopProductBlocksNewsletterSignupMutation
+  contactInfo: ShopProductBlocksContactInfoMutation
+  contactForm: ShopProductBlocksContactFormMutation
+  dummyBookRequest: ShopProductBlocksDummyBookRequestMutation
+  kofiSupport: ShopProductBlocksKofiSupportMutation
+  reviewLinks: ShopProductBlocksReviewLinksMutation
+  marquee: ShopProductBlocksMarqueeMutation
+  socialLinks: ShopProductBlocksSocialLinksMutation
+}
+
 input ShopProductSeoMutation {
   metaTitle: String
   metaDescription: String
@@ -18183,6 +24442,7 @@ input ShopProductMutation {
   googlePlayUrl: String
   productId: Float
   createdAt: String
+  blocks: [ShopProductBlocksMutation]
   seoAssistant: String
   seo: ShopProductSeoMutation
 }

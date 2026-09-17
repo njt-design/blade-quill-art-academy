@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartProvider } from "@/hooks/useCart";
+import { useSiteJsonLd } from "@/lib/structured-data";
 
 // Layout
 import { Navbar } from "@/components/layout/Navbar";
@@ -17,7 +18,6 @@ import Page from "@/pages/Page";
 import ProductDetail from "@/pages/ProductDetail";
 import OrderSuccess from "@/pages/OrderSuccess";
 import Cart from "@/pages/Cart";
-import BlogList from "@/pages/BlogList";
 import BlogPost from "@/pages/BlogPost";
 import MockupHomePreview from "@/pages/MockupHomePreview";
 import NavDropdownMockups from "@/pages/NavDropdownMockups";
@@ -89,7 +89,9 @@ function MainLayout() {
           <Route path="/privacy-policy">
             <LegalDocument doc={PRIVACY_POLICY} />
           </Route>
-          <Route path="/blog" component={BlogList} />
+          <Route path="/blog">
+            <Page slug="blog" />
+          </Route>
           <Route path="/blog/:slug" component={BlogPost} />
           <Route component={NotFound} />
         </Switch>
@@ -133,6 +135,9 @@ function Router() {
 }
 
 function App() {
+  // Site-wide schema.org graph (WebSite / Organization / Person) for SEO.
+  useSiteJsonLd();
+
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>

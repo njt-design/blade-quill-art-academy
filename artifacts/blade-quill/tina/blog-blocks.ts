@@ -1,5 +1,6 @@
 import type { Template } from "tinacms";
 import {
+  ALL_BLOCKS,
   charLimit,
   textBlock,
   imageGalleryBlock,
@@ -63,7 +64,8 @@ export const blogHeadingBlock: Template = {
       type: "string",
       name: "text",
       label: "Heading",
-      required: true,
+      // Not `required`: nullability must match Marquee's optional `text` now
+      // that both templates share the PostSections union (GraphQL merge rule).
       ui: charLimit(90, "The section title."),
     },
     {
@@ -282,3 +284,13 @@ export const BLOG_BLOCKS: Template[] = [
   blogCalloutBlock,
   blogCtaBlock,
 ];
+
+/**
+ * Every page pattern that isn't already offered above in an article-tuned
+ * form (same template name = already in BLOG_BLOCKS). Together with
+ * BLOG_BLOCKS this makes the full pattern library available inside posts —
+ * page-style sections break out to full width there (ArticleSectionRenderer).
+ */
+export const BLOG_PAGE_BLOCKS: Template[] = ALL_BLOCKS.filter(
+  (block) => !BLOG_BLOCKS.some((b) => b.name === block.name)
+);

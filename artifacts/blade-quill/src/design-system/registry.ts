@@ -3,7 +3,7 @@ import type { DesignSystemEntry } from "./types";
 import { makeBlockDemo, CtaBandBothVariantsDemo } from "./demos/blocks/BlockDemo";
 
 /**
- * Every entry on /design-system. Blocks mirror `tina/blocks.ts` 1:1 (all 39
+ * Every entry on /design-system. Blocks mirror `tina/blocks.ts` 1:1 (all 40
  * templates) and their `guidelines` carry the admin specs from that schema:
  * character limits, image expectations, where each block is used and edited.
  */
@@ -494,6 +494,35 @@ const CONTENT_BLOCKS: DesignSystemEntry[] = [
     },
   },
   {
+    id: "block-image-banners",
+    name: "Image (Banners)",
+    category: "block",
+    group: "Content",
+    description:
+      "Wide promo banners inside a soft rounded card — stacked full width, or a gallery with one large banner and a clickable thumbnail strip.",
+    demo: makeBlockDemo("imageBanners"),
+    guidelines: {
+      usage:
+        "Product or campaign banners (bundles, launches, sales). Choose Gallery when there are several banners but limited page room — visitors flip through via the thumbnails.",
+      cmsLocation: `${SECTIONS_LOCATION} → Image (Banners)`,
+      images: [
+        {
+          field: "images[].src",
+          spec: "Wide landscape banners, ideally all the same proportions (e.g. 1200×370). JPG/PNG/WebP, uploaded to images/pages/.",
+        },
+      ],
+      charLimits: [
+        { field: "heading", limit: 60 },
+        { field: "images[].alt", limit: 125 },
+      ],
+      notes: [
+        "Gallery layout: clicking a thumbnail swaps the large banner; the active thumbnail is highlighted with a gold border.",
+        "Banners render at their natural proportions — no cropping.",
+        TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
     id: "block-image-masonry",
     name: "Image (Masonry)",
     category: "block",
@@ -821,6 +850,28 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
     },
   },
   {
+    id: "block-blog-index",
+    name: "Blog Index (all posts)",
+    category: "block",
+    group: "Commerce & media",
+    description:
+      "Every blog post as a card grid with an optional tag filter — the whole /blog page as a section. Posts load automatically.",
+    demo: makeBlockDemo("blogIndex"),
+    guidelines: {
+      usage: "The main section of the /blog page; can also be dropped on any other page.",
+      usedOn: ["/blog"],
+      cmsLocation: "Main Pages → Blog → Page Sections → Blog Index (all posts)",
+      charLimits: [
+        { field: "emptyHeading", limit: 60 },
+        { field: "emptyDescription", limit: 120 },
+      ],
+      notes: [
+        "Posts and their tags come from the Blog Posts collection — nothing to curate here.",
+        "Turn off Show Tag Filter for a cleaner look when there are only a few posts.",
+      ],
+    },
+  },
+  {
     id: "block-blog-feed",
     name: "Blog Feed",
     category: "block",
@@ -868,6 +919,26 @@ const CTA_BLOCKS: DesignSystemEntry[] = [
       notes: [
         "Choose “dark” for a dark panel with light text; “light” is the default.",
         TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
+    id: "block-text-button",
+    name: "Text + Button",
+    category: "block",
+    group: "CTAs & forms",
+    description:
+      "A few sentences of text paired with a single call-to-action — button beside the text or centered below it. Turn Show Text off for a standalone button or link.",
+    demo: makeBlockDemo("textButton"),
+    guidelines: {
+      usage:
+        "A lightweight nudge toward one next step, without the visual weight of a CTA Band or Big CTA. With Show Text off it's the way to drop a single button or link anywhere on a page.",
+      cmsLocation: `${SECTIONS_LOCATION} → Text + Button`,
+      charLimits: [{ field: "buttonLabel", limit: 24 }],
+      notes: [
+        "Show Text off hides the text (it's kept, not deleted) and renders just the button in a shorter section; Button Alignment then places it left, center, or right.",
+        "Layout chooses between the button sitting to the right of the text (stacked on mobile) or centered below the text.",
+        "Button Style switches the call-to-action between a primary (filled) button, a secondary (outline) button, and a plain underlined link.",
       ],
     },
   },
@@ -1169,7 +1240,7 @@ const BRAND: DesignSystemEntry[] = [
     category: "brand",
     group: "Brand components",
     description:
-      "White-framed photo card with washi-tape strip, mono caption, and optional hover-straighten.",
+      "Framed photo card: paper border with equal padding, soft drop shadow, mono caption, optional hover lift. No tape, no tilt.",
     demo: lazy(() => import("./demos/brand/PolaroidDemo")),
     guidelines: {
       usage: "Personal photos (About page collage, story sections).",

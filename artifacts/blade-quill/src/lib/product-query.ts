@@ -2,6 +2,18 @@
  * GraphQL query for a single Shop Product — Document _sys + id are required
  * for Tina visual editing (tinaField / click-to-edit) to bind.
  */
+import { blocksSelection } from "./page-queries";
+
+/**
+ * Page Sections on a product: every shared block plus the product-only
+ * "Product Info" placeholder (the purchase area, rendered by ProductDetail).
+ */
+const PRODUCT_BLOCKS_SELECTION = `
+      blocks {
+        ... on ShopProductBlocksProductInfo { __typename note }
+        ${blocksSelection("ShopProductBlocks")}
+      }`;
+
 export const shopProductQuery = `
   query shopProduct($relativePath: String!) {
     shopProduct(relativePath: $relativePath) {
@@ -89,6 +101,7 @@ export const shopProductQuery = `
       featured
       inStock
       createdAt
+      ${PRODUCT_BLOCKS_SELECTION}
       seo { metaTitle metaDescription }
     }
   }

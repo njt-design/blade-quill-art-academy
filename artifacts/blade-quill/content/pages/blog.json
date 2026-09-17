@@ -1,0 +1,30 @@
+{
+  "title": "Blog",
+  "layout": "standard",
+  "blocks": [
+    {
+      "heading": "Blog",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "News, behind-the-scenes, and art tips from Corinne."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "pageHeader"
+    },
+    {
+      "showTagFilter": true,
+      "emptyHeading": "No posts yet",
+      "emptyDescription": "Check back soon for updates.",
+      "_template": "blogIndex"
+    }
+  ]
+}

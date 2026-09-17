@@ -3,6 +3,7 @@ import { type Block } from "./block-utils";
 
 import HeroBlock from "./HeroBlock";
 import TextBlock from "./TextBlock";
+import TextButtonBlock from "./TextButtonBlock";
 import ImageGalleryBlock from "./ImageGalleryBlock";
 import CtaBandBlock from "./CtaBandBlock";
 import VideoEmbedBlock from "./VideoEmbedBlock";
@@ -16,6 +17,7 @@ import ClassesPitchBlock from "./ClassesPitchBlock";
 import TutorialsStripBlock from "./TutorialsStripBlock";
 import ProductStripBlock from "./ProductStripBlock";
 import BlogFeedBlock from "./BlogFeedBlock";
+import BlogIndexBlock from "./BlogIndexBlock";
 import NewsletterSignupBlock from "./NewsletterSignupBlock";
 import AboutHeroBlock from "./AboutHeroBlock";
 import StatsRowBlock from "./StatsRowBlock";
@@ -39,6 +41,7 @@ import HeroFloatingImagesBlock from "./HeroFloatingImagesBlock";
 import HeroImageGridBlock from "./HeroImageGridBlock";
 import ImageSpotlightBlock from "./ImageSpotlightBlock";
 import ImageSideBySideBlock from "./ImageSideBySideBlock";
+import ImageBannersBlock from "./ImageBannersBlock";
 import ImageMasonryBlock from "./ImageMasonryBlock";
 import FeaturedVideoBlock from "./FeaturedVideoBlock";
 import GalleryPreviewBlock from "./GalleryPreviewBlock";
@@ -47,6 +50,7 @@ import DownloadsPreviewBlock from "./DownloadsPreviewBlock";
 const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   hero: HeroBlock,
   text: TextBlock,
+  textButton: TextButtonBlock,
   imageGallery: ImageGalleryBlock,
   ctaBand: CtaBandBlock,
   videoEmbed: VideoEmbedBlock,
@@ -60,6 +64,7 @@ const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   tutorialsStrip: TutorialsStripBlock,
   productStrip: ProductStripBlock,
   blogFeed: BlogFeedBlock,
+  blogIndex: BlogIndexBlock,
   newsletterSignup: NewsletterSignupBlock,
   aboutHero: AboutHeroBlock,
   statsRow: StatsRowBlock,
@@ -83,6 +88,7 @@ const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   heroImageGrid: HeroImageGridBlock,
   imageSpotlight: ImageSpotlightBlock,
   imageSideBySide: ImageSideBySideBlock,
+  imageBanners: ImageBannersBlock,
   imageMasonry: ImageMasonryBlock,
   featuredVideo: FeaturedVideoBlock,
   galleryPreview: GalleryPreviewBlock,

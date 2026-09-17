@@ -75,7 +75,7 @@ export default function FeaturedBookBlock({ block }: Props) {
               />
               {/* Accent polaroids don't fit next to the cover on phones. */}
               <div className="hidden sm:flex flex-col gap-4">
-                <Polaroid rotate={3} washi={false}>
+                <Polaroid>
                   <ArtTile
                     palette="rose"
                     width={180}
@@ -87,7 +87,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                     fit="contain"
                   />
                 </Polaroid>
-                <Polaroid rotate={-4} washi={false}>
+                <Polaroid>
                   <ArtTile
                     palette="violet"
                     width={180}

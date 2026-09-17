@@ -32,6 +32,7 @@ const BLOCKS = [
   ["cardRow", "Card Row", "grid3"],
   ["pillars", "Pillars — 3 Cards", "grid3"],
   ["imageGallery", "Image Gallery", "masonry"],
+  ["imageBanners", "Image — Banners", "banners"],
   ["videoEmbed", "Video Embed", "video"],
   ["featuredBook", "Featured Book", "featureSplit"],
   ["featuredRelease", "Featured Release", "featureSplit"],
@@ -42,7 +43,10 @@ const BLOCKS = [
   ["tutorialsStrip", "YouTube Strip", "darkGrid"],
   ["classesPitch", "Classes Pitch", "featureSplit"],
   ["blogFeed", "Blog Feed", "listSide"],
+  ["blogIndex", "Blog Index", "grid3"],
+  ["productInfo", "Product Info", "featureSplit"],
   ["ctaBand", "CTA Band", "band"],
+  ["textButton", "Text + Button", "textButton"],
   ["bigCta", "Big CTA", "heroCenter"],
   ["newsletterSignup", "Newsletter Signup", "form"],
   ["contactInfo", "Contact Info", "header"],
@@ -124,6 +128,14 @@ function motifSvg(motif) {
           line(38 + i * 84, 125, 55, INK),
         ])
         .join("");
+    case "banners":
+      return [
+        rect(40, 42, 320, 48, PAPER2, 5),
+        rect(40, 98, 320, 48, MUTE, 5),
+        ...[0, 1, 2, 3].map((i) =>
+          rect(40 + i * 58, 154, 50, 16, i === 0 ? ORANGE : PAPER2, 3)
+        ),
+      ].join("");
     case "masonry":
       return [
         rect(45, 45, 92, 90, PAPER2, 4),
@@ -175,6 +187,13 @@ function motifSvg(motif) {
         rect(0, 75, 400, 55, PAPER2, 0),
         line(40, 95, 150, INK),
         rect(280, 90, 70, 22, ORANGE, 11),
+      ].join("");
+    case "textButton":
+      return [
+        line(40, 70, 180, INK),
+        line(40, 90, 160),
+        line(40, 106, 170),
+        rect(260, 78, 80, 24, ORANGE, 12),
       ].join("");
     case "form":
       return [

@@ -6,9 +6,10 @@ alwaysApply: false
 
 # Polaroid Image Handling
 
-A `Polaroid` must look like a real polaroid: its white border (the component's
-own ~14px padding, 18px bottom) hugs the photo on all sides, in a square-ish
-shape that follows the image.
+A `Polaroid` is a clean framed photo card (client direction, Sep 2026): paper
+border with **equal 14px padding on all sides** hugging the photo, soft drop
+shadow, **no washi tape, no tilt/rotation**. Optional `hoverLift` adds a
+subtle hover lift.
 
 ## Rules
 

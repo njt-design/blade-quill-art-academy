@@ -185,25 +185,6 @@ export default function PillarsBlock({ block }: Props) {
                         </div>
                       ) : null}
 
-                      {p.badge ? (
-                        <span
-                          className="absolute left-4 top-4"
-                          style={{
-                            background: "var(--ink)",
-                            color: "var(--paper)",
-                            fontFamily: "var(--f-mono)",
-                            fontSize: 10,
-                            letterSpacing: "0.12em",
-                            padding: "6px 12px",
-                            borderRadius: 999,
-                            fontWeight: 600,
-                          }}
-                          data-tina-field={tinaField(p, "badge")}
-                        >
-                          {p.badge}
-                        </span>
-                      ) : null}
-
                       {duration ? (
                         <span
                           className="absolute right-4 top-4"

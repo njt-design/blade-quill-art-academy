@@ -503,6 +503,87 @@ export const featureGridBlock: Template = {
   ],
 };
 
+export const textButtonBlock: Template = {
+  name: "textButton",
+  label: "Text + Button",
+  ui: blockUi("textButton", "Text + Button", "buttonLabel", {
+    showText: true,
+    body: rt("A few sentences of text that make the case for clicking."),
+    buttonLabel: "Get Started",
+    buttonLink: "/contact",
+    layout: "beside",
+    buttonAlign: "center",
+    buttonStyle: "primary",
+  }),
+  fields: [
+    {
+      type: "boolean",
+      name: "showText",
+      label: "Show Text",
+      ui: {
+        description:
+          "Turn off to show just the button or link on its own — handy for dropping a single call-to-action anywhere on the page. Your text is kept, just hidden.",
+      },
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Text",
+      overrides: INLINE_RICH_TEXT,
+      parser: SLATE_JSON_PARSER,
+      templates: RICH_TEXT_TEMPLATES,
+      ui: {
+        description:
+          "A few sentences of text shown next to (or above) the button. Hidden when Show Text is off.",
+      },
+    },
+    { type: "string", name: "buttonLabel", label: "Button Label", ui: charLimit(24) },
+    {
+      type: "string",
+      name: "buttonLink",
+      label: "Button Link",
+      ui: { description: 'Relative URL (e.g. "/contact") or full https:// link.' },
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Layout",
+      options: [
+        { value: "beside", label: "Button on the right, text on the left" },
+        { value: "centered", label: "Centered — button below the text" },
+      ],
+      ui: {
+        description:
+          "Side-by-side puts the button to the right of the text (stacks on mobile). Centered stacks the button under the text, both centered on the page. Only applies when Show Text is on.",
+      },
+    },
+    {
+      type: "string",
+      name: "buttonAlign",
+      label: "Button Alignment (text off)",
+      options: [
+        { value: "left", label: "Left" },
+        { value: "center", label: "Center" },
+        { value: "right", label: "Right" },
+      ],
+      ui: {
+        description:
+          "Where the button sits on the page when Show Text is off. With text on, Layout controls the arrangement instead.",
+      },
+    },
+    {
+      type: "string",
+      name: "buttonStyle",
+      label: "Button Style",
+      options: [
+        { value: "primary", label: "Primary button (filled)" },
+        { value: "outline", label: "Secondary button (outline)" },
+        { value: "link", label: "Link (underlined text)" },
+      ],
+    },
+  ],
+};
+
 export const bigCtaBlock: Template = {
   name: "bigCta",
   label: "Big CTA",
@@ -934,6 +1015,39 @@ export const productStripBlock: Template = {
       ui: { description: 'Where the "view all" button goes (usually "/shop").' },
     },
     ...textStyleFields(),
+  ],
+};
+
+export const blogIndexBlock: Template = {
+  name: "blogIndex",
+  label: "Blog Index (all posts)",
+  ui: blockUi("blogIndex", "Blog Index (all posts)", null, {
+    showTagFilter: true,
+    emptyHeading: "No posts yet",
+    emptyDescription: "Check back soon for updates.",
+  }),
+  fields: [
+    {
+      type: "boolean",
+      name: "showTagFilter",
+      label: "Show Tag Filter",
+      ui: {
+        description:
+          "Show the row of tag buttons above the posts so visitors can filter by topic.",
+      },
+    },
+    {
+      type: "string",
+      name: "emptyHeading",
+      label: "Empty-State Heading",
+      ui: charLimit(60, "Shown when there are no posts to display."),
+    },
+    {
+      type: "string",
+      name: "emptyDescription",
+      label: "Empty-State Description",
+      ui: charLimit(120, "Smaller line under the empty-state heading."),
+    },
   ],
 };
 
@@ -1678,7 +1792,9 @@ export const featuredReleaseBlock: Template = {
       label: "Eyebrow Label",
       ui: charLimit(40, 'Small label above the title (e.g. "New Featured Release").'),
     },
-    { type: "string", name: "title", label: "Title", required: true, ui: charLimit(60) },
+    // Not `required`: nullability must match the blog Callout's optional
+    // `title` now that both templates share the PostSections union.
+    { type: "string", name: "title", label: "Title", ui: charLimit(60) },
     {
       type: "rich-text",
       name: "description",
@@ -2189,6 +2305,62 @@ export const imageSideBySideBlock: Template = {
   ],
 };
 
+export const imageBannersBlock: Template = {
+  name: "imageBanners",
+  label: "Image (Banners)",
+  ui: blockUi("imageBanners", "Image (Banners)", "heading", {
+    images: [],
+    layout: "stacked",
+  }),
+  fields: [
+    {
+      type: "string",
+      name: "heading",
+      label: "Heading (optional)",
+      ui: charLimit(60),
+    },
+    {
+      type: "object",
+      name: "images",
+      label: "Banner Images",
+      list: true,
+      ui: {
+        itemProps: (item: Record<string, unknown> | undefined) => ({
+          label: (item?.alt as string) || "Banner",
+        }),
+        description:
+          "Wide promotional banners (e.g. 1200×370). They display inside a soft rounded card.",
+      },
+      fields: [
+        { type: "image", name: "src", label: "Image" },
+        {
+          type: "string",
+          name: "alt",
+          label: "Alt Text",
+          ui: charLimit(125, "Short image description for screen readers."),
+        },
+      ],
+    },
+    {
+      type: "string",
+      name: "layout",
+      label: "Layout",
+      options: [
+        { value: "stacked", label: "Stacked — all banners full width" },
+        {
+          value: "gallery",
+          label: "Gallery — one large banner + clickable thumbnails",
+        },
+      ],
+      ui: {
+        description:
+          "Stacked shows every banner at full width, one under the other. Gallery shows one large banner with small thumbnails beneath it — visitors click a thumbnail to switch (the active one gets a gold border).",
+      },
+    },
+    ...textStyleFields(),
+  ],
+};
+
 export const imageMasonryBlock: Template = {
   name: "imageMasonry",
   label: "Image (Masonry)",
@@ -2373,6 +2545,35 @@ export const downloadsPreviewBlock: Template = {
 };
 
 // ---------------------------------------------------------------------------
+// Product-only block: placeholder for the purchase area on product pages
+// ---------------------------------------------------------------------------
+
+/**
+ * "Product Info" is only offered on Shop Products (not in ALL_BLOCKS). It
+ * renders the built-in purchase area — photos, price, buy buttons, and the
+ * Description/Inside/Reviews tabs — as a reorderable card, so the client can
+ * place other sections above or below it. ProductDetail.tsx renders it
+ * specially; if a product has no such card, the purchase area still shows at
+ * the top so the buy button can never be lost.
+ */
+export const productInfoBlock: Template = {
+  name: "productInfo",
+  label: "Product Info (photos, price & buy buttons)",
+  ui: blockUi("productInfo", "Product Info (photos, price & buy buttons)", null),
+  fields: [
+    {
+      type: "string",
+      name: "note",
+      label: "Note (not shown on the site)",
+      ui: {
+        description:
+          "This card is the product's photos, price, buy buttons, and tabs — edit those in the fields above. Drag this card to move where the purchase area sits among your other sections.",
+      },
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // Master list — every block available on every page
 // ---------------------------------------------------------------------------
 
@@ -2397,6 +2598,7 @@ export const ALL_BLOCKS: Template[] = [
   imageGalleryBlock,
   imageSpotlightBlock,
   imageSideBySideBlock,
+  imageBannersBlock,
   imageMasonryBlock,
   videoEmbedBlock,
   // Commerce & media
@@ -2412,8 +2614,10 @@ export const ALL_BLOCKS: Template[] = [
   tutorialsStripBlock,
   classesPitchBlock,
   blogFeedBlock,
+  blogIndexBlock,
   // Calls to action & forms
   ctaBandBlock,
+  textButtonBlock,
   bigCtaBlock,
   newsletterSignupBlock,
   contactInfoBlock,

@@ -22,6 +22,7 @@ export const CORE_PAGE_SLUGS = [
   "education",
   "publishers",
   "important-links",
+  "blog",
 ] as const;
 
 export function isCorePageSlug(slug: string): boolean {
@@ -72,11 +73,12 @@ function withTextStyle(fields: string): string {
 }
 
 /** GraphQL field selection for each block template (keyed by template name). */
-const BLOCK_FIELDS: Record<string, string> = {
+export const BLOCK_FIELDS: Record<string, string> = {
   hero: withTextStyle("heading subheading backgroundImage ctaLabel ctaLink"),
   text: withTextStyle("heading body"),
   imageGallery: withTextStyle("heading images { src alt caption }"),
   ctaBand: withTextStyle("heading description ctaLabel ctaLink variant"),
+  textButton: "showText body buttonLabel buttonLink layout buttonAlign buttonStyle",
   videoEmbed: withTextStyle("heading youtubeUrl"),
   featureGrid: withTextStyle("heading items { icon title description }"),
   bigCta: withTextStyle(
@@ -102,6 +104,7 @@ const BLOCK_FIELDS: Record<string, string> = {
   blogFeed: withTextStyle(
     "heading showNewsletter newsletter { eyebrow heading subheading placeholderText ctaLabel privacyNote }"
   ),
+  blogIndex: "showTagFilter emptyHeading emptyDescription",
   newsletterSignup: withTextStyle(
     "eyebrow heading subheading placeholderText ctaLabel privacyNote"
   ),
@@ -158,6 +161,7 @@ const BLOCK_FIELDS: Record<string, string> = {
     "heading leftImage { src alt caption } rightImage { src alt caption } style"
   ),
   imageMasonry: withTextStyle("heading images { src alt caption size }"),
+  imageBanners: withTextStyle("heading images { src alt } layout"),
   featuredVideo: withTextStyle("eyebrow heading description youtubeUrl buttonLabel"),
   galleryPreview: withTextStyle(
     "eyebrow heading description maxItems viewAllLabel viewAllLink"
@@ -172,7 +176,7 @@ export function pascalCase(name: string): string {
 }
 
 /** Inline fragments for every block template under a given GraphQL type prefix. */
-function blocksSelection(prefix: string): string {
+export function blocksSelection(prefix: string): string {
   return Object.entries(BLOCK_FIELDS)
     .map(
       ([name, fields]) =>

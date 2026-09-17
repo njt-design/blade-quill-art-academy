@@ -11,6 +11,7 @@ import { richTextComponents } from "@/components/site/rich-text-components";
 import { preserveBlankLines } from "@/lib/rich-text";
 import { postQuery } from "@/lib/post-queries";
 import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
+import { blogPostingJsonLd, useJsonLd } from "@/lib/structured-data";
 import type { Block } from "@/pages/blocks/block-utils";
 import ArticleSectionRenderer from "@/pages/blog/ArticleSectionRenderer";
 import ArticleToc from "@/pages/blog/ArticleToc";
@@ -79,6 +80,23 @@ export default function BlogPost() {
     type: "article",
   });
 
+  // schema.org BlogPosting markup (Google article rich results).
+  useJsonLd(
+    "blog-post",
+    post?.title
+      ? blogPostingJsonLd({
+          title: post.title as string,
+          description:
+            seo?.metaDescription || richTextToPlain(post.excerpt) || undefined,
+          image:
+            typeof post.coverImage === "string" ? post.coverImage : undefined,
+          publishedAt:
+            typeof post.publishedAt === "string" ? post.publishedAt : undefined,
+          tags: Array.isArray(post.tags) ? (post.tags as string[]) : undefined,
+        })
+      : null
+  );
+
   // Temporary fallback for posts not yet migrated off legacy `body`.
   const legacyBody = post?.body;
 
@@ -96,7 +114,9 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen py-10">
+    // overflow-x-clip absorbs the scrollbar-width overshoot from full-width
+    // page patterns inside the article (ArticleSectionRenderer's w-screen).
+    <div className="min-h-screen py-10 overflow-x-clip">
       <CmsStatusPill freshness={freshness} />
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <button

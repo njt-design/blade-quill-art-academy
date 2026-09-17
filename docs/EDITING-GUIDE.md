@@ -80,6 +80,7 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
    - **Video** — YouTube embed
    - **Callout / Tip** — highlighted tip box
    - **End CTA** — soft call-to-action at the end
+   - …plus **every site pattern** (newsletter signup, feature grid, product strip, heroes…) listed after the article basics. Page-style patterns display at full width inside the article.
 4. Drag sections to reorder. Optionally turn on **Show Table of Contents** to auto-list your Heading sections under the excerpt.
 5. Save. It appears at `/blog/your-title`.
 
@@ -92,6 +93,14 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 5. **Product ID (advanced):** filled in automatically on new products. Never change it on an existing product.
 6. Save. Preview at `/shop/your-product-slug`. You can click the title, price, description, and image in the preview to edit.
 
+### Add sections to a product page
+
+Product pages have **Page Sections** too (near the bottom of the product form). The **Product Info** card is the purchase area — photos, price, buy buttons, and the Description/Inside/Reviews tabs.
+
+1. **Shop Products** → open the product → **Page Sections**.
+2. Use **+** to add any section (CTA band, video, image gallery, newsletter…), drag to reorder — you can even drag sections above the purchase area.
+3. Don't worry about deleting the **Product Info** card by accident: if it's missing, the purchase area simply shows at the top like before. The buy button can never be lost.
+
 ### Sell a download or a bundle of files
 
 1. **Shop Products** → open the product (or create one) and set **Category** to *Digital download* for one file, or *Bundle (several downloads)* for a set.
@@ -102,6 +111,10 @@ Changes show live in the preview. Save when you’re happy. If a section looks w
 6. **Save.** Files are stored privately — nobody can reach them without paying.
 
 After paying, the customer's thank-you page shows one **Download** button per file, plus **Download All (.zip)** when there are two or more. Links work for 48 hours. To ship a corrected file, open the item, click **Replace file**, and save — customers always get the latest version.
+
+### Edit the blog page itself
+
+The `/blog` page is now a normal page: **Main Pages → Blog**. The post grid is the **Blog Index** section (posts appear there automatically — you never curate it). You can edit the heading, hide the tag filter, or add other sections above/below the grid, like a newsletter signup or CTA band.
 
 ### Change the menu or footer
 

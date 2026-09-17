@@ -2,6 +2,7 @@
  * GraphQL field selections for blog post sections.
  * Must stay in sync with BLOG_BLOCKS in tina/blog-blocks.ts.
  */
+import { BLOCK_FIELDS } from "./page-queries";
 
 const TEXT_STYLE_SELECTION =
   "textStyle { headingSize headingType headingFont align bodySize }";
@@ -32,7 +33,11 @@ function pascalCase(name: string): string {
 
 /** Inline fragments for Post.sections under Tina's PostSections* union. */
 function sectionsSelection(): string {
-  return Object.entries(BLOG_SECTION_FIELDS)
+  // Article-tuned selections win over the shared page-block ones on name
+  // collisions (text, imageGallery, imageSideBySide, videoEmbed, ctaBand) —
+  // mirrors [...BLOG_BLOCKS, ...BLOG_PAGE_BLOCKS] in tina/config.ts.
+  const merged = { ...BLOCK_FIELDS, ...BLOG_SECTION_FIELDS };
+  return Object.entries(merged)
     .map(
       ([name, fields]) =>
         `... on PostSections${pascalCase(name)} { __typename ${fields} }`

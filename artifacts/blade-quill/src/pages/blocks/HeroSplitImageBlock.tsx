@@ -24,12 +24,7 @@ export default function HeroSplitImageBlock({ block }: Props) {
   const imagePanel = (
     <Reveal>
       <div data-tina-field={tinaField(block, "featuredImage")}>
-        <Polaroid
-          rotate={imageRight ? 3 : -3}
-          washiColor="var(--maroon)"
-          hoverStraighten
-          style={{ maxWidth: 520, margin: "0 auto" }}
-        >
+        <Polaroid hoverLift style={{ maxWidth: 520, margin: "0 auto" }}>
           <ArtTile
             palette="warm"
             width="100%"

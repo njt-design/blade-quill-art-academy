@@ -19,7 +19,7 @@ export default function KofiSupportBlock({ block }: Props) {
       <div className="mx-auto max-w-5xl">
         <Reveal className="w-full">
           <section
-            className="home-panel p-6 md:p-8 text-center bg-secondary/50 w-full"
+            className="home-panel p-9 md:p-12 text-center bg-secondary/50 w-full"
             aria-labelledby="kofi-heading"
             style={sectionAlignStyle(block)}
           >

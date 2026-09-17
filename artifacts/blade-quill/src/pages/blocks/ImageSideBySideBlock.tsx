@@ -13,11 +13,9 @@ interface Props {
 function ImageCell({
   image,
   style,
-  rotate,
 }: {
   image: ShowcaseImage;
   style: string;
-  rotate: number;
 }) {
   const img = (
     <ArtTile
@@ -33,7 +31,7 @@ function ImageCell({
 
   if (style === "polaroid") {
     return (
-      <Polaroid rotate={rotate} washiColor={rotate > 0 ? "var(--maroon)" : "var(--taupe)"} hoverStraighten>
+      <Polaroid hoverLift>
         {img}
         {image.caption ? <div className="mt-3 text-center" style={captionStyle}>{image.caption}</div> : null}
       </Polaroid>
@@ -79,12 +77,12 @@ export default function ImageSideBySideBlock({ block }: Props) {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start max-w-5xl mx-auto">
           <Reveal>
             <div data-tina-field={tinaField(block, "leftImage")}>
-              <ImageCell image={left} style={frameStyle} rotate={-3} />
+              <ImageCell image={left} style={frameStyle} />
             </div>
           </Reveal>
           <Reveal>
             <div data-tina-field={tinaField(block, "rightImage")}>
-              <ImageCell image={right} style={frameStyle} rotate={3} />
+              <ImageCell image={right} style={frameStyle} />
             </div>
           </Reveal>
         </div>

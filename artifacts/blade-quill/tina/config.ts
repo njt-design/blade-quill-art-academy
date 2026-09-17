@@ -11,8 +11,9 @@ import {
   RICH_TEXT_TEMPLATES,
   SLATE_JSON_PARSER,
   charLimit,
+  productInfoBlock,
 } from "./blocks";
-import { BLOG_BLOCKS } from "./blog-blocks";
+import { BLOG_BLOCKS, BLOG_PAGE_BLOCKS } from "./blog-blocks";
 import { PRODUCT_PAGE_FIELDS } from "./product-page-fields";
 import { CORE_PAGE_SLUGS, corePageRoute, seoFields } from "./seo";
 
@@ -1004,9 +1005,9 @@ export default defineConfig({
             ui: {
               visualSelector: true,
               description:
-                "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add Heading, Text, Spacer, Image, and more.",
+                "Build the article from sections, top to bottom. Drag to reorder, click a section to edit, or use + to add anything — article basics (Heading, Text, Image…) are listed first, and every site pattern (CTA band, newsletter, galleries…) is available below them. Page-style patterns display at full width inside the article.",
             },
-            templates: BLOG_BLOCKS,
+            templates: [...BLOG_BLOCKS, ...BLOG_PAGE_BLOCKS],
           },
           ...seoFields("post"),
         ],
@@ -1038,6 +1039,8 @@ export default defineConfig({
               inStock: true,
               featured: false,
               createdAt: new Date().toISOString(),
+              // Start with the purchase area as a reorderable section card.
+              blocks: [{ _template: "productInfo" }],
             }),
           } as Record<string, unknown>),
           router: ({ document }) => {
@@ -1305,6 +1308,18 @@ export default defineConfig({
             name: "createdAt",
             label: "Created Date",
             ui: { description: 'Used for "Newest" sort on the shop page.' },
+          },
+          {
+            type: "object",
+            name: "blocks",
+            label: "Page Sections",
+            list: true,
+            ui: {
+              visualSelector: true,
+              description:
+                "The sections on this product page, top to bottom. The “Product Info” card is the purchase area (photos, price, buy buttons, tabs) — drag it to move it, and add any other section above or below it. If the list is empty the purchase area shows by itself, as before.",
+            },
+            templates: [productInfoBlock, ...ALL_BLOCKS],
           },
           ...seoFields("product"),
         ],

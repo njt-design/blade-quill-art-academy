@@ -52,7 +52,7 @@ export default function ImageSpotlightBlock({ block }: Props) {
         )}
         <Reveal>
           <div data-tina-field={tinaField(block, "image")}>
-            <Polaroid rotate={1} washiColor="var(--gold-deep)" hoverStraighten>
+            <Polaroid hoverLift>
               {block.image ? (
                 /* Frame hugs the image — natural aspect, no letterboxing. */
                 <img

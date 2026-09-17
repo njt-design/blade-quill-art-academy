@@ -373,6 +373,21 @@ export function getCatalogProduct(
   return findCatalogProduct(loadCatalogProducts(), slugOrId);
 }
 
+/**
+ * Raw bundled Tina JSON for a product — carries fields CatalogProduct doesn't
+ * (e.g. the Page Sections `blocks` list rendered by ProductDetail).
+ */
+export function getRawCatalogProduct(
+  slug: string
+): Record<string, unknown> | null {
+  const key = Object.keys(productModules).find((k) =>
+    k.endsWith(`/${slug}.json`)
+  );
+  if (!key) return null;
+  const mod = productModules[key];
+  return (mod.default ?? mod) as Record<string, unknown>;
+}
+
 export function resolveCatalogProducts(
   apiProducts: Product[] | undefined,
   fallback: Product[],

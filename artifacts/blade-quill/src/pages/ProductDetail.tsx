@@ -14,6 +14,7 @@ import { isInTinaEditor } from "@/lib/tina-live";
 import {
   findCatalogProduct,
   getCatalogProduct,
+  getRawCatalogProduct,
   hasCatalogProducts,
   rawProductImages,
   resolveCatalogProducts,
@@ -26,8 +27,11 @@ import { useCart } from "@/hooks/useCart";
 import { useToast } from "@/hooks/use-toast";
 import { checkoutErrorMessage } from "@/lib/checkout-error";
 import { richTextToPlain, useSeo, type CmsSeo } from "@/lib/seo";
+import { productJsonLd, useJsonLd } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 import { flyToCart } from "@/lib/flyToCart";
+import { BlockRenderer } from "./blocks/BlockRenderer";
+import { type Block } from "./blocks/block-utils";
 
 import {
   ArtTile,
@@ -80,6 +84,18 @@ const DEFAULT_TRUST = [
 function starString(count: number): string {
   const n = Math.round(Math.max(0, Math.min(5, count)));
   return "★".repeat(n) || "★";
+}
+
+/**
+ * The "Product Info" section card (tina/blocks.ts) — the placeholder for the
+ * built-in purchase area (photos, price, buy buttons, tabs) inside a
+ * product's Page Sections list.
+ */
+function isProductInfoBlock(block: Block): boolean {
+  return (
+    block._template === "productInfo" ||
+    (block.__typename ?? "").endsWith("BlocksProductInfo")
+  );
 }
 
 const PALETTE_BY_INDEX: ArtTilePalette[] = [
@@ -138,6 +154,8 @@ export default function ProductDetail() {
         featured: seedRaw.featured,
         inStock: seedRaw.inStock,
         createdAt: seedRaw.createdAt,
+        // Page Sections come from the raw JSON — CatalogProduct doesn't carry them.
+        blocks: (getRawCatalogProduct(productSlug)?.blocks as unknown[]) ?? [],
         seo: seedRaw.seo,
       }
     : {};
@@ -205,6 +223,27 @@ export default function ProductDetail() {
     image: product?.imageUrl,
     type: "product",
   });
+
+  // schema.org Product + Offer markup (Google product rich results).
+  useJsonLd(
+    "product",
+    product
+      ? productJsonLd({
+          name: product.name,
+          description:
+            seo?.metaDescription ||
+            richTextToPlain(product.description) ||
+            undefined,
+          images: [
+            product.imageUrl ?? "",
+            ...product.galleryImages.map((img) => img.src),
+          ],
+          sku: product.slug,
+          price: product.price,
+          inStock: product.inStock !== false,
+        })
+      : null
+  );
 
   const isLoading = useApi && apiLoading && !product;
   const error = useApi ? apiError : undefined;
@@ -338,25 +377,21 @@ export default function ProductDetail() {
   const visibleTabs = pageTabs.filter((t) => t.show);
   const currentTab = visibleTabs.some((t) => t.key === tab) ? tab : "description";
 
-  return (
-    <div className="page pt-12 pb-24">
-      <CmsStatusPill freshness={freshness} />
-      <div className="bq-container py-5">
-        <div className="eyebrow" style={{ color: "var(--ink-mute)" }}>
-          <Link href="/" className="link-ink">
-            HOME
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/shop" className="link-ink">
-            SHOP
-          </Link>
-          <span className="mx-2">/</span>
-          <span style={{ color: "var(--ink)" }}>
-            {product.name.toUpperCase()}
-          </span>
-        </div>
-      </div>
+  // Page Sections from Tina (CMS products only — API/fallback products have
+  // none and keep the classic fixed layout).
+  const pageBlocks = ((tinaDoc?.blocks as Array<Block | null> | undefined) ?? []).filter(
+    (b): b is Block => Boolean(b)
+  );
+  const productInfoIndex = pageBlocks.findIndex(isProductInfoBlock);
 
+  /**
+   * The built-in purchase area: photo gallery + price/buy column, then the
+   * Description/Inside/Reviews/Shipping tabs. Rendered where the client's
+   * "Product Info" section card sits — or first, if the card was deleted or
+   * the product has no sections, so the buy button can never be lost.
+   */
+  const purchaseSections = (
+    <>
       <section className="pt-8 pb-16">
         <div className="bq-container">
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16">
@@ -1056,6 +1091,44 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+    </>
+  );
+
+  return (
+    <div className="page pt-12 pb-24">
+      <CmsStatusPill freshness={freshness} />
+      <div className="bq-container py-5">
+        <div className="eyebrow" style={{ color: "var(--ink-mute)" }}>
+          <Link href="/" className="link-ink">
+            HOME
+          </Link>
+          <span className="mx-2">/</span>
+          <Link href="/shop" className="link-ink">
+            SHOP
+          </Link>
+          <span className="mx-2">/</span>
+          <span style={{ color: "var(--ink)" }}>
+            {product.name.toUpperCase()}
+          </span>
+        </div>
+      </div>
+
+      {/* Safeguard: no sections, or the Product Info card was deleted →
+          the purchase area still renders up top, as it always has. */}
+      {productInfoIndex === -1 && purchaseSections}
+
+      {pageBlocks.map((block, i) =>
+        isProductInfoBlock(block) ? (
+          // Render the purchase area exactly once, at the card's position.
+          i === productInfoIndex ? (
+            <div key={i} data-tina-field={tinaDoc ? tinaField(tinaDoc, "blocks", i) : undefined}>
+              {purchaseSections}
+            </div>
+          ) : null
+        ) : (
+          <BlockRenderer key={i} block={block} />
+        )
+      )}
 
       {related.length > 0 && product.related?.show !== false && (
         <section

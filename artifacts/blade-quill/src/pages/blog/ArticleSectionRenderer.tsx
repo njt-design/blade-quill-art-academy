@@ -11,6 +11,7 @@ import ArticleDivider from "./ArticleDivider";
 import ArticleImage from "./ArticleImage";
 import ArticleCallout from "./ArticleCallout";
 import { sectionKey } from "./article-utils";
+import { BlockRenderer } from "@/pages/blocks/BlockRenderer";
 
 /**
  * Page image/video/CTA blocks use large marketing padding. Wrap them so the
@@ -75,6 +76,20 @@ interface Props {
   sections: Block[];
 }
 
+/**
+ * Any page pattern dropped into a post (not one of the article-tuned sections
+ * above) breaks out of the narrow article column and displays at full page
+ * width, exactly as it does on a normal page. The post root clips the
+ * scrollbar-width overshoot from `w-screen`.
+ */
+function FullWidthPageBlock({ block }: { block: Block }) {
+  return (
+    <div className="relative left-1/2 w-screen -translate-x-1/2 my-10">
+      <BlockRenderer block={block} />
+    </div>
+  );
+}
+
 export default function ArticleSectionRenderer({ sections }: Props) {
   let headingIndex = 0;
 
@@ -84,7 +99,16 @@ export default function ArticleSectionRenderer({ sections }: Props) {
         const key = sectionKey(section);
         if (!key) return null;
         const Component = SECTION_COMPONENTS[key];
-        if (!Component) return null;
+        if (!Component) {
+          // Page pattern — inject the resolved key so BlockRenderer can map
+          // GraphQL's PostSections* typenames to the right component.
+          return (
+            <FullWidthPageBlock
+              key={`${key}-${i}`}
+              block={{ ...section, _template: key }}
+            />
+          );
+        }
 
         const props: SectionProps = { block: section };
         if (key === "heading") {
