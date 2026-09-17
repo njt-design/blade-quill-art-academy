@@ -47,6 +47,15 @@
             ],
             "id": "oMWAVvr8et",
             "type": "p"
+          },
+          {
+            "id": "O9Wc2SpfCI",
+            "type": "p",
+            "children": [
+              {
+                "text": "This button will take you to my secure Gumroad shop."
+              }
+            ]
           }
         ]
       },
