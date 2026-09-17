@@ -257,6 +257,17 @@
         ]
       },
       "_template": "text"
+    },
+    {
+      "images": [
+        {
+          "src": "/images/Screenshot-2026-09-16-at-8.58.37-PM.png"
+        },
+        {},
+        {}
+      ],
+      "layout": "gallery",
+      "_template": "imageBanners"
     }
   ]
 }
