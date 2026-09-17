@@ -278,6 +278,19 @@
       ],
       "layout": "gallery",
       "_template": "imageBanners"
+    },
+    {
+      "heading": "This is the stacked version with a heading",
+      "images": [
+        {
+          "src": "/images/Screenshot-2026-09-16-at-8.58.12-PM.png"
+        },
+        {},
+        {},
+        {}
+      ],
+      "layout": "stacked",
+      "_template": "imageBanners"
     }
   ]
 }
