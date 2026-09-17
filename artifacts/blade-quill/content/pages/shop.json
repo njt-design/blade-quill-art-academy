@@ -34,6 +34,29 @@
       "_template": "imageSpotlight"
     },
     {
+      "showText": true,
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "Placeholder text"
+              }
+            ],
+            "id": "uPvmuYzbv2",
+            "type": "p"
+          }
+        ]
+      },
+      "buttonLabel": "Gumroad",
+      "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle?layout=profile",
+      "layout": "beside",
+      "buttonAlign": "right",
+      "buttonStyle": "primary",
+      "_template": "textButton"
+    },
+    {
       "heading": "",
       "subheading": {
         "type": "root",
