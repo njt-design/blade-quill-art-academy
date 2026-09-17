@@ -882,3 +882,27 @@
   0%   { transform: translate3d(0, 0, 0); }
   100% { transform: translate3d(-50%, 0, 0); }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Gallery rearrange mode — iOS-homescreen-style jiggle. Two
+   variants (offset phase/duration) so neighboring tiles don't
+   wobble in lockstep.
+   ───────────────────────────────────────────────────────────── */
+@keyframes bq-jiggle {
+  0%   { transform: rotate(-1deg); }
+  50%  { transform: rotate(1.1deg); }
+  100% { transform: rotate(-1deg); }
+}
+.bq-jiggle {
+  animation: bq-jiggle 0.35s ease-in-out infinite;
+}
+.bq-jiggle-alt {
+  animation: bq-jiggle 0.41s ease-in-out infinite;
+  animation-delay: -0.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bq-jiggle,
+  .bq-jiggle-alt {
+    animation: none;
+  }
+}

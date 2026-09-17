@@ -63,6 +63,21 @@ export function isInTinaEditor(): boolean {
 }
 
 /**
+ * GraphQL endpoint for gallery/document reads and writes. In dev this is the
+ * local `tinacms dev` server (proxied at /graphql by dev-server.mjs), which
+ * writes straight to the content JSON on disk. In prod it's the Tina Cloud
+ * content API via the same-origin proxy.
+ */
+export function tinaGraphqlEndpoint(): string {
+  return import.meta.env.DEV ? "/graphql" : contentApiUrl;
+}
+
+/** Read-auth headers for `tinaGraphqlEndpoint()` (local dev needs none). */
+export function tinaReadHeaders(): Record<string, string> {
+  return import.meta.env.DEV ? {} : { "X-API-KEY": token };
+}
+
+/**
  * Run a GraphQL query against the Tina Cloud content API.
  * Returns the `data` payload, or null on any failure (network, HTTP, GraphQL).
  */
