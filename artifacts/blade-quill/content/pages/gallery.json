@@ -24,12 +24,6 @@
     {
       "artworks": [
         {
-          "title": "Lheeloo & Luna",
-          "image": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg",
-          "description": "Lheeloo the French Bulldog and Luna the mouse",
-          "downloadFile": ""
-        },
-        {
           "title": "Steampunk Girl",
           "image": "/images/squarespace/digital-paintings/steampunk.jpg",
           "description": "A steampunk-themed girl with mechanical accessories"
@@ -41,9 +35,9 @@
           "downloadFile": ""
         },
         {
-          "title": "Gnome Druid",
-          "image": "/images/squarespace/digital-paintings/gnome.jpg",
-          "description": "A mystical gnome druid character with nature elements",
+          "title": "Lheeloo & Luna",
+          "image": "/images/squarespace/digital-paintings/lheeloo-and-luna-2025.jpg",
+          "description": "Lheeloo the French Bulldog and Luna the mouse",
           "downloadFile": ""
         },
         {
@@ -62,6 +56,12 @@
           "description": "A guardian creature protecting its precious dragon egg"
         },
         {
+          "title": "Gnome Druid",
+          "image": "/images/squarespace/digital-paintings/gnome.jpg",
+          "description": "A mystical gnome druid character with nature elements",
+          "downloadFile": ""
+        },
+        {
           "title": "Geisha",
           "image": "/images/squarespace/digital-paintings/geisha.jpg",
           "description": "An elegant geisha in full traditional attire",
@@ -71,12 +71,6 @@
           "title": "Child and Bear",
           "image": "/images/squarespace/digital-paintings/child-and-bear.jpg",
           "description": "A heartwarming scene of a child with a bear companion"
-        },
-        {
-          "title": "French Maid",
-          "image": "/images/squarespace/digital-paintings/maid.jpg",
-          "description": "A chibi French maid character with charming details",
-          "downloadFile": ""
         },
         {
           "title": "Chibi Ninja Man",
@@ -92,6 +86,12 @@
           "title": "Chibi of the Sea",
           "image": "/images/squarespace/digital-paintings/chibi-of-the-sea.jpg",
           "description": "An ocean-themed chibi character with underwater colors"
+        },
+        {
+          "title": "French Maid",
+          "image": "/images/squarespace/digital-paintings/maid.jpg",
+          "description": "A chibi French maid character with charming details",
+          "downloadFile": ""
         },
         {
           "title": "Chibi Elephant",
