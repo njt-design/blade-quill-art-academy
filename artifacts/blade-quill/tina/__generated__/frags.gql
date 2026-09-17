@@ -538,6 +538,11 @@ fragment PageParts on Page {
       }
     }
     ... on PageBlocksTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -1292,6 +1297,11 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -2043,6 +2053,11 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageEventBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -2794,6 +2809,11 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -3545,6 +3565,11 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageInfoBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -4296,6 +4321,11 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -5091,6 +5121,11 @@ fragment PostParts on Post {
       }
     }
     ... on PostSectionsTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -5915,6 +5950,11 @@ fragment ShopProductParts on ShopProduct {
       }
     }
     ... on ShopProductBlocksTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -6686,6 +6726,11 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksTutorialsStrip {
+            videos {
+              __typename
+              url
+              title
+            }
             manageList
             eyebrow
             headingPrefix
@@ -7439,6 +7484,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageBlankBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -8190,6 +8240,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -8941,6 +8996,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPagePromoBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -9692,6 +9752,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageInfoBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -10443,6 +10508,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -11214,6 +11284,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -11967,6 +12042,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -12718,6 +12798,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -13469,6 +13554,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -14220,6 +14310,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -14971,6 +15066,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -15747,6 +15847,11 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on PageBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -16500,6 +16605,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -17251,6 +17361,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -18002,6 +18117,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -18753,6 +18873,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -19504,6 +19629,11 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix

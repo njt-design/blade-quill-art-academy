@@ -5,6 +5,7 @@ import { useListTutorials } from "@workspace/api-client-react";
 import { useLiveTutorials } from "@/hooks/use-live-content";
 import { FALLBACK_TUTORIALS } from "@/lib/fallback-data";
 import { pickStripTutorials, resolveTutorials } from "@/lib/tutorials";
+import { extractYoutubeId } from "@/lib/youtube";
 import { type ArtTilePalette } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
@@ -21,25 +22,65 @@ interface StatItem {
   label?: string;
 }
 
+interface VideoItem {
+  /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
+  [key: string]: unknown;
+  url?: string;
+  title?: string;
+}
+
+/** A card in the strip, from either the block's own list or the catalog. */
+interface StripCard {
+  key: string;
+  youtubeId: string;
+  title: string;
+  /** Original index into block.videos, for tinaField; undefined for catalog cards. */
+  videoIndex?: number;
+}
+
 interface Props {
   block: Block;
 }
 
 export default function TutorialsStripBlock({ block }: Props) {
+  // Videos picked directly on the block (admin pastes YouTube links in Tina).
+  const pickedVideos = useMemo<StripCard[]>(() => {
+    const items = (block.videos as VideoItem[] | undefined) ?? [];
+    return items.flatMap((item, index) => {
+      const youtubeId = item?.url ? extractYoutubeId(item.url) : null;
+      if (!youtubeId) return [];
+      return [
+        {
+          key: `picked-${index}-${youtubeId}`,
+          youtubeId,
+          title: (item.title ?? "").trim(),
+          videoIndex: index,
+        },
+      ];
+    });
+  }, [block.videos]);
+  const hasPickedVideos = pickedVideos.length > 0;
+
+  // Fallback: featured videos from the YouTube Tutorials collection / API.
   const catalog = useLiveTutorials();
   const { data: tutorials } = useListTutorials(
     { featured: true },
-    { query: { enabled: import.meta.env.PROD && catalog.length === 0 } }
+    { query: { enabled: import.meta.env.PROD && !hasPickedVideos && catalog.length === 0 } }
   );
 
-  const featuredTutorials = useMemo(() => {
+  const stripCards = useMemo<StripCard[]>(() => {
+    if (hasPickedVideos) return pickedVideos;
     const list = resolveTutorials(
       Array.isArray(tutorials) ? tutorials : undefined,
       FALLBACK_TUTORIALS,
       catalog
     );
-    return pickStripTutorials(list, 4);
-  }, [tutorials, catalog]);
+    return pickStripTutorials(list, 4).map((t) => ({
+      key: `catalog-${t.id}`,
+      youtubeId: t.youtubeId,
+      title: t.title,
+    }));
+  }, [hasPickedVideos, pickedVideos, tutorials, catalog]);
 
   // Keep original list indices for tinaField(block, "stats", i).
   const stats = (block.stats as StatItem[] | undefined) ?? [];
@@ -99,18 +140,23 @@ export default function TutorialsStripBlock({ block }: Props) {
 
         <Reveal stagger>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {featuredTutorials.map((v, i) => {
+            {stripCards.map((v, i) => {
               const palette: ArtTilePalette = (
                 ["twilight", "warm", "violet", "rose"] as ArtTilePalette[]
               )[i % 4];
               const url = `https://www.youtube.com/watch?v=${v.youtubeId}`;
               return (
                 <a
-                  key={v.id}
+                  key={v.key}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="video-card group block cursor-pointer"
+                  data-tina-field={
+                    v.videoIndex !== undefined
+                      ? tinaField(block, "videos", v.videoIndex)
+                      : undefined
+                  }
                 >
                   <TutorialThumb
                     palette={palette}

@@ -98,7 +98,7 @@ export const BLOCK_FIELDS: Record<string, string> = {
     "eyebrow heading subheading bullets metaTags ctaLabel ctaLink secondaryLabel secondaryLink"
   ),
   tutorialsStrip: withTextStyle(
-    "eyebrow headingPrefix headingHighlight headingSuffix buttonLabel youtubeUrl stats { value label }"
+    "videos { url title } eyebrow headingPrefix headingHighlight headingSuffix buttonLabel youtubeUrl stats { value label }"
   ),
   productStrip: withTextStyle("eyebrow heading viewAllLabel viewAllLink"),
   blogFeed: withTextStyle(

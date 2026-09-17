@@ -385,8 +385,8 @@ export const heroBlock: Template = {
 
 export const textBlock: Template = {
   name: "text",
-  label: "Text Section",
-  ui: blockUi("text", "Text", "heading", {
+  label: "Text Section (Rich)",
+  ui: blockUi("text", "Text (Rich)", "heading", {
     heading: "Section heading",
     body: rt("Write anything here — paragraphs, lists, links, and more."),
   }),
@@ -1017,6 +1017,41 @@ export const tutorialsStripBlock: Template = {
     ],
   }),
   fields: [
+    {
+      type: "object",
+      name: "videos",
+      label: "Showcase Videos",
+      list: true,
+      ui: {
+        description:
+          "Choose exactly which videos appear here: paste each video's YouTube link and give it a title. Drag to reorder. When this list is empty, featured videos from YouTube Tutorials (sidebar) are shown instead.",
+        itemProps: (item: Record<string, unknown> | undefined) => ({
+          label:
+            (typeof item?.title === "string" && item.title.trim()) ||
+            (typeof item?.url === "string" && item.url.trim()) ||
+            "Video",
+        }),
+        defaultItem: { url: "", title: "" },
+      },
+      fields: [
+        {
+          type: "string",
+          name: "url",
+          label: "YouTube Link",
+          required: true,
+          ui: {
+            description:
+              'Paste the video URL from YouTube (e.g. "https://www.youtube.com/watch?v=…" or a youtu.be share link).',
+          },
+        },
+        {
+          type: "string",
+          name: "title",
+          label: "Title",
+          ui: charLimit(80, "Shown under the thumbnail."),
+        },
+      ],
+    },
     manageListField("tutorial"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
@@ -1044,7 +1079,7 @@ export const tutorialsStripBlock: Template = {
       label: "YouTube Channel URL",
       ui: {
         description:
-          "Full channel URL — the Subscribe button links here. The video cards are managed in YouTube Tutorials (sidebar): paste each video's YouTube URL, mark Featured, and drag to set the order (up to 4).",
+          "Full channel URL — the Subscribe button links here. The video cards come from the Showcase Videos list above (or, when that's empty, from featured YouTube Tutorials in the sidebar).",
       },
     },
     {

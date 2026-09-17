@@ -709,6 +709,11 @@ type PageBlocksDownloadsPreview {
   textStyle: PageBlocksDownloadsPreviewTextStyle
 }
 
+type PageBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type PageBlocksTutorialsStripStats {
   value: String
   label: String
@@ -723,6 +728,7 @@ type PageBlocksTutorialsStripTextStyle {
 }
 
 type PageBlocksTutorialsStrip {
+  videos: [PageBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -1922,6 +1928,11 @@ input PageBlocksDownloadsPreviewFilter {
   textStyle: PageBlocksDownloadsPreviewTextStyleFilter
 }
 
+input PageBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input PageBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -1936,6 +1947,7 @@ input PageBlocksTutorialsStripTextStyleFilter {
 }
 
 input PageBlocksTutorialsStripFilter {
+  videos: PageBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -2978,6 +2990,11 @@ type LandingPageBlankBlocksDownloadsPreview {
   textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyle
 }
 
+type LandingPageBlankBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type LandingPageBlankBlocksTutorialsStripStats {
   value: String
   label: String
@@ -2992,6 +3009,7 @@ type LandingPageBlankBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageBlankBlocksTutorialsStrip {
+  videos: [LandingPageBlankBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -3837,6 +3855,11 @@ type LandingPageEventBlocksDownloadsPreview {
   textStyle: LandingPageEventBlocksDownloadsPreviewTextStyle
 }
 
+type LandingPageEventBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type LandingPageEventBlocksTutorialsStripStats {
   value: String
   label: String
@@ -3851,6 +3874,7 @@ type LandingPageEventBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageEventBlocksTutorialsStrip {
+  videos: [LandingPageEventBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -4696,6 +4720,11 @@ type LandingPagePromoBlocksDownloadsPreview {
   textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyle
 }
 
+type LandingPagePromoBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type LandingPagePromoBlocksTutorialsStripStats {
   value: String
   label: String
@@ -4710,6 +4739,7 @@ type LandingPagePromoBlocksTutorialsStripTextStyle {
 }
 
 type LandingPagePromoBlocksTutorialsStrip {
+  videos: [LandingPagePromoBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -5555,6 +5585,11 @@ type LandingPageInfoBlocksDownloadsPreview {
   textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyle
 }
 
+type LandingPageInfoBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type LandingPageInfoBlocksTutorialsStripStats {
   value: String
   label: String
@@ -5569,6 +5604,7 @@ type LandingPageInfoBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageInfoBlocksTutorialsStrip {
+  videos: [LandingPageInfoBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -6414,6 +6450,11 @@ type LandingPageLinkInBioBlocksDownloadsPreview {
   textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyle
 }
 
+type LandingPageLinkInBioBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type LandingPageLinkInBioBlocksTutorialsStripStats {
   value: String
   label: String
@@ -6428,6 +6469,7 @@ type LandingPageLinkInBioBlocksTutorialsStripTextStyle {
 }
 
 type LandingPageLinkInBioBlocksTutorialsStrip {
+  videos: [LandingPageLinkInBioBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -7595,6 +7637,11 @@ input LandingPageBlankBlocksDownloadsPreviewFilter {
   textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyleFilter
 }
 
+input LandingPageBlankBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input LandingPageBlankBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -7609,6 +7656,7 @@ input LandingPageBlankBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageBlankBlocksTutorialsStripFilter {
+  videos: LandingPageBlankBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -8961,6 +9009,11 @@ input LandingPageEventBlocksDownloadsPreviewFilter {
   textStyle: LandingPageEventBlocksDownloadsPreviewTextStyleFilter
 }
 
+input LandingPageEventBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input LandingPageEventBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -8975,6 +9028,7 @@ input LandingPageEventBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageEventBlocksTutorialsStripFilter {
+  videos: LandingPageEventBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -10327,6 +10381,11 @@ input LandingPagePromoBlocksDownloadsPreviewFilter {
   textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyleFilter
 }
 
+input LandingPagePromoBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input LandingPagePromoBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -10341,6 +10400,7 @@ input LandingPagePromoBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPagePromoBlocksTutorialsStripFilter {
+  videos: LandingPagePromoBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -11693,6 +11753,11 @@ input LandingPageInfoBlocksDownloadsPreviewFilter {
   textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyleFilter
 }
 
+input LandingPageInfoBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input LandingPageInfoBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -11707,6 +11772,7 @@ input LandingPageInfoBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageInfoBlocksTutorialsStripFilter {
+  videos: LandingPageInfoBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -13059,6 +13125,11 @@ input LandingPageLinkInBioBlocksDownloadsPreviewFilter {
   textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyleFilter
 }
 
+input LandingPageLinkInBioBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input LandingPageLinkInBioBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -13073,6 +13144,7 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter {
 }
 
 input LandingPageLinkInBioBlocksTutorialsStripFilter {
+  videos: LandingPageLinkInBioBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -14169,6 +14241,11 @@ type PostSectionsDownloadsPreview {
   textStyle: PostSectionsDownloadsPreviewTextStyle
 }
 
+type PostSectionsTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type PostSectionsTutorialsStripStats {
   value: String
   label: String
@@ -14183,6 +14260,7 @@ type PostSectionsTutorialsStripTextStyle {
 }
 
 type PostSectionsTutorialsStrip {
+  videos: [PostSectionsTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -15435,6 +15513,11 @@ input PostSectionsDownloadsPreviewFilter {
   textStyle: PostSectionsDownloadsPreviewTextStyleFilter
 }
 
+input PostSectionsTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input PostSectionsTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -15449,6 +15532,7 @@ input PostSectionsTutorialsStripTextStyleFilter {
 }
 
 input PostSectionsTutorialsStripFilter {
+  videos: PostSectionsTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -16546,6 +16630,11 @@ type ShopProductBlocksDownloadsPreview {
   textStyle: ShopProductBlocksDownloadsPreviewTextStyle
 }
 
+type ShopProductBlocksTutorialsStripVideos {
+  url: String!
+  title: String
+}
+
 type ShopProductBlocksTutorialsStripStats {
   value: String
   label: String
@@ -16560,6 +16649,7 @@ type ShopProductBlocksTutorialsStripTextStyle {
 }
 
 type ShopProductBlocksTutorialsStrip {
+  videos: [ShopProductBlocksTutorialsStripVideos]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -17871,6 +17961,11 @@ input ShopProductBlocksDownloadsPreviewFilter {
   textStyle: ShopProductBlocksDownloadsPreviewTextStyleFilter
 }
 
+input ShopProductBlocksTutorialsStripVideosFilter {
+  url: StringFilter
+  title: StringFilter
+}
+
 input ShopProductBlocksTutorialsStripStatsFilter {
   value: StringFilter
   label: StringFilter
@@ -17885,6 +17980,7 @@ input ShopProductBlocksTutorialsStripTextStyleFilter {
 }
 
 input ShopProductBlocksTutorialsStripFilter {
+  videos: ShopProductBlocksTutorialsStripVideosFilter
   manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
@@ -19124,6 +19220,11 @@ input PageBlocksDownloadsPreviewMutation {
   textStyle: PageBlocksDownloadsPreviewTextStyleMutation
 }
 
+input PageBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input PageBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -19138,6 +19239,7 @@ input PageBlocksTutorialsStripTextStyleMutation {
 }
 
 input PageBlocksTutorialsStripMutation {
+  videos: [PageBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -20025,6 +20127,11 @@ input LandingPageBlankBlocksDownloadsPreviewMutation {
   textStyle: LandingPageBlankBlocksDownloadsPreviewTextStyleMutation
 }
 
+input LandingPageBlankBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input LandingPageBlankBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -20039,6 +20146,7 @@ input LandingPageBlankBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageBlankBlocksTutorialsStripMutation {
+  videos: [LandingPageBlankBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -20927,6 +21035,11 @@ input LandingPageEventBlocksDownloadsPreviewMutation {
   textStyle: LandingPageEventBlocksDownloadsPreviewTextStyleMutation
 }
 
+input LandingPageEventBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input LandingPageEventBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -20941,6 +21054,7 @@ input LandingPageEventBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageEventBlocksTutorialsStripMutation {
+  videos: [LandingPageEventBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -21829,6 +21943,11 @@ input LandingPagePromoBlocksDownloadsPreviewMutation {
   textStyle: LandingPagePromoBlocksDownloadsPreviewTextStyleMutation
 }
 
+input LandingPagePromoBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input LandingPagePromoBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -21843,6 +21962,7 @@ input LandingPagePromoBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPagePromoBlocksTutorialsStripMutation {
+  videos: [LandingPagePromoBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -22731,6 +22851,11 @@ input LandingPageInfoBlocksDownloadsPreviewMutation {
   textStyle: LandingPageInfoBlocksDownloadsPreviewTextStyleMutation
 }
 
+input LandingPageInfoBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input LandingPageInfoBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -22745,6 +22870,7 @@ input LandingPageInfoBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageInfoBlocksTutorialsStripMutation {
+  videos: [LandingPageInfoBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -23633,6 +23759,11 @@ input LandingPageLinkInBioBlocksDownloadsPreviewMutation {
   textStyle: LandingPageLinkInBioBlocksDownloadsPreviewTextStyleMutation
 }
 
+input LandingPageLinkInBioBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input LandingPageLinkInBioBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -23647,6 +23778,7 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleMutation {
 }
 
 input LandingPageLinkInBioBlocksTutorialsStripMutation {
+  videos: [LandingPageLinkInBioBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -24588,6 +24720,11 @@ input PostSectionsDownloadsPreviewMutation {
   textStyle: PostSectionsDownloadsPreviewTextStyleMutation
 }
 
+input PostSectionsTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input PostSectionsTutorialsStripStatsMutation {
   value: String
   label: String
@@ -24602,6 +24739,7 @@ input PostSectionsTutorialsStripTextStyleMutation {
 }
 
 input PostSectionsTutorialsStripMutation {
+  videos: [PostSectionsTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String
@@ -25560,6 +25698,11 @@ input ShopProductBlocksDownloadsPreviewMutation {
   textStyle: ShopProductBlocksDownloadsPreviewTextStyleMutation
 }
 
+input ShopProductBlocksTutorialsStripVideosMutation {
+  url: String
+  title: String
+}
+
 input ShopProductBlocksTutorialsStripStatsMutation {
   value: String
   label: String
@@ -25574,6 +25717,7 @@ input ShopProductBlocksTutorialsStripTextStyleMutation {
 }
 
 input ShopProductBlocksTutorialsStripMutation {
+  videos: [ShopProductBlocksTutorialsStripVideosMutation]
   manageList: String
   eyebrow: String
   headingPrefix: String

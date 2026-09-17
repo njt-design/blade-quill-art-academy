@@ -546,6 +546,11 @@ export const PagePartsFragmentDoc = gql`
       }
     }
     ... on PageBlocksTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -1301,6 +1306,11 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -2052,6 +2062,11 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageEventBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -2803,6 +2818,11 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -3554,6 +3574,11 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageInfoBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -4305,6 +4330,11 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksTutorialsStrip {
+        videos {
+          __typename
+          url
+          title
+        }
         manageList
         eyebrow
         headingPrefix
@@ -5101,6 +5131,11 @@ export const PostPartsFragmentDoc = gql`
       }
     }
     ... on PostSectionsTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -5926,6 +5961,11 @@ export const ShopProductPartsFragmentDoc = gql`
       }
     }
     ... on ShopProductBlocksTutorialsStrip {
+      videos {
+        __typename
+        url
+        title
+      }
       manageList
       eyebrow
       headingPrefix
@@ -6699,6 +6739,11 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksTutorialsStrip {
+            videos {
+              __typename
+              url
+              title
+            }
             manageList
             eyebrow
             headingPrefix
@@ -7452,6 +7497,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageBlankBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -8203,6 +8253,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -8954,6 +9009,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPagePromoBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -9705,6 +9765,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageInfoBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -10456,6 +10521,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -11227,6 +11297,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -11980,6 +12055,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -12731,6 +12811,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -13482,6 +13567,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -14233,6 +14323,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -14984,6 +15079,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -15760,6 +15860,11 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on PageBlocksTutorialsStrip {
+              videos {
+                __typename
+                url
+                title
+              }
               manageList
               eyebrow
               headingPrefix
@@ -16513,6 +16618,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -17264,6 +17374,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageEventBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -18015,6 +18130,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -18766,6 +18886,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageInfoBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
@@ -19517,6 +19642,11 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksTutorialsStrip {
+                videos {
+                  __typename
+                  url
+                  title
+                }
                 manageList
                 eyebrow
                 headingPrefix
