@@ -22,8 +22,7 @@ import {
   downloadItemsFromPage,
   loadDownloadItems,
 } from "@/lib/downloads";
-import { loadTutorials, toTutorial } from "@/lib/tutorials";
-import type { Download, Tutorial } from "@workspace/api-client-react";
+import type { Download } from "@workspace/api-client-react";
 import {
   fetchTinaData,
   isInTinaEditor,
@@ -114,20 +113,6 @@ const DOWNLOADS_QUERY = `
             thumbnail
           }
         }
-      }
-    }
-  }
-`;
-
-const TUTORIALS_QUERY = `
-  query liveTutorials($relativePath: String!) {
-    tutorial(relativePath: $relativePath) {
-      items {
-        title
-        youtubeId
-        description
-        topic
-        featured
       }
     }
   }
@@ -309,23 +294,6 @@ export function useLiveDownloads(): Download[] {
     }>(DOWNLOADS_QUERY, { relativePath: "downloads.json" });
     if (!data?.page) return null;
     const items = downloadItemsFromPage(data.page);
-    return items.length > 0 ? items : null;
-  });
-}
-
-/** YouTube tutorials, CMS order — bundled seed refreshed from Tina Cloud. */
-export function useLiveTutorials(): Tutorial[] {
-  return useLiveList("tutorials", loadTutorials, async () => {
-    const data = await fetchTinaData<{
-      tutorial?: { items?: Array<Record<string, unknown> | null> | null };
-    }>(TUTORIALS_QUERY, { relativePath: "items.json" });
-    if (!data?.tutorial?.items) return null;
-    const items = data.tutorial.items
-      .filter((item): item is Record<string, unknown> =>
-        Boolean(item && typeof item === "object")
-      )
-      .map((item, index) => toTutorial(item, index))
-      .filter((item) => Boolean(item.youtubeId));
     return items.length > 0 ? items : null;
   });
 }

@@ -1003,6 +1003,24 @@ export const tutorialsStripBlock: Template = {
   name: "tutorialsStrip",
   label: "YouTube Tutorials Strip",
   ui: blockUi("tutorialsStrip", "YouTube Strip", "headingHighlight", {
+    videos: [
+      {
+        url: "https://www.youtube.com/watch?v=Fxy8hJUKY10",
+        title: "How to Install and Manage Brushes in Krita",
+      },
+      {
+        url: "https://www.youtube.com/watch?v=63_gp_rFtOc",
+        title: "Learn Different Ways to Remove Backgrounds in Krita",
+      },
+      {
+        url: "https://www.youtube.com/watch?v=Ccqw9x4NPno",
+        title: "Krita for Beginners — Complete Interface Walkthrough",
+      },
+      {
+        url: "https://www.youtube.com/watch?v=lgj0WPlwMGI",
+        title: "Turn Any Photograph into a Pencil Sketch Using Krita",
+      },
+    ],
     eyebrow: "FREE LESSONS ON YOUTUBE",
     headingPrefix: "Join ",
     headingHighlight: "100,000+ artists",
@@ -1020,11 +1038,11 @@ export const tutorialsStripBlock: Template = {
     {
       type: "object",
       name: "videos",
-      label: "Showcase Videos",
+      label: "Videos",
       list: true,
       ui: {
         description:
-          "Choose exactly which videos appear here: paste each video's YouTube link and give it a title. Drag to reorder. When this list is empty, featured videos from YouTube Tutorials (sidebar) are shown instead.",
+          "The video cards in this section, left to right. Paste each video's YouTube link and give it a title. Drag the ⋮⋮ handle to reorder; the first 4 are shown.",
         itemProps: (item: Record<string, unknown> | undefined) => ({
           label:
             (typeof item?.title === "string" && item.title.trim()) ||
@@ -1042,6 +1060,13 @@ export const tutorialsStripBlock: Template = {
           ui: {
             description:
               'Paste the video URL from YouTube (e.g. "https://www.youtube.com/watch?v=…" or a youtu.be share link).',
+            validate: (value?: string) => {
+              if (!value) return undefined;
+              if (!/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}/.test(value.trim())) {
+                return "Please paste a full YouTube video link (youtube.com/watch?v=… or youtu.be/…).";
+              }
+              return undefined;
+            },
           },
         },
         {
@@ -1052,7 +1077,6 @@ export const tutorialsStripBlock: Template = {
         },
       ],
     },
-    manageListField("tutorial"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
@@ -1079,7 +1103,7 @@ export const tutorialsStripBlock: Template = {
       label: "YouTube Channel URL",
       ui: {
         description:
-          "Full channel URL — the Subscribe button links here. The video cards come from the Showcase Videos list above (or, when that's empty, from featured YouTube Tutorials in the sidebar).",
+          "Full channel URL — the Subscribe button links here. The video cards come from the Videos list above.",
       },
     },
     {

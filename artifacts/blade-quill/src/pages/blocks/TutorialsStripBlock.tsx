@@ -1,10 +1,7 @@
 import { useMemo } from "react";
 import { tinaField } from "tinacms/react";
 import { cn } from "@/lib/utils";
-import { useListTutorials } from "@workspace/api-client-react";
-import { useLiveTutorials } from "@/hooks/use-live-content";
 import { FALLBACK_TUTORIALS } from "@/lib/fallback-data";
-import { pickStripTutorials, resolveTutorials } from "@/lib/tutorials";
 import { extractYoutubeId } from "@/lib/youtube";
 import { type ArtTilePalette } from "@/components/site/ArtTile";
 import { Btn } from "@/components/site/Btn";
@@ -29,24 +26,28 @@ interface VideoItem {
   title?: string;
 }
 
-/** A card in the strip, from either the block's own list or the catalog. */
+/** A card in the strip. */
 interface StripCard {
   key: string;
   youtubeId: string;
   title: string;
-  /** Original index into block.videos, for tinaField; undefined for catalog cards. */
+  /** Original index into block.videos, for tinaField; undefined for fallback cards. */
   videoIndex?: number;
 }
+
+const MAX_CARDS = 4;
 
 interface Props {
   block: Block;
 }
 
 export default function TutorialsStripBlock({ block }: Props) {
-  // Videos picked directly on the block (admin pastes YouTube links in Tina).
-  const pickedVideos = useMemo<StripCard[]>(() => {
+  // Videos are edited right on this section in Tina (paste a YouTube link).
+  // If the list is empty the built-in featured set keeps the strip from
+  // rendering blank.
+  const stripCards = useMemo<StripCard[]>(() => {
     const items = (block.videos as VideoItem[] | undefined) ?? [];
-    return items.flatMap((item, index) => {
+    const picked = items.flatMap((item, index) => {
       const youtubeId = item?.url ? extractYoutubeId(item.url) : null;
       if (!youtubeId) return [];
       return [
@@ -58,29 +59,16 @@ export default function TutorialsStripBlock({ block }: Props) {
         },
       ];
     });
+    if (picked.length > 0) return picked.slice(0, MAX_CARDS);
+
+    return FALLBACK_TUTORIALS.filter((t) => t.featured)
+      .slice(0, MAX_CARDS)
+      .map((t) => ({
+        key: `fallback-${t.id}`,
+        youtubeId: t.youtubeId,
+        title: t.title,
+      }));
   }, [block.videos]);
-  const hasPickedVideos = pickedVideos.length > 0;
-
-  // Fallback: featured videos from the YouTube Tutorials collection / API.
-  const catalog = useLiveTutorials();
-  const { data: tutorials } = useListTutorials(
-    { featured: true },
-    { query: { enabled: import.meta.env.PROD && !hasPickedVideos && catalog.length === 0 } }
-  );
-
-  const stripCards = useMemo<StripCard[]>(() => {
-    if (hasPickedVideos) return pickedVideos;
-    const list = resolveTutorials(
-      Array.isArray(tutorials) ? tutorials : undefined,
-      FALLBACK_TUTORIALS,
-      catalog
-    );
-    return pickStripTutorials(list, 4).map((t) => ({
-      key: `catalog-${t.id}`,
-      youtubeId: t.youtubeId,
-      title: t.title,
-    }));
-  }, [hasPickedVideos, pickedVideos, tutorials, catalog]);
 
   // Keep original list indices for tinaField(block, "stats", i).
   const stats = (block.stats as StatItem[] | undefined) ?? [];

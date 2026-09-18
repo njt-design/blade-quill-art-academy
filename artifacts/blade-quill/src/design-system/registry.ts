@@ -250,7 +250,7 @@ const HERO_BLOCKS: DesignSystemEntry[] = [
 const CONTENT_BLOCKS: DesignSystemEntry[] = [
   {
     id: "block-text",
-    name: "Text Section",
+    name: "Text Section (Rich)",
     category: "block",
     group: "Content",
     description:
@@ -259,12 +259,12 @@ const CONTENT_BLOCKS: DesignSystemEntry[] = [
     guidelines: {
       usage: "Any long-form copy. The workhorse block.",
       usedOn: ["/publishers", "/p/…"],
-      cmsLocation: `${SECTIONS_LOCATION} → Text Section`,
+      cmsLocation: `${SECTIONS_LOCATION} → Text Section (Rich)`,
       charLimits: [{ field: "heading", limit: 70 }],
       notes: [
         "To link: select words → Link button → paste URL. Off-site links and PDFs open in a new tab automatically (shows ↗). Embed → Link (advanced) only when you need to force that on or off.",
         "Type / at the start of a line for quick headings and lists; select text to get the floating “Turn into” menu.",
-        "To center or right-align a passage: Embed → Aligned Text, pick the alignment, and write inside it. This works in every rich-text field, not just Text Section. (Text Style → Align still aligns the whole section.)",
+        "To center or right-align a passage: Embed → Aligned Text, pick the alignment, and write inside it. This works in every rich-text field, not just Text Section (Rich). (Text Style → Align still aligns the whole section.)",
         "Inline images uploaded here should still follow the media guide below (≥1200px, kebab-case names).",
         TEXT_STYLE_NOTE,
       ],
@@ -804,7 +804,7 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
     category: "block",
     group: "Commerce & media",
     description:
-      "Dark YouTube CTA panel: three-part heading with gradient highlight, subscribe button, and stats row.",
+      "Dark YouTube CTA panel: three-part heading with gradient highlight, subscribe button, up to four video cards (YouTube links pasted on the section), and stats row.",
     demo: makeBlockDemo("tutorialsStrip"),
     guidelines: {
       usage: "Driving YouTube subscriptions from the homepage.",

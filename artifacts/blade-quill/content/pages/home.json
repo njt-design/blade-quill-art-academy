@@ -80,6 +80,24 @@
       "_template": "pillars"
     },
     {
+      "videos": [
+        {
+          "url": "https://www.youtube.com/watch?v=Fxy8hJUKY10",
+          "title": "How to Install and Manage Brushes in Krita"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=63_gp_rFtOc",
+          "title": "Learn Different Ways to Remove Backgrounds in Krita"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ccqw9x4NPno",
+          "title": "Krita for Beginners — Complete Interface Walkthrough"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lgj0WPlwMGI",
+          "title": "Turn Any Photograph into a Pencil Sketch Using Krita"
+        }
+      ],
       "eyebrow": "FREE LESSONS ON YOUTUBE",
       "headingPrefix": "Join ",
       "headingHighlight": "13k+ artists",

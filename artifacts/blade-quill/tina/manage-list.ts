@@ -3,8 +3,7 @@
  * is edited somewhere else:
  *   - the homepage Gallery / Downloads previews show the first few items from
  *     the Gallery page's "Art Gallery Grid" / Downloads page's "Downloads Grid"
- *     sections, and
- *   - the YouTube strip shows videos from the YouTube Tutorials list.
+ *     sections.
  *
  * This display-only field explains that and links straight to the place the
  * items are added, removed, and dragged into order.
@@ -14,7 +13,7 @@ import type { TinaField } from "tinacms";
 
 const h = React.createElement;
 
-type ManagedList = "gallery" | "download" | "tutorial";
+type ManagedList = "gallery" | "download";
 
 const LISTS: Record<
   ManagedList,
@@ -33,12 +32,6 @@ const LISTS: Record<
       "They're edited on the Downloads page: Site Pages → downloads → the Downloads Grid section.",
     button: "Open the Downloads page →",
     hash: "#/collections/edit/page/downloads",
-  },
-  tutorial: {
-    noun: "videos",
-    where: "They're edited in the ☰ menu under Site → YouTube Tutorials.",
-    button: "Open YouTube Tutorials →",
-    hash: "#/collections/edit/tutorial/items",
   },
 };
 

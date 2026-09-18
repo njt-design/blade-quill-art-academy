@@ -62,8 +62,6 @@ type Query {
   postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
   shopProduct(relativePath: String): ShopProduct!
   shopProductConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ShopProductFilter): ShopProductConnection!
-  tutorial(relativePath: String): Tutorial!
-  tutorialConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TutorialFilter): TutorialConnection!
   navigation(relativePath: String): Navigation!
   navigationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavigationFilter): NavigationConnection!
 }
@@ -73,7 +71,6 @@ input DocumentFilter {
   landingPage: LandingPageFilter
   post: PostFilter
   shopProduct: ShopProductFilter
-  tutorial: TutorialFilter
   navigation: NavigationFilter
 }
 
@@ -100,7 +97,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Tutorial | Navigation | Folder
+union DocumentNode = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio | Post | ShopProduct | Navigation | Folder
 
 type PageBlocksHomeHeroTextStyle {
   headingSize: String
@@ -729,7 +726,6 @@ type PageBlocksTutorialsStripTextStyle {
 
 type PageBlocksTutorialsStrip {
   videos: [PageBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -1948,7 +1944,6 @@ input PageBlocksTutorialsStripTextStyleFilter {
 
 input PageBlocksTutorialsStripFilter {
   videos: PageBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -3010,7 +3005,6 @@ type LandingPageBlankBlocksTutorialsStripTextStyle {
 
 type LandingPageBlankBlocksTutorialsStrip {
   videos: [LandingPageBlankBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -3875,7 +3869,6 @@ type LandingPageEventBlocksTutorialsStripTextStyle {
 
 type LandingPageEventBlocksTutorialsStrip {
   videos: [LandingPageEventBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -4740,7 +4733,6 @@ type LandingPagePromoBlocksTutorialsStripTextStyle {
 
 type LandingPagePromoBlocksTutorialsStrip {
   videos: [LandingPagePromoBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -5605,7 +5597,6 @@ type LandingPageInfoBlocksTutorialsStripTextStyle {
 
 type LandingPageInfoBlocksTutorialsStrip {
   videos: [LandingPageInfoBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -6470,7 +6461,6 @@ type LandingPageLinkInBioBlocksTutorialsStripTextStyle {
 
 type LandingPageLinkInBioBlocksTutorialsStrip {
   videos: [LandingPageLinkInBioBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -7657,7 +7647,6 @@ input LandingPageBlankBlocksTutorialsStripTextStyleFilter {
 
 input LandingPageBlankBlocksTutorialsStripFilter {
   videos: LandingPageBlankBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -9029,7 +9018,6 @@ input LandingPageEventBlocksTutorialsStripTextStyleFilter {
 
 input LandingPageEventBlocksTutorialsStripFilter {
   videos: LandingPageEventBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -10401,7 +10389,6 @@ input LandingPagePromoBlocksTutorialsStripTextStyleFilter {
 
 input LandingPagePromoBlocksTutorialsStripFilter {
   videos: LandingPagePromoBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -11773,7 +11760,6 @@ input LandingPageInfoBlocksTutorialsStripTextStyleFilter {
 
 input LandingPageInfoBlocksTutorialsStripFilter {
   videos: LandingPageInfoBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -13145,7 +13131,6 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleFilter {
 
 input LandingPageLinkInBioBlocksTutorialsStripFilter {
   videos: LandingPageLinkInBioBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -14261,7 +14246,6 @@ type PostSectionsTutorialsStripTextStyle {
 
 type PostSectionsTutorialsStrip {
   videos: [PostSectionsTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -15533,7 +15517,6 @@ input PostSectionsTutorialsStripTextStyleFilter {
 
 input PostSectionsTutorialsStripFilter {
   videos: PostSectionsTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -16650,7 +16633,6 @@ type ShopProductBlocksTutorialsStripTextStyle {
 
 type ShopProductBlocksTutorialsStrip {
   videos: [ShopProductBlocksTutorialsStripVideos]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -17981,7 +17963,6 @@ input ShopProductBlocksTutorialsStripTextStyleFilter {
 
 input ShopProductBlocksTutorialsStripFilter {
   videos: ShopProductBlocksTutorialsStripVideosFilter
-  manageList: StringFilter
   eyebrow: StringFilter
   headingPrefix: StringFilter
   headingHighlight: StringFilter
@@ -18437,44 +18418,6 @@ type ShopProductConnection implements Connection {
   edges: [ShopProductConnectionEdges]
 }
 
-type TutorialItems {
-  title: String!
-  youtubeId: String!
-  description: String
-  topic: String
-  featured: Boolean
-}
-
-type Tutorial implements Node & Document {
-  items: [TutorialItems]
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input TutorialItemsFilter {
-  title: StringFilter
-  youtubeId: StringFilter
-  description: StringFilter
-  topic: StringFilter
-  featured: BooleanFilter
-}
-
-input TutorialFilter {
-  items: TutorialItemsFilter
-}
-
-type TutorialConnectionEdges {
-  cursor: String!
-  node: Tutorial
-}
-
-type TutorialConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [TutorialConnectionEdges]
-}
-
 union NavigationItemsPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
 
 union NavigationItemsChildrenPage = Page | LandingPageBlank | LandingPageEvent | LandingPagePromo | LandingPageInfo | LandingPageLinkInBio
@@ -18588,8 +18531,6 @@ type Mutation {
   createPost(relativePath: String!, params: PostMutation!): Post!
   updateShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
   createShopProduct(relativePath: String!, params: ShopProductMutation!): ShopProduct!
-  updateTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
-  createTutorial(relativePath: String!, params: TutorialMutation!): Tutorial!
   updateNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
   createNavigation(relativePath: String!, params: NavigationMutation!): Navigation!
 }
@@ -18599,7 +18540,6 @@ input DocumentUpdateMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
-  tutorial: TutorialMutation
   navigation: NavigationMutation
   relativePath: String
 }
@@ -18609,7 +18549,6 @@ input DocumentMutation {
   landingPage: LandingPageMutation
   post: PostMutation
   shopProduct: ShopProductMutation
-  tutorial: TutorialMutation
   navigation: NavigationMutation
 }
 
@@ -19240,7 +19179,6 @@ input PageBlocksTutorialsStripTextStyleMutation {
 
 input PageBlocksTutorialsStripMutation {
   videos: [PageBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -20147,7 +20085,6 @@ input LandingPageBlankBlocksTutorialsStripTextStyleMutation {
 
 input LandingPageBlankBlocksTutorialsStripMutation {
   videos: [LandingPageBlankBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -21055,7 +20992,6 @@ input LandingPageEventBlocksTutorialsStripTextStyleMutation {
 
 input LandingPageEventBlocksTutorialsStripMutation {
   videos: [LandingPageEventBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -21963,7 +21899,6 @@ input LandingPagePromoBlocksTutorialsStripTextStyleMutation {
 
 input LandingPagePromoBlocksTutorialsStripMutation {
   videos: [LandingPagePromoBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -22871,7 +22806,6 @@ input LandingPageInfoBlocksTutorialsStripTextStyleMutation {
 
 input LandingPageInfoBlocksTutorialsStripMutation {
   videos: [LandingPageInfoBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -23779,7 +23713,6 @@ input LandingPageLinkInBioBlocksTutorialsStripTextStyleMutation {
 
 input LandingPageLinkInBioBlocksTutorialsStripMutation {
   videos: [LandingPageLinkInBioBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -24740,7 +24673,6 @@ input PostSectionsTutorialsStripTextStyleMutation {
 
 input PostSectionsTutorialsStripMutation {
   videos: [PostSectionsTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -25718,7 +25650,6 @@ input ShopProductBlocksTutorialsStripTextStyleMutation {
 
 input ShopProductBlocksTutorialsStripMutation {
   videos: [ShopProductBlocksTutorialsStripVideosMutation]
-  manageList: String
   eyebrow: String
   headingPrefix: String
   headingHighlight: String
@@ -26017,18 +25948,6 @@ input ShopProductMutation {
   blocks: [ShopProductBlocksMutation]
   seoAssistant: String
   seo: ShopProductSeoMutation
-}
-
-input TutorialItemsMutation {
-  title: String
-  youtubeId: String
-  description: String
-  topic: String
-  featured: Boolean
-}
-
-input TutorialMutation {
-  items: [TutorialItemsMutation]
 }
 
 input NavigationItemsChildrenMutation {

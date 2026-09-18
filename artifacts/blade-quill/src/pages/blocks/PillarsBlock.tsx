@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useLocation } from "wouter";
 import { tinaField } from "tinacms/react";
-import { useListProducts, useListTutorials } from "@workspace/api-client-react";
-import { useLiveProducts, useLiveTutorials } from "@/hooks/use-live-content";
+import { useListProducts } from "@workspace/api-client-react";
+import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS, FALLBACK_TUTORIALS } from "@/lib/fallback-data";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
-import { pickStripTutorials, resolveTutorials } from "@/lib/tutorials";
+import { extractYoutubeId } from "@/lib/youtube";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, sectionAlignStyle } from "./text-style";
@@ -60,25 +60,15 @@ export default function PillarsBlock({ block }: Props) {
   const { data: products } = useListProducts(undefined, {
     query: { enabled: !hasCatalogProducts() },
   });
-  const tutorialCatalog = useLiveTutorials();
-  const { data: tutorials } = useListTutorials(
-    { featured: true },
-    { query: { enabled: import.meta.env.PROD && tutorialCatalog.length === 0 } }
-  );
-
   const allProducts = useMemo(
     () => resolveCatalogProducts(products, FALLBACK_PRODUCTS, catalog),
     [products, catalog]
   );
 
-  const featuredVideo = useMemo(() => {
-    const list = resolveTutorials(
-      Array.isArray(tutorials) ? tutorials : undefined,
-      FALLBACK_TUTORIALS,
-      tutorialCatalog
-    );
-    return pickStripTutorials(list, 1)[0];
-  }, [tutorials, tutorialCatalog]);
+  // Thumbnail for a YouTube pillar with no image: the linked video itself
+  // (when the link is a specific video), else the first built-in featured one.
+  const fallbackVideoId = (FALLBACK_TUTORIALS.find((t) => t.featured) ?? FALLBACK_TUTORIALS[0])
+    ?.youtubeId;
 
   const autoPreviews = useMemo(() => {
     const book = allProducts.find((p) => p.category === "physical");
@@ -122,7 +112,9 @@ export default function PillarsBlock({ block }: Props) {
               const isYoutubeLink =
                 isExternalLink(p.link) && /youtube\.com|youtu\.be/i.test(p.link ?? "");
               const youtubeId =
-                !p.image && isYoutubeLink ? featuredVideo?.youtubeId : undefined;
+                !p.image && isYoutubeLink
+                  ? extractYoutubeId(p.link ?? "") ?? fallbackVideoId
+                  : undefined;
               const previewSrc =
                 p.image ||
                 (youtubeId

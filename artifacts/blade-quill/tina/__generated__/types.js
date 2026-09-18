@@ -551,7 +551,6 @@ export const PagePartsFragmentDoc = gql`
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -1311,7 +1310,6 @@ export const LandingPagePartsFragmentDoc = gql`
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2067,7 +2065,6 @@ export const LandingPagePartsFragmentDoc = gql`
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2823,7 +2820,6 @@ export const LandingPagePartsFragmentDoc = gql`
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3579,7 +3575,6 @@ export const LandingPagePartsFragmentDoc = gql`
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -4335,7 +4330,6 @@ export const LandingPagePartsFragmentDoc = gql`
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -5136,7 +5130,6 @@ export const PostPartsFragmentDoc = gql`
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -5966,7 +5959,6 @@ export const ShopProductPartsFragmentDoc = gql`
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -6175,19 +6167,6 @@ export const ShopProductPartsFragmentDoc = gql`
     __typename
     metaTitle
     metaDescription
-  }
-}
-    `;
-export const TutorialPartsFragmentDoc = gql`
-    fragment TutorialParts on Tutorial {
-  __typename
-  items {
-    __typename
-    title
-    youtubeId
-    description
-    topic
-    featured
   }
 }
     `;
@@ -6744,7 +6723,6 @@ export const NavigationPartsFragmentDoc = gql`
               url
               title
             }
-            manageList
             eyebrow
             headingPrefix
             headingHighlight
@@ -7502,7 +7480,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -8258,7 +8235,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9014,7 +8990,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9770,7 +9745,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -10526,7 +10500,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -11302,7 +11275,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -12060,7 +12032,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -12816,7 +12787,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -13572,7 +13542,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -14328,7 +14297,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15084,7 +15052,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15865,7 +15832,6 @@ export const NavigationPartsFragmentDoc = gql`
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -16623,7 +16589,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -17379,7 +17344,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -18135,7 +18099,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -18891,7 +18854,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -19647,7 +19609,6 @@ export const NavigationPartsFragmentDoc = gql`
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -20105,63 +20066,6 @@ export const ShopProductConnectionDocument = gql`
   }
 }
     ${ShopProductPartsFragmentDoc}`;
-export const TutorialDocument = gql`
-    query tutorial($relativePath: String!) {
-  tutorial(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...TutorialParts
-  }
-}
-    ${TutorialPartsFragmentDoc}`;
-export const TutorialConnectionDocument = gql`
-    query tutorialConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: TutorialFilter) {
-  tutorialConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...TutorialParts
-      }
-    }
-  }
-}
-    ${TutorialPartsFragmentDoc}`;
 export const NavigationDocument = gql`
     query navigation($relativePath: String!) {
   navigation(relativePath: $relativePath) {
@@ -20244,12 +20148,6 @@ export function getSdk(requester) {
     },
     shopProductConnection(variables, options) {
       return requester(ShopProductConnectionDocument, variables, options);
-    },
-    tutorial(variables, options) {
-      return requester(TutorialDocument, variables, options);
-    },
-    tutorialConnection(variables, options) {
-      return requester(TutorialConnectionDocument, variables, options);
     },
     navigation(variables, options) {
       return requester(NavigationDocument, variables, options);

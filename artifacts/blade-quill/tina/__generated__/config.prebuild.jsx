@@ -20,12 +20,6 @@ var LISTS = {
     where: "They're edited on the Downloads page: Site Pages \u2192 downloads \u2192 the Downloads Grid section.",
     button: "Open the Downloads page \u2192",
     hash: "#/collections/edit/page/downloads"
-  },
-  tutorial: {
-    noun: "videos",
-    where: "They're edited in the \u2630 menu under Site \u2192 YouTube Tutorials.",
-    button: "Open YouTube Tutorials \u2192",
-    hash: "#/collections/edit/tutorial/items"
   }
 };
 function makeManageListPanel(kind) {
@@ -988,6 +982,24 @@ var tutorialsStripBlock = {
   name: "tutorialsStrip",
   label: "YouTube Tutorials Strip",
   ui: blockUi("tutorialsStrip", "YouTube Strip", "headingHighlight", {
+    videos: [
+      {
+        url: "https://www.youtube.com/watch?v=Fxy8hJUKY10",
+        title: "How to Install and Manage Brushes in Krita"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=63_gp_rFtOc",
+        title: "Learn Different Ways to Remove Backgrounds in Krita"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=Ccqw9x4NPno",
+        title: "Krita for Beginners \u2014 Complete Interface Walkthrough"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=lgj0WPlwMGI",
+        title: "Turn Any Photograph into a Pencil Sketch Using Krita"
+      }
+    ],
     eyebrow: "FREE LESSONS ON YOUTUBE",
     headingPrefix: "Join ",
     headingHighlight: "100,000+ artists",
@@ -1005,10 +1017,10 @@ var tutorialsStripBlock = {
     {
       type: "object",
       name: "videos",
-      label: "Showcase Videos",
+      label: "Videos",
       list: true,
       ui: {
-        description: "Choose exactly which videos appear here: paste each video's YouTube link and give it a title. Drag to reorder. When this list is empty, featured videos from YouTube Tutorials (sidebar) are shown instead.",
+        description: "The video cards in this section, left to right. Paste each video's YouTube link and give it a title. Drag the \u22EE\u22EE handle to reorder; the first 4 are shown.",
         itemProps: (item) => ({
           label: typeof item?.title === "string" && item.title.trim() || typeof item?.url === "string" && item.url.trim() || "Video"
         }),
@@ -1021,7 +1033,14 @@ var tutorialsStripBlock = {
           label: "YouTube Link",
           required: true,
           ui: {
-            description: 'Paste the video URL from YouTube (e.g. "https://www.youtube.com/watch?v=\u2026" or a youtu.be share link).'
+            description: 'Paste the video URL from YouTube (e.g. "https://www.youtube.com/watch?v=\u2026" or a youtu.be share link).',
+            validate: (value) => {
+              if (!value) return void 0;
+              if (!/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}/.test(value.trim())) {
+                return "Please paste a full YouTube video link (youtube.com/watch?v=\u2026 or youtu.be/\u2026).";
+              }
+              return void 0;
+            }
           }
         },
         {
@@ -1032,7 +1051,6 @@ var tutorialsStripBlock = {
         }
       ]
     },
-    manageListField("tutorial"),
     { type: "string", name: "eyebrow", label: "Eyebrow", ui: charLimit(40, "Small label above the heading.") },
     {
       type: "string",
@@ -1058,7 +1076,7 @@ var tutorialsStripBlock = {
       name: "youtubeUrl",
       label: "YouTube Channel URL",
       ui: {
-        description: "Full channel URL \u2014 the Subscribe button links here. The video cards come from the Showcase Videos list above (or, when that's empty, from featured YouTube Tutorials in the sidebar)."
+        description: "Full channel URL \u2014 the Subscribe button links here. The video cards come from the Videos list above."
       }
     },
     {
@@ -4763,94 +4781,6 @@ var config_default = defineConfig({
             templates: [productInfoBlock, ...ALL_BLOCKS]
           },
           ...seoFields("product")
-        ]
-      },
-      // ---------------------------------------------------------------
-      // YouTube Tutorials — single document; drag to reorder videos.
-      // ---------------------------------------------------------------
-      {
-        name: "tutorial",
-        label: "YouTube Tutorials",
-        path: "content/tutorials",
-        format: "json",
-        ui: {
-          // Single-document list: open the form straight from the menu, as a
-          // plain full-width form (no router → no site-preview detour).
-          global: true,
-          allowedActions: { create: false, delete: false }
-        },
-        fields: [
-          {
-            type: "object",
-            name: "items",
-            label: "Videos",
-            list: true,
-            ui: {
-              itemProps: (item) => ({
-                label: item?.title || "Video"
-              }),
-              defaultItem: {
-                title: "New video",
-                youtubeId: "",
-                description: "",
-                topic: "",
-                featured: false
-              },
-              description: "Your YouTube tutorial videos, top to bottom. Paste a full YouTube link for each video. Drag to reorder. Videos marked Featured appear in the homepage YouTube strip (up to 4, in this order)."
-            },
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "Video Title",
-                required: true,
-                ui: charLimit(90, "Shown under the video thumbnail.")
-              },
-              {
-                type: "string",
-                name: "youtubeId",
-                label: "YouTube URL",
-                required: true,
-                ui: {
-                  description: "Paste the full YouTube link (youtube.com or youtu.be). The video ID is extracted automatically. An 11-character ID also works.",
-                  validate: (value) => {
-                    if (!value) return void 0;
-                    const trimmed = value.trim();
-                    if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return void 0;
-                    if (!/youtube\.com|youtu\.be/i.test(trimmed)) {
-                      return "Please paste a full YouTube link (youtube.com or youtu.be).";
-                    }
-                    if (!/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/.test(
-                      trimmed
-                    )) {
-                      return "That link does not look like a specific YouTube video.";
-                    }
-                    return void 0;
-                  }
-                }
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Description (optional)",
-                ui: charLimit(200, "One or two sentences about the video.")
-              },
-              {
-                type: "string",
-                name: "topic",
-                label: "Topic (optional)",
-                ui: charLimit(32, 'Grouping label (e.g. "Learning Krita", "Brushes").')
-              },
-              {
-                type: "boolean",
-                name: "featured",
-                label: "Featured on Homepage",
-                ui: {
-                  description: "Featured videos appear in the homepage YouTube strip \u2014 the first 4 featured videos (in this list's order) are shown."
-                }
-              }
-            ]
-          }
         ]
       },
       // ---------------------------------------------------------------

@@ -543,7 +543,6 @@ fragment PageParts on Page {
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -1302,7 +1301,6 @@ fragment LandingPageParts on LandingPage {
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2058,7 +2056,6 @@ fragment LandingPageParts on LandingPage {
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -2814,7 +2811,6 @@ fragment LandingPageParts on LandingPage {
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -3570,7 +3566,6 @@ fragment LandingPageParts on LandingPage {
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -4326,7 +4321,6 @@ fragment LandingPageParts on LandingPage {
           url
           title
         }
-        manageList
         eyebrow
         headingPrefix
         headingHighlight
@@ -5126,7 +5120,6 @@ fragment PostParts on Post {
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -5955,7 +5948,6 @@ fragment ShopProductParts on ShopProduct {
         url
         title
       }
-      manageList
       eyebrow
       headingPrefix
       headingHighlight
@@ -6164,18 +6156,6 @@ fragment ShopProductParts on ShopProduct {
     __typename
     metaTitle
     metaDescription
-  }
-}
-
-fragment TutorialParts on Tutorial {
-  __typename
-  items {
-    __typename
-    title
-    youtubeId
-    description
-    topic
-    featured
   }
 }
 
@@ -6731,7 +6711,6 @@ fragment NavigationParts on Navigation {
               url
               title
             }
-            manageList
             eyebrow
             headingPrefix
             headingHighlight
@@ -7489,7 +7468,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -8245,7 +8223,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9001,7 +8978,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -9757,7 +9733,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -10513,7 +10488,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -11289,7 +11263,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -12047,7 +12020,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -12803,7 +12775,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -13559,7 +13530,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -14315,7 +14285,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15071,7 +15040,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -15852,7 +15820,6 @@ fragment NavigationParts on Navigation {
                 url
                 title
               }
-              manageList
               eyebrow
               headingPrefix
               headingHighlight
@@ -16610,7 +16577,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -17366,7 +17332,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -18122,7 +18087,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -18878,7 +18842,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
@@ -19634,7 +19597,6 @@ fragment NavigationParts on Navigation {
                   url
                   title
                 }
-                manageList
                 eyebrow
                 headingPrefix
                 headingHighlight
