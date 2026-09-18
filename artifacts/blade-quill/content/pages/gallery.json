@@ -24,20 +24,15 @@
     {
       "artworks": [
         {
-          "title": "Chibi Giraffe",
-          "image": "/images/squarespace/digital-paintings/chibi-giraffe.png",
-          "description": "A tall chibi giraffe with expressive eyes"
+          "title": "Geisha",
+          "image": "/images/squarespace/digital-paintings/geisha.jpg",
+          "description": "An elegant geisha in full traditional attire",
+          "downloadFile": ""
         },
         {
           "title": "Steampunk Girl",
           "image": "/images/squarespace/digital-paintings/steampunk.jpg",
           "description": "A steampunk-themed girl with mechanical accessories"
-        },
-        {
-          "title": "Geisha",
-          "image": "/images/squarespace/digital-paintings/geisha.jpg",
-          "description": "An elegant geisha in full traditional attire",
-          "downloadFile": ""
         },
         {
           "title": "Steampunk Cat",
@@ -65,6 +60,16 @@
           "title": "Fantasy Creature Guarding Dragon Egg",
           "image": "/images/squarespace/digital-paintings/fantasy-creature-guarding-dragon-egg.jpg",
           "description": "A guardian creature protecting its precious dragon egg"
+        },
+        {
+          "title": "Chibi Hippo",
+          "image": "/images/squarespace/digital-paintings/chibi-hippo.png",
+          "description": "A playful chibi hippo with big personality"
+        },
+        {
+          "title": "Chibi Giraffe",
+          "image": "/images/squarespace/digital-paintings/chibi-giraffe.png",
+          "description": "A tall chibi giraffe with expressive eyes"
         },
         {
           "title": "Gnome Druid",
@@ -97,11 +102,6 @@
           "title": "Chibi Elephant",
           "image": "/images/squarespace/digital-paintings/chibi-elephant.png",
           "description": "An adorable chibi elephant character"
-        },
-        {
-          "title": "Chibi Hippo",
-          "image": "/images/squarespace/digital-paintings/chibi-hippo.png",
-          "description": "A playful chibi hippo with big personality"
         },
         {
           "title": "Chibi Ninja Man",
