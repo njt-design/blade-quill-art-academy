@@ -72,11 +72,12 @@
         "type": "root",
         "children": [
           {
-            "type": "p",
+            "type": "h3",
             "id": "VgAAHddS-z",
             "children": [
               {
-                "text": "Three printable books, one fun-filled bundle!"
+                "text": "Three printable books, one fun-filled bundle!",
+                "bold": true
               }
             ]
           },
@@ -103,7 +104,11 @@
             "id": "L78hlzF3NT",
             "children": [
               {
-                "text": "🎨 Chibi Mini Coloring Book"
+                "text": "🎨"
+              },
+              {
+                "text": " Chibi Mini Coloring Book",
+                "bold": true
               }
             ]
           },
@@ -130,7 +135,11 @@
             "id": "_Ydk4QR83z",
             "children": [
               {
-                "text": "🐶 Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!"
+                "text": "🐶"
+              },
+              {
+                "text": " Lheeloo & Luna — Giggles, Adventures, and a Whole Lot of Naps!",
+                "bold": true
               }
             ]
           },
@@ -157,7 +166,11 @@
             "id": "lXuFerPJGi",
             "children": [
               {
-                "text": "🧩 Super Fun Puzzle Games for Kids — Ages 8–12"
+                "text": "🧩 "
+              },
+              {
+                "text": "Super Fun Puzzle Games for Kids — Ages 8–12",
+                "bold": true
               }
             ]
           },
