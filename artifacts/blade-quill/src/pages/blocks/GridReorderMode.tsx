@@ -1,12 +1,13 @@
 /**
- * iPhone-homescreen-style rearrange mode for the Art Gallery Grid.
+ * iPhone-homescreen-style rearrange mode for CMS-owned grids (gallery
+ * artwork, downloads).
  *
- * Keeps the exact same masonry layout as the public gallery (same column
- * CSS, natural image sizes) so what the admin sees is what visitors see.
- * Tiles jiggle gently; dragging one makes the others reflow live into the
- * layout that will persist, so the artwork lands in the exact visual spot
- * it was dropped. Touch uses a short press-and-hold to start a drag, like
- * iOS. Save persists through Tina (see lib/gallery-reorder.ts).
+ * Renders the grid in the same layout as its public view — masonry columns
+ * for the gallery, uniform cards for downloads — so what the admin sees is
+ * what visitors see. Tiles jiggle gently; dragging one makes the others
+ * reflow live into the layout that will persist, so the item lands in the
+ * exact visual spot it was dropped. Touch uses a short press-and-hold to
+ * start a drag, like iOS. Save persists through Tina (lib/grid-reorder.ts).
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -28,41 +29,103 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, useSortable } from "@dnd-kit/sortable";
 import { motion } from "framer-motion";
+import { FileText, Move } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Btn } from "@/components/site/Btn";
-import { toGalleryArtwork, type GalleryArtwork } from "@/lib/gallery";
 import {
-  fetchGalleryReorderDoc,
-  saveGalleryOrder,
-  type GalleryReorderDoc,
-} from "@/lib/gallery-reorder";
+  fetchGridReorderDoc,
+  saveGridOrder,
+  type GridReorderConfig,
+  type GridReorderDoc,
+} from "@/lib/grid-reorder";
 import { invalidateLiveContentCache } from "@/hooks/use-live-content";
 
-interface ReorderTile {
-  /** Stable drag id, derived from the artwork's original position. */
-  id: string;
-  /** Index in the document's current artworks array. */
-  originalIndex: number;
+/** How reorder tiles are laid out — mirrors the grid's public view. */
+export type GridReorderVariant = "masonry" | "cards";
+
+const CONTAINER_CLASSES: Record<GridReorderVariant, string> = {
+  // Same classes as GalleryGridBlock's masonry.
+  masonry: "columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 pb-20",
+  // Same grid as DownloadsGridBlock's cards.
+  cards:
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-20",
+};
+
+export interface ReorderTileData {
   title: string;
-  imageUrl: string;
+  imageUrl: string | null;
+}
+
+interface ReorderTile extends ReorderTileData {
+  /** Stable drag id, derived from the item's original position. */
+  id: string;
+  /** Index in the document's current list. */
+  originalIndex: number;
 }
 
 /**
  * Prefer the tile directly under the pointer; fall back to the nearest tile
- * when the pointer is over a gap between masonry tiles.
+ * when the pointer is over a gap between tiles.
  */
 const collisionDetection: CollisionDetection = (args) => {
   const within = pointerWithin(args);
   return within.length > 0 ? within : closestCenter(args);
 };
 
-function SortableArtwork({
+/** Tile artwork/thumbnail — shared between the grid tile and drag overlay. */
+function TileContent({
+  tile,
+  variant,
+}: {
+  tile: ReorderTileData;
+  variant: GridReorderVariant;
+}) {
+  if (variant === "masonry") {
+    return tile.imageUrl ? (
+      <img
+        src={tile.imageUrl}
+        alt={tile.title}
+        className="w-full h-auto pointer-events-none"
+        draggable={false}
+      />
+    ) : (
+      <div className="aspect-[3/4] grid place-items-center bg-secondary/50">
+        <FileText className="w-10 h-10 text-muted-foreground/30" />
+      </div>
+    );
+  }
+  return (
+    <div className="flex flex-col bg-card h-full">
+      {tile.imageUrl ? (
+        <div className="aspect-[4/3] img-fit-wrap bg-secondary/30">
+          <img
+            src={tile.imageUrl}
+            alt={tile.title}
+            className="img-fit pointer-events-none"
+            draggable={false}
+          />
+        </div>
+      ) : (
+        <div className="aspect-[4/3] grid place-items-center bg-secondary/50">
+          <FileText className="w-10 h-10 text-muted-foreground/30" />
+        </div>
+      )}
+      <div className="p-3">
+        <p className="text-sm font-normal line-clamp-2">{tile.title}</p>
+      </div>
+    </div>
+  );
+}
+
+function SortableTile({
   tile,
   position,
+  variant,
   jiggleAlt,
 }: {
   tile: ReorderTile;
   position: number;
+  variant: GridReorderVariant;
   jiggleAlt: boolean;
 }) {
   const { attributes, listeners, setNodeRef, isDragging } = useSortable({
@@ -76,39 +139,66 @@ function SortableArtwork({
       layout
       transition={{ type: "spring", stiffness: 550, damping: 40 }}
       ref={setNodeRef}
-      className="break-inside-avoid relative touch-none select-none"
+      className={`relative touch-none select-none ${
+        variant === "masonry" ? "break-inside-avoid" : ""
+      }`}
       {...attributes}
       {...listeners}
       aria-label={`${tile.title} — position ${position}`}
     >
       <div
-        className={`rounded-lg overflow-hidden border border-border/50 bg-muted transition-opacity ${
+        className={`rounded-lg overflow-hidden border border-border/50 bg-muted transition-opacity h-full ${
           isDragging
             ? "opacity-40 saturate-50"
             : `cursor-grab ${jiggleAlt ? "bq-jiggle-alt" : "bq-jiggle"}`
         }`}
       >
-        <img
-          src={tile.imageUrl}
-          alt={tile.title}
-          className="w-full h-auto pointer-events-none"
-          draggable={false}
-        />
+        <TileContent tile={tile} variant={variant} />
       </div>
     </motion.div>
   );
 }
 
-export default function GalleryReorderMode({
+/** The admin-only pill that opens rearrange mode on a grid. */
+export function RearrangeButton({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <div className="mb-4 flex justify-end">
+      <button
+        type="button"
+        onClick={onClick}
+        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-3.5 py-2 text-xs font-semibold text-muted-foreground shadow-sm transition-colors hover:text-foreground hover:border-foreground/40"
+        title="Drag items into a new order (admin only)"
+      >
+        <Move className="w-3.5 h-3.5" aria-hidden />
+        {label}
+      </button>
+    </div>
+  );
+}
+
+export default function GridReorderMode({
+  config,
+  variant,
+  tileFor,
   onCancel,
   onSaved,
 }: {
+  config: GridReorderConfig;
+  variant: GridReorderVariant;
+  /** Map a raw CMS list item to its tile display data. */
+  tileFor: (raw: Record<string, unknown>, index: number) => ReorderTileData;
   onCancel: () => void;
-  /** Called after a successful save with the artworks in their new order. */
-  onSaved: (items: GalleryArtwork[]) => void;
+  /** Called after a successful save with the raw items in their new order. */
+  onSaved: (orderedRaw: Record<string, unknown>[]) => void;
 }) {
   const { toast } = useToast();
-  const [doc, setDoc] = useState<GalleryReorderDoc | null>(null);
+  const [doc, setDoc] = useState<GridReorderDoc | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [tiles, setTiles] = useState<ReorderTile[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -118,26 +208,24 @@ export default function GalleryReorderMode({
   const load = useCallback(() => {
     setLoadError(null);
     setDoc(null);
-    fetchGalleryReorderDoc()
+    fetchGridReorderDoc(config)
       .then((loaded) => {
         setDoc(loaded);
         setTiles(
-          loaded.artworks.map((raw, index) => {
-            const art = toGalleryArtwork(raw, index);
-            return {
-              id: `art-${index}`,
-              originalIndex: index,
-              title: art.title,
-              imageUrl: art.imageUrl,
-            };
-          })
+          loaded.items.map((raw, index) => ({
+            id: `item-${index}`,
+            originalIndex: index,
+            ...tileFor(raw, index),
+          }))
         );
       })
       .catch((err: unknown) => {
         setLoadError(
-          err instanceof Error ? err.message : "Couldn't load the gallery."
+          err instanceof Error ? err.message : "Couldn't load this page."
         );
       });
+    // config/tileFor are stable per grid; this runs once per mode entry.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -174,8 +262,8 @@ export default function GalleryReorderMode({
     draggingRef.current = true;
   }, []);
 
-  // Reorder live while dragging: the masonry reflows into the exact layout
-  // that will persist, so the drop spot is never a surprise.
+  // Reorder live while dragging: the grid reflows into the exact layout that
+  // will persist, so the drop spot is never a surprise.
   const handleDragOver = useCallback(
     (event: DragOverEvent) => {
       moveTile(event.active.id, event.over?.id);
@@ -202,14 +290,10 @@ export default function GalleryReorderMode({
     setSaving(true);
     try {
       const order = tiles.map((tile) => tile.originalIndex);
-      await saveGalleryOrder(doc, order);
-      invalidateLiveContentCache("gallery");
-      toast({ title: "Gallery order saved" });
-      onSaved(
-        order.map((originalIndex, index) =>
-          toGalleryArtwork(doc.artworks[originalIndex], index)
-        )
-      );
+      await saveGridOrder(config, doc, order);
+      invalidateLiveContentCache();
+      toast({ title: "New order saved" });
+      onSaved(order.map((originalIndex) => doc.items[originalIndex]));
     } catch (err) {
       toast({
         title: "Couldn't save the new order",
@@ -219,11 +303,11 @@ export default function GalleryReorderMode({
       });
       setSaving(false);
     }
-  }, [doc, saving, tiles, toast, onSaved]);
+  }, [doc, saving, tiles, toast, onSaved, config]);
 
   const handleCancel = useCallback(() => {
     if (saving) return;
-    if (dirty && !window.confirm("Discard the new gallery order?")) return;
+    if (dirty && !window.confirm("Discard the new order?")) return;
     onCancel();
   }, [saving, dirty, onCancel]);
 
@@ -241,7 +325,7 @@ export default function GalleryReorderMode({
   const actionBar = createPortal(
     <div className="fixed bottom-4 left-1/2 z-[1000] -translate-x-1/2 flex items-center gap-2 rounded-full border border-border bg-background/95 px-3 py-2 shadow-lg backdrop-blur">
       <span className="hidden sm:block px-2 text-xs text-muted-foreground">
-        Drag artwork to rearrange
+        Drag items to rearrange
       </span>
       <Btn kind="outline" size="sm" onClick={handleCancel} disabled={saving}>
         Cancel
@@ -264,7 +348,7 @@ export default function GalleryReorderMode({
         <p className="text-sm text-muted-foreground mb-4">{loadError}</p>
         <div className="flex justify-center gap-3">
           <Btn kind="outline" size="sm" onClick={onCancel}>
-            Back to gallery
+            Back
           </Btn>
           <Btn kind="primary" size="sm" onClick={load}>
             Retry
@@ -276,11 +360,15 @@ export default function GalleryReorderMode({
 
   if (!doc) {
     return (
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-        {Array.from({ length: 9 }).map((_, i) => (
+      <div className={CONTAINER_CLASSES[variant]}>
+        {Array.from({ length: variant === "masonry" ? 9 : 8 }).map((_, i) => (
           <div
             key={i}
-            className="break-inside-avoid aspect-[3/4] rounded-lg bg-muted animate-pulse"
+            className={`rounded-lg bg-muted animate-pulse ${
+              variant === "masonry"
+                ? "break-inside-avoid aspect-[3/4]"
+                : "h-64"
+            }`}
           />
         ))}
       </div>
@@ -299,14 +387,15 @@ export default function GalleryReorderMode({
         onDragCancel={handleDragCancel}
       >
         <SortableContext items={tiles.map((t) => t.id)}>
-          {/* Same masonry classes as the public grid, so the layout — and
-              therefore the drop position — matches what visitors will see. */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 pb-20">
+          {/* Same layout classes as the grid's public view, so the drop
+              position matches what visitors will see. */}
+          <div className={CONTAINER_CLASSES[variant]}>
             {tiles.map((tile, index) => (
-              <SortableArtwork
+              <SortableTile
                 key={tile.id}
                 tile={tile}
                 position={index + 1}
+                variant={variant}
                 jiggleAlt={index % 2 === 1}
               />
             ))}
@@ -315,13 +404,8 @@ export default function GalleryReorderMode({
         {createPortal(
           <DragOverlay adjustScale={false}>
             {activeTile ? (
-              <div className="rounded-lg overflow-hidden border border-border/50 shadow-2xl ring-2 ring-[var(--ink)]/25 scale-[1.04] cursor-grabbing">
-                <img
-                  src={activeTile.imageUrl}
-                  alt={activeTile.title}
-                  className="w-full h-auto"
-                  draggable={false}
-                />
+              <div className="rounded-lg overflow-hidden border border-border/50 shadow-2xl ring-2 ring-[var(--ink)]/25 scale-[1.04] cursor-grabbing h-full">
+                <TileContent tile={activeTile} variant={variant} />
               </div>
             ) : null}
           </DragOverlay>,

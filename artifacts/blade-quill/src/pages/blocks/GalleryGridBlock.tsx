@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
-import { ChevronLeft, ChevronRight, Download, Move, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, X } from "lucide-react";
 import { tinaField } from "tinacms/react";
 import { useLiveGallery } from "@/hooks/use-live-content";
 import { FALLBACK_GALLERY } from "@/lib/fallback-data";
@@ -9,16 +9,26 @@ import {
   fileNameFromUrl,
   galleryArtworksFromRaw,
   hasDownloadFile,
+  isGalleryGridBlock,
   rawGalleryItems,
   resolveGalleryArtworks,
+  toGalleryArtwork,
   type GalleryArtwork,
 } from "@/lib/gallery";
-import { canReorderGallery } from "@/lib/gallery-reorder";
+import { type GridReorderConfig } from "@/lib/grid-reorder";
+import { useCanRearrange } from "@/hooks/use-can-rearrange";
 import { Btn } from "@/components/site/Btn";
 import { FreeResourceBadge } from "@/components/site/FreeResourceBadge";
 import { type Block } from "./block-utils";
-import GalleryReorderMode from "./GalleryReorderMode";
+import GridReorderMode, { RearrangeButton } from "./GridReorderMode";
 import { SectionHeading } from "./text-style";
+
+/** Where the gallery's ordered artwork list lives in Tina. */
+const GALLERY_REORDER: GridReorderConfig = {
+  relativePath: "gallery.json",
+  listField: GALLERY_GRID_LIST_FIELD,
+  isGridBlock: isGalleryGridBlock,
+};
 
 export function GalleryLightbox({
   items,
@@ -210,7 +220,7 @@ export default function GalleryGridBlock({ block }: Props) {
 
   // Admin drag-to-reorder (iPhone-style) — only on the grid that owns the
   // artwork list, for signed-in admins (always available in local dev).
-  const [canReorder] = useState(() => canReorderGallery());
+  const canReorder = useCanRearrange();
   const [reordering, setReordering] = useState(false);
   // Order saved this session — shown until the rebuilt/live content catches up.
   const [savedOrder, setSavedOrder] = useState<GalleryArtwork[] | null>(null);
@@ -258,23 +268,24 @@ export default function GalleryGridBlock({ block }: Props) {
     <section className="py-6">
       <div className="container mx-auto px-4 md:px-6">
         {showReorderButton && (
-          <div className="mb-4 flex justify-end">
-            <button
-              type="button"
-              onClick={() => setReordering(true)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-3.5 py-2 text-xs font-semibold text-muted-foreground shadow-sm transition-colors hover:text-foreground hover:border-foreground/40"
-              title="Drag artwork into a new order (admin only)"
-            >
-              <Move className="w-3.5 h-3.5" aria-hidden />
-              Rearrange artwork
-            </button>
-          </div>
+          <RearrangeButton
+            label="Rearrange artwork"
+            onClick={() => setReordering(true)}
+          />
         )}
         {reordering ? (
-          <GalleryReorderMode
+          <GridReorderMode
+            config={GALLERY_REORDER}
+            variant="masonry"
+            tileFor={(raw, index) => {
+              const art = toGalleryArtwork(raw, index);
+              return { title: art.title, imageUrl: art.imageUrl || null };
+            }}
             onCancel={() => setReordering(false)}
-            onSaved={(ordered) => {
-              setSavedOrder(ordered);
+            onSaved={(orderedRaw) => {
+              setSavedOrder(
+                galleryArtworksFromRaw(orderedRaw)
+              );
               setReordering(false);
             }}
           />

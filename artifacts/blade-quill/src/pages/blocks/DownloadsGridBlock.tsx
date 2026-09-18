@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Download as DownloadIcon, FileText } from "lucide-react";
 import { tinaField } from "tinacms/react";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,11 +9,23 @@ import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
 import {
   DOWNLOADS_GRID_LIST_FIELD,
   downloadItemsFromRaw,
+  isDownloadsGridBlock,
   rawDownloadItems,
   resolveDownloadItems,
+  toDownloadItem,
 } from "@/lib/downloads";
+import { type GridReorderConfig } from "@/lib/grid-reorder";
+import { useCanRearrange } from "@/hooks/use-can-rearrange";
 import { type Block } from "./block-utils";
+import GridReorderMode, { RearrangeButton } from "./GridReorderMode";
 import { SectionHeading } from "./text-style";
+
+/** Where the downloads' ordered list lives in Tina. */
+const DOWNLOADS_REORDER: GridReorderConfig = {
+  relativePath: "downloads.json",
+  listField: DOWNLOADS_GRID_LIST_FIELD,
+  isGridBlock: isDownloadsGridBlock,
+};
 
 interface Props {
   block: Block;
@@ -47,22 +59,63 @@ export default function DownloadsGridBlock({ block }: Props) {
   const catalog = ownItems.length > 0 ? ownItems : sharedCatalog;
   const hasCatalog = catalog.length > 0;
   const { data: downloadsRaw, isLoading } = useListDownloads();
-  const downloads = resolveDownloadItems(
+  const baseDownloads = resolveDownloadItems(
     asArray<Download>(downloadsRaw),
     FALLBACK_DOWNLOADS,
     catalog
   );
+
+  // Admin drag-to-reorder (iPhone-style) — only on the grid that owns the
+  // downloads list, for signed-in admins (always available in local dev).
+  const canReorder = useCanRearrange();
+  const [reordering, setReordering] = useState(false);
+  // Order saved this session — shown until the rebuilt/live content catches up.
+  const [savedOrder, setSavedOrder] = useState<Download[] | null>(null);
+
+  const downloads = useMemo(() => {
+    if (!savedOrder || savedOrder.length !== baseDownloads.length)
+      return baseDownloads;
+    // Only trust the session override while it's the same set of items.
+    const current = new Set(baseDownloads.map((item) => item.fileUrl));
+    return savedOrder.every((item) => current.has(item.fileUrl))
+      ? savedOrder
+      : baseDownloads;
+  }, [baseDownloads, savedOrder]);
+
   const showLoading = !hasCatalog && isLoading;
   const editorField = (index: number): string | undefined => {
-    if (ownItems.length === 0) return undefined;
+    if (ownItems.length === 0 || savedOrder) return undefined;
     const raw = rawItems[index];
     return raw ? tinaField(raw as object) : undefined;
   };
 
+  const showReorderButton =
+    canReorder && !reordering && ownItems.length > 1 && downloads.length > 1;
+
   return (
     <section className="py-6">
       <div className="container mx-auto px-4 md:px-6">
-        {showLoading ? (
+        {showReorderButton && (
+          <RearrangeButton
+            label="Rearrange downloads"
+            onClick={() => setReordering(true)}
+          />
+        )}
+        {reordering ? (
+          <GridReorderMode
+            config={DOWNLOADS_REORDER}
+            variant="cards"
+            tileFor={(raw, index) => {
+              const item = toDownloadItem(raw, index);
+              return { title: item.title, imageUrl: item.thumbnailUrl || null };
+            }}
+            onCancel={() => setReordering(false)}
+            onSaved={(orderedRaw) => {
+              setSavedOrder(downloadItemsFromRaw(orderedRaw));
+              setReordering(false);
+            }}
+          />
+        ) : showLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="animate-pulse bg-muted rounded-xl h-72" />
