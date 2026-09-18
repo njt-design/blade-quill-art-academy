@@ -210,7 +210,7 @@
       "_template": "imageBanners"
     },
     {
-      "heading": "Leave your reviews here",
+      "heading": "Leave a review",
       "intro": {
         "type": "root",
         "children": [
@@ -219,7 +219,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Reviews mean the world and truly help others discover the book."
+                "text": "Your feedback helps me improve my books and allows others to discover my work."
               }
             ],
             "id": "nE0aF7WvM_"
