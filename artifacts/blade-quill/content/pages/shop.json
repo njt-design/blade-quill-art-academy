@@ -208,6 +208,34 @@
       ],
       "layout": "stacked",
       "_template": "imageBanners"
+    },
+    {
+      "heading": "Leave your reviews here",
+      "intro": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Reviews mean the world and truly help others discover the book."
+              }
+            ],
+            "id": "nE0aF7WvM_"
+          }
+        ]
+      },
+      "thankYou": "Thank you so much for your support!",
+      "ctaHeading": "",
+      "links": [
+        {
+          "label": "Review on Gumroad",
+          "href": "https://",
+          "region": "US"
+        }
+      ],
+      "_template": "reviewLinks"
     }
   ]
 }
