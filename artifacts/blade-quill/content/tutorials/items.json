@@ -1,6 +1,27 @@
 {
   "items": [
     {
+      "title": "Creating a Vector Image in Krita",
+      "youtubeId": "https://www.youtube.com/watch?v=QNXg9H-ru8s",
+      "description": "Create crisp, scalable vector images using Krita's vector tools.",
+      "topic": "Tools",
+      "featured": false
+    },
+    {
+      "title": "Transform Tool Deep Dive",
+      "youtubeId": "https://www.youtube.com/watch?v=wlc4hQjOQKQ",
+      "description": "Scale, rotate, skew, and warp with precision.",
+      "topic": "Tools",
+      "featured": false
+    },
+    {
+      "title": "How to Install and Manage Brushes in Krita",
+      "youtubeId": "https://www.youtube.com/watch?v=Fxy8hJUKY10",
+      "description": "Download, install, organize, and create custom brush packs.",
+      "topic": "Brushes",
+      "featured": true
+    },
+    {
       "title": "Learn Different Ways to Remove Backgrounds in Krita",
       "youtubeId": "https://www.youtube.com/watch?v=63_gp_rFtOc",
       "description": "Master background removal in Krita using multiple techniques.",
@@ -27,27 +48,6 @@
       "description": "A comprehensive walkthrough of all Krita selection tools.",
       "topic": "Tools",
       "featured": false
-    },
-    {
-      "title": "Creating a Vector Image in Krita",
-      "youtubeId": "https://www.youtube.com/watch?v=QNXg9H-ru8s",
-      "description": "Create crisp, scalable vector images using Krita's vector tools.",
-      "topic": "Tools",
-      "featured": false
-    },
-    {
-      "title": "Transform Tool Deep Dive",
-      "youtubeId": "https://www.youtube.com/watch?v=wlc4hQjOQKQ",
-      "description": "Scale, rotate, skew, and warp with precision.",
-      "topic": "Tools",
-      "featured": false
-    },
-    {
-      "title": "How to Install and Manage Brushes in Krita",
-      "youtubeId": "https://www.youtube.com/watch?v=Fxy8hJUKY10",
-      "description": "Download, install, organize, and create custom brush packs.",
-      "topic": "Brushes",
-      "featured": true
     },
     {
       "title": "Create Your Own Custom Brushes in Krita",
