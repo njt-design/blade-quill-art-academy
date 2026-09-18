@@ -283,6 +283,11 @@
           }
         ]
       },
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "align": "center"
+      },
       "_template": "text"
     }
   ]
