@@ -31,6 +31,11 @@
           }
         ]
       },
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "h1",
+        "align": "center"
+      },
       "_template": "imageSpotlight"
     },
     {
