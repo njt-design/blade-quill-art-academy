@@ -185,6 +185,9 @@
           }
         ]
       },
+      "textStyle": {
+        "headingSize": "xl"
+      },
       "_template": "text"
     },
     {
