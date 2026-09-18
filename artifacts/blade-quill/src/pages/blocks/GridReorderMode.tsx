@@ -29,7 +29,7 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, useSortable } from "@dnd-kit/sortable";
 import { motion } from "framer-motion";
-import { FileText, Move } from "lucide-react";
+import { ExternalLink, FileText, Move } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Btn } from "@/components/site/Btn";
 import {
@@ -159,12 +159,20 @@ function SortableTile({
   );
 }
 
-/** The admin-only pill that opens rearrange mode on a grid. */
+/**
+ * The admin-only pill that opens rearrange mode on a grid.
+ *
+ * Inside the Tina visual editor (`external`) it opens the live page in a new
+ * tab instead — rearranging happens on the standalone page so its save can't
+ * fight the editor's open form.
+ */
 export function RearrangeButton({
   label,
+  external = false,
   onClick,
 }: {
   label: string;
+  external?: boolean;
   onClick: () => void;
 }) {
   return (
@@ -173,12 +181,26 @@ export function RearrangeButton({
         type="button"
         onClick={onClick}
         className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-3.5 py-2 text-xs font-semibold text-muted-foreground shadow-sm transition-colors hover:text-foreground hover:border-foreground/40"
-        title="Drag items into a new order (admin only)"
+        title={
+          external
+            ? "Opens the live page in a new tab, ready to rearrange"
+            : "Drag items into a new order (admin only)"
+        }
       >
         <Move className="w-3.5 h-3.5" aria-hidden />
         {label}
+        {external && <ExternalLink className="w-3 h-3" aria-hidden />}
       </button>
     </div>
+  );
+}
+
+/** Open this page standalone (out of the editor iframe) in rearrange mode. */
+export function openRearrangePage(): void {
+  window.open(
+    `${window.location.origin}${window.location.pathname}?rearrange`,
+    "_blank",
+    "noopener"
   );
 }
 

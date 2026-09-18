@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Download as DownloadIcon, FileText } from "lucide-react";
 import { tinaField } from "tinacms/react";
 import { buttonVariants } from "@/components/ui/button";
@@ -14,10 +14,14 @@ import {
   resolveDownloadItems,
   toDownloadItem,
 } from "@/lib/downloads";
-import { type GridReorderConfig } from "@/lib/grid-reorder";
+import { hasRearrangeParam, type GridReorderConfig } from "@/lib/grid-reorder";
+import { isInTinaEditor } from "@/lib/tina-live";
 import { useCanRearrange } from "@/hooks/use-can-rearrange";
 import { type Block } from "./block-utils";
-import GridReorderMode, { RearrangeButton } from "./GridReorderMode";
+import GridReorderMode, {
+  RearrangeButton,
+  openRearrangePage,
+} from "./GridReorderMode";
 import { SectionHeading } from "./text-style";
 
 /** Where the downloads' ordered list lives in Tina. */
@@ -67,8 +71,18 @@ export default function DownloadsGridBlock({ block }: Props) {
 
   // Admin drag-to-reorder (iPhone-style) — only on the grid that owns the
   // downloads list, for signed-in admins (always available in local dev).
+  // Inside the Tina editor the button opens the live page in a new tab.
   const canReorder = useCanRearrange();
+  const inEditor = isInTinaEditor();
   const [reordering, setReordering] = useState(false);
+
+  // Arriving with ?rearrange (e.g. from the editor button) jumps straight in.
+  const autoEntered = ownItems.length > 1 && canReorder && hasRearrangeParam();
+  useEffect(() => {
+    if (autoEntered) setReordering(true);
+    // Mount-only: entering once is enough; Cancel must stay cancelled.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // Order saved this session — shown until the rebuilt/live content catches up.
   const [savedOrder, setSavedOrder] = useState<Download[] | null>(null);
 
@@ -90,7 +104,10 @@ export default function DownloadsGridBlock({ block }: Props) {
   };
 
   const showReorderButton =
-    canReorder && !reordering && ownItems.length > 1 && downloads.length > 1;
+    (canReorder || inEditor) &&
+    !reordering &&
+    ownItems.length > 1 &&
+    downloads.length > 1;
 
   return (
     <section className="py-6">
@@ -98,7 +115,10 @@ export default function DownloadsGridBlock({ block }: Props) {
         {showReorderButton && (
           <RearrangeButton
             label="Rearrange downloads"
-            onClick={() => setReordering(true)}
+            external={inEditor}
+            onClick={() =>
+              inEditor ? openRearrangePage() : setReordering(true)
+            }
           />
         )}
         {reordering ? (

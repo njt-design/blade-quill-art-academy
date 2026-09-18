@@ -33,6 +33,16 @@ export interface GridReorderConfig {
   isGridBlock: (block: unknown) => block is Record<string, unknown>;
 }
 
+/** True when the page was opened with `?rearrange` (e.g. from the editor). */
+export function hasRearrangeParam(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return new URLSearchParams(window.location.search).has("rearrange");
+  } catch {
+    return false;
+  }
+}
+
 /**
  * True when the current visitor may rearrange grids from the site:
  * signed-in admins (Tina session in localStorage), local dev, or an explicit
@@ -45,13 +55,7 @@ export function canRearrangeGrids(): boolean {
   if (typeof window === "undefined") return false;
   if (isInTinaEditor()) return false;
   if (import.meta.env.DEV) return true;
-  try {
-    if (new URLSearchParams(window.location.search).has("rearrange")) {
-      return true;
-    }
-  } catch {
-    // ignore
-  }
+  if (hasRearrangeParam()) return true;
   return hasTinaSession();
 }
 
