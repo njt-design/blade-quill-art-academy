@@ -235,6 +235,11 @@
           "region": "US"
         }
       ],
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "bodySize": "large"
+      },
       "_template": "reviewLinks"
     },
     {
