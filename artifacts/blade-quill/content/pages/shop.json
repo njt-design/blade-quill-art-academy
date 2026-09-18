@@ -41,29 +41,6 @@
           {
             "children": [
               {
-                "text": "Placeholder text"
-              }
-            ],
-            "id": "uPvmuYzbv2",
-            "type": "p"
-          }
-        ]
-      },
-      "buttonLabel": "Gumroad",
-      "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle?layout=profile",
-      "layout": "beside",
-      "buttonAlign": "right",
-      "buttonStyle": "primary",
-      "_template": "textButton"
-    },
-    {
-      "heading": "",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
                 "text": "GRAB YOUR BUNDLE NOW!"
               }
             ],
@@ -81,9 +58,12 @@
           }
         ]
       },
-      "ctaLabel": "Gumroad",
-      "ctaLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
-      "_template": "hero"
+      "buttonLabel": "Gumroad",
+      "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle?layout=profile",
+      "layout": "centered",
+      "buttonAlign": "center",
+      "buttonStyle": "primary",
+      "_template": "textButton"
     },
     {
       "eyebrow": "",
