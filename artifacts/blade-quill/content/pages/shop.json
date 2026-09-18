@@ -253,7 +253,7 @@
         "type": "root",
         "children": [
           {
-            "type": "p",
+            "type": "h6",
             "children": [
               {
                 "text": ""
@@ -290,6 +290,15 @@
               }
             ],
             "id": "UVfvdxKKdw"
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "R8nq2N5dDX"
           }
         ]
       },
