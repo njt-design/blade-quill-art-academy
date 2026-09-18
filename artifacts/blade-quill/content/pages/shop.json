@@ -66,94 +66,6 @@
       "_template": "textButton"
     },
     {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG Images Only/Super-Fun-Bundle-Image-970-x-300-px.png",
-      "caption": "",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "RjbFyPqCZR"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
-    },
-    {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG%20Images%20Only/Coloring-book-image-970-x-300-px.png",
-      "caption": "",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "OLcSePTisD"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
-    },
-    {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG%20Images%20Only/Comic-book-image-970-x-300-px.png",
-      "caption": "",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "nl35MPe4Y3"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
-    },
-    {
-      "eyebrow": "",
-      "heading": "",
-      "image": "/images/PNG%20Images%20Only/Activity-book-image-970-x-300-px.png",
-      "caption": "",
-      "aspect": "landscape",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "4gZvtuXOnU"
-          }
-        ]
-      },
-      "_template": "imageSpotlight"
-    },
-    {
       "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
@@ -260,27 +172,6 @@
         ]
       },
       "_template": "text"
-    },
-    {
-      "images": [
-        {
-          "src": "/images/Screenshot-2026-09-16-at-8.58.37-PM.png"
-        },
-        {
-          "src": "/images/Screenshot-2026-09-16-at-8.58.26-PM.png"
-        },
-        {
-          "src": "/images/Screenshot-2026-09-16-at-8.58.20-PM.png"
-        },
-        {
-          "src": "/images/Screenshot-2026-09-16-at-8.58.12-PM.png"
-        },
-        {
-          "src": "/images/Screenshot-2026-09-16-at-9.41.17-PM.png"
-        }
-      ],
-      "layout": "gallery",
-      "_template": "imageBanners"
     },
     {
       "heading": "This is the stacked version with a heading",
