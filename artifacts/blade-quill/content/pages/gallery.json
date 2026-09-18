@@ -24,9 +24,20 @@
     {
       "artworks": [
         {
+          "title": "Chibi Giraffe",
+          "image": "/images/squarespace/digital-paintings/chibi-giraffe.png",
+          "description": "A tall chibi giraffe with expressive eyes"
+        },
+        {
           "title": "Steampunk Girl",
           "image": "/images/squarespace/digital-paintings/steampunk.jpg",
           "description": "A steampunk-themed girl with mechanical accessories"
+        },
+        {
+          "title": "Geisha",
+          "image": "/images/squarespace/digital-paintings/geisha.jpg",
+          "description": "An elegant geisha in full traditional attire",
+          "downloadFile": ""
         },
         {
           "title": "Steampunk Cat",
@@ -62,20 +73,9 @@
           "downloadFile": ""
         },
         {
-          "title": "Geisha",
-          "image": "/images/squarespace/digital-paintings/geisha.jpg",
-          "description": "An elegant geisha in full traditional attire",
-          "downloadFile": ""
-        },
-        {
           "title": "Child and Bear",
           "image": "/images/squarespace/digital-paintings/child-and-bear.jpg",
           "description": "A heartwarming scene of a child with a bear companion"
-        },
-        {
-          "title": "Chibi Ninja Man",
-          "image": "/images/squarespace/digital-paintings/chibi-ninja-man.png",
-          "description": "A stealthy chibi ninja warrior"
         },
         {
           "title": "Chibi Ninja Girl",
@@ -104,9 +104,9 @@
           "description": "A playful chibi hippo with big personality"
         },
         {
-          "title": "Chibi Giraffe",
-          "image": "/images/squarespace/digital-paintings/chibi-giraffe.png",
-          "description": "A tall chibi giraffe with expressive eyes"
+          "title": "Chibi Ninja Man",
+          "image": "/images/squarespace/digital-paintings/chibi-ninja-man.png",
+          "description": "A stealthy chibi ninja warrior"
         },
         {
           "title": "Chibi Dragon",
