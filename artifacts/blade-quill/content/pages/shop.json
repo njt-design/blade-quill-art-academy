@@ -236,6 +236,54 @@
         }
       ],
       "_template": "reviewLinks"
+    },
+    {
+      "heading": "How to leave a review",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_EMAIL-RECEIPT.png",
+                "caption": "",
+                "alt": "",
+                "id": "or8bex8xaS"
+              },
+              {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_DOWNLOAD-REVIEW-PAGE.png",
+                "caption": "",
+                "alt": "",
+                "id": "akNy_jB1IL"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "id": "UVfvdxKKdw"
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
