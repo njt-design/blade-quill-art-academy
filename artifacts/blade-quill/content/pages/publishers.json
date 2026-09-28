@@ -54,7 +54,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "12,000+ artists learn Krita with Corinne on YouTube, Lheeloo & Luna share new antics on Instagram every week, and her Pinterest boards power ongoing ad campaigns. See the platform for yourself."
+                "text": "13,000+ artists learn Krita with Corinne on YouTube, Lheeloo & Luna share new antics on Instagram every week, and her Pinterest boards power ongoing ad campaigns. See the platform for yourself."
               }
             ],
             "id": "BRiq8N5-2k"
@@ -83,28 +83,16 @@
           "label": "Ko-fi"
         }
       ],
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "h1"
+      },
       "_template": "socialLinks"
     },
     {
       "number": "01",
       "label": "THE WORK",
       "cards": [
-        {
-          "tag": "CARTOON BOOK",
-          "title": "Lheeloo & Luna",
-          "body": "Character-driven humor with all-ages appeal, published 2025.",
-          "image": "/images/Lheeloo-and-Luna-cover.jpg",
-          "ctaLabel": "View the book",
-          "link": "/shop/lheeloo-luna-cartoon-book"
-        },
-        {
-          "tag": "ACTIVITY BOOK",
-          "title": "Super Fun Activity Book",
-          "body": "A puzzle and activity spin-off for kids 8–12 starring the same characters, published 2026.",
-          "image": "/images/Activity-book.jpg",
-          "ctaLabel": "View the book",
-          "link": "/shop/super-fun-activity-book"
-        },
         {
           "tag": "PROCESS",
           "title": "The Making of Lheeloo & Luna",
@@ -154,6 +142,11 @@
             ]
           }
         ]
+      },
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "h1",
+        "align": "center"
       },
       "_template": "text"
     }
