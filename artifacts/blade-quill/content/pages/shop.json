@@ -174,7 +174,14 @@
                 "bold": true
               },
               {
-                "text": "You don’t have to print the cartoon book! You can download the PDF and enjoy it on your tablet, saving both paper and ink. If you need a free PDF reader, "
+                "text": "You don’t have to print the cartoon book! You can download the PDF and enjoy it on your tablet, saving both paper and ink. If you need "
+              },
+              {
+                "text": "a free PDF reader,",
+                "bold": true
+              },
+              {
+                "text": " "
               },
               {
                 "children": [
