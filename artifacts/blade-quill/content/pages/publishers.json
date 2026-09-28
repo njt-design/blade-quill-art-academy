@@ -177,6 +177,11 @@
           }
         ]
       },
+      "textStyle": {
+        "headingSize": "default",
+        "headingType": "h1",
+        "headingFont": "default"
+      },
       "_template": "imageSpotlight"
     }
   ]
