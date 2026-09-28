@@ -171,27 +171,27 @@
             "id": "CQ2nTcmnW0",
             "children": [
               {
-                "text": " 💡"
+                "text": "💡"
               },
               {
-                "text": "Important note:",
+                "text": " A little tip: ",
                 "bold": true
               },
               {
-                "text": " Reading Lheeloo and Luna's comics on a tablet is recommended. You'll get to enjoy all the colored designs while saving ink. If you don't have Adobe Acrobat, download the free alternative PDF Gear at "
+                "text": "You don’t have to print the cartoon book! You can download the PDF and enjoy it on your tablet, saving both paper and ink. If you need a free PDF reader, "
               },
               {
                 "children": [
                   {
-                    "text": "https://www.pdfgear.com/"
+                    "text": "PDFgear"
                   }
                 ],
                 "type": "a",
                 "url": "https://www.pdfgear.com/",
-                "id": "T465q_evE3"
+                "id": "_5MLs9fiKh"
               },
               {
-                "text": ". That's the one I use. "
+                "text": " is one option, but there are many others available online."
               }
             ]
           },
