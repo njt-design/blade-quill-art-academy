@@ -90,21 +90,6 @@
       "_template": "socialLinks"
     },
     {
-      "number": "01",
-      "label": "THE WORK",
-      "cards": [
-        {
-          "tag": "PROCESS",
-          "title": "The Making of Lheeloo & Luna",
-          "body": "Sketches to establish the characters — the full development story.",
-          "image": "/images/The-Making-of-Lheeloo-and-Luna.jpg",
-          "ctaLabel": "Read the story",
-          "link": "/p/the-making-of-lheeloo-and-luna"
-        }
-      ],
-      "_template": "cardRow"
-    },
-    {
       "heading": "About the author",
       "body": {
         "type": "root",
@@ -149,6 +134,50 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "eyebrow": "Process",
+      "heading": "Sketches to establish the characters — the full development story.",
+      "image": "/images/Lheeloo-poses.png",
+      "caption": "Read the story",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "From just an idea to the making of stories and gags"
+              }
+            ],
+            "type": "p",
+            "id": "l_cnl_rvR6"
+          },
+          {
+            "type": "p",
+            "id": "j0M5jIBxEp",
+            "children": [
+              {
+                "text": "See how Lheeloo and Luna were born. "
+              },
+              {
+                "children": [
+                  {
+                    "text": "READ STORY HERE"
+                  }
+                ],
+                "type": "a",
+                "url": "/p/the-making-of-lheeloo-and-luna",
+                "id": "D9eGPko1Gq"
+              },
+              {
+                "text": "."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
     }
   ]
 }
