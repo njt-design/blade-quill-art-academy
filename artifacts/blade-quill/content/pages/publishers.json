@@ -45,49 +45,53 @@
       "_template": "dummyBookRequest"
     },
     {
-      "heading": "An audience that's already following along",
+      "eyebrow": "Process",
+      "heading": "And a star was born!",
+      "image": "/images/Lheeloo-poses.png",
+      "caption": "",
+      "aspect": "landscape",
       "body": {
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "13,000+ artists learn Krita with Corinne on YouTube, Lheeloo & Luna share new antics on Instagram every week, and her Pinterest boards power ongoing ad campaigns. See the platform for yourself."
+                "text": "From just an idea to the making of stories and gags"
               }
             ],
-            "id": "BRiq8N5-2k"
+            "type": "p",
+            "id": "l_cnl_rvR6"
+          },
+          {
+            "type": "p",
+            "id": "j0M5jIBxEp",
+            "children": [
+              {
+                "text": "See how Lheeloo and Luna were born. "
+              },
+              {
+                "children": [
+                  {
+                    "text": "READ STORY HERE"
+                  }
+                ],
+                "type": "a",
+                "url": "/p/the-making-of-lheeloo-and-luna",
+                "id": "D9eGPko1Gq"
+              },
+              {
+                "text": "."
+              }
+            ]
           }
         ]
       },
-      "links": [
-        {
-          "platform": "youtube",
-          "url": "https://www.youtube.com/c/BladeQuillartacademy",
-          "label": "YouTube"
-        },
-        {
-          "platform": "instagram",
-          "url": "https://www.instagram.com/lheeloo_and_luna/",
-          "label": "Instagram"
-        },
-        {
-          "platform": "pinterest",
-          "url": "https://www.pinterest.com/celticcoco9161/",
-          "label": "Pinterest"
-        },
-        {
-          "platform": "kofi",
-          "url": "https://ko-fi.com/bladeandquill",
-          "label": "Ko-fi"
-        }
-      ],
       "textStyle": {
-        "headingSize": "xl",
-        "headingType": "h1"
+        "headingSize": "default",
+        "headingType": "h1",
+        "headingFont": "default"
       },
-      "_template": "socialLinks"
+      "_template": "imageSpotlight"
     },
     {
       "heading": "About the author",
@@ -136,53 +140,49 @@
       "_template": "text"
     },
     {
-      "eyebrow": "Process",
-      "heading": "And a star was born!",
-      "image": "/images/Lheeloo-poses.png",
-      "caption": "",
-      "aspect": "landscape",
+      "heading": "An audience that's already following along",
       "body": {
         "type": "root",
         "children": [
           {
+            "type": "p",
             "children": [
               {
-                "text": "From just an idea to the making of stories and gags"
+                "type": "text",
+                "text": "13,000+ artists learn Krita with Corinne on YouTube, Lheeloo & Luna share new antics on Instagram every week, and her Pinterest boards power ongoing ad campaigns. See the platform for yourself."
               }
             ],
-            "type": "p",
-            "id": "l_cnl_rvR6"
-          },
-          {
-            "type": "p",
-            "id": "j0M5jIBxEp",
-            "children": [
-              {
-                "text": "See how Lheeloo and Luna were born. "
-              },
-              {
-                "children": [
-                  {
-                    "text": "READ STORY HERE"
-                  }
-                ],
-                "type": "a",
-                "url": "/p/the-making-of-lheeloo-and-luna",
-                "id": "D9eGPko1Gq"
-              },
-              {
-                "text": "."
-              }
-            ]
+            "id": "BRiq8N5-2k"
           }
         ]
       },
+      "links": [
+        {
+          "platform": "youtube",
+          "url": "https://www.youtube.com/c/BladeQuillartacademy",
+          "label": "YouTube"
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/lheeloo_and_luna/",
+          "label": "Instagram"
+        },
+        {
+          "platform": "pinterest",
+          "url": "https://www.pinterest.com/celticcoco9161/",
+          "label": "Pinterest"
+        },
+        {
+          "platform": "kofi",
+          "url": "https://ko-fi.com/bladeandquill",
+          "label": "Ko-fi"
+        }
+      ],
       "textStyle": {
-        "headingSize": "default",
-        "headingType": "h1",
-        "headingFont": "default"
+        "headingSize": "xl",
+        "headingType": "h1"
       },
-      "_template": "imageSpotlight"
+      "_template": "socialLinks"
     }
   ]
 }
