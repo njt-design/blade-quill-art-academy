@@ -35,6 +35,11 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 overrides:
+  # Keep the whole Tina tree on the 3.12.0-era versions: @tinacms/cli's caret
+  # range on @tinacms/app otherwise floats to a release that nests a second,
+  # unpatched tinacms (3.14.x) into the admin bundle.
+  'tinacms': 3.12.0
+  '@tinacms/app': 2.5.11
   '@esbuild-kit/esm-loader': npm:tsx@^4.21.0
   '@expo/ngrok-bin>@expo/ngrok-bin-darwin-arm64': '-'
   '@expo/ngrok-bin>@expo/ngrok-bin-darwin-x64': '-'
@@ -114,4 +119,4 @@ overrides:
   rollup>@rollup/rollup-win32-x64-gnu: '-'
   rollup>@rollup/rollup-win32-x64-msvc: '-'
 patchedDependencies:
-  tinacms@3.11.0: patches/tinacms@3.11.0.patch
+  tinacms@3.12.0: patches/tinacms@3.12.0.patch

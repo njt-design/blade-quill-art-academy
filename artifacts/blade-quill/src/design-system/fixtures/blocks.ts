@@ -129,6 +129,18 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
       "Write anything here — headings, paragraphs, lists, quotes, highlights, tables, links, and inline images. Select words and click Link to add a link; off-site links open in a new tab on their own."
     ),
   },
+  textLeft: {
+    heading: "Pre-aligned to the left",
+    body: rt(
+      "Same fields as the centered Text Section, but the column sits against the left edge of the page and the text lines up left."
+    ),
+  },
+  textRight: {
+    heading: "Pre-aligned to the right",
+    body: rt(
+      "Same fields as the centered Text Section, but the column sits against the right edge of the page and the text lines up right."
+    ),
+  },
   story: {
     number: "01",
     label: "STORY",

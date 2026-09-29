@@ -385,34 +385,54 @@ var heroBlock = {
     ...textStyleFields()
   ]
 };
-var textBlock = {
-  name: "text",
-  label: "Text Section (Rich)",
-  ui: blockUi("text", "Text (Rich)", "heading", {
-    heading: "Section heading",
-    body: rt("Write anything here \u2014 paragraphs, lists, links, and more.")
-  }),
-  fields: [
-    {
-      type: "string",
-      name: "heading",
-      label: "Heading (optional)",
-      ui: charLimit(70, "Optional heading above the text content.")
-    },
-    {
-      type: "rich-text",
-      name: "body",
-      label: "Body",
-      parser: SLATE_JSON_PARSER,
-      templates: RICH_TEXT_TEMPLATES,
-      overrides: BODY_RICH_TEXT,
-      ui: {
-        description: "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2\u20134 are the regular sans-serif headings; Headings 5\u20136 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button \u2014 off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To center or right-align a passage, use Embed \u2192 Aligned Text."
-      }
-    },
-    ...textStyleFields()
-  ]
-};
+function makeTextBlock(name, label, shortLabel, placement) {
+  return {
+    name,
+    label,
+    ui: blockUi(name, shortLabel, "heading", {
+      heading: "Section heading",
+      body: rt("Write anything here \u2014 paragraphs, lists, links, and more.")
+    }),
+    fields: [
+      {
+        type: "string",
+        name: "heading",
+        label: "Heading (optional)",
+        ui: charLimit(70, "Optional heading above the text content.")
+      },
+      {
+        type: "rich-text",
+        name: "body",
+        label: "Body",
+        parser: SLATE_JSON_PARSER,
+        templates: RICH_TEXT_TEMPLATES,
+        overrides: BODY_RICH_TEXT,
+        ui: {
+          description: `${placement} Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2\u20134 are the regular sans-serif headings; Headings 5\u20136 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button \u2014 off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To align a single passage differently, use Embed \u2192 Aligned Text.`
+        }
+      },
+      ...textStyleFields()
+    ]
+  };
+}
+var textBlock = makeTextBlock(
+  "text",
+  "Text Section (Center)",
+  "Text (Center)",
+  "This section sits centered on the page."
+);
+var textLeftBlock = makeTextBlock(
+  "textLeft",
+  "Text Section (Left)",
+  "Text (Left)",
+  "This section sits against the left edge of the page with left-aligned text."
+);
+var textRightBlock = makeTextBlock(
+  "textRight",
+  "Text Section (Right)",
+  "Text (Right)",
+  "This section sits against the right edge of the page with right-aligned text."
+);
 var imageGalleryBlock = {
   name: "imageGallery",
   label: "Image Gallery (Manual)",
@@ -2602,6 +2622,8 @@ var ALL_BLOCKS = [
   pageHeaderBlock,
   // Content
   textBlock,
+  textLeftBlock,
+  textRightBlock,
   storyBlock,
   timelineBlock,
   statsRowBlock,

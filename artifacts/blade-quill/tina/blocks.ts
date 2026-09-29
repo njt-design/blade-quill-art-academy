@@ -383,35 +383,73 @@ export const heroBlock: Template = {
   ],
 };
 
-export const textBlock: Template = {
-  name: "text",
-  label: "Text Section (Rich)",
-  ui: blockUi("text", "Text (Rich)", "heading", {
-    heading: "Section heading",
-    body: rt("Write anything here — paragraphs, lists, links, and more."),
-  }),
-  fields: [
-    {
-      type: "string",
-      name: "heading",
-      label: "Heading (optional)",
-      ui: charLimit(70, "Optional heading above the text content."),
-    },
-    {
-      type: "rich-text",
-      name: "body",
-      label: "Body",
-      parser: SLATE_JSON_PARSER,
-      templates: RICH_TEXT_TEMPLATES,
-      overrides: BODY_RICH_TEXT,
-      ui: {
-        description:
-          "Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2–4 are the regular sans-serif headings; Headings 5–6 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button — off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To center or right-align a passage, use Embed → Aligned Text.",
+/**
+ * The three Text Section blocks share one field set and only differ in where
+ * the text column sits (and which way the text lines up) on the page:
+ *
+ * - "text"      → Text Section (Center): centered column, the original block.
+ * - "textLeft"  → Text Section (Left):   column hugs the left edge, text left.
+ * - "textRight" → Text Section (Right):  column hugs the right edge, text right.
+ *
+ * Text Style → Alignment still overrides the preset when set to anything
+ * other than Default. Rendered by src/pages/blocks/TextBlock.tsx.
+ */
+function makeTextBlock(
+  name: string,
+  label: string,
+  shortLabel: string,
+  placement: string
+): Template {
+  return {
+    name,
+    label,
+    ui: blockUi(name, shortLabel, "heading", {
+      heading: "Section heading",
+      body: rt("Write anything here — paragraphs, lists, links, and more."),
+    }),
+    fields: [
+      {
+        type: "string",
+        name: "heading",
+        label: "Heading (optional)",
+        ui: charLimit(70, "Optional heading above the text content."),
       },
-    },
-    ...textStyleFields(),
-  ],
-};
+      {
+        type: "rich-text",
+        name: "body",
+        label: "Body",
+        parser: SLATE_JSON_PARSER,
+        templates: RICH_TEXT_TEMPLATES,
+        overrides: BODY_RICH_TEXT,
+        ui: {
+          description: `${placement} Write like a document: headings, bold/italic, highlights, lists, quotes, dividers, tables, and images. Headings 2–4 are the regular sans-serif headings; Headings 5–6 are smaller fancy serif (Young Serif) styles. To link, select the words and click the Link button — off-site links open in a new tab automatically. Type / at the start of a line for quick headings and lists. To align a single passage differently, use Embed → Aligned Text.`,
+        },
+      },
+      ...textStyleFields(),
+    ],
+  };
+}
+
+export const textBlock: Template = makeTextBlock(
+  "text",
+  "Text Section (Center)",
+  "Text (Center)",
+  "This section sits centered on the page."
+);
+
+export const textLeftBlock: Template = makeTextBlock(
+  "textLeft",
+  "Text Section (Left)",
+  "Text (Left)",
+  "This section sits against the left edge of the page with left-aligned text."
+);
+
+export const textRightBlock: Template = makeTextBlock(
+  "textRight",
+  "Text Section (Right)",
+  "Text (Right)",
+  "This section sits against the right edge of the page with right-aligned text."
+);
 
 export const imageGalleryBlock: Template = {
   name: "imageGallery",
@@ -2719,6 +2757,8 @@ export const ALL_BLOCKS: Template[] = [
   pageHeaderBlock,
   // Content
   textBlock,
+  textLeftBlock,
+  textRightBlock,
   storyBlock,
   timelineBlock,
   statsRowBlock,

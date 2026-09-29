@@ -171,6 +171,30 @@ fragment PageParts on Page {
         bodySize
       }
     }
+    ... on PageBlocksTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PageBlocksTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PageBlocksStory {
       number
       label
@@ -918,6 +942,30 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageBlankBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksTextRight {
         heading
         body
         textStyle {
@@ -1684,6 +1732,30 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
+      ... on LandingPageEventBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageEventBlocksTextRight {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageEventBlocksStory {
         number
         label
@@ -2428,6 +2500,30 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPagePromoBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksTextRight {
         heading
         body
         textStyle {
@@ -3194,6 +3290,30 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
+      ... on LandingPageInfoBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageInfoBlocksTextRight {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageInfoBlocksStory {
         number
         label
@@ -3938,6 +4058,30 @@ fragment LandingPageParts on LandingPage {
         }
       }
       ... on LandingPageLinkInBioBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksTextRight {
         heading
         body
         textStyle {
@@ -4801,6 +4945,30 @@ fragment PostParts on Post {
         bodySize
       }
     }
+    ... on PostSectionsTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PostSectionsStory {
       number
       label
@@ -5576,6 +5744,30 @@ fragment ShopProductParts on ShopProduct {
         bodySize
       }
     }
+    ... on ShopProductBlocksTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on ShopProductBlocksStory {
       number
       label
@@ -6328,6 +6520,30 @@ fragment NavigationParts on Navigation {
             }
           }
           ... on PageBlocksText {
+            heading
+            body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksTextLeft {
+            heading
+            body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksTextRight {
             heading
             body
             textStyle {
@@ -7096,6 +7312,30 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+            ... on LandingPageBlankBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageBlankBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageBlankBlocksStory {
               number
               label
@@ -7840,6 +8080,30 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageEventBlocksText {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksTextRight {
               heading
               body
               textStyle {
@@ -8606,6 +8870,30 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+            ... on LandingPagePromoBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPagePromoBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPagePromoBlocksStory {
               number
               label
@@ -9361,6 +9649,30 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+            ... on LandingPageInfoBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageInfoBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageInfoBlocksStory {
               number
               label
@@ -10105,6 +10417,30 @@ fragment NavigationParts on Navigation {
               }
             }
             ... on LandingPageLinkInBioBlocksText {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksTextRight {
               heading
               body
               textStyle {
@@ -10891,6 +11227,30 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+            ... on PageBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksStory {
               number
               label
@@ -11637,6 +11997,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -12403,6 +12787,30 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksStory {
                 number
                 label
@@ -13147,6 +13555,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -13913,6 +14345,30 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksStory {
                 number
                 label
@@ -14657,6 +15113,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -15448,6 +15928,30 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
+            ... on PageBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksStory {
               number
               label
@@ -16194,6 +16698,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageBlankBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -16960,6 +17488,30 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksStory {
                 number
                 label
@@ -17704,6 +18256,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPagePromoBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -18470,6 +19046,30 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksStory {
                 number
                 label
@@ -19214,6 +19814,30 @@ fragment NavigationParts on Navigation {
                 }
               }
               ... on LandingPageLinkInBioBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextRight {
                 heading
                 body
                 textStyle {

@@ -14,6 +14,14 @@ const TEXT_STYLE_NOTE =
 
 const SECTIONS_LOCATION = "Any page → Page Sections → Add Section";
 
+/** Editing tips shared by the three Text Section blocks (Center / Left / Right). */
+const TEXT_SECTION_NOTES = [
+  "To link: select words → Link button → paste URL. Off-site links and PDFs open in a new tab automatically (shows ↗). Embed → Link (advanced) only when you need to force that on or off.",
+  "Type / at the start of a line for quick headings and lists; select text to get the floating “Turn into” menu.",
+  "To align a single passage differently from the rest: Embed → Aligned Text, pick the alignment, and write inside it. This works in every rich-text field, not just the Text Sections. (Text Style → Align still aligns the whole section.)",
+  "Inline images uploaded here should still follow the media guide below (≥1200px, kebab-case names).",
+];
+
 /** Common image spec fragments (site conventions — see Images & Media below). */
 const SPEC = {
   heroBg:
@@ -250,22 +258,60 @@ const HERO_BLOCKS: DesignSystemEntry[] = [
 const CONTENT_BLOCKS: DesignSystemEntry[] = [
   {
     id: "block-text",
-    name: "Text Section (Rich)",
+    name: "Text Section (Center)",
     category: "block",
     group: "Content",
     description:
-      "Rich-text section: paragraphs, headings (H2–H4), lists, quotes, highlights, dividers, tables, inline links and images, with an optional heading.",
+      "Rich-text section in a centered column: paragraphs, headings (H2–H4), lists, quotes, highlights, dividers, tables, inline links and images, with an optional heading.",
     demo: makeBlockDemo("text"),
     guidelines: {
       usage: "Any long-form copy. The workhorse block.",
       usedOn: ["/publishers", "/p/…"],
-      cmsLocation: `${SECTIONS_LOCATION} → Text Section (Rich)`,
+      cmsLocation: `${SECTIONS_LOCATION} → Text Section (Center)`,
       charLimits: [{ field: "heading", limit: 70 }],
       notes: [
-        "To link: select words → Link button → paste URL. Off-site links and PDFs open in a new tab automatically (shows ↗). Embed → Link (advanced) only when you need to force that on or off.",
-        "Type / at the start of a line for quick headings and lists; select text to get the floating “Turn into” menu.",
-        "To center or right-align a passage: Embed → Aligned Text, pick the alignment, and write inside it. This works in every rich-text field, not just Text Section (Rich). (Text Style → Align still aligns the whole section.)",
-        "Inline images uploaded here should still follow the media guide below (≥1200px, kebab-case names).",
+        ...TEXT_SECTION_NOTES,
+        "Need the whole section hugging one side of the page? Use Text Section (Left) or Text Section (Right) instead — same fields, pre-aligned.",
+        TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
+    id: "block-text-left",
+    name: "Text Section (Left)",
+    category: "block",
+    group: "Content",
+    description:
+      "Identical to Text Section (Center), but the column sits against the left edge of the page with left-aligned text.",
+    demo: makeBlockDemo("textLeft"),
+    guidelines: {
+      usage: "Long-form copy that should hug the left side — e.g. beside or above a right-heavy visual.",
+      usedOn: ["/p/…"],
+      cmsLocation: `${SECTIONS_LOCATION} → Text Section (Left)`,
+      charLimits: [{ field: "heading", limit: 70 }],
+      notes: [
+        ...TEXT_SECTION_NOTES,
+        "Text Style → Alignment (when not Default) overrides the text alignment but the column stays on the left.",
+        TEXT_STYLE_NOTE,
+      ],
+    },
+  },
+  {
+    id: "block-text-right",
+    name: "Text Section (Right)",
+    category: "block",
+    group: "Content",
+    description:
+      "Identical to Text Section (Center), but the column sits against the right edge of the page with right-aligned text.",
+    demo: makeBlockDemo("textRight"),
+    guidelines: {
+      usage: "Long-form copy that should hug the right side — e.g. to balance a left-heavy section above or below.",
+      usedOn: ["/p/…"],
+      cmsLocation: `${SECTIONS_LOCATION} → Text Section (Right)`,
+      charLimits: [{ field: "heading", limit: 70 }],
+      notes: [
+        ...TEXT_SECTION_NOTES,
+        "Text Style → Alignment (when not Default) overrides the text alignment but the column stays on the right.",
         TEXT_STYLE_NOTE,
       ],
     },

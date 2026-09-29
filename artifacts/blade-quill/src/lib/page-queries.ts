@@ -76,6 +76,8 @@ function withTextStyle(fields: string): string {
 export const BLOCK_FIELDS: Record<string, string> = {
   hero: withTextStyle("heading subheading backgroundImage ctaLabel ctaLink"),
   text: withTextStyle("heading body"),
+  textLeft: withTextStyle("heading body"),
+  textRight: withTextStyle("heading body"),
   imageGallery: withTextStyle("heading images { src alt caption }"),
   ctaBand: withTextStyle("heading description ctaLabel ctaLink variant"),
   textButton: "showText body buttonLabel buttonLink layout buttonAlign buttonStyle",

@@ -3,6 +3,8 @@ import { type Block } from "./block-utils";
 
 import HeroBlock from "./HeroBlock";
 import TextBlock from "./TextBlock";
+import TextLeftBlock from "./TextLeftBlock";
+import TextRightBlock from "./TextRightBlock";
 import TextButtonBlock from "./TextButtonBlock";
 import ImageGalleryBlock from "./ImageGalleryBlock";
 import CtaBandBlock from "./CtaBandBlock";
@@ -50,6 +52,8 @@ import DownloadsPreviewBlock from "./DownloadsPreviewBlock";
 const BLOCK_COMPONENTS: Record<string, ComponentType<{ block: Block }>> = {
   hero: HeroBlock,
   text: TextBlock,
+  textLeft: TextLeftBlock,
+  textRight: TextRightBlock,
   textButton: TextButtonBlock,
   imageGallery: ImageGalleryBlock,
   ctaBand: CtaBandBlock,

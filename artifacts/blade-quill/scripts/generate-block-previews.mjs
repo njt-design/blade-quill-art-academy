@@ -24,7 +24,9 @@ const BLOCKS = [
   ["aboutHero", "Hero — Portrait", "heroSplit"],
   ["hero", "Hero — Simple", "heroCenter"],
   ["pageHeader", "Page Header", "header"],
-  ["text", "Text Section", "text"],
+  ["text", "Text Section (Center)", "text"],
+  ["textLeft", "Text Section (Left)", "textLeft"],
+  ["textRight", "Text Section (Right)", "textRight"],
   ["story", "Story Section", "textSide"],
   ["timeline", "Timeline", "timeline"],
   ["statsRow", "Stats Row", "stats"],
@@ -83,11 +85,28 @@ function motifSvg(motif) {
     case "header":
       return [line(40, 60, 150, INK), line(40, 82, 250), line(40, 98, 200)].join("");
     case "text":
+      // Centered column
+      return [
+        line(135, 50, 130, INK),
+        line(90, 74, 220),
+        line(90, 90, 220),
+        line(120, 106, 160),
+      ].join("");
+    case "textLeft":
+      // Column hugging the left edge, text left-aligned
       return [
         line(40, 50, 130, INK),
-        line(40, 74, 280),
-        line(40, 90, 280),
-        line(40, 106, 220),
+        line(40, 74, 220),
+        line(40, 90, 220),
+        line(40, 106, 160),
+      ].join("");
+    case "textRight":
+      // Column hugging the right edge, text right-aligned
+      return [
+        line(230, 50, 130, INK),
+        line(140, 74, 220),
+        line(140, 90, 220),
+        line(200, 106, 160),
       ].join("");
     case "textSide":
       return [

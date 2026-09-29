@@ -1,0 +1,1 @@
+var o=Object.defineProperty,v=(e,t)=>o(e,"name",{value:t,configurable:!0});function d(e,t){var n,i;const{levels:l,indentLevel:r}=e;return((!l||l.length===0?r:l.at(-1)-(!((n=this.electricInput)===null||n===void 0)&&n.test(t)?1:0))||0)*(((i=this.config)===null||i===void 0?void 0:i.indentUnit)||0)}v(d,"indent");export{d as r};

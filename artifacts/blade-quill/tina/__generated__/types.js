@@ -179,6 +179,30 @@ export const PagePartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PageBlocksTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PageBlocksTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PageBlocksStory {
       number
       label
@@ -927,6 +951,30 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageBlankBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageBlankBlocksTextRight {
         heading
         body
         textStyle {
@@ -1693,6 +1741,30 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageEventBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageEventBlocksTextRight {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageEventBlocksStory {
         number
         label
@@ -2437,6 +2509,30 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPagePromoBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPagePromoBlocksTextRight {
         heading
         body
         textStyle {
@@ -3203,6 +3299,30 @@ export const LandingPagePartsFragmentDoc = gql`
           bodySize
         }
       }
+      ... on LandingPageInfoBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageInfoBlocksTextRight {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
       ... on LandingPageInfoBlocksStory {
         number
         label
@@ -3947,6 +4067,30 @@ export const LandingPagePartsFragmentDoc = gql`
         }
       }
       ... on LandingPageLinkInBioBlocksText {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksTextLeft {
+        heading
+        body
+        textStyle {
+          __typename
+          headingSize
+          headingType
+          headingFont
+          align
+          bodySize
+        }
+      }
+      ... on LandingPageLinkInBioBlocksTextRight {
         heading
         body
         textStyle {
@@ -4811,6 +4955,30 @@ export const PostPartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on PostSectionsTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on PostSectionsTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on PostSectionsStory {
       number
       label
@@ -5587,6 +5755,30 @@ export const ShopProductPartsFragmentDoc = gql`
         bodySize
       }
     }
+    ... on ShopProductBlocksTextLeft {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
+    ... on ShopProductBlocksTextRight {
+      heading
+      body
+      textStyle {
+        __typename
+        headingSize
+        headingType
+        headingFont
+        align
+        bodySize
+      }
+    }
     ... on ShopProductBlocksStory {
       number
       label
@@ -6340,6 +6532,30 @@ export const NavigationPartsFragmentDoc = gql`
             }
           }
           ... on PageBlocksText {
+            heading
+            body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksTextLeft {
+            heading
+            body
+            textStyle {
+              __typename
+              headingSize
+              headingType
+              headingFont
+              align
+              bodySize
+            }
+          }
+          ... on PageBlocksTextRight {
             heading
             body
             textStyle {
@@ -7108,6 +7324,30 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageBlankBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageBlankBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageBlankBlocksStory {
               number
               label
@@ -7852,6 +8092,30 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageEventBlocksText {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageEventBlocksTextRight {
               heading
               body
               textStyle {
@@ -8618,6 +8882,30 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPagePromoBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPagePromoBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPagePromoBlocksStory {
               number
               label
@@ -9373,6 +9661,30 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on LandingPageInfoBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageInfoBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on LandingPageInfoBlocksStory {
               number
               label
@@ -10117,6 +10429,30 @@ export const NavigationPartsFragmentDoc = gql`
               }
             }
             ... on LandingPageLinkInBioBlocksText {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on LandingPageLinkInBioBlocksTextRight {
               heading
               body
               textStyle {
@@ -10903,6 +11239,30 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksStory {
               number
               label
@@ -11649,6 +12009,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -12415,6 +12799,30 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksStory {
                 number
                 label
@@ -13159,6 +13567,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -13925,6 +14357,30 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksStory {
                 number
                 label
@@ -14669,6 +15125,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -15460,6 +15940,30 @@ export const NavigationPartsFragmentDoc = gql`
                 bodySize
               }
             }
+            ... on PageBlocksTextLeft {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
+            ... on PageBlocksTextRight {
+              heading
+              body
+              textStyle {
+                __typename
+                headingSize
+                headingType
+                headingFont
+                align
+                bodySize
+              }
+            }
             ... on PageBlocksStory {
               number
               label
@@ -16206,6 +16710,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageBlankBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageBlankBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -16972,6 +17500,30 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageEventBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageEventBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageEventBlocksStory {
                 number
                 label
@@ -17716,6 +18268,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPagePromoBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPagePromoBlocksTextRight {
                 heading
                 body
                 textStyle {
@@ -18482,6 +19058,30 @@ export const NavigationPartsFragmentDoc = gql`
                   bodySize
                 }
               }
+              ... on LandingPageInfoBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageInfoBlocksTextRight {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
               ... on LandingPageInfoBlocksStory {
                 number
                 label
@@ -19226,6 +19826,30 @@ export const NavigationPartsFragmentDoc = gql`
                 }
               }
               ... on LandingPageLinkInBioBlocksText {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextLeft {
+                heading
+                body
+                textStyle {
+                  __typename
+                  headingSize
+                  headingType
+                  headingFont
+                  align
+                  bodySize
+                }
+              }
+              ... on LandingPageLinkInBioBlocksTextRight {
                 heading
                 body
                 textStyle {
