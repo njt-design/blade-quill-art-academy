@@ -1,0 +1,55 @@
+name: Supabase keep-alive
+
+# Second, independent scheduler for the Supabase free-tier keep-alive.
+# Vercel already runs /api/keep-alive daily at 13:00 UTC (vercel.json crons),
+# but Vercel documents Hobby cron delivery as best-effort with no retries and
+# no failure alerts. The Supabase project was paused for inactivity once
+# (2026-09-06), which took checkout down — so this pings from GitHub too, at a
+# different hour, and fails loudly (GitHub emails the repo owner) if Supabase
+# stops answering.
+#
+# Note: GitHub disables scheduled workflows after 60 days with no repo
+# activity. Tina content commits keep this repo active; re-enable under
+# Actions → this workflow if it ever shows as disabled.
+
+on:
+  schedule:
+    # 01:00 UTC daily (8pm Central) — twelve hours off Vercel's 13:00 UTC run.
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping /api/keep-alive
+        env:
+          # Optional. Only needed if CRON_SECRET is set on the Vercel project;
+          # add the same value as a repo secret named CRON_SECRET.
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -uo pipefail
+          url="https://bladeandquillartacademy.com/api/keep-alive"
+          args=(--silent --show-error --fail-with-body
+                --retry 3 --retry-delay 30 --retry-all-errors --max-time 60)
+          if [ -n "${CRON_SECRET:-}" ]; then
+            args+=(-H "Authorization: Bearer $CRON_SECRET")
+          fi
+
+          if ! body=$(curl "${args[@]}" "$url"); then
+            echo "::error::Request to $url failed"
+            echo "$body"
+            exit 1
+          fi
+
+          echo "Response: $body"
+          case "$body" in
+            *'"ok":true'*) echo "Supabase ping OK" ;;
+            *)
+              echo "::error::keep-alive did not return ok:true — Supabase may be paused or unreachable"
+              exit 1
+              ;;
+          esac
