@@ -4,14 +4,14 @@
   "blocks": [
     {
       "eyebrow": "The history &",
-      "heading": "The Making of Lheeloo & Luna",
+      "heading": "The Making of\nLheeloo & Luna",
       "subheading": {
         "type": "root",
         "children": [
           {
             "children": [
               {
-                "text": ""
+                "text": "Best friends forever!"
               }
             ],
             "type": "p",
@@ -20,7 +20,13 @@
         ]
       },
       "layout": "trio",
-      "images": [],
+      "images": [
+        {
+          "src": "/images/PNG%20Images%20Only/Lheeloo-smiling-eyes-opened-looking-at-you.png"
+        },
+        {},
+        {}
+      ],
       "_template": "heroImageGrid"
     },
     {
