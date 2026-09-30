@@ -3,22 +3,25 @@
   "layout": "standard",
   "blocks": [
     {
-      "heading": "Behind the Scenes: The Making of Lheeloo & Luna",
-      "description": {
+      "eyebrow": "The history &",
+      "heading": "The Making of Lheeloo & Luna",
+      "subheading": {
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "This page offers a behind-the-scenes look at the creative process behind Lheeloo & Luna, from the earliest character sketches to the development of their personalities, proportions, and visual storytelling."
+                "text": ""
               }
-            ]
+            ],
+            "type": "p",
+            "id": "Cm07yFyP0K"
           }
         ]
       },
-      "_template": "pageHeader"
+      "layout": "trio",
+      "images": [],
+      "_template": "heroImageGrid"
     },
     {
       "images": [
