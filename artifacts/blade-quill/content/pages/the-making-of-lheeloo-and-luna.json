@@ -52,7 +52,11 @@
           "title": "Birth of the Duo",
           "description": "Keeping their proportions consistent was very important to me. Luna is a mouse and therefor much smaller than Lheeloo.  Finding the right visual balance between them became a key part of shaping the story. "
         },
-        {},
+        {
+          "year": "2021",
+          "title": "Naming of the Characters",
+          "description": "I'm French, and I've always been a big fan of The Fifth Element, directed by Luc Besson. When the movie was released in 1997, the main characters were Korben Dallas (Bruce Willis) and Leeloo (Milla Jovovich). "
+        },
         {}
       ],
       "_template": "timeline"
@@ -164,7 +168,8 @@
                 "type": "text",
                 "text": "I'm French, and I've always been a big fan of The Fifth Element, directed by Luc Besson. When the movie was released in 1997, the main characters were Korben Dallas (played by Bruce Willis) and Leeloo (played by Milla Jovovich). I instantly fell in love with the name Leeloo. I remember thinking that if I ever had another dog one day, I would name her Leeloo."
               }
-            ]
+            ],
+            "id": "PR2Z_300L7"
           },
           {
             "type": "p",
@@ -173,7 +178,8 @@
                 "type": "text",
                 "text": "When it came time to create the book, I decided to slightly change the spelling by adding an “H”, turning it into Lheeloo. I felt this small change made the name more personal and visually interesting."
               }
-            ]
+            ],
+            "id": "Y5dkQm-vdE"
           },
           {
             "type": "p",
@@ -182,7 +188,8 @@
                 "type": "text",
                 "text": "As for Luna, it's a very common pet name in France, and one I've always liked. Luna is a feminine given name of Latin origin, meaning moon. In Roman mythology, Luna was the divine personification of the Moon. I chose Luna because I wanted a name that paired naturally with Lheeloo. When you say Lheeloo and Luna together, the names sound soft, balanced, and harmonious. They became a perfect duo!"
               }
-            ]
+            ],
+            "id": "d89nekYVGA"
           },
           {
             "type": "p",
@@ -191,7 +198,8 @@
                 "type": "text",
                 "text": "I experimented with many other names, like Lulu, Bella, Maya, Coco, and even Fifi, but none of them felt quite right alongside Lheeloo. And that's how Lheeloo and Luna were born."
               }
-            ]
+            ],
+            "id": "i0WCcSHgvf"
           }
         ]
       },
