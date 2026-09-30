@@ -57,7 +57,11 @@
           "title": "Naming of the Characters",
           "description": "I'm French, and I've always been a big fan of The Fifth Element, directed by Luc Besson. When the movie was released in 1997, the main characters were Korben Dallas (Bruce Willis) and Leeloo (Milla Jovovich). "
         },
-        {}
+        {
+          "year": "2023",
+          "title": "Growth",
+          "description": "This series is designed to grow through future stories, with plans for bilingual editions in French and Spanish to reach a broader audience. "
+        }
       ],
       "_template": "timeline"
     },
