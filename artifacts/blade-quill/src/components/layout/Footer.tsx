@@ -42,7 +42,7 @@ export function Footer() {
                   background: "var(--g-cta)",
                 }}
               >
-                <QuillMark size={22} color="var(--paper)" />
+                <QuillMark size={35} />
               </span>
               <span
                 className="text-[24px]"

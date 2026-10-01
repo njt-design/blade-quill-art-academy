@@ -28,7 +28,7 @@ function MockWordmark() {
         className="grid place-items-center rounded-[10px]"
         style={{ width: 38, height: 38, background: "var(--g-cta)" }}
       >
-        <QuillMark size={20} color="var(--paper)" />
+        <QuillMark size={32} />
       </span>
       <span
         className="text-[19px] tracking-[0.01em]"

@@ -224,7 +224,7 @@ export function Navbar() {
               background: "var(--g-cta)",
             }}
           >
-            <QuillMark size={20} color="var(--paper)" />
+            <QuillMark size={32} />
           </span>
           <span
             className="text-[19px] tracking-[0.01em]"

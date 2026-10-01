@@ -10,6 +10,7 @@ import {
   INLINE_RICH_TEXT,
   RICH_TEXT_TEMPLATES,
   SLATE_JSON_PARSER,
+  imageSize,
 } from "./blocks";
 
 const rt = (text: string) => ({
@@ -150,7 +151,13 @@ export const blogImageBlock: Template = {
       name: "src",
       label: "Image",
       ui: {
-        description: "Upload into images/blog/ when possible.",
+        description: `${imageSize({
+          upload: "at least 1500 px wide",
+          shape: "any shape",
+          screen: "the article column, about 720 px wide (about 800 px with Width set to Wide)",
+          fit: "natural",
+          note: "If you pick an Aspect Ratio below, the image is cropped at the edges to that shape instead. Upload into images/blog/ when possible.",
+        })}`,
       },
     },
     {
@@ -185,6 +192,10 @@ export const blogImageBlock: Template = {
         { value: "square", label: "Square (1:1)" },
         { value: "portrait", label: "Portrait (3:4)" },
       ],
+      ui: {
+        description:
+          "Natural shows the whole image. Any other choice crops the edges to fill that shape — no empty space, but the edges are trimmed.",
+      },
     },
   ],
 };

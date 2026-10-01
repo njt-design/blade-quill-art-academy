@@ -11,6 +11,7 @@ import {
   RICH_TEXT_TEMPLATES,
   SLATE_JSON_PARSER,
   charLimit,
+  imageSize,
   productInfoBlock,
 } from "./blocks";
 import { BLOG_BLOCKS, BLOG_PAGE_BLOCKS } from "./blog-blocks";
@@ -968,8 +969,13 @@ export default defineConfig({
             name: "coverImage",
             label: "Cover Image",
             ui: {
-              description:
-                "Featured image for the post and list cards. Prefer ~1600×900 (16:9). Upload into images/blog/.",
+              description: `Featured image at the top of the post and on blog list cards. ${imageSize({
+                upload: "1600 × 900 px",
+                shape: "16:9 landscape",
+                screen: "about 720 × 405 px on the post, about 400 × 225 px on list cards",
+                fit: "exact",
+                note: "(On the post itself a different shape is cropped instead; the list cards are where gaps would show.) Upload into images/blog/.",
+              })}`,
             },
           },
           {
@@ -1105,8 +1111,18 @@ export default defineConfig({
             name: "image",
             label: "Cover Image (thumbnail 1)",
             ui: {
-              description:
-                "The large product photo and the first thumbnail. Prefer square or 3:4 portrait, at least 1200px wide. Upload into images/products/.",
+              description: `The large product photo and the first thumbnail. Physical books: ${imageSize({
+                upload: "1000 × 1400 px",
+                shape: "5:7 portrait book cover",
+                screen: "a 300 × 420 px book on the product page, smaller on shop cards",
+                fit: "crop",
+              })} All other categories: ${imageSize({
+                upload: "1200 × 1200 px",
+                shape: "1:1 square",
+                screen: "a box about 615 × 560 px on the product page, about 400 × 260 px on shop cards",
+                fit: "crop",
+                note: "Upload into images/products/.",
+              })}`,
             },
           },
           {
@@ -1135,8 +1151,12 @@ export default defineConfig({
                 name: "src",
                 label: "Image",
                 ui: {
-                  description:
-                    "Click to upload or pick from Media. Square or 3:4 portrait works best. At least 800px wide.",
+                  description: `Click to upload or pick from Media. Use the same shape as the Cover Image (5:7 portrait for books, 1:1 square for everything else) so the big photo doesn't jump when a thumbnail is clicked. ${imageSize({
+                    upload: "at least 1000 px on the short edge",
+                    shape: "same shape as the Cover Image",
+                    screen: "the same big photo box as the cover, plus an 84 px-tall thumbnail",
+                    fit: "crop",
+                  })}`,
                 },
               },
               {
@@ -1176,8 +1196,12 @@ export default defineConfig({
                 name: "src",
                 label: "Image",
                 ui: {
-                  description:
-                    "Click to upload or pick from Media. Landscape page spread or preview works best. At least 1200px wide.",
+                  description: `Click to upload or pick from Media. ${imageSize({
+                    upload: "1600 × 900 px",
+                    shape: "16:9 landscape (a two-page spread fits well)",
+                    screen: "about 390 × 220 px tiles, three across",
+                    fit: "crop",
+                  })}`,
                 },
               },
               {

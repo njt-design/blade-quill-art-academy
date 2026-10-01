@@ -175,7 +175,7 @@ function PageHeader({ subtitle }: { subtitle: string }) {
             className="grid place-items-center rounded-[12px]"
             style={{ width: 42, height: 42, background: "var(--g-cta)" }}
           >
-            <QuillMark size={22} color="var(--paper)" />
+            <QuillMark size={35} />
           </span>
           <div>
             <div className="text-xl leading-tight" style={{ fontFamily: "var(--f-serif)" }}>
@@ -210,7 +210,7 @@ function LockedGate({ message }: { message: string }) {
           className="mx-auto mb-6 grid place-items-center rounded-[14px]"
           style={{ width: 56, height: 56, background: "var(--g-cta)" }}
         >
-          <QuillMark size={28} color="var(--paper)" />
+          <QuillMark size={47} />
         </div>
         <h1 className="text-3xl mb-3" style={{ fontFamily: "var(--f-serif)", color: "var(--ink)" }}>
           How To

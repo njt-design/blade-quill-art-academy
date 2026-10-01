@@ -265,7 +265,7 @@ export default function Insights() {
               background: "var(--g-cta)",
             }}
           >
-            <QuillMark size={28} color="var(--paper)" />
+            <QuillMark size={47} />
           </div>
           <h1
             className="text-3xl mb-3"
@@ -320,7 +320,7 @@ export default function Insights() {
               className="grid place-items-center rounded-[12px]"
               style={{ width: 42, height: 42, background: "var(--g-cta)" }}
             >
-              <QuillMark size={22} color="var(--paper)" />
+              <QuillMark size={35} />
             </span>
             <div>
               <div

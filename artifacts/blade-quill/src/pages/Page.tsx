@@ -40,7 +40,7 @@ function StandaloneShell({ children }: { children: React.ReactNode }) {
               className="grid place-items-center rounded-[10px] bg-[image:var(--g-cta)]"
               style={{ width: 38, height: 38 }}
             >
-              <QuillMark size={20} color="var(--paper)" />
+              <QuillMark size={32} />
             </span>
             <span className="font-display text-[19px] tracking-[0.01em] text-foreground">
               Blade <span className="text-muted-foreground">&amp;</span> Quill

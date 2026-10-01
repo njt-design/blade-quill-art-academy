@@ -9,8 +9,7 @@ When the user asks about contact form email, Resend inbound, Gmail "Send mail as
 
 ## Quick reminder
 
-- **Problem:** replies from her personal mailbox expose her personal address; Resend only sends the notification.
-- **Fix:** Resend Inbound (MX record) + `api/inbound.ts` webhook forwards branded mail to her private inbox; Gmail "Send mail as" over `smtp.resend.com` sends replies as the branded address.
-- **Env vars:** `RESEND_WEBHOOK_SECRET`, `INBOUND_FORWARD_TO_EMAIL` (new); `CONTACT_TO_EMAIL` switches to the branded address once forwarding works.
-- **Webhook URL:** `https://blade-quill-art-academy.vercel.app/api/inbound` — custom domain blocks `/api/*` until launch.
-- **Caveat:** Gmail retires third-party "Send mail as" January 2027; long-term answer is Google Workspace.
+- **Mailbox:** `Corinne@bladeandquillartacademy.com` is a real Google Workspace inbox (Vercel DNS `MX 1 smtp.google.com`, Sep 2026). She replies from it, so replies are branded automatically.
+- **Resend:** sending only — domain verified via `~/resend-setup.sh` (adds DKIM/SPF on `send`/`_domainkey` subdomains, sets `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL` on Vercel Production, redeploys, smoke-tests).
+- **Never** enable Receiving on the domain in Resend or add its inbound MX — it would conflict with Google's MX. `api/inbound.ts`, `RESEND_WEBHOOK_SECRET`, `INBOUND_FORWARD_TO_EMAIL` are from the superseded forwarding plan and are unused.
+- **Follow-ups:** Google's apex SPF (`include:_spf.google.com`), Google DKIM, and `_dmarc` record via the Workspace admin wizard.

@@ -9,12 +9,11 @@
  *
  * Required env vars (Vercel project settings):
  *   RESEND_API_KEY     — Resend API key
- *   CONTACT_TO_EMAIL   — destination inbox. Once Resend inbound forwarding is
- *                        live (see api/inbound.ts), point this at the branded
- *                        address (e.g. Corinne@bladeandquillartacademy.com) so
- *                        replies default to the branded From in Gmail instead
- *                        of exposing the personal inbox.
- *   CONTACT_FROM_EMAIL — verified sender, e.g. "Blade & Quill <contact@example.com>"
+ *   CONTACT_TO_EMAIL   — destination inbox: Corinne@bladeandquillartacademy.com
+ *                        (her Google Workspace mailbox, so replies come from
+ *                        the business address; see docs/email-reply-privacy.md)
+ *   CONTACT_FROM_EMAIL — verified sender, e.g.
+ *                        "Blade & Quill Art Academy <contact@bladeandquillartacademy.com>"
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";

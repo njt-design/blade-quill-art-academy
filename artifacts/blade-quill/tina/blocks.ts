@@ -193,6 +193,51 @@ export const charLimit = (max: number, description?: string) => ({
 });
 
 /**
+ * How the site fits an uploaded image into its slot. Drives the wording of
+ * `imageSize()` so Corinne knows, before she uploads, whether a wrong-shaped
+ * image will be cropped, shown whole, or shrunk with empty space around it.
+ *
+ * - "crop":    fixed box, `object-cover` — edges are trimmed, never padded.
+ * - "exact":   fixed box, `object-contain` — a different shape is shrunk and
+ *              leaves empty space around it (the padding she does NOT want).
+ * - "natural": frame hugs the image (`height: auto`) — any shape, no padding.
+ */
+export type ImageFit = "crop" | "exact" | "natural";
+
+/**
+ * Standard "what size should I upload?" sentence for every image upload box.
+ * Keep the wording identical across fields so the admin reads it the same way
+ * everywhere. Sizes quoted are for a desktop screen; phones reflow.
+ */
+export function imageSize(spec: {
+  /** Pixel size to upload, e.g. "1200 × 800 px". */
+  upload: string;
+  /** Shape in plain words, e.g. "3:2 landscape". */
+  shape: string;
+  /** Rough on-screen size on desktop, e.g. "about 400 × 240 px". */
+  screen?: string;
+  fit: ImageFit;
+  /** Extra guidance appended after the size line. */
+  note?: string;
+}): string {
+  const { upload, shape, screen, fit, note } = spec;
+  const where = screen ? ` On a desktop screen it shows at ${screen}.` : "";
+  let line: string;
+  switch (fit) {
+    case "crop":
+      line = `Upload ${upload} (${shape}).${where} A different shape is cropped at the edges to fill the box — never padded — so keep the subject near the middle.`;
+      break;
+    case "exact":
+      line = `Upload ${upload} (${shape}) — match this shape exactly.${where} A different shape is shrunk to fit and leaves empty space around the image.`;
+      break;
+    case "natural":
+      line = `Upload ${upload} (${shape}).${where} Shown whole at its own shape — never cropped, never padded — so any shape works.`;
+      break;
+  }
+  return note ? `${line} ${note}` : line;
+}
+
+/**
  * Curated typography presets for section headings/body. Appended to every
  * heading-bearing block so Corinne can restyle a section without breaking
  * the responsive design. "default" keeps each block's existing look.
@@ -282,9 +327,18 @@ const rt = (text: string) => ({
   children: [{ type: "p", children: [{ type: "text", text }] }],
 });
 
-/** Reusable image list item fields for showcase blocks. */
-const IMAGE_ITEM_FIELDS = [
-  { type: "image" as const, name: "src", label: "Image" },
+/**
+ * Reusable image list item fields for showcase blocks. Each block passes its
+ * own size guidance (from `imageSize`) because the same field set renders
+ * into very different slots — a 2:1 mosaic tile vs. a natural-shape polaroid.
+ */
+const imageItemFields = (sizeDescription: string) => [
+  {
+    type: "image" as const,
+    name: "src",
+    label: "Image",
+    ui: { description: sizeDescription },
+  },
   {
     type: "string" as const,
     name: "alt",
@@ -363,8 +417,13 @@ export const heroBlock: Template = {
       name: "backgroundImage",
       label: "Background Image",
       ui: {
-        description:
-          "Optional background image behind the hero. Prefer ~1920×1080 landscape. Upload into images/pages/.",
+        description: `Optional background image behind the hero, shown faded under the text. ${imageSize({
+          upload: "1920 × 1080 px",
+          shape: "16:9 landscape",
+          screen: "full page width, about 1440 × 500 px",
+          fit: "crop",
+          note: "Upload into images/pages/.",
+        })}`,
       },
     },
     {
@@ -476,7 +535,19 @@ export const imageGalleryBlock: Template = {
         }),
       },
       fields: [
-        { type: "image", name: "src", label: "Image" },
+        {
+          type: "image",
+          name: "src",
+          label: "Image",
+          ui: {
+            description: imageSize({
+              upload: "1000 × 1000 px",
+              shape: "1:1 square",
+              screen: "about 400 × 400 px",
+              fit: "exact",
+            }),
+          },
+        },
         { type: "string", name: "alt", label: "Alt Text", ui: charLimit(125, "Short image description for screen readers.") },
         { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) },
       ],
@@ -795,7 +866,13 @@ export const homeHeroBlock: Template = {
       label: "Background Image",
       ui: {
         description:
-          "Optional. Upload your own artwork to replace the default characters. It sits ON the taupe card (not stretched behind it) anchored to the bottom-right, with the heading and buttons on top — no tint is added. Use a PNG or WebP with a TRANSPARENT background (a white background will show as a white box). Best size: about 1800 pixels tall, under 1 MB. Upload into images/pages/. Leave empty to keep the default artwork.",
+          `Optional. Upload your own artwork to replace the default characters. It sits ON the taupe card (not stretched behind it) anchored to the bottom-right, with the heading and buttons on top — no tint is added. Use a PNG or WebP with a TRANSPARENT background (a white background will show as a white box). ${imageSize({
+            upload: "about 1400 × 1800 px, under 1 MB",
+            shape: "portrait cutout, roughly 3:4",
+            screen: "the right half of the card, about 600 × 580 px",
+            fit: "natural",
+            note: "Because the background is transparent, empty space around the cutout is invisible. Upload into images/pages/. Leave empty to keep the default artwork.",
+          })}`,
       },
     },
     {
@@ -915,7 +992,14 @@ export const pillarsBlock: Template = {
           type: "image",
           name: "image",
           label: "Image (optional)",
-          ui: { description: "Leave empty to automatically show a product/video preview." },
+          ui: {
+            description: `Leave empty to automatically show a product/video preview. ${imageSize({
+              upload: "1200 × 720 px",
+              shape: "5:3 landscape",
+              screen: "about 400 × 240 px",
+              fit: "crop",
+            })}`,
+          },
         },
       ],
     },
@@ -1352,7 +1436,14 @@ export const aboutHeroBlock: Template = {
       type: "image",
       name: "portraitImage",
       label: "Portrait Image",
-      ui: { description: "Photo shown in the large polaroid on the right." },
+      ui: {
+        description: `Photo shown in the large polaroid on the right. ${imageSize({
+          upload: "at least 900 × 1200 px",
+          shape: "3:4 portrait works best",
+          screen: "about 330 px wide (up to 500 px tall when it is the only photo)",
+          fit: "natural",
+        })}`,
+      },
     },
     {
       type: "string",
@@ -1365,8 +1456,12 @@ export const aboutHeroBlock: Template = {
       name: "deskImage",
       label: "Desk Accent Image",
       ui: {
-        description:
-          "Smaller polaroid on the left of the collage (desktop only). Leave blank to hide.",
+        description: `Smaller polaroid on the left of the collage (desktop only). Leave blank to hide. ${imageSize({
+          upload: "at least 700 × 900 px",
+          shape: "4:5 or 3:4 portrait works best",
+          screen: "about 220–250 px wide",
+          fit: "natural",
+        })}`,
       },
     },
     {
@@ -1380,8 +1475,12 @@ export const aboutHeroBlock: Template = {
       name: "screenImage",
       label: "Screen Accent Image",
       ui: {
-        description:
-          "Bottom-right polaroid in the collage (desktop only). Leave blank to hide.",
+        description: `Bottom-right polaroid in the collage (desktop only). Leave blank to hide. ${imageSize({
+          upload: "at least 800 × 600 px",
+          shape: "4:3 landscape works best (e.g. a screenshot)",
+          screen: "about 200–250 px wide",
+          fit: "natural",
+        })}`,
       },
     },
     {
@@ -1484,7 +1583,14 @@ export const storyBlock: Template = {
       type: "image",
       name: "sideImage",
       label: "Side Photo",
-      ui: { description: "Small polaroid on the right of the story section (desktop)." },
+      ui: {
+        description: `Small polaroid on the right of the story section (desktop). ${imageSize({
+          upload: "at least 700 × 900 px",
+          shape: "3:4 portrait works best",
+          screen: "about 210 px wide",
+          fit: "natural",
+        })}`,
+      },
     },
     {
       type: "string",
@@ -1528,7 +1634,14 @@ export const timelineBlock: Template = {
           type: "image",
           name: "image",
           label: "Image",
-          ui: { description: "Optional artwork shown beside this timeline event." },
+          ui: {
+            description: `Optional artwork shown beside this timeline event. ${imageSize({
+              upload: "800 × 480 px",
+              shape: "5:3 landscape",
+              screen: "about 200 × 120 px",
+              fit: "crop",
+            })}`,
+          },
         },
       ],
     },
@@ -1574,7 +1687,14 @@ export const cardRowBlock: Template = {
           type: "image",
           name: "image",
           label: "Image",
-          ui: { description: "Card thumbnail. Leave blank to use the default fallback art." },
+          ui: {
+            description: `Card thumbnail. Leave blank to use the default fallback art. ${imageSize({
+              upload: "1000 × 500 px",
+              shape: "2:1 landscape",
+              screen: "about 270 × 140 px",
+              fit: "crop",
+            })}`,
+          },
         },
         { type: "string", name: "ctaLabel", label: "Link Text", ui: charLimit(24) },
         {
@@ -1687,8 +1807,13 @@ export const galleryGridBlock: Template = {
           label: "Image",
           required: true,
           ui: {
-            description:
-              "The artwork shown in the grid and lightbox. Prefer at least 1200px on the long edge. Upload into images/gallery/ or images/squarespace/digital-paintings/.",
+            description: `The artwork shown in the grid and lightbox. ${imageSize({
+              upload: "at least 1200 px on the long edge",
+              shape: "any shape — portrait, landscape, or square",
+              screen: "about 400 px wide in the grid, up to 75% of the screen height in the lightbox",
+              fit: "natural",
+              note: "Upload into images/gallery/ or images/squarespace/digital-paintings/.",
+            })}`,
           },
         },
         {
@@ -1794,8 +1919,13 @@ export const downloadsGridBlock: Template = {
           name: "thumbnail",
           label: "Card Image (optional)",
           ui: {
-            description:
-              "Preview image on the card. Prefer 4:3 landscape, at least 800px wide. Upload into images/downloads/.",
+            description: `Preview image on the card. ${imageSize({
+              upload: "1200 × 900 px",
+              shape: "4:3 landscape",
+              screen: "about 300 × 225 px",
+              fit: "exact",
+              note: "Upload into images/downloads/.",
+            })}`,
           },
         },
       ],
@@ -1975,12 +2105,27 @@ export const featuredReleaseBlock: Template = {
       type: "image",
       name: "coverImage",
       label: "Front Cover Image",
+      ui: {
+        description: imageSize({
+          upload: "at least 600 × 900 px",
+          shape: "2:3 portrait book cover",
+          screen: "about 200 px wide",
+          fit: "natural",
+        }),
+      },
     },
     {
       type: "image",
       name: "backCoverImage",
       label: "Back Cover Image",
-      ui: { description: "Optional second cover (shown alongside the front)." },
+      ui: {
+        description: `Optional second cover (shown alongside the front). ${imageSize({
+          upload: "at least 600 × 900 px",
+          shape: "2:3 portrait, same shape as the front cover so they line up",
+          screen: "about 200 px wide",
+          fit: "natural",
+        })}`,
+      },
     },
     { type: "string", name: "ctaLabel", label: "Button Label", ui: charLimit(24) },
     {
@@ -2186,7 +2331,14 @@ export const heroSplitImageBlock: Template = {
       type: "image",
       name: "featuredImage",
       label: "Featured Image",
-      ui: { description: "Large image shown beside the headline." },
+      ui: {
+        description: `Large image in a polaroid frame beside the headline. ${imageSize({
+          upload: "at least 1100 px wide",
+          shape: "any shape — 4:5 portrait or 1:1 square looks best next to text",
+          screen: "up to 490 px wide",
+          fit: "natural",
+        })}`,
+      },
     },
     {
       type: "string",
@@ -2234,7 +2386,14 @@ export const heroFullBleedBlock: Template = {
       type: "image",
       name: "backgroundImage",
       label: "Background Image",
-      ui: { description: "Full-width image behind the text." },
+      ui: {
+        description: `Full-width image behind the text, darkened by the overlay below. ${imageSize({
+          upload: "2400 × 1350 px",
+          shape: "16:9 landscape",
+          screen: "the full width of the screen, 45–80% of its height depending on Section Height",
+          fit: "crop",
+        })}`,
+      },
     },
     {
       type: "string",
@@ -2319,9 +2478,17 @@ export const heroFloatingImagesBlock: Template = {
       list: true,
       ui: {
         ...IMAGE_LIST_UI,
-        description: "Add 2–6 images. They auto-position around the headline on desktop.",
+        description:
+          "Add 2–6 images. They auto-position around the headline on desktop as small portrait tiles (120–170 px wide); on phones the first 4 show in a 2-column strip.",
       },
-      fields: IMAGE_ITEM_FIELDS,
+      fields: imageItemFields(
+        imageSize({
+          upload: "600 × 800 px",
+          shape: "3:4 portrait",
+          screen: "small tiles about 120–170 px wide and 160–220 px tall",
+          fit: "crop",
+        })
+      ),
     },
     { type: "string", name: "ctaPrimary", label: "Primary Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
@@ -2361,18 +2528,32 @@ export const heroImageGridBlock: Template = {
       name: "layout",
       label: "Grid Layout",
       options: [
-        { value: "duo", label: "2 images" },
-        { value: "trio", label: "3 images" },
-        { value: "quad", label: "4 images" },
+        { value: "duo", label: "2 images — two tall tiles, both about 1:1 square" },
+        { value: "trio", label: "3 images — 1st tile 1:1 square, 2nd and 3rd 2:1 wide" },
+        { value: "quad", label: "4 images — all four tiles 5:4 landscape (1st is larger)" },
       ],
+      ui: {
+        description:
+          "Sets the tile shapes. Each tile shows the whole image shrunk to fit, so an image that is not the tile's shape will have empty space beside it. Match the shapes listed here and there is no gap. Desktop tile sizes: 2 images → about 315 × 330 px each. 3 images → 1st about 315 × 330 px, 2nd and 3rd about 315 × 160 px. 4 images → 1st about 425 × 330 px, others about 205 × 160 px.",
+      },
     },
     {
       type: "object",
       name: "images",
       label: "Images",
       list: true,
-      ui: IMAGE_LIST_UI,
-      fields: IMAGE_ITEM_FIELDS,
+      ui: {
+        ...IMAGE_LIST_UI,
+        description:
+          "Top to bottom here = the order tiles fill the mosaic. The first image always takes the big tile. Only as many images as the Grid Layout allows are shown.",
+      },
+      fields: imageItemFields(
+        `The tile shape depends on the Grid Layout and this image's position in the list — see the Grid Layout note above. ${imageSize({
+          upload: "1000 × 1000 px for a square tile, 1000 × 500 px for a 2:1 wide tile, 1000 × 800 px for a 5:4 tile",
+          shape: "match the tile's shape",
+          fit: "exact",
+        })}`
+      ),
     },
     { type: "string", name: "ctaLabel", label: "Button Label (optional)", ui: charLimit(24) },
     { type: "string", name: "ctaLink", label: "Button Link" },
@@ -2405,19 +2586,31 @@ export const imageSpotlightBlock: Template = {
       type: "image",
       name: "image",
       label: "Image",
+      ui: {
+        description: `One large image in a polaroid frame. ${imageSize({
+          upload: "at least 1700 px wide",
+          shape: "any shape",
+          screen: "up to 830 px wide, as tall as the image's own shape makes it",
+          fit: "natural",
+        })}`,
+      },
     },
     { type: "string", name: "alt", label: "Alt Text", ui: charLimit(125, "Short image description for screen readers.") },
     { type: "string", name: "caption", label: "Caption (optional)", ui: charLimit(80) },
     {
       type: "string",
       name: "aspect",
-      label: "Aspect Ratio",
+      label: "Placeholder Shape",
       options: [
         { value: "landscape", label: "Landscape (16:10)" },
         { value: "square", label: "Square (1:1)" },
         { value: "portrait", label: "Portrait (3:4)" },
         { value: "wide", label: "Wide banner (21:9)" },
       ],
+      ui: {
+        description:
+          "Only used while no image is uploaded — it shapes the empty placeholder. Once an image is set, the frame follows the image's own shape.",
+      },
     },
     {
       type: "rich-text",
@@ -2430,6 +2623,13 @@ export const imageSpotlightBlock: Template = {
     ...textStyleFields(),
   ],
 };
+
+/**
+ * Side-by-side cells: the Polaroid style hugs the image (any shape), while
+ * Clean/Rounded crop into a fixed 320px-tall box (~490px wide on desktop).
+ */
+const SIDE_BY_SIDE_IMAGE_SIZE =
+  "Upload 1200 × 800 px (3:2 landscape). On a desktop screen each image is about 490 px wide. The Polaroid frame style shows the whole image at its own shape (any shape, no gaps). Clean and Rounded crop the edges to fill a 3:2 box about 490 × 320 px — so 3:2 fits every style.";
 
 export const imageSideBySideBlock: Template = {
   name: "imageSideBySide",
@@ -2451,23 +2651,27 @@ export const imageSideBySideBlock: Template = {
       type: "object",
       name: "leftImage",
       label: "Left Image",
-      fields: IMAGE_ITEM_FIELDS,
+      fields: imageItemFields(SIDE_BY_SIDE_IMAGE_SIZE),
     },
     {
       type: "object",
       name: "rightImage",
       label: "Right Image",
-      fields: IMAGE_ITEM_FIELDS,
+      fields: imageItemFields(SIDE_BY_SIDE_IMAGE_SIZE),
     },
     {
       type: "string",
       name: "style",
       label: "Frame Style",
       options: [
-        { value: "polaroid", label: "Polaroid frames" },
-        { value: "clean", label: "Clean (no frame)" },
-        { value: "rounded", label: "Rounded corners" },
+        { value: "polaroid", label: "Polaroid frames — whole image, any shape" },
+        { value: "clean", label: "Clean (no frame) — cropped to a 3:2 box" },
+        { value: "rounded", label: "Rounded corners — cropped to a 3:2 box" },
       ],
+      ui: {
+        description:
+          "Polaroid shows each image whole at its own shape (no cropping, no gaps). Clean and Rounded fill a fixed 3:2 landscape box about 490 × 320 px and crop the edges of anything that isn't 3:2.",
+      },
     },
     ...textStyleFields(),
   ],
@@ -2497,10 +2701,22 @@ export const imageBannersBlock: Template = {
           label: (item?.alt as string) || "Banner",
         }),
         description:
-          "Wide promotional banners (e.g. 1200×370). They display inside a soft rounded card.",
+          "Wide promotional banners inside a soft rounded card. Give every banner in the set the same shape so they line up.",
       },
       fields: [
-        { type: "image", name: "src", label: "Image" },
+        {
+          type: "image",
+          name: "src",
+          label: "Image",
+          ui: {
+            description: imageSize({
+              upload: "at least 1800 px wide, e.g. 1800 × 560 px",
+              shape: "wide landscape banner, about 3:1",
+              screen: "the full card width, about 1180 px wide (thumbnails in the Gallery layout are 218 px wide)",
+              fit: "natural",
+            }),
+          },
+        },
         {
           type: "string",
           name: "alt",
@@ -2550,10 +2766,18 @@ export const imageMasonryBlock: Template = {
       list: true,
       ui: {
         ...IMAGE_LIST_UI,
-        description: "Add 3–6 images for an asymmetric masonry layout.",
+        description:
+          "Add 3–6 images for an asymmetric masonry layout — three columns on desktop, each image at its own shape. Mixing portrait and landscape gives the staggered look.",
       },
       fields: [
-        ...IMAGE_ITEM_FIELDS,
+        ...imageItemFields(
+          imageSize({
+            upload: "at least 900 px wide",
+            shape: "any shape — mix portrait and landscape",
+            screen: "about 400 px wide, height follows the image",
+            fit: "natural",
+          })
+        ),
         {
           type: "string",
           name: "size",

@@ -49,11 +49,11 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 | `TINA_PUBLIC_READONLY_TOKEN` | Vercel Dashboard            | Yes — same read-only token as `TINA_TOKEN`; injected into the browser bundle for runtime content fetches                                                                                                                                                                  |
 | `TINA_BRANCH`                | Vercel Dashboard            | No — defaults to `main` in `tina/config.ts`                                                                                                                                                                                                                               |
 | `RESEND_API_KEY`             | Vercel Dashboard            | Yes — API key from [resend.com](https://resend.com); used by `api/contact.ts` to send contact form email                                                                                                                                                                  |
-| `CONTACT_TO_EMAIL`           | Vercel Dashboard            | Yes — inbox that receives contact form messages. Use the branded address (e.g. `Corinne@bladeandquillartacademy.com`) once inbound forwarding is live so Gmail replies default to the branded From (see [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md)) |
-| `CONTACT_FROM_EMAIL`         | Vercel Dashboard            | Yes — verified Resend sender, e.g. `Blade & Quill <contact@bladeandquillartacademy.com>` (use `onboarding@resend.dev` until the domain is verified)                                                                                                                       |
+| `CONTACT_TO_EMAIL`           | Vercel Dashboard            | Yes — inbox that receives contact form messages: `Corinne@bladeandquillartacademy.com` (her Google Workspace mailbox; see [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md))                                                                             |
+| `CONTACT_FROM_EMAIL`         | Vercel Dashboard            | Yes — verified Resend sender: `Blade & Quill Art Academy <contact@bladeandquillartacademy.com>` (set by `~/resend-setup.sh`; `onboarding@resend.dev` only works before the domain is verified)                                                                          |
 | `RESEND_AUDIENCE_ID`         | Vercel Dashboard            | Yes — id of the Resend Audience that stores newsletter subscribers (Resend dashboard → Audiences)                                                                                                                                                                         |
-| `RESEND_WEBHOOK_SECRET`      | Vercel Dashboard            | Yes for inbound email — signing secret of the Resend `email.received` webhook used by `api/inbound.ts`                                                                                                                                                                    |
-| `INBOUND_FORWARD_TO_EMAIL`   | Vercel Dashboard            | Yes for inbound email — private inbox that receives mail forwarded from the branded domain addresses                                                                                                                                                                      |
+| `RESEND_WEBHOOK_SECRET`      | Vercel Dashboard            | No — only for the unused `api/inbound.ts` forwarding webhook (superseded by the Google Workspace mailbox)                                                                                                                                                                 |
+| `INBOUND_FORWARD_TO_EMAIL`   | Vercel Dashboard            | No — only for the unused `api/inbound.ts` forwarding webhook (superseded by the Google Workspace mailbox)                                                                                                                                                                 |
 | `STRIPE_SECRET_KEY`          | Vercel Dashboard            | Yes — from Stripe Developers → API keys (test or live)                                                                                                                                                                                                                    |
 | `STRIPE_WEBHOOK_SECRET`      | Vercel Dashboard            | Yes — from Stripe webhook endpoint for `/api/stripe/webhook`                                                                                                                                                                                                              |
 | `SUPABASE_URL`               | Vercel Dashboard            | Yes — orders storage for checkout                                                                                                                                                                                                                                         |
@@ -70,19 +70,13 @@ Optional: add a dedicated hostname under **Settings → Domains** (e.g. `preview
 
 `POST /api/contact` is served by the Vercel function [`api/contact.ts`](../../api/contact.ts) (the SPA rewrite in `vercel.json` excludes `api/`). It validates `{ name, email, message }` and sends the message to `CONTACT_TO_EMAIL` via Resend with the guest's address as Reply-To, so replies go straight to the guest.
 
-Setup (one time):
-
-1. Create a Resend account and API key.
-2. Verify the sending domain in Resend (DNS records). Until verified, set `CONTACT_FROM_EMAIL=onboarding@resend.dev` — Resend then only delivers to the account owner's email.
-3. Add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` in Vercel project settings.
+Setup (one time): `RESEND_API_KEY` is already set in Vercel. Domain verification, DNS records, `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL`, redeploy and a smoke test are all done by `bash ~/resend-setup.sh` on Nick's machine (interactive, re-runnable). Until the domain is verified, Resend only delivers `onboarding@resend.dev` mail to the account owner.
 
 Local dev is unchanged: Vite proxies `/api` to the Express api-server, which stores submissions in Supabase.
 
-## Branded inbox & reply privacy (Resend Inbound)
+## Business mailbox & reply privacy
 
-When Corinne replies to a contact form email from her personal mailbox, the guest sees her personal address. To keep replies branded, the domain receives mail through **Resend Inbound**: an MX record routes `@bladeandquillartacademy.com` mail to Resend, which fires an `email.received` webhook served by [`api/inbound.ts`](../../api/inbound.ts). That function verifies the webhook signature (`RESEND_WEBHOOK_SECRET`) and forwards the full message to `INBOUND_FORWARD_TO_EMAIL` (her private inbox). She replies from Gmail using "Send mail as" over Resend SMTP, so the guest only ever sees the branded address.
-
-Full setup checklist (MX record, webhook, Gmail SMTP, env switches, caveats): [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md). The webhook endpoint is `https://blade-quill-art-academy.vercel.app/api/inbound` — the custom domain blocks `/api/*` until launch.
+`Corinne@bladeandquillartacademy.com` is a Google Workspace mailbox (Vercel DNS `MX 1 smtp.google.com`). Contact form and newsletter mail is delivered there, and she replies from it, so guests only ever see the business address. Resend is sending-only for this domain — **do not enable Receiving in Resend or add its inbound MX record**, which would conflict with Google's. Details and follow-up DNS records (Google SPF/DKIM/DMARC): [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md). [`api/inbound.ts`](../../api/inbound.ts) belongs to the superseded forwarding plan and is unused.
 
 ## Newsletter signups (Resend Audience)
 
@@ -309,7 +303,7 @@ When ready for the real homepage:
 ### Phase D — Post-migration checklist
 
 - **Stripe**: Point the webhook endpoint at `https://bladeandquillartacademy.com/api/stripe/webhook` (events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`). If this is a new endpoint, update Vercel env `STRIPE_WEBHOOK_SECRET`.
-- **Resend**: Verify `bladeandquillartacademy.com` in Resend (add DKIM/SPF TXT records in Vercel DNS). Then set `CONTACT_FROM_EMAIL` to something like `Blade & Quill <contact@bladeandquillartacademy.com>`. Also enable **Receiving** on the domain and add the inbound MX record so branded addresses receive mail (safe — the domain has no other MX records); full steps in [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md).
+- **Resend**: Already done by `~/resend-setup.sh` (domain verified, `CONTACT_FROM_EMAIL=Blade & Quill Art Academy <contact@bladeandquillartacademy.com>`, `CONTACT_TO_EMAIL=Corinne@bladeandquillartacademy.com`). Do **not** enable Receiving in Resend — the apex MX belongs to Google Workspace. See [docs/email-reply-privacy.md](../../docs/email-reply-privacy.md).
 - **Tina Cloud**: At [app.tina.io](https://app.tina.io), add `https://bladeandquillartacademy.com` to the project Site URLs so `/admin` login works on the production domain.
 - **GA4**: No change — the site already uses measurement ID `G-50YS8RZ7HL`.
 - **newrelease teardown** (optional, later): 301 the temp subdomain to the main site and remove its host rewrite/redirect from `vercel.json` (see Temporary domain teardown above).
