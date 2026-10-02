@@ -22,49 +22,16 @@
       "layout": "trio",
       "images": [
         {
-          "src": "/images/PNG%20Images%20Only/Lheeloo-smiling-eyes-opened-looking-at-you.png"
+          "src": "/images/PNG%20Images%20Only/NEW-COVER-eyes-OPENED-WITH-HEARTS-AND-STARS.png"
         },
         {
-          "src": "/images/The-Making-of-Lheeloo-and-Luna.jpg"
+          "src": "/images/PNG Images Only/Page-21_Tuesday-Re-Inked_Colored.png"
         },
         {
-          "src": "/images/PNG Images Only/NEW-COVER-eyes-OPENED-WITH-HEARTS-AND-STARS.png"
+          "src": "/images/PNG Images Only/Page-13-Re-Inked_Colored.png"
         }
       ],
       "_template": "heroImageGrid"
-    },
-    {
-      "number": "02",
-      "label": "TIMELINE",
-      "events": [
-        {
-          "year": "2018",
-          "title": "How it all began",
-          "description": "It all started with a calendar idea. I needed to create a series of funny illustrations, one for each day. As I was drawing the dog character, I realized there was the potential for a story. ",
-          "image": "/images/PNG Images Only/PAGE-2_7-DAYS.png"
-        },
-        {
-          "year": "2019",
-          "title": "Making of Luna",
-          "description": "To create Luna, I began with what I call a “puppet.” I broke her down into simple parts: the face shape in red, the features in yellow, and the body in brown.\nOnce this base was set, I could easily create new poses. This method helped me keep her design consistent from one drawing to the next.\n"
-        },
-        {
-          "year": "2020",
-          "title": "Birth of the Duo",
-          "description": "Keeping their proportions consistent was very important to me. Luna is a mouse and therefor much smaller than Lheeloo.  Finding the right visual balance between them became a key part of shaping the story. "
-        },
-        {
-          "year": "2021",
-          "title": "Naming of the Characters",
-          "description": "I'm French, and I've always been a big fan of The Fifth Element, directed by Luc Besson. When the movie was released in 1997, the main characters were Korben Dallas (Bruce Willis) and Leeloo (Milla Jovovich). "
-        },
-        {
-          "year": "2023",
-          "title": "Growth",
-          "description": "This series is designed to grow through future stories, with plans for bilingual editions in French and Spanish to reach a broader audience. "
-        }
-      ],
-      "_template": "timeline"
     },
     {
       "heading": "How It All Began",
@@ -78,7 +45,8 @@
                 "type": "text",
                 "text": "It all started with a calendar idea. I needed to create a series of funny illustrations, one for each day. As I was drawing the dog character, I realized there was the potential for a story."
               }
-            ]
+            ],
+            "id": "SxFujtXQ0Q"
           },
           {
             "type": "p",
@@ -86,6 +54,33 @@
               {
                 "type": "text",
                 "text": "So, I started creating different poses for Lheeloo. She looked so funny and cute to me that I began to wonder… should I give her a sidekick and see where it might lead?"
+              }
+            ],
+            "id": "LRb5bz96TK"
+          },
+          {
+            "type": "p",
+            "id": "pDjGQ6x0wj",
+            "children": [
+              {
+                "type": "text",
+                "id": "k_i7-5HKPW",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/JPEG images for thumbnails/SEVEN-DAY-SO-BEING-LAZY.jpg",
+                "caption": "",
+                "alt": "",
+                "id": "LaQAdOSqsg"
+              },
+              {
+                "text": ""
               }
             ]
           }
@@ -117,6 +112,32 @@
               }
             ],
             "id": "A4xD_QTivi"
+          },
+          {
+            "type": "p",
+            "id": "9kMkDQQy1x",
+            "children": [
+              {
+                "type": "text",
+                "id": "RO1ugoF3oN",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/the-making-of-luna.png",
+                "caption": "",
+                "alt": "",
+                "id": "J13jTFsM8c"
+              },
+              {
+                "text": ""
+              }
+            ]
           }
         ]
       },
@@ -156,6 +177,28 @@
               }
             ],
             "id": "stisBTsrZC"
+          },
+          {
+            "type": "p",
+            "id": "HIQbtmRSFd",
+            "children": [
+              {
+                "type": "text",
+                "id": "MTVpJw_1pV",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "TCljUkH3oL",
+            "children": [
+              {
+                "type": "text",
+                "id": "zDlzOD00Lx",
+                "text": ""
+              }
+            ]
           }
         ]
       },
