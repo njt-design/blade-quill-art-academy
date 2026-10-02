@@ -42,8 +42,13 @@
       "_template": "imageSpotlight"
     },
     {
-      "heading": "",
+      "heading": "Take a peek inside the books in this video!",
       "youtubeUrl": "https://youtu.be/p4uKDRNTIxc",
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "align": "center"
+      },
       "_template": "videoEmbed"
     },
     {
