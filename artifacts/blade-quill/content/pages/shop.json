@@ -6,7 +6,7 @@
       "eyebrow": " ",
       "heading": "Super Fun Bundle  \nColoring pages | Cartoons | Puzzle Games ",
       "image": "/images/Gumroad-sales-image-1920-1080px.png",
-      "caption": "Download, print, play! ",
+      "caption": "",
       "aspect": "",
       "body": {
         "type": "root",
@@ -14,7 +14,8 @@
           {
             "children": [
               {
-                "text": ""
+                "text": "Download, print, play! ",
+                "bold": true
               }
             ],
             "id": "290KOijkAP",
@@ -25,7 +26,9 @@
       "textStyle": {
         "headingSize": "xl",
         "headingType": "h1",
-        "align": "center"
+        "headingFont": "serif",
+        "align": "center",
+        "bodySize": "default"
       },
       "_template": "imageSpotlight"
     },
