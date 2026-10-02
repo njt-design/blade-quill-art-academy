@@ -25,10 +25,10 @@
           "src": "/images/PNG%20Images%20Only/Lheeloo-smiling-eyes-opened-looking-at-you.png"
         },
         {
-          "src": "/images/Lheeloo-and-Luna-cover.jpg"
+          "src": "/images/The-Making-of-Lheeloo-and-Luna.jpg"
         },
         {
-          "src": "/images/COVER-PAGE.png"
+          "src": "/images/PNG Images Only/NEW-COVER-eyes-OPENED-WITH-HEARTS-AND-STARS.png"
         }
       ],
       "_template": "heroImageGrid"
@@ -40,7 +40,8 @@
         {
           "year": "2018",
           "title": "How it all began",
-          "description": "It all started with a calendar idea. I needed to create a series of funny illustrations, one for each day. As I was drawing the dog character, I realized there was the potential for a story. "
+          "description": "It all started with a calendar idea. I needed to create a series of funny illustrations, one for each day. As I was drawing the dog character, I realized there was the potential for a story. ",
+          "image": "/images/PNG Images Only/PAGE-2_7-DAYS.png"
         },
         {
           "year": "2019",
