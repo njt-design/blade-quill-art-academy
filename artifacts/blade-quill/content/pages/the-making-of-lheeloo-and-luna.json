@@ -186,6 +186,21 @@
                 "type": "text",
                 "id": "MTVpJw_1pV",
                 "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/LHEELOO-AND-LUNA-POSES.jpg",
+                "caption": "",
+                "alt": "",
+                "id": "RQ8pXsoCfs"
+              },
+              {
+                "text": ""
               }
             ]
           },
@@ -265,7 +280,8 @@
                 "type": "text",
                 "text": "Lheeloo & Luna are just getting started. The series is designed to grow through future stories, with plans for bilingual editions in French and Spanish to reach a broader international audience."
               }
-            ]
+            ],
+            "id": "_SnMZvewqt"
           },
           {
             "type": "p",
@@ -273,6 +289,33 @@
               {
                 "type": "text",
                 "text": "For now, Lheeloo & Luna continue to evolve through weekly cartoons shared on Instagram, where I post Lheeloo's Thoughts of the Week, small moments meant to bring a smile and connect with readers. Many more adventures await this little duo, and I'm excited to keep building their world, one story at a time."
+              }
+            ],
+            "id": "j9u5Nin2g5"
+          },
+          {
+            "type": "p",
+            "id": "O5-slwCx8F",
+            "children": [
+              {
+                "type": "text",
+                "id": "MB1169GhJx",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/093026-the-three-deadly-farts.png",
+                "caption": "",
+                "alt": "",
+                "id": "ap5jpQ1AHs"
+              },
+              {
+                "text": ""
               }
             ]
           }
