@@ -3,36 +3,10 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "The history &",
-      "heading": "The Making of\nLheeloo & Luna",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": "Best friends forever!"
-              }
-            ],
-            "type": "p",
-            "id": "Cm07yFyP0K"
-          }
-        ]
-      },
-      "layout": "trio",
-      "textStyle": {
-        "headingSize": "xl",
-        "headingType": "default",
-        "headingFont": "serif",
-        "align": "center"
-      },
-      "_template": "heroImageGrid"
-    },
-    {
       "eyebrow": "",
-      "heading": "",
+      "heading": "The making of Lheeloo and Luna",
       "image": "/images/PNG Images Only/Lheeloo-and-Luna-banner.png",
-      "caption": "A single large image with room to breathe.",
+      "caption": "",
       "aspect": "landscape",
       "body": {
         "type": "root",
@@ -47,6 +21,12 @@
             "id": "3zJqzYvWCx"
           }
         ]
+      },
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "h1",
+        "headingFont": "serif",
+        "align": "center"
       },
       "_template": "imageSpotlight"
     },
