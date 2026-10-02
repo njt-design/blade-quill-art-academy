@@ -25,13 +25,35 @@
           "src": "/images/PNG%20Images%20Only/NEW-COVER-eyes-OPENED-WITH-HEARTS-AND-STARS.png"
         },
         {
-          "src": "/images/PNG Images Only/Page-21_Tuesday-Re-Inked_Colored.png"
+          "src": ""
         },
         {
           "src": "/images/PNG Images Only/Page-13-Re-Inked_Colored.png"
         }
       ],
       "_template": "heroImageGrid"
+    },
+    {
+      "eyebrow": "",
+      "heading": "",
+      "image": "/images/PNG Images Only/Lheeloo-and-Luna-banner.png",
+      "caption": "A single large image with room to breathe.",
+      "aspect": "landscape",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "3zJqzYvWCx"
+          }
+        ]
+      },
+      "_template": "imageSpotlight"
     },
     {
       "heading": "How It All Began",
