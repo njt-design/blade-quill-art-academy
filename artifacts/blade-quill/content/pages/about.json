@@ -123,9 +123,10 @@
             "children": [
               {
                 "type": "text",
-                "text": "I offer advice and complementary materials to assist you in your creative journey, along with free tutorials on my YouTube channel, Blade and Quill Art Academy. New videos are created usually bi-weekly."
+                "text": "I offer advice and complementary materials to assist you in your digital art creative journey, along with free tutorials on my YouTube channel, Blade and Quill Art Academy. "
               }
-            ]
+            ],
+            "id": "jyW8knpuK4"
           }
         ]
       },
@@ -137,9 +138,10 @@
             "children": [
               {
                 "type": "text",
-                "text": "I am a French author and illustrator. This website is about digital art."
+                "text": "I am a cartoon illustrator and digital art educator on YouTube"
               }
-            ]
+            ],
+            "id": "85cfi-fuon"
           }
         ]
       },
@@ -153,7 +155,8 @@
                 "type": "text",
                 "text": "I am the creator of Lheeloo & Luna, a charming illustrated cartoon book. I specialize in chibi-style cartoons, character designs, and digital painting in Krita. Please make sure to come back often to see my new illustrations and paintings — I hope you will enjoy your stay here."
               }
-            ]
+            ],
+            "id": "6wxAcAX_bF"
           }
         ]
       },
