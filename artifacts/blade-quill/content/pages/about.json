@@ -4,7 +4,7 @@
   "blocks": [
     {
       "eyebrow": "ABOUT ME",
-      "heading": "I'm Corinne, French author and illustrator. ",
+      "heading": "I'm Corinne, a cartoon illustrator and digital art educator on YouTube.",
       "leadText": {
         "type": "root",
         "children": [
@@ -13,7 +13,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "I’m so glad you’re here! I love sharing what I’ve learned about digital art and Krita, along with tips, advice, and free resources to help you on your own creative journey. "
+                "text": "Welcome to my website and cartoon world! I create fun cartoons, comics, and chibi-style art, and I love sharing what I’ve learned about digital art and Krita. You’ll also find tips, advice, and free resources to support you on your creative journey."
               }
             ],
             "id": "CHs9cXwqIa"
