@@ -20,17 +20,12 @@
         ]
       },
       "layout": "trio",
-      "images": [
-        {
-          "src": "/images/PNG%20Images%20Only/NEW-COVER-eyes-OPENED-WITH-HEARTS-AND-STARS.png"
-        },
-        {
-          "src": ""
-        },
-        {
-          "src": "/images/PNG Images Only/Page-13-Re-Inked_Colored.png"
-        }
-      ],
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "default",
+        "headingFont": "serif",
+        "align": "center"
+      },
       "_template": "heroImageGrid"
     },
     {
