@@ -326,7 +326,7 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/060925_Thought-of-the-week.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/060925_Thought-of-the-week.png",
                 "caption": "",
                 "alt": "",
                 "id": "gzxVI-vneu"
@@ -359,6 +359,17 @@
         "headingFont": "serif"
       },
       "_template": "text"
+    },
+    {
+      "heading": "Instagram Post examples",
+      "leftImage": {
+        "src": "/images/PNG%20Images%20Only/060925_Thought-of-the-week.png"
+      },
+      "rightImage": {
+        "src": "/images/PNG%20Images%20Only/093026-the-three-deadly-farts.png"
+      },
+      "style": "polaroid",
+      "_template": "imageSideBySide"
     }
   ],
   "_template": "info"
