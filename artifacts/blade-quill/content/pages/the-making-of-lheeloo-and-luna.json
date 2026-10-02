@@ -302,7 +302,12 @@
             "children": [
               {
                 "type": "text",
-                "text": "For now, Lheeloo & Luna continue to evolve through weekly cartoons shared on Instagram, where I post Lheeloo's “Thoughts of the Week” and funny gags. These are small moments meant to bring a smile and connect with readers. Many more adventures await this little duo, and I'm excited to keep building their world, one story at a time."
+                "text": "For now, Lheeloo & Luna continue to evolve through weekly cartoons shared on Instagram, where I post Lheeloo's “Thoughts of the Week” and funny "
+              },
+              {
+                "type": "text",
+                "id": "6fPBPiW6lA",
+                "text": "gags. These are small moments meant to bring a smile and connect with readers. Many more adventures await this little duo, and I'm excited to keep building their world, one story at a time."
               }
             ],
             "id": "j9u5Nin2g5"
@@ -312,8 +317,21 @@
             "id": "O5-slwCx8F",
             "children": [
               {
-                "type": "text",
-                "id": "MB1169GhJx",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/060925_Thought-of-the-week.png",
+                "caption": "",
+                "alt": "",
+                "id": "gzxVI-vneu"
+              },
+              {
                 "text": ""
               },
               {
