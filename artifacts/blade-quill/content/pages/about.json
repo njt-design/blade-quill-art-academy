@@ -31,6 +31,10 @@
       "deskCaption": "Lheeloo and Luna first draft",
       "screenImage": "",
       "screenCaption": "Since 2020 ",
+      "textStyle": {
+        "headingSize": "smaller",
+        "headingType": "h1"
+      },
       "_template": "aboutHero"
     },
     {
