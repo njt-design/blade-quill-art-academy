@@ -318,36 +318,6 @@
             "children": [
               {
                 "text": ""
-              },
-              {
-                "type": "img",
-                "children": [
-                  {
-                    "text": ""
-                  }
-                ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/060925_Thought-of-the-week.png",
-                "caption": "",
-                "alt": "",
-                "id": "gzxVI-vneu"
-              },
-              {
-                "text": ""
-              },
-              {
-                "type": "img",
-                "children": [
-                  {
-                    "text": ""
-                  }
-                ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/093026-the-three-deadly-farts.png",
-                "caption": "",
-                "alt": "",
-                "id": "ap5jpQ1AHs"
-              },
-              {
-                "text": ""
               }
             ]
           }
@@ -369,6 +339,10 @@
         "src": "/images/PNG%20Images%20Only/093026-the-three-deadly-farts.png"
       },
       "style": "polaroid",
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1"
+      },
       "_template": "imageSideBySide"
     }
   ],
