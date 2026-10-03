@@ -294,7 +294,7 @@
       "textStyle": {
         "headingSize": "larger",
         "headingType": "h1",
-        "bodySize": "large"
+        "bodySize": "default"
       },
       "_template": "text"
     },
