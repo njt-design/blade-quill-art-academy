@@ -446,6 +446,30 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "eyebrow": "Featured Work",
+      "heading": "Showcase your\nbest piece",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Pair a bold headline with one large image — great for book launches, class promos, or portfolio highlights."
+              }
+            ],
+            "id": "V8rc5mhXWk"
+          }
+        ]
+      },
+      "featuredImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
+      "imagePosition": "right",
+      "ctaPrimary": "GUMROAD STORE",
+      "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
+      "_template": "heroSplitImage"
     }
   ]
 }
