@@ -13,7 +13,8 @@
             "children": [
               {
                 "type": "text",
-                "text": "My latest YouTube video, featured here the moment it goes live — Krita techniques, character design, and digital painting tips."
+                "text": "My latest YouTube video will be featured here the moment it goes live ",
+                "bold": true
               }
             ],
             "id": "AkNfazLVhS"
@@ -21,6 +22,10 @@
         ]
       },
       "youtubeUrl": "https://youtu.be/W5oV0m64j-s",
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1"
+      },
       "_template": "featuredVideo"
     }
   ],
