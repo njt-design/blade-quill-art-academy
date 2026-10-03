@@ -376,11 +376,20 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_EMAIL-RECEIPT.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/LEAVING-A-REVIEW-ON-GUMROAD_EMAIL-RECEIPT.png",
                 "caption": "",
                 "alt": "",
-                "id": "or8bex8xaS"
+                "id": "LIG9tEEg_0"
               },
+              {
+                "text": ""
+              }
+            ],
+            "id": "UVfvdxKKdw"
+          },
+          {
+            "type": "p",
+            "children": [
               {
                 "text": ""
               },
@@ -391,16 +400,58 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_DOWNLOAD-REVIEW-PAGE.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_DOWNLOAD.png",
                 "caption": "",
                 "alt": "",
-                "id": "akNy_jB1IL"
+                "id": "Vr-fiTq9f-"
               },
               {
                 "text": ""
               }
             ],
-            "id": "UVfvdxKKdw"
+            "id": "Vag0YqEWnI"
+          },
+          {
+            "type": "p",
+            "children": [
+              {
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_-REVIEW-PAGE.png",
+                "caption": "",
+                "alt": "",
+                "id": "yTIUc413Sy"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "id": "7r6FQ6xjA3"
+          },
+          {
+            "type": "p",
+            "id": "F9YKj5h7uL",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "h6",
+            "id": "dv_-RY6LZ6",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
           },
           {
             "children": [
