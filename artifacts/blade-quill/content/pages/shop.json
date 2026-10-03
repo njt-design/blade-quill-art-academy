@@ -359,48 +359,14 @@
       "_template": "videoEmbed"
     },
     {
-      "heading": "Leave a review",
-      "intro": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Your feedback helps me improve my books and allows others to discover my work."
-              }
-            ],
-            "id": "nE0aF7WvM_"
-          }
-        ]
-      },
-      "thankYou": "",
-      "ctaHeading": "",
-      "links": [
-        {
-          "label": "",
-          "href": "",
-          "region": "US"
-        }
-      ],
-      "textStyle": {
-        "headingSize": "larger",
-        "headingType": "h1",
-        "bodySize": "large"
-      },
-      "_template": "reviewLinks"
-    },
-    {
-      "heading": "How to leave a review",
+      "heading": "How to download and leave a review",
       "body": {
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "text": ""
+                "text": "Below is a screenshot of the receipt you will get. ⬇️"
               },
               {
                 "type": "img",
@@ -415,7 +381,32 @@
                 "id": "0LXALKdkZr"
               },
               {
-                "text": ""
+                "text": "After you download the files, you’ll find them in your Downloads folder, either in "
+              },
+              {
+                "text": "File Explorer ",
+                "bold": true
+              },
+              {
+                "text": "on Windows 11 or in the "
+              },
+              {
+                "text": "Downloads folder ",
+                "bold": true
+              },
+              {
+                "text": "on a Mac. Extract the files and enjoy! As a quick reminder, I’ve also included an extra PDF with step-by-step instructions on how to extract them. Below, Lheeloo is showing you what it looks like in Windows 11. ⬇️"
+              }
+            ],
+            "id": "Vag0YqEWnI",
+            "type": "p"
+          },
+          {
+            "id": "uzJinW9GpX",
+            "type": "p",
+            "children": [
+              {
+                "text": " "
               },
               {
                 "type": "img",
@@ -430,7 +421,16 @@
                 "id": "Vr-fiTq9f-"
               },
               {
-                "text": ""
+                "text": "Once you’ve had a chance to read the book and enjoy the activities, I hope you’ll consider leaving a review. To do so, simply go back to your email receipt."
+              }
+            ]
+          },
+          {
+            "id": "a6Mjqjno_i",
+            "type": "p",
+            "children": [
+              {
+                "text": "Luna is showing you how below!⬇️"
               },
               {
                 "type": "img",
@@ -447,8 +447,7 @@
               {
                 "text": ""
               }
-            ],
-            "id": "Vag0YqEWnI"
+            ]
           },
           {
             "type": "p",
