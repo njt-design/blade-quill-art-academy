@@ -335,7 +335,7 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/showing-the-extract-instructions-and-ebooks.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/showing-the-extract-instructions-and-ebooks.png",
                 "caption": "",
                 "alt": "",
                 "id": "63TRb3riXz"
@@ -401,11 +401,29 @@
                 "bold": true
               },
               {
-                "text": "on a Mac. Extract the files and enjoy! As a quick reminder, I’ve also included an extra PDF with step-by-step instructions on how to extract them. Below, Lheeloo is showing you what it looks like in Windows 11. ⬇️"
+                "text": "on a Mac. "
               }
             ],
             "id": "Vag0YqEWnI",
             "type": "p"
+          },
+          {
+            "id": "v7WA3F0pip",
+            "type": "p",
+            "children": [
+              {
+                "text": "Extract the files and enjoy! As a quick reminder, I’ve also included an extra PDF with step-by-step instructions on how to extract them. "
+              }
+            ]
+          },
+          {
+            "id": "0vIsKnsgw1",
+            "type": "p",
+            "children": [
+              {
+                "text": "Below, Lheeloo is showing you what it looks like in Windows 11. ⬇️"
+              }
+            ]
           },
           {
             "id": "uzJinW9GpX",
@@ -427,7 +445,16 @@
                 "id": "Vr-fiTq9f-"
               },
               {
-                "text": "Once you’ve had a chance to read the comic book and enjoy the different activities, I hope you’ll consider leaving a review. To do so, simply go back to your email receipt."
+                "text": "I hope you’ll consider leaving a review. "
+              }
+            ]
+          },
+          {
+            "id": "MemQoSvNb_",
+            "type": "p",
+            "children": [
+              {
+                "text": "To do so, simply go back to your email receipt."
               }
             ]
           },
