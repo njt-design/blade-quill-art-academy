@@ -32,39 +32,28 @@
       "_template": "imageSpotlight"
     },
     {
+      "eyebrow": "",
       "heading": "Grab your bundle now!",
       "subheading": {
         "type": "root",
         "children": [
           {
-            "type": "h3",
+            "type": "p",
             "children": [
               {
                 "type": "text",
-                "text": "This button will take you to my secure Gumroad shop.",
-                "bold": true
+                "text": "This button will take you to my secure Gumroad shop."
               }
             ],
-            "id": "AotJIauvsT"
-          },
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "G9PuiRIgi0"
+            "id": "V8rc5mhXWk"
           }
         ]
       },
-      "ctaLabel": "GUMROAD SHOP",
-      "ctaLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
-      "textStyle": {
-        "headingSize": "xl",
-        "headingType": "h1"
-      },
-      "_template": "hero"
+      "featuredImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
+      "imagePosition": "right",
+      "ctaPrimary": "GUMROAD STORE",
+      "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
+      "_template": "heroSplitImage"
     },
     {
       "heading": "✨ What’s Included in the Bundle",
@@ -446,30 +435,6 @@
         "align": "center"
       },
       "_template": "text"
-    },
-    {
-      "eyebrow": "",
-      "heading": "Grab your bundle now!",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "This button will take you to my secure Gumroad shop."
-              }
-            ],
-            "id": "V8rc5mhXWk"
-          }
-        ]
-      },
-      "featuredImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
-      "imagePosition": "right",
-      "ctaPrimary": "GUMROAD STORE",
-      "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
-      "_template": "heroSplitImage"
     }
   ]
 }
