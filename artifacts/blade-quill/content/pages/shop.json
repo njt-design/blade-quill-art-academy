@@ -32,6 +32,41 @@
       "_template": "imageSpotlight"
     },
     {
+      "heading": "Grab your bundle now!",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h3",
+            "children": [
+              {
+                "type": "text",
+                "text": "This button will take you to my secure Gumroad shop.",
+                "bold": true
+              }
+            ],
+            "id": "AotJIauvsT"
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "G9PuiRIgi0"
+          }
+        ]
+      },
+      "ctaLabel": "GUMROAD SHOP",
+      "ctaLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
+      "textStyle": {
+        "headingSize": "xl",
+        "headingType": "h1"
+      },
+      "_template": "hero"
+    },
+    {
       "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
@@ -411,27 +446,6 @@
         "align": "center"
       },
       "_template": "text"
-    },
-    {
-      "heading": "Grab your bundle now!",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "This button will take you to my secure Gumroad shop."
-              }
-            ],
-            "id": "AotJIauvsT"
-          }
-        ]
-      },
-      "ctaLabel": "GUMROAD SHOP",
-      "ctaLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
-      "_template": "hero"
     }
   ]
 }
