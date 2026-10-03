@@ -14,12 +14,12 @@
           {
             "children": [
               {
-                "text": "Download, print, play! ",
+                "text": "",
                 "bold": true
               }
             ],
             "id": "290KOijkAP",
-            "type": "h1"
+            "type": "p"
           },
           {
             "children": [
@@ -42,16 +42,6 @@
       "_template": "imageSpotlight"
     },
     {
-      "heading": "Take a peek inside the books in this video!",
-      "youtubeUrl": "https://youtu.be/p4uKDRNTIxc",
-      "textStyle": {
-        "headingSize": "larger",
-        "headingType": "h1",
-        "align": "center"
-      },
-      "_template": "videoEmbed"
-    },
-    {
       "showText": true,
       "body": {
         "type": "root",
@@ -68,7 +58,7 @@
           },
           {
             "id": "O9Wc2SpfCI",
-            "type": "h2",
+            "type": "h4",
             "children": [
               {
                 "text": "This button will take you to my secure Gumroad shop.",
@@ -90,7 +80,7 @@
       "buttonLabel": "Gumroad",
       "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
       "layout": "centered",
-      "buttonAlign": "center",
+      "buttonAlign": "left",
       "buttonStyle": "primary",
       "_template": "textButton"
     },
@@ -317,6 +307,16 @@
       "_template": "text"
     },
     {
+      "heading": "Take a peek inside the books in this video!",
+      "youtubeUrl": "https://youtu.be/p4uKDRNTIxc",
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "align": "center"
+      },
+      "_template": "videoEmbed"
+    },
+    {
       "heading": "",
       "images": [
         {
@@ -386,7 +386,7 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/LEAVING-A-REVIEW-ON-GUMROAD_STARTING-WITH-EMAIL.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_STARTING-WITH-EMAIL.png",
                 "caption": "",
                 "alt": "",
                 "id": "0LXALKdkZr"
@@ -416,7 +416,7 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/LEAVING-A-REVIEW-ON-GUMROAD_-RATE-AND-REVIEW.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/LEAVING-A-REVIEW-ON-GUMROAD_-RATE-AND-REVIEW.png",
                 "caption": "",
                 "alt": "",
                 "id": "ZHXGpkj52S"
