@@ -59,7 +59,7 @@
           {
             "children": [
               {
-                "text": "GRAB YOUR BUNDLE NOW FOR $11.99!",
+                "text": "GRAB YOUR BUNDLE NOW!",
                 "bold": true
               }
             ],
@@ -68,12 +68,22 @@
           },
           {
             "id": "O9Wc2SpfCI",
-            "type": "p",
+            "type": "h2",
             "children": [
               {
-                "text": "This button will take you to my secure Gumroad shop."
+                "text": "This button will take you to my secure Gumroad shop.",
+                "bold": true
               }
             ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "vO85pht9R6"
           }
         ]
       },
