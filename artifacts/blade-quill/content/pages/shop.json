@@ -32,49 +32,6 @@
       "_template": "imageSpotlight"
     },
     {
-      "showText": true,
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": "GRAB YOUR BUNDLE NOW!",
-                "bold": true
-              }
-            ],
-            "id": "oMWAVvr8et",
-            "type": "h1"
-          },
-          {
-            "id": "O9Wc2SpfCI",
-            "type": "h4",
-            "children": [
-              {
-                "text": "This button will take you to my secure Gumroad shop.",
-                "bold": true
-              }
-            ]
-          },
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "rq_L8EHv6c"
-          }
-        ]
-      },
-      "buttonLabel": "GUMROAD SHOP",
-      "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
-      "layout": "beside",
-      "buttonAlign": "center",
-      "buttonStyle": "primary",
-      "_template": "textButton"
-    },
-    {
       "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
@@ -454,6 +411,27 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "heading": "Grab your bundle now!",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "This button will take you to my secure Gumroad shop."
+              }
+            ],
+            "id": "AotJIauvsT"
+          }
+        ]
+      },
+      "ctaLabel": "GUMROAD SHOP",
+      "ctaLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
+      "_template": "hero"
     }
   ]
 }
