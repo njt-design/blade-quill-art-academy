@@ -448,8 +448,8 @@
       "_template": "text"
     },
     {
-      "eyebrow": "Featured Work",
-      "heading": "Showcase your\nbest piece",
+      "eyebrow": "",
+      "heading": "Grab your bundle now!",
       "subheading": {
         "type": "root",
         "children": [
@@ -458,7 +458,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Pair a bold headline with one large image — great for book launches, class promos, or portfolio highlights."
+                "text": "This button will take you to my secure Gumroad shop."
               }
             ],
             "id": "V8rc5mhXWk"
