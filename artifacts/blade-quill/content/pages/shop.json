@@ -49,7 +49,7 @@
           }
         ]
       },
-      "featuredImage": "/images/900-x-1200-px-shop-thumbnail-website.png",
+      "featuredImage": "/images/PNG Images Only/Thumbnail-(2000-x-3000-px).png",
       "imagePosition": "right",
       "ctaPrimary": "GUMROAD STORE",
       "ctaPrimaryLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
@@ -121,7 +121,7 @@
             "id": "gY1IUWSTGI",
             "children": [
               {
-                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing, creative activity for kids—and anyone who loves to color!"
+                "text": "A charming mini coloring book filled with adorable Chibi-style characters just waiting for a splash of color. A relaxing, creative activity for kids, or anyone who loves to color!"
               }
             ]
           },
@@ -357,25 +357,6 @@
         "align": "center"
       },
       "_template": "videoEmbed"
-    },
-    {
-      "heading": "",
-      "images": [
-        {
-          "src": "/images/Screenshot-2026-09-16-at-8.58.26-PM.png"
-        },
-        {
-          "src": "/images/PNG Images Only/Coloring-book-image-(1).png"
-        },
-        {
-          "src": "/images/PNG Images Only/Comic-book-image-(1).png"
-        },
-        {
-          "src": "/images/PNG Images Only/Activity-book-image-(1).png"
-        }
-      ],
-      "layout": "stacked",
-      "_template": "imageBanners"
     },
     {
       "heading": "Leave a review",
