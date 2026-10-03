@@ -452,6 +452,49 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "showText": true,
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "children": [
+              {
+                "text": "GRAB YOUR BUNDLE NOW!",
+                "bold": true
+              }
+            ],
+            "id": "oMWAVvr8et",
+            "type": "h1"
+          },
+          {
+            "id": "O9Wc2SpfCI",
+            "type": "h4",
+            "children": [
+              {
+                "text": "This button will take you to my secure Gumroad shop.",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "rq_L8EHv6c"
+          }
+        ]
+      },
+      "buttonLabel": "GUMROAD SHOP",
+      "buttonLink": "https://bladeandquill.gumroad.com/l/LheelooLunaBundle",
+      "layout": "beside",
+      "buttonAlign": "center",
+      "buttonStyle": "primary",
+      "_template": "textButton"
     }
   ]
 }
