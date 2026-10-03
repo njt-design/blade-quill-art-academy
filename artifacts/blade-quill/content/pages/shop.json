@@ -364,15 +364,6 @@
         "type": "root",
         "children": [
           {
-            "type": "h6",
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "id": "UVfvdxKKdw"
-          },
-          {
             "type": "p",
             "children": [
               {
@@ -407,15 +398,6 @@
               },
               {
                 "text": ""
-              }
-            ],
-            "id": "Vag0YqEWnI"
-          },
-          {
-            "type": "p",
-            "children": [
-              {
-                "text": ""
               },
               {
                 "type": "img",
@@ -433,7 +415,7 @@
                 "text": ""
               }
             ],
-            "id": "7r6FQ6xjA3"
+            "id": "Vag0YqEWnI"
           },
           {
             "type": "p",
