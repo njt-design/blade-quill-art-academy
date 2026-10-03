@@ -365,7 +365,7 @@
       "_template": "videoEmbed"
     },
     {
-      "heading": "How to download and leave a review",
+      "heading": "Happy with your purchase? Please consider leaving a review!💖🥰",
       "body": {
         "type": "root",
         "children": [
@@ -460,7 +460,55 @@
             "id": "F9YKj5h7uL",
             "children": [
               {
+                "text": "💛 Thank you so much for your purchase!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "fF1PdjNMDg",
+            "children": [
+              {
                 "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "FMVX_S6AbF",
+            "children": [
+              {
+                "text": "I hope this printable bundle brings hours of fun, laughter, creativity, and brainy challenges to your child! "
+              }
+            ]
+          },
+          {
+            "type": "h2",
+            "id": "_yO9zgiiyG",
+            "children": [
+              {
+                "text": "More e-books are coming in the future! If you’d like to be notified about new releases, please subscribe to the website.",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "h2",
+            "id": "3jBjd_fEa0",
+            "children": [
+              {
+                "text": "And don’t worry! I won’t fill your inbox! ",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "h2",
+            "id": "LkPuKi7QGE",
+            "children": [
+              {
+                "bold": true,
+                "text": "I only send a few emails throughout the year, when I have something worth sharing."
               }
             ]
           },
