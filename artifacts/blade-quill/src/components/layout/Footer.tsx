@@ -111,7 +111,7 @@ export function Footer() {
               className="text-[13px] mb-4 leading-relaxed"
               style={{ color: "var(--ink-faint)" }}
             >
-              New work, free guides, class openings. Once a month.
+              New work, free guides, and occasional updates. No spam.
             </p>
             <form
               onSubmit={async (e) => {
