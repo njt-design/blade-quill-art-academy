@@ -157,29 +157,133 @@
           },
           {
             "type": "p",
-            "id": "2yYPsipGWq",
             "children": [
               {
                 "type": "text",
-                "id": "zRLUPb3I2L",
-                "bold": true,
-                "text": "How to print the calendar:"
+                "text": "Below are the printer's settings: ",
+                "id": "Q7LGIzTNvN",
+                "bold": true
               }
-            ]
+            ],
+            "id": "tsEq7UQMA4"
           },
           {
-            "type": "p",
-            "id": "LhHArvtbg1",
             "children": [
               {
-                "type": "text",
-                "id": "EI4VNLBKi7",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "children": [
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "text": "Select your printer"
+                      }
+                    ],
+                    "type": "lic",
+                    "id": "8094fcRpAD"
+                  }
+                ],
+                "type": "li",
+                "id": "LLmOjS8Vgq"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "text": "Copies: "
+                      },
+                      {
+                        "text": "1",
+                        "bold": true
+                      }
+                    ],
+                    "type": "lic",
+                    "id": "vDO4CvuOdU"
+                  }
+                ],
+                "type": "li",
+                "id": "eDy-NwdQep"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "text": "Page Range: "
+                      },
+                      {
+                        "text": "All Pages",
+                        "bold": true
+                      }
+                    ],
+                    "type": "lic",
+                    "id": "T1o_eZ1SRJ"
+                  }
+                ],
+                "type": "li",
+                "id": "K7z_ckhgRi"
+              },
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Paper Size: ",
+                        "id": "X3kn-GTcS6"
+                      },
+                      {
+                        "type": "text",
+                        "id": "TusHpDT3iD",
+                        "text": "US Letter paper (8.5 × 11 inches)",
+                        "bold": true
+                      },
+                      {
+                        "type": "text",
+                        "id": "M-BdpvUiD6",
+                        "text": " or "
+                      },
+                      {
+                        "type": "text",
+                        "id": "tc0962y8pC",
+                        "text": "Letter (216 x 279 mm) ",
+                        "bold": true
+                      },
+                      {
+                        "type": "text",
+                        "id": "VQ6eeB2RbO",
+                        "text": "if you are using the metric system."
+                      }
+                    ],
+                    "id": "IpF0uf1EDZ"
+                  }
+                ],
+                "type": "li",
+                "id": "t5ZD_tPnKU"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Set the orientation to ",
+                        "id": "7lhMXsizX-"
+                      },
+                      {
+                        "type": "text",
+                        "id": "HQuQ1cLZrS",
+                        "text": "Landscape",
+                        "bold": true
+                      }
+                    ],
+                    "type": "lic",
+                    "id": "n_znE94TXC"
+                  }
+                ],
+                "type": "li",
+                "id": "k5tmM87HsU"
+              },
               {
                 "children": [
                   {
@@ -189,7 +293,13 @@
                       {
                         "type": "text",
                         "id": "IOIdO6GYdx",
-                        "text": "Print at actual size."
+                        "text": "Print at "
+                      },
+                      {
+                        "type": "text",
+                        "id": "0HUER7L7R_",
+                        "text": "Actual Size",
+                        "bold": true
                       }
                     ]
                   }
@@ -200,36 +310,25 @@
               {
                 "children": [
                   {
-                    "type": "lic",
-                    "id": "5tPmlAPW48",
                     "children": [
                       {
+                        "text": "Check the box:",
                         "type": "text",
-                        "id": "toFHsnmg0D",
-                        "text": "Use US Letter paper (8.5 × 11 inches)"
+                        "id": "wgqqxO9mtI"
+                      },
+                      {
+                        "type": "text",
+                        "bold": true,
+                        "id": "ZbRE7mLvwT",
+                        "text": " Print on both sides"
                       }
-                    ]
+                    ],
+                    "type": "lic",
+                    "id": "UpA7DY0YqP"
                   }
                 ],
                 "type": "li",
-                "id": "JSk4o6RB9O"
-              },
-              {
-                "children": [
-                  {
-                    "type": "lic",
-                    "id": "TEJRlZaS5f",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "igbkOPyu61",
-                        "text": "Make sure to set your printer to LANDSCAPE."
-                      }
-                    ]
-                  }
-                ],
-                "type": "li",
-                "id": "Xl0-tqfK6S"
+                "id": "3CWXjuV9SM"
               },
               {
                 "children": [
@@ -238,15 +337,36 @@
                     "id": "RJ2ykEzyVd",
                     "children": [
                       {
-                        "type": "text",
-                        "id": "kOTnkVEZza",
-                        "text": "Print the monthly calendar and notes pages."
+                        "text": "Select: "
+                      },
+                      {
+                        "text": "Flip on long edge",
+                        "bold": true
                       }
                     ]
                   }
                 ],
                 "type": "li",
                 "id": "145UCfULFc"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "text": "Hit"
+                      },
+                      {
+                        "bold": true,
+                        "text": " PRINT"
+                      }
+                    ],
+                    "type": "lic",
+                    "id": "Sv8vhaVjTk"
+                  }
+                ],
+                "type": "li",
+                "id": "rMdfbd0elv"
               },
               {
                 "children": [
@@ -283,10 +403,10 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/How-to-print-(1).png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/Printing-set-up-for-both-side-printing.png",
                 "caption": "",
                 "alt": "",
-                "id": "gU4G91qaUi"
+                "id": "uQthkvfdr5"
               },
               {
                 "text": ""
