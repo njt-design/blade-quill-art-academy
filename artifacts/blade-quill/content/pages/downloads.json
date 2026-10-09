@@ -73,10 +73,43 @@
       "_template": "imageGallery"
     },
     {
-      "heading": "",
+      "heading": "A Little Gift for You! 💖",
       "body": {
         "type": "root",
         "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "To show my appreciation for your support, I’ve created a ",
+                "id": "VqdbHNRaOH"
+              },
+              {
+                "type": "text",
+                "id": "MLd3J2VOOs",
+                "text": "free printable 2027 Chibi Wall Calendar ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "id": "LJpxDRd4iW",
+                "text": "just for you!"
+              }
+            ],
+            "id": "zKRDAAmhG3"
+          },
+          {
+            "type": "p",
+            "id": "0bc1e-Cfp_",
+            "children": [
+              {
+                "type": "text",
+                "id": "o_cQCVUwST",
+                "text": ""
+              }
+            ]
+          },
           {
             "type": "p",
             "id": "K5Wn8aYdui",
@@ -99,19 +132,21 @@
                 "text": "Thank you for supporting my creative journey. It means so much to me! 💖"
               }
             ]
-          },
-          {
-            "type": "p",
-            "id": "9bvTdynbqe",
-            "children": [
-              {
-                "type": "text",
-                "id": "lqD3tq36Qe",
-                "text": "",
-                "bold": true
-              }
-            ]
-          },
+          }
+        ]
+      },
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "align": "center"
+      },
+      "_template": "text"
+    },
+    {
+      "heading": "",
+      "body": {
+        "type": "root",
+        "children": [
           {
             "type": "p",
             "children": [
@@ -375,60 +410,6 @@
       "textStyle": {
         "headingSize": "larger",
         "headingType": "h1"
-      },
-      "_template": "text"
-    },
-    {
-      "heading": "A Little Gift for You! 💖",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "To show my appreciation for your support, I’ve created a ",
-                "id": "VqdbHNRaOH"
-              },
-              {
-                "type": "text",
-                "id": "MLd3J2VOOs",
-                "text": "free printable 2027 Chibi Wall Calendar ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "id": "LJpxDRd4iW",
-                "text": "just for you!"
-              }
-            ],
-            "id": "zKRDAAmhG3"
-          },
-          {
-            "type": "h2",
-            "id": "yxRPDsJZ3s",
-            "children": [
-              {
-                "text": ""
-              }
-            ]
-          },
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "_1vgnNatN-"
-          }
-        ]
-      },
-      "textStyle": {
-        "headingSize": "larger",
-        "headingType": "h1",
-        "align": "center"
       },
       "_template": "text"
     }
