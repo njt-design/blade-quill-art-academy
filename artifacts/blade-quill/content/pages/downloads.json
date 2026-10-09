@@ -54,7 +54,7 @@
       "_template": "downloadsGrid"
     },
     {
-      "heading": "Free 2027 Chibi Wall Calendar ",
+      "heading": "",
       "images": [
         {
           "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
@@ -82,32 +82,10 @@
             "children": [
               {
                 "type": "text",
-                "text": "As a thank-you for subscribing to Blade & Quill Art Academy, I'd love to share my 2027 Chibi Wall Calendar with you!"
+                "text": "To show my appreciation for your support, I’ve created a free printable 2027 Chibi Wall Calendar just for you!"
               }
             ],
             "id": "zKRDAAmhG3"
-          },
-          {
-            "type": "p",
-            "id": "vqBFL2Xx-_",
-            "children": [
-              {
-                "type": "text",
-                "id": "YOi6QTSsHP",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
-            "id": "Qvdozize0G",
-            "children": [
-              {
-                "type": "text",
-                "id": "_Y20MYxn5x",
-                "text": "This printable calendar features one of my favorite original Chibi illustration, along with space for notes and monthly priorities."
-              }
-            ]
           },
           {
             "type": "p",
@@ -377,7 +355,7 @@
                       {
                         "type": "text",
                         "id": "M2Icyx6WyT",
-                        "text": "Hang them on a clipboard, place them in a binder, or have them spiral-bound at a print shop."
+                        "text": "Hang them on a clipboard, place them in a binder, or have them spiral-bound at a print shop. Your choice!💖"
                       }
                     ]
                   }
