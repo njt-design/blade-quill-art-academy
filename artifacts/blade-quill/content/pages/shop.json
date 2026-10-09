@@ -61,12 +61,24 @@
         "type": "root",
         "children": [
           {
-            "type": "p",
+            "type": "h1",
             "id": "r9Fm_IxJ8k",
             "children": [
               {
                 "type": "text",
                 "id": "LdHmRtI8Qu",
+                "text": "Activity book only, available on Amazon.com",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "99Sdb-_Prq",
+            "children": [
+              {
+                "type": "text",
+                "id": "JgWKDlTYx1",
                 "text": "If you prefer a printed copy of the activity book, you can purchase it on Amazon. Please note that the price is slightly higher due to Amazon's printing costs and fees. Unfortunately, these additional costs also make it difficult for me to offer discounts at this time."
               }
             ]
