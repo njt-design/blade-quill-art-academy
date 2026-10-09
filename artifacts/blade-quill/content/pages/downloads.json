@@ -48,6 +48,33 @@
       "emptyHeading": "Free resources coming soon!",
       "emptyDescription": "Coloring pages, guides, and more on the way.",
       "_template": "downloadsGrid"
+    },
+    {
+      "eyebrow": "A gift for you!",
+      "heading": "2027\nPrintable Wall Calendar",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Scatter up to six images around the headline — like the homepage hero, but fully editable."
+              }
+            ],
+            "id": "O-ClRsfAbM"
+          }
+        ]
+      },
+      "images": [
+        {
+          "src": "/images/PNG Images Only/Mock-up-Calendar-cover.png"
+        }
+      ],
+      "ctaPrimary": "View Gallery",
+      "ctaPrimaryLink": "/gallery",
+      "_template": "heroFloatingImages"
     }
   ]
 }
