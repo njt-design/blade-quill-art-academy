@@ -71,6 +71,232 @@
         "headingType": "h1"
       },
       "_template": "imageGallery"
+    },
+    {
+      "heading": "A Little Gift for You! 💖",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "As a thank-you for subscribing to Blade & Quill Art Academy, I'd love to share my 2027 Chibi Wall Calendar with you!"
+              }
+            ],
+            "id": "zKRDAAmhG3"
+          },
+          {
+            "type": "p",
+            "id": "vqBFL2Xx-_",
+            "children": [
+              {
+                "type": "text",
+                "id": "YOi6QTSsHP",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "Qvdozize0G",
+            "children": [
+              {
+                "type": "text",
+                "id": "_Y20MYxn5x",
+                "text": "This printable calendar features my original chibi illustrations, along with space for notes and monthly priorities."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "oJY1XQHJmL",
+            "children": [
+              {
+                "type": "text",
+                "id": "6dOUK5e_B-",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "K5Wn8aYdui",
+            "children": [
+              {
+                "type": "text",
+                "id": "ZuOmKD7w9X",
+                "text": "Simply download the PDF, print it, and enjoy!"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "FZJkoVM5aR",
+            "children": [
+              {
+                "type": "text",
+                "id": "vHsw9LDjX-",
+                "text": "Thank you for supporting my creative journey. It means so much to me! 💖"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "9bvTdynbqe",
+            "children": [
+              {
+                "type": "text",
+                "id": "lqD3tq36Qe",
+                "text": "",
+                "bold": true
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "2yYPsipGWq",
+            "children": [
+              {
+                "type": "text",
+                "id": "zRLUPb3I2L",
+                "bold": true,
+                "text": "How to print the calendar:"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "LhHArvtbg1",
+            "children": [
+              {
+                "type": "text",
+                "id": "EI4VNLBKi7",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "id": "qBiwTYOPF3",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "IOIdO6GYdx",
+                        "text": "Print at actual size."
+                      }
+                    ]
+                  }
+                ],
+                "type": "li",
+                "id": "kmKmYQxd-X"
+              },
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "id": "5tPmlAPW48",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "toFHsnmg0D",
+                        "text": "Use US Letter paper (8.5 × 11 inches)"
+                      }
+                    ]
+                  }
+                ],
+                "type": "li",
+                "id": "JSk4o6RB9O"
+              },
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "id": "TEJRlZaS5f",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "igbkOPyu61",
+                        "text": "Make sure to set your printer to LANDSCAPE."
+                      }
+                    ]
+                  }
+                ],
+                "type": "li",
+                "id": "Xl0-tqfK6S"
+              },
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "id": "RJ2ykEzyVd",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "kOTnkVEZza",
+                        "text": "Print the monthly calendar and notes pages."
+                      }
+                    ]
+                  }
+                ],
+                "type": "li",
+                "id": "145UCfULFc"
+              },
+              {
+                "children": [
+                  {
+                    "type": "lic",
+                    "id": "eToAqzpIGF",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "M2Icyx6WyT",
+                        "text": "Hang them on a clipboard, place them in a binder, or have them spiral-bound at a print shop."
+                      }
+                    ]
+                  }
+                ],
+                "type": "li",
+                "id": "vQXwzZIbPl"
+              }
+            ],
+            "type": "ul",
+            "id": "dZKXbnhvcT"
+          },
+          {
+            "type": "p",
+            "id": "cJ-YifD910",
+            "children": [
+              {
+                "type": "text",
+                "id": "demhuww1VP",
+                "text": ""
+              },
+              {
+                "type": "img",
+                "children": [
+                  {
+                    "text": ""
+                  }
+                ],
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/How-to-print.png",
+                "caption": "",
+                "alt": "",
+                "id": "xEZiwYyjsQ"
+              },
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "text"
     }
   ]
 }
