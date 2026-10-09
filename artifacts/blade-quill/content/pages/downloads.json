@@ -21,7 +21,8 @@
       },
       "textStyle": {
         "headingSize": "larger",
-        "headingType": "h1"
+        "headingType": "h1",
+        "align": "center"
       },
       "_template": "pageHeader"
     },
@@ -52,25 +53,6 @@
       "emptyHeading": "Free resources coming soon!",
       "emptyDescription": "Coloring pages, guides, and more on the way.",
       "_template": "downloadsGrid"
-    },
-    {
-      "heading": "",
-      "images": [
-        {
-          "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
-        },
-        {
-          "src": "/images/PNG%20Images%20Only/Mock-up-Year.png"
-        },
-        {
-          "src": "/images/PNG%20Images%20Only/Mock-up-Month-+-Notes.png"
-        }
-      ],
-      "textStyle": {
-        "headingSize": "larger",
-        "headingType": "h1"
-      },
-      "_template": "imageGallery"
     },
     {
       "heading": "A Little Gift for You! 💖",
@@ -138,7 +120,7 @@
       "textStyle": {
         "headingSize": "larger",
         "headingType": "h1",
-        "align": "center"
+        "align": "left"
       },
       "_template": "text"
     },
@@ -412,6 +394,20 @@
         "headingType": "h1"
       },
       "_template": "text"
+    },
+    {
+      "downloads": [
+        {
+          "title": "2027 Chibi Wall Calendar ",
+          "description": "",
+          "file": "/images/PDF%20FILES/Chibi-2027-Calendar.pdf",
+          "fileType": "PDF",
+          "thumbnail": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        }
+      ],
+      "emptyHeading": "Free resources coming soon!",
+      "emptyDescription": "Coloring pages, guides, and more on the way.",
+      "_template": "downloadsGrid"
     }
   ]
 }
