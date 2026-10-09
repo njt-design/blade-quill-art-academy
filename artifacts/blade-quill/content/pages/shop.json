@@ -62,28 +62,29 @@
         "children": [
           {
             "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "If you prefer a printed copy of the activity book, you can purchase it on Amazon. Please note that the price is slightly higher due to Amazon's printing costs and fees."
-              }
-            ],
-            "id": "P0ynA2Aeex"
-          },
-          {
-            "type": "p",
             "id": "r9Fm_IxJ8k",
             "children": [
               {
                 "type": "text",
-                "id": "3FmtKSuIue",
-                "text": "Important:",
+                "id": "LdHmRtI8Qu",
+                "text": "If you prefer a printed copy of the activity book, you can purchase it on Amazon. Please note that the price is slightly higher due to Amazon's printing costs and fees. Unfortunately, these additional costs also make it difficult for me to offer discounts at this time."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "HE0Z3Ou94E",
+            "children": [
+              {
+                "type": "text",
+                "id": "PEwqdIRF6H",
+                "text": "Important: ",
                 "bold": true
               },
               {
                 "type": "text",
-                "id": "LdHmRtI8Qu",
-                "text": " The printed edition includes only the activity book. The comic book and coloring book are not included."
+                "id": "GW5wLybME1",
+                "text": "The printed edition includes only the activity book. The comic book and coloring book are not included."
               }
             ]
           }
