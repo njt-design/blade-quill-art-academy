@@ -66,6 +66,10 @@
           "src": "/images/PNG%20Images%20Only/Mock-up-Month-+-Notes.png"
         }
       ],
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1"
+      },
       "_template": "imageGallery"
     }
   ]
