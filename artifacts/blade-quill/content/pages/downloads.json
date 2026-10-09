@@ -50,32 +50,13 @@
       "_template": "downloadsGrid"
     },
     {
-      "eyebrow": "Gallery",
-      "heading": "A mosaic\nof your work",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "San0oZE8MU"
-          }
-        ]
+      "heading": "Compare or contrast",
+      "leftImage": {
+        "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
       },
-      "layout": "trio",
-      "images": [
-        {
-          "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
-        },
-        {
-          "src": "/images/PNG%20Images%20Only/Mock-up-Year.png"
-        }
-      ],
-      "_template": "heroImageGrid"
+      "rightImage": {},
+      "style": "polaroid",
+      "_template": "imageSideBySide"
     }
   ]
 }
