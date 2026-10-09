@@ -105,7 +105,7 @@
               {
                 "type": "text",
                 "id": "_Y20MYxn5x",
-                "text": "This printable calendar features my original chibi illustrations, along with space for notes and monthly priorities."
+                "text": "This printable calendar features one of my favorite original Chibi illustration, along with space for notes and monthly priorities."
               }
             ]
           },
@@ -127,7 +127,8 @@
               {
                 "type": "text",
                 "id": "ZuOmKD7w9X",
-                "text": "Simply download the PDF, print it, and enjoy!"
+                "text": "Simply download the PDF, print it, and enjoy!",
+                "bold": true
               }
             ]
           },
@@ -273,8 +274,6 @@
             "id": "cJ-YifD910",
             "children": [
               {
-                "type": "text",
-                "id": "demhuww1VP",
                 "text": ""
               },
               {
@@ -284,10 +283,10 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/How-to-print.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/How-to-print-(1).png",
                 "caption": "",
                 "alt": "",
-                "id": "xEZiwYyjsQ"
+                "id": "gU4G91qaUi"
               },
               {
                 "text": ""
@@ -295,6 +294,10 @@
             ]
           }
         ]
+      },
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1"
       },
       "_template": "text"
     }
