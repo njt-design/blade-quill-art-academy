@@ -50,31 +50,32 @@
       "_template": "downloadsGrid"
     },
     {
-      "eyebrow": "A gift for you!",
-      "heading": "2027\nPrintable Wall Calendar",
+      "eyebrow": "Gallery",
+      "heading": "A mosaic\nof your work",
       "subheading": {
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "Scatter up to six images around the headline — like the homepage hero, but fully editable."
+                "text": ""
               }
             ],
-            "id": "O-ClRsfAbM"
+            "type": "p",
+            "id": "San0oZE8MU"
           }
         ]
       },
+      "layout": "trio",
       "images": [
         {
-          "src": "/images/PNG Images Only/Mock-up-Calendar-cover.png"
+          "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        },
+        {
+          "src": "/images/PNG%20Images%20Only/Mock-up-Year.png"
         }
       ],
-      "ctaPrimary": "View Gallery",
-      "ctaPrimaryLink": "/gallery",
-      "_template": "heroFloatingImages"
+      "_template": "heroImageGrid"
     }
   ]
 }
