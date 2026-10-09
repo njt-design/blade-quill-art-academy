@@ -565,6 +565,36 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "showText": true,
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "If you would rather only get the printed version of the activity book, you can purchase it on Amazon. However, because of Amazon's printing costs and fees, the book is a little more expensive. "
+              },
+              {
+                "type": "text",
+                "id": "0a1RoyeuD_",
+                "text": "The comic book and coloring book are not included. ",
+                "bold": true
+              }
+            ],
+            "id": "P0ynA2Aeex"
+          }
+        ]
+      },
+      "buttonLabel": "Get Started",
+      "buttonLink": "https://www.amazon.com/dp/1733168478",
+      "layout": "beside",
+      "buttonAlign": "center",
+      "buttonStyle": "primary",
+      "_template": "textButton"
     }
   ]
 }
