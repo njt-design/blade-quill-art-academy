@@ -51,14 +51,12 @@
     },
     {
       "heading": "Free 2027 Chibi Wall Calendar ",
-      "leftImage": {
-        "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
-      },
-      "rightImage": {
-        "src": "/images/PNG%20Images%20Only/Mock-up-Month-+-Notes.png"
-      },
-      "style": "polaroid",
-      "_template": "imageSideBySide"
+      "images": [
+        {
+          "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        }
+      ],
+      "_template": "imageGallery"
     }
   ]
 }
