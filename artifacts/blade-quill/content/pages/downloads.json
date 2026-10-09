@@ -54,6 +54,9 @@
       "images": [
         {
           "src": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        },
+        {
+          "src": "/images/PNG%20Images%20Only/Mock-up-Year.png"
         }
       ],
       "_template": "imageGallery"
