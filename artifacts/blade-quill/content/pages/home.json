@@ -59,7 +59,7 @@
           "image": "/images/900-x-1200-px-shop-thumbnail-website.png"
         },
         {
-          "tag": "FREE DOWNLOADS",
+          "tag": "DOWNLOADS",
           "title": "Free Krita Guides",
           "sub": "Enjoy free downloads - PDF files.",
           "cta": "Download here",
@@ -75,10 +75,21 @@
           "badge": "12K+",
           "link": "https://www.youtube.com/@BladeandQuillartacademy",
           "image": "/images/New-Banner-2026.jpg"
-        },
+        }
+      ],
+      "_template": "pillars"
+    },
+    {
+      "eyebrow": "",
+      "heading": "",
+      "items": [
         {
+          "tag": "Downloads",
           "title": "Free 2027 Chibi Wall Calendar ",
           "sub": "Simply download the PDF, print it, and enjoy!",
+          "cta": "Download here",
+          "badge": "NEW",
+          "link": "/downloads",
           "image": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
         }
       ],
