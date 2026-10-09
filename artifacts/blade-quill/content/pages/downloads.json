@@ -76,21 +76,10 @@
               {
                 "type": "text",
                 "id": "LJpxDRd4iW",
-                "text": "just for you!"
+                "text": "just for you! Scroll down and click on the Free Download button. "
               }
             ],
             "id": "zKRDAAmhG3"
-          },
-          {
-            "type": "p",
-            "id": "0bc1e-Cfp_",
-            "children": [
-              {
-                "type": "text",
-                "id": "o_cQCVUwST",
-                "text": ""
-              }
-            ]
           },
           {
             "type": "p",
@@ -99,7 +88,7 @@
               {
                 "type": "text",
                 "id": "ZuOmKD7w9X",
-                "text": "Simply download the PDF, print it, and enjoy!",
+                "text": "",
                 "bold": true
               }
             ]
@@ -123,6 +112,20 @@
         "align": "left"
       },
       "_template": "text"
+    },
+    {
+      "downloads": [
+        {
+          "title": "2027 Chibi Wall Calendar ",
+          "description": "",
+          "file": "/images/PDF%20FILES/Chibi-2027-Calendar.pdf",
+          "fileType": "PDF",
+          "thumbnail": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        }
+      ],
+      "emptyHeading": "Free resources coming soon!",
+      "emptyDescription": "Coloring pages, guides, and more on the way.",
+      "_template": "downloadsGrid"
     },
     {
       "heading": "",
@@ -394,20 +397,6 @@
         "headingType": "h1"
       },
       "_template": "text"
-    },
-    {
-      "downloads": [
-        {
-          "title": "2027 Chibi Wall Calendar ",
-          "description": "",
-          "file": "/images/PDF%20FILES/Chibi-2027-Calendar.pdf",
-          "fileType": "PDF",
-          "thumbnail": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
-        }
-      ],
-      "emptyHeading": "Free resources coming soon!",
-      "emptyDescription": "Coloring pages, guides, and more on the way.",
-      "_template": "downloadsGrid"
     }
   ]
 }
