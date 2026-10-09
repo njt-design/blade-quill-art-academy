@@ -73,7 +73,7 @@
       "_template": "imageGallery"
     },
     {
-      "heading": "A Little Gift for You! 💖",
+      "heading": "",
       "body": {
         "type": "root",
         "children": [
@@ -379,17 +379,28 @@
       "_template": "text"
     },
     {
-      "heading": "2027 Chibi Wall Calendar ",
+      "heading": "A Little Gift for You! 💖",
       "body": {
         "type": "root",
         "children": [
           {
-            "type": "h2",
+            "type": "p",
             "children": [
               {
                 "type": "text",
-                "text": "To show my appreciation for your support, I’ve created a free printable 2027 Chibi Wall Calendar just for you!",
+                "text": "To show my appreciation for your support, I’ve created a ",
                 "id": "VqdbHNRaOH"
+              },
+              {
+                "type": "text",
+                "id": "MLd3J2VOOs",
+                "text": "free printable 2027 Chibi Wall Calendar ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "id": "LJpxDRd4iW",
+                "text": "just for you!"
               }
             ],
             "id": "zKRDAAmhG3"
