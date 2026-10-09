@@ -79,27 +79,6 @@
         "children": [
           {
             "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "To show my appreciation for your support, I’ve created a free printable 2027 Chibi Wall Calendar just for you!"
-              }
-            ],
-            "id": "zKRDAAmhG3"
-          },
-          {
-            "type": "p",
-            "id": "oJY1XQHJmL",
-            "children": [
-              {
-                "type": "text",
-                "id": "6dOUK5e_B-",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "p",
             "id": "K5Wn8aYdui",
             "children": [
               {
@@ -396,6 +375,49 @@
       "textStyle": {
         "headingSize": "larger",
         "headingType": "h1"
+      },
+      "_template": "text"
+    },
+    {
+      "heading": "2027 Chibi Wall Calendar ",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [
+              {
+                "type": "text",
+                "text": "To show my appreciation for your support, I’ve created a free printable 2027 Chibi Wall Calendar just for you!",
+                "id": "VqdbHNRaOH"
+              }
+            ],
+            "id": "zKRDAAmhG3"
+          },
+          {
+            "type": "h2",
+            "id": "yxRPDsJZ3s",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "children": [
+              {
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "_1vgnNatN-"
+          }
+        ]
+      },
+      "textStyle": {
+        "headingSize": "larger",
+        "headingType": "h1",
+        "align": "center"
       },
       "_template": "text"
     }
