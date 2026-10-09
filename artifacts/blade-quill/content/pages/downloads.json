@@ -114,20 +114,6 @@
       "_template": "text"
     },
     {
-      "downloads": [
-        {
-          "title": "2027 Chibi Wall Calendar ",
-          "description": "",
-          "file": "/images/PDF%20FILES/Chibi-2027-Calendar.pdf",
-          "fileType": "PDF",
-          "thumbnail": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
-        }
-      ],
-      "emptyHeading": "Free resources coming soon!",
-      "emptyDescription": "Coloring pages, guides, and more on the way.",
-      "_template": "downloadsGrid"
-    },
-    {
       "heading": "",
       "body": {
         "type": "root",
@@ -380,7 +366,7 @@
                     "text": ""
                   }
                 ],
-                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG Images Only/Printing-set-up-for-both-side-printing.png",
+                "url": "https://assets.tina.io/66c31af8-a8db-4a0b-9eab-17bd12d7d5e2/PNG%20Images%20Only/Printing-set-up-for-both-side-printing.png",
                 "caption": "",
                 "alt": "",
                 "id": "uQthkvfdr5"
@@ -397,6 +383,20 @@
         "headingType": "h1"
       },
       "_template": "text"
+    },
+    {
+      "downloads": [
+        {
+          "title": "2027 Chibi Wall Calendar ",
+          "description": "",
+          "file": "/images/PDF%20FILES/Chibi-2027-Calendar.pdf",
+          "fileType": "PDF",
+          "thumbnail": "/images/PNG%20Images%20Only/Mock-up-Calendar-cover.png"
+        }
+      ],
+      "emptyHeading": "Free resources coming soon!",
+      "emptyDescription": "Coloring pages, guides, and more on the way.",
+      "_template": "downloadsGrid"
     }
   ]
 }
