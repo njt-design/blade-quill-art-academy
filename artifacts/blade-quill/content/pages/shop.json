@@ -56,6 +56,47 @@
       "_template": "heroSplitImage"
     },
     {
+      "showText": true,
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "If you prefer a printed copy of the activity book, you can purchase it on Amazon. Please note that the price is slightly higher due to Amazon's printing costs and fees."
+              }
+            ],
+            "id": "P0ynA2Aeex"
+          },
+          {
+            "type": "p",
+            "id": "r9Fm_IxJ8k",
+            "children": [
+              {
+                "type": "text",
+                "id": "3FmtKSuIue",
+                "text": "Important:",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "id": "LdHmRtI8Qu",
+                "text": " The printed edition includes only the activity book. The comic book and coloring book are not included."
+              }
+            ]
+          }
+        ]
+      },
+      "buttonLabel": "Amazon store",
+      "buttonLink": "https://www.amazon.com/dp/1733168478",
+      "layout": "beside",
+      "buttonAlign": "center",
+      "buttonStyle": "primary",
+      "_template": "textButton"
+    },
+    {
       "heading": "✨ What’s Included in the Bundle",
       "body": {
         "type": "root",
@@ -565,36 +606,6 @@
         "align": "center"
       },
       "_template": "text"
-    },
-    {
-      "showText": true,
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "If you would rather only get the printed version of the activity book, you can purchase it on Amazon. However, because of Amazon's printing costs and fees, the book is a little more expensive. "
-              },
-              {
-                "type": "text",
-                "id": "0a1RoyeuD_",
-                "text": "The comic book and coloring book are not included. ",
-                "bold": true
-              }
-            ],
-            "id": "P0ynA2Aeex"
-          }
-        ]
-      },
-      "buttonLabel": "Amazon store",
-      "buttonLink": "https://www.amazon.com/dp/1733168478",
-      "layout": "beside",
-      "buttonAlign": "center",
-      "buttonStyle": "primary",
-      "_template": "textButton"
     }
   ]
 }
