@@ -104,7 +104,7 @@
       },
       "buttonLabel": "Amazon store",
       "buttonLink": "https://www.amazon.com/dp/1733168478",
-      "layout": "beside",
+      "layout": "centered",
       "buttonAlign": "center",
       "buttonStyle": "primary",
       "_template": "textButton"
@@ -621,126 +621,23 @@
       "_template": "text"
     },
     {
-      "highlightText": "Big news",
-      "text": " — something exciting is coming soon",
-      "_template": "marquee"
-    },
-    {
-      "heading": "A big welcoming headline",
-      "subheading": {
+      "heading": "Section heading",
+      "body": {
         "type": "root",
         "children": [
           {
             "type": "p",
-            "id": "s0iqQy-hzZ",
             "children": [
               {
                 "type": "text",
-                "id": "zfBrL128xE",
-                "text": ""
-              }
-            ]
-          },
-          {
-            "type": "mdxJsxFlowElement",
-            "id": "7JYsca-2JU",
-            "children": [
-              {
-                "type": "text",
-                "id": "GONIlAsoyD",
-                "text": ""
+                "text": "Write anything here — paragraphs, lists, links, and more."
               }
             ],
-            "name": "AlignedText",
-            "props": {
-              "align": "left",
-              "text": {
-                "type": "root",
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "type": "text",
-                        "text": "Each of them are going to be a co-investigator on a study sponsored by Revolution Medicines, Inc. and entitled:UAB2689 - Study of Zoldonrasib in Combination with Cetuximab and FOLFIRI in Previously Treated Patients with RAS G12D-Mutated Metastatic Colorectal Cancer-Subprotocol G (RMC-GI-102 Subprotocol G)",
-                        "id": "fIB1CxoN5C"
-                      }
-                    ],
-                    "id": "-g-bDzi5by",
-                    "type": "p"
-                  },
-                  {
-                    "type": "p",
-                    "id": "gIWNfHUvr8",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "Znp6mnUnLb",
-                        "text": "About the study:"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "p",
-                    "id": "M6vgLuBdBA",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "obWYnWy_JH",
-                        "text": "This study (Subprotocol G) is being conducted to evaluate the efficacy and safety of zoldonrasib combined with cetuximab and the regimen of FOLFIRI (5-fluorouracil, leucovorin, and irinotecan) in previously treated patients with RAS G12D-mutated mCRC."
-                      }
-                    ]
-                  },
-                  {
-                    "type": "p",
-                    "id": "qiZRN1vrnW",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "7NK5ddg14r",
-                        "text": "If none of the entities are working on similar drugs (Zoldonrasib in Combination with Cetuximab and FOLFIRI), can we conclude the following?"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "p",
-                    "id": "3ye5kSdFI-",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "GzFsQV_y2p",
-                        "text": "CONCLUSION: Although the most of the entities operate within the broader oncology field while other don't, there are no direct scientific, commercial, or operational relationship between the company's activities and the specific aims of the proposal."
-                      }
-                    ]
-                  },
-                  {
-                    "type": "p",
-                    "id": "s0iqQy-hzZ",
-                    "children": [
-                      {
-                        "type": "text",
-                        "id": "zfBrL128xE",
-                        "text": ""
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "children": [
-              {
-                "text": ""
-              }
-            ],
-            "type": "p",
-            "id": "8hBU1paUWW"
+            "id": "AoTyKwtP1s"
           }
         ]
       },
-      "ctaLabel": "Learn More",
-      "ctaLink": "/",
-      "_template": "hero"
+      "_template": "text"
     }
   ]
 }
