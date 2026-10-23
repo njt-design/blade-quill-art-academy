@@ -3,32 +3,6 @@
   "layout": "standard",
   "blocks": [
     {
-      "eyebrow": "JUST PUBLISHED",
-      "heading": "Watch the newest lesson.",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "My latest YouTube video will be featured here the moment it goes live ",
-                "bold": true
-              }
-            ],
-            "id": "AkNfazLVhS"
-          }
-        ]
-      },
-      "youtubeUrl": "https://youtu.be/W5oV0m64j-s",
-      "textStyle": {
-        "headingSize": "larger",
-        "headingType": "h1"
-      },
-      "_template": "featuredVideo"
-    },
-    {
       "eyebrow": "FRESH FROM THE STUDIO",
       "heading": "Watch the newest lesson.",
       "description": {
