@@ -27,6 +27,27 @@
         "headingType": "h1"
       },
       "_template": "featuredVideo"
+    },
+    {
+      "eyebrow": "FRESH FROM THE STUDIO",
+      "heading": "Watch the newest lesson.",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "The latest Blade & Quill YouTube video, featured here automatically the moment it goes live."
+              }
+            ]
+          }
+        ]
+      },
+      "youtubeUrl": "",
+      "buttonLabel": "Subscribe on YouTube",
+      "_template": "featuredVideo"
     }
   ],
   "seo": {
