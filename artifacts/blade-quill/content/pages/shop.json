@@ -619,6 +619,11 @@
         "align": "center"
       },
       "_template": "text"
+    },
+    {
+      "highlightText": "Big news",
+      "text": " — something exciting is coming soon",
+      "_template": "marquee"
     }
   ]
 }
