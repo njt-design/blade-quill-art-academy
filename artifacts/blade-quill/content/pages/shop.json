@@ -619,25 +619,6 @@
         "align": "center"
       },
       "_template": "text"
-    },
-    {
-      "heading": "Section heading",
-      "body": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Write anything here — paragraphs, lists, links, and more."
-              }
-            ],
-            "id": "AoTyKwtP1s"
-          }
-        ]
-      },
-      "_template": "text"
     }
   ]
 }
