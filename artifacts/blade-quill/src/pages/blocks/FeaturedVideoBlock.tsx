@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { tinaField } from "tinacms/react";
 import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
@@ -32,6 +32,15 @@ export default function FeaturedVideoBlock({ block }: Props) {
   const latest = useLatestVideo();
   const [playing, setPlaying] = useState(false);
   const [thumbFailed, setThumbFailed] = useState(false);
+  const frameRef = useRef<HTMLDivElement | null>(null);
+
+  // Optional "watch" CTA: starts the featured video in the player below and
+  // brings it into view — no external link to get wrong.
+  const watchLabel = (block.watchLabel as string | undefined)?.trim();
+  const handleWatch = () => {
+    setPlaying(true);
+    frameRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
   const overrideUrl = (block.youtubeUrl as string | undefined)?.trim() || "";
   const overrideId = overrideUrl ? extractYoutubeId(overrideUrl) : null;
@@ -120,30 +129,43 @@ export default function FeaturedVideoBlock({ block }: Props) {
               </div>
             </Reveal>
           ) : null}
-          {block.buttonLabel ? (
+          {watchLabel || block.buttonLabel ? (
             <Reveal>
-              <Btn
-                kind="light"
-                size="lg"
-                iconRight="↗"
-                href={channelUrl}
-                external
-              >
-                <span data-tina-field={tinaField(block, "buttonLabel")}>
-                  {block.buttonLabel as string}
-                </span>
-              </Btn>
+              <div className="flex flex-wrap items-center gap-3">
+                {watchLabel ? (
+                  <Btn kind="primary" size="lg" iconRight="→" onClick={handleWatch}>
+                    <span data-tina-field={tinaField(block, "watchLabel")}>
+                      {watchLabel}
+                    </span>
+                  </Btn>
+                ) : null}
+                {block.buttonLabel ? (
+                  <Btn
+                    kind="light"
+                    size="lg"
+                    iconRight="↗"
+                    href={channelUrl}
+                    external
+                  >
+                    <span data-tina-field={tinaField(block, "buttonLabel")}>
+                      {block.buttonLabel as string}
+                    </span>
+                  </Btn>
+                ) : null}
+              </div>
             </Reveal>
           ) : null}
         </div>
       </div>
 
       <Reveal>
-        <div
-          className="relative mx-auto w-full px-5 sm:px-8 lg:px-12"
-          style={{ maxWidth: VIDEO_FRAME.width + 96 }}
-        >
-          <div className="relative mx-auto w-full" style={{ maxWidth: VIDEO_FRAME.width }}>
+        {/* Video frame aligns with the shared bq-container content edges. */}
+        <div className="bq-container relative w-full">
+          <div
+            ref={frameRef}
+            className="relative mx-auto w-full"
+            style={{ maxWidth: VIDEO_FRAME.width }}
+          >
             <div
               className="absolute -top-3.5 left-6 z-10 px-3 py-1.5 rounded-full"
               style={{

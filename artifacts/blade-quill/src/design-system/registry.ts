@@ -647,12 +647,11 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
     category: "block",
     group: "Commerce & media",
     description:
-      "Release announcement with front (and optional back) cover shown full-size, plus one CTA button.",
+      "RETIRED (QA, Nov 2026) — replaced by Featured Book, which now has editable cover/accent images. Kept here for reference; no longer offered in the section picker.",
     demo: makeBlockDemo("featuredRelease"),
     guidelines: {
-      usage: "The link-in-bio page's main announcement.",
-      usedOn: ["/important-links-page"],
-      cmsLocation: `${SECTIONS_LOCATION} → Featured Release`,
+      usage:
+        "Retired. Use Featured Book instead (the important-links page was migrated to it).",
       images: [
         { field: "coverImage", spec: SPEC.bookCover },
         {
@@ -699,12 +698,10 @@ const COMMERCE_BLOCKS: DesignSystemEntry[] = [
     category: "block",
     group: "Commerce & media",
     description:
-      "The full shop: heading with gradient highlight word, optional featured banner, category filters, and the product grid.",
+      "RETIRED (QA, Nov 2026) — removed from the section picker; it rendered catalog content that couldn't be edited from the section itself. The /shop route uses its own page sections.",
     demo: makeBlockDemo("shopCatalog"),
     guidelines: {
-      usage: "Use once, on the Shop page only.",
-      usedOn: ["/shop"],
-      cmsLocation: "Main Pages → Shop → Page Sections → Shop Catalog",
+      usage: "Retired. Manage the shop under Shop Products in the Tina sidebar.",
       charLimits: [
         { field: "heading", limit: 48 },
         { field: "highlightText", limit: 40 },

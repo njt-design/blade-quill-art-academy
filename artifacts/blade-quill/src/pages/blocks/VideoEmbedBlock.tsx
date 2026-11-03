@@ -17,10 +17,11 @@ export default function VideoEmbedBlock({ block }: Props) {
 
   return (
     <section className="py-12">
-      <div
-        className="container mx-auto px-4 md:px-6 max-w-4xl"
+      <div className="bq-container">
+       <div
+        className="max-w-4xl mx-auto"
         style={sectionAlignStyle(block)}
-      >
+       >
         {block.heading ? (
           <SectionHeading
             block={block}
@@ -49,6 +50,7 @@ export default function VideoEmbedBlock({ block }: Props) {
             <p className="text-muted-foreground text-sm">Paste a YouTube URL to embed a video.</p>
           </div>
         )}
+       </div>
       </div>
     </section>
   );

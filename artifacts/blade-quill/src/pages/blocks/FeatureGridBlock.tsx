@@ -27,7 +27,7 @@ export default function FeatureGridBlock({ block }: Props) {
 
   return (
     <section className="py-12" style={sectionAlignStyle(block)}>
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="bq-container">
         {block.heading ? (
           <SectionHeading
             block={block}

@@ -10,7 +10,7 @@ interface Props {
 export default function PageHeaderBlock({ block }: Props) {
   return (
     <section className="pt-10 pb-2">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="bq-container">
         <div className="max-w-2xl mb-4" style={sectionAlignStyle(block)}>
           <SectionHeading
             block={block}

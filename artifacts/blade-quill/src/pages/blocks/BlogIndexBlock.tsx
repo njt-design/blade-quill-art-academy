@@ -38,7 +38,7 @@ export default function BlogIndexBlock({ block }: Props) {
 
   return (
     <section className="pt-2 pb-16">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="bq-container">
         {showTagFilter && allTags.length > 0 && (
           <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-2 mb-8 pb-1">
             <button

@@ -34,12 +34,13 @@ const BLOCKS = [
   ["cardRow", "Card Row", "grid3"],
   ["pillars", "Pillars — 3 Cards", "grid3"],
   ["imageGallery", "Image Gallery", "masonry"],
+  ["imageMasonry", "Image — Masonry", "masonry"],
+  ["imageSideBySide", "Image Side by Side", "sideBySide"],
   ["imageBanners", "Image — Banners", "banners"],
   ["videoEmbed", "Video Embed", "video"],
   ["featuredBook", "Featured Book", "featureSplit"],
-  ["featuredRelease", "Featured Release", "featureSplit"],
+  // featuredRelease + shopCatalog retired from the picker (QA, Nov 2026).
   ["productStrip", "Product Strip", "grid4"],
-  ["shopCatalog", "Shop Catalog", "catalog"],
   ["galleryGrid", "Art Gallery Grid", "masonry"],
   ["downloadsGrid", "Downloads Grid", "grid4"],
   ["tutorialsStrip", "YouTube Strip", "darkGrid"],
@@ -55,7 +56,7 @@ const BLOCKS = [
   ["contactForm", "Contact Form", "form"],
   ["kofiSupport", "Ko-fi Support", "centerCard"],
   ["reviewLinks", "Review Buttons", "centerCard"],
-  ["marquee", "Announcement Marquee", "band"],
+  ["marquee", "Announcement Marquee", "marqueeBand"],
   ["socialLinks", "Social Links", "dots"],
 ];
 
@@ -161,6 +162,29 @@ function motifSvg(motif) {
         rect(153, 45, 92, 60, MUTE, 4),
         rect(261, 45, 92, 80, PAPER2, 4),
         rect(153, 115, 92, 45, PAPER2, 4),
+      ].join("");
+    case "sideBySide":
+      // Two straight framed photos with a caption line each — matches the
+      // untilted polaroid/clean styles of the Image (Side by Side) block.
+      return [0, 1]
+        .flatMap((i) => {
+          const x = 52 + i * 166;
+          return [
+            `<rect x="${x}" y="42" width="130" height="104" rx="3" fill="#ffffff" stroke="${MUTE}" stroke-width="1"/>`,
+            rect(x + 9, 51, 112, 72, i === 0 ? VIOLET : ORANGE, 2),
+            line(x + 30, 130, 70),
+            line(x + 40, 156, 50),
+          ];
+        })
+        .join("");
+    case "marqueeBand":
+      // One announcement band with text sliding left (arrow + fading trail).
+      return [
+        rect(0, 75, 400, 50, PAPER2, 0),
+        `<polygon points="26,100 44,90 44,110" fill="${ORANGE}"/>`,
+        line(62, 96, 130, INK),
+        `<g opacity="0.55">${line(216, 96, 90)}</g>`,
+        `<g opacity="0.25">${line(330, 96, 60)}</g>`,
       ].join("");
     case "video":
       return [

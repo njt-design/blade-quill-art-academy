@@ -31,6 +31,13 @@ export interface GridReorderConfig {
   listField: string;
   /** True for the grid section block that owns the list. */
   isGridBlock: (block: unknown) => block is Record<string, unknown>;
+  /**
+   * Index of the grid block in the document's `blocks` array. Required when
+   * the same section type can appear more than once on a page (e.g. Image
+   * Masonry) so only that one instance is reordered; without it the first
+   * block matching `isGridBlock` is used (gallery/downloads singletons).
+   */
+  blockIndex?: number;
 }
 
 /** True when the page was opened with `?rearrange` (e.g. from the editor). */
@@ -40,6 +47,20 @@ export function hasRearrangeParam(): boolean {
     return new URLSearchParams(window.location.search).has("rearrange");
   } catch {
     return false;
+  }
+}
+
+/**
+ * Value of the `?rearrange` param (empty string when bare), or null when
+ * absent. Lets pages with several reorderable grids auto-enter only the one
+ * the editor asked for (see `openRearrangePage(target)`).
+ */
+export function rearrangeParamValue(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return new URLSearchParams(window.location.search).get("rearrange");
+  } catch {
+    return null;
   }
 }
 
@@ -117,12 +138,27 @@ export async function fetchGridReorderDoc(
   }
   const doc = values as Record<string, unknown>;
   const blocks = Array.isArray(doc.blocks) ? doc.blocks : [];
-  const grid = blocks.find(config.isGridBlock);
+  const grid = findGridBlock(blocks, config);
   const items = grid ? rawListItems(grid[config.listField]) : [];
   if (items.length === 0) {
     throw new Error("This page has no items to rearrange.");
   }
   return { values: doc, items };
+}
+
+/** Locate the grid block this config targets (by index when given). */
+function findGridBlock(
+  blocks: unknown[],
+  config: GridReorderConfig
+): Record<string, unknown> | undefined {
+  if (config.blockIndex !== undefined) {
+    const candidate = blocks[config.blockIndex];
+    // The index comes from the rendered page; if the document changed since
+    // (section added/removed in the editor), refuse rather than touch the
+    // wrong section.
+    return config.isGridBlock(candidate) ? candidate : undefined;
+  }
+  return blocks.find(config.isGridBlock);
 }
 
 /** Wrap a raw block as Tina's mutation input: `{ [template]: fields }`. */
@@ -163,14 +199,17 @@ export async function saveGridOrder(
   }
 
   const rawBlocks = Array.isArray(doc.values.blocks) ? doc.values.blocks : [];
+  const target = findGridBlock(rawBlocks, config);
+  if (!target) {
+    throw new Error("The page changed while rearranging — please retry.");
+  }
   const blocks = rawBlocks.map((raw) => {
     if (!raw || typeof raw !== "object") {
       throw new Error("This page contains a section that can't be saved.");
     }
     const block = raw as Record<string, unknown>;
-    const withOrder = config.isGridBlock(block)
-      ? { ...block, [config.listField]: reordered }
-      : block;
+    const withOrder =
+      block === target ? { ...block, [config.listField]: reordered } : block;
     return blockToMutationInput(withOrder);
   });
 

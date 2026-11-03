@@ -98,7 +98,8 @@ export default function DummyBookRequestBlock({ block }: Props) {
 
   return (
     <section className="py-12 lg:py-16" id="request-dummy">
-      <div className="container mx-auto px-4 md:px-6 max-w-2xl">
+      <div className="bq-container">
+       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8" style={sectionAlignStyle(block)}>
           <SectionHeading
             block={block}
@@ -226,6 +227,7 @@ export default function DummyBookRequestBlock({ block }: Props) {
             </form>
           </div>
         )}
+       </div>
       </div>
     </section>
   );

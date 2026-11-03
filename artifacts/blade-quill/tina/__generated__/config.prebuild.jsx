@@ -968,6 +968,45 @@ var featuredBookBlock = {
       templates: RICH_TEXT_TEMPLATES
     },
     {
+      type: "image",
+      name: "coverImage",
+      label: "Book Cover Image",
+      ui: {
+        description: `Front cover shown as the big book. Leave blank to show the first shop product's cover automatically. ${imageSize({
+          upload: "at least 600 \xD7 900 px",
+          shape: "2:3 portrait",
+          screen: "about 280 \xD7 380 px",
+          fit: "crop"
+        })}`
+      }
+    },
+    {
+      type: "image",
+      name: "spreadImage",
+      label: "Accent Photo 1 (e.g. inside spread)",
+      ui: {
+        description: `Small framed photo next to the cover (hidden on phones). ${imageSize({
+          upload: "at least 600 px wide",
+          shape: "any",
+          screen: "about 180 px wide",
+          fit: "natural"
+        })}`
+      }
+    },
+    {
+      type: "image",
+      name: "characterImage",
+      label: "Accent Photo 2 (e.g. character art)",
+      ui: {
+        description: `Second small framed photo under the first one (hidden on phones). ${imageSize({
+          upload: "at least 600 px wide",
+          shape: "any",
+          screen: "about 180 px wide",
+          fit: "natural"
+        })}`
+      }
+    },
+    {
       type: "object",
       name: "stats",
       label: "Stats Row",
@@ -1351,12 +1390,24 @@ var aboutHeroBlock = {
       name: "portraitImage",
       label: "Portrait Image",
       ui: {
-        description: `Photo shown in the large polaroid on the right. ${imageSize({
+        description: `Large photo on the right. ${imageSize({
           upload: "at least 900 \xD7 1200 px",
           shape: "3:4 portrait works best",
           screen: "about 330 px wide (up to 500 px tall when it is the only photo)",
           fit: "natural"
-        })}`
+        })} Transparent PNG cutouts work too.`
+      }
+    },
+    {
+      type: "string",
+      name: "portraitStyle",
+      label: "Portrait Frame",
+      options: [
+        { value: "clean", label: "Clean (no frame)" },
+        { value: "polaroid", label: "Polaroid frame" }
+      ],
+      ui: {
+        description: "How the big portrait is presented. Clean (the default) shows the photo with no paper border or padding \u2014 best for cutout PNGs. Polaroid adds the white framed-photo border."
       }
     },
     {
@@ -2238,7 +2289,10 @@ var heroSplitImageBlock = {
       options: [
         { value: "right", label: "Image on right" },
         { value: "left", label: "Image on left" }
-      ]
+      ],
+      ui: {
+        description: "This hero is split in half: headline and buttons on one side, the featured image on the other. Choose which side the image sits on (phones stack the text above the image)."
+      }
     },
     { type: "string", name: "ctaPrimary", label: "Primary Button Label", ui: charLimit(24) },
     { type: "string", name: "ctaPrimaryLink", label: "Primary Button Link" },
@@ -2688,8 +2742,17 @@ var featuredVideoBlock = {
     {
       type: "string",
       name: "buttonLabel",
-      label: "Button Label",
+      label: "Channel Button Label",
       ui: charLimit(24, "The button links to your YouTube channel.")
+    },
+    {
+      type: "string",
+      name: "watchLabel",
+      label: "Watch Button Label (optional)",
+      ui: charLimit(
+        28,
+        'Adds a second button (e.g. "Watch the Newest Lesson") that plays the featured video right here on the page. Leave blank to hide.'
+      )
     },
     ...textStyleFields()
   ]
@@ -2822,10 +2885,13 @@ var ALL_BLOCKS = [
   imageMasonryBlock,
   videoEmbedBlock,
   // Commerce & media
+  // Retired from the picker (QA, Nov 2026): featuredReleaseBlock (replaced
+  // by featuredBookBlock — important-links.json was migrated) and
+  // shopCatalogBlock (confusing hardcoded content; was never used on a
+  // page). Their components stay registered in BlockRenderer so any stray
+  // content still renders, but the templates are out of the Tina schema.
   featuredBookBlock,
-  featuredReleaseBlock,
   productStripBlock,
-  shopCatalogBlock,
   galleryGridBlock,
   downloadsGridBlock,
   featuredVideoBlock,
@@ -4471,12 +4537,12 @@ var promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
       ctaLink: "/shop"
     },
     {
-      _template: "featuredRelease",
+      _template: "featuredBook",
       eyebrow: "Featured",
-      title: "The featured item",
+      heading: "The featured item",
       description: rt3("Describe the featured product or offer."),
       ctaLabel: "Get It Now",
-      ctaHref: "/shop"
+      ctaLink: "/shop"
     },
     {
       _template: "productStrip",
@@ -4520,12 +4586,12 @@ var linkInBioPageTemplate = newPageTemplate("linkInBio", "Link-in-Bio / Landing"
       text: " \u2014 something exciting is coming"
     },
     {
-      _template: "featuredRelease",
+      _template: "featuredBook",
       eyebrow: "New Featured Release",
-      title: "The featured item",
+      heading: "The featured item",
       description: rt3("Describe what you're featuring."),
       ctaLabel: "Check It Out",
-      ctaHref: "https://"
+      ctaLink: "https://"
     },
     {
       _template: "kofiSupport",

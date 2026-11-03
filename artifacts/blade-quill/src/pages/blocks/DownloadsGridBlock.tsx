@@ -111,7 +111,7 @@ export default function DownloadsGridBlock({ block }: Props) {
 
   return (
     <section className="py-6">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="bq-container">
         {showReorderButton && (
           <RearrangeButton
             label="Rearrange downloads"

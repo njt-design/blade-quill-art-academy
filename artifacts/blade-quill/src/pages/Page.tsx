@@ -17,6 +17,7 @@ import {
 import { useSeo, type CmsSeo } from "@/lib/seo";
 import { BlockRenderer } from "./blocks/BlockRenderer";
 import { type Block } from "./blocks/block-utils";
+import { PageDocContext } from "./blocks/page-doc-context";
 
 interface PageProps {
   /** File name of the page in content/pages (without .json). */
@@ -118,12 +119,19 @@ export default function Page({ slug: rawSlug, chrome = "none" }: PageProps) {
 
   const blocks = (page.blocks as Block[] | null | undefined) ?? [];
   const content = (
-    <div className="page min-h-screen">
-      <CmsStatusPill freshness={freshness} />
-      {blocks.map((block, i) => (
-        <BlockRenderer key={i} block={block} />
-      ))}
-    </div>
+    <PageDocContext.Provider
+      value={{
+        collection: isCore ? "page" : "landingPage",
+        relativePath: `${slug}.json`,
+      }}
+    >
+      <div className="page min-h-screen">
+        <CmsStatusPill freshness={freshness} />
+        {blocks.map((block, i) => (
+          <BlockRenderer key={i} block={block} index={i} />
+        ))}
+      </div>
+    </PageDocContext.Provider>
   );
 
   if (chrome === "none") return content;

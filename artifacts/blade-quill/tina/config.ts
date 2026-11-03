@@ -737,12 +737,12 @@ const promoPageTemplate = newPageTemplate("promo", "Promo / Sale", {
       ctaLink: "/shop",
     },
     {
-      _template: "featuredRelease",
+      _template: "featuredBook",
       eyebrow: "Featured",
-      title: "The featured item",
+      heading: "The featured item",
       description: rt("Describe the featured product or offer."),
       ctaLabel: "Get It Now",
-      ctaHref: "/shop",
+      ctaLink: "/shop",
     },
     {
       _template: "productStrip",
@@ -788,12 +788,12 @@ const linkInBioPageTemplate = newPageTemplate("linkInBio", "Link-in-Bio / Landin
       text: " — something exciting is coming",
     },
     {
-      _template: "featuredRelease",
+      _template: "featuredBook",
       eyebrow: "New Featured Release",
-      title: "The featured item",
+      heading: "The featured item",
       description: rt("Describe what you're featuring."),
       ctaLabel: "Check It Out",
-      ctaHref: "https://",
+      ctaLink: "https://",
     },
     {
       _template: "kofiSupport",

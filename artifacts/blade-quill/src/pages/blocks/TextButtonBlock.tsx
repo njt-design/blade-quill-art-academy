@@ -38,7 +38,7 @@ export default function TextButtonBlock({ block }: Props) {
 
   return (
     <section className={showText ? "py-12" : "py-6"}>
-      <div className={`container mx-auto px-4 md:px-6 flex gap-6 ${layoutClass}`}>
+      <div className={`bq-container flex gap-6 ${layoutClass}`}>
         {showText ? (
           <div
             className="prose prose-neutral max-w-2xl"

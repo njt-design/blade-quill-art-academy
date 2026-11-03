@@ -4,7 +4,6 @@ import { tinaField } from "tinacms/react";
 import { useListProducts } from "@workspace/api-client-react";
 import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS } from "@/lib/fallback-data";
-import { galleryImageUrl } from "@/lib/artwork";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { ArtTile } from "@/components/site/ArtTile";
 import { BookCover } from "@/components/site/BookCover";
@@ -17,9 +16,6 @@ import { type Block, followLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
 const STAT_COLORS = ["var(--maroon)", "var(--taupe)", "var(--ink)"];
-
-const BOOK_SPREAD_SRC = `${import.meta.env.BASE_URL}images/puzzle-book-back.png`;
-const BOOK_CHARACTER_SRC = galleryImageUrl("Chibi of the Sea");
 
 interface StatItem {
   /** Tina list items carry _tina_metadata etc.; keep them tinaField-compatible. */
@@ -49,6 +45,15 @@ export default function FeaturedBookBlock({ block }: Props) {
   const stats = (block.stats as StatItem[] | undefined) ?? [];
   const hasStats = stats.some((s) => s?.value || s?.label);
 
+  // The cover prefers the CMS image and falls back to the first shop
+  // product so a fresh block still shows a book. Accent polaroids follow the
+  // "leave blank to hide" rule — they only render with a CMS image.
+  const coverSrc =
+    (block.coverImage as string | undefined)?.trim() ||
+    featuredProduct?.imageUrl;
+  const spreadSrc = (block.spreadImage as string | undefined)?.trim();
+  const characterSrc = (block.characterImage as string | undefined)?.trim();
+
   return (
     <section
       className="relative py-16 sm:py-24 lg:py-28 overflow-hidden"
@@ -61,45 +66,56 @@ export default function FeaturedBookBlock({ block }: Props) {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal>
             <div className="relative flex gap-6 justify-center items-center">
-              <BookCover
-                title={featuredProduct?.name || "Lheeloo & Luna"}
-                subtitle="CORINNE  HADAWAY"
-                palette="warm"
-                badge="NEW"
-                width={280}
-                height={380}
-                drift
-                src={featuredProduct?.imageUrl}
-                alt={featuredProduct?.name}
-                style={{ zIndex: 2, maxWidth: "100%" }}
-              />
-              {/* Accent polaroids don't fit next to the cover on phones. */}
-              <div className="hidden sm:flex flex-col gap-4">
-                <Polaroid>
-                  <ArtTile
-                    palette="rose"
-                    width={180}
-                    height="auto"
-                    src={BOOK_SPREAD_SRC}
-                    alt="Inside the book — puzzles and activities"
-                    label="spread"
-                    radius={2}
-                    fit="contain"
-                  />
-                </Polaroid>
-                <Polaroid>
-                  <ArtTile
-                    palette="violet"
-                    width={180}
-                    height="auto"
-                    src={BOOK_CHARACTER_SRC}
-                    alt="Chibi of the Sea character art"
-                    label="character"
-                    radius={2}
-                    fit="contain"
-                  />
-                </Polaroid>
+              <div data-tina-field={tinaField(block, "coverImage")}>
+                <BookCover
+                  title={featuredProduct?.name || "Lheeloo & Luna"}
+                  subtitle="CORINNE  HADAWAY"
+                  palette="warm"
+                  badge="NEW"
+                  width={280}
+                  height={380}
+                  drift
+                  src={coverSrc}
+                  alt={featuredProduct?.name}
+                  style={{ zIndex: 2, maxWidth: "100%" }}
+                />
               </div>
+              {/* Accent polaroids: CMS-only ("leave blank to hide"), and they
+                  don't fit next to the cover on phones. */}
+              {spreadSrc || characterSrc ? (
+                <div className="hidden sm:flex flex-col gap-4">
+                  {spreadSrc ? (
+                    <Polaroid>
+                      <div data-tina-field={tinaField(block, "spreadImage")}>
+                        <ArtTile
+                          palette="rose"
+                          width={180}
+                          height="auto"
+                          src={spreadSrc}
+                          alt="Inside the book"
+                          radius={2}
+                          fit="contain"
+                        />
+                      </div>
+                    </Polaroid>
+                  ) : null}
+                  {characterSrc ? (
+                    <Polaroid>
+                      <div data-tina-field={tinaField(block, "characterImage")}>
+                        <ArtTile
+                          palette="violet"
+                          width={180}
+                          height="auto"
+                          src={characterSrc}
+                          alt="Character art"
+                          radius={2}
+                          fit="contain"
+                        />
+                      </div>
+                    </Polaroid>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </Reveal>
 

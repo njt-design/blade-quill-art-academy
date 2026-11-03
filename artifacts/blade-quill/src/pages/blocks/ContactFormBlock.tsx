@@ -61,8 +61,8 @@ export default function ContactFormBlock({ block }: Props) {
 
   return (
     <section className="py-4 pb-10">
-      <div className="container mx-auto px-4 md:px-6 max-w-2xl">
-        <div className="border border-border rounded-lg bg-card p-6 md:p-8">
+      <div className="bq-container">
+        <div className="max-w-2xl mx-auto border border-border rounded-lg bg-card p-6 md:p-8">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-1.5">

@@ -14,6 +14,33 @@ interface Props {
   block: Block;
 }
 
+/**
+ * Wrapper for the big portrait. "polaroid" adds the white framed-photo
+ * border; "clean" (the default — per the client's "no Polaroid" request)
+ * renders the photo bare at its natural shape, which also keeps transparent
+ * PNG cutouts free of a visible frame or padding.
+ */
+function PortraitFrame({
+  polaroid,
+  hoverLift,
+  style,
+  children,
+}: {
+  polaroid: boolean;
+  hoverLift?: boolean;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}) {
+  if (polaroid) {
+    return (
+      <Polaroid hoverLift={hoverLift} style={style}>
+        {children}
+      </Polaroid>
+    );
+  }
+  return <div style={style}>{children}</div>;
+}
+
 export default function AboutHeroBlock({ block }: Props) {
   const [, setLocation] = useLocation();
 
@@ -24,6 +51,9 @@ export default function AboutHeroBlock({ block }: Props) {
   const portraitSrc =
     (block.portraitImage as string) ||
     `${import.meta.env.BASE_URL}images/about-portrait.png`;
+  // "clean" (no frame) is the default; "polaroid" is an explicit opt-in.
+  const portraitPolaroid = (block.portraitStyle as string) === "polaroid";
+  const portraitRadius = portraitPolaroid ? 2 : 12;
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
   // Accent polaroids only render when the CMS provides an image —
   // "leave blank to hide" (no gradient/default fallbacks).
@@ -161,18 +191,21 @@ export default function AboutHeroBlock({ block }: Props) {
               className="lg:hidden flex justify-center"
               data-tina-field={tinaField(block, "portraitImage")}
             >
-              <Polaroid style={{ width: "min(100%, 320px)" }}>
+              <PortraitFrame
+                polaroid={portraitPolaroid}
+                style={{ width: "min(100%, 320px)" }}
+              >
                 <ArtTile
                   palette="warm"
                   src={portraitSrc}
                   alt="Corinne in the studio"
                   width="100%"
                   height="auto"
-                  radius={2}
+                  radius={portraitRadius}
                   fit="contain"
                 />
                 {portraitCaption}
-              </Polaroid>
+              </PortraitFrame>
             </div>
 
             {/* Desktop: layered collage when accent photos exist; otherwise
@@ -185,7 +218,8 @@ export default function AboutHeroBlock({ block }: Props) {
                 className="hidden lg:flex justify-center"
                 data-tina-field={tinaField(block, "portraitImage")}
               >
-                <Polaroid
+                <PortraitFrame
+                  polaroid={portraitPolaroid}
                   hoverLift
                   style={{ width: "fit-content", maxWidth: "100%" }}
                 >
@@ -198,11 +232,11 @@ export default function AboutHeroBlock({ block }: Props) {
                       height: "auto",
                       maxWidth: "100%",
                       maxHeight: "min(56vh, 500px)",
-                      borderRadius: 2,
+                      borderRadius: portraitRadius,
                     }}
                   />
                   {portraitCaption}
-                </Polaroid>
+                </PortraitFrame>
               </div>
             ) : (
               <div className="relative hidden lg:block" style={{ minHeight: 520 }}>
@@ -216,18 +250,18 @@ export default function AboutHeroBlock({ block }: Props) {
                     width: accentCount === 2 ? 280 : 330,
                   }}
                 >
-                  <Polaroid hoverLift>
+                  <PortraitFrame polaroid={portraitPolaroid} hoverLift>
                     <ArtTile
                       palette="warm"
                       src={portraitSrc}
                       alt="Corinne in the studio"
                       width="100%"
                       height="auto"
-                      radius={2}
+                      radius={portraitRadius}
                       fit="contain"
                     />
                     {portraitCaption}
-                  </Polaroid>
+                  </PortraitFrame>
                 </div>
                 {deskSrc ? (
                   <div

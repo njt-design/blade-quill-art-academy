@@ -321,6 +321,9 @@ export const BLOCK_FIXTURES: Record<string, Block> = {
     eyebrow: "FEATURED RELEASE",
     heading: "The new book.",
     description: rt("A short description of the featured book."),
+    coverImage: ART.bookFront,
+    spreadImage: ART.bookBack,
+    characterImage: ART.chibiSea,
     stats: [
       { value: "$25", label: "SIGNED COPY" },
       { value: "$14", label: "EBOOK" },

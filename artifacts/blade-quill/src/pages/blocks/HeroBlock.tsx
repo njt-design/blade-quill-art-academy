@@ -20,10 +20,11 @@ export default function HeroBlock({ block }: Props) {
       {block.backgroundImage ? (
         <div className="absolute inset-0 bg-background/80" />
       ) : null}
-      <div
-        className="container mx-auto px-4 md:px-6 max-w-3xl text-center relative z-10"
+      <div className="bq-container relative z-10">
+       <div
+        className="max-w-3xl mx-auto text-center"
         style={sectionAlignStyle(block)}
-      >
+       >
         {block.heading ? (
           <SectionHeading
             block={block}
@@ -52,6 +53,7 @@ export default function HeroBlock({ block }: Props) {
             {block.ctaLabel as string} <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         ) : null}
+       </div>
       </div>
     </section>
   );

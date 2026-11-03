@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="220" viewBox="0 0 400 220">
   <rect width="400" height="220" fill="#fbf6ec"/>
-  <rect x="0" y="75" width="400" height="55" rx="0" fill="#f0e8d8"/><rect x="40" y="95" width="150" height="8" rx="4" fill="#1f1a14"/><rect x="280" y="90" width="70" height="22" rx="11" fill="#e55934"/>
+  <rect x="0" y="75" width="400" height="50" rx="0" fill="#f0e8d8"/><polygon points="26,100 44,90 44,110" fill="#e55934"/><rect x="62" y="96" width="130" height="8" rx="4" fill="#1f1a14"/><g opacity="0.55"><rect x="216" y="96" width="90" height="8" rx="4" fill="#c9bfa9"/></g><g opacity="0.25"><rect x="330" y="96" width="60" height="8" rx="4" fill="#c9bfa9"/></g>
   <rect x="0" y="182" width="400" height="38" fill="#1f1a14"/>
   <text x="16" y="206" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="1" fill="#fbf6ec">ANNOUNCEMENT MARQUEE</text>
 </svg>

@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import { type Block } from "./block-utils";
+import { BlockIndexContext } from "./page-doc-context";
 
 import HeroBlock from "./HeroBlock";
 import TextBlock from "./TextBlock";
@@ -118,9 +119,22 @@ function blockKey(block: Block): string | null {
   return null;
 }
 
-export function BlockRenderer({ block }: { block: Block }) {
+export function BlockRenderer({
+  block,
+  index,
+}: {
+  block: Block;
+  /** Index in the page document's `blocks` array (enables per-block features
+   *  like drag-to-reorder; omit when rendering outside a page document). */
+  index?: number;
+}) {
   const key = blockKey(block);
   if (!key) return null;
   const Component = BLOCK_COMPONENTS[key];
-  return <Component block={block} />;
+  if (index === undefined) return <Component block={block} />;
+  return (
+    <BlockIndexContext.Provider value={index}>
+      <Component block={block} />
+    </BlockIndexContext.Provider>
+  );
 }

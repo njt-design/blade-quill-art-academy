@@ -35,10 +35,11 @@ export default function TextBlock({ block, align = "center" }: Props) {
 
   return (
     <section className="py-12">
-      <div
-        className={cn("container px-4 md:px-6 max-w-3xl", COLUMN_CLASS[align])}
+      <div className="bq-container">
+       <div
+        className={cn("max-w-3xl", COLUMN_CLASS[align])}
         style={columnStyle}
-      >
+       >
         {block.heading ? (
           <SectionHeading
             block={block}
@@ -61,6 +62,7 @@ export default function TextBlock({ block, align = "center" }: Props) {
             />
           </div>
         ) : null}
+       </div>
       </div>
     </section>
   );

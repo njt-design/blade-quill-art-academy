@@ -34,6 +34,7 @@ fragment PageParts on Page {
       ctaSecondaryLink
       metaLine
       portraitImage
+      portraitStyle
       portraitCaption
       deskImage
       deskCaption
@@ -408,6 +409,9 @@ fragment PageParts on Page {
       eyebrow
       heading
       description
+      coverImage
+      spreadImage
+      characterImage
       stats {
         __typename
         value
@@ -426,44 +430,11 @@ fragment PageParts on Page {
         bodySize
       }
     }
-    ... on PageBlocksFeaturedRelease {
-      eyebrow
-      title
-      description
-      coverImage
-      backCoverImage
-      ctaLabel
-      ctaHref
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
     ... on PageBlocksProductStrip {
       eyebrow
       heading
       viewAllLabel
       viewAllLink
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
-    ... on PageBlocksShopCatalog {
-      heading
-      highlightText
-      description
-      showFeaturedBanner
-      emptyHeading
-      emptyDescription
       textStyle {
         __typename
         headingSize
@@ -518,6 +489,7 @@ fragment PageParts on Page {
       description
       youtubeUrl
       buttonLabel
+      watchLabel
       textStyle {
         __typename
         headingSize
@@ -816,6 +788,7 @@ fragment LandingPageParts on LandingPage {
         ctaSecondaryLink
         metaLine
         portraitImage
+        portraitStyle
         portraitCaption
         deskImage
         deskCaption
@@ -1190,6 +1163,9 @@ fragment LandingPageParts on LandingPage {
         eyebrow
         heading
         description
+        coverImage
+        spreadImage
+        characterImage
         stats {
           __typename
           value
@@ -1208,44 +1184,11 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
-      ... on LandingPageBlankBlocksFeaturedRelease {
-        eyebrow
-        title
-        description
-        coverImage
-        backCoverImage
-        ctaLabel
-        ctaHref
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
       ... on LandingPageBlankBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
-      ... on LandingPageBlankBlocksShopCatalog {
-        heading
-        highlightText
-        description
-        showFeaturedBanner
-        emptyHeading
-        emptyDescription
         textStyle {
           __typename
           headingSize
@@ -1300,6 +1243,7 @@ fragment LandingPageParts on LandingPage {
         description
         youtubeUrl
         buttonLabel
+        watchLabel
         textStyle {
           __typename
           headingSize
@@ -1595,6 +1539,7 @@ fragment LandingPageParts on LandingPage {
         ctaSecondaryLink
         metaLine
         portraitImage
+        portraitStyle
         portraitCaption
         deskImage
         deskCaption
@@ -1969,6 +1914,9 @@ fragment LandingPageParts on LandingPage {
         eyebrow
         heading
         description
+        coverImage
+        spreadImage
+        characterImage
         stats {
           __typename
           value
@@ -1987,44 +1935,11 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
-      ... on LandingPageEventBlocksFeaturedRelease {
-        eyebrow
-        title
-        description
-        coverImage
-        backCoverImage
-        ctaLabel
-        ctaHref
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
       ... on LandingPageEventBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
-      ... on LandingPageEventBlocksShopCatalog {
-        heading
-        highlightText
-        description
-        showFeaturedBanner
-        emptyHeading
-        emptyDescription
         textStyle {
           __typename
           headingSize
@@ -2079,6 +1994,7 @@ fragment LandingPageParts on LandingPage {
         description
         youtubeUrl
         buttonLabel
+        watchLabel
         textStyle {
           __typename
           headingSize
@@ -2374,6 +2290,7 @@ fragment LandingPageParts on LandingPage {
         ctaSecondaryLink
         metaLine
         portraitImage
+        portraitStyle
         portraitCaption
         deskImage
         deskCaption
@@ -2748,6 +2665,9 @@ fragment LandingPageParts on LandingPage {
         eyebrow
         heading
         description
+        coverImage
+        spreadImage
+        characterImage
         stats {
           __typename
           value
@@ -2766,44 +2686,11 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
-      ... on LandingPagePromoBlocksFeaturedRelease {
-        eyebrow
-        title
-        description
-        coverImage
-        backCoverImage
-        ctaLabel
-        ctaHref
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
       ... on LandingPagePromoBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
-      ... on LandingPagePromoBlocksShopCatalog {
-        heading
-        highlightText
-        description
-        showFeaturedBanner
-        emptyHeading
-        emptyDescription
         textStyle {
           __typename
           headingSize
@@ -2858,6 +2745,7 @@ fragment LandingPageParts on LandingPage {
         description
         youtubeUrl
         buttonLabel
+        watchLabel
         textStyle {
           __typename
           headingSize
@@ -3153,6 +3041,7 @@ fragment LandingPageParts on LandingPage {
         ctaSecondaryLink
         metaLine
         portraitImage
+        portraitStyle
         portraitCaption
         deskImage
         deskCaption
@@ -3527,6 +3416,9 @@ fragment LandingPageParts on LandingPage {
         eyebrow
         heading
         description
+        coverImage
+        spreadImage
+        characterImage
         stats {
           __typename
           value
@@ -3545,44 +3437,11 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
-      ... on LandingPageInfoBlocksFeaturedRelease {
-        eyebrow
-        title
-        description
-        coverImage
-        backCoverImage
-        ctaLabel
-        ctaHref
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
       ... on LandingPageInfoBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
-      ... on LandingPageInfoBlocksShopCatalog {
-        heading
-        highlightText
-        description
-        showFeaturedBanner
-        emptyHeading
-        emptyDescription
         textStyle {
           __typename
           headingSize
@@ -3637,6 +3496,7 @@ fragment LandingPageParts on LandingPage {
         description
         youtubeUrl
         buttonLabel
+        watchLabel
         textStyle {
           __typename
           headingSize
@@ -3932,6 +3792,7 @@ fragment LandingPageParts on LandingPage {
         ctaSecondaryLink
         metaLine
         portraitImage
+        portraitStyle
         portraitCaption
         deskImage
         deskCaption
@@ -4306,6 +4167,9 @@ fragment LandingPageParts on LandingPage {
         eyebrow
         heading
         description
+        coverImage
+        spreadImage
+        characterImage
         stats {
           __typename
           value
@@ -4324,44 +4188,11 @@ fragment LandingPageParts on LandingPage {
           bodySize
         }
       }
-      ... on LandingPageLinkInBioBlocksFeaturedRelease {
-        eyebrow
-        title
-        description
-        coverImage
-        backCoverImage
-        ctaLabel
-        ctaHref
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
       ... on LandingPageLinkInBioBlocksProductStrip {
         eyebrow
         heading
         viewAllLabel
         viewAllLink
-        textStyle {
-          __typename
-          headingSize
-          headingType
-          headingFont
-          align
-          bodySize
-        }
-      }
-      ... on LandingPageLinkInBioBlocksShopCatalog {
-        heading
-        highlightText
-        description
-        showFeaturedBanner
-        emptyHeading
-        emptyDescription
         textStyle {
           __typename
           headingSize
@@ -4416,6 +4247,7 @@ fragment LandingPageParts on LandingPage {
         description
         youtubeUrl
         buttonLabel
+        watchLabel
         textStyle {
           __typename
           headingSize
@@ -4820,6 +4652,7 @@ fragment PostParts on Post {
       ctaSecondaryLink
       metaLine
       portraitImage
+      portraitStyle
       portraitCaption
       deskImage
       deskCaption
@@ -5129,6 +4962,9 @@ fragment PostParts on Post {
       eyebrow
       heading
       description
+      coverImage
+      spreadImage
+      characterImage
       stats {
         __typename
         value
@@ -5147,44 +4983,11 @@ fragment PostParts on Post {
         bodySize
       }
     }
-    ... on PostSectionsFeaturedRelease {
-      eyebrow
-      title
-      description
-      coverImage
-      backCoverImage
-      ctaLabel
-      ctaHref
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
     ... on PostSectionsProductStrip {
       eyebrow
       heading
       viewAllLabel
       viewAllLink
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
-    ... on PostSectionsShopCatalog {
-      heading
-      highlightText
-      description
-      showFeaturedBanner
-      emptyHeading
-      emptyDescription
       textStyle {
         __typename
         headingSize
@@ -5239,6 +5042,7 @@ fragment PostParts on Post {
       description
       youtubeUrl
       buttonLabel
+      watchLabel
       textStyle {
         __typename
         headingSize
@@ -5607,6 +5411,7 @@ fragment ShopProductParts on ShopProduct {
       ctaSecondaryLink
       metaLine
       portraitImage
+      portraitStyle
       portraitCaption
       deskImage
       deskCaption
@@ -5981,6 +5786,9 @@ fragment ShopProductParts on ShopProduct {
       eyebrow
       heading
       description
+      coverImage
+      spreadImage
+      characterImage
       stats {
         __typename
         value
@@ -5999,44 +5807,11 @@ fragment ShopProductParts on ShopProduct {
         bodySize
       }
     }
-    ... on ShopProductBlocksFeaturedRelease {
-      eyebrow
-      title
-      description
-      coverImage
-      backCoverImage
-      ctaLabel
-      ctaHref
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
     ... on ShopProductBlocksProductStrip {
       eyebrow
       heading
       viewAllLabel
       viewAllLink
-      textStyle {
-        __typename
-        headingSize
-        headingType
-        headingFont
-        align
-        bodySize
-      }
-    }
-    ... on ShopProductBlocksShopCatalog {
-      heading
-      highlightText
-      description
-      showFeaturedBanner
-      emptyHeading
-      emptyDescription
       textStyle {
         __typename
         headingSize
@@ -6091,6 +5866,7 @@ fragment ShopProductParts on ShopProduct {
       description
       youtubeUrl
       buttonLabel
+      watchLabel
       textStyle {
         __typename
         headingSize
@@ -6394,6 +6170,7 @@ fragment NavigationParts on Navigation {
             ctaSecondaryLink
             metaLine
             portraitImage
+            portraitStyle
             portraitCaption
             deskImage
             deskCaption
@@ -6768,6 +6545,9 @@ fragment NavigationParts on Navigation {
             eyebrow
             heading
             description
+            coverImage
+            spreadImage
+            characterImage
             stats {
               __typename
               value
@@ -6786,44 +6566,11 @@ fragment NavigationParts on Navigation {
               bodySize
             }
           }
-          ... on PageBlocksFeaturedRelease {
-            eyebrow
-            title
-            description
-            coverImage
-            backCoverImage
-            ctaLabel
-            ctaHref
-            textStyle {
-              __typename
-              headingSize
-              headingType
-              headingFont
-              align
-              bodySize
-            }
-          }
           ... on PageBlocksProductStrip {
             eyebrow
             heading
             viewAllLabel
             viewAllLink
-            textStyle {
-              __typename
-              headingSize
-              headingType
-              headingFont
-              align
-              bodySize
-            }
-          }
-          ... on PageBlocksShopCatalog {
-            heading
-            highlightText
-            description
-            showFeaturedBanner
-            emptyHeading
-            emptyDescription
             textStyle {
               __typename
               headingSize
@@ -6878,6 +6625,7 @@ fragment NavigationParts on Navigation {
             description
             youtubeUrl
             buttonLabel
+            watchLabel
             textStyle {
               __typename
               headingSize
@@ -7175,6 +6923,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -7549,6 +7298,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -7567,44 +7319,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on LandingPageBlankBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on LandingPageBlankBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on LandingPageBlankBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -7659,6 +7378,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -7954,6 +7674,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -8328,6 +8049,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -8346,44 +8070,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on LandingPageEventBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on LandingPageEventBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on LandingPageEventBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -8438,6 +8129,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -8733,6 +8425,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -9107,6 +8800,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -9125,44 +8821,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on LandingPagePromoBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on LandingPagePromoBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on LandingPagePromoBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -9217,6 +8880,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -9512,6 +9176,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -9886,6 +9551,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -9904,44 +9572,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on LandingPageInfoBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on LandingPageInfoBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on LandingPageInfoBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -9996,6 +9631,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -10291,6 +9927,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -10665,6 +10302,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -10683,44 +10323,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on LandingPageLinkInBioBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on LandingPageLinkInBioBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on LandingPageLinkInBioBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -10775,6 +10382,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -11090,6 +10698,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -11464,6 +11073,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -11482,44 +11094,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on PageBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on PageBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on PageBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -11574,6 +11153,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -11871,6 +11451,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -12245,6 +11826,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -12263,44 +11847,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageBlankBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageBlankBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageBlankBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -12355,6 +11906,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -12650,6 +12202,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -13024,6 +12577,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -13042,44 +12598,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageEventBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageEventBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageEventBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -13134,6 +12657,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -13429,6 +12953,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -13803,6 +13328,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -13821,44 +13349,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPagePromoBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPagePromoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPagePromoBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -13913,6 +13408,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -14208,6 +13704,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -14582,6 +14079,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -14600,44 +14100,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageInfoBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageInfoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageInfoBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -14692,6 +14159,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -14987,6 +14455,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -15361,6 +14830,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -15379,44 +14851,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageLinkInBioBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageLinkInBioBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageLinkInBioBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -15471,6 +14910,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -15791,6 +15231,7 @@ fragment NavigationParts on Navigation {
               ctaSecondaryLink
               metaLine
               portraitImage
+              portraitStyle
               portraitCaption
               deskImage
               deskCaption
@@ -16165,6 +15606,9 @@ fragment NavigationParts on Navigation {
               eyebrow
               heading
               description
+              coverImage
+              spreadImage
+              characterImage
               stats {
                 __typename
                 value
@@ -16183,44 +15627,11 @@ fragment NavigationParts on Navigation {
                 bodySize
               }
             }
-            ... on PageBlocksFeaturedRelease {
-              eyebrow
-              title
-              description
-              coverImage
-              backCoverImage
-              ctaLabel
-              ctaHref
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
             ... on PageBlocksProductStrip {
               eyebrow
               heading
               viewAllLabel
               viewAllLink
-              textStyle {
-                __typename
-                headingSize
-                headingType
-                headingFont
-                align
-                bodySize
-              }
-            }
-            ... on PageBlocksShopCatalog {
-              heading
-              highlightText
-              description
-              showFeaturedBanner
-              emptyHeading
-              emptyDescription
               textStyle {
                 __typename
                 headingSize
@@ -16275,6 +15686,7 @@ fragment NavigationParts on Navigation {
               description
               youtubeUrl
               buttonLabel
+              watchLabel
               textStyle {
                 __typename
                 headingSize
@@ -16572,6 +15984,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -16946,6 +16359,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -16964,44 +16380,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageBlankBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageBlankBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageBlankBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -17056,6 +16439,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -17351,6 +16735,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -17725,6 +17110,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -17743,44 +17131,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageEventBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageEventBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageEventBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -17835,6 +17190,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -18130,6 +17486,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -18504,6 +17861,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -18522,44 +17882,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPagePromoBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPagePromoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPagePromoBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -18614,6 +17941,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -18909,6 +18237,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -19283,6 +18612,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -19301,44 +18633,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageInfoBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageInfoBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageInfoBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -19393,6 +18692,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize
@@ -19688,6 +18988,7 @@ fragment NavigationParts on Navigation {
                 ctaSecondaryLink
                 metaLine
                 portraitImage
+                portraitStyle
                 portraitCaption
                 deskImage
                 deskCaption
@@ -20062,6 +19363,9 @@ fragment NavigationParts on Navigation {
                 eyebrow
                 heading
                 description
+                coverImage
+                spreadImage
+                characterImage
                 stats {
                   __typename
                   value
@@ -20080,44 +19384,11 @@ fragment NavigationParts on Navigation {
                   bodySize
                 }
               }
-              ... on LandingPageLinkInBioBlocksFeaturedRelease {
-                eyebrow
-                title
-                description
-                coverImage
-                backCoverImage
-                ctaLabel
-                ctaHref
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
               ... on LandingPageLinkInBioBlocksProductStrip {
                 eyebrow
                 heading
                 viewAllLabel
                 viewAllLink
-                textStyle {
-                  __typename
-                  headingSize
-                  headingType
-                  headingFont
-                  align
-                  bodySize
-                }
-              }
-              ... on LandingPageLinkInBioBlocksShopCatalog {
-                heading
-                highlightText
-                description
-                showFeaturedBanner
-                emptyHeading
-                emptyDescription
                 textStyle {
                   __typename
                   headingSize
@@ -20172,6 +19443,7 @@ fragment NavigationParts on Navigation {
                 description
                 youtubeUrl
                 buttonLabel
+                watchLabel
                 textStyle {
                   __typename
                   headingSize

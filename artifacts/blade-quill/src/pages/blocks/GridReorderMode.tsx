@@ -15,6 +15,7 @@ import { createPortal } from "react-dom";
 import {
   DndContext,
   DragOverlay,
+  KeyboardSensor,
   MeasuringStrategy,
   MouseSensor,
   TouchSensor,
@@ -27,7 +28,12 @@ import {
   type DragOverEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { SortableContext, arrayMove, useSortable } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  arrayMove,
+  sortableKeyboardCoordinates,
+  useSortable,
+} from "@dnd-kit/sortable";
 import { motion } from "framer-motion";
 import { ExternalLink, FileText, Move } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -195,10 +201,15 @@ export function RearrangeButton({
   );
 }
 
-/** Open this page standalone (out of the editor iframe) in rearrange mode. */
-export function openRearrangePage(): void {
+/**
+ * Open this page standalone (out of the editor iframe) in rearrange mode.
+ * `target` identifies which grid should auto-enter when a page can hold more
+ * than one reorderable section (e.g. `m2` = the masonry block at index 2).
+ */
+export function openRearrangePage(target?: string): void {
+  const param = target ? `?rearrange=${encodeURIComponent(target)}` : "?rearrange";
   window.open(
-    `${window.location.origin}${window.location.pathname}?rearrange`,
+    `${window.location.origin}${window.location.pathname}${param}`,
     "_blank",
     "noopener"
   );
@@ -260,7 +271,10 @@ export default function GridReorderMode({
     // …and an iOS-style press-and-hold on touch.
     useSensor(TouchSensor, {
       activationConstraint: { delay: 200, tolerance: 8 },
-    })
+    }),
+    // Keyboard: Tab to a tile, Space/Enter to pick up, arrows to move,
+    // Space/Enter to drop, Escape to cancel the drag.
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
   const dirty = tiles.some((tile, index) => tile.originalIndex !== index);

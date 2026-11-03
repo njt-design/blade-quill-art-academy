@@ -15,7 +15,7 @@ export default function CtaBandBlock({ block }: Props) {
 
   return (
     <section className={`py-12 ${isDark ? "bg-foreground text-background" : "bg-secondary/40"}`}>
-      <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bq-container flex flex-col md:flex-row items-center justify-between gap-6">
         <div style={sectionAlignStyle(block)}>
           {block.heading ? (
             <SectionHeading

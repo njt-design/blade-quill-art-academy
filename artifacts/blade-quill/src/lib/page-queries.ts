@@ -94,7 +94,7 @@ export const BLOCK_FIELDS: Record<string, string> = {
     "eyebrow heading items { tag title sub cta badge link image }"
   ),
   featuredBook: withTextStyle(
-    "eyebrow heading description stats { value label } ctaLabel ctaLink secondaryLabel secondaryLink"
+    "eyebrow heading description coverImage spreadImage characterImage stats { value label } ctaLabel ctaLink secondaryLabel secondaryLink"
   ),
   classesPitch: withTextStyle(
     "eyebrow heading subheading bullets metaTags ctaLabel ctaLink secondaryLabel secondaryLink"
@@ -111,7 +111,7 @@ export const BLOCK_FIELDS: Record<string, string> = {
     "eyebrow heading subheading placeholderText ctaLabel privacyNote"
   ),
   aboutHero: withTextStyle(
-    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitCaption deskImage deskCaption screenImage screenCaption"
+    "eyebrow heading leadText ctaPrimary ctaPrimaryLink ctaSecondary ctaSecondaryLink metaLine portraitImage portraitStyle portraitCaption deskImage deskCaption screenImage screenCaption"
   ),
   statsRow: "stats { value label }",
   story: withTextStyle(
@@ -122,9 +122,6 @@ export const BLOCK_FIELDS: Record<string, string> = {
   ),
   cardRow: withTextStyle(
     "number label cards { tag title body image ctaLabel link }"
-  ),
-  shopCatalog: withTextStyle(
-    "heading highlightText description showFeaturedBanner emptyHeading emptyDescription"
   ),
   galleryGrid: withTextStyle(
     "artworks { title image description downloadFile } emptyHeading emptyDescription"
@@ -138,9 +135,6 @@ export const BLOCK_FIELDS: Record<string, string> = {
     "heading description pdfUrl submitLabel successHeading successNote downloadLabel"
   ),
   marquee: "highlightText text",
-  featuredRelease: withTextStyle(
-    "eyebrow title description coverImage backCoverImage ctaLabel ctaHref"
-  ),
   kofiSupport: withTextStyle("heading body ctaLabel href"),
   socialLinks: withTextStyle("heading body links { platform url label }"),
   reviewLinks: withTextStyle(
@@ -164,7 +158,9 @@ export const BLOCK_FIELDS: Record<string, string> = {
   ),
   imageMasonry: withTextStyle("heading images { src alt caption size }"),
   imageBanners: withTextStyle("heading images { src alt } layout"),
-  featuredVideo: withTextStyle("eyebrow heading description youtubeUrl buttonLabel"),
+  featuredVideo: withTextStyle(
+    "eyebrow heading description youtubeUrl buttonLabel watchLabel"
+  ),
   galleryPreview: withTextStyle(
     "eyebrow heading description maxItems viewAllLabel viewAllLink"
   ),

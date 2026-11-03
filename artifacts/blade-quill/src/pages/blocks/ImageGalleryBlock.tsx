@@ -16,7 +16,7 @@ export default function ImageGalleryBlock({ block }: Props) {
   return (
     <section className="py-12">
       <div
-        className="container mx-auto px-4 md:px-6"
+        className="bq-container"
         style={sectionAlignStyle(block)}
       >
         {block.heading ? (
