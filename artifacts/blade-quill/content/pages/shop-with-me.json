@@ -1,0 +1,104 @@
+{
+  "title": "Shop with Me",
+  "layout": "standard",
+  "parent": "none",
+  "blocks": [
+    {
+      "heading": "Something special is here",
+      "subheading": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Announce the promotion and what makes it a great deal."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Shop Now",
+      "ctaLink": "/shop",
+      "_template": "hero"
+    },
+    {
+      "eyebrow": "FEATURED RELEASE",
+      "heading": "The new book.",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "A short description of the featured book."
+              }
+            ]
+          }
+        ]
+      },
+      "stats": [
+        {
+          "value": "$25",
+          "label": "SIGNED COPY"
+        },
+        {
+          "value": "$14",
+          "label": "EBOOK"
+        },
+        {
+          "value": "144",
+          "label": "FULL-COLOR PAGES"
+        }
+      ],
+      "ctaLabel": "Order Now",
+      "ctaLink": "/shop",
+      "secondaryLabel": "Browse the shop",
+      "secondaryLink": "/shop",
+      "_template": "featuredBook"
+    },
+    {
+      "heading": "Section heading",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write anything here — paragraphs, lists, links, and more."
+              }
+            ]
+          }
+        ]
+      },
+      "_template": "textLeft"
+    },
+    {
+      "heading": "Ready to get started?",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "One short supporting line goes here."
+              }
+            ]
+          }
+        ]
+      },
+      "ctaLabel": "Get Started",
+      "ctaLink": "/contact",
+      "variant": "light",
+      "_template": "ctaBand"
+    }
+  ],
+  "_template": "promo"
+}
