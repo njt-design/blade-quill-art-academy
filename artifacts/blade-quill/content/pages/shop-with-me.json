@@ -201,7 +201,7 @@
         ]
       },
       "ctaLabel": "Get Started",
-      "ctaLink": "",
+      "ctaLink": "www.google.com",
       "variant": "dark",
       "_template": "ctaBand"
     }
