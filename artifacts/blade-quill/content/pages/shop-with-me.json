@@ -145,19 +145,64 @@
         "type": "root",
         "children": [
           {
-            "type": "p",
             "children": [
               {
-                "type": "text",
-                "text": "One short supporting line goes here."
+                "text": ""
+              }
+            ],
+            "type": "p",
+            "id": "UdC9IZO7bY"
+          },
+          {
+            "type": "p",
+            "id": "_qWhyl8oJe",
+            "children": [
+              {
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ullamcorper metus vitae nulla tincidunt suscipit. Nullam id leo aliquet, pretium felis sit amet, viverra nisi. Nam consectetur ex vitae interdum suscipit. Vestibulum pulvinar nisl in elit iaculis, a vestibulum leo tincidunt. Curabitur eget sodales metus. Sed nec convallis turpis, in vehicula nunc. Etiam tempor maximus volutpat. Nullam sagittis ante eget urna gravida sollicitudin. Vestibulum id arcu quis sem luctus luctus sed vel urna. Fusce ultrices luctus diam, quis accumsan est rhoncus eget. Curabitur sodales orci sit amet tincidunt tempor. Nulla facilisi. Nullam iaculis egestas orci, at euismod diam gravida ac. Curabitur posuere imperdiet justo at dictum. Morbi non diam sed elit laoreet tempus. Ut nunc diam, finibus luctus mi ut, lobortis commodo erat."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "C7SY--yO7F",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "2wN6CDgaX-",
+            "children": [
+              {
+                "text": "Vivamus fringilla ultricies metus nec tempor. Proin euismod et purus at blandit. Duis vitae massa sed justo fringilla malesuada. Mauris scelerisque sed neque dignissim lacinia. Ut et felis ut quam maximus laoreet eu vitae ipsum. Morbi cursus sodales euismod. Vivamus commodo gravida risus vel volutpat."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "K-OflAo_k2",
+            "children": [
+              {
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "lBpr-Fm8SM",
+            "children": [
+              {
+                "text": ""
               }
             ]
           }
         ]
       },
       "ctaLabel": "Get Started",
-      "ctaLink": "/contact",
-      "variant": "light",
+      "ctaLink": "",
+      "variant": "dark",
       "_template": "ctaBand"
     }
   ],
