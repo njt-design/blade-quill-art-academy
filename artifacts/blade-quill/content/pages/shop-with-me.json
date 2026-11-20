@@ -4,26 +4,6 @@
   "parent": "none",
   "blocks": [
     {
-      "heading": "Something special is here",
-      "subheading": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              {
-                "type": "text",
-                "text": "Announce the promotion and what makes it a great deal."
-              }
-            ]
-          }
-        ]
-      },
-      "ctaLabel": "Shop Now",
-      "ctaLink": "/shop",
-      "_template": "hero"
-    },
-    {
       "eyebrow": "FEATURED RELEASE",
       "heading": "The new book.",
       "description": {
@@ -59,6 +39,87 @@
       "secondaryLabel": "Browse the shop",
       "secondaryLink": "/shop",
       "_template": "featuredBook"
+    },
+    {
+      "heading": "This is a really long heading to see what's going on. ",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": ""
+              }
+            ],
+            "id": "MqzIegt4rC"
+          },
+          {
+            "type": "p",
+            "id": "fuAwpfpjD-",
+            "children": [
+              {
+                "type": "text",
+                "id": "q-FltbbNlr",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ullamcorper metus vitae nulla tincidunt suscipit. Nullam id leo aliquet, pretium felis sit amet, viverra nisi. Nam consectetur ex vitae interdum suscipit. Vestibulum pulvinar nisl in elit iaculis, a vestibulum leo tincidunt. Curabitur eget sodales metus. Sed nec convallis turpis, in vehicula nunc. Etiam tempor maximus volutpat. Nullam sagittis ante eget urna gravida sollicitudin. Vestibulum id arcu quis sem luctus luctus sed vel urna. Fusce ultrices luctus diam, quis accumsan est rhoncus eget. Curabitur sodales orci sit amet tincidunt tempor. Nulla facilisi. Nullam iaculis egestas orci, at euismod diam gravida ac. Curabitur posuere imperdiet justo at dictum. Morbi non diam sed elit laoreet tempus. Ut nunc diam, finibus luctus mi ut, lobortis commodo erat."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "2LeoBMBmjk",
+            "children": [
+              {
+                "type": "text",
+                "id": "gsE0Zr847g",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "LgqNaoXakc",
+            "children": [
+              {
+                "type": "text",
+                "id": "6xqZPEURY1",
+                "text": "Vivamus fringilla ultricies metus nec tempor. Proin euismod et purus at blandit. Duis vitae massa sed justo fringilla malesuada. Mauris scelerisque sed neque dignissim lacinia. Ut et felis ut quam maximus laoreet eu vitae ipsum. Morbi cursus sodales euismod. Vivamus commodo gravida risus vel volutpat."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "Z_qA1bbDD_",
+            "children": [
+              {
+                "type": "text",
+                "id": "JBwCk9mtyS",
+                "text": ""
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "id": "T0p9dtySwt",
+            "children": [
+              {
+                "type": "text",
+                "id": "hvTZXp7c0f",
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      "textStyle": {
+        "headingSize": "smaller",
+        "headingType": "h1",
+        "headingFont": "sans",
+        "align": "center",
+        "bodySize": "default"
+      },
+      "_template": "textLeft"
     },
     {
       "heading": "Section heading",
