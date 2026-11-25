@@ -75,9 +75,7 @@
         ]
       },
       "coverImage": "/images/puzzle-book-front.png",
-      "spreadImage": "/images/puzzle-book-back.png",
-      "ctaLabel": "Get the Book on Amazon!",
-      "ctaLink": "https://a.co/d/0gOcVYO3"
+      "spreadImage": "/images/puzzle-book-back.png"
     },
     {
       "_template": "reviewLinks",
@@ -98,23 +96,7 @@
       },
       "thankYou": "Thank you so much for your support!",
       "ctaHeading": "Review the book by clicking the button for your country!",
-      "links": [
-        {
-          "label": "Review on Amazon.com",
-          "href": "https://www.amazon.com/review/create-review?&asin=1733168451",
-          "region": "US"
-        },
-        {
-          "label": "Review on Amazon UK",
-          "href": "https://www.amazon.co.uk/review/create-review?&asin=1733168451",
-          "region": "UK"
-        },
-        {
-          "label": "Review on Amazon Australia",
-          "href": "https://www.amazon.com.au/review/create-review?&asin=1733168451",
-          "region": "AU"
-        }
-      ]
+      "links": []
     },
     {
       "_template": "kofiSupport",
@@ -148,11 +130,6 @@
           "platform": "instagram",
           "url": "https://www.instagram.com/bladequillartacademy/",
           "label": "Instagram"
-        },
-        {
-          "platform": "amazon",
-          "url": "https://www.amazon.com/dp/1733168451",
-          "label": "Lheeloo and Luna on Amazon"
         },
         {
           "platform": "kofi",

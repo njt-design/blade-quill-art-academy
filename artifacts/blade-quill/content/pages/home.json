@@ -75,6 +75,15 @@
           "badge": "12K+",
           "link": "https://www.youtube.com/@BladeandQuillartacademy",
           "image": "/images/New-Banner-2026.jpg"
+        },
+        {
+          "tag": "GUMROAD",
+          "title": "Books & Printables on Gumroad",
+          "sub": "Coloring, comics, and puzzle books — instant download.",
+          "cta": "Visit the Gumroad store",
+          "badge": "STORE",
+          "link": "https://bladeandquill.gumroad.com/",
+          "image": "/images/Gumroad-sales-image-1920-1080px.png"
         }
       ],
       "_template": "pillars"

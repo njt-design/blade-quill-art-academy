@@ -144,6 +144,24 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/(shop|cart|education|publishers)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(shop|education|publishers)/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

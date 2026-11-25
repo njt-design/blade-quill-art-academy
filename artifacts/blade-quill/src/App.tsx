@@ -5,11 +5,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartProvider } from "@/hooks/useCart";
 import { useSiteJsonLd } from "@/lib/structured-data";
+import { isHiddenPath } from "@/lib/hidden-pages";
 
 // Layout
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTurnOverlay } from "@/components/site/PageTurnOverlay";
+import { HiddenPage } from "@/components/site/HiddenPage";
 import { ScrollToTop } from "@/components/site/ScrollToTop";
 import { Analytics } from "@/components/Analytics";
 
@@ -59,12 +61,23 @@ function MainLayout() {
           <Route path="/">
             <Page slug="home" />
           </Route>
+          {/* Shop, Cart, Education, and Publishers are hidden via lib/hidden-pages.ts. */}
           <Route path="/shop">
-            <Page slug="shop" />
+            <HiddenPage>
+              <Page slug="shop" />
+            </HiddenPage>
           </Route>
           <Route path="/shop/success" component={OrderSuccess} />
-          <Route path="/shop/:id" component={ProductDetail} />
-          <Route path="/cart" component={Cart} />
+          <Route path="/shop/:id">
+            <HiddenPage>
+              <ProductDetail />
+            </HiddenPage>
+          </Route>
+          <Route path="/cart">
+            <HiddenPage>
+              <Cart />
+            </HiddenPage>
+          </Route>
           <Route path="/gallery">
             <Page slug="gallery" />
           </Route>
@@ -72,10 +85,14 @@ function MainLayout() {
             <Page slug="downloads" />
           </Route>
           <Route path="/education">
-            <Page slug="education" />
+            <HiddenPage>
+              <Page slug="education" />
+            </HiddenPage>
           </Route>
           <Route path="/publishers">
-            <Page slug="publishers" />
+            <HiddenPage>
+              <Page slug="publishers" />
+            </HiddenPage>
           </Route>
           <Route path="/about">
             <Page slug="about" />
@@ -115,8 +132,9 @@ function Router() {
       <Route path="/important-links-page">
         <Page slug="important-links" chrome="auto" />
       </Route>
-      {/* Client-created pages choose their own layout (standard/standalone). */}
-      {NESTED_PAGE_ROUTES.map(({ path, slug }) => (
+      {/* Client-created pages choose their own layout (standard/standalone).
+          Pages under a hidden parent fall through to MainLayout's 404. */}
+      {NESTED_PAGE_ROUTES.filter(({ path }) => !isHiddenPath(path)).map(({ path, slug }) => (
         <Route key={path} path={path}>
           <Page slug={slug} chrome="auto" />
         </Route>

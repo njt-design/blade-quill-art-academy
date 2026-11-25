@@ -54,7 +54,7 @@ const CONTAINER_CLASSES: Record<GridReorderVariant, string> = {
   masonry: "columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 pb-20",
   // Same grid as DownloadsGridBlock's cards.
   cards:
-    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-20",
+    "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pb-20",
 };
 
 export interface ReorderTileData {

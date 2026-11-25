@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { SiInstagram, SiKofi, SiYoutube } from "react-icons/si";
-import { FaAmazon } from "react-icons/fa";
+import { SiGumroad, SiInstagram, SiKofi, SiYoutube } from "react-icons/si";
 import { QuillMark } from "@/components/site/QuillMark";
 import { Btn } from "@/components/site/Btn";
 import { useLiveNavigation } from "@/hooks/use-live-navigation";
 import { useNewsletterSignup } from "@/hooks/use-newsletter";
 import { maybeTrackAmazonClick } from "@/lib/analytics";
 
-const AMAZON_BOOK_URL = "https://www.amazon.com/dp/1733168451";
+const GUMROAD_URL = "https://bladeandquill.gumroad.com/";
 const YOUTUBE_URL = "https://www.youtube.com/c/BladeQuillartacademy";
 const INSTAGRAM_URL = "https://www.instagram.com/bladequillartacademy/";
 const KOFI_URL = "https://ko-fi.com/bladeandquill";
@@ -173,17 +172,14 @@ export function Footer() {
                 <SiInstagram className="w-5 h-5" />
               </a>
               <a
-                href={AMAZON_BOOK_URL}
+                href={GUMROAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Lheeloo & Luna on Amazon"
+                aria-label="Blade & Quill on Gumroad"
                 className="w-11 h-11 grid place-items-center rounded-full hover:text-paper transition-colors"
                 style={{ color: "var(--paper-3)" }}
-                onClick={() =>
-                  maybeTrackAmazonClick(AMAZON_BOOK_URL, "footer_social")
-                }
               >
-                <FaAmazon className="w-5 h-5" />
+                <SiGumroad className="w-5 h-5" />
               </a>
               <a
                 href={KOFI_URL}

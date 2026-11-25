@@ -6,6 +6,8 @@ import { useLiveProducts } from "@/hooks/use-live-content";
 import { FALLBACK_PRODUCTS, FALLBACK_TUTORIALS } from "@/lib/fallback-data";
 import { hasCatalogProducts, resolveCatalogProducts } from "@/lib/products";
 import { extractYoutubeId } from "@/lib/youtube";
+import { isHiddenPath } from "@/lib/hidden-pages";
+import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, sectionAlignStyle } from "./text-style";
@@ -54,7 +56,14 @@ function WaveEdge() {
 
 export default function PillarsBlock({ block }: Props) {
   const [, setLocation] = useLocation();
-  const items = ((block.items as PillarItem[] | undefined) ?? []).slice(0, 3);
+  const items = (block.items as PillarItem[] | undefined) ?? [];
+  // Keep each card's CMS index — tinaField and autoPreviews are index-based.
+  const visibleItems = items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => !isHiddenPath(item.link))
+    .slice(0, 3);
+  // Only re-center when hidden cards were dropped, so CMS-authored rows don't shift.
+  const recenter = visibleItems.length < Math.min(items.length, 3);
 
   const catalog = useLiveProducts();
   const { data: products } = useListProducts(undefined, {
@@ -80,7 +89,7 @@ export default function PillarsBlock({ block }: Props) {
     ];
   }, [allProducts]);
 
-  if (items.length === 0) return null;
+  if (visibleItems.length === 0) return null;
 
   return (
     <section className="py-24 lg:py-28">
@@ -107,8 +116,14 @@ export default function PillarsBlock({ block }: Props) {
         </div>
 
         <Reveal stagger>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
-            {items.map((p, i) => {
+          <div
+            className={
+              recenter
+                ? "flex flex-col gap-6 md:flex-row md:justify-center md:gap-7"
+                : "grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7"
+            }
+          >
+            {visibleItems.map(({ item: p, index: i }) => {
               const isYoutubeLink =
                 isExternalLink(p.link) && /youtube\.com|youtu\.be/i.test(p.link ?? "");
               const youtubeId =
@@ -131,7 +146,11 @@ export default function PillarsBlock({ block }: Props) {
                   key={`${p.title}-${i}`}
                   type="button"
                   onClick={() => followLink(setLocation, p.link)}
-                  className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--maroon)] focus-visible:ring-offset-2"
+                  className={cn(
+                    "group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--maroon)] focus-visible:ring-offset-2",
+                    // Same width as one column of the 3-up grid (two gap-7 gutters).
+                    recenter && "md:w-[calc((100%-3.5rem)/3)]"
+                  )}
                   data-tina-field={tinaField(block, "items", i)}
                 >
                   <article

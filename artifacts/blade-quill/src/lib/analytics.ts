@@ -120,6 +120,10 @@ export function trackDummyBookRequest(): void {
   trackEvent("dummy_book_request");
 }
 
+export function trackDummyBookDownload(placement: string): void {
+  trackEvent("dummy_book_download", { placement });
+}
+
 /**
  * If the href is an Amazon URL, record the click. Safe to call from any
  * outbound link handler — no-ops for non-Amazon destinations.

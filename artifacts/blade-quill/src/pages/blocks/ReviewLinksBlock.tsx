@@ -19,6 +19,7 @@ interface Props {
 export default function ReviewLinksBlock({ block }: Props) {
   const links = (block.links as ReviewLink[] | undefined) ?? [];
   const visibleLinks = links.some((l) => l?.label && l?.href);
+  if (!visibleLinks) return null;
 
   return (
     <div className="px-6 md:px-8 py-6">
@@ -54,27 +55,25 @@ export default function ReviewLinksBlock({ block }: Props) {
                 {block.ctaHeading as string}
               </p>
             ) : null}
-            {visibleLinks && (
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-                {links.map((link, i) => {
-                  if (!link?.label || !link?.href) return null;
-                  return (
-                    <span key={`${link.region}-${i}`} data-tina-field={tinaField(block, "links", i)}>
-                      <Btn
-                        href={link.href}
-                        external
-                        analyticsPlacement="review_links"
-                        kind="outline"
-                        size="md"
-                        iconRight={<ArrowUpRight className="w-4 h-4" />}
-                      >
-                        {link.label}
-                      </Btn>
-                    </span>
-                  );
-                })}
-              </div>
-            )}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
+              {links.map((link, i) => {
+                if (!link?.label || !link?.href) return null;
+                return (
+                  <span key={`${link.region}-${i}`} data-tina-field={tinaField(block, "links", i)}>
+                    <Btn
+                      href={link.href}
+                      external
+                      analyticsPlacement="review_links"
+                      kind="outline"
+                      size="md"
+                      iconRight={<ArrowUpRight className="w-4 h-4" />}
+                    >
+                      {link.label}
+                    </Btn>
+                  </span>
+                );
+              })}
+            </div>
             {block.thankYou ? (
               <p
                 className="font-sans text-sm text-muted-foreground"

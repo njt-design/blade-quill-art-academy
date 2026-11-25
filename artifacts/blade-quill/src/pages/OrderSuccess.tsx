@@ -5,6 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { useGetOrderSuccess, getGetOrderSuccessQueryKey } from "@workspace/api-client-react";
 import { useCart } from "@/hooks/useCart";
 import { trackPurchase } from "@/lib/analytics";
+import { isHiddenPath } from "@/lib/hidden-pages";
 
 export default function OrderSuccess() {
   const [, setLocation] = useLocation();
@@ -38,7 +39,11 @@ export default function OrderSuccess() {
     return (
       <div className="min-h-screen py-32 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-2xl font-display mb-4">No Session Found</h1>
-        <Button onClick={() => setLocation("/shop")}>Return to Shop</Button>
+        {isHiddenPath("/shop") ? (
+          <Button onClick={() => setLocation("/")}>Return Home</Button>
+        ) : (
+          <Button onClick={() => setLocation("/shop")}>Return to Shop</Button>
+        )}
       </div>
     );
   }

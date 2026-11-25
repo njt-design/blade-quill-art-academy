@@ -7,6 +7,7 @@ import { Polaroid } from "@/components/site/Polaroid";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
+import { isHiddenPath } from "@/lib/hidden-pages";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
@@ -123,7 +124,8 @@ export default function AboutHeroBlock({ block }: Props) {
             ) : null}
             <Reveal>
               <BtnGroup className="mb-7">
-                {block.ctaPrimary ? (
+                {block.ctaPrimary &&
+                !isHiddenPath((block.ctaPrimaryLink as string | undefined) || "/contact") ? (
                   <Btn
                     kind="primary"
                     size="lg"
@@ -137,7 +139,7 @@ export default function AboutHeroBlock({ block }: Props) {
                     </span>
                   </Btn>
                 ) : null}
-                {block.ctaSecondary ? (
+                {block.ctaSecondary && !isHiddenPath(secondaryLink || "/shop") ? (
                   isExternalLink(secondaryLink) ? (
                     <Btn kind="outline" size="lg" href={secondaryLink} external iconRight="↗">
                       <span data-tina-field={tinaField(block, "ctaSecondary")}>

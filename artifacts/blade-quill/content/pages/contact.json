@@ -18,6 +18,9 @@
           }
         ]
       },
+      "textStyle": {
+        "align": "center"
+      },
       "_template": "pageHeader"
     },
     {

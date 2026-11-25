@@ -18,10 +18,11 @@ const DEFAULT_PDF_URL =
   "/files/lheeloo-and-luna-bath-time-episode-thursday-dummy-book.pdf";
 
 /** Sent when the requester leaves the note empty (API requires a message). */
-const DEFAULT_MESSAGE =
+export const DEFAULT_MESSAGE =
   "Requesting the 30-page PDF of the picture book for professional review.";
 
-const formSchema = z.object({
+/** Shared with the Publishers tab of ContactFormBlock. */
+export const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Valid email is required"),
   company: z.string().min(2, "Publisher or agency name is required"),
@@ -35,7 +36,7 @@ const formSchema = z.object({
     }),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+export type FormValues = z.infer<typeof formSchema>;
 
 interface Props {
   block: Block;

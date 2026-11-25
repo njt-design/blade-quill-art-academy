@@ -4,6 +4,7 @@ import { Btn } from "@/components/site/Btn";
 import { Reveal } from "@/components/site/Reveal";
 import { RichText } from "@/components/site/RichText";
 import { WordReveal } from "@/components/site/WordReveal";
+import { isHiddenPath } from "@/lib/hidden-pages";
 import { type Block, followLink, isExternalLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle } from "./text-style";
 
@@ -60,6 +61,8 @@ function HeroCtas({
   const primaryClass = desktop
     ? "h-[60px]"
     : "w-full h-11 min-h-11 max-h-11 px-5 py-0 text-sm md:w-auto md:h-auto md:max-h-none md:px-7 md:py-[17px] md:text-[15px]";
+  const showSecondary = Boolean(block.ctaSecondary) && !isHiddenPath(secondaryLink || "/downloads");
+  const showPrimary = Boolean(block.ctaPrimary) && !isHiddenPath(primaryLink || "/shop");
 
   return (
     <div
@@ -71,7 +74,7 @@ function HeroCtas({
             "flex w-full shrink-0 flex-col gap-1.5 md:w-auto md:flex-row md:items-center md:gap-3"
       }
     >
-      {block.ctaSecondary ? (
+      {showSecondary ? (
         isExternalLink(secondaryLink) ? (
           <Btn
             kind="outline"
@@ -100,7 +103,7 @@ function HeroCtas({
         )
       ) : null}
 
-      {block.ctaPrimary ? (
+      {showPrimary ? (
         isExternalLink(primaryLink) ? (
           <Btn
             kind="primary"

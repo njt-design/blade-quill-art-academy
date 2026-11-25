@@ -8,6 +8,7 @@ import { type ResolvedNavLink } from "@/lib/navigation-content";
 import { InkUnderline } from "@/components/site/InkUnderline";
 import { QuillMark } from "@/components/site/QuillMark";
 import { maybeTrackAmazonClick } from "@/lib/analytics";
+import { isHiddenPath } from "@/lib/hidden-pages";
 
 /**
  * Sticky reveal navigation.
@@ -242,27 +243,29 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <button
-            id="cart-icon"
-            type="button"
-            onClick={() => setLocation("/cart")}
-            aria-label="Cart"
-            className="relative grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors"
-          >
-            <ShoppingCart className="w-[18px] h-[18px]" strokeWidth={1.8} />
-            {totalItems > 0 && (
-              <span
-                className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full text-[10px] font-bold grid place-items-center"
-                style={{
-                  background: "var(--maroon)",
-                  color: "var(--paper)",
-                  fontFamily: "var(--f-mono)",
-                }}
-              >
-                {totalItems > 9 ? "9+" : totalItems}
-              </span>
-            )}
-          </button>
+          {!isHiddenPath("/cart") && (
+            <button
+              id="cart-icon"
+              type="button"
+              onClick={() => setLocation("/cart")}
+              aria-label="Cart"
+              className="relative grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors"
+            >
+              <ShoppingCart className="w-[18px] h-[18px]" strokeWidth={1.8} />
+              {totalItems > 0 && (
+                <span
+                  className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full text-[10px] font-bold grid place-items-center"
+                  style={{
+                    background: "var(--maroon)",
+                    color: "var(--paper)",
+                    fontFamily: "var(--f-mono)",
+                  }}
+                >
+                  {totalItems > 9 ? "9+" : totalItems}
+                </span>
+              )}
+            </button>
+          )}
           <button
             type="button"
             aria-label="Menu"

@@ -1,17 +1,26 @@
 import { tinaField } from "tinacms/react";
 import { RichText } from "@/components/site/RichText";
 import { type Block } from "./block-utils";
-import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
+import {
+  SectionHeading,
+  bodyTextStyle,
+  getTextStyle,
+  sectionAlignStyle,
+} from "./text-style";
 
 interface Props {
   block: Block;
 }
 
 export default function PageHeaderBlock({ block }: Props) {
+  const centered = getTextStyle(block).align === "center";
   return (
     <section className="pt-10 pb-2">
       <div className="bq-container">
-        <div className="max-w-2xl mb-4" style={sectionAlignStyle(block)}>
+        <div
+          className={`max-w-2xl mb-4${centered ? " mx-auto" : ""}`}
+          style={sectionAlignStyle(block)}
+        >
           <SectionHeading
             block={block}
             defaultTag="h1"
