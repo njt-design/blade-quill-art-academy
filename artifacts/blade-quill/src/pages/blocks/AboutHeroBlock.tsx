@@ -54,7 +54,7 @@ export default function AboutHeroBlock({ block }: Props) {
     `${import.meta.env.BASE_URL}images/about-portrait.png`;
   // "clean" (no frame) is the default; "polaroid" is an explicit opt-in.
   const portraitPolaroid = (block.portraitStyle as string) === "polaroid";
-  const portraitRadius = portraitPolaroid ? 2 : 12;
+  const portraitRadius = portraitPolaroid ? 16 : 12;
   const secondaryLink = block.ctaSecondaryLink as string | undefined;
   // Accent polaroids only render when the CMS provides an image —
   // "leave blank to hide" (no gradient/default fallbacks).
@@ -284,7 +284,7 @@ export default function AboutHeroBlock({ block }: Props) {
                         src={deskSrc}
                         alt={deskCaption}
                         label={deskCaption}
-                        radius={2}
+                        radius={16}
                         fit="contain"
                       />
                     </Polaroid>
@@ -325,7 +325,7 @@ export default function AboutHeroBlock({ block }: Props) {
                         src={screenSrc}
                         alt={screenCaption}
                         label={screenCaption}
-                        radius={2}
+                        radius={16}
                         fit="contain"
                       />
                     </Polaroid>

@@ -11,11 +11,12 @@ import { maybeTrackAmazonClick } from "@/lib/analytics";
 import { isHiddenPath } from "@/lib/hidden-pages";
 
 /**
- * Sticky reveal navigation.
- *  - Hides on scroll DOWN past 200px.
- *  - Re-appears on any upward scroll.
+ * Sticky navigation pinned to the top.
+ *  - Slides out of view while scrolling down, reappears immediately on any
+ *    upward scroll (always visible near the top or with the menu open).
  *  - Backdrop blur + faint border kick in once `scrollY > 30`.
- *  - Active link shows a hand-drawn `InkUnderline` SVG.
+ *  - Active link shows a hand-drawn `InkUnderline` SVG; inactive links grow
+ *    a maroon underline on hover.
  *
  * Menu items come from the CMS Navigation document
  * (content/navigation/main.json) so the client can reorder, nest, and
@@ -77,7 +78,12 @@ function DesktopNavItem({ link }: { link: ResolvedNavLink }) {
 
   const labelClasses = cn(
     "relative font-sans text-sm py-2 inline-flex items-center gap-1",
-    active ? "text-foreground" : "text-foreground/75 hover:text-foreground"
+    "transition-colors duration-200",
+    active ? "text-foreground" : "text-foreground/75 hover:text-foreground",
+    // Hover underline: a maroon line that draws in from the left. Active
+    // links already carry the hand-drawn InkUnderline, so skip them.
+    !active &&
+      "after:absolute after:inset-x-0 after:bottom-0.5 after:h-[2px] after:rounded-full after:bg-[var(--maroon)] after:origin-left after:scale-x-0 after:opacity-0 after:transition-[scale,opacity] after:duration-300 after:[transition-timing-function:var(--e-out)] hover:after:scale-x-100 hover:after:opacity-100"
   );
 
   const underline = active ? (
@@ -176,37 +182,43 @@ function DesktopNavItem({ link }: { link: ResolvedNavLink }) {
 export function Navbar() {
   const [location, setLocation] = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const lastYRef = useRef(0);
   const { totalItems } = useCart();
   const { items: navLinks } = useLiveNavigation();
 
   useEffect(() => {
+    // Start visible even if the page loads already scrolled (e.g. refresh
+    // with scroll restoration); only actual scrolling hides the nav.
+    lastYRef.current = window.scrollY;
+    setScrolled(window.scrollY > 30);
+
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 30);
-      // Don't hide while the mobile menu is open — user is interacting.
-      if (isMobileOpen) {
-        lastYRef.current = y;
-        return;
+      // Hide while scrolling down (past the navbar's own height), show
+      // immediately on any upward scroll.
+      if (y <= 72 || y < lastYRef.current) {
+        setHidden(false);
+      } else if (y > lastYRef.current) {
+        setHidden(true);
       }
-      if (y > 200 && y > lastYRef.current + 6) setHidden(true);
-      else if (y < lastYRef.current - 4) setHidden(false);
       lastYRef.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isMobileOpen]);
+  }, []);
 
   const closeMobile = () => setIsMobileOpen(false);
 
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-50 px-6 md:px-8",
+        "fixed inset-x-0 top-0 z-50",
         "transition-[transform,backdrop-filter,background,border-color] duration-300",
-        hidden ? "-translate-y-full" : "translate-y-0",
+        // Slide away while scrolling down; never while the menu is open.
+        hidden && !isMobileOpen ? "-translate-y-full" : "translate-y-0",
         // Solid backdrop whenever scrolled OR the mobile menu is open,
         // so menu links never sit on top of page content unreadably.
         scrolled || isMobileOpen
@@ -215,7 +227,7 @@ export function Navbar() {
       )}
       style={{ transitionTimingFunction: "var(--e-out)" }}
     >
-      <div className="mx-auto max-w-[1440px] flex items-center justify-between h-[72px]">
+      <div className="bq-container flex items-center justify-between h-[72px]">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <span
             className="grid place-items-center rounded-[10px]"
@@ -236,20 +248,20 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <DesktopNavItem key={link.label + (link.href ?? "")} link={link} />
-          ))}
-        </div>
+        <div className="flex items-center gap-2 lg:gap-6">
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <DesktopNavItem key={link.label + (link.href ?? "")} link={link} />
+            ))}
+          </div>
 
-        <div className="flex items-center gap-2">
           {!isHiddenPath("/cart") && (
             <button
               id="cart-icon"
               type="button"
               onClick={() => setLocation("/cart")}
               aria-label="Cart"
-              className="relative grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors"
+              className="relative grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors lg:-mr-3"
             >
               <ShoppingCart className="w-[18px] h-[18px]" strokeWidth={1.8} />
               {totalItems > 0 && (
@@ -269,7 +281,7 @@ export function Navbar() {
           <button
             type="button"
             aria-label="Menu"
-            className="lg:hidden grid place-items-center w-11 h-11 rounded-full text-foreground/80 hover:text-foreground transition-colors"
+            className="lg:hidden grid place-items-center w-11 h-11 -mr-3 rounded-full text-foreground/80 hover:text-foreground transition-colors"
             onClick={() => setIsMobileOpen((v) => !v)}
           >
             {isMobileOpen ? (
@@ -290,7 +302,7 @@ export function Navbar() {
         )}
         style={{ transitionTimingFunction: "var(--e-out)" }}
       >
-        <div className="flex flex-col">
+        <div className="bq-container flex flex-col">
           {navLinks.map((link) => {
             const key = link.label + (link.href ?? "");
             const parentClasses = cn(

@@ -14,7 +14,7 @@
 import { isInTinaEditor } from "./tina-live";
 
 /** Each entry also hides everything beneath it (e.g. /shop → /shop/:id). */
-export const HIDDEN_PATHS = ["/shop", "/cart", "/education", "/publishers"] as const;
+export const HIDDEN_PATHS = ["/shop", "/cart", "/education", "/publishers", "/downloads"] as const;
 
 /** Stays reachable even though it lives under a hidden path (Stripe returns here). */
 const ALWAYS_VISIBLE_PATHS = ["/shop/success"];

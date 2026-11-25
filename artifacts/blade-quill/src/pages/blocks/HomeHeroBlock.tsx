@@ -140,7 +140,7 @@ interface Props {
 }
 
 /**
- * Desktop stage matches Figma node 185:3261 — radius 32, #776563.
+ * Desktop stage based on Figma node 185:3261 (#776563), full-bleed.
  * Height hugs the copy/CTAs (no fixed aspect ratio) so buttons never clip.
  */
 export default function HomeHeroBlock({ block }: Props) {
@@ -156,14 +156,18 @@ export default function HomeHeroBlock({ block }: Props) {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Full-bleed taupe hero on mobile/tablet; inset rounded card on desktop.
-          Tight lg vertical padding keeps the marquee below visible on first load. */}
-      <div className="w-full lg:px-24 lg:pt-4 lg:pb-4">
+      {/* Full-bleed taupe hero at every size, flush under the sticky nav. */}
+      <div className="w-full">
         <div
           className={[
             "@container/hero relative overflow-hidden",
-            "min-h-[680px] md:min-h-[720px] lg:min-h-[min(560px,50cqw)]",
-            "bg-[var(--taupe)] lg:rounded-[32px]",
+            // lg: hero fills the first screen — viewport minus the 72px nav and
+            // ~84px marquee — so the marquee sits right at the fold (per Figma).
+            // The 56vw ceiling stops narrow-but-tall windows from getting a
+            // mostly-empty hero.
+            "min-h-[680px] md:min-h-[720px] lg:min-h-[max(520px,min(calc(100svh-156px),56vw))]",
+            "lg:flex lg:items-center",
+            "bg-[var(--taupe)]",
           ].join(" ")}
         >
           {hasCustomBg ? (
@@ -180,14 +184,15 @@ export default function HomeHeroBlock({ block }: Props) {
                 "pointer-events-none absolute flex items-end justify-end",
                 "right-0 bottom-0 h-[62%] w-[78%]",
                 "md:right-[2%] md:h-[64%] md:w-[46%]",
-                "lg:inset-y-0 lg:right-[3%] lg:h-auto lg:w-[50%]",
+                // Owns the 52vw → right-bleed band, clear of the 13.5vw+40vw copy.
+                "lg:inset-y-0 lg:left-[52vw] lg:right-[max(40px,9vw)] lg:h-auto lg:w-auto",
               ].join(" ")}
               data-tina-field={tinaField(block, "backgroundImage")}
             >
               <img
                 src={backgroundImage}
                 alt=""
-                className="max-h-full max-w-full object-contain object-right-bottom lg:max-h-[96%]"
+                className="max-h-full max-w-full object-contain object-right-bottom lg:h-[86%] lg:w-auto lg:max-h-none lg:max-w-full"
               />
             </div>
           ) : (
@@ -230,7 +235,8 @@ export default function HomeHeroBlock({ block }: Props) {
           {/* ── Mobile / tablet copy ── */}
           <div
             className={[
-              "relative z-10 flex min-h-[680px] flex-col px-6 pt-8 pb-6 md:min-h-[720px] md:px-14 md:pt-12 md:pb-12 lg:hidden",
+              // Same gutters as .bq-container so the copy lines up with the nav logo.
+              "relative z-10 flex min-h-[680px] flex-col px-5 pt-8 pb-6 sm:px-8 md:min-h-[720px] md:pt-12 md:pb-12 lg:hidden",
               // Keep tablet copy clear of the bottom-right artwork.
               hasCustomBg ? "md:max-w-[56%]" : "md:max-w-[560px]",
             ].join(" ")}
@@ -286,24 +292,29 @@ export default function HomeHeroBlock({ block }: Props) {
             </Reveal>
           </div>
 
-          {/* ── Desktop copy — in-flow so the card height hugs CTAs ── */}
+          {/* ── Desktop copy — proportional geometry per the Figma comp ──
+              The hero scales as one composition: copy starts at ~13.5vw, its
+              column is 40vw, and the artwork owns the band from 52vw to the
+              right bleed. Everything grows together, so text and art never
+              collide at any viewport width. */}
           <div
-            className="relative z-10 hidden text-left text-white lg:block"
+            className="relative z-10 hidden w-full text-left text-white lg:block"
             style={{
-              paddingLeft: "7.59%",
-              paddingRight: "48%",
-              paddingTop: "8cqw",
-              paddingBottom: "5cqw",
+              paddingLeft: "max(40px, 13.5vw)",
+              paddingRight: "max(40px, 9vw)",
+              paddingTop: "48px",
+              paddingBottom: "48px",
             }}
           >
+            <div className="max-w-[40vw]">
             {block.eyebrow ? (
               <div
                 className="font-mono font-bold uppercase text-white"
                 style={{
-                  fontSize: "0.614cqw",
-                  letterSpacing: "0.11cqw",
+                  fontSize: "clamp(6px, 0.53vw, 7.6px)",
+                  letterSpacing: "0.18em",
                   lineHeight: 1.6,
-                  marginBottom: "1.0cqw",
+                  marginBottom: "clamp(8px, 0.86vw, 12.4px)",
                 }}
                 data-tina-field={tinaField(block, "eyebrow")}
               >
@@ -315,11 +326,11 @@ export default function HomeHeroBlock({ block }: Props) {
               className="m-0 text-white"
               style={{
                 fontFamily: "var(--f-serif)",
-                fontSize: "4.91cqw",
+                fontSize: "clamp(42px, 4.25vw, 94px)",
                 lineHeight: 1.1,
-                letterSpacing: "-0.123cqw",
+                letterSpacing: "-0.025em",
                 fontWeight: 400,
-                marginBottom: "2.455cqw",
+                marginBottom: "clamp(20px, 2.12vw, 44px)",
               }}
               data-tina-field={tinaField(block, "heading")}
             >
@@ -328,20 +339,20 @@ export default function HomeHeroBlock({ block }: Props) {
 
             {block.subheading ? (
               <div
-                className="text-white [&_p]:m-0 [&_p+p]:mt-[1.56cqw]"
+                className="text-white [&_p]:m-0 [&_p+p]:mt-[clamp(14px,1.35vw,28px)]"
                 style={{
                   fontFamily: "var(--f-sans)",
-                  fontSize: "1.56cqw",
+                  fontSize: "clamp(16px, 1.35vw, 30px)",
                   lineHeight: 1.35,
                   fontWeight: 400,
-                  marginBottom: "4.5cqw",
+                  marginBottom: "clamp(36px, 3.88vw, 80px)",
                 }}
                 data-tina-field={tinaField(block, "subheading")}
               >
                 <RichText value={block.subheading} />
               </div>
             ) : (
-              <div style={{ marginBottom: "4.5cqw" }} aria-hidden />
+              <div style={{ marginBottom: "clamp(36px, 3.88vw, 80px)" }} aria-hidden />
             )}
 
             <HeroCtas
@@ -351,6 +362,7 @@ export default function HomeHeroBlock({ block }: Props) {
               setLocation={setLocation}
               variant="desktop"
             />
+            </div>
           </div>
         </div>
       </div>
@@ -369,9 +381,9 @@ export default function HomeHeroBlock({ block }: Props) {
             className="flex w-max gap-12 whitespace-nowrap"
             style={{
               fontFamily: "var(--f-serif)",
-              fontSize: 26,
+              fontSize: 18,
               color: "var(--ink-soft)",
-              animation: "bq-marquee 38s linear infinite",
+              animation: "bq-marquee 60s linear infinite",
             }}
           >
             {Array.from({ length: 2 }).map((_, k) => (

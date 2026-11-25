@@ -59,12 +59,15 @@ export default function ImageSpotlightBlock({ block }: Props) {
                   src={block.image as string}
                   alt={(block.alt as string) || "Spotlight image"}
                   className="block w-full h-auto"
-                  style={{ borderRadius: 2 }}
+                  style={{
+                    borderRadius: 16,
+                    boxShadow: "0 10px 30px rgba(46,34,34,0.18)",
+                  }}
                   loading="lazy"
                 />
               ) : (
                 <div className={`overflow-hidden ${ASPECT_CLASS[aspect] ?? ASPECT_CLASS.landscape}`}>
-                  <ArtTile palette="moss" width="100%" height="100%" radius={2} />
+                  <ArtTile palette="moss" width="100%" height="100%" radius={16} />
                 </div>
               )}
               {block.caption ? (

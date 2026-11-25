@@ -82,7 +82,9 @@ function MainLayout() {
             <Page slug="gallery" />
           </Route>
           <Route path="/downloads">
-            <Page slug="downloads" />
+            <HiddenPage>
+              <Page slug="downloads" />
+            </HiddenPage>
           </Route>
           <Route path="/education">
             <HiddenPage>

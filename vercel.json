@@ -146,7 +146,7 @@
       ]
     },
     {
-      "source": "/(shop|cart|education|publishers)",
+      "source": "/(shop|cart|education|publishers|downloads)",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "source": "/(shop|education|publishers)/(.*)",
+      "source": "/(shop|education|publishers|downloads)/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",

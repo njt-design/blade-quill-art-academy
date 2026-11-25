@@ -31,7 +31,7 @@ export default function HeroSplitImageBlock({ block }: Props) {
             height={block.featuredImage ? "auto" : 420}
             src={block.featuredImage as string | undefined}
             alt={(block.imageAlt as string) || "Featured artwork"}
-            radius={2}
+            radius={16}
             fit="contain"
           />
           {block.imageCaption ? (

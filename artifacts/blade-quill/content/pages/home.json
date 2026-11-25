@@ -4,7 +4,6 @@
   "blocks": [
     {
       "backgroundImage": "/images/hero/welcome-steampunk-characters.webp",
-      "eyebrow": "✦ WELCOME TO BLADE & QUILL ✦",
       "heading": "Author, Illustrator, and Digital Art Educator",
       "subheading": {
         "type": "root",

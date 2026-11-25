@@ -10,6 +10,7 @@ import { asArray } from "@/lib/api-helpers";
 import { useLiveDownloads } from "@/hooks/use-live-content";
 import { FALLBACK_DOWNLOADS } from "@/lib/fallback-data";
 import { resolveDownloadItems } from "@/lib/downloads";
+import { isHiddenPath } from "@/lib/hidden-pages";
 import { type Block, followLink } from "./block-utils";
 import { SectionHeading, bodyTextStyle, sectionAlignStyle } from "./text-style";
 
@@ -96,7 +97,8 @@ export default function DownloadsPreviewBlock({ block }: Props) {
               </Reveal>
             ) : null}
           </div>
-          {block.viewAllLabel ? (
+          {block.viewAllLabel &&
+          !isHiddenPath((block.viewAllLink as string | undefined) || "/downloads") ? (
             <Reveal>
               <Btn
                 kind="outline"

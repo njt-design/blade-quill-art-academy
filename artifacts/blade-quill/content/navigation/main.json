@@ -1,6 +1,11 @@
 {
   "items": [
     {
+      "label": "Blog",
+      "linkType": "path",
+      "href": "/blog"
+    },
+    {
       "label": "Shop",
       "linkType": "page",
       "page": "content/pages/shop.json"
@@ -26,11 +31,6 @@
           "page": "content/pages/education.json"
         }
       ]
-    },
-    {
-      "label": "Blog",
-      "linkType": "path",
-      "href": "/blog"
     },
     {
       "label": "About",

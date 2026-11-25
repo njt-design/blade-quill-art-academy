@@ -11,9 +11,10 @@ interface PolaroidProps {
 }
 
 /**
- * Clean framed photo card: paper-colored border with equal padding on all
- * sides, soft drop shadow, optional caption beneath. No tape, no tilt —
- * per client direction (Sep 2026).
+ * Rounded photo wrapper. The paper "polaroid" frame was removed per client
+ * direction (Nov 2026): images render bare with rounded corners (the radius
+ * lives on the image / ArtTile at each call site), with an optional italic
+ * caption beneath. The name is kept so existing blocks don't churn.
  */
 export function Polaroid({
   children,
@@ -26,14 +27,8 @@ export function Polaroid({
     <div
       className={cn("polaroid", hoverLift && "polaroid-hover", className)}
       style={{
-        background: "var(--paper)",
-        padding: 14,
-        borderRadius: 3,
-        boxShadow:
-          "0 10px 30px rgba(46,34,34,0.18), 0 2px 4px rgba(46,34,34,0.1)",
         position: "relative",
-        transition:
-          "transform .35s var(--e-out), box-shadow .35s var(--e-out)",
+        transition: "transform .35s var(--e-out)",
         ...style,
       }}
     >
@@ -42,10 +37,9 @@ export function Polaroid({
         <div
           style={{
             marginTop: 12,
-            fontFamily: "var(--f-mono)",
-            fontSize: 10,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
+            fontFamily: "var(--f-serif)",
+            fontSize: 13,
+            fontStyle: "italic",
             color: "var(--ink-mute)",
             textAlign: "center",
           }}

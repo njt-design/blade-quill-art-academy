@@ -93,7 +93,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                           height="auto"
                           src={spreadSrc}
                           alt="Inside the book"
-                          radius={2}
+                          radius={16}
                           fit="contain"
                         />
                       </div>
@@ -108,7 +108,7 @@ export default function FeaturedBookBlock({ block }: Props) {
                           height="auto"
                           src={characterSrc}
                           alt="Character art"
-                          radius={2}
+                          radius={16}
                           fit="contain"
                         />
                       </div>
